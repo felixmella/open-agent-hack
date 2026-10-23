@@ -161,5 +161,6 @@ class Retriever:
                                  "property": "population", "location": "infobox", "extracted_by": "zetaris",
                                  "value_raw": as_str(r["value_raw"]), "value": parse_population(r["value_raw"]),
                                  "stated_year_raw": as_str(r["year_raw"]), "stated_year": parse_year(r["year_raw"]),
-                                 "reference_raw": as_str(r["reference_raw"])})
+                                 "reference_raw": as_str(r["reference_raw"]),
+                                 "wikidata_item": as_str(r["wikidata_item"])})
         return observations, matched, reviews

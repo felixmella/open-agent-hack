@@ -23,7 +23,11 @@ critic_instruction.
 JSON: {{"verdicts": [{{"claim_id": "...", "class": "...", "explanation": "one or two sentences", "confidence": 0.5}}]}}"""
 
 CLAIM_FIELDS = ("id", "target", "source_name", "title", "revid", "location", "role", "value", "value_raw", "stated_year",
-                "basis", "label", "quote", "method", "verified", "rank", "item", "statement", "missing", "reference_raw")
+                "basis", "label", "quote", "method", "verified", "rank", "item", "statement", "missing", "reference_raw",
+                "field", "value_from", "wikidata_item", "wikidata_statement")
+# What the Extractor's code reading of an infobox field carries beyond the SQL reading.
+FIELD_EXTRAS = ("field", "value_from", "missing", "statements", "wikidata_item", "wikidata_statement", "urban_field",
+                "urban_value", "quote")
 
 
 def digest(*parts):
@@ -54,12 +58,13 @@ def build_claims(observations):
         if s.get("kind") == "wikipedia":
             claim = {"id": o["id"], "target": s["language"], "source_name": s["name"], "title": s.get("title"),
                      "revid": s.get("revid"), "article": article_key(s), "location": p.get("location")}
-            if p.get("extracted_by") == "zetaris":
+            if p.get("extracted_by") == "zetaris" or p.get("field"):  # the infobox field, read by SQL or by code
                 raw_year = p.get("stated_year_raw")
                 claim.update(role="current", value=p.get("value"), value_raw=p.get("value_raw"),
                              stated_year=p.get("stated_year"), basis=basis_of(raw_year),
                              label=strip_markup(raw_year) or None, reference_raw=p.get("reference_raw"),
-                             verified=True, method="zetaris")
+                             verified=True, method=p.get("method") or "zetaris",
+                             **{k: p[k] for k in FIELD_EXTRAS if p.get(k) is not None})
             else:
                 year, basis = p.get("stated_year"), {"census": "census", "projection": "projection",
                                                      "estimate": "projection"}.get(p.get("basis"))
@@ -85,13 +90,13 @@ def build_claims(observations):
                            "label": f"point in time {p['point_in_time'][:10]}" if p.get("point_in_time") else "no point in time",
                            "rank": p.get("rank"), "determination_method": method or None,
                            "references": p.get("references") or [], "item": s.get("item"), "statement": s.get("statement")})
-    # an infobox field SQL couldn't parse, read by the Extractor, replaces the unparsed one
-    read_by_model = {c["article"] for c in claims if c.get("location") == "infobox" and c.get("method") != "zetaris"}
-    for claim in [c for c in claims if c.get("method") == "zetaris" and c["article"] in read_by_model]:
+    # an infobox field SQL couldn't read, read by the Extractor (code or model), replaces the unread one
+    read_again = {c["article"] for c in claims if c.get("location") == "infobox" and c.get("method") != "zetaris"}
+    for claim in [c for c in claims if c.get("method") == "zetaris" and c["article"] in read_again]:
         claims.remove(claim)
         for read in claims:
             if read.get("article") == claim["article"] and read.get("location") == "infobox":
-                read["reference_raw"] = claim.get("reference_raw")
+                read["reference_raw"] = claim.get("reference_raw") or read.get("reference_raw")
     return claims, citations
 
 
@@ -123,21 +128,29 @@ class Analyst:
         if not table["census"]:
             raise LookupError(f"no official census figures for {comuna.name} in the World Model")
         claims, citations = build_claims(context["observations"])
-        findings, checks = [], []
+        findings, checks, elsewhere = [], [], set()
         for claim in claims:
             verdict = matcher.assess_value(claim, table, claims)
             if verdict is None:
                 checks.append({"claim": compact(claim), "result": "not checkable", "note": matcher.unchecked_reason(claim)})
+            elif verdict.get("check"):  # checked, and not a figure for the comuna as a whole
+                checks.append({"claim": compact(claim), "result": verdict["check"], "note": verdict["explanation"]})
+                elsewhere.add(claim["id"])
             elif verdict["class"] == "consistent":
                 checks.append({"claim": compact(claim), "result": "consistent", "note": verdict["explanation"]})
             else:
                 findings.append(self.finding(comuna, claim, "value", verdict, round_no))
+        sourced = set()  # one reference per infobox field, however many figures it holds
         for infobox in [c for c in claims if c["location"] == "infobox"]:
-            body = [c for c in claims if c.get("article") == infobox["article"] and c["location"] in ("lead", "body", "history_table")]
+            body = [c for c in claims if c.get("article") == infobox["article"] and c["id"] not in elsewhere
+                    and c["location"] in ("lead", "body", "history_table")]
             consistency = matcher.assess_consistency(infobox, body)
             if consistency:
                 consistency["proposal"] = matcher.update_proposal(table)
                 findings.append(self.finding(comuna, infobox, "consistency", consistency, round_no))
+            if infobox["article"] in sourced:
+                continue
+            sourced.add(infobox["article"])
             sourcing = matcher.assess_sourcing(infobox, citations.get(infobox["article"]),
                                                matcher.assess_value(infobox, table, claims))
             if sourcing:

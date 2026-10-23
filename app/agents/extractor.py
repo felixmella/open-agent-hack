@@ -1,18 +1,21 @@
 """Extractor: turns each article read this run into structured, provenance-stamped population claims.
 
 Code reads what it can read reliably: the reference behind the infobox figure (named references resolved), the
-{{Historical populations}} table, and the sentences that hold a figure and talk about population. The model reads
-those sentences: which ones state the whole comuna's population, with which figure, year and basis. Code checks
-every claim before it is kept: the figure (and its year) must appear verbatim in its sentence, and the sentence
-verbatim in the article. Sentences go to the model in batches small enough for one streamed request; when the model is
-unavailable, or a request fails, sentence patterns read those sentences instead, and the claims say so.
+{{Historical populations}} table, an infobox population field SQL couldn't read (read again from the article's own
+infobox: comments, two figures in one field, several parameters on one line, an empty field), and the sentences that
+hold a figure and talk about population. The model reads those sentences: which ones state the whole comuna's
+population, with which figure, year and basis. Code checks every claim before it is kept: the figure (and its year)
+must appear verbatim in its sentence, and the sentence verbatim in the article. Sentences go to the model in batches
+small enough for one streamed request; when the model is unavailable, or a request fails, sentence patterns read those
+sentences instead, and the claims say so.
 """
 import re
 
 from app.agents.llm import batched, model_note
 from app.knowledge.taxonomy import census_facts, is_official_domain
-from app.knowledge.wikitext import (FIGURE, POPULATION_WORDS, article_passages, citation_facts, historical_populations,
-                                    parse_population, quote_supported, resolve_reference, rule_claims, sentences,
+from app.knowledge.wikitext import (FIGURE, POPULATION_WORDS, article_passages, citation_facts, field_figures,
+                                    field_references, historical_populations, infobox_parameters, parse_population,
+                                    parse_year, quote_supported, resolve_reference, rule_claims, sentences,
                                     visible_text)
 
 PROMPT = """FactSync Chile - Extractor.
@@ -24,6 +27,16 @@ round or correct a figure. If a critic_instruction is given, follow it.
 JSON: {"claims": [{"sentence": "1", "value_text": "24,333", "year": 2017, "basis": "census"}]}"""
 
 BASES = {"census", "projection", "estimate", "unspecified"}
+# The infobox parameters for the population figure, its year, its reference and the urban population, by language.
+INFOBOX_FIELDS = {
+    "es": {"value": ("población", "poblacion"), "year": ("población_año", "población año", "censo"),
+           "reference": ("población_post",), "urban": ("población_urb",)},
+    "en": {"value": ("population_total",), "year": ("population_as_of",), "reference": ("population_footnotes",),
+           "urban": ("population_urban",)},
+}
+# eswiki's Ficha de entidad subnacional shows Wikidata's population (P1082) when `población` is empty: one
+# statement of the highest rank ({{Propiedad|P1082|rango_mayor=sí|uno=sí}}). enwiki's Infobox settlement doesn't.
+FILLED_FROM_WIKIDATA = {"es"}
 
 
 def checkable_years():
@@ -43,6 +56,29 @@ def verbatim_figure(value_text, quote):
     return None
 
 
+def qid(item):
+    return str(item or "").rstrip("/").rsplit("/", 1)[-1] or None
+
+
+def shown_statement(statements):
+    """The Wikidata statement an infobox shows when it takes the population from Wikidata: the only statement of
+    the highest rank (preferred, else normal); None when there are several."""
+    ranked = [s for s in statements if "Deprecated" not in (s["payload"].get("rank") or "")]
+    top = [s for s in ranked if "Preferred" in (s["payload"].get("rank") or "")] or ranked
+    return top[0] if len(top) == 1 else None
+
+
+def describe_readings(readings):
+    """The infobox readings in a few words, for the trace."""
+    first = readings[0]
+    if first.get("missing"):
+        return "infobox shows no figure"
+    if first.get("value_from") == "wikidata":
+        return f"infobox shows Wikidata's {first['value']:,}" if first.get("value") is not None else \
+            "infobox shows a figure from Wikidata"
+    return "infobox field read by code: " + ", ".join(f"{r['value']:,}" for r in readings)
+
+
 class Extractor:
     name = "Extractor"
 
@@ -57,11 +93,13 @@ class Extractor:
         mine = [o for o in self.world.view("observations").for_entity(comuna.entity_id, kinds={"wikipedia"})
                 if o["id"] in observed]
         articles = [o for o in mine if o["payload"].get("document") == "article"]
+        wikidata = [o for o in self.world.view("observations").for_entity(comuna.entity_id, kinds={"wikidata"})
+                    if o["id"] in observed]
         kept = 0
         for article in articles:
             infobox = next((o for o in mine if o["source"] == article["source"] and o["payload"].get("location") == "infobox"
                             and o["payload"].get("extracted_by") == "zetaris"), None)
-            observations, summary = self._read(comuna, article, infobox, round_no, instruction)
+            observations, summary = self._read(comuna, article, infobox, wikidata, round_no, instruction)
             result = self.world.ingest(observations, actor=self.name)
             observed.update(result.appended + result.unchanged)
             kept += sum(1 for o in observations if o.get("property") == "population")
@@ -71,19 +109,23 @@ class Extractor:
                               status="success" if "rejected 0" in summary else "partial")
         return kept
 
-    def _read(self, comuna, article, infobox, round_no, instruction):
+    def _read(self, comuna, article, infobox, wikidata, round_no, instruction):
         source, wikitext = article["source"], article["payload"].get("wikitext") or ""
         entity = {"type": "comuna", "name": comuna.name, "external_key": {"system": "cut", "id": comuna.cut}}
         base = {"agent": self.name, "run_id": self.run_id, "article_observation": article["id"],
                 "observed_at": article["provenance"].get("observed_at")}
-        observations = []
+        observations, readings = [], []
         if infobox:
-            reference = resolve_reference(infobox["payload"].get("reference_raw"), wikitext)
+            reference = resolve_reference(field_references(infobox["payload"].get("value_raw"),
+                                                            infobox["payload"].get("reference_raw")), wikitext)
             facts = citation_facts(reference)
             observations.append({"entity": entity, "source": source, "provenance": {**base, "method": "rules"},
                                  "property": "population_citation", "location": "infobox",
                                  "reference_text": reference[:1500], "years": facts["years"], "domains": facts["domains"],
                                  "official": any(is_official_domain(d) for d in facts["domains"])})
+            if infobox["payload"].get("value") is None:
+                readings = self._infobox(entity, source, base, wikitext, infobox, wikidata)
+                observations += readings
         rows = historical_populations(wikitext)
         table = [r for i, r in enumerate(rows) if r["year"] in checkable_years() or i == len(rows) - 1]
         for row in table:
@@ -91,7 +133,8 @@ class Extractor:
                                  "property": "population", "location": "history_table", "extracted_by": self.name,
                                  "method": "rules", "value": row["value"], "value_text": str(row["value"]),
                                  "stated_year": row["year"], "basis": "census", "quote": row["raw"], "verified": True})
-        claims, rejected, candidates = self._prose(comuna, source, wikitext, infobox, round_no, instruction)
+        claims, rejected, candidates = self._prose(comuna, source, wikitext, None if readings else infobox, round_no,
+                                                   instruction)
         methods = set()
         for claim in claims:
             note = claim.pop("note")
@@ -103,9 +146,54 @@ class Extractor:
         summary = (f"{len(claims)} prose claim(s) kept ({methods}) from {candidates} candidate sentence(s), "
                    f"rejected {len(rejected)} by the quote check; {len(table)} history-table row(s); "
                    f"infobox reference: {', '.join(observations[0]['domains']) if infobox and observations[0]['domains'] else 'none found'}")
+        if readings:
+            summary += "; " + describe_readings(readings)
         if rejected:
             summary += "; rejected: " + "; ".join(f"{r.get('value_text')!r} ({r.get('why')})" for r in rejected[:3])
         return observations, summary
+
+    def _infobox(self, entity, source, base, wikitext, infobox, wikidata):
+        """The infobox population field read again from the article's own infobox, when SQL found it empty or
+        couldn't parse it: one observation per figure in the field; or, when the field is empty, what the infobox
+        shows instead (Wikidata's figure on eswiki, or nothing). [] when code can't read the field either: the
+        model then gets it."""
+        names = INFOBOX_FIELDS[source["language"]]
+        params = infobox_parameters(wikitext)
+
+        def field(key):
+            return next(((n, params[n]) for n in names[key] if params.get(n)), (names[key][0], ""))
+
+        (name, raw), (_, year_raw), (_, reference) = field("value"), field("year"), field("reference")
+        reading = {"entity": entity, "source": source, "provenance": {**base, "method": "rules"},
+                   "property": "population", "location": "infobox", "extracted_by": self.name, "method": "rules",
+                   "field": name, "reference_raw": reference or None, "verified": True}
+        if raw:
+            return [{**reading, "value": value, "value_text": text, "value_raw": raw,
+                     "stated_year": year or (parse_year(year_raw) if i == 0 else None),
+                     "stated_year_raw": str(year) if year else (year_raw or None) if i == 0 else None}
+                    for i, (value, text, year) in enumerate(field_figures(raw))]
+        reading.update(value=None, stated_year_raw=year_raw or None, stated_year=parse_year(year_raw))
+        urban_name, urban = field("urban")
+        if parse_population(urban) is not None:
+            reading.update(urban_field=urban_name, urban_value=parse_population(urban), quote=f"{urban_name} = {urban}")
+        if source["language"] not in FILLED_FROM_WIKIDATA:
+            return [{**reading, "missing": True}]
+        reading["value_from"] = "wikidata"
+        items = {qid(o["source"].get("item")) for o in wikidata}
+        item = qid(infobox["payload"].get("wikidata_item")) or (next(iter(items)) if len(items) == 1 else None)
+        mine = [o for o in wikidata if item and qid(o["source"].get("item")) == item]
+        statements = [o for o in mine if o["payload"].get("value") is not None]
+        if mine and not statements:  # Wikidata has no population either: the infobox shows none
+            return [{**reading, "missing": True, "wikidata_item": item}]
+        shown = shown_statement(statements)
+        if not shown:  # Wikidata not read, or several statements of the same rank: which one shows can't be told
+            return [{**reading, "wikidata_item": item, "statements": len(statements)}]
+        year = shown["payload"].get("stated_year")
+        return [{**reading, "provenance": {**reading["provenance"], "wikidata_observation": shown["id"]},
+                 "value": shown["payload"]["value"], "wikidata_item": item,
+                 "wikidata_statement": shown["source"].get("statement"),
+                 "stated_year": reading["stated_year"] or year,
+                 "stated_year_raw": reading["stated_year_raw"] or (str(year) if year else None)}]
 
     def _prose(self, comuna, source, wikitext, infobox, round_no, instruction):
         passages = article_passages(wikitext)

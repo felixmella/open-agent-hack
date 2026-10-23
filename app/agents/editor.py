@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from app.agents.llm import fits, model_note
 from app.knowledge.matcher import fmt, latest_census
 from app.knowledge.taxonomy import census_facts, official_source
-from app.knowledge.wikitext import parse_population
+from app.knowledge.wikitext import BREAK, parse_population, visible_text
 
 ES_MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
              "noviembre", "diciembre"]
@@ -122,6 +122,14 @@ class Editor:
             draft["replaces"] = {"value": infobox.get("value_raw"), "year": infobox.get("label"),
                                  "reference": infobox.get("reference_raw") or ""}
             draft["anchor"] = infobox["id"]
+            field = infobox.get("field") or ("población" if language == "es" else "population_total")
+            if infobox.get("value_from") == "wikidata" and infobox.get("value") is not None:
+                draft["notes"] = [f"The infobox's {field} field is empty, so it shows Wikidata's figure, "
+                                  f"{fmt(infobox['value'])}. The lines below give the article a figure of its own; "
+                                  f"correcting Wikidata's statement (see the Wikidata draft) updates this infobox too."]
+            elif infobox.get("missing"):
+                draft["notes"] = [f"The infobox's {field} field is empty and it shows no population: the lines below "
+                                  f"add one."]
         changes = []
         for finding in findings:
             claim, proposal = finding["claim"], finding.get("proposal") or {}
@@ -182,11 +190,12 @@ class Editor:
 
     def word(self, comuna, drafts, findings, correction, round_no, instruction):
         """Edit summaries and the reviewer's explanation: from the model, or from templates."""
-        lead = {target: next((f for f in findings if f["target"] == target[:2] and f["aspect"] == "value"), None)
-                or next((f for f in findings if f["target"] == target[:2]), None) for target in ("eswiki", "enwiki")}
+        def first(fs):  # the finding a page's wording leads with: the infobox figure's, then any figure's
+            return min(fs, key=lambda f: (f["aspect"] != "value", f["claim"].get("location") != "infobox")) if fs else None
+        lead = {target: first([f for f in findings if f["target"] == target[:2]]) for target in ("eswiki", "enwiki")}
 
         mine = {k: [f for f in findings if f["id"] in v["findings"]] for k, v in drafts.items()}
-        main = {k: next((f for f in fs if f["aspect"] == "value"), fs[0])["id"] for k, fs in mine.items()}
+        main = {k: first(fs)["id"] for k, fs in mine.items()}
 
         def payload(main_length, other_length):  # explanations cut to these lengths (left out at 0)
             def replaced(draft):
@@ -216,19 +225,24 @@ class Editor:
             if target not in drafts:
                 continue
             finding = lead[target]
-            old = ((drafts[target].get("replaces") or {}).get("value") or "sin cifra").replace("&nbsp;", " ")
+            old = visible_text(BREAK.sub(" / ", (drafts[target].get("replaces") or {}).get("value") or ""))
+            if not old and finding["claim"].get("value_from") == "wikidata" and finding["claim"].get("value") is not None:
+                old = f"{finding['claim']['value']} " + ("de Wikidata" if target == "eswiki" else "from Wikidata")
+            old = old or ("sin cifra" if target == "eswiki" else "no figure")
             same = parse_population(old) == correction["value"]  # right figure, wrong label or reference
             if reply and reply[0].get(f"{target[:2]}_summary"):
                 drafts[target]["edit_summary"] = str(reply[0][f"{target[:2]}_summary"])[:500]
             elif target == "eswiki":
                 figure = format_like(new_es, old)
+                was = "misma cifra" if same else f"antes {old}"
+                why = "" if finding["class"] == "missing_value" else f": {REASON_ES.get(finding['class'], finding['class'])}"
                 drafts[target]["edit_summary"] = (f"Población según el Censo {correction['year']} del INE: {figure} hab. "
-                                                  f"({'misma cifra' if same else f'antes {old}'}: "
-                                                  f"{REASON_ES.get(finding['class'], finding['class'])}).")
+                                                  f"({was}{why}).")
             else:
+                was = "same figure" if same else f"was {old}"
+                why = "" if finding["class"] == "missing_value" else f": {REASON_EN.get(finding['class'], finding['class'])}"
                 drafts[target]["edit_summary"] = (f"Population per INE's {correction['year']} census: {new_en} "
-                                                  f"({'same figure' if same else f'was {old}'}: "
-                                                  f"{REASON_EN.get(finding['class'], finding['class'])}).")
+                                                  f"({was}{why}).")
         if "wikidata" in drafts:
             drafts["wikidata"]["edit_summary"] = f"Add Census {correction['year']} population ({new_en}) from INE"
         if reply:

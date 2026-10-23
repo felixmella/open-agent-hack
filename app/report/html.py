@@ -104,13 +104,19 @@ def decided_by(note):
     return f"model: {served}" + (" (replayed from Nightshift's cache)" if note.get("nightshift_cache") == "exact" else "")
 
 
+def where(claim):
+    """Where a figure is shown; an infobox figure taken from Wikidata says so."""
+    place = LOCATIONS.get(claim.get("location"), claim.get("location") or "")
+    return f"{place} (from Wikidata)" if claim.get("value_from") == "wikidata" else place
+
+
 def finding_view(finding):
     claim, critic = finding["claim"], finding.get("critic") or {}
     criteria = critic.get("criteria") or {}
     as_written = claim.get("value_raw") if finding["target"] in ("es", "en") else None  # Wikidata has no text form
     return {
         "id": finding["id"],
-        "where": LOCATIONS.get(claim.get("location"), claim.get("location") or ""),
+        "where": where(claim),
         "value": as_written or figure(claim.get("value")),
         "label": claim.get("label"),
         "quote": claim.get("quote"),
@@ -178,8 +184,7 @@ def comuna_view(comuna):
         "findings": comuna.get("findings") or [],
         "pages": page_views(comuna),
         "has_drafts": any(k in drafts for k in DRAFTS),
-        "checks": [{"where": f"{TARGETS.get(c['claim'].get('target'), c['claim'].get('target'))} · "
-                             f"{LOCATIONS.get(c['claim'].get('location'), c['claim'].get('location') or '')}",
+        "checks": [{"where": f"{TARGETS.get(c['claim'].get('target'), c['claim'].get('target'))} · {where(c['claim'])}",
                     "value": c["claim"].get("value_raw") or figure(c["claim"].get("value")),
                     "label": c["claim"].get("label"), "result": c["result"], "note": c.get("note")}
                    for c in comuna.get("checks") or []],

@@ -22,25 +22,49 @@ HEADING = re.compile(r"^(={2,6})\s*(.*?)\s*\1\s*$", re.M)
 POPULATION_WORDS = re.compile(r"habitantes|poblaci[oó]n|censo|inhabitants|population|census|residents", re.I)
 FIGURE = re.compile(r"\d{1,3}(?:[., ]\d{3})+|\d{3,}")
 CENSUS_WORDS = re.compile(r"cens", re.I)
-PROJECTION_WORDS = re.compile(r"proyecci|estimaci|projection|estimate", re.I)
+PROJECTION_WORDS = re.compile(r"proyecci|proyectad|estimaci|estimad|projection|projected|estimate", re.I)
+COMMENT = re.compile(r"<!--.*?(?:-->|$)", re.S)
+# Markup whose braces aren't template braces: map data (<mapframe> JSON closes with '}}') and comments.
+OPAQUE = re.compile(r"<!--.*?(?:-->|$)|<(mapframe|maplink|nowiki|math|syntaxhighlight)\b[^>]*>.*?</\1\s*>", re.S | re.I)
+BREAK = re.compile(r"<br\s*/?\s*>", re.I)
+INFOBOX = re.compile(r"\{\{\s*((?:Ficha|Infobox)[^|{}<\n]*)", re.I)
+OWN_YEAR = re.compile(r"\(\s*(?:[^()\d]*\s)?((?:19|20)\d{2})\s*\)\s*$")
 
 
 def strip_markup(text):
-    """Drop references, unwrap links and non-breaking spaces; keep the visible text."""
+    """Drop comments and references, unwrap links and non-breaking spaces; keep the visible text."""
     if not text:
         return ""
-    text = UNCLOSED_REF.sub("", REF.sub(" ", text))
+    text = UNCLOSED_REF.sub("", REF.sub(" ", COMMENT.sub("", text)))
     text = EXTERNAL_LINK.sub(r"\1", LINK.sub(r"\1", text))
     text = text.replace("&nbsp;", " ").replace(" ", " ")
     return " ".join(text.split())
 
 
 def parse_population(raw):
-    """A figure written as 26.746, 26,746, 24 640 or 46121; None when the field holds anything else."""
-    candidate = TEMPLATE.sub("", strip_markup(raw)).strip()
+    """A figure written as 26.746, 26,746, 24 640, 46121 or {{formatnum:46121}}, references and comments
+    aside; None when the field holds anything else."""
+    candidate = strip_markup(drop_templates(COMMENT.sub("", raw or ""))).strip()
     if NUMBER.fullmatch(candidate):
         return int(re.sub(r"\D", "", candidate))
     return None
+
+
+def field_figures(raw):
+    """The figures in an infobox population field, as (value, as written, year in its own parentheses or None):
+    one, or several on separate lines ('22.098<br/>25.301 (2020)'). Empty when any part isn't a figure."""
+    figures = []
+    for part in BREAK.split(COMMENT.sub("", raw or "")):
+        text = strip_markup(part)
+        if not text:
+            continue
+        year = OWN_YEAR.search(text)
+        figure = text[:year.start()].strip() if year else text
+        value = parse_population(figure)
+        if value is None:
+            return []
+        figures.append((value, text, int(year.group(1)) if year else None))
+    return figures
 
 
 def parse_year(raw):
@@ -63,6 +87,11 @@ def named_references(wikitext):
     for name, body in NAMED_REF.findall(wikitext or ""):
         refs.setdefault(name.strip(), body.strip())
     return refs
+
+
+def field_references(value_raw, reference_raw):
+    """An infobox figure's references: its reference field, and any <ref> written right after the figure."""
+    return " ".join(filter(None, [(reference_raw or "").strip()] + REF.findall(value_raw or "")))
 
 
 def resolve_reference(raw, wikitext):
@@ -125,6 +154,22 @@ def split_parameters(body):
     return [p.strip() for p in parts[1:]]
 
 
+def infobox_parameters(wikitext):
+    """The named parameters of an article's infobox ({{Ficha ...}} or {{Infobox ...}}), names lowercased, read
+    from the wikitext itself: several parameters on one line ('|altitud=26|población = 38036') come apart, and
+    comments and map data are dropped first."""
+    text = OPAQUE.sub("", wikitext or "")
+    match = INFOBOX.search(text)
+    if not match:
+        return {}
+    params = {}
+    for part in split_parameters(template_body(text[match.start():], match.group(1).strip()) or ""):
+        name, equals, value = part.partition("=")
+        if equals:
+            params.setdefault(name.strip().lower(), value.strip())
+    return params
+
+
 def historical_populations(wikitext):
     """The year/figure pairs of an English article's {{Historical populations}} table, in article order."""
     body = template_body(wikitext, "Historical populations")
@@ -144,7 +189,7 @@ def drop_templates(text):
     {{convert|530.5|sqkm}}."""
     text = text or ""
     while True:
-        reduced = re.sub(r"\{\{\s*(?:convert|formatnum:|nowrap|nobr)\s*\|?([^|{}]*)[^{}]*\}\}", r"\1", text, flags=re.I)
+        reduced = re.sub(r"\{\{\s*(?:convert|formatnum|nowrap|nobr)\s*[:|]?([^|{}]*)[^{}]*\}\}", r"\1", text, flags=re.I)
         reduced = TEMPLATE.sub("", reduced)
         if reduced == text:
             return text
@@ -199,7 +244,8 @@ def quote_supported(quote, passages, value_text, year=None):
 STATED_FIGURE = re.compile(r"(\d{1,3}(?:[., ]\d{3})+|\d{3,7})\s*(?:habitantes|inhabitants|personas|people|residents)"
                            r"|(?:poblaci[oó]n de|population of)\s*(?:aproximadamente\s*)?(\d{1,3}(?:[., ]\d{3})+|\d{3,7})",
                            re.I)
-CENSUS_YEAR = re.compile(r"(?:censo|census)\D{0,25}?((?:19|20)\d{2})|((?:19|20)\d{2})\D{0,12}?(?:censo|census)", re.I)
+# 'censo de 2017', 'Censo de Población y Vivienda de 2017', 'censo del Instituto Nacional de Estadísticas del año 2012'
+CENSUS_YEAR = re.compile(r"(?:censo|census)\D{0,60}?((?:19|20)\d{2})|((?:19|20)\d{2})\D{0,12}?(?:censo|census)", re.I)
 
 
 def sentences(text):
@@ -217,7 +263,9 @@ def rule_claims(passages):
             if not figure or not re.search(r"cens|poblaci[oó]n|population", sentence, re.I):
                 continue
             value_text = figure.group(1) or figure.group(2)
-            year = CENSUS_YEAR.search(sentence)
+            # the census named nearest the figure ('censo de 2017 ... 9.093 habitantes, ... los 9379 del censo de 2002')
+            year = min(CENSUS_YEAR.finditer(sentence), key=lambda m: abs(m.start(1 if m.group(1) else 2) - figure.start()),
+                       default=None)
             year_value = int(year.group(1) or year.group(2)) if year else None
             basis = "projection" if PROJECTION_WORDS.search(sentence) else "census" if year else "unspecified"
             if year_value is None and YEAR.search(sentence):  # '(INE 2002)', 'en 1970'

@@ -60,10 +60,17 @@ def current_figure(comuna, target):
         missing = next((f for f in about if f["class"] == "missing_value"), None)
         if missing:
             return "missing_value"
-        outdated = next((f for f in about if f["aspect"] == "currency"), None)
-        if outdated:
-            return "outdated_vintage"
         statements = [c for c in comuna["checks"] if c["claim"].get("target") == "wikidata"] + about
+        outdated = next((f for f in about if f["aspect"] == "currency"), None)
+        if outdated:  # no Census 2024 statement
+            newest = next((f for f in about if f["aspect"] == "value" and f["claim"]["id"] == outdated["claim"]["id"]),
+                          None)
+            if newest and newest["class"] == "genuine_error":  # its newest figure isn't this comuna's, or is a typo
+                return "genuine_error"
+            latest = comuna["official"]["census"][max(comuna["official"]["census"], key=int)]
+            if any(s["claim"].get("value") == latest for s in statements):  # the 2024 count, dated wrongly
+                return "mislabelled_vintage"
+            return "outdated_vintage"
         return "up to date" if statements else None
     infobox = [f for f in comuna["findings"] if f["target"] == target and f["aspect"] == "value"
                and f["claim"].get("location") == "infobox"]
@@ -74,8 +81,16 @@ def current_figure(comuna, target):
     return "up to date" if consistent else None
 
 
+def fed_by_wikidata(comuna, target):
+    """Whether the source's infobox has no figure of its own and shows Wikidata's (eswiki's template does that)."""
+    return any(x["claim"].get("target") == target and x["claim"].get("location") == "infobox"
+               and x["claim"].get("value_from") == "wikidata" and x["claim"].get("value") is not None
+               for x in comuna["findings"] + comuna["checks"])
+
+
 def summarize(results, tag, use_llm):
     by_target = {t: Counter() for t in TARGETS}
+    from_wikidata = {t: Counter() for t in TARGETS}
     classes = Counter()
     comunas = 0
     for result in results:
@@ -84,6 +99,8 @@ def summarize(results, tag, use_llm):
             for target in TARGETS:
                 outcome = current_figure(comuna, target)
                 by_target[target][outcome or "no figure"] += 1
+                if fed_by_wikidata(comuna, target):
+                    from_wikidata[target][outcome or "no figure"] += 1
             for finding in comuna["findings"]:
                 classes[finding["class"]] += 1
     sources = {}
@@ -96,7 +113,9 @@ def summarize(results, tag, use_llm):
                            "share_differing": round((shown - current) / shown, 3) if shown else None,
                            "why": dict(sorted(((k, n) for k, n in counts.items()
                                                if k not in ("up to date", "no figure", "missing_value")),
-                                              key=lambda kv: -kv[1]))}
+                                              key=lambda kv: -kv[1])),
+                           "infobox_shows_wikidata": sum(from_wikidata[target].values()),
+                           "infobox_shows_wikidata_by_outcome": dict(from_wikidata[target].most_common())}
     figures = sum(s["comunas_with_a_figure"] for s in sources.values())
     differing = sum(s["differs"] for s in sources.values())
     return {"tag": tag, "made_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -117,17 +136,29 @@ def markdown(summary):
              f"Of {summary['current_figures']} current population figures shown across the three sources, "
              f"**{summary['differing_from_census_2024']} ({summary['share_differing']:.0%})** are not INE's Census 2024 "
              f"count (correctly labelled).", "",
-             "| Source | Comunas with a figure | Census 2024 count | Differs | No figure (Wikidata) | Not read | Why it differs |",
+             "| Source | Comunas with a figure | Census 2024 count | Differs | No figure | Not read | Why it differs |",
              "|---|---|---|---|---|---|---|"]
     for target, s in summary["by_source"].items():
         why = ", ".join(f"{CLASS_LABELS.get(k, k)} {n}" for k, n in s["why"].items())
         share = f" ({s['share_differing']:.0%})" if s["share_differing"] is not None else ""
         lines.append(f"| {TARGETS[target]} | {s['comunas_with_a_figure']} | {s['census_2024_count']} | "
                      f"{s['differs']}{share} | {s['missing']} | {s['no_page_or_figure']} | {why} |")
-    lines += ["", "*Not read:* FactSync reads the Wikipedia article linked from each comuna's Wikidata item (the "
+    for target, s in summary["by_source"].items():
+        if s.get("infobox_shows_wikidata"):
+            outcomes = ", ".join(f"{'Census 2024 count' if k == 'up to date' else CLASS_LABELS.get(k, k)} {n}"
+                                 for k, n in s["infobox_shows_wikidata_by_outcome"].items())
+            lines += ["", f"**{s['infobox_shows_wikidata']} {TARGETS[target]} infoboxes have no population figure of "
+                          f"their own and show Wikidata's** ({outcomes}); they are counted above under the figure they "
+                          f"show. Their template fills an empty population field from Wikidata, so Wikidata's "
+                          f"staleness reaches the article, and correcting Wikidata's statement corrects the infobox too."]
+    lines += ["", "*No figure:* the source shows no population figure: a Wikidata item without a population "
+              "statement, or an infobox whose population field is empty (with nothing in Wikidata to fill it on "
+              "Spanish Wikipedia).", "",
+              "*Not read:* FactSync reads the Wikipedia article linked from each comuna's Wikidata item (the "
               "`factsync.eswiki_articles` and `enwiki_articles` views). A comuna whose item links no article, often "
-              "because the article is attached to the town's item instead, isn't counted; nor is an infobox without a "
-              "population figure.", "", "Runs:", ""] + [
+              "because the article is attached to the town's item instead, isn't counted. An infobox whose population "
+              "field SQL can't read is read again from the article's wikitext, so it is counted under the figure the "
+              "infobox shows (its own, Wikidata's, or none).", "", "Runs:", ""] + [
         f"- `{r['run_id']}`: {r['status']}, {r['comunas']} comunas, {r['findings']} findings, {r['drafts']} drafts "
         f"({r['report']})" for r in summary["runs"]]
     return "\n".join(lines) + "\n"

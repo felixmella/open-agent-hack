@@ -182,7 +182,9 @@ class Critic:
         # evidence fidelity
         fidelity = 0
         observation = store.get_observation(finding["claim"]["id"])
-        if observation and observation["payload"].get("value") == value and finding["claim"].get("verified") is not False:
+        shown = store.get_observation((observation or {}).get("provenance", {}).get("wikidata_observation"))
+        if observation and observation["payload"].get("value") == value and finding["claim"].get("verified") is not False \
+                and (shown is None or shown["payload"].get("value") == value):  # an infobox showing Wikidata's figure
             fidelity += 1
         else:
             extracted = finding["claim"].get("method") in ("llm", "rules")
@@ -223,7 +225,9 @@ class Critic:
         else:
             notes.append(f"class doubted on review: {judgment.get('note')}")
         unexplained = bool(facts and facts["unexplained"])
-        calibrated = finding["confidence"] <= 0.7 if unexplained else (finding["method"] != "matcher" or finding["confidence"] >= 0.8)
+        expected = min(0.8, facts["confidence"]) if facts else 0.8  # a rounded figure's match is held less firmly
+        calibrated = finding["confidence"] <= 0.7 if unexplained else (finding["method"] != "matcher"
+                                                                      or finding["confidence"] >= expected)
         if calibrated:
             discipline += 1
         else:

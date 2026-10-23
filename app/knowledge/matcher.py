@@ -9,7 +9,7 @@ The same facts tell the Critic which classes a verdict may have (`allowed_classe
 always checked against arithmetic.
 """
 from app.knowledge.taxonomy import census_facts, census_status
-from app.knowledge.wikitext import has_citation
+from app.knowledge.wikitext import field_references, has_citation
 
 
 def fmt(value):
@@ -46,6 +46,11 @@ def checkable_year(year, basis):
 
 
 def unchecked_reason(claim):
+    if claim.get("value_from") == "wikidata" and claim.get("value") is None:
+        if claim.get("statements"):
+            return (f"the infobox has no figure of its own and shows one of Wikidata's {claim['statements']} population "
+                    f"statements; none is ranked preferred, so which one can't be told")
+        return "the infobox has no figure of its own and shows Wikidata's, which wasn't read for this comuna"
     if not claim.get("stated_year"):
         return "no year stated and no official figure matches, so it can't be told what it refers to"
     return f"refers to {claim['stated_year']}, a year FactSync holds no official figures for"
@@ -72,6 +77,39 @@ def update_proposal(table):
 def exact_matches(value, table):
     return [record for definition in ("census", "projection")
             for _, record in sorted(table.get(definition, {}).items()) if record["value"] == value]
+
+
+def rounded_matches(value, table, year, basis=None):
+    """Official figures this one is a rounding of: 12,100 for 12,097, 86,000 for 85,938. The figure's trailing zeros
+    give the unit (10, 100 or 1,000), keeping at least two significant digits (2,000 can round to the hundred, not
+    the thousand). Rounding is weak evidence, so it never overrides a label: only the figures for the year the
+    figure states count (any census, closest first, when it states none), and a projection only when the figure
+    isn't labelled as a census count."""
+    digits = str(value)
+    unit = 10 ** max(min(len(digits) - len(digits.rstrip("0")), 3, len(digits) - 2), 0)
+    if unit == 1:
+        return []
+    hits = sorted((r for r in table.get("census", {}).values() if year in (None, r["year"])
+                   and (r["value"] + unit // 2) // unit * unit == value), key=lambda r: abs(r["value"] - value))
+    projection = (table.get("projection") or {}).get(year) if basis != "census" else None
+    if projection and (projection["value"] + unit // 2) // unit * unit == value:
+        hits.append(projection)
+    return [r for r in hits if r["value"] != value]
+
+
+def scale(value, official):
+    """How a figure compares with an official one, in words: '78 times', '14% of'."""
+    ratio = value / official
+    if ratio >= 1:
+        return f"{round(ratio)} times" if ratio < 99.5 else "over a hundred times"
+    return f"{round(100 * ratio)}% of" if ratio >= 0.01 else "less than 1% of"
+
+
+def implausible(value, table):
+    """Whether a figure is too far from the comuna's size to be its population: over 3 times, or under a third of,
+    the latest census count."""
+    latest = latest_census(table)["value"]
+    return latest > 0 and not latest / 3 <= value <= 3 * latest
 
 
 def digit_slip(a, b):
@@ -111,9 +149,50 @@ def verdict(cls, explanation, confidence, claim, records=(), **extra):
             "ambiguous": False, "unexplained": False, "candidates": [], "match": None, "proposal": None, **extra}
 
 
+def check(result, note):
+    """A claim checked without a finding: the figure isn't one for the comuna as a whole."""
+    return {"check": result, "explanation": note}
+
+
+def no_figure(claim, latest):
+    """Why a source shows no population figure, and what the official one is."""
+    if claim.get("location") != "infobox":
+        return (f"{claim['source_name']} has no population figure for this comuna; Census {latest['year']} counted "
+                f"{fmt(latest['value'])}.")
+    text = f"The infobox shows no population figure: its {claim.get('field') or 'population'} field is empty"
+    text += ", and Wikidata, which fills it then, has no population statement." if claim.get("value_from") else "."
+    if claim.get("urban_value") is not None:
+        text += (f" Its {claim['urban_field']} field holds {fmt(claim['urban_value'])}, an urban population, not the "
+                 f"comuna total" + (", which the infobox shows only beside a total." if claim.get("value_from") else "."))
+    return text + f" Census {latest['year']} counted {fmt(latest['value'])}."
+
+
 def assess_value(claim, table, others=()):
-    """Why this figure is what it is. Returns a candidate verdict, or None for a historical figure from a census
-    FactSync holds no figures for (e.g. 'the 2002 census counted 16,970'), which can't be checked."""
+    """Why this figure is what it is. Returns a candidate verdict; a check (`check` set) for a figure in the text
+    that can't be the whole comuna's; or None when it can't be checked: a historical figure from a census FactSync
+    holds no figures for (e.g. 'the 2002 census counted 16,970'), or an infobox showing one of several Wikidata
+    statements."""
+    value, current = claim["value"], claim["role"] == "current"
+    latest = latest_census(table)
+    if value is None:
+        if claim.get("missing"):
+            return verdict("missing_value", no_figure(claim, latest), 0.95, claim, [latest],
+                           proposal=update_proposal(table))
+        if claim.get("value_from") == "wikidata":
+            return None
+        now = f" The current official figure is the Census {latest['year']} count, {fmt(latest['value'])}." if current else ""
+        return verdict("genuine_error", f"The field holds no clean figure ('{claim.get('value_raw')}').{now}", 0.6,
+                       claim, [latest] if current else [], ambiguous=True, candidates=["genuine_error", "unsourced"],
+                       proposal=update_proposal(table) if current else {"action": "human_review"})
+    result = assess_figure(claim, table, others)
+    if result and not result.get("check") and claim.get("value_from") == "wikidata":
+        result["explanation"] = (f"The infobox has no figure of its own and shows Wikidata's: {result['explanation']} "
+                                 f"Fixing Wikidata's statement updates this infobox too.")
+    return result
+
+
+def assess_figure(claim, table, others):
+    """The verdict on a figure, whatever shows it."""
     value, current = claim["value"], claim["role"] == "current"
     latest = latest_census(table)
     stated = claim.get("stated_year")
@@ -121,40 +200,26 @@ def assess_value(claim, table, others=()):
     label = claim.get("label") or (str(stated) if stated else "no year")
     now = f" The current official figure is the Census {latest['year']} count, {fmt(latest['value'])}." if current else ""
 
-    if value is None:
-        if claim.get("missing"):
-            return verdict("missing_value", f"{claim['source_name']} has no population figure for this comuna; "
-                           f"Census {latest['year']} counted {fmt(latest['value'])}.", 0.95, claim, [latest],
-                           proposal=update_proposal(table))
-        return verdict("genuine_error", f"The field holds no clean figure ('{claim.get('value_raw')}').{now}", 0.6,
-                       claim, [latest] if current else [], ambiguous=True, candidates=["genuine_error", "unsourced"],
-                       proposal=update_proposal(table) if current else {"action": "human_review"})
-
-    matches = exact_matches(value, table)
+    matches, rounded = exact_matches(value, table), False
+    if not matches:
+        matches = rounded_matches(value, table, stated, claim.get("basis"))
+        rounded = bool(matches)
     census_hits = [m for m in matches if m["definition"] == "census"]
     projection_hits = sorted((m for m in matches if m["definition"] == "projection"),
                              key=lambda m: (m["year"] != stated, -m["year"]))
+    result = None
     if census_hits:
-        result = census_verdict(claim, census_hits[0], table, label, status, now)
+        result = census_verdict(claim, census_hits[0], table, label, status, now, rounded)
         if projection_hits:  # the same number is also a projection: the label decides, so let the model weigh it
             result["evidence"] += [official_evidence(m) for m in projection_hits]
             result.update(ambiguous=True, candidates=[result["class"], "different_definition"],
                           confidence=min(result["confidence"], 0.7))
+    elif projection_hits:
+        result = projection_verdict(claim, projection_hits[0], table, rounded)
+    if result:
+        if rounded:  # a rounding of the official figure: the same reading, held a little less firmly
+            result.update(confidence=round(result["confidence"] - 0.1, 2), rounded=True)
         return result
-    if projection_hits:
-        hit = projection_hits[0]
-        if claim.get("basis") == "projection" and stated == hit["year"] and not current:
-            return verdict("consistent", f"{fmt(value)} matches INE's projection for {hit['year']}.", 0.95, claim,
-                           [hit], match=hit)
-        presented = " presented as a census count" if claim.get("basis") == "census" else ""
-        return verdict("different_definition",
-                       f"{fmt(value)} is INE's projection for {hit['year']} (estimates and projections, base Census "
-                       f"2017){presented}, not a census count; Census {latest['year']} counted {fmt(latest['value'])}.",
-                       0.95 if stated in (None, hit["year"]) else 0.85, claim, [hit, latest], match=hit,
-                       proposal=update_proposal(table) if current else {"action": "relabel", "value": value,
-                                                                         "year": hit["year"], "definition": "projection",
-                                                                         "obs_id": hit["obs_id"],
-                                                                         "source_key": "projections_base2017"})
     if status == "discredited":
         return verdict("discredited_source", f"{fmt(value)} is attributed to the {census_year} census, whose results "
                        f"INE withdrew; it is not an official figure.{now}", 0.9, claim, [latest] if current else [],
@@ -170,41 +235,83 @@ def assess_value(claim, table, others=()):
                        f"than Census {latest['year']} ({fmt(latest['value'])}); FactSync holds no {census_year} figures "
                        f"to verify it.", 0.85, claim, [latest], proposal=update_proposal(table))
     near = near_miss(value, table, stated)
-    if not near and claim.get("location") in ("lead", "body") and not stated:
-        return None  # prose with no year and no official match: can't tell what it refers to
     if near:
         is_latest = near["year"] == latest["year"]
         records = [table["census"][near["year"]]] + ([latest] if current and not is_latest else [])
-        how = "one digit" if near["slip"] == 1 else "two neighbouring digits"
+        how, likely = ("one digit", "most likely") if near["slip"] == 1 else ("two neighbouring digits", "possibly")
         return verdict("genuine_error", f"{fmt(value)} differs in {how} from INE's Census {near['year']} count, "
-                       f"{fmt(near['value'])}: most likely a typo." + ("" if is_latest else now),
-                       0.85 if near["slip"] == 1 else 0.75, claim, records, near=near,
+                       f"{fmt(near['value'])}: {likely} a typo." + ("" if is_latest else now),
+                       0.85 if near["slip"] == 1 else 0.6, claim, records, near=near,
                        ambiguous=near["slip"] == 2, candidates=["genuine_error", "cross_source_mismatch"],
                        proposal=update_proposal(table) if current else {"action": "fix_figure", "value": near["value"],
                                                                          "year": near["year"], "definition": "census",
                                                                          "obs_id": near["obs_id"],
                                                                          "source_key": f"census_{near['year']}"})
+    prose = claim.get("location") in ("lead", "body")
+    if implausible(value, table):
+        compared = f"{fmt(value)} is {scale(value, latest['value'])} INE's Census {latest['year']} count, {fmt(latest['value'])}"
+        if prose:
+            return check("not the comuna's figure", f"{compared}: it probably refers to a locality or an area, not "
+                                                     f"the comuna.")
+        if value > latest["value"]:
+            why = "probably another place's figure (with the same name), an area larger than the comuna, or a unit slip"
+        else:
+            why = ("probably a smaller area's figure (a town or locality), another place's figure (with the same "
+                   "name), or a unit slip")
+        return verdict("genuine_error", f"{compared}: {why}.", 0.7, claim, [latest], ambiguous=True,
+                       candidates=["genuine_error", "cross_source_mismatch"],
+                       proposal=update_proposal(table) if current else {"action": "human_review"})
+    if prose and not stated:
+        return None  # prose with no year and no official match: can't tell what it refers to
     return unexplained_verdict(claim, table, others, current, now)
 
 
-def census_verdict(claim, hit, table, label, status, now):
+def shown_as(value, hit, rounded):
+    return f"{fmt(value)} ({fmt(hit['value'])} rounded)" if rounded else fmt(value)
+
+
+def census_verdict(claim, hit, table, label, status, now, rounded=False):
     value, year, current = claim["value"], hit["year"], claim["role"] == "current"
     latest = latest_census(table)
     stated = claim.get("stated_year")
+    shown = shown_as(value, hit, rounded)
     if stated in (None, year) and status in (None, "valid"):
         if year == latest["year"] or not current:
-            return verdict("consistent", f"{fmt(value)} matches INE's Census {year} count.", 0.95, claim, [hit],
+            return verdict("consistent", f"{shown} matches INE's Census {year} count.", 0.95, claim, [hit],
                            match=hit)
-        return verdict("outdated_vintage", f"{fmt(value)} is INE's Census {year} count, shown as the current figure.{now}",
+        return verdict("outdated_vintage", f"{shown} is INE's Census {year} count, shown as the current figure.{now}",
                        0.95, claim, [hit, latest], match=hit, proposal=update_proposal(table))
     withdrawn = " (a census whose results INE withdrew)" if status == "discredited" else \
         " (a census that never took place)" if status == "nonexistent" else ""
-    return verdict("mislabelled_vintage", f"{fmt(value)} is INE's Census {year} count, but it is labelled "
+    return verdict("mislabelled_vintage", f"{shown} is INE's Census {year} count, but it is labelled "
                    f"'{label}'{withdrawn}." + (now if year != latest["year"] else ""), 0.9, claim,
                    [hit] + ([latest] if current and hit is not latest else []), match=hit,
-                   proposal=update_proposal(table) if current else {"action": "relabel", "value": value, "year": year,
-                                                                     "definition": "census", "obs_id": hit["obs_id"],
+                   proposal=update_proposal(table) if current else {"action": "relabel", "value": hit["value"],
+                                                                     "year": year, "definition": "census",
+                                                                     "obs_id": hit["obs_id"],
                                                                      "source_key": f"census_{year}"})
+
+
+def projection_verdict(claim, hit, table, rounded=False):
+    current, stated = claim["role"] == "current", claim.get("stated_year")
+    latest = latest_census(table)
+    shown = shown_as(claim["value"], hit, rounded)
+    if claim.get("basis") == "projection" and stated == hit["year"] and not current:
+        return verdict("consistent", f"{shown} matches INE's projection for {hit['year']}.", 0.95, claim, [hit],
+                       match=hit)
+    counted = f"Census {latest['year']} counted {fmt(latest['value'])}."
+    if claim.get("basis") == "census":
+        explanation = (f"{shown} is labelled as a census count, but it is INE's projection for {hit['year']} (base "
+                       f"Census 2017); {counted}")
+    else:
+        explanation = (f"{shown} is INE's projection for {hit['year']} (estimates and projections, base Census 2017), "
+                       f"not a census count; {counted}")
+    return verdict("different_definition", explanation, 0.95 if stated in (None, hit["year"]) else 0.85, claim,
+                   [hit, latest], match=hit,
+                   proposal=update_proposal(table) if current else {"action": "relabel", "value": hit["value"],
+                                                                     "year": hit["year"], "definition": "projection",
+                                                                     "obs_id": hit["obs_id"],
+                                                                     "source_key": "projections_base2017"})
 
 
 def unexplained_verdict(claim, table, others, current, now):
@@ -223,7 +330,7 @@ def unexplained_verdict(claim, table, others, current, now):
         if other["id"] == claim["id"] or other["value"] != value or other["source_name"] == claim["source_name"]:
             continue
         year, status = stated_census(other)
-        if not year:
+        if not year or (status == "valid" and year in held_years()):  # a held census's figures don't include it
             continue
         cls = {"discredited": "discredited_source", "nonexistent": "nonexistent_census"}.get(status, "mislabelled_vintage")
         why = "; INE withdrew that census's results" if status == "discredited" else ""
@@ -243,7 +350,7 @@ def unexplained_verdict(claim, table, others, current, now):
 def allowed_classes(claim, table, others=()):
     """The classes the facts allow for a claim's value: what the Critic checks a verdict against."""
     candidate = assess_value(claim, table, others)
-    if candidate is None:
+    if candidate is None or candidate.get("check"):
         return set()
     if not candidate["unexplained"]:
         return {candidate["class"], *candidate["candidates"]}
@@ -273,8 +380,9 @@ def assess_consistency(infobox, body_claims):
     where = {"history_table": "Historical populations table", "lead": "lead", "body": "article text"}
     if same_year:
         other = same_year[0]
+        label = "" if other["location"] == "history_table" else f" ('{other['label']}')"  # the table names itself
         explanation = (f"The infobox gives {fmt(infobox['value'])} for {infobox['stated_year']}, but the "
-                       f"{where.get(other['location'], 'article')} gives {fmt(other['value'])} ('{other['label']}').")
+                       f"{where.get(other['location'], 'article')} gives {fmt(other['value'])}{label}.")
     else:
         other = max(newer, key=lambda c: c["stated_year"])
         explanation = (f"The infobox gives {fmt(infobox['value'])} ('{infobox.get('label')}'), while the "
@@ -287,8 +395,11 @@ def assess_consistency(infobox, body_claims):
 
 def assess_sourcing(claim, citation, value_verdict):
     """An infobox figure's reference: none, or 'citation needed', makes it unsourced; a reference that names other
-    census years than the figure's own is a citation mismatch."""
-    raw = (claim.get("reference_raw") or "").strip()
+    census years than the figure's own is a citation mismatch. An infobox showing no figure, or Wikidata's (whose
+    references the Wikidata checks cover), has nothing of its own to source."""
+    if claim.get("value") is None or claim.get("value_from"):
+        return None
+    raw = field_references(claim.get("value_raw"), claim.get("reference_raw"))
     if not has_citation(raw):
         explanation = "The infobox figure is tagged 'citation needed'." if raw else "The infobox figure has no reference."
         return {"class": "unsourced", "explanation": explanation, "confidence": 0.95,
@@ -320,11 +431,21 @@ def assess_wikidata_item(statements, table):
     has_latest = any(s["value"] == latest["value"] and s.get("stated_year") == latest["year"] for s in values)
     newest = max(values, key=lambda s: s.get("stated_year") or 0)
     if not has_latest:
+        undated = next((s for s in values if s["value"] == latest["value"]), None)
+        if implausible(newest["value"], table):  # not a figure for this comuna: its own value finding says why
+            explanation = (f"Census {latest['year']} counted {fmt(latest['value'])}, and Wikidata has no statement for "
+                           f"it. Its newest statement, {fmt(newest['value'])} ({newest['label']}), is not a plausible "
+                           f"figure for this comuna: see the finding on that value.")
+        elif undated:  # the right figure under the wrong (or no) date
+            explanation = (f"Wikidata gives the Census {latest['year']} count, {fmt(latest['value'])}, but its statement "
+                           f"has {undated['label']}, so no statement is for Census {latest['year']}.")
+        else:
+            explanation = (f"Wikidata's newest population statement is {fmt(newest['value'])} ({newest['label']}); "
+                           f"Census {latest['year']} counted {fmt(latest['value'])}, and Wikidata has no statement "
+                           f"for it.")
         results.append((newest, {
             "class": "outdated_vintage",
-            "explanation": f"Wikidata's newest population statement is {fmt(newest['value'])} ({newest['label']}); "
-                           f"Census {latest['year']} counted {fmt(latest['value'])}, and Wikidata has no statement "
-                           f"for it.",
+            "explanation": explanation,
             "confidence": 0.95, "evidence": [claim_evidence(s) for s in values] + [official_evidence(latest)],
             "ambiguous": False, "unexplained": False, "candidates": [], "match": None,
             "proposal": {**update_proposal(table), "action": "add_statement"}}))

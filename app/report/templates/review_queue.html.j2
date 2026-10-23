@@ -308,7 +308,7 @@ footer p { margin: 4px 0; }
 
     {% if c.checks %}
     <details>
-      <summary>{{ c.checks|length }} figure{{ "s" if c.checks|length != 1 }} consistent or not checkable</summary>
+      <summary>{{ c.checks|length }} figure{{ "s" if c.checks|length != 1 }} with no finding (consistent, not checkable, or not the comuna's)</summary>
       <div class="table-scroll"><table>
         <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
         <tbody>
