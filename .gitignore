@@ -15,4 +15,5 @@ __pycache__/
 
 # Private notes and local tooling
 HACKATHON_CONTEXT.md
+IDEA_BRIEF.md
 .claude/settings.local.json
