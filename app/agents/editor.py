@@ -203,7 +203,7 @@ class Editor:
                     "drafts": {k: {"replaces": replaced(v), "findings": [entry(k, f) for f in mine[k]]}
                                for k, v in drafts.items()}}
             if instruction:
-                body["critic_instruction"] = instruction
+                body["critic_instruction"] = instruction[:300]
             return body
 
         # one request, made small enough to stream: shorter explanations first, then only each draft's main finding

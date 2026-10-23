@@ -23,6 +23,7 @@ from app.knowledge import matcher
 from app.knowledge.taxonomy import census_facts, describe_classes, official_source
 
 APPROVE_AT = 7
+SPACES = re.compile(r"&nbsp;|&#160;|&thinsp;|[\u00a0\u202f\u2009]")  # non-breaking and thin spaces
 FIGURES = re.compile(r"\d{1,3}(?:[., ]\d{3})+|\d{3,}")
 AGENT_ORDER = {"Planner": 0, "Extractor": 1, "Analyst": 2}
 ACTIONS = {"consistency": {"update"}, "sourcing": {"add_citation"}, "currency": {"add_statement"},
@@ -41,15 +42,24 @@ For each finding decide:
   definitions: an INE projection or estimate is not a census count, and a difference of definition is not an error.
   A figure that matches no official figure shown is not a projection or estimate unless the evidence shows one equal to it.
 - explanation_faithful: does the explanation state only what the evidence shows (figures, years, sources)?
-"made_by" says whether code or a model produced the verdict. Judge both the same way.
+"made_by" says whether code or a model produced the verdict. Judge both the same way. "digit_check", when given, is a
+fact computed by code: how the figure differs digit by digit from an official count. It is evidence for a typo.
 JSON: {{"reviews": [{{"finding_id": "...", "class_fits": true, "explanation_faithful": true, "note": "one sentence; required when either is false"}}]}}"""
 
 
 def figures_in(text):
     """The figures a text states, however it groups thousands: 25,795, 25.795, 25 795, or with a non-breaking
     space as Spanish Wikipedia writes them (25&nbsp;795)."""
-    text = re.sub(r"&nbsp;|&#160;|&thinsp;|[   ]", " ", str(text or ""))
+    text = SPACES.sub(" ", str(text or ""))
     return {int(re.sub(r"\D", "", token)) for token in FIGURES.findall(text)}
+
+
+def states(text, value):
+    """Whether a text gives this figure: in any grouping, and also when it is under 100 (Antártica counted 60)."""
+    if value in figures_in(text):
+        return True
+    spaced = SPACES.sub(" ", str(text or ""))
+    return value < 100 and re.search(rf"(?<![\d.,]){value}(?!\d|[.,]\d)", spaced) is not None
 
 
 def allowed_figures(evidence, extra=()):
@@ -145,7 +155,8 @@ class Critic:
                 "claim": {k: f["claim"].get(k) for k in ("source_name", "location", "value", "value_raw", "label", "quote")
                           if f["claim"].get(k) is not None},
                 "official_evidence": [{k: e[k] for k in ("source", "definition", "year", "value")}
-                                      for e in f["evidence"] if e["kind"] == "official"]} for f in group]}
+                                      for e in f["evidence"] if e["kind"] == "official"],
+                **({"digit_check": digit_check(f)} if f.get("digits") else {})} for f in group]}
 
         judgments = {}
         for group in batched(findings, payload):
@@ -332,15 +343,15 @@ class Critic:
         summary = draft.get("edit_summary") or ""
         allowed = allowed_figures(evidence, [latest["value"], latest["year"]]) | figures_in(body)
         checks = {
-            "figure": correction.get("value") == latest["value"] and latest["value"] in figures_in(body),
+            "figure": correction.get("value") == latest["value"] and states(body, latest["value"]),
             "year": str(latest["year"]) in body,
             "citation": bool(re.search(r"\{\{\s*(cita web|cite web)|S854", body, re.I)),
             "official_url": bool(source) and source["url"] in body,
             "access_date": bool(re.search(r"fechaacceso\s*=|access-date\s*=|S813", body)),
             "well_formed": well_formed(body, draft["target"]),
-            "summary": draft["target"] == "wikidata" or (0 < len(summary) <= 500 and latest["value"] in figures_in(summary)),
+            "summary": draft["target"] == "wikidata" or (0 < len(summary) <= 500 and states(summary, latest["value"])),
             "figures_faithful": not {n for n in figures_in(summary) | figures_in(explanation) if n >= 100} - allowed,
-            "explanation": bool(explanation) and latest["value"] in figures_in(explanation),
+            "explanation": bool(explanation) and states(explanation, latest["value"]),
         }
         score = sum(checks.values())
         approved = score >= APPROVE_AT and all(checks[name] for name in CRITICAL_DRAFT_CHECKS)
@@ -366,6 +377,13 @@ def well_formed(body, target):
     if body.count("{{") != body.count("}}") or body.count("<ref") != body.count("</ref>"):
         return False
     return target != "wikidata" or all(re.match(r"^Q\d+\|P\d+\|", line) for line in body.splitlines() if line)
+
+
+def digit_check(finding):
+    """The code's digit-by-digit comparison of a figure with the census count it nearly equals."""
+    digits, value = finding["digits"], finding["claim"].get("value")
+    how = "one digit" if digits["slip"] == 1 else "two neighbouring digits"
+    return f"{value:,} and INE's Census {digits['year']} count {digits['official']:,} differ in {how} only"
 
 
 def figure(finding):

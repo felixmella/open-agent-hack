@@ -102,6 +102,37 @@ def test_drafts_are_checked_for_figure_source_and_wording(tmp_path):
     assert review["checks"]["figure"] and review["approved"]
 
 
+def test_the_critics_model_sees_the_digit_comparison_behind_a_typo_verdict(tmp_path):
+    llm, tracer = FakeLLM(), Tracer("t", tmp_path, echo=False)
+    critic = Critic(WorldModel(), tracer, AgentLLM(llm, tracer, min_interval=0), "t")
+    finding = {"id": "fnd_1", "class": "genuine_error", "method": "llm", "explanation": "25,413 is likely a typo.",
+               "claim": {"source_name": "Wikipedia ES", "location": "body", "value": 25413, "value_raw": "25.413",
+                         "label": "2017 census"},
+               "evidence": [{"kind": "official", "source": "INE Censo 2017", "definition": "census", "year": 2017,
+                             "value": 17413}],
+               "digits": {"official": 17413, "year": 2017, "slip": 2}}
+    table = {"census": {2017: {"value": 17413}, 2024: {"value": 18536}}, "projection": {}}
+    critic.judge(ComunaState("09203", "CURACAUTÍN"), [finding], table, 1)
+    [(_, payload)] = [call for call in llm.calls if call[0] == "Critic"]
+    assert payload["findings"][0]["digit_check"] == \
+        "25,413 and INE's Census 2017 count 17,413 differ in two neighbouring digits only"
+
+
+def test_a_comuna_of_60_people_gets_its_draft_approved(tmp_path):
+    critic = Critic(WorldModel(), Tracer("t", tmp_path, echo=False), None, "t")
+    table = {"census": {2017: {"value": 138, "year": 2017, "obs_id": "a"}, 2024: {"value": 60, "year": 2024, "obs_id": "b"}},
+             "projection": {}}
+    draft = {"target": "eswiki", "correction": {"value": 60, "source_key": "census_2024"},
+             "wikitext": "| población = 60\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = "
+                         "<ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ "
+                         "|fechaacceso=23 de octubre de 2026}}</ref>",
+             "edit_summary": "Población según el Censo 2024 del INE: 60 hab. (antes 138: cifra de un censo anterior)."}
+    evidence = [{"kind": "official", "value": 60, "year": 2024}, {"kind": "claim", "value": 138}]
+    review = critic.review_draft(ComunaState("12202", "ANTÁRTICA"), "eswiki", draft, "Census 2024 counted 60.",
+                                 evidence, table, 1)
+    assert review["approved"] and review["checks"]["figure"] and review["checks"]["summary"]
+
+
 def test_years_a_cited_reference_names_count_as_evidence():
     from app.agents.critic import allowed_figures, figures_in
     assert figures_in("1&nbsp;472 y 10 186 y 2.017") == {1472, 10186, 2017}

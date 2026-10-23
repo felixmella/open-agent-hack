@@ -122,7 +122,7 @@ class Extractor:
             body = {"comuna": comuna.name, "article": source["title"],
                     "sentences": {key: candidates[key]["text"] for key in keys}}
             if instruction:
-                body["critic_instruction"] = instruction
+                body["critic_instruction"] = instruction[:300]
             return body
 
         groups = batched(list(candidates), payload)

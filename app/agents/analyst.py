@@ -163,12 +163,14 @@ class Analyst:
         return findings, checks
 
     def finding(self, comuna, claim, aspect, verdict, round_no):
+        near = verdict.get("near")  # a census count the figure is one or two neighbouring digits away from
         return {"id": "fnd_" + digest(claim["id"], aspect), "cut": comuna.cut, "target": claim["target"],
                 "aspect": aspect, "claim": compact(claim), "class": verdict["class"],
                 "explanation": verdict["explanation"], "confidence": verdict["confidence"],
                 "evidence": verdict["evidence"], "proposal": verdict.get("proposal"), "match": verdict.get("match"),
                 "related": verdict.get("related"), "ambiguous": verdict["ambiguous"],
                 "unexplained": verdict["unexplained"], "candidates": verdict["candidates"], "method": "matcher",
+                "digits": {"official": near["value"], "year": near["year"], "slip": near["slip"]} if near else None,
                 "round": round_no}
 
     def open_fixes(self, comuna, round_no):
@@ -207,7 +209,7 @@ class Analyst:
                                 "value": f["claim"].get("value"), "value_as_written": f["claim"].get("value_raw"),
                                 "label": f["claim"].get("label"), "quote": f["claim"].get("quote"),
                                 "matcher_note": f["explanation"], "candidates": f["candidates"] or [f["class"]],
-                                **({"critic_instruction": fix["instruction"]} if fix else {})} for f, fix, _ in group]}
+                                **({"critic_instruction": fix["instruction"][:300]} if fix else {})} for f, fix, _ in group]}
 
         answers = {}  # finding id -> (the model's verdict or None, the reply's LLMResult); None when the request failed
         for group in batched(todo, payload):
