@@ -7,15 +7,16 @@ import functools
 import json
 import os
 import sys
-import uuid
+from pathlib import Path
 
 import httpx
-from dotenv import load_dotenv
-from openai import OpenAI
 
-load_dotenv()
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-APP_HEADERS = {"meterless-app": "open-agent-hack", "meterless-scope": "user"}
+from app.adapters.meterless import NightshiftClient  # noqa: E402
+from app.adapters.zetaris import ZetarisClient  # noqa: E402
+from app.config import load_settings  # noqa: E402
+
 RUN_SQL_TOOL = {
     "type": "function",
     "function": {
@@ -41,51 +42,28 @@ def check(name, fn):
         print(f"FAIL {name}  ({type(error).__name__}: {str(error)[:200]})")
 
 
-def need(*names):
-    missing = [name for name in names if not os.environ.get(name)]
-    if missing:
-        raise RuntimeError(f"missing from .env: {', '.join(missing)}")
-
-
-def zetaris_sql(sql, limit=10):
-    need("ZETARIS_REST_URL", "ZETARIS_ORG_ID", "ZETARIS_API_KEY")
-    response = httpx.post(
-        os.environ["ZETARIS_REST_URL"].rstrip("/") + "/sql-editor/sqls/run",
-        headers={
-            "Authorization": "Bearer " + os.environ["ZETARIS_API_KEY"],
-            "X-Org-ID": os.environ["ZETARIS_ORG_ID"],
-            "X-Request-ID": str(uuid.uuid4()),
-        },
-        json={"queryId": str(uuid.uuid4()), "sql": sql, "source": "SqlEditor", "limit": limit},
-        timeout=60,
-    )
-    if response.is_error:
-        raise RuntimeError(f"HTTP {response.status_code}: {response.text[:150]}")
-    return response.json()
+@functools.cache
+def settings():
+    return load_settings()
 
 
 @functools.cache
-def client():
-    need("METERLESS_BASE_URL", "METERLESS_RUNTIME_TOKEN", "METERLESS_MODEL")
-    return OpenAI(
-        api_key=os.environ["METERLESS_RUNTIME_TOKEN"],
-        base_url=os.environ["METERLESS_BASE_URL"],
-        default_headers=APP_HEADERS,
-        timeout=90.0,
-        max_retries=1,
-    )
+def zetaris():
+    s = settings()
+    return ZetarisClient(s.zetaris_rest_url, s.zetaris_org_id, s.zetaris_api_key, retries=0)
 
 
-def routed_model(reply):
-    receipt = (getattr(reply, "model_extra", None) or {}).get("meterless") or {}
-    return receipt.get("routed_model", "n/a")
+@functools.cache
+def llm():
+    s = settings()
+    return NightshiftClient(s.meterless_base_url, s.meterless_runtime_token, s.meterless_model, retries=0)
 
 
-def assert_served_by(reply, model):
+def assert_served_by(result):
     # Nightshift silently answers with a lane model when the requested one isn't assigned to a lane.
-    served = {reply.model, routed_model(reply)} - {"n/a"}
-    assert served == {model}, (
-        f"asked for {model} but {', '.join(sorted(served))} answered (is it assigned to a Nightshift lane?)"
+    served = {result.model_served, result.routed_model} - {None}
+    assert served == {result.model_requested}, (
+        f"asked for {result.model_requested} but {', '.join(sorted(served))} answered (is it assigned to a Nightshift lane?)"
     )
 
 
@@ -95,55 +73,40 @@ def zetaris_web():
 
 
 def zetaris_rest():
-    body = zetaris_sql("SELECT 1 AS one", limit=1)
-    data = body.get("data")
-    assert data, f"no rows: {json.dumps(body)[:150]}"
-    row = data[0]
-    value = row[0] if isinstance(row, list) else next(iter(row.values()))
-    assert str(value) == "1", f"unexpected reply: {json.dumps(body)[:150]}"
-    return f"rows are {type(row).__name__}s; response keys: {sorted(body)}"
+    result = zetaris().query("SELECT 1 AS one", limit=1)
+    assert result.rows and str(result.rows[0]["one"]) == "1", f"unexpected reply: {result.rows[:1]}"
+    return f"columns {result.columns}, {result.elapsed_ms} ms"
 
 
 def nightshift_models():
-    ids = [model.id for model in client().models.list()]
-    model = os.environ["METERLESS_MODEL"]
+    ids = llm().models()
+    model = settings().meterless_model
     assert model in ids, f"{model} is not among the {len(ids)} models Nightshift lists"
     return f"{len(ids)} models listed, including {model}"
 
 
 def nemotron_chat():
-    reply = client().chat.completions.create(
-        model=os.environ["METERLESS_MODEL"],
-        messages=[{"role": "user", "content": "Reply with the single word: ready"}],
-    )
-    text = (reply.choices[0].message.content or "").strip()
-    assert text, "empty reply"
-    assert_served_by(reply, os.environ["METERLESS_MODEL"])
-    return f"model={reply.model}, routed={routed_model(reply)}, reply={text[:40]!r}"
+    result = llm().chat([{"role": "user", "content": "Reply with the single word: ready"}])
+    assert result.text, "empty reply"
+    assert_served_by(result)
+    return f"model={result.model_served}, routed={result.routed_model}, reply={result.text[:40]!r}"
 
 
 def nemotron_tool_round_trip():
-    llm = client()
-    model = os.environ["METERLESS_MODEL"]
     messages = [{
         "role": "user",
         "content": "Use the run_sql tool to run SELECT 1 + 1 AS two, then tell me the result.",
     }]
-    first = llm.chat.completions.create(model=model, messages=messages, tools=[RUN_SQL_TOOL])
-    assert_served_by(first, model)
-    message = first.choices[0].message
-    assert message.tool_calls, "the model answered without calling run_sql"
-    call = message.tool_calls[0]
+    first = llm().chat(messages, tools=[RUN_SQL_TOOL])
+    assert_served_by(first)
+    assert first.tool_calls, "the model answered without calling run_sql"
+    call = first.tool_calls[0]
     sql = json.loads(call.function.arguments)["sql"]
-    rows = zetaris_sql(sql).get("data")
-    messages += [
-        message.model_dump(exclude_none=True),
-        {"role": "tool", "tool_call_id": call.id, "content": json.dumps(rows)},
-    ]
-    final = llm.chat.completions.create(model=model, messages=messages, tools=[RUN_SQL_TOOL])
-    text = (final.choices[0].message.content or "").strip()
-    assert text, "no final answer after the tool result"
-    return f"sql={sql!r}, rows={json.dumps(rows)[:40]}, answer={text[:60]!r}"
+    rows = zetaris().query(sql, limit=10).rows
+    messages += [first.message, {"role": "tool", "tool_call_id": call.id, "content": json.dumps(rows)}]
+    final = llm().chat(messages, tools=[RUN_SQL_TOOL])
+    assert final.text, "no final answer after the tool result"
+    return f"sql={sql!r}, rows={json.dumps(rows)[:40]}, answer={final.text[:60]!r}"
 
 
 if __name__ == "__main__":
