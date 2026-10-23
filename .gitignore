@@ -16,4 +16,10 @@ __pycache__/
 # Private notes and local tooling
 HACKATHON_CONTEXT.md
 IDEA_BRIEF.md
+IMPLEMENTATION_PLAN.md
+
+# Run artifacts (curated examples are copied into output_examples/)
+state/
+logs/
+output/
 .claude/settings.local.json
