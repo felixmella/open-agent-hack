@@ -6,7 +6,7 @@ The rubric, 3 points per criterion:
                          Model; the explanation states no figure the evidence doesn't hold
   definition discipline  the class is one the facts allow; it holds up on review; the confidence fits what is known.
                          A figure that matches no official figure read so far scores 0 here while an official source
-                         is still unread: it may be an estimate rather than an error, so it can't be classified yet
+                         is still unread: only that source can confirm or rule out an official estimate
   correction sourcing    a correction is proposed when one is needed; its figure is an official one in the World
                          Model; its source is INE's publication of that figure
 
@@ -223,11 +223,11 @@ class Critic:
         if unexplained and open_sources:
             discipline = 0
             held = ", ".join(f"Census {y} {r['value']:,}" for y, r in sorted(table["census"].items()))
-            names = "; ".join(CATALOG[s] for s in open_sources)
+            names = "; ".join(CATALOG[s].rstrip(".") for s in open_sources)
             failures.append(failure("unread_official_source", f"{shown} ({source}, '{label}') matches no official figure "
                                     f"read so far ({held}). Before calling it {finding['class']}, read the official "
-                                    f"source not yet consulted ({names}): it may be an official estimate rather than "
-                                    f"an error.", "Planner", critical=True, held=held, unread=names))
+                                    f"source not yet consulted ({names}): only its figures can confirm or rule out "
+                                    f"an official estimate.", "Planner", critical=True, held=held, unread=names))
 
         # correction sourcing
         sourcing = 0
@@ -310,7 +310,8 @@ class Critic:
                                    for x in fix["figures"])
                 fix["instruction"] = (f"{len(waiting)} figures match no official figure read so far ({chosen['held']}): "
                                       f"{listed}. Before classifying them, read the official source not yet consulted "
-                                      f"({chosen['unread']}): they may be official estimates rather than errors.")
+                                      f"({chosen['unread']}): only its figures can confirm or rule out official "
+                                      f"estimates.")
         return fix
 
     # ----- drafts ---------------------------------------------------------------------------------------------
