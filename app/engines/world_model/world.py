@@ -25,6 +25,7 @@ class IngestResult:
     appended: list = field(default_factory=list)
     unchanged: list = field(default_factory=list)
     entities_created: list = field(default_factory=list)
+    entities_updated: list = field(default_factory=list)
     reviews: list = field(default_factory=list)
 
 
@@ -125,14 +126,16 @@ class WorldModel:
                 self._audit(actor, "entity.merge_proposal", resolution.entity_id, proposal)
             entity_id = resolution.entity_id if resolution.decision in ("exact", "auto-merge") else \
                 entity_id_from_name(spec["type"], spec["name"])
+            _, outcome = self._write_entity(entity_id, spec["type"], spec.get("name"), spec.get("external_key"),
+                                            {}, [], record["source"], actor)        # merge is idempotent
+            if outcome == "created":
+                result.entities_created.append(entity_id)
+            elif outcome == "updated":
+                result.entities_updated.append(entity_id)
             obs_id = stages.observation_id(entity_id, record)
             if self.store.has_observation(obs_id):
                 result.unchanged.append(obs_id)
                 continue
-            _, outcome = self._write_entity(entity_id, spec["type"], spec.get("name"), spec.get("external_key"),
-                                            {}, [], record["source"], actor)
-            if outcome == "created":
-                result.entities_created.append(entity_id)
             self.store.put_observation({                                           # append (exactly once)
                 "id": obs_id, "seq": self.store.next_seq("observations"), "entity_id": entity_id,
                 "source": record["source"], "payload": record["payload"], "provenance": record["provenance"],
@@ -145,7 +148,7 @@ class WorldModel:
         for entity_id in sorted(touched):                                          # project
             self._project(entity_id)
         self.store.commit()
-        result.changed = bool(result.appended or result.entities_created)
+        result.changed = bool(result.appended or result.entities_created or result.entities_updated)
         return result
 
     def _project(self, entity_id):
