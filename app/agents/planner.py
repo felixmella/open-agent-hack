@@ -118,7 +118,6 @@ class Planner:
                    "sources_available": options}
         reply = self.llm.ask_json(
             self.name, "choose_source", DISCOVERY_PROMPT, payload, target_agent="Retriever", round_no=round_no,
-            max_tokens=3000,
             validate=lambda d: None if d.get("source") in (*options, None) else f"unknown source {d.get('source')!r}",
         ) if self.llm else None
         if reply:

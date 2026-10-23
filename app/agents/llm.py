@@ -29,7 +29,7 @@ class AgentLLM:
     def available(self):
         return self.client is not None and self.calls < self.max_calls
 
-    def ask_json(self, agent, action, system, payload, *, target_agent=None, round_no=None, max_tokens=4000,
+    def ask_json(self, agent, action, system, payload, *, target_agent=None, round_no=None, max_tokens=8000,
                  validate=None):
         """Ask for a JSON object. Returns (data, last LLMResult), or None when there is no model, the budget is
         spent, the call fails, or `validate` rejects the reply; each case is traced."""

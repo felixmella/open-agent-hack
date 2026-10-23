@@ -118,7 +118,7 @@ class Extractor:
         if instruction:
             payload["critic_instruction"] = instruction
         reply = self.llm.ask_json(
-            self.name, "extract_claims", PROMPT, payload, target_agent="WorldModel", round_no=round_no, max_tokens=4000,
+            self.name, "extract_claims", PROMPT, payload, target_agent="WorldModel", round_no=round_no,
             validate=lambda d: None if isinstance(d.get("claims"), list) else "no 'claims' list",
         ) if self.llm else None
         if reply:

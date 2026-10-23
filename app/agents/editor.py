@@ -191,7 +191,6 @@ class Editor:
         if instruction:
             payload["critic_instruction"] = instruction
         reply = self.llm.ask_json(self.name, "word_drafts", PROMPT, payload, target_agent="Critic", round_no=round_no,
-                                  max_tokens=3000,
                                   validate=lambda d: None if d.get("explanation") else "no explanation") if self.llm else None
         new_es, new_en = correction["value"], fmt(correction["value"])
         for target in ("eswiki", "enwiki"):
