@@ -7,4 +7,5 @@
 - Never print, log, echo or read out values from .env. Never create or fetch API keys.
 - No hardcoded outputs; output_examples/ is never read at runtime. Traces must reflect real execution.
 - Python 3.13 locally (keep code 3.11-compatible), venv in .venv: run things with `.venv\Scripts\python`. Code runs on the Windows side; Zetaris and Nightshift are on localhost.
+- Zetaris setup scripts live in `zetaris/` and run with `.venv\Scripts\python scripts\zetaris_sql.py <file> [--dry-run] [--skip-exists]` (admin key). Dry-run first and get the user's go-ahead before running anything that creates, drops, grants or writes. Verify new objects by comparing row counts with a direct call to the source.
 - Smoke test: `.venv\Scripts\python scripts\smoke_test.py` (needs Docker Desktop with Zetaris, and Nightshift, running).
