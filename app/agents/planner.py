@@ -26,6 +26,8 @@ OFFICIAL_SOURCES = ["official_census", "official_projections"]
 DISCOVERY_PROMPT = """FactSync Chile - Planner.
 The Critic found population figures for Chilean comunas that match no official figure in the sources read so far.
 Choose the ONE additional source most likely to explain them, from the sources available, or null if none could.
+You can't know what a source holds before it is read, so never rule one out by guessing its figures: choose null only
+if no available source covers this kind of figure (its definition and years).
 JSON: {"source": "<source id or null>", "reason": "<one or two sentences: why this source could explain these figures>"}"""
 
 
