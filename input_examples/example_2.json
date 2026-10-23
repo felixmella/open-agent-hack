@@ -1,0 +1,5 @@
+{
+  "scope": {"cuts": ["08105", "11203", "16201"]},
+  "languages": ["es", "en"],
+  "options": {"max_critic_rounds": 2}
+}

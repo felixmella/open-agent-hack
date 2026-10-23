@@ -28,6 +28,10 @@ class LLMResult:
     attempts: int
     message: dict = field(default_factory=dict)
     tool_calls: list = field(default_factory=list)
+    receipt_requested_model: str | None = None
+    provider_model: str | None = None
+    winning_route: str | None = None
+    usage: dict = field(default_factory=dict)
 
 
 def receipt(reply):
@@ -48,6 +52,25 @@ def parse_json(text):
         if not match:
             raise ValueError("no JSON in the model reply")
         return json.loads(match.group(1))
+
+
+def failure_detail(error):
+    """What Nightshift said about a failed request: its error detail and the route it tried, when it gives them."""
+    detail = f"{type(error).__name__}"
+    response = getattr(error, "response", None)
+    try:
+        body = response.json() if response is not None else {}
+    except ValueError:
+        body = {}
+    problem = body.get("error") if isinstance(body.get("error"), dict) else {}
+    route = body.get("meterless") if isinstance(body.get("meterless"), dict) else {}
+    if getattr(error, "status_code", None):
+        detail += f" HTTP {error.status_code}"
+    detail += f": {problem.get('meterless_detail') or problem.get('message') or str(error)[:200]}"
+    if route:
+        detail += (f" (requested_model={route.get('requested_model')}, provider_model={route.get('provider_model')}"
+                   f", routed_model={route.get('routed_model')})")
+    return detail
 
 
 class NightshiftClient:
@@ -77,18 +100,23 @@ class NightshiftClient:
                     time.sleep(self._backoff * attempt)
                 continue
             message = reply.choices[0].message
+            meterless = receipt(reply)
             return LLMResult(
                 text=(message.content or "").strip(),
                 model_requested=self.model,
                 model_served=reply.model,
-                routed_model=routed_model(reply),
-                receipt_id=receipt(reply).get("receipt_id"),
+                routed_model=meterless.get("routed_model"),
+                receipt_id=meterless.get("receipt_id"),
                 latency_ms=int((time.monotonic() - started) * 1000),
                 attempts=attempt,
                 message=message.model_dump(exclude_none=True),
                 tool_calls=list(message.tool_calls or []),
+                receipt_requested_model=meterless.get("requested_model"),
+                provider_model=meterless.get("provider_model"),
+                winning_route=(meterless.get("winning_route") or {}).get("model"),
+                usage=reply.usage.model_dump(exclude_none=True) if reply.usage else {},
             )
-        raise LLMError(f"Nightshift request failed after {self._retries + 1} attempts: {type(error).__name__}: {str(error)[:200]}")
+        raise LLMError(f"Nightshift request failed after {self._retries + 1} attempts: {failure_detail(error)}")
 
     def chat_json(self, messages, **kwargs):
         """Ask for JSON; if the reply doesn't parse, ask once more for JSON only. Returns (data, [results])."""

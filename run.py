@@ -24,10 +24,15 @@ def main():
     settings = load_settings(sample_mode=True if args.sample else None)
     run_input = RunInput.model_validate_json(args.input.read_text(encoding="utf-8"))
     result = run(run_input, settings)
-    summary = {k: result[k] for k in ("run_id", "status", "mode", "plan", "execution_time_seconds", "trace_file",
-                                      "world_model_audit_file")}
-    summary["comunas"] = [{"cut": c["cut"], "name": c["name"], "context_trace": c["context"]["trace"]}
-                          for c in result["comunas"]]
+    summary = {k: result[k] for k in ("run_id", "status", "mode", "summary", "model_usage", "execution_time_seconds",
+                                      "trace_file", "world_model_audit_file")}
+    summary["comunas"] = [{
+        "cut": c["cut"], "name": c["name"], "status": c["status"], "critic_rounds": c["critic"]["rounds"],
+        "findings": [f"{f['target']} {f['claim'].get('location')} {f['claim'].get('value')}: {f['class']} "
+                     f"({f['status']}, {f['critic']['score']}/9)" for f in c["findings"]],
+        "drafts": {k: v.get("status") for k, v in c["drafts"].items() if isinstance(v, dict) and "target" in v},
+    } for c in result["comunas"]]
+    summary["output"] = f"output/{result['run_id']}/result.json"
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
 

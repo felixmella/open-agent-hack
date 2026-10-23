@@ -1,0 +1,37 @@
+{
+  "about": "Chile's national population censuses and the official INE sources FactSync Chile cites. Used to check which census a figure is attributed to. Compiled by FactSync Chile in October 2026 from INE's census history and the Spanish and English Wikipedia articles on each census.",
+  "valid": [1813, 1835, 1843, 1854, 1865, 1875, 1885, 1895, 1907, 1920, 1930, 1940, 1952, 1960, 1970, 1982, 1992, 2002, 2017, 2024],
+  "discredited": {
+    "2012": "Carried out in 2012 and published in April 2013, but its results were later withdrawn: INE discarded the data because of problems in collecting and processing it, and a new census was carried out in 2017. Figures attributed to it are not official."
+  },
+  "held_by_factsync": [2017, 2024],
+  "projection_years": [2002, 2035],
+  "official_sources": {
+    "census_2024": {
+      "name": "INE Censo 2024",
+      "title": "Resultados Censo 2024",
+      "publisher": "Instituto Nacional de Estadísticas",
+      "url": "https://censo2024.ine.gob.cl/resultados/",
+      "year": 2024,
+      "definition": "census"
+    },
+    "census_2017": {
+      "name": "INE Censo 2017",
+      "title": "Resultados Censo 2017",
+      "publisher": "Instituto Nacional de Estadísticas",
+      "url": "https://www.ine.gob.cl/estadisticas/sociales/censos-de-poblacion-y-vivienda/censo-de-poblacion-y-vivienda",
+      "year": 2017,
+      "definition": "census"
+    },
+    "projections_base2017": {
+      "name": "INE Proyecciones base 2017",
+      "title": "Estimaciones y proyecciones de la población de Chile 2002-2035 por comunas (base Censo 2017)",
+      "publisher": "Instituto Nacional de Estadísticas",
+      "url": "https://www.ine.gob.cl/docs/default-source/proyecciones-de-poblacion/cuadros-estadisticos/base-2017/estimaciones-y-proyecciones-2002-2035-comunas.xlsx",
+      "definition": "projection"
+    }
+  },
+  "official_domains": ["ine.gob.cl", "ine.cl", "censo2017.cl", "censo2024.cl"],
+  "wikidata": {"population": "P1082", "point_in_time": "P585", "determination_method": "P459", "census": "Q39825",
+               "reference_url": "S854", "retrieved": "S813"}
+}

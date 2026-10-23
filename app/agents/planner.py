@@ -2,15 +2,31 @@
 
 It registers every comuna from INE's census list as a World Model entity (keyed by CUT), resolves the scope (codes,
 a region, or names) against that list, and picks the sources to read. Population projections are not in the
-default plan: they are added only when the Analyst finds a figure the censuses can't explain (discovery).
+default plan: they are added only when the Critic finds figures the sources read so far can't explain (discovery),
+and the model chooses and justifies which source to add.
 """
 from dataclasses import dataclass, field
 
 from app.adapters.zetaris import as_str
+from app.agents.llm import model_note
 from app.engines.world_model import normalize_name
 
 DEFAULT_SOURCES = ["official_census", "wikidata"]
 WIKIPEDIA_SOURCES = {"es": "wikipedia_es", "en": "wikipedia_en"}
+CATALOG = {
+    "official_census": "INE census counts by comuna: Census 2017 and Census 2024 (the official headcount).",
+    "official_projections": "INE estimates and projections by comuna for every year 2002-2035 (base Census 2017): "
+                            "official figures, but modelled estimates rather than a headcount.",
+    "wikidata": "Wikidata population statements for each comuna, with point in time, method, rank and references.",
+    "wikipedia_es": "Spanish Wikipedia comuna articles: infobox figure, reference and article text.",
+    "wikipedia_en": "English Wikipedia comuna articles: infobox figure, reference and article text.",
+}
+OFFICIAL_SOURCES = ["official_census", "official_projections"]
+
+DISCOVERY_PROMPT = """FactSync Chile - Planner.
+The Critic found population figures for Chilean comunas that match no official figure in the sources read so far.
+Choose the ONE additional source most likely to explain them, from the sources available, or null if none could.
+JSON: {"source": "<source id or null>", "reason": "<one or two sentences: why this source could explain these figures>"}"""
 
 
 class ScopeError(ValueError):
@@ -30,10 +46,11 @@ class Plan:
 class Planner:
     name = "Planner"
 
-    def __init__(self, zetaris, world, tracer):
+    def __init__(self, zetaris, world, tracer, llm=None):
         self.zetaris = zetaris
         self.world = world
         self.tracer = tracer
+        self.llm = llm
 
     def register_comunas(self):
         result = self.zetaris.query("SELECT cut, comuna, region FROM factsync.ine_census2024")
@@ -82,3 +99,43 @@ class Planner:
                                          + (f"; needs review: {reviews}" if reviews else ""),
                           target_agent="Retriever", status=status)
         return plan
+
+    def open_sources(self, plan, state):
+        """Official sources the run could still read: not read yet, not declined, and the discovery cap not reached."""
+        if len(state.discoveries) >= state.caps.max_discoveries:
+            return []
+        return [s for s in OFFICIAL_SOURCES if s not in plan.sources and s not in state.declined]
+
+    def discover(self, plan, requests, state, round_no):
+        """Discovery: choose one more source to read for the figures the Critic says nothing read so far explains.
+        Returns the source added, or None."""
+        options = {s: CATALOG[s] for s in self.open_sources(plan, state)}
+        if not options:
+            self.tracer.event(self.name, "discover_source", round_no=round_no, status="skipped",
+                              output_summary="no official source left to add (all read, declined or cap reached)")
+            return None
+        payload = {"unexplained_figures": requests, "sources_read": {s: CATALOG[s] for s in plan.sources},
+                   "sources_available": options}
+        reply = self.llm.ask_json(
+            self.name, "choose_source", DISCOVERY_PROMPT, payload, target_agent="Retriever", round_no=round_no,
+            max_tokens=3000,
+            validate=lambda d: None if d.get("source") in (*options, None) else f"unknown source {d.get('source')!r}",
+        ) if self.llm else None
+        if reply:
+            source, reason, note = reply[0].get("source"), str(reply[0].get("reason") or "")[:500], model_note(reply[1])
+        else:
+            source = next(iter(options))
+            reason, note = "deterministic fallback: the official source not yet read", {"method": "rules"}
+        if source is None:
+            for option in options:
+                state.declined[option] = reason
+            self.tracer.event(self.name, "discover_source", round_no=round_no, status="declined",
+                              input_summary=f"{len(requests)} unexplained figure(s)", output_summary=reason)
+            return None
+        plan.sources.append(source)
+        state.discoveries.append({"round": round_no, "source": source, "reason": reason, "requests": requests, **note})
+        self.tracer.event(self.name, "discover_source", input_summary=f"{len(requests)} unexplained figure(s): "
+                          + "; ".join(f"{r['comuna']} {r['value']:,} ({r['source']})" for r in requests[:4]),
+                          output_summary=f"add {source}: {reason}", target_agent="Retriever", round_no=round_no,
+                          decided_by=note)
+        return source

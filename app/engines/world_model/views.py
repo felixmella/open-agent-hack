@@ -61,6 +61,11 @@ class ObservationView:
         observations = self.store.observations(entity_id)
         return [o for o in observations if kinds is None or o["source"].get("kind") in kinds]
 
+    def assessments(self, entity_id, *, run_id=None, agent=None):
+        """Every assessment of an entity's observations, oldest first, optionally for one run or one agent."""
+        return [a for a in self.store.assessments(entity_id=entity_id)
+                if (run_id is None or a["run_id"] == run_id) and (agent is None or a["agent"] == agent)]
+
     def latest_assessments(self, entity_id):
         """The latest assessment of each observation (assessments are append-only; later ones supersede)."""
         latest = {}

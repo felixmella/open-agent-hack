@@ -44,11 +44,12 @@ def observed(provenance, at):
 class Retriever:
     name = "Retriever"
 
-    def __init__(self, zetaris, world, tracer, run_id):
+    def __init__(self, zetaris, world, tracer, run_id, observed=None):
         self.zetaris = zetaris
         self.world = world
         self.tracer = tracer
         self.run_id = run_id
+        self.observed = set() if observed is None else observed  # ids of every observation this run read
 
     def fetch(self, plan, sources=None):
         totals = {}
@@ -63,6 +64,7 @@ class Retriever:
                               target_agent="WorldModel", sql=result.sql, rows=len(result.rows),
                               latency_ms=result.elapsed_ms, retry_count=result.attempts - 1)
             ingest = self.world.ingest(observations, actor=self.name)
+            self.observed.update(ingest.appended + ingest.unchanged)
             self.tracer.event(self.name, "ingest_world_model", input_summary=f"{len(observations)} {source} observations",
                               output_summary=f"appended {len(ingest.appended)}, unchanged {len(ingest.unchanged)}, "
                                              f"entities created {len(ingest.entities_created)}, "
