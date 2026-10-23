@@ -6,8 +6,8 @@
 -- Sources
 --   INE Census 2024, population by comuna: INE's public ArcGIS feature layer
 --     COMUNA_DPA_INDICADORES (346 rows, keyed by CUT), the layer behind INE's
---     official census dashboard. Licence: INE open data terms
---     (https://www.ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos).
+--     official census dashboard. Licence: CC BY-SA 4.0 (INE open data terms
+--     https://www.ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos).
 --   Wikidata: SPARQL over all current (not dissolved) communes of Chile
 --     (Q1840161) with every population statement (P1082) and its point in
 --     time, determination method, rank and references. CC0.
@@ -26,7 +26,7 @@ CREATE LIGHTNING REST TABLE ine_census2024_raw FROM FACTSYNC_REST REQUEST(
 ) HEADER (
 ) BODY ();
 
-CREATE SCHEMASTORE VIEW ine_census2024 WITH CONTAINER factsync AS
+CREATE OR REPLACE SCHEMASTORE VIEW ine_census2024 WITH CONTAINER factsync AS
 SELECT
     lpad(cast(f.attributes.CUT AS string), 5, '0') AS cut,
     f.attributes.COMUNA AS comuna,
@@ -48,7 +48,7 @@ CREATE LIGHTNING REST TABLE wikidata_population_raw FROM FACTSYNC_REST REQUEST(
     user-agent "YOUR_APP_NAME YOUR_CONTACT_EMAIL"
 ) BODY ();
 
-CREATE SCHEMASTORE VIEW wikidata_population WITH CONTAINER factsync AS
+CREATE OR REPLACE SCHEMASTORE VIEW wikidata_population WITH CONTAINER factsync AS
 SELECT
     b.comuna.value AS wikidata_item,
     b.cut.value AS cut,
