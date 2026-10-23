@@ -17,6 +17,7 @@ class Tracer:
         self.run_id = run_id
         self.path = Path(logs_dir) / f"trace-{run_id}.jsonl"
         self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.path.write_text("", encoding="utf-8")  # a run that reuses a run_id replaces that run's trace
         self.echo = echo
         self.events = []
 

@@ -24,8 +24,11 @@ class Options(BaseModel):
     use_llm: bool = True
 
 
+RUN_ID = r"^[A-Za-z0-9_-][A-Za-z0-9_.-]{0,63}$"  # also a folder name: no leading dot, so never '.' or '..'
+
+
 class RunInput(BaseModel):
-    run_id: str | None = Field(None, pattern=r"^[A-Za-z0-9_.-]{1,64}$")
+    run_id: str | None = Field(None, pattern=RUN_ID)
     scope: Scope
     languages: list[Literal["es", "en"]] = ["es", "en"]
     options: Options = Options()

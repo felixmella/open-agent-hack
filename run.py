@@ -2,16 +2,27 @@
 
 Usage:  .venv\\Scripts\\python run.py input_examples\\example_1.json [--sample]
 
-Prints the run's progress and summary; writes output/<run_id>/result.json and the traces in logs/.
+Prints the run's progress and summary; writes output/<run_id>/result.json and the traces in logs/. A run that can't
+complete prints a structured error ({"status": "error", "error": {code, message, stage, recoverable}}) and exits with
+1, or with 2 when the input itself is the problem.
 """
 import argparse
 import json
 import sys
+import traceback
 from pathlib import Path
 
+from pydantic import ValidationError
+
 from app.config import load_settings
+from app.errors import RunError, error_body, invalid_input
 from app.orchestration.loop import run
 from app.schemas import RunInput
+
+
+def fail(error, run_id=None, exit_code=1):
+    print(json.dumps(error_body(error, run_id), ensure_ascii=False, indent=2))
+    sys.exit(exit_code)
 
 
 def main():
@@ -22,8 +33,19 @@ def main():
     args = parser.parse_args()
 
     settings = load_settings(sample_mode=True if args.sample else None)
-    run_input = RunInput.model_validate_json(args.input.read_text(encoding="utf-8"))
-    result = run(run_input, settings)
+    try:
+        run_input = RunInput.model_validate_json(args.input.read_text(encoding="utf-8"))
+    except OSError as exc:
+        fail(RunError("invalid_input", f"can't read {args.input}: {exc.strerror or exc}", stage="input",
+                      recoverable=False, status=400), exit_code=2)
+    except ValidationError as exc:
+        fail(invalid_input(exc), exit_code=2)
+    try:
+        result = run(run_input, settings)
+    except RunError as error:
+        if error.code == "internal_error":
+            traceback.print_exc()
+        fail(error, run_id=(error.result or {}).get("run_id"))
     summary = {k: result[k] for k in ("run_id", "status", "mode", "summary", "model_usage", "execution_time_seconds",
                                       "trace_file", "world_model_audit_file")}
     summary["comunas"] = [{

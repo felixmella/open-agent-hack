@@ -8,11 +8,14 @@ source (discovery, and the Retriever reads it), the Extractor re-reads an articl
 from the World Model next round. After `max_critic_rounds` fixes, findings that still fail are escalated to a human,
 and the comuna's approved findings go on to the Editor.
 
-Writes output/<run_id>/result.json, logs/trace-<run_id>.jsonl and logs/world-model-<run_id>.jsonl.
+Writes output/<run_id>/result.json, logs/trace-<run_id>.jsonl and logs/world-model-<run_id>.jsonl. A run that can't
+complete (the scope matches no comuna, Zetaris can't be read, a bug) raises RunError with a code, the stage and whether
+retrying can help, after tracing it and writing an error result.
 """
 import json
 import time
 import uuid
+from contextlib import contextmanager
 from datetime import datetime, timezone
 
 from app.adapters.meterless import LLMError, NightshiftClient
@@ -22,18 +25,50 @@ from app.agents.critic import Critic, signature
 from app.agents.editor import Editor
 from app.agents.extractor import Extractor
 from app.agents.llm import AgentLLM
-from app.agents.planner import Planner
+from app.agents.planner import Planner, ScopeError
 from app.agents.retriever import Retriever
 from app.engines.world_model import WorldModel
+from app.errors import RunError
 from app.knowledge import matcher
 from app.orchestration.state import Caps, ComunaState, RunState
 from app.tracing import Tracer
 
 TARGETS = ("eswiki", "enwiki", "wikidata")
+ZETARIS_STATUS = {"zetaris_not_configured": 503, "zetaris_unreachable": 503, "not_in_sample": 422}  # others: 502
 
 
 def new_run_id():
     return datetime.now(timezone.utc).strftime("run-%Y%m%dT%H%M%SZ-") + uuid.uuid4().hex[:6]
+
+
+def mode_of(settings):
+    return "sample" if settings.sample_mode else "live"
+
+
+def relative(path, settings):
+    return path.relative_to(settings.logs_dir.parent).as_posix()
+
+
+def write_result(settings, result):
+    out_dir = settings.output_dir / result["run_id"]
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+
+
+@contextmanager
+def stage(name):
+    """Run one stage of the run; anything that stops it becomes a RunError naming the stage."""
+    try:
+        yield
+    except RunError:
+        raise
+    except ScopeError as exc:
+        raise RunError("scope_unresolved", str(exc), stage=name, recoverable=False, status=422) from exc
+    except ZetarisError as exc:
+        raise RunError(exc.code, str(exc), stage=name, recoverable=exc.recoverable,
+                       status=ZETARIS_STATUS.get(exc.code, 502)) from exc
+    except Exception as exc:
+        raise RunError("internal_error", f"{type(exc).__name__}: {exc}", stage=name, recoverable=False) from exc
 
 
 def open_world(settings):
@@ -51,19 +86,40 @@ def nightshift(settings, tracer):
 
 
 def run(run_input, settings, *, echo=True, zetaris=None, llm_client=None, world=None, today=None, llm_interval=1.0):
+    """Run FactSync on a scope. Returns the result, also written to output/<run_id>/result.json; raises RunError
+    when the run can't complete."""
     started = time.monotonic()
     run_id = run_input.run_id or new_run_id()
     tracer = Tracer(run_id, settings.logs_dir, echo=echo)
-    world = world or open_world(settings)
-    audit_start = (world.audit() or [{"seq": 0}])[-1]["seq"]
     tracer.event("Orchestrator", "start_run", input_summary=run_input.model_dump_json(exclude_none=True),
-                 output_summary=f"mode={'sample' if settings.sample_mode else 'live'}", target_agent="Planner")
+                 output_summary=f"mode={mode_of(settings)}", target_agent="Planner")
+    try:
+        return execute(run_id, run_input, settings, tracer, started, zetaris=zetaris, llm_client=llm_client,
+                       world=world, today=today, llm_interval=llm_interval)
+    except Exception as exc:
+        error = exc if isinstance(exc, RunError) else RunError(
+            "internal_error", f"{type(exc).__name__}: {exc}", stage="run", recoverable=False)
+        error.result = {"run_id": run_id, "status": "error", "mode": mode_of(settings), "error": error.to_dict(),
+                        "trace_file": relative(tracer.path, settings),
+                        "execution_time_seconds": round(time.monotonic() - started, 1)}
+        write_result(settings, error.result)
+        tracer.event("Orchestrator", "finish_run", status="error",
+                     output_summary=f"{error.code} in {error.stage}: {error.message}"[:300])
+        if error is exc:
+            raise
+        raise error from exc
 
-    zetaris = zetaris or ZetarisClient(settings.zetaris_rest_url, settings.zetaris_org_id, settings.zetaris_api_key)
-    if llm_client is None and run_input.options.use_llm and not settings.sample_mode:
-        llm_client = nightshift(settings, tracer)
-    planner = Planner(zetaris, world, tracer)
-    plan = planner.plan(run_input)
+
+def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client, world, today, llm_interval):
+    with stage("setup"):
+        world = world or open_world(settings)
+        audit_start = (world.audit() or [{"seq": 0}])[-1]["seq"]
+        zetaris = zetaris or ZetarisClient(settings.zetaris_rest_url, settings.zetaris_org_id, settings.zetaris_api_key)
+        if llm_client is None and run_input.options.use_llm and not settings.sample_mode:
+            llm_client = nightshift(settings, tracer)
+    with stage("plan"):
+        planner = Planner(zetaris, world, tracer)
+        plan = planner.plan(run_input)
     state = RunState(run_id, Caps.for_run(run_input.options, len(plan.cuts)),
                      {cut: ComunaState(cut, name) for cut, name in plan.comunas.items()})
     llm = AgentLLM(llm_client if run_input.options.use_llm else None, tracer, max_calls=state.caps.max_llm_calls,
@@ -78,37 +134,46 @@ def run(run_input, settings, *, echo=True, zetaris=None, llm_client=None, world=
         state.escalations.append({"kind": "entity_resolution", "reason": "name matched a comuna only in the review band",
                                   **review})
 
-    retrieval = retriever.fetch(plan)
-    for comuna in state.comunas.values():
-        extractor.extract(comuna, state.observed)
+    with stage("retrieve"):
+        retrieval = retriever.fetch(plan)
+    with stage("extract"):
+        for comuna in state.comunas.values():
+            extractor.extract(comuna, state.observed)
 
-    for round_no in range(1, state.caps.max_critic_rounds + 2):
-        pending = state.pending()
-        if not pending:
-            break
-        tracer.event("Orchestrator", "start_round", round_no=round_no, target_agent="Analyst",
-                     output_summary=f"round {round_no}: {len(pending)} comuna(s) pending: {', '.join(c.name for c in pending)}")
-        fixes = {}
-        for comuna in pending:
-            try:
-                comuna.findings, comuna.checks = analyst.analyze(comuna, state.observed, round_no, plan.sources)
-            except LookupError as exc:
-                fail_comuna(state, comuna, tracer, str(exc), round_no)
-                continue
-            review = critic.review(comuna, comuna.findings, state.observed, round_no, planner.open_sources(plan, state))
-            if review["approved"]:
-                comuna.status = "approved"
-            elif round_no > state.caps.max_critic_rounds:
-                escalate(state, comuna, world, tracer, review, round_no, run_id)
-            else:
-                fixes[comuna.cut] = review["fix"]
-        route(fixes, state, plan, planner, retriever, extractor, tracer, round_no, retrieval)
+    with stage("analyze"):
+        for round_no in range(1, state.caps.max_critic_rounds + 2):
+            pending = state.pending()
+            if not pending:
+                break
+            tracer.event("Orchestrator", "start_round", round_no=round_no, target_agent="Analyst",
+                         output_summary=f"round {round_no}: {len(pending)} comuna(s) pending: {', '.join(c.name for c in pending)}")
+            fixes = {}
+            for comuna in pending:
+                try:
+                    comuna.findings, comuna.checks = analyst.analyze(comuna, state.observed, round_no, plan.sources)
+                except LookupError as exc:
+                    fail_comuna(state, comuna, tracer, str(exc), round_no)
+                    continue
+                review = critic.review(comuna, comuna.findings, state.observed, round_no, planner.open_sources(plan, state))
+                if review["approved"]:
+                    comuna.status = "approved"
+                elif round_no > state.caps.max_critic_rounds:
+                    escalate(state, comuna, world, tracer, review, round_no, run_id)
+                else:
+                    fixes[comuna.cut] = review["fix"]
+            route(fixes, state, plan, planner, retriever, extractor, tracer, round_no, retrieval)
 
-    for comuna in state.comunas.values():
-        approved = [f for f in comuna.findings if (comuna.approved.get(f["id"]) or {}).get("signature") == signature(f)]
-        if approved:
-            write_drafts(comuna, approved, state, world, editor, critic, tracer, run_id)
+    with stage("draft"):
+        for comuna in state.comunas.values():
+            approved = [f for f in comuna.findings if (comuna.approved.get(f["id"]) or {}).get("signature") == signature(f)]
+            if approved:
+                write_drafts(comuna, approved, state, world, editor, critic, tracer, run_id)
 
+    with stage("output"):
+        return finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm)
+
+
+def finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm):
     audit_path = settings.logs_dir / f"world-model-{run_id}.jsonl"
     exported = world.export_audit(audit_path, since_seq=audit_start)
     comunas = [comuna_result(c, world, state) for c in state.comunas.values()]
@@ -119,7 +184,7 @@ def run(run_input, settings, *, echo=True, zetaris=None, llm_client=None, world=
     result = {
         "run_id": run_id,
         "status": "success" if not (state.errors or state.escalations) else "partial",
-        "mode": "sample" if settings.sample_mode else "live",
+        "mode": mode_of(settings),
         "summary": {
             "comunas": len(comunas), "claims": sum(c["claims_checked"] for c in comunas), "findings": len(findings),
             "findings_by_class": dict(sorted(by_class.items())),
@@ -137,14 +202,12 @@ def run(run_input, settings, *, echo=True, zetaris=None, llm_client=None, world=
         "escalations": state.escalations,
         "errors": state.errors,
         "model_usage": llm.usage(),
-        "trace_file": str(tracer.path.relative_to(settings.logs_dir.parent)),
-        "world_model_audit_file": str(audit_path.relative_to(settings.logs_dir.parent)),
+        "trace_file": relative(tracer.path, settings),
+        "world_model_audit_file": relative(audit_path, settings),
         "world_model_audit_entries": exported,
         "execution_time_seconds": round(time.monotonic() - started, 1),
     }
-    out_dir = settings.output_dir / run_id
-    out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    write_result(settings, result)
     tracer.event("Orchestrator", "finish_run", status=result["status"],
                  output_summary=f"{len(comunas)} comunas, {len(findings)} findings, {result['summary']['drafts']} drafts, "
                                 f"{len(state.escalations)} escalations in {result['execution_time_seconds']} s")
@@ -166,8 +229,8 @@ def route(fixes, state, plan, planner, retriever, extractor, tracer, round_no, r
                 retrieval.update(retriever.fetch(plan, [source]))
             except ZetarisError as exc:
                 state.declined[source] = f"could not be read: {exc}"
-                state.errors.append({"stage": "retrieve", "source": source, "message": str(exc)[:300],
-                                     "recoverable": exc.recoverable})
+                state.errors.append({"code": exc.code, "message": str(exc)[:300], "stage": "retrieve",
+                                     "recoverable": exc.recoverable, "source": source})
                 tracer.event("Retriever", "query_zetaris", status="failure", round_no=round_no,
                              output_summary=f"{source}: {str(exc)[:200]}")
     for cut, fix in fixes.items():
@@ -202,7 +265,8 @@ def fail_comuna(state, comuna, tracer, message, round_no):
     entry = {"kind": "comuna", "cut": comuna.cut, "comuna": comuna.name, "reason": message, "round": round_no}
     comuna.escalations.append(entry)
     state.escalations.append(entry)
-    state.errors.append({"stage": "analyze", "cut": comuna.cut, "message": message, "recoverable": True})
+    state.errors.append({"code": "no_official_figures", "message": message, "stage": "analyze", "recoverable": True,
+                         "cut": comuna.cut})
     tracer.event("Orchestrator", "escalate", round_no=round_no, status="failure", target_agent="human",
                  output_summary=f"{comuna.name}: {message}")
 

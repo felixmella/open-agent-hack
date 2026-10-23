@@ -49,7 +49,7 @@ class WorldModel:
         elif storage == "sqlite":
             path = Path(path or Path("state") / f"world-{namespace}.sqlite")
             path.parent.mkdir(parents=True, exist_ok=True)
-            connection = sqlite3.connect(path)
+            connection = sqlite3.connect(path, timeout=60)  # runs from the CLI and the API may share the store
         else:
             raise ValueError(f"unknown storage {storage!r}; use 'memory' or 'sqlite'")
         self.namespace = namespace
@@ -216,8 +216,9 @@ class WorldModel:
         return self.store.audit(since_seq)
 
     def export_audit(self, path, since_seq=0):
+        """Write the audit entries after `since_seq` to a JSONL file (replacing it); returns how many."""
         entries = self.audit(since_seq)
-        with Path(path).open("a", encoding="utf-8") as f:
+        with Path(path).open("w", encoding="utf-8") as f:
             for entry in entries:
                 f.write(json.dumps(entry, ensure_ascii=False, default=str) + "\n")
         return len(entries)
