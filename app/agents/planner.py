@@ -60,8 +60,10 @@ class Planner:
             self.world.upsert_entity(type="comuna", name=info["name"], external_key={"system": "cut", "id": cut},
                                      attrs={"region": info["region"]}, source=source, actor=self.name)
         self.tracer.event(self.name, "register_comunas", input_summary="INE Census 2024 comuna list",
-                          output_summary=f"{len(comunas)} comunas registered in the World Model (keyed by CUT)",
-                          target_agent="WorldModel", sql=result.sql, rows=len(result.rows), latency_ms=result.elapsed_ms)
+                          output_summary=f"{len(comunas)} comunas registered in the World Model (keyed by CUT)"
+                                         + (f" (rows from the {result.origin})" if result.origin != "zetaris" else ""),
+                          target_agent="WorldModel", sql=result.sql, rows=len(result.rows), latency_ms=result.elapsed_ms,
+                          data_origin=result.origin)
         return comunas
 
     def plan(self, run_input):

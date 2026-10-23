@@ -13,12 +13,14 @@ complete (the scope matches no comuna, Zetaris can't be read, a bug) raises RunE
 retrying can help, after tracing it and writing an error result.
 """
 import json
+import re
 import time
 import uuid
 from contextlib import contextmanager
 from datetime import datetime, timezone
 
 from app.adapters.meterless import LLMError, NightshiftClient
+from app.adapters.sample_data import FallbackZetaris, SampleData
 from app.adapters.zetaris import ZetarisClient, ZetarisError
 from app.agents.analyst import Analyst, claims_first
 from app.agents.critic import Critic, signature
@@ -34,7 +36,8 @@ from app.orchestration.state import Caps, ComunaState, RunState
 from app.tracing import Tracer
 
 TARGETS = ("eswiki", "enwiki", "wikidata")
-ZETARIS_STATUS = {"zetaris_not_configured": 503, "zetaris_unreachable": 503, "not_in_sample": 422}  # others: 502
+ZETARIS_STATUS = {"zetaris_not_configured": 503, "zetaris_unreachable": 503, "sample_data_missing": 503,
+                  "not_in_sample": 422}  # other Zetaris failures: 502
 
 
 def new_run_id():
@@ -72,8 +75,30 @@ def stage(name):
 
 
 def open_world(settings):
-    return WorldModel(storage="sqlite", namespace="factsync", path=settings.state_dir / "world-factsync.sqlite",
-                      strip_suffixes=[", Chile"])
+    """The World Model store; sample-mode runs keep theirs apart from live runs."""
+    name = "world-factsync-sample.sqlite" if settings.sample_mode else "world-factsync.sqlite"
+    return WorldModel(storage="sqlite", namespace="factsync", path=settings.state_dir / name, strip_suffixes=[", Chile"])
+
+
+def data_source(settings, tracer, fallbacks):
+    """Where the agents read the Zetaris views: the sample snapshot in sample mode; otherwise Zetaris, with the
+    snapshot answering for it when a query fails in a way a retry could fix (traced, and kept in `fallbacks`)."""
+    if settings.sample_mode:
+        return SampleData(settings.sample_dir)
+    live = ZetarisClient(settings.zetaris_rest_url, settings.zetaris_org_id, settings.zetaris_api_key)
+    try:
+        sample = SampleData(settings.sample_dir)
+    except ZetarisError:
+        sample = None
+
+    def fell_back(result, error):
+        view = re.search(r"\bFROM\s+(\S+)", result.sql, re.I).group(1)
+        entry = {"kind": "data_fallback", "view": view, "error": error.code,
+                 "reason": f"Zetaris failed ({error}); {view} was read from the {result.origin} instead"}
+        fallbacks.append(entry)
+        tracer.event("Orchestrator", "fallback_to_sample", status="fallback", target_agent="Retriever",
+                     input_summary=view, output_summary=entry["reason"][:300], sql=result.sql, rows=len(result.rows))
+    return FallbackZetaris(live, sample, fell_back)
 
 
 def nightshift(settings, tracer):
@@ -111,10 +136,11 @@ def run(run_input, settings, *, echo=True, zetaris=None, llm_client=None, world=
 
 
 def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client, world, today, llm_interval):
+    fallbacks = []
     with stage("setup"):
         world = world or open_world(settings)
         audit_start = (world.audit() or [{"seq": 0}])[-1]["seq"]
-        zetaris = zetaris or ZetarisClient(settings.zetaris_rest_url, settings.zetaris_org_id, settings.zetaris_api_key)
+        zetaris = zetaris or data_source(settings, tracer, fallbacks)
         if llm_client is None and run_input.options.use_llm and not settings.sample_mode:
             llm_client = nightshift(settings, tracer)
     with stage("plan"):
@@ -170,10 +196,14 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
                 write_drafts(comuna, approved, state, world, editor, critic, tracer, run_id)
 
     with stage("output"):
-        return finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm)
+        state.escalations.extend(fallbacks)
+        data = {"source": "sample" if settings.sample_mode else "zetaris", "fallbacks": fallbacks}
+        if getattr(zetaris, "recorded_at", None):
+            data["sample_recorded_at"] = zetaris.recorded_at
+        return finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm, data)
 
 
-def finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm):
+def finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm, data):
     audit_path = settings.logs_dir / f"world-model-{run_id}.jsonl"
     exported = world.export_audit(audit_path, since_seq=audit_start)
     comunas = [comuna_result(c, world, state) for c in state.comunas.values()]
@@ -193,6 +223,7 @@ def finish(run_id, settings, tracer, started, world, audit_start, state, plan, r
             "critic_rejections": sum(1 for c in state.comunas.values() for r in c.reviews if not r["approved"]),
             "discoveries": [d["source"] for d in state.discoveries],
         },
+        "data": data,
         "plan": {"cuts": plan.cuts, "sources": plan.sources, "reason": plan.reason, "unresolved": plan.unresolved,
                  "reviews": plan.reviews},
         "retrieval": {k: {kk: vv for kk, vv in v.items() if kk != "reviews"} | {"reviews": len(v["reviews"])}

@@ -57,12 +57,15 @@ class Retriever:
             result = self.zetaris.query(SOURCES[source].format(cuts=sql_list(plan.cuts)))
             provenance = {"view": VIEWS[source], "sql": result.sql, "fetched_at": utc_now(), "run_id": self.run_id,
                           "agent": self.name}
+            if result.origin != "zetaris":
+                provenance["origin"] = result.origin
             observations, matched, reviews = getattr(self, f"_{source.split('_')[0]}")(source, result.rows, plan, provenance)
             self.tracer.event(self.name, "query_zetaris", input_summary=f"{source} for {len(plan.cuts)} comunas",
                               output_summary=f"{len(result.rows)} rows -> {len(observations)} observations"
-                                             + (f"; {matched} matched by name" if matched else ""),
+                                             + (f"; {matched} matched by name" if matched else "")
+                                             + (f" (rows from the {result.origin})" if result.origin != "zetaris" else ""),
                               target_agent="WorldModel", sql=result.sql, rows=len(result.rows),
-                              latency_ms=result.elapsed_ms, retry_count=result.attempts - 1)
+                              latency_ms=result.elapsed_ms, retry_count=result.attempts - 1, data_origin=result.origin)
             ingest = self.world.ingest(observations, actor=self.name)
             self.observed.update(ingest.appended + ingest.unchanged)
             self.tracer.event(self.name, "ingest_world_model", input_summary=f"{len(observations)} {source} observations",

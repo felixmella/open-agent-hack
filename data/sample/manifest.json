@@ -1,0 +1,58 @@
+{
+ "recorded_at": "2026-10-23T06:58:26Z",
+ "recorded_by": "scripts/snapshot_sample_data.py",
+ "examples": {
+  "example_1.json": [
+   "09203"
+  ],
+  "example_2.json": [
+   "08105",
+   "11203",
+   "16201"
+  ],
+  "example_3.json": [
+   "11101",
+   "11102",
+   "11201",
+   "11202",
+   "11203",
+   "11301",
+   "11302",
+   "11303",
+   "11401",
+   "11402"
+  ],
+  "example_4.json": [
+   "09116",
+   "09121",
+   "13112",
+   "06206"
+  ]
+ },
+ "comunas": {
+  "06206": "PAREDONES",
+  "08105": "HUALQUI",
+  "09116": "SAAVEDRA",
+  "09121": "CHOLCHOL",
+  "09203": "CURACAUTÍN",
+  "11101": "COYHAIQUE",
+  "11102": "LAGO VERDE",
+  "11201": "AYSÉN",
+  "11202": "CISNES",
+  "11203": "GUAITECAS",
+  "11301": "COCHRANE",
+  "11302": "O'HIGGINS",
+  "11303": "TORTEL",
+  "11401": "CHILE CHICO",
+  "11402": "RÍO IBÁÑEZ",
+  "13112": "LA PINTANA",
+  "16201": "QUIRIHUE"
+ },
+ "views": {
+  "factsync.enwiki_infobox": "enwiki_infobox.json",
+  "factsync.eswiki_infobox": "eswiki_infobox.json",
+  "factsync.ine_census2024": "ine_census2024.json",
+  "factsync.official_population": "official_population.json",
+  "factsync.wikidata_population": "wikidata_population.json"
+ }
+}

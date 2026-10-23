@@ -34,6 +34,7 @@ class QueryResult:
     total: int
     elapsed_ms: int
     attempts: int
+    origin: str = "zetaris"  # or the sample snapshot that answered instead (app/adapters/sample_data.py)
 
 
 def as_int(value):
