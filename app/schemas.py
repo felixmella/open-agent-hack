@@ -28,6 +28,12 @@ RUN_ID = r"^[A-Za-z0-9_-][A-Za-z0-9_.-]{0,63}$"  # also a folder name: no leadin
 
 
 class RunInput(BaseModel):
+    model_config = {"json_schema_extra": {"examples": [
+        {"scope": {"cuts": ["08105", "11203", "16201"]}, "languages": ["es", "en"], "options": {"max_critic_rounds": 2}},
+        {"scope": {"region": "Aysén"}, "languages": ["es", "en"], "options": {"use_llm": False}},
+        {"scope": {"comunas": ["Saavedra (Chile)", "Cholchol"]}},
+    ]}}
+
     run_id: str | None = Field(None, pattern=RUN_ID)
     scope: Scope
     languages: list[Literal["es", "en"]] = ["es", "en"]
