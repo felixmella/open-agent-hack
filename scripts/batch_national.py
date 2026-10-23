@@ -149,7 +149,7 @@ def main():
     for number, (region, cuts) in enumerate(plan.items(), 1):
         if wanted and not any(w in normalize_name(region) for w in wanted):
             continue
-        run_id = f"national-{args.tag}-{number:02d}-{slug(region)}"
+        run_id = f"national-{args.tag}-{number:02d}-{slug(region)}"[:64].rstrip("-")  # run ids stop at 64 characters
         done = settings.output_dir / run_id / "result.json"
         if done.exists():
             previous = json.loads(done.read_text(encoding="utf-8"))
