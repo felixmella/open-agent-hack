@@ -81,6 +81,14 @@ def routed_model(reply):
     return receipt.get("routed_model", "n/a")
 
 
+def assert_served_by(reply, model):
+    # Nightshift silently answers with a lane model when the requested one isn't assigned to a lane.
+    served = {reply.model, routed_model(reply)} - {"n/a"}
+    assert served == {model}, (
+        f"asked for {model} but {', '.join(sorted(served))} answered (is it assigned to a Nightshift lane?)"
+    )
+
+
 def zetaris_web():
     url = os.environ.get("ZETARIS_UI_URL", "http://localhost:3000")
     httpx.get(url, timeout=10, follow_redirects=True).raise_for_status()
@@ -110,6 +118,7 @@ def nemotron_chat():
     )
     text = (reply.choices[0].message.content or "").strip()
     assert text, "empty reply"
+    assert_served_by(reply, os.environ["METERLESS_MODEL"])
     return f"model={reply.model}, routed={routed_model(reply)}, reply={text[:40]!r}"
 
 
@@ -121,6 +130,7 @@ def nemotron_tool_round_trip():
         "content": "Use the run_sql tool to run SELECT 1 + 1 AS two, then tell me the result.",
     }]
     first = llm.chat.completions.create(model=model, messages=messages, tools=[RUN_SQL_TOOL])
+    assert_served_by(first, model)
     message = first.choices[0].message
     assert message.tool_calls, "the model answered without calling run_sql"
     call = message.tool_calls[0]
