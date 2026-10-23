@@ -1,0 +1,22 @@
+# Secrets never enter the build context
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.toml
+
+# Local tooling, private notes, run artifacts
+.git
+.venv
+.claude
+__pycache__
+*.pyc
+.pytest_cache
+HACKATHON_CONTEXT.md
+IDEA_BRIEF.md
+IMPLEMENTATION_PLAN.md
+logs
+output
+state
