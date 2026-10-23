@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FactSync Chile review queue · {{ result.run_id }}</title>
+<style>
+:root {
+  --bg: #f5f6f8; --panel: #ffffff; --ink: #18202b; --muted: #5a6473; --line: #e2e6ec; --soft: #f0f2f5;
+  --accent: #0b5fbf; --code: #f3f5f8;
+  --red: #b42318; --red-bg: #fef1f0; --amber: #a64b05; --amber-bg: #fff6e6; --blue: #175cd3; --blue-bg: #eef5ff;
+  --violet: #6340b8; --violet-bg: #f4f1ff; --slate: #475467; --slate-bg: #eef0f3; --green: #067647; --green-bg: #eafaf1;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1217; --panel: #151b23; --ink: #e5e9ef; --muted: #98a2b3; --line: #252f3c; --soft: #1b2330;
+    --accent: #6aa8ff; --code: #10161e;
+    --red: #ff9b91; --red-bg: #3a1714; --amber: #ffc46b; --amber-bg: #3a2608; --blue: #8fbcff; --blue-bg: #13284a;
+    --violet: #c2b0ff; --violet-bg: #2a1f4a; --slate: #c4cbd6; --slate-bg: #222b37; --green: #7fe0a9; --green-bg: #0f3322;
+    --shadow: none;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--accent); }
+code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+header.top { background: var(--panel); border-bottom: 1px solid var(--line); padding: 28px 0 22px; }
+.brand { font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: 26px; line-height: 1.25; margin: 6px 0 8px; }
+h2 { font-size: 17px; margin: 0 0 12px; }
+h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 22px 0 10px; }
+.meta { color: var(--muted); margin: 0 0 10px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.lede { margin: 0; max-width: 760px; }
+main { padding: 22px 16px 40px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; box-shadow: var(--shadow); }
+.stat b { display: block; font-size: 26px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 13px; }
+.stat.attention b { color: var(--red); }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.panel.attention { border-left: 4px solid var(--red); }
+.panel p { margin: 0 0 8px; }
+.panel p:last-child { margin-bottom: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 13px; background: var(--soft); }
+.chip.new { border-color: var(--blue); color: var(--blue); background: var(--blue-bg); }
+.badge { display: inline-block; border-radius: 6px; padding: 1px 8px; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.tone-red { color: var(--red); background: var(--red-bg); }
+.tone-amber { color: var(--amber); background: var(--amber-bg); }
+.tone-blue { color: var(--blue); background: var(--blue-bg); }
+.tone-violet { color: var(--violet); background: var(--violet-bg); }
+.tone-slate { color: var(--slate); background: var(--slate-bg); }
+.tone-green { color: var(--green); background: var(--green-bg); }
+.status-approved, .status-success { color: var(--green); background: var(--green-bg); }
+.status-partial, .status-sample { color: var(--amber); background: var(--amber-bg); }
+.status-escalated, .status-error { color: var(--red); background: var(--red-bg); }
+.status-pending, .status-live { color: var(--blue); background: var(--blue-bg); }
+ol.timeline { list-style: none; margin: 0; padding: 0; }
+ol.timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); }
+ol.timeline li:first-child { border-top: 0; }
+.when { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.who { font-weight: 600; }
+.by { color: var(--muted); font-size: 13px; }
+ul.plain { margin: 0; padding-left: 18px; }
+ul.plain li { margin: 4px 0; }
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 18px; margin-top: 12px; font-size: 13.5px; }
+.legend div { display: flex; gap: 8px; align-items: baseline; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 26px 0 14px; }
+.filters input { flex: 1 1 220px; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; }
+.filters button, button.copy { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px; padding: 7px 12px; font: inherit; font-size: 13.5px; cursor: pointer; }
+.filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+article.comuna { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.c-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.c-head h2 { margin: 0; font-size: 21px; }
+.c-head .cut { color: var(--muted); font-size: 13px; }
+.official { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.fig { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; background: var(--soft); }
+.fig small { display: block; color: var(--muted); font-size: 12px; }
+.fig b { font-variant-numeric: tabular-nums; }
+.fig.current { border-color: var(--green); background: var(--green-bg); }
+.finding { border: 1px solid var(--line); border-left-width: 4px; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+.finding.tone-red { border-left-color: var(--red); } .finding.tone-amber { border-left-color: var(--amber); }
+.finding.tone-blue { border-left-color: var(--blue); } .finding.tone-violet { border-left-color: var(--violet); }
+.finding.tone-slate { border-left-color: var(--slate); }
+.finding, .finding.tone-red, .finding.tone-amber, .finding.tone-blue, .finding.tone-violet, .finding.tone-slate { background: var(--panel); color: var(--ink); }
+.f-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.f-head .value { font-weight: 700; font-variant-numeric: tabular-nums; }
+.f-head .label, .f-head .where { color: var(--muted); font-size: 13.5px; }
+.f-head .badge.status-approved, .f-head .badge.status-escalated, .f-head .badge.status-pending { margin-left: auto; }
+.finding p { margin: 8px 0; }
+blockquote { margin: 8px 0; padding: 6px 12px; border-left: 3px solid var(--line); color: var(--muted); font-size: 14px; }
+dl.facts { display: grid; grid-template-columns: 120px 1fr; gap: 4px 12px; margin: 8px 0 0; font-size: 13.5px; }
+dl.facts dt { color: var(--muted); }
+dl.facts dd { margin: 0; }
+.links { font-size: 13px; margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.page { margin-top: 20px; }
+.p-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.p-head h3 { margin: 0; }
+.p-head .links { margin: 0 0 0 auto; }
+.attention-box { border-left: 4px solid var(--red); }
+.draft { border: 1px dashed var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--soft); }
+.draft .code pre { background: var(--panel); }
+.d-head { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; margin-bottom: 8px; }
+.d-head .badge { margin-left: auto; }
+.code { position: relative; }
+.code pre { background: var(--code); border: 1px solid var(--line); border-radius: 8px; padding: 12px 70px 12px 12px; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.code button.copy { position: absolute; top: 8px; right: 8px; padding: 3px 9px; font-size: 12.5px; }
+.summary-line { font-size: 14px; margin: 8px 0 0; }
+.summary-line span, .replaces span { color: var(--muted); font-size: 13px; margin-right: 6px; }
+.replaces { font-size: 14px; margin: 0 0 8px; }
+.note-box { background: var(--soft); border-radius: 8px; padding: 10px 12px; font-size: 14.5px; margin-top: 12px; }
+details { margin-top: 14px; }
+details summary { cursor: pointer; color: var(--muted); font-size: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; margin-top: 8px; }
+.table-scroll { overflow-x: auto; }
+th, td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; }
+footer { color: var(--muted); font-size: 13px; padding: 10px 0 40px; }
+footer p { margin: 4px 0; }
+.empty { color: var(--muted); }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+  h1 { font-size: 21px; }
+  dl.facts { grid-template-columns: 1fr; }
+  dl.facts dt { margin-top: 4px; }
+  ol.timeline li { grid-template-columns: 1fr; gap: 2px; }
+  .f-head .badge.status-approved, .f-head .badge.status-escalated, .f-head .badge.status-pending, .d-head .badge,
+  .p-head .links { margin-left: 0; }
+  article.comuna { padding: 14px; }
+}
+</style>
+</head>
+<body>
+{% if error is defined %}
+<header class="top"><div class="wrap">
+  <div class="brand">FactSync Chile · review queue</div>
+  <h1>This run could not complete</h1>
+  <p class="meta"><span>Run <code>{{ result.run_id }}</code></span><span class="badge status-error">error</span><span class="badge status-{{ result.mode }}">{{ result.mode }}</span></p>
+</div></header>
+<main class="wrap">
+  <section class="panel attention">
+    <p><b>{{ error.code }}</b> in the <b>{{ error.stage }}</b> stage: {{ error.message }}</p>
+    <p>{{ "Trying again may succeed: the problem looked temporary." if error.recoverable else "Trying again won't help until the cause is fixed." }}</p>
+    {% if result.trace_file %}<p>What happened before it stopped is in <code>{{ result.trace_file }}</code>.</p>{% endif %}
+  </section>
+</main>
+{% else %}
+<header class="top"><div class="wrap">
+  <div class="brand">FactSync Chile · review queue</div>
+  <h1>{{ summary.comunas }} comuna{{ "s" if summary.comunas != 1 }}: population figures checked against INE</h1>
+  <p class="meta">
+    <span>Run <code>{{ result.run_id }}</code></span>
+    <span class="badge status-{{ result.status }}">{{ result.status }}</span>
+    {% if result.mode == "sample" %}
+    <span class="badge status-sample">sample data{% if data.sample_recorded_at %}, recorded {{ data.sample_recorded_at[:10] }}{% endif %}</span>
+    {% else %}
+    <span class="badge status-live">live: read through Zetaris</span>
+    {% endif %}
+    <span>{{ result.execution_time_seconds }} s</span>
+    <span>generated {{ generated_at }}</span>
+  </p>
+  <p class="lede">Each population figure in Spanish and English Wikipedia and in Wikidata, compared with INE's official figures, with the reason it differs and a sourced correction to review. <b>Drafts only:</b> FactSync never edits Wikipedia or Wikidata; a person reviews and applies each edit.</p>
+</div></header>
+<main class="wrap">
+  <section class="stats" aria-label="Summary">
+    <div class="stat"><b>{{ summary.comunas }}</b><span>comunas</span></div>
+    <div class="stat"><b>{{ summary.claims }}</b><span>figures checked</span></div>
+    <div class="stat"><b>{{ summary.findings }}</b><span>findings</span></div>
+    <div class="stat"><b>{{ summary.drafts }}</b><span>draft edits</span></div>
+    <div class="stat{{ ' attention' if summary.escalations }}"><b>{{ summary.escalations }}</b><span>need a human</span></div>
+    <div class="stat"><b>{{ summary.critic_rejections }}</b><span>Critic rejections</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>Sources and models</h2>
+    <p class="chips">
+      {% for name, discovered in sources %}
+      <span class="chip{{ ' new' if discovered }}">{{ name }}{% if discovered %} · added by the Planner{% endif %}</span>
+      {% endfor %}
+    </p>
+    <p>{% if result.mode == "sample" %}Rows from the sample snapshot of the Zetaris views{% if data.sample_recorded_at %} recorded {{ data.sample_recorded_at[:10] }}{% endif %}; no live service was used.{% else %}Every source was read live through its Zetaris view, one SQL statement per source.{% if data.fallbacks %} <b>{{ data.fallbacks|length }} view(s) came from the sample snapshot</b> because Zetaris failed (see below).{% endif %}{% endif %}</p>
+    <p>{{ model_line }}</p>
+    {% if unresolved %}<p>Not found and left out of the run: {{ unresolved|join(", ") }}.</p>{% endif %}
+  </section>
+
+  {% if needs_review %}
+  <section class="panel attention">
+    <h2>Needs a human ({{ needs_review|length }})</h2>
+    <ul class="plain">
+      {% for item in needs_review %}<li>{{ item.text }}</li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if timeline %}
+  <section class="panel">
+    <h2>How the agents got here</h2>
+    <ol class="timeline">
+      {% for event in timeline %}
+      <li><span class="when">{% if event.round %}round {{ event.round }}{% elif event.kind == "fallback" %}reading{% else %}drafts{% endif %}</span>
+        <span><span class="who">{{ event.agent }}</span> {{ event.text }}{% if event.by %} <span class="by">(decided by {{ event.by }})</span>{% endif %}</span></li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  {% if by_class %}
+  <section class="panel">
+    <h2>Why figures differ, across this run</h2>
+    <p class="chips">
+      {% for label, tone, count in by_class %}<span class="badge tone-{{ tone }}">{{ label }} · {{ count }}</span>{% endfor %}
+    </p>
+    <details>
+      <summary>What each class means</summary>
+      <div class="legend">
+        {% for name, label, tone, help in classes %}<div><span class="badge tone-{{ tone }}">{{ label }}</span><span>{{ help }}</span></div>{% endfor %}
+      </div>
+    </details>
+  </section>
+  {% endif %}
+
+  <div class="filters" role="search">
+    <input type="search" id="filter-text" placeholder="Filter by comuna name or code" aria-label="Filter by comuna name or code">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="review" aria-pressed="false">Needs a human</button>
+    <button type="button" data-filter="drafts" aria-pressed="false">With drafts</button>
+  </div>
+
+  {% for c in comunas %}
+  <article class="comuna" id="comuna-{{ c.cut }}" data-name="{{ c.name|lower }} {{ c.cut }}" data-review="{{ 'yes' if c.escalations else 'no' }}" data-drafts="{{ 'yes' if c.has_drafts else 'no' }}">
+    <div class="c-head">
+      <h2>{{ c.name }}</h2>
+      <span class="cut">CUT {{ c.cut }}</span>
+      <span class="badge status-{{ c.status }}">{{ c.status_label }}</span>
+      <span class="by">{{ c.claims_checked }} figures checked · {{ c.findings|length }} finding{{ "s" if c.findings|length != 1 }} · {{ c.rounds }} Critic round{{ "s" if c.rounds != 1 }}</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      {% for year, value in c.census %}
+      <div class="fig{{ ' current' if loop.last }}"><small>INE Census {{ year }}{{ " · current" if loop.last }}</small><b>{{ value|figure }}</b></div>
+      {% endfor %}
+      {% for year, value in c.projection %}
+      <div class="fig"><small>INE projection {{ year }}</small><b>{{ value|figure }}</b></div>
+      {% endfor %}
+    </div>
+    {% if c.explanation %}<div class="note-box"><b>In short:</b> {{ c.explanation }} <span class="by">(written by {{ c.explanation_by }})</span></div>{% endif %}
+    {% if c.escalations %}
+    <div class="note-box attention-box"><b>For a human:</b>
+      <ul class="plain">{% for text in c.escalations %}<li>{{ text }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+
+    {% for p in c.pages %}
+    <section class="page" aria-label="{{ p.label }}">
+      <div class="p-head">
+        <h3>{{ p.label }}</h3>{% if p.name %}<span class="by">{{ p.name }}</span>{% endif %}
+        {% if p.links %}<span class="links">{% for text, url in p.links %}<a href="{{ url }}" rel="noopener" target="_blank">{{ text }}</a>{% endfor %}</span>{% endif %}
+      </div>
+      {% for f in p.findings %}
+      <div class="finding tone-{{ f.tone }}" id="{{ f.id }}">
+        <div class="f-head">
+          <span class="badge tone-{{ f.tone }}" title="{{ f.class_help }}">{{ f.class_label }}</span>
+          <span class="where">{{ f.where }}</span>
+          <span class="value">{{ f.value }}</span>
+          {% if f.label %}<span class="label">{{ f.label }}</span>{% endif %}
+          <span class="badge status-{{ f.status }}">{{ f.status_label }}</span>
+        </div>
+        <p>{{ f.explanation }}</p>
+        {% if f.quote %}<blockquote>{{ f.quote }}</blockquote>{% endif %}
+        <dl class="facts">
+          {% if f.evidence %}<dt>INE figures</dt><dd>{% for e in f.evidence %}{{ e.source }}{% if e.definition == "projection" %} for {{ e.year }}{% endif %}: <b>{{ e.value|figure }}</b>{{ " · " if not loop.last }}{% endfor %}</dd>{% endif %}
+          {% if f.proposal %}<dt>Correction</dt><dd>{{ f.proposal }}</dd>{% endif %}
+          <dt>Critic</dt><dd>{% if f.score is not none %}<b>{{ f.score }}/9</b>{% if f.criteria %} ({% for name, points in f.criteria %}{{ name }} {{ points }}{{ " · " if not loop.last }}{% endfor %}){% endif %} · {% endif %}{{ f.rounds }} round{{ "s" if f.rounds != 1 }} · reviewed by {{ f.reviewed_by }}</dd>
+          {% if f.critic_issues %}<dt>Critic noted</dt><dd>{{ f.critic_issues|join(" ") }}</dd>{% endif %}
+          <dt>Classified by</dt><dd>{{ f.classified_by }}{% if f.confidence is not none %} · confidence {{ f.confidence }}{% endif %}</dd>
+        </dl>
+      </div>
+      {% endfor %}
+      {% if p.draft %}
+      {% set d = p.draft %}
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          {% if d.replaces and d.replaces.value %}<span class="by">replaces <code>{{ d.replaces.value }}</code>{% if d.replaces.year %} ({{ d.replaces.year }}){% endif %}</span>{% endif %}
+          {% if d.status == "approved" %}
+          <span class="badge status-approved">passed the Critic{% if d.score is not none %} · {{ d.score }}/9{% endif %}{% if d.revisions > 1 %} after a revision{% endif %}</span>
+          {% else %}
+          <span class="badge status-escalated">{{ d.status }}{% if d.score is not none %} · {{ d.score }}/9{% endif %}</span>
+          {% endif %}
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-{{ c.cut }}-{{ d.key }}">Copy</button><pre id="draft-{{ c.cut }}-{{ d.key }}">{{ d.body }}</pre></div>
+        {% if d.summary %}<p class="summary-line"><span>Edit summary</span>{{ d.summary }}</p>{% endif %}
+        {% if d.text_changes %}
+        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+          {% for change in d.text_changes %}<li>“{{ change.quote }}”: {% if change.replace %}replace <code>{{ change.replace }}</code> with <code>{{ change.by }}</code>{% if change.note %}; {{ change.note }}{% endif %}{% else %}{{ change.note }}{% endif %}</li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if d.notes %}<ul class="plain">{% for note in d.notes %}<li>{{ note }}</li>{% endfor %}</ul>{% endif %}
+        {% if d.links %}<div class="links">{% for text, url in d.links %}<a href="{{ url }}" rel="noopener" target="_blank">{{ text }}</a>{% endfor %}</div>{% endif %}
+      </div>
+      {% endif %}
+    </section>
+    {% else %}
+    <p class="empty">Every figure checked matches the official one it claims to be.</p>
+    {% endfor %}
+
+    {% if c.checks %}
+    <details>
+      <summary>{{ c.checks|length }} figure{{ "s" if c.checks|length != 1 }} consistent or not checkable</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+        {% for check in c.checks %}<tr><td>{{ check.where }}</td><td>{{ check.value }}{% if check.label %} <span class="by">({{ check.label }})</span>{% endif %}</td><td>{{ check.result }}</td><td>{{ check.note }}</td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </details>
+    {% endif %}
+  </article>
+  {% else %}
+  <p class="empty">No comunas in this run.</p>
+  {% endfor %}
+  <p class="empty" id="no-match" hidden>No comuna matches the filter.</p>
+</main>
+{% endif %}
+<footer><div class="wrap">
+  {% if result.trace_file %}<p>Agent trace: <code>{{ result.trace_file }}</code>{% if result.world_model_audit_file %} · World Model audit log: <code>{{ result.world_model_audit_file }}</code> ({{ result.world_model_audit_entries }} entries){% endif %} · result: <code>output/{{ result.run_id }}/result.json</code></p>{% endif %}
+  <p>Official figures: INE (Instituto Nacional de Estadísticas), CC BY-SA 4.0. Wikipedia text: CC BY-SA 4.0. Wikidata: CC0. Generated by FactSync Chile, {{ generated_at }}.</p>
+</div></footer>
+<script>
+(function () {
+  document.querySelectorAll("button.copy").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var text = document.getElementById(button.dataset.copy).textContent;
+      var done = function () { button.textContent = "Copied"; setTimeout(function () { button.textContent = "Copy"; }, 1500); };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done);
+      } else {
+        var area = document.createElement("textarea");
+        area.value = text; document.body.appendChild(area); area.select();
+        try { document.execCommand("copy"); done(); } finally { document.body.removeChild(area); }
+      }
+    });
+  });
+  var input = document.getElementById("filter-text");
+  if (!input) return;
+  var mode = "all";
+  var cards = Array.prototype.slice.call(document.querySelectorAll("article.comuna"));
+  function apply() {
+    var text = input.value.trim().toLowerCase(), shown = 0;
+    cards.forEach(function (card) {
+      var visible = (!text || card.dataset.name.indexOf(text) >= 0)
+        && (mode === "all" || (mode === "review" && card.dataset.review === "yes") || (mode === "drafts" && card.dataset.drafts === "yes"));
+      card.hidden = !visible;
+      if (visible) shown++;
+    });
+    document.getElementById("no-match").hidden = shown > 0 || !cards.length;
+  }
+  input.addEventListener("input", apply);
+  document.querySelectorAll(".filters button").forEach(function (button) {
+    button.addEventListener("click", function () {
+      mode = button.dataset.filter;
+      document.querySelectorAll(".filters button").forEach(function (b) { b.setAttribute("aria-pressed", String(b === button)); });
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>

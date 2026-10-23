@@ -22,8 +22,8 @@ Use only the figures shown. If a source not read yet could explain a figure, say
 critic_instruction.
 JSON: {{"verdicts": [{{"claim_id": "...", "class": "...", "explanation": "one or two sentences", "confidence": 0.5}}]}}"""
 
-CLAIM_FIELDS = ("id", "target", "source_name", "location", "role", "value", "value_raw", "stated_year", "basis",
-                "label", "quote", "method", "verified", "rank", "item", "statement", "missing", "reference_raw")
+CLAIM_FIELDS = ("id", "target", "source_name", "title", "revid", "location", "role", "value", "value_raw", "stated_year",
+                "basis", "label", "quote", "method", "verified", "rank", "item", "statement", "missing", "reference_raw")
 
 
 def digest(*parts):

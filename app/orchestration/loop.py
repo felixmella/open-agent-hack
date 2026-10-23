@@ -33,6 +33,7 @@ from app.engines.world_model import WorldModel
 from app.errors import RunError
 from app.knowledge import matcher
 from app.orchestration.state import Caps, ComunaState, RunState
+from app.report.html import write_report
 from app.tracing import Tracer
 
 TARGETS = ("eswiki", "enwiki", "wikidata")
@@ -56,6 +57,20 @@ def write_result(settings, result):
     out_dir = settings.output_dir / result["run_id"]
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+
+
+def write_outputs(settings, result):
+    """result.json and the review queue (report.html). A report that fails to render is a recoverable error of the
+    run, never a lost result."""
+    try:
+        path = write_report(result, settings.output_dir)
+        result["report_file"] = path.relative_to(settings.output_dir.parent).as_posix()
+    except Exception as exc:  # the result matters more than its page
+        result.setdefault("errors", []).append({"code": "report_failed", "message": f"{type(exc).__name__}: {exc}"[:300],
+                                                "stage": "output", "recoverable": True})
+        if result["status"] == "success":
+            result["status"] = "partial"
+    write_result(settings, result)
 
 
 @contextmanager
@@ -125,9 +140,12 @@ def run(run_input, settings, *, echo=True, zetaris=None, llm_client=None, world=
         error = exc if isinstance(exc, RunError) else RunError(
             "internal_error", f"{type(exc).__name__}: {exc}", stage="run", recoverable=False)
         error.result = {"run_id": run_id, "status": "error", "mode": mode_of(settings), "error": error.to_dict(),
-                        "trace_file": relative(tracer.path, settings),
+                        "trace_file": relative(tracer.path, settings), "report_file": None,
                         "execution_time_seconds": round(time.monotonic() - started, 1)}
-        write_result(settings, error.result)
+        try:
+            write_outputs(settings, error.result)
+        except OSError:
+            pass  # the error itself is what has to reach the caller; the trace below still records it
         tracer.event("Orchestrator", "finish_run", status="error",
                      output_summary=f"{error.code} in {error.stage}: {error.message}"[:300])
         if error is exc:
@@ -236,9 +254,10 @@ def finish(run_id, settings, tracer, started, world, audit_start, state, plan, r
         "trace_file": relative(tracer.path, settings),
         "world_model_audit_file": relative(audit_path, settings),
         "world_model_audit_entries": exported,
+        "report_file": None,
         "execution_time_seconds": round(time.monotonic() - started, 1),
     }
-    write_result(settings, result)
+    write_outputs(settings, result)
     tracer.event("Orchestrator", "finish_run", status=result["status"],
                  output_summary=f"{len(comunas)} comunas, {len(findings)} findings, {result['summary']['drafts']} drafts, "
                                 f"{len(state.escalations)} escalations in {result['execution_time_seconds']} s")
@@ -347,10 +366,11 @@ def comuna_result(comuna, world, state):
             "escalated" if any(e.get("finding_id") == finding["id"] for e in comuna.escalations) else "pending"
         findings.append({**{k: finding[k] for k in ("id", "target", "aspect", "class", "explanation", "confidence",
                                                      "method", "claim", "evidence", "proposal")},
+                         "model": finding.get("model"),
                          "status": status,
                          "critic": {"score": result.get("score"), "criteria": result.get("criteria"),
                                     "rounds": len(rounds), "failures": result.get("failures", []),
-                                    "notes": result.get("notes", [])}})
+                                    "notes": result.get("notes", []), "judged_by_model": result.get("judged_by_model")}})
     return {
         "cut": comuna.cut, "name": comuna.name, "status": comuna.status,
         "official": {d: {y: r["value"] for y, r in sorted(t.items()) if d == "census" or y in (2017, 2020, 2024)}

@@ -55,6 +55,7 @@ def main():
         "drafts": {k: v.get("status") for k, v in c["drafts"].items() if isinstance(v, dict) and "target" in v},
     } for c in result["comunas"]]
     summary["output"] = f"output/{result['run_id']}/result.json"
+    summary["report"] = result["report_file"]
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
 

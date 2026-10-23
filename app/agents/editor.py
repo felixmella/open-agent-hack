@@ -229,7 +229,9 @@ class Editor:
             drafts["wikidata"]["edit_summary"] = f"Add Census {correction['year']} population ({new_en}) from INE"
         if reply:
             drafts["explanation"] = str(reply[0]["explanation"])[:1500]
-        else:
-            drafts["explanation"] = " ".join(dict.fromkeys(f["explanation"] for f in findings[:6])) + \
+        else:  # each page's main finding, in page order, each sentence once
+            leads = [next(f for f in findings if f["id"] == main[k]) for k in mine]
+            sentences = [s for f in leads for s in re.split(r"(?<=\.)\s+", f["explanation"].strip()) if s]
+            drafts["explanation"] = " ".join(dict.fromkeys(sentences)) + \
                 f" The drafts give the Census {correction['year']} count, {new_en}, cited to INE."
         drafts["explanation_by"] = model_note(reply[1]) if reply else {"method": "rules"}
