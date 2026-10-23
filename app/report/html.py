@@ -213,7 +213,7 @@ def timeline(result):
     escalations, draft revisions and data fallbacks, in round order."""
     events = []
     for discovery in result.get("discoveries") or []:
-        events.append((discovery["round"], 1, "discovery", "Planner",
+        events.append((discovery["round"], 1, f"round {discovery['round']}", "discovery", "Planner",
                        f"added {SOURCES.get(discovery['source'], discovery['source'])}: {discovery.get('reason', '')}",
                        decided_by(discovery)))
     for comuna in result.get("comunas") or []:
@@ -221,26 +221,44 @@ def timeline(result):
         history = (comuna.get("critic") or {}).get("history") or []
         for i, review in enumerate(history):
             if not review["approved"] and review.get("fix"):
-                fix, rejected = review["fix"], len(review["rejected"])
-                events.append((review["round"], 0, "reject", "Critic",
-                               f"rejected {name} ({rejected} finding{'s' if rejected != 1 else ''} below 7/9) and sent "
-                               f"one fix to the {fix['target_agent']}: {fix['instruction']}", None))
+                events.append((review["round"], 0, f"round {review['round']}", "reject", "Critic",
+                               rejection_text(name, review), None))
             elif review["approved"] and i:
-                events.append((review["round"], 2, "approve", "Critic", f"approved {name} after the fix", None))
+                events.append((review["round"], 2, f"round {review['round']}", "approve", "Critic",
+                               f"approved {name} after the fix", None))
         for revision in (comuna.get("critic") or {}).get("draft_reviews") or []:
             for key, review in revision.items():
                 if not review["approved"]:
-                    events.append((99, 3, "reject", "Critic", f"rejected the {DRAFTS.get(key, key)} draft for {name} "
-                                                              f"({review['score']}/9): {review.get('instruction') or ''}", None))
+                    events.append((100 + review["round"], 3, f"draft review {review['round']}", "reject", "Critic",
+                                   f"rejected the {DRAFTS.get(key, key)} draft for {name} ({review['score']}/9): "
+                                   f"{review.get('instruction') or ''}", None))
     for escalation in result.get("escalations") or []:
-        if escalation.get("kind") == "data_fallback":
-            events.append((0, 0, "fallback", "Orchestrator", escalation["reason"], None))
+        kind = escalation.get("kind")
+        if kind == "data_fallback":
+            events.append((0, 0, "reading", "fallback", "Orchestrator", escalation["reason"], None))
+        elif kind == "entity_resolution":
+            events.append((0, 1, "planning", "escalate", "Planner", f"asks a human: {escalation_text(escalation)}", None))
         else:
-            events.append((escalation.get("round") or 99, 4, "escalate", "Orchestrator",
+            when = f"round {escalation['round']}" if escalation.get("round") else "drafts"
+            events.append((escalation.get("round") or 200, 4, when, "escalate", "Orchestrator",
                            f"escalated to a human: {escalation_text(escalation)}", None))
     events.sort(key=lambda e: (e[0], e[1]))
-    return [{"round": r if 0 < r < 99 else None, "kind": kind, "agent": agent, "text": text, "by": by}
-            for r, _, kind, agent, text, by in events]
+    return [{"when": when, "kind": kind, "agent": agent, "text": text, "by": by}
+            for _, _, when, kind, agent, text, by in events]
+
+
+def rejection_text(name, review):
+    """A Critic rejection in one line: discovery requests by their figures, other fixes by their instruction."""
+    fix, rejected = review["fix"], len(review["rejected"])
+    if fix.get("check") == "unread_official_source" and fix.get("figures"):
+        figures = "; ".join(f"{figure(x['value'])} ({x['source']}, '{x['label']}')" for x in fix["figures"])
+        verb = "match" if len(fix["figures"]) > 1 else "matches"
+        return (f"rejected {name}: {figures} {verb} no official figure read so far, so it sent the Planner to read "
+                f"an official source before anything is classified")
+    instruction = fix["instruction"] if len(fix["instruction"]) <= 240 else \
+        fix["instruction"][:237].rsplit(" ", 1)[0] + "…"
+    return (f"rejected {name} ({rejected} finding{'s' if rejected != 1 else ''} below 7/9) and sent one fix to the "
+            f"{fix['target_agent']}: {instruction}")
 
 
 def model_line(usage):
