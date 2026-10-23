@@ -96,3 +96,14 @@ def test_drafts_are_checked_for_figure_source_and_wording(tmp_path):
     assert not review["checks"]["figures_faithful"] and "27,500" in review["instruction"]
     wrong_source = {**drafts["eswiki"], "wikitext": drafts["eswiki"]["wikitext"].replace("censo2024.ine.gob.cl", "example.org")}
     assert not critic.review_draft(comuna, "eswiki", wrong_source, drafts["explanation"], evidence, table, 1)["approved"]
+    # Spanish Wikipedia often groups thousands with a non-breaking space, and the Editor keeps the article's style
+    spaced = {**drafts["eswiki"], "wikitext": drafts["eswiki"]["wikitext"].replace("25.795", "25&nbsp;795")}
+    review = critic.review_draft(comuna, "eswiki", spaced, drafts["explanation"], evidence, table, 1)
+    assert review["checks"]["figure"] and review["approved"]
+
+
+def test_years_a_cited_reference_names_count_as_evidence():
+    from app.agents.critic import allowed_figures, figures_in
+    assert figures_in("1&nbsp;472 y 10 186 y 2.017") == {1472, 10186, 2017}
+    citation = {"kind": "citation", "source": "ine.cl", "location": "infobox reference", "years": [2007]}
+    assert 2007 in allowed_figures([citation]) and 2007 not in allowed_figures([])

@@ -96,6 +96,8 @@ def test_without_a_model_every_step_takes_its_deterministic_path(settings):
     assert finding(comuna(result, "HUALQUI"), "es", location="infobox")["class"] == "different_definition"
     assert comuna(result, "GUAITECAS")["drafts"]["explanation_by"] == {"method": "rules"}
     assert result["summary"]["drafts"] == 9
+    # Quirihue's English infobox has the right figure (11,746) under the wrong label: the summary doesn't say "was 11746"
+    assert "(same figure: " in comuna(result, "QUIRIHUE")["drafts"]["enwiki"]["edit_summary"]
 
 
 def test_a_failing_model_is_traced_and_replaced_by_code(settings):

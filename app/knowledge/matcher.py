@@ -298,10 +298,12 @@ def assess_sourcing(claim, citation, value_verdict):
     years = (citation or {}).get("years") or []
     if match and match["definition"] == "census" and years and match["year"] not in years:
         domains = ", ".join(citation.get("domains") or []) or "its source"
+        reference = {"kind": "citation", "source": domains, "location": "infobox reference", "years": list(years)}
         return {"class": "mislabelled_vintage",
                 "explanation": f"The reference ({domains}) names {', '.join(map(str, years))}, but the figure is "
                                f"INE's Census {match['year']} count.",
-                "confidence": 0.8, "evidence": [claim_evidence(claim), official_evidence(match)], "ambiguous": False,
+                "confidence": 0.8, "evidence": [claim_evidence(claim), official_evidence(match), reference],
+                "ambiguous": False,
                 "unexplained": False, "candidates": [], "match": match,
                 "proposal": {"action": "add_citation", "source_key": f"census_{max(held_years())}"}}
     return None

@@ -229,7 +229,7 @@ It passes the engine's 8 official conformance checks, ported one-to-one in `test
 .venv\Scripts\python -m pytest
 ```
 
-99 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
+100 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
 
 - the World Model's 8 conformance checks;
 - the matcher, the wikitext parser, the Extractor's verbatim checks and the Critic's rubric;
@@ -253,7 +253,7 @@ zetaris/               Lightning SQL that registers the sources and views, and t
 scripts/               zetaris_sql · upload_filestore · build_wikipedia_sql · prepare_ine_projections ·
                        snapshot_sample_data · verify_readonly · batch_national · smoke_test
 data/                  official/ (INE projections file) · reference/ (census facts) · sample/ (recorded view rows)
-input_examples/        four example inputs            tests/   99 tests
+input_examples/        four example inputs            tests/   100 tests
 ```
 
 ## Limitations

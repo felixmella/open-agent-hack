@@ -92,6 +92,8 @@ def test_references():
     cited_2017 = assess_sourcing(claim(11746, reference_raw="<ref>censo2017.cl</ref>"), {"years": [2017],
                                  "domains": ["censo2017.cl"]}, match)
     assert cited_2017["class"] == "mislabelled_vintage"
+    assert {"kind": "citation", "source": "censo2017.cl", "location": "infobox reference", "years": [2017]} \
+        in cited_2017["evidence"]  # the explanation names 2017, so the evidence must hold it
 
 
 def test_wikidata_items_without_the_2024_count_or_a_preferred_statement():

@@ -46,13 +46,18 @@ JSON: {{"reviews": [{{"finding_id": "...", "class_fits": true, "explanation_fait
 
 
 def figures_in(text):
-    return {int(re.sub(r"\D", "", token)) for token in FIGURES.findall(str(text or ""))}
+    """The figures a text states, however it groups thousands: 25,795, 25.795, 25 795, or with a non-breaking
+    space as Spanish Wikipedia writes them (25&nbsp;795)."""
+    text = re.sub(r"&nbsp;|&#160;|&thinsp;|[   ]", " ", str(text or ""))
+    return {int(re.sub(r"\D", "", token)) for token in FIGURES.findall(text)}
 
 
 def allowed_figures(evidence, extra=()):
-    """Figures an explanation may state: those in the evidence, and differences between them."""
+    """Figures an explanation may state: those in the evidence (and the years a cited reference names), and
+    differences between them."""
     numbers = set(extra)
     for item in evidence:
+        numbers |= {y for y in item.get("years") or [] if isinstance(y, int)}
         for key in ("value", "year", "value_raw", "label", "quote", "source"):
             value = item.get(key)
             numbers |= {value} if isinstance(value, int) else figures_in(value)

@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from app.agents.llm import fits, model_note
 from app.knowledge.matcher import fmt, latest_census
 from app.knowledge.taxonomy import census_facts, official_source
+from app.knowledge.wikitext import parse_population
 
 ES_MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
              "noviembre", "diciembre"]
@@ -216,15 +217,18 @@ class Editor:
                 continue
             finding = lead[target]
             old = ((drafts[target].get("replaces") or {}).get("value") or "sin cifra").replace("&nbsp;", " ")
+            same = parse_population(old) == correction["value"]  # right figure, wrong label or reference
             if reply and reply[0].get(f"{target[:2]}_summary"):
                 drafts[target]["edit_summary"] = str(reply[0][f"{target[:2]}_summary"])[:500]
             elif target == "eswiki":
                 figure = format_like(new_es, old)
                 drafts[target]["edit_summary"] = (f"Población según el Censo {correction['year']} del INE: {figure} hab. "
-                                                  f"(antes {old}: {REASON_ES.get(finding['class'], finding['class'])}).")
+                                                  f"({'misma cifra' if same else f'antes {old}'}: "
+                                                  f"{REASON_ES.get(finding['class'], finding['class'])}).")
             else:
                 drafts[target]["edit_summary"] = (f"Population per INE's {correction['year']} census: {new_en} "
-                                                  f"(was {old}: {REASON_EN.get(finding['class'], finding['class'])}).")
+                                                  f"({'same figure' if same else f'was {old}'}: "
+                                                  f"{REASON_EN.get(finding['class'], finding['class'])}).")
         if "wikidata" in drafts:
             drafts["wikidata"]["edit_summary"] = f"Add Census {correction['year']} population ({new_en}) from INE"
         if reply:
