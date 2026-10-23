@@ -6,7 +6,7 @@ approved one. The model writes the edit summaries and the explanation for the re
 import re
 from datetime import datetime, timezone
 
-from app.agents.llm import model_note
+from app.agents.llm import fits, model_note
 from app.knowledge.matcher import fmt, latest_census
 from app.knowledge.taxonomy import census_facts, official_source
 
@@ -183,14 +183,32 @@ class Editor:
         """Edit summaries and the reviewer's explanation: from the model, or from templates."""
         lead = {target: next((f for f in findings if f["target"] == target[:2] and f["aspect"] == "value"), None)
                 or next((f for f in findings if f["target"] == target[:2]), None) for target in ("eswiki", "enwiki")}
-        payload = {"comuna": comuna.name, "new_figure": {"value": correction["value"], "year": correction["year"],
-                                                         "source": "INE, Censo de Población y Vivienda 2024"},
-                   "drafts": {k: {"replaces": v.get("replaces"), "findings": [
-                       {"class": f["class"], "explanation": f["explanation"]} for f in findings if f["id"] in v["findings"]]}
-                       for k, v in drafts.items()}}
-        if instruction:
-            payload["critic_instruction"] = instruction
-        reply = self.llm.ask_json(self.name, "word_drafts", PROMPT, payload, target_agent="Critic", round_no=round_no,
+
+        mine = {k: [f for f in findings if f["id"] in v["findings"]] for k, v in drafts.items()}
+        main = {k: next((f for f in fs if f["aspect"] == "value"), fs[0])["id"] for k, fs in mine.items()}
+
+        def payload(main_length, other_length):  # explanations cut to these lengths (left out at 0)
+            def replaced(draft):
+                old = dict(draft.get("replaces") or {})
+                if other_length < 600:
+                    old.pop("reference", None)
+                return old or None
+
+            def entry(key, finding):
+                length = main_length if finding["id"] == main[key] else other_length
+                return {"class": finding["class"], **({"explanation": finding["explanation"][:length]} if length else {})}
+            body = {"comuna": comuna.name, "new_figure": {"value": correction["value"], "year": correction["year"],
+                                                          "source": "INE, Censo de Población y Vivienda 2024"},
+                    "drafts": {k: {"replaces": replaced(v), "findings": [entry(k, f) for f in mine[k]]}
+                               for k, v in drafts.items()}}
+            if instruction:
+                body["critic_instruction"] = instruction
+            return body
+
+        # one request, made small enough to stream: shorter explanations first, then only each draft's main finding
+        levels = ((600, 600), (240, 240), (240, 100), (240, 0), (160, 0))
+        body = next((p for p in (payload(*level) for level in levels) if fits(p)), payload(0, 0))
+        reply = self.llm.ask_json(self.name, "word_drafts", PROMPT, body, target_agent="Critic", round_no=round_no,
                                   validate=lambda d: None if d.get("explanation") else "no explanation") if self.llm else None
         new_es, new_en = correction["value"], fmt(correction["value"])
         for target in ("eswiki", "enwiki"):

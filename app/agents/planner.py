@@ -8,7 +8,7 @@ and the model chooses and justifies which source to add.
 from dataclasses import dataclass, field
 
 from app.adapters.zetaris import as_str
-from app.agents.llm import model_note
+from app.agents.llm import fits, model_note
 from app.engines.world_model import normalize_name
 
 DEFAULT_SOURCES = ["official_census", "wikidata"]
@@ -114,10 +114,21 @@ class Planner:
             self.tracer.event(self.name, "discover_source", round_no=round_no, status="skipped",
                               output_summary="no official source left to add (all read, declined or cap reached)")
             return None
-        payload = {"unexplained_figures": requests, "sources_read": {s: CATALOG[s] for s in plan.sources},
-                   "sources_available": options}
+        def payload(figures, described=True):
+            body = {"unexplained_figures": figures,
+                    "sources_read": {s: CATALOG[s] for s in plan.sources} if described else plan.sources,
+                    "sources_available": options}
+            if len(figures) < len(requests):
+                body["more_unexplained_figures"] = len(requests) - len(figures)
+            return body
+
+        body = payload(requests)  # one decision for every figure: shrink the request until it can stream
+        if not fits(body):
+            body = payload(requests, described=False)
+        while not fits(body) and len(body["unexplained_figures"]) > 1:
+            body = payload(body["unexplained_figures"][:-1], described=False)
         reply = self.llm.ask_json(
-            self.name, "choose_source", DISCOVERY_PROMPT, payload, target_agent="Retriever", round_no=round_no,
+            self.name, "choose_source", DISCOVERY_PROMPT, body, target_agent="Retriever", round_no=round_no,
             validate=lambda d: None if d.get("source") in (*options, None) else f"unknown source {d.get('source')!r}",
         ) if self.llm else None
         if reply:

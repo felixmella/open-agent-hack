@@ -11,6 +11,12 @@ streamed reply starts at once, so long reasoning no longer runs into that deadli
 Every request also sends `meterless-tier-split: off`. By default Nightshift splits a request it takes for code (our
 JSON-shaped prompts) into a `planning` and a `code_patch` phase: two model calls, whose internal calls can still hit the
 deadline. Off, each request is one phase on one lane, so one call answers it and the receipt describes that call.
+
+Requests must also stay small. Nightshift scores each request's difficulty from its non-system messages and sends one
+scoring QUALITY_RACE_FLOOR or more down its best-of-N "quality race", where nothing streams until the lanes finish
+(orchestrator.js `qualityLane`): the provider call is buffered again and dies at the 45 s deadline. Receipts of such
+requests carry `quality_race: {active: true, reason: "difficulty"}`. `nightshift_difficulty` mirrors the estimate, and
+the agents split their work into requests that score below the floor (app/agents/llm.py).
 """
 import json
 import re
@@ -21,6 +27,25 @@ import httpx
 from openai import APIConnectionError, APIError, APITimeoutError, OpenAI, RateLimitError
 
 APP_HEADERS = {"meterless-app": "open-agent-hack", "meterless-scope": "user", "meterless-tier-split": "off"}
+QUALITY_RACE_FLOOR = 0.6  # Nightshift's default qualityRaceMinDifficulty
+
+
+def nightshift_difficulty(text):
+    """Nightshift 1.2.1's difficulty estimate for a request's non-system text, in [0, 1] (engine/js/engine/router.js,
+    `difficulty`): length up to 0.6 at 1,440 characters, plus bumps for code, reasoning words and multi-step phrasing."""
+    score = min(0.6, len(text) / 2400)
+    if re.search(r"```|\bdef \b|\bclass \b|\bfunction\b|\bimport \b|SELECT |=>|\)\s*\{", text):
+        score += 0.2
+    if re.search(r"(prove|derive|optimi[sz]|algorithm|complexity|architect|refactor|trade-?off|explain why|"
+                 r"step[- ]by[- ]step|reason through)", text, re.I):
+        score += 0.2
+    if re.search(r"(multi-step|and then|after that|finally|first.*second|1\.\s.*2\.\s)", text, re.I):
+        score += 0.1
+    if text.count("?") >= 2:
+        score += 0.05
+    if len(text) < 80 and "```" not in text:
+        score -= 0.15
+    return max(0.0, min(1.0, score))
 
 
 class LLMError(RuntimeError):
@@ -51,10 +76,16 @@ class LLMResult:
     provider_model: str | None = None
     winning_route: str | None = None
     usage: dict = field(default_factory=dict)
+    cache_status: str | None = None  # Nightshift's response cache: "miss", or "exact" when it replayed a stored answer
 
 
 def receipt(reply):
     return (getattr(reply, "model_extra", None) or {}).get("meterless") or {}
+
+
+def cache_status(meterless):
+    cache = meterless.get("cache")
+    return cache.get("status") if isinstance(cache, dict) else None
 
 
 def routed_model(reply):
@@ -164,6 +195,7 @@ class NightshiftClient:
                 provider_model=meterless.get("provider_model"),
                 winning_route=(meterless.get("winning_route") or {}).get("model"),
                 usage=reply["usage"] or meterless.get("usage") or {},
+                cache_status=cache_status(meterless),
             )
         raise LLMError(f"Nightshift request failed after {attempt} attempt(s): {failure_detail(error)}")
 
@@ -224,6 +256,7 @@ class NightshiftClient:
                 provider_model=meterless.get("provider_model"),
                 winning_route=(meterless.get("winning_route") or {}).get("model"),
                 usage=reply.usage.model_dump(exclude_none=True) if reply.usage else {},
+                cache_status=cache_status(meterless),
             )
         raise LLMError(f"Nightshift request failed after {self._retries + 1} attempts: {failure_detail(error)}")
 

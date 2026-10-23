@@ -4,12 +4,12 @@ Code reads what it can read reliably: the reference behind the infobox figure (n
 {{Historical populations}} table, and the sentences that hold a figure and talk about population. The model reads
 those sentences: which ones state the whole comuna's population, with which figure, year and basis. Code checks
 every claim before it is kept: the figure (and its year) must appear verbatim in its sentence, and the sentence
-verbatim in the article. When the model is unavailable, sentence patterns take
-its place, and the claims say so.
+verbatim in the article. Sentences go to the model in batches small enough for one streamed request; when the model is
+unavailable, or a request fails, sentence patterns read those sentences instead, and the claims say so.
 """
 import re
 
-from app.agents.llm import model_note
+from app.agents.llm import batched, model_note
 from app.knowledge.taxonomy import census_facts, is_official_domain
 from app.knowledge.wikitext import (FIGURE, POPULATION_WORDS, article_passages, citation_facts, historical_populations,
                                     parse_population, quote_supported, resolve_reference, rule_claims, sentences,
@@ -91,12 +91,16 @@ class Extractor:
                                  "property": "population", "location": "history_table", "extracted_by": self.name,
                                  "method": "rules", "value": row["value"], "value_text": str(row["value"]),
                                  "stated_year": row["year"], "basis": "census", "quote": row["raw"], "verified": True})
-        claims, note, rejected, candidates = self._prose(comuna, source, wikitext, infobox, round_no, instruction)
+        claims, rejected, candidates = self._prose(comuna, source, wikitext, infobox, round_no, instruction)
+        methods = set()
         for claim in claims:
+            note = claim.pop("note")
+            methods.add(note["method"])
             observations.append({"entity": entity, "source": source, "provenance": {**base, **note},
                                  "property": "population", "extracted_by": self.name, "method": note["method"],
                                  **claim, "verified": True})
-        summary = (f"{len(claims)} prose claim(s) kept ({note['method']}) from {candidates} candidate sentence(s), "
+        methods = "+".join(sorted(methods)) or "none"
+        summary = (f"{len(claims)} prose claim(s) kept ({methods}) from {candidates} candidate sentence(s), "
                    f"rejected {len(rejected)} by the quote check; {len(table)} history-table row(s); "
                    f"infobox reference: {', '.join(observations[0]['domains']) if infobox and observations[0]['domains'] else 'none found'}")
         if rejected:
@@ -112,24 +116,39 @@ class Extractor:
                                           f"{infobox['payload'].get('stated_year_raw') or ''}").split())
             candidates["infobox"] = {"text": field, "location": "infobox"}
         if not candidates:
-            return [], {"method": "rules"}, [], 0
-        payload = {"comuna": comuna.name, "article": source["title"],
-                   "sentences": {key: c["text"] for key, c in candidates.items()}}
-        if instruction:
-            payload["critic_instruction"] = instruction
-        reply = self.llm.ask_json(
-            self.name, "extract_claims", PROMPT, payload, target_agent="WorldModel", round_no=round_no,
-            validate=lambda d: None if isinstance(d.get("claims"), list) else "no 'claims' list",
-        ) if self.llm else None
-        if reply:
-            note, raw_claims = model_note(reply[1]), []
+            return [], [], 0
+
+        def payload(keys):
+            body = {"comuna": comuna.name, "article": source["title"],
+                    "sentences": {key: candidates[key]["text"] for key in keys}}
+            if instruction:
+                body["critic_instruction"] = instruction
+            return body
+
+        groups = batched(list(candidates), payload)
+        raw_claims, failed = [], []
+        for keys in groups:
+            reply = self.llm.ask_json(
+                self.name, "extract_claims", PROMPT, payload(keys), target_agent="WorldModel", round_no=round_no,
+                validate=lambda d: None if isinstance(d.get("claims"), list) else "no 'claims' list",
+            ) if self.llm else None
+            if not reply:
+                failed.append(keys)
+                continue
+            note = model_note(reply[1])
             for raw in reply[0]["claims"]:
-                sentence = candidates.get(str(raw.get("sentence"))) if isinstance(raw, dict) else None
-                raw_claims.append({**raw, "quote": sentence["text"], "location": sentence["location"]} if sentence
-                                  else {"value_text": raw.get("value_text") if isinstance(raw, dict) else None,
-                                        "quote": None})
-        else:
-            note, raw_claims = {"method": "rules"}, rule_claims(passages)
+                key = str(raw.get("sentence")) if isinstance(raw, dict) else None
+                sentence = candidates[key] if key in keys else None
+                raw_claims.append({**raw, "quote": sentence["text"], "location": sentence["location"], "note": note}
+                                  if sentence else {"value_text": raw.get("value_text") if isinstance(raw, dict) else None,
+                                                    "quote": None})
+        rules = {"method": "rules"}
+        if len(failed) == len(groups):  # no model reading at all: patterns over the whole article
+            raw_claims = [{**c, "note": rules} for c in rule_claims(passages)]
+        else:  # patterns over the sentences whose request failed
+            raw_claims += [{**c, "note": rules} for keys in failed for c in rule_claims(
+                [{"section": candidates[k]["location"], "text": candidates[k]["text"]}
+                 for k in keys if candidates[k]["location"] != "infobox"])]
         kept, rejected, seen = [], [], set()
         for raw in raw_claims:
             year = raw.get("year")
@@ -152,8 +171,8 @@ class Extractor:
             seen.add(key)
             basis = raw.get("basis") if raw.get("basis") in BASES else "unspecified"
             kept.append({"location": raw["location"], "value": value, "value_text": value_text, "stated_year": year,
-                         "basis": basis, "quote": re.sub(r"\s+", " ", quote)})
-        return kept, note, rejected, len(candidates)
+                         "basis": basis, "quote": re.sub(r"\s+", " ", quote), "note": raw["note"]})
+        return kept, rejected, len(candidates)
 
 
 def candidate_sentences(passages):

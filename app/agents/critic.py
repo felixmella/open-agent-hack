@@ -17,7 +17,7 @@ import re
 from itertools import combinations
 
 from app.agents.analyst import build_claims, claims_first
-from app.agents.llm import model_note
+from app.agents.llm import batched, model_note
 from app.agents.planner import CATALOG
 from app.knowledge import matcher
 from app.knowledge.taxonomy import census_facts, describe_classes, official_source
@@ -125,30 +125,37 @@ class Critic:
 
     def judge(self, comuna, findings, table, round_no):
         """The model's reading of each new or changed finding that is a judgment call (made by the model, or of a
-        class that needs judgment): does the class fit, is the explanation faithful."""
+        class that needs judgment): does the class fit, is the explanation faithful. Findings go in batches small
+        enough for one streamed request each."""
         findings = [f for f in findings if f["method"] == "llm" or f["class"] in JUDGED]
         if not findings or not self.llm:
             return {}
         official = {d: {y: r["value"] for y, r in sorted(t.items()) if d == "census" or y in (2017, 2020, 2024)}
                     for d, t in table.items() if t}
-        payload = {"comuna": comuna.name, "official_figures_read": official, "findings": [{
-            "finding_id": f["id"], "class": f["class"], "explanation": f["explanation"],
-            "made_by": "model" if f["method"] == "llm" else "code",
-            "claim": {k: f["claim"].get(k) for k in ("source_name", "location", "value", "value_raw", "label", "quote")
-                      if f["claim"].get(k) is not None},
-            "official_evidence": [{k: e[k] for k in ("source", "definition", "year", "value")}
-                                  for e in f["evidence"] if e["kind"] == "official"]} for f in findings]}
-        classes = describe_classes(sorted({f["class"] for f in findings}))
-        reply = self.llm.ask_json(self.name, "review", PROMPT.format(classes=classes), payload,
-                                  target_agent="Analyst", round_no=round_no,
-                                  validate=lambda d: None if isinstance(d.get("reviews"), list) else "no 'reviews' list")
-        if not reply:
-            return {}
-        note = model_note(reply[1])
-        return {str(r.get("finding_id")): {"class_fits": r.get("class_fits") is not False,
-                                           "explanation_faithful": r.get("explanation_faithful") is not False,
-                                           "note": str(r.get("note") or "")[:300], "model": note}
-                for r in reply[0]["reviews"] if isinstance(r, dict)}
+
+        def payload(group):
+            return {"comuna": comuna.name, "official_figures_read": official, "findings": [{
+                "finding_id": f["id"], "class": f["class"], "explanation": f["explanation"],
+                "made_by": "model" if f["method"] == "llm" else "code",
+                "claim": {k: f["claim"].get(k) for k in ("source_name", "location", "value", "value_raw", "label", "quote")
+                          if f["claim"].get(k) is not None},
+                "official_evidence": [{k: e[k] for k in ("source", "definition", "year", "value")}
+                                      for e in f["evidence"] if e["kind"] == "official"]} for f in group]}
+
+        judgments = {}
+        for group in batched(findings, payload):
+            classes = describe_classes(sorted({f["class"] for f in group}))
+            reply = self.llm.ask_json(self.name, "review", PROMPT.format(classes=classes), payload(group),
+                                      target_agent="Analyst", round_no=round_no,
+                                      validate=lambda d: None if isinstance(d.get("reviews"), list) else "no 'reviews' list")
+            if not reply:
+                continue
+            note = model_note(reply[1])
+            judgments.update({str(r.get("finding_id")): {"class_fits": r.get("class_fits") is not False,
+                                                         "explanation_faithful": r.get("explanation_faithful") is not False,
+                                                         "note": str(r.get("note") or "")[:300], "model": note}
+                              for r in reply[0]["reviews"] if isinstance(r, dict)})
+        return judgments
 
     def score(self, finding, claim, table, claims, open_sources, judgment):
         failures, notes = [], []

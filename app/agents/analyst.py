@@ -7,7 +7,7 @@ an append-only assessment attributed to the Analyst and the round.
 """
 import hashlib
 
-from app.agents.llm import model_note
+from app.agents.llm import batched, model_note
 from app.knowledge import matcher
 from app.knowledge.taxonomy import CLASSES, describe_classes
 from app.knowledge.wikitext import basis_of, strip_markup
@@ -197,37 +197,42 @@ class Analyst:
             todo.append((finding, fix, key))
         if not todo:
             return 0
-        years = {f["claim"].get("stated_year") for f, _, _ in todo} | {2017, 2024}
-        official = {d: {y: r["value"] for y, r in sorted(t.items()) if d == "census" or y in years}
-                    for d, t in table.items() if t}
-        payload = {"comuna": comuna.name, "official_figures": official, "sources_read": sources_read,
-                   "claims": [{"claim_id": f["id"], "source": f["claim"]["source_name"], "location": f["claim"]["location"],
-                               "value": f["claim"].get("value"), "value_as_written": f["claim"].get("value_raw"),
-                               "label": f["claim"].get("label"), "quote": f["claim"].get("quote"),
-                               "matcher_note": f["explanation"], "candidates": f["candidates"] or [f["class"]],
-                               **({"critic_instruction": fix["instruction"]} if fix else {})} for f, fix, _ in todo]}
-        classes = sorted({c for f, _, _ in todo for c in f["candidates"] or [f["class"]]})
-        prompt = PROMPT.format(classes=describe_classes(classes))
-        reply = self.llm.ask_json(self.name, "classify", prompt, payload, target_agent="Critic", round_no=round_no,
-                                  validate=lambda d: None if isinstance(d.get("verdicts"), list) else "no 'verdicts' list") \
-            if self.llm else None
-        verdicts = {}
-        if reply:
-            verdicts = {str(v.get("claim_id")): v for v in reply[0]["verdicts"] if isinstance(v, dict)}
+
+        def payload(group):
+            years = {f["claim"].get("stated_year") for f, _, _ in group} | {2017, 2024}
+            official = {d: {y: r["value"] for y, r in sorted(t.items()) if d == "census" or y in years}
+                        for d, t in table.items() if t}
+            return {"comuna": comuna.name, "official_figures": official, "sources_read": sources_read,
+                    "claims": [{"claim_id": f["id"], "source": f["claim"]["source_name"], "location": f["claim"]["location"],
+                                "value": f["claim"].get("value"), "value_as_written": f["claim"].get("value_raw"),
+                                "label": f["claim"].get("label"), "quote": f["claim"].get("quote"),
+                                "matcher_note": f["explanation"], "candidates": f["candidates"] or [f["class"]],
+                                **({"critic_instruction": fix["instruction"]} if fix else {})} for f, fix, _ in group]}
+
+        answers = {}  # finding id -> (the model's verdict or None, the reply's LLMResult); None when the request failed
+        for group in batched(todo, payload):
+            classes = sorted({c for f, _, _ in group for c in f["candidates"] or [f["class"]]})
+            reply = self.llm.ask_json(self.name, "classify", PROMPT.format(classes=describe_classes(classes)),
+                                      payload(group), target_agent="Critic", round_no=round_no,
+                                      validate=lambda d: None if isinstance(d.get("verdicts"), list) else "no 'verdicts' list") \
+                if self.llm else None
+            verdicts = {str(v.get("claim_id")): v for v in reply[0]["verdicts"] if isinstance(v, dict)} if reply else {}
+            for finding, _, _ in group:
+                answers[finding["id"]] = (verdicts.get(finding["id"]), reply[1]) if reply else None
         for finding, fix, key in todo:
-            answer = verdicts.get(finding["id"])
+            answer, result = answers[finding["id"]] or (None, None)
             if answer and answer.get("class") in CLASSES and answer.get("class") != "consistent":
                 try:
                     confidence = float(answer.get("confidence"))
                 except (TypeError, ValueError):
                     confidence = 0.5
                 update = {"class": answer["class"], "explanation": str(answer.get("explanation") or finding["explanation"])[:600],
-                          "confidence": round(min(max(confidence, 0.0), 0.8), 2), "method": "llm", "model": model_note(reply[1])}
+                          "confidence": round(min(max(confidence, 0.0), 0.8), 2), "method": "llm", "model": model_note(result)}
             elif fix and fix.get("suggested_class"):
                 update = {"class": fix["suggested_class"], "explanation": finding["explanation"],
                           "confidence": min(finding["confidence"], 0.6), "method": "rules (Critic's suggestion)"}
             else:
-                update = {"method": "matcher (model unavailable)" if not reply else "matcher (model gave no usable verdict)"}
+                update = {"method": "matcher (model unavailable)" if result is None else "matcher (model gave no usable verdict)"}
             finding.update(update)
             comuna.llm_verdicts[key] = update
         return len(todo)
