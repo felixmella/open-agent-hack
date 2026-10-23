@@ -90,6 +90,8 @@ def zetaris_answering(*responses):
 @pytest.mark.parametrize("responses, code, recoverable", [
     ([httpx.Response(401, text="bad token")], "zetaris_unauthorized", False),
     ([httpx.Response(400, text="no such view")], "zetaris_query_failed", False),
+    ([httpx.Response(400, text='{"msg":"User \'X\' does not have privileges to execute \'SELECT\' on: `factsync`.`v`"}')],
+     "zetaris_forbidden", False),
     ([httpx.Response(500, text="boom")] * 2, "zetaris_server_error", True),
     ([httpx.Response(200, text="<html>")] * 2, "zetaris_server_error", True),
     ([httpx.ConnectError("refused")] * 2, "zetaris_unreachable", True),

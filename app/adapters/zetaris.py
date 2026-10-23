@@ -10,7 +10,8 @@ import httpx
 
 
 class ZetarisError(RuntimeError):
-    """`code`: zetaris_not_configured, zetaris_unreachable, zetaris_unauthorized, zetaris_server_error,
+    """`code`: zetaris_not_configured, zetaris_unreachable, zetaris_unauthorized (key rejected), zetaris_forbidden
+    (the key's user may not read the view: see zetaris/05_readonly_grants.sql), zetaris_server_error,
     zetaris_query_failed, or not_in_sample (sample mode, for comunas the snapshot doesn't hold)."""
 
     def __init__(self, message, *, status=None, recoverable=True, code="zetaris_unreachable"):
@@ -20,9 +21,11 @@ class ZetarisError(RuntimeError):
         self.code = code
 
 
-def error_code(status):
+def error_code(status, text=""):
     if status in (401, 403):
         return "zetaris_unauthorized"
+    if "does not have privileges" in text:  # Zetaris answers a missing grant with HTTP 400
+        return "zetaris_forbidden"
     return "zetaris_server_error" if status >= 500 else "zetaris_query_failed"
 
 
@@ -95,7 +98,8 @@ class ZetarisClient:
                                          status=response.status_code, code="zetaris_server_error")
                 else:
                     error = ZetarisError(f"HTTP {response.status_code}: {response.text[:300]}", status=response.status_code,
-                                         recoverable=response.status_code >= 500, code=error_code(response.status_code))
+                                         recoverable=response.status_code >= 500,
+                                         code=error_code(response.status_code, response.text))
                     if response.status_code < 500:
                         raise error
             if attempt <= self._retries:

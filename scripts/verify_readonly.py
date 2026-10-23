@@ -1,12 +1,13 @@
 """Check the app's read-only Zetaris user (zetaris/05_readonly_grants.sql): for each view the agents read, the app's
-key (ZETARIS_API_KEY) must see as many rows as the admin key (ZETARIS_ADMIN_API_KEY), and the app's user
-(ZETARIS_APP_USER) must hold nothing beyond SELECT.
+key (ZETARIS_API_KEY) must see as many rows as the admin key (ZETARIS_ADMIN_API_KEY); outside the views (a source
+table under them) it must be refused; and the app's user (ZETARIS_APP_USER) must hold nothing beyond SELECT.
 
 Usage:  .venv\\Scripts\\python scripts\\verify_readonly.py
 
 Prints counts and privileges only: never a key, and the user's name is masked. Exits 1 if anything is off.
 """
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -17,6 +18,12 @@ from app.config import load_settings  # noqa: E402
 
 VIEWS = ["factsync.ine_census2024", "factsync.official_population", "factsync.wikidata_population",
          "factsync.eswiki_infobox", "factsync.enwiki_infobox"]
+OUTSIDE = "factsync_rest.ine_census2024_raw"  # a source table under the views: the app key must not read it
+
+
+def masked(text, user):
+    """Zetaris echoes user names (in capitals) in messages and grant lists: never print them."""
+    return re.sub(re.escape(user), "<app user>", str(text), flags=re.I) if user else str(text)
 
 
 def count(client, view):
@@ -41,19 +48,24 @@ def main():
         seen, expected = count(app, view), count(admin, view)
         ok = isinstance(seen, int) and seen == expected
         problems += not ok
-        print(f"{'OK  ' if ok else 'FAIL'} {view}: app key {seen}, admin key {expected}")
+        print(masked(f"{'OK  ' if ok else 'FAIL'} {view}: app key {seen}, admin key {expected}", user))
+    outside = count(app, OUTSIDE)
+    refused = isinstance(outside, str)
+    problems += not refused
+    print(masked(f"{'OK  ' if refused else 'FAIL'} {OUTSIDE} (outside the views): app key {outside}", user))
     if user:
         try:
             grants = admin.query(f"SHOW GRANT USER '{user.replace(chr(39), '')}' ON ALL")
             print(f"Grants held by the app user ({len(grants.rows)}):")
             for row in grants.rows:
-                print("   ", {k: ("<app user>" if v == user else v) for k, v in row.items()})
-            beyond = [r for r in grants.rows if any(str(v).upper() in ("INSERT", "CACHE", "ALL") for v in r.values())]
+                print("   ", masked(row, user))
+            beyond = [r for r in grants.rows if str(r.get("privilege", "")).upper() != "SELECT"
+                      or str(r.get("grant_option", "")).lower() == "true"]
             if beyond:
                 problems += 1
                 print("FAIL the app user holds more than SELECT")
         except ZetarisError as exc:
-            print(f"(couldn't list the app user's grants: {exc.code})")
+            print(masked(f"(couldn't list the app user's grants: {exc.code})", user))
     else:
         print("(ZETARIS_APP_USER is not set: grants not listed)")
     sys.exit(1 if problems else 0)

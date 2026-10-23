@@ -89,7 +89,7 @@ Run them in this order (add `--skip-exists` when re-running):
 1. In the Zetaris web UI, create the user under Management → Users, and create an API key for it.
 2. Put that key and the user's e-mail in `.env` (`ZETARIS_API_KEY`, `ZETARIS_APP_USER`).
 3. Run `zetaris/05_readonly_grants.sql` as above. It grants SELECT on the `factsync` views and nothing else.
-4. Check it with `.venv\Scripts\python scripts\verify_readonly.py`. Through the app's key, each view must show as many rows as through the admin key.
+4. Check it with `.venv\Scripts\python scripts\verify_readonly.py`. Through the app's key, each view must show as many rows as through the admin key, a source table under the views must be refused, and the user must hold nothing beyond SELECT.
 
 **4. Smoke test.** `.venv\Scripts\python scripts\smoke_test.py` checks that:
 
@@ -229,7 +229,7 @@ It passes the engine's 8 official conformance checks, ported one-to-one in `test
 .venv\Scripts\python -m pytest
 ```
 
-98 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
+99 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
 
 - the World Model's 8 conformance checks;
 - the matcher, the wikitext parser, the Extractor's verbatim checks and the Critic's rubric;
@@ -253,7 +253,7 @@ zetaris/               Lightning SQL that registers the sources and views, and t
 scripts/               zetaris_sql · upload_filestore · build_wikipedia_sql · prepare_ine_projections ·
                        snapshot_sample_data · verify_readonly · batch_national · smoke_test
 data/                  official/ (INE projections file) · reference/ (census facts) · sample/ (recorded view rows)
-input_examples/        four example inputs            tests/   98 tests
+input_examples/        four example inputs            tests/   99 tests
 ```
 
 ## Limitations
