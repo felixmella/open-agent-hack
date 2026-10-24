@@ -11,7 +11,8 @@ Wikipedia views live (Zetaris fetches them from the MediaWiki API).
 
 At the end it writes output/national-<tag>/summary.json and summary.md, computed from the runs' results: for each
 source, how many comunas show a current population figure, how many of those are INE's Census 2024 count, and why
-the others differ.
+the others differ; which official sources the Planner added and for how many figures; what became of the figures
+that could only be checked against an older census; and, per page, what changed since each comuna's last check.
 """
 import argparse
 import json
@@ -88,12 +89,27 @@ def fed_by_wikidata(comuna, target):
                for x in comuna["findings"] + comuna["checks"])
 
 
+def census_2002(comuna):
+    """The figures attributed to the 2002 census, and what became of each: consistent with INE's count, a finding
+    (and its class), or still not checkable."""
+    outcomes = Counter()
+    for item in comuna["findings"] + comuna["checks"]:
+        claim = item["claim"]
+        if claim.get("stated_year") == 2002 and claim.get("basis") == "census" and item.get("aspect", "value") == "value":
+            outcomes[item.get("class") or item["result"]] += 1
+    return outcomes
+
+
 def summarize(results, tag, use_llm):
     by_target = {t: Counter() for t in TARGETS}
     from_wikidata = {t: Counter() for t in TARGETS}
-    classes = Counter()
-    comunas = 0
+    classes, checks, unchecked_years, cited_2002, since = Counter(), Counter(), Counter(), Counter(), Counter()
+    discoveries, served = Counter(), Counter()
+    comunas = checked_before = 0
     for result in results:
+        for discovery in result.get("discoveries") or []:
+            discoveries[discovery["source"]] += 1
+            served[discovery["source"]] += len(discovery.get("requests") or [])
         for comuna in result["comunas"]:
             comunas += 1
             for target in TARGETS:
@@ -103,6 +119,14 @@ def summarize(results, tag, use_llm):
                     from_wikidata[target][outcome or "no figure"] += 1
             for finding in comuna["findings"]:
                 classes[finding["class"]] += 1
+            for check in comuna["checks"]:
+                checks[check["result"]] += 1
+                if check["result"] == "not checkable":
+                    unchecked_years[str(check["claim"].get("stated_year") or "no year")] += 1
+            cited_2002.update(census_2002(comuna))
+            if comuna.get("since_last_check"):
+                checked_before += 1
+                since.update(change["outcome"] for change in comuna["since_last_check"]["pages"].values())
     sources = {}
     for target, counts in by_target.items():
         shown = sum(n for k, n in counts.items() if k not in ("no figure", "missing_value"))
@@ -125,6 +149,10 @@ def summarize(results, tag, use_llm):
             "current_figures": figures, "differing_from_census_2024": differing,
             "share_differing": round(differing / figures, 3) if figures else None,
             "by_source": sources, "findings_by_class": dict(classes.most_common()),
+            "checks": dict(checks.most_common()), "not_checkable_by_year": dict(unchecked_years.most_common()),
+            "census_2002_figures": dict(cited_2002.most_common()),
+            "discoveries": {s: {"runs": n, "figures": served[s]} for s, n in discoveries.most_common()},
+            "since_last_check": {"comunas_checked_before": checked_before, **dict(since.most_common())},
             "runs": [{"run_id": r["run_id"], "status": r["status"], "comunas": r["summary"]["comunas"],
                       "findings": r["summary"]["findings"], "drafts": r["summary"]["drafts"],
                       "report": r.get("report_file")} for r in results]}
@@ -151,6 +179,23 @@ def markdown(summary):
                           f"their own and show Wikidata's** ({outcomes}); they are counted above under the figure they "
                           f"show. Their template fills an empty population field from Wikidata, so Wikidata's "
                           f"staleness reaches the article, and correcting Wikidata's statement corrects the infobox too."]
+    discovered = "; ".join(f"{s} in {d['runs']} of {summary['regions']} regions, for {d['figures']} figures"
+                           for s, d in summary.get("discoveries", {}).items())
+    if discovered:
+        lines += ["", f"**Discovery.** Sources the Planner added from the Zetaris catalog when the Critic sent figures "
+                      f"back: {discovered}."]
+    cited = summary.get("census_2002_figures") or {}
+    if cited:
+        lines += ["", "**Figures attributed to the 2002 census**, checked against INE's Census 2002 count once the "
+                      "Planner added it: " + ", ".join(f"{CLASS_LABELS.get(k, k)} {n}" for k, n in cited.items()) + "."]
+    unchecked = summary.get("not_checkable_by_year") or {}
+    if unchecked:
+        lines += ["", f"**{sum(unchecked.values())} figures could not be checked**, for want of an official figure for "
+                      f"their year: " + ", ".join(f"{y}: {n}" for y, n in unchecked.items()) + "."]
+    since = {k: n for k, n in (summary.get("since_last_check") or {}).items() if k != "comunas_checked_before"}
+    if since:
+        lines += ["", f"**Since the last check** of {summary['since_last_check']['comunas_checked_before']} comunas, "
+                      f"per page: " + ", ".join(f"{k} {n}" for k, n in since.items()) + "."]
     lines += ["", "*No figure:* the source shows no population figure: a Wikidata item without a population "
               "statement, or an infobox whose population field is empty (with nothing in Wikidata to fill it on "
               "Spanish Wikipedia).", "",
