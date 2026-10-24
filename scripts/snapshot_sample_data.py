@@ -45,9 +45,13 @@ class Recorder:
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("inputs", nargs="*", type=Path)
+    parser.add_argument("--out", type=Path, help="where to write the snapshot (default: data/sample)")
     args = parser.parse_args()
-    inputs = args.inputs or sorted((ROOT / "input_examples").glob("example_*.json"))
+    record(args.inputs or sorted((ROOT / "input_examples").glob("example_*.json")), args.out)
 
+
+def record(inputs, out=None):
+    """Record the rows the Planner and the Retriever read for these inputs into `out` (default: data/sample)."""
     settings = load_settings(sample_mode=False)
     recorder = Recorder(ZetarisClient(settings.zetaris_rest_url, settings.zetaris_org_id, settings.zetaris_api_key))
     world = WorldModel(strip_suffixes=[", Chile"])
@@ -79,19 +83,19 @@ def main():
             if json.dumps(values, ensure_ascii=False) not in seen:
                 recorded["rows"].append(values)
 
-    out = settings.sample_dir
+    out = Path(out or settings.sample_dir)
     out.mkdir(parents=True, exist_ok=True)
     recorded_at = utc_now()
     for view, recorded in sorted(views.items()):
         path = out / f"{view.split('.', 1)[1]}.json"
         path.write_text(json.dumps({**recorded, "recorded_at": recorded_at}, ensure_ascii=False, indent=1) + "\n",
                         encoding="utf-8")
-        print(f"{path.relative_to(ROOT).as_posix()}: {len(recorded['rows'])} rows, {path.stat().st_size / 1024:,.0f} KB")
+        print(f"{path.as_posix()}: {len(recorded['rows'])} rows, {path.stat().st_size / 1024:,.0f} KB")
     manifest = {"recorded_at": recorded_at, "recorded_by": "scripts/snapshot_sample_data.py",
                 "examples": examples, "comunas": {c: comunas[c] for c in cuts},
                 "views": {v: f"{v.split('.', 1)[1]}.json" for v in sorted(views)}}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"{len(cuts)} comunas covered; manifest in {(out / 'manifest.json').relative_to(ROOT).as_posix()}")
+    print(f"{len(cuts)} comunas covered; manifest in {(out / 'manifest.json').as_posix()}")
 
 
 if __name__ == "__main__":

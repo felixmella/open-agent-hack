@@ -247,7 +247,8 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
 
     with stage("output"):
         state.escalations.extend(fallbacks)
-        data = {"source": "sample" if settings.sample_mode else "zetaris", "fallbacks": fallbacks}
+        source = "sample" if settings.sample_mode else "snapshot" if isinstance(zetaris, SampleData) else "zetaris"
+        data = {"source": source, "fallbacks": fallbacks}  # snapshot: recorded rows given to a live run (scripts/evaluate.py)
         if getattr(zetaris, "recorded_at", None):
             data["sample_recorded_at"] = zetaris.recorded_at
         return finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm, data)

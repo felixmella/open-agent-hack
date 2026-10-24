@@ -22,7 +22,8 @@ COPY data data
 COPY input_examples input_examples
 COPY scripts scripts
 COPY tests tests
-COPY run.py pytest.ini .env.example ./
+COPY zetaris zetaris
+COPY run.py pytest.ini .env.example metadata.json LICENSE NOTICE ./
 
 RUN useradd --uid 1000 --create-home factsync \
     && mkdir -p output logs state \

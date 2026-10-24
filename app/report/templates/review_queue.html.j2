@@ -153,8 +153,8 @@ footer p { margin: 4px 0; }
   <p class="meta">
     <span>Run <code>{{ result.run_id }}</code></span>
     <span class="badge status-{{ result.status }}">{{ result.status }}</span>
-    {% if result.mode == "sample" %}
-    <span class="badge status-sample">sample data{% if data.sample_recorded_at %}, recorded {{ data.sample_recorded_at[:10] }}{% endif %}</span>
+    {% if result.mode == "sample" or data.source == "snapshot" %}
+    <span class="badge status-sample">{{ "sample data" if result.mode == "sample" else "recorded Zetaris rows" }}{% if data.sample_recorded_at %}, recorded {{ data.sample_recorded_at[:10] }}{% endif %}</span>
     {% else %}
     <span class="badge status-live">live: read through Zetaris</span>
     {% endif %}
@@ -183,7 +183,7 @@ footer p { margin: 4px 0; }
       <span class="chip{{ ' new' if discovered }}">{{ name }}{% if discovered %} · added by the Planner{% endif %}</span>
       {% endfor %}
     </p>
-    <p>{% if result.mode == "sample" %}Rows from the sample snapshot of the Zetaris views{% if data.sample_recorded_at %} recorded {{ data.sample_recorded_at[:10] }}{% endif %}; no live service was used.{% else %}Every source was read live through its Zetaris view, one SQL statement per source.{% if data.fallbacks %} <b>{{ data.fallbacks|length }} view(s) came from the sample snapshot</b> because Zetaris failed (see below).{% endif %}{% endif %}</p>
+    <p>{% if result.mode == "sample" or data.source == "snapshot" %}Rows from a snapshot of the Zetaris views{% if data.sample_recorded_at %} recorded {{ data.sample_recorded_at[:10] }}{% endif %}{{ "; no live service was used." if result.mode == "sample" else ", so that every run compared reads the same rows." }}{% else %}Every source was read live through its Zetaris view, one SQL statement per source.{% if data.fallbacks %} <b>{{ data.fallbacks|length }} view(s) came from the sample snapshot</b> because Zetaris failed (see below).{% endif %}{% endif %}</p>
     <p>{{ model_line }}</p>
     {% if engine_line %}<p>{{ engine_line }}</p>{% endif %}
     {% if unresolved %}<p>Not found and left out of the run: {{ unresolved|join(", ") }}.</p>{% endif %}
