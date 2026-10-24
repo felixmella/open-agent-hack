@@ -114,3 +114,20 @@ def test_an_edit_applied_since_the_last_check_reads_as_fixed(tmp_path):
     page = (tmp_path / result["report_file"]).read_text(encoding="utf-8")
     assert "Since the last check" in page and "26,746 (2024) → 25,795" in page and "fixed since the last check" in page
     assert "eswiki" not in second["drafts"]  # nothing left to correct on that page
+
+
+def test_a_run_can_name_the_check_to_compare_with(tmp_path):
+    settings = dataclasses.replace(load_settings(sample_mode=False), logs_dir=tmp_path / "logs",
+                                   state_dir=tmp_path / "state", output_dir=tmp_path / "output")
+    world = WorldModel(strip_suffixes=[", Chile"])
+
+    def check(run_id, zetaris, **options):
+        run_input = RunInput.model_validate({"run_id": run_id, "scope": {"cuts": ["08105"]},
+                                             "options": {"use_llm": False, **options}})
+        return run(run_input, settings, zetaris=zetaris, world=world, echo=False, llm_interval=0)["comunas"][0]
+
+    check("baseline-1", FakeZetaris())
+    check("after-the-edit", Edited())  # an unrelated run after the edit: now the previous run
+    since = check("named", Edited(), compare_with="baseline")["since_last_check"]
+    assert since["previous_run"] == "baseline-1" and since["pages"]["eswiki"]["outcome"] == "fixed"
+    assert check("nothing", Edited(), compare_with="no-such-run")["since_last_check"] is None

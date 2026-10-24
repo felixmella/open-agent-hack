@@ -22,6 +22,9 @@ class Scope(BaseModel):
 class Options(BaseModel):
     max_critic_rounds: int = Field(2, ge=0, le=3)
     use_llm: bool = True
+    compare_with: str | None = Field(None, max_length=64, description=(
+        "compare each comuna with the latest earlier run whose id starts with this (e.g. a national batch's "
+        "'national-20261024b'), instead of the previous run that checked it"))
 
 
 RUN_ID = r"^[A-Za-z0-9_-][A-Za-z0-9_.-]{0,63}$"  # also a folder name: no leading dot, so never '.' or '..'

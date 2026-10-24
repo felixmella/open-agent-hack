@@ -249,3 +249,17 @@ def test_a_one_digit_slip_under_another_year_is_only_possibly_a_typo():
     verdict = assess_value(claim(5073, 2008), chaiten)  # eswiki Chaitén: 5,073 (2008), one digit from the 2017 count
     assert verdict["class"] == "genuine_error" and "possibly a typo" in verdict["explanation"]
     assert verdict["ambiguous"] and verdict["confidence"] == 0.6
+
+
+def test_two_digits_off_another_census_is_no_typo():
+    taltal = table({2002: 11100, 2017: 13317, 2024: 12097})
+    statement = claim(11132, 2020, role="historical", source="Wikidata", location="statement",
+                      label="point in time 2020-01-01")  # Wikidata Taltal: 11,132 dated 2020
+    assert assess_value(statement, taltal)["class"] == "cross_source_mismatch"
+    assert assess_value(claim(25413, 2017), CURACAUTIN)["class"] == "genuine_error"  # its own census's year: kept
+
+
+def test_a_figure_dated_between_censuses_can_be_a_mistyped_copy_of_the_one_before():
+    traiguen = table({2002: 19534, 2017: 18843, 2024: 18873})
+    verdict = assess_value(claim(25843, 2020), traiguen)  # eswiki Traiguén: 25,843 (2020) for the 2017 count 18,843
+    assert verdict["class"] == "genuine_error" and verdict["near"]["year"] == 2017

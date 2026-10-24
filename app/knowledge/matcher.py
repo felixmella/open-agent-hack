@@ -145,11 +145,24 @@ def digit_slip(a, b):
     return 0
 
 
+def copied_census(year, years):
+    """The census years a figure dated `year` could be a copy of: that year's census, else the latest census before
+    it (a figure dated 2020 can copy the 2017 count, not the 2002 or 2024 one); any of them for an undated figure."""
+    if year is None or year in years:
+        return set(years) if year is None else {year}
+    earlier = [y for y in years if y <= year]
+    return {max(earlier)} if earlier else set()
+
+
 def near_miss(value, table, year):
-    """The census count a figure is most likely a typo of (closest slip first, then the census year it states)."""
+    """The census count a figure is most likely a typo of (closest slip first, then the census year it states). Two
+    neighbouring digits are weak evidence, and every census read adds chances of a coincidence (Taltal's 11,132 dated
+    2020 is two digits from the 2002 count, 11,100), so they count only against a census the figure could be a copy of
+    (`copied_census`): Traiguén's 25,843 dated 2020 against the 2017 count, 18,843."""
+    copies = copied_census(year, table["census"])
     candidates = [(digit_slip(value, r["value"]), r) for r in table["census"].values()]
-    candidates = sorted(((slip, r) for slip, r in candidates if slip), key=lambda c: (c[0], c[1]["year"] != year,
-                                                                                       -c[1]["year"]))
+    candidates = sorted(((slip, r) for slip, r in candidates if slip == 1 or (slip == 2 and r["year"] in copies)),
+                        key=lambda c: (c[0], c[1]["year"] != year, -c[1]["year"]))
     return ({**candidates[0][1], "slip": candidates[0][0]}) if candidates else None
 
 

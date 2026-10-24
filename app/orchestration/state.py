@@ -44,6 +44,7 @@ class RunState:
     discoveries: list = field(default_factory=list)
     escalations: list = field(default_factory=list)
     errors: list = field(default_factory=list)
+    compare_with: str | None = None                    # "since the last check": the baseline runs' id prefix
 
     def pending(self):
         return [c for c in self.comunas.values() if c.status == "pending"]

@@ -101,12 +101,17 @@ def open_world(settings):
     return WorldModel(storage="sqlite", namespace="factsync", path=settings.state_dir / name, strip_suffixes=[", Chile"])
 
 
-def look_back(world, comuna, run_id, tracer):
+def look_back(world, comuna, run_id, tracer, compare_with=None):
     """The engine's picture of the comuna now, and page by page what changed since the previous run that checked it
-    (that run's picture, rebuilt from the log as it stood when the run ended); None when no run checked it before."""
+    (that run's picture, rebuilt from the log as it stood when the run ended), or since the latest run whose id starts
+    with `compare_with`; None when no such run checked it before."""
     now = world.reproject(comuna.entity_id, actor="Orchestrator")["projections"]["comuna_picture"]
-    earlier = [(run, seq) for run, seq in world.runs(comuna.entity_id) if run != run_id]
+    earlier = [(run, seq) for run, seq in world.runs(comuna.entity_id)
+               if run != run_id and (not compare_with or run.startswith(compare_with))]
     if not earlier:
+        if compare_with:
+            tracer.event("WorldModel", "compare_runs", status="skipped", engine="world_model",
+                         output_summary=f"{comuna.name}: no run '{compare_with}...' checked it before")
         return now, None
     previous, seq = earlier[-1]
     before = world.project_as_of(comuna.entity_id, seq)["comuna_picture"]
@@ -196,7 +201,8 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
         planner = Planner(zetaris, world, tracer)
         plan = planner.plan(run_input)
     state = RunState(run_id, Caps.for_run(run_input.options, len(plan.cuts)),
-                     {cut: ComunaState(cut, name) for cut, name in plan.comunas.items()})
+                     {cut: ComunaState(cut, name) for cut, name in plan.comunas.items()},
+                     compare_with=run_input.options.compare_with)
     llm = AgentLLM(llm_client if run_input.options.use_llm else None, tracer, max_calls=state.caps.max_llm_calls,
                    min_interval=llm_interval)
     planner.llm = llm
@@ -255,7 +261,7 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
 
 
 def finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm, data):
-    looked = {cut: look_back(world, c, run_id, tracer) for cut, c in state.comunas.items()}
+    looked = {cut: look_back(world, c, run_id, tracer, state.compare_with) for cut, c in state.comunas.items()}
     audit_path = settings.logs_dir / f"world-model-{run_id}.jsonl"
     exported = world.export_audit(audit_path, since_seq=audit_start)
     comunas = [comuna_result(c, world, state, *looked[cut]) for cut, c in state.comunas.items()]

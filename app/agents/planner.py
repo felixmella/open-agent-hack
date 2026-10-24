@@ -50,7 +50,7 @@ def fit(source, figure):
         return 0 if basis == "projection" or (year and census_status(year) != "valid") else 1
     if source["scope"] == "comuna":
         return 0 if year == source["years_from"] == source["years_to"] else 2
-    return 1
+    return 0 if basis == "census" else 1  # a census figure smaller than the comuna: likely a part of it
 
 
 class Planner:
