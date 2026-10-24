@@ -1,14 +1,18 @@
 {
  "view": "factsync.official_population",
  "queries": [
-  "SELECT cut, comuna, source, definition, reference_year, population FROM factsync.official_population WHERE definition = 'census' AND cut IN ('06206', '08105', '09116', '09121', '09203', '11101', '11102', '11201', '11202', '11203', '11301', '11302', '11303', '11401', '11402', '13112', '16201')",
-  "SELECT cut, comuna, source, definition, reference_year, population FROM factsync.official_population WHERE definition = 'projection' AND cut IN ('06206', '08105', '09116', '09121', '09203', '11101', '11102', '11201', '11202', '11203', '11301', '11302', '11303', '11401', '11402', '13112', '16201')"
+  "SELECT cut, comuna, series, source, definition, scope, reference_year, population FROM factsync.official_population WHERE series = 'official_census' AND cut IN ('06206', '08105', '09116', '09121', '09203', '11101', '11102', '11201', '11202', '11203', '11301', '11302', '11303', '11401', '11402', '13112', '16201')",
+  "SELECT cut, comuna, series, source, definition, scope, reference_year, population FROM factsync.official_population WHERE series = 'official_projections' AND cut IN ('06206', '08105', '09116', '09121', '09203', '11101', '11102', '11201', '11202', '11203', '11301', '11302', '11303', '11401', '11402', '13112', '16201')",
+  "SELECT cut, comuna, series, source, definition, scope, reference_year, population FROM factsync.official_population WHERE series = 'official_census2002' AND cut IN ('06206', '08105', '09116', '09121', '09203', '11101', '11102', '11201', '11202', '11203', '11301', '11302', '11303', '11401', '11402', '13112', '16201')",
+  "SELECT cut, comuna, series, source, definition, scope, reference_year, population FROM factsync.official_population WHERE series = 'official_census2017_area' AND cut IN ('06206', '08105', '09116', '09121', '09203', '11101', '11102', '11201', '11202', '11203', '11301', '11302', '11303', '11401', '11402', '13112', '16201')"
  ],
  "columns": [
   "cut",
   "comuna",
+  "series",
   "source",
   "definition",
+  "scope",
   "reference_year",
   "population"
  ],
@@ -16,4899 +20,6633 @@
   [
    "06206",
    "PAREDONES",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "7228"
   ],
   [
    "08105",
    "HUALQUI",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "25795"
   ],
   [
    "09116",
    "SAAVEDRA",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "12877"
   ],
   [
    "09121",
    "CHOLCHOL",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "13167"
   ],
   [
    "09203",
    "CURACAUTÍN",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "18536"
   ],
   [
    "11101",
    "COYHAIQUE",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "57823"
   ],
   [
    "11102",
    "LAGO VERDE",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "779"
   ],
   [
    "11301",
    "COCHRANE",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "3458"
   ],
   [
    "11302",
    "O'HIGGINS",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "647"
   ],
   [
    "11401",
    "CHILE CHICO",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "4905"
   ],
   [
    "11402",
    "RÍO IBÁÑEZ",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "2723"
   ],
   [
    "16201",
    "QUIRIHUE",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "11746"
   ],
   [
    "11201",
    "AYSÉN",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "23170"
   ],
   [
    "11202",
    "CISNES",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "5137"
   ],
   [
    "11203",
    "GUAITECAS",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "1598"
   ],
   [
    "11303",
    "TORTEL",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "505"
   ],
   [
    "13112",
    "LA PINTANA",
+   "official_census",
    "INE Censo 2024",
    "census",
+   "comuna",
    "2024",
    "175421"
   ],
   [
    "13112",
    "LA PINTANA",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "177335"
   ],
   [
    "06206",
    "PAREDONES",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "6188"
   ],
   [
    "16201",
    "QUIRIHUE",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "11594"
   ],
   [
    "08105",
    "HUALQUI",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "24333"
   ],
   [
    "09116",
    "SAAVEDRA",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "12450"
   ],
   [
    "09121",
    "CHOLCHOL",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "11611"
   ],
   [
    "09203",
    "CURACAUTÍN",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "17413"
   ],
   [
    "11101",
    "COYHAIQUE",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "57818"
   ],
   [
    "11102",
    "LAGO VERDE",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "852"
   ],
   [
    "11201",
    "AYSÉN",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "23959"
   ],
   [
    "11202",
    "CISNES",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "6517"
   ],
   [
    "11203",
    "GUAITECAS",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "1843"
   ],
   [
    "11301",
    "COCHRANE",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "3490"
   ],
   [
    "11302",
    "O'HIGGINS",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "625"
   ],
   [
    "11303",
    "TORTEL",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "523"
   ],
   [
    "11401",
    "CHILE CHICO",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "4865"
   ],
   [
    "11402",
    "RÍO IBÁÑEZ",
+   "official_census",
    "INE Censo 2017",
    "census",
+   "comuna",
    "2017",
    "2666"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "6907"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "6849"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "6791"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "6734"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "6680"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "6635"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "6596"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "6562"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "6525"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "6499"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "6470"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "6441"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "6416"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "6389"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "6370"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "6360"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "6351"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "6353"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "6349"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "6335"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "6309"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "6284"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "6259"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "6235"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "6210"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "6186"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "6160"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "6136"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "6112"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "6087"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "6061"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "6040"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "6015"
   ],
   [
    "06206",
    "Paredones",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "5989"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "19774"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "20361"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "20903"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "21401"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "21865"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "22309"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "22726"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "23125"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "23505"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "23870"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "24202"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "24500"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "24785"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "25058"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "25316"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "25552"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "25778"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "25997"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "26201"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "26366"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "26506"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "26632"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "26746"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "26850"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "26942"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "27025"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "27097"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "27159"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "27210"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "27254"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "27287"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "27313"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "27329"
   ],
   [
    "08105",
    "Hualqui",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "27336"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "14490"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "14258"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "14053"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "13868"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "13705"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "13564"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "13444"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "13344"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "13253"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "13178"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "13112"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "13043"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "12983"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "12939"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "12897"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "12863"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "12835"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "12812"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "12793"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "12764"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "12727"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "12693"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "12660"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "12630"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "12596"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "12565"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "12535"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "12503"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "12473"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "12442"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "12409"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "12377"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "12343"
   ],
   [
    "09116",
    "Saavedra",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "12309"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "10244"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "10369"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "10493"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "10614"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "10732"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "10853"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "10976"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "11103"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "11225"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "11349"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "11472"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "11582"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "11690"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "11806"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "11915"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "12023"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "12130"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "12237"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "12341"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "12427"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "12504"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "12578"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "12647"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "12707"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "12770"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "12828"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "12880"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "12929"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "12972"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "13014"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "13050"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "13082"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "13111"
   ],
   [
    "09121",
    "Cholchol",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "13137"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "17635"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "17637"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "17645"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "17649"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "17661"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "17680"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "17707"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "17748"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "17784"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "17826"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "17868"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "17898"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "17930"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "17974"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "18013"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "18054"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "18094"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "18137"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "18178"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "18196"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "18207"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "18210"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "18211"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "18209"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "18203"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "18195"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "18181"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "18166"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "18147"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "18124"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "18097"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "18070"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "18035"
   ],
   [
    "09203",
    "Curacautín",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "17998"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "51183"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "52067"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "52829"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "53531"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "54143"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "54761"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "55415"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "56102"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "56714"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "57343"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "57864"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "58327"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "58763"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "59181"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "59574"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "60005"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "60410"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "60822"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "61210"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "61496"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "61705"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "61885"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "62046"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "62193"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "62318"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "62422"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "62509"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "62572"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "62615"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "62643"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "62657"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "62650"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "62617"
   ],
   [
    "11101",
    "Coyhaique",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "62567"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "987"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "971"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "959"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "950"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "941"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "935"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "932"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "929"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "927"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "926"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "925"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "923"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "921"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "920"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "919"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "919"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "919"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "919"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "920"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "919"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "917"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "915"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "914"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "912"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "910"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "909"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "906"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "905"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "902"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "901"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "898"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "895"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "893"
   ],
   [
    "11102",
    "Lago Verde",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "890"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "22757"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "22695"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "22728"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "22823"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "22934"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "23076"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "23254"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "23460"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "23640"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "23835"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "23989"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "24126"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "24253"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "24376"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "24491"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "24623"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "24749"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "24880"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "25002"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "25085"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "25138"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "25180"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "25218"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "25250"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "25277"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "25297"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "25310"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "25315"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "25314"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "25307"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "25295"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "25277"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "25249"
   ],
   [
    "11201",
    "Aysén",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "25215"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "5501"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "5455"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "5433"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "5429"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "5434"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "5449"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "5476"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "5514"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "5546"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "5585"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "5615"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "5642"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "5668"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "5693"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "5717"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "5745"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "5772"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "5801"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "5828"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "5845"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "5857"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "5865"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "5872"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "5878"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "5883"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "5887"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "5888"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "5889"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "5888"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "5886"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "5881"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "5876"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "5869"
   ],
   [
    "11202",
    "Cisnes",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "5860"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "1472"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "1465"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "1463"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "1467"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "1473"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "1480"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "1491"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "1503"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "1514"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "1527"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "1536"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "1544"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "1552"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "1560"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "1567"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "1575"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "1583"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "1591"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "1599"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "1604"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "1607"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "1608"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "1611"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "1612"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "1614"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "1615"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "1615"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "1615"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "1614"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "1613"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "1612"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "1611"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "1609"
   ],
   [
    "11203",
    "Guaitecas",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "1606"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "3038"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "3083"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "3126"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "3170"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "3210"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "3251"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "3296"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "3343"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "3383"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "3426"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "3461"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "3493"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "3523"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "3552"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "3578"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "3606"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "3633"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "3660"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "3685"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "3704"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "3718"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "3731"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "3741"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "3751"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "3759"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "3767"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "3773"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "3778"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "3781"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "3783"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "3784"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "3784"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "3783"
   ],
   [
    "11301",
    "Cochrane",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "3780"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "477"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "492"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "507"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "519"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "532"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "545"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "557"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "570"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "581"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "592"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "601"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "610"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "618"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "627"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "633"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "641"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "648"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "655"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "661"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "665"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "670"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "672"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "675"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "679"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "681"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "683"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "685"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "686"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "688"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "689"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "689"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "689"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "689"
   ],
   [
    "11302",
    "O'Higgins",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "690"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "462"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "469"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "476"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "483"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "490"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "497"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "504"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "513"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "518"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "526"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "532"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "537"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "543"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "548"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "553"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "557"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "562"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "567"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "572"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "576"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "579"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "582"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "585"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "586"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "589"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "590"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "592"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "593"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "594"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "596"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "597"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "597"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "598"
   ],
   [
    "11303",
    "Tortel",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "598"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "4597"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "4602"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "4620"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "4646"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "4675"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "4709"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "4748"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "4794"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "4833"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "4875"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "4908"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "4938"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "4965"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "4991"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "5015"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "5043"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "5069"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "5096"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "5121"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "5138"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "5148"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "5157"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "5163"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "5169"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "5174"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "5177"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "5179"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "5179"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "5177"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "5175"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "5172"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "5166"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "5159"
   ],
   [
    "11401",
    "Chile Chico",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "5151"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "2565"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "2558"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "2554"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "2555"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "2557"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "2562"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "2572"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "2586"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "2598"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "2612"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "2622"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "2632"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "2640"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "2649"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "2657"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "2668"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "2678"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "2689"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "2699"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "2705"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "2708"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "2711"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "2713"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "2714"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "2715"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "2716"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "2716"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "2715"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "2713"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "2712"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "2710"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "2706"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "2702"
   ],
   [
    "11402",
    "Río Ibáñez",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "2698"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "195306"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "195075"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "194521"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "193808"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "193070"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "192390"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "191802"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "191264"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "190750"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "190249"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "189761"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "189194"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "188703"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "188324"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "188020"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "187970"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "188255"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "188748"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "189335"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "189454"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "189321"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "189151"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "188980"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "188806"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "188629"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "188441"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "188237"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "188010"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "187758"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "187489"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "187198"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "186876"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "186525"
   ],
   [
    "13112",
    "La Pintana",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "186139"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2002",
    "11869"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2003",
    "11835"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2004",
    "11816"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2005",
    "11808"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2006",
    "11807"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2007",
    "11817"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2008",
    "11832"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2009",
    "11856"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2010",
    "11880"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2011",
    "11909"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2012",
    "11935"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2013",
    "11952"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2014",
    "11977"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2015",
    "12005"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2016",
    "12037"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2017",
    "12076"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2018",
    "12115"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2019",
    "12155"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2020",
    "12192"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2021",
    "12214"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2022",
    "12226"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2023",
    "12234"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2024",
    "12241"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2025",
    "12244"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2026",
    "12245"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2027",
    "12243"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2028",
    "12239"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2029",
    "12232"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2030",
    "12222"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2031",
    "12209"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2032",
    "12194"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2033",
    "12174"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2034",
    "12152"
   ],
   [
    "16201",
    "Quirihue",
+   "official_projections",
    "INE Proyecciones base 2017",
    "projection",
+   "comuna",
    "2035",
    "12127"
+  ],
+  [
+   "06206",
+   "PAREDONES",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "6695"
+  ],
+  [
+   "08105",
+   "HUALQUI",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "18768"
+  ],
+  [
+   "09116",
+   "SAAVEDRA",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "14034"
+  ],
+  [
+   "09121",
+   "CHOLCHOL",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "10065"
+  ],
+  [
+   "09203",
+   "CURACAUTÍN",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "16970"
+  ],
+  [
+   "11101",
+   "COYHAIQUE",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "50041"
+  ],
+  [
+   "11102",
+   "LAGO VERDE",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "1062"
+  ],
+  [
+   "11201",
+   "AYSÉN",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "22353"
+  ],
+  [
+   "11202",
+   "CISNES",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "5739"
+  ],
+  [
+   "11203",
+   "GUAITECAS",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "1539"
+  ],
+  [
+   "11301",
+   "COCHRANE",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "2867"
+  ],
+  [
+   "11302",
+   "O'HIGGINS",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "463"
+  ],
+  [
+   "11303",
+   "TORTEL",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "507"
+  ],
+  [
+   "11401",
+   "CHILE CHICO",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "4444"
+  ],
+  [
+   "11402",
+   "RÍO IBÁÑEZ",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "2477"
+  ],
+  [
+   "13112",
+   "LA PINTANA",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "189278"
+  ],
+  [
+   "16201",
+   "QUIRIHUE",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "11429"
+  ],
+  [
+   "11303",
+   "TORTEL",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "0"
+  ],
+  [
+   "11303",
+   "TORTEL",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "523"
+  ],
+  [
+   "11302",
+   "O'HIGGINS",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "0"
+  ],
+  [
+   "11302",
+   "O'HIGGINS",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "625"
+  ],
+  [
+   "11102",
+   "LAGO VERDE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "0"
+  ],
+  [
+   "11102",
+   "LAGO VERDE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "852"
+  ],
+  [
+   "11203",
+   "GUAITECAS",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "1705"
+  ],
+  [
+   "11203",
+   "GUAITECAS",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "138"
+  ],
+  [
+   "11402",
+   "RÍO IBÁÑEZ",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "0"
+  ],
+  [
+   "11402",
+   "RÍO IBÁÑEZ",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "2666"
+  ],
+  [
+   "11301",
+   "COCHRANE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "2841"
+  ],
+  [
+   "11301",
+   "COCHRANE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "649"
+  ],
+  [
+   "11401",
+   "CHILE CHICO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "3162"
+  ],
+  [
+   "11401",
+   "CHILE CHICO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "1703"
+  ],
+  [
+   "06206",
+   "PAREDONES",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "1842"
+  ],
+  [
+   "06206",
+   "PAREDONES",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "4346"
+  ],
+  [
+   "11202",
+   "CISNES",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "4114"
+  ],
+  [
+   "11202",
+   "CISNES",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "2403"
+  ],
+  [
+   "16201",
+   "QUIRIHUE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "9473"
+  ],
+  [
+   "16201",
+   "QUIRIHUE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "2121"
+  ],
+  [
+   "09121",
+   "CHOLCHOL",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "4356"
+  ],
+  [
+   "09121",
+   "CHOLCHOL",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "7255"
+  ],
+  [
+   "09116",
+   "SAAVEDRA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "2729"
+  ],
+  [
+   "09116",
+   "SAAVEDRA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "9721"
+  ],
+  [
+   "09203",
+   "CURACAUTÍN",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "12838"
+  ],
+  [
+   "09203",
+   "CURACAUTÍN",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "4575"
+  ],
+  [
+   "11201",
+   "AYSÉN",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "20308"
+  ],
+  [
+   "11201",
+   "AYSÉN",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "3651"
+  ],
+  [
+   "08105",
+   "HUALQUI",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "20889"
+  ],
+  [
+   "08105",
+   "HUALQUI",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "3444"
+  ],
+  [
+   "11101",
+   "COYHAIQUE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "49968"
+  ],
+  [
+   "11101",
+   "COYHAIQUE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "7850"
+  ],
+  [
+   "13112",
+   "LA PINTANA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "177335"
+  ],
+  [
+   "13112",
+   "LA PINTANA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "0"
   ]
  ],
- "recorded_at": "2026-10-23T06:58:26Z"
+ "recorded_at": "2026-10-24T17:03:02Z"
 }

@@ -6,20 +6,26 @@ The rubric, 3 points per criterion:
                          Model; the explanation states no figure the evidence doesn't hold
   definition discipline  the class is one the facts allow; it holds up on review; the confidence fits what is known.
                          A figure that matches no official figure read so far scores 0 here while an official source
-                         is still unread: only that source can confirm or rule out an official estimate
+                         whose coverage could explain it is unread: only that source's figures can confirm or rule
+                         out an official figure of another definition or year
   correction sourcing    a correction is proposed when one is needed; its figure is an official one in the World
                          Model; its source is INE's publication of that figure
 
 The facts are recomputed from the World Model, not taken from the Analyst. The model's judgment (does the class fit,
 is the explanation faithful) can overturn a verdict the model made, but costs a verdict made by code only one point.
+
+The Critic also checks the Analyst's work for completeness: a claim left unchecked because it names a year no official
+figure read covers (a figure from the 2002 census, before its counts are read) holds up approval while an unread
+source in the catalog covers that year. Either way, the fix asks the Planner to read a source, and lists for each
+figure the sources whose coverage could explain or check it.
 """
 import re
 from itertools import combinations
 
 from app.agents.analyst import build_claims, claims_first
 from app.agents.llm import batched, model_note
-from app.agents.planner import CATALOG
 from app.knowledge import matcher
+from app.knowledge.catalog import could_explain, coverage
 from app.knowledge.taxonomy import census_facts, describe_classes, official_source
 
 APPROVE_AT = 7
@@ -75,6 +81,13 @@ def allowed_figures(evidence, extra=()):
     return numbers | {abs(a - b) for a, b in combinations(values, 2)}
 
 
+def needs_source(facts):
+    """Whether a verdict rests on figures not read yet: a figure matching nothing, one possibly a typo (two digits
+    off), or one attributed to a census whose counts weren't read."""
+    return bool(facts) and (facts["unexplained"] or (facts.get("near") or {}).get("slip") == 2
+                            or (facts["class"] == "outdated_vintage" and not facts.get("match")))
+
+
 def signature(finding):
     proposal = finding.get("proposal") or {}
     return f"{finding['class']}|{finding['explanation']}|{finding['confidence']}|{proposal.get('action')}|{proposal.get('value')}"
@@ -95,7 +108,9 @@ class Critic:
 
     # ----- findings -------------------------------------------------------------------------------------------
 
-    def review(self, comuna, findings, observed, round_no, open_sources):
+    def review(self, comuna, findings, observed, round_no, open_sources, checks=()):
+        """Score the comuna's findings and check its unchecked claims. `open_sources` are the catalog rows of the
+        official sources the run could still read, by source id."""
         context = self.world.context(comuna.entity_id, intent="review", budget_chars=80_000, rank=claims_first,
                                      include=lambda o: o["id"] in observed and o["payload"].get("document") != "article")
         table = matcher.official_table(context["observations"])
@@ -117,19 +132,21 @@ class Critic:
             else:
                 comuna.approved.pop(finding["id"], None)
         rejected = [f for f in findings if not results[f["id"]]["approved"]]
-        fix = self.choose_fix(comuna, rejected, results) if rejected else None
+        uncovered = self.uncovered(checks, table, open_sources)
+        fix = self.choose_fix(comuna, rejected, results, table, uncovered) if rejected or uncovered else None
         for finding in fresh:
             result = results[finding["id"]]
             self.world.assess(finding["claim"]["id"], agent=self.name, run_id=self.run_id, round_no=round_no, data={
                 "finding_id": finding["id"], "class": finding["class"], "status": "approved" if result["approved"] else "rejected",
                 **result, "fix": fix if fix and fix["finding_id"] == finding["id"] else None})
-        review = {"round": round_no, "approved": not rejected, "results": results,
-                  "rejected": [f["id"] for f in rejected], "fix": fix}
+        review = {"round": round_no, "approved": not (rejected or uncovered), "results": results,
+                  "rejected": [f["id"] for f in rejected], "unchecked": [x["claim_id"] for x in uncovered], "fix": fix}
         comuna.reviews.append(review)
         scores = ", ".join(f"{f['class']} {results[f['id']]['score']}/9" for f in findings)
         if fix:
+            held = f"{len(rejected)} below {APPROVE_AT}/9" + (f", {len(uncovered)} claim(s) unchecked" if uncovered else "")
             self.tracer.event(self.name, "reject", input_summary=f"{comuna.name}: {len(findings)} findings ({scores})",
-                              output_summary=f"{len(rejected)} below {APPROVE_AT}/9; fix for {fix['target_agent']}: {fix['instruction']}",
+                              output_summary=f"{held}; fix for {fix['target_agent']}: {fix['instruction']}",
                               target_agent=fix["target_agent"], round_no=round_no, status="rejected",
                               confidence=None, fix=fix)
         else:
@@ -226,6 +243,8 @@ class Critic:
         else:
             notes.append(f"class doubted on review: {judgment.get('note')}")
         unexplained = bool(facts and facts["unexplained"])
+        candidates = [s for s, row in (open_sources or {}).items() if could_explain(row, claim, table)] \
+            if needs_source(facts) else []
         expected = min(0.8, facts["confidence"]) if facts else 0.8  # a rounded figure's match is held less firmly
         calibrated = finding["confidence"] <= 0.7 if unexplained else (finding["method"] != "matcher"
                                                                       or finding["confidence"] >= expected)
@@ -241,14 +260,15 @@ class Critic:
             discipline = 0
             failures.append(failure("class_fit", f"The class {finding['class']} doesn't hold up for {shown} ({source}): "
                                     f"{judgment.get('note')}", "Analyst"))
-        if unexplained and open_sources:
+        if candidates:
             discipline = 0
-            held = ", ".join(f"Census {y} {r['value']:,}" for y, r in sorted(table["census"].items()))
-            names = "; ".join(CATALOG[s].rstrip(".") for s in open_sources)
+            held = matcher.held_figures(table)
+            names = ", ".join(f"{s} ({coverage(open_sources[s])})" for s in candidates)
             failures.append(failure("unread_official_source", f"{shown} ({source}, '{label}') matches no official figure "
-                                    f"read so far ({held}). Before calling it {finding['class']}, read the official "
-                                    f"source not yet consulted ({names}): only its figures can confirm or rule out "
-                                    f"an official estimate.", "Planner", critical=True, held=held, unread=names))
+                                    f"read so far ({held}). Before calling it {finding['class']}, read an official source "
+                                    f"whose coverage could explain it ({names}): only its figures can confirm or rule "
+                                    f"out an official figure of another definition or year.", "Planner", critical=True,
+                                    held=held, candidates=candidates))
 
         # correction sourcing
         sourcing = 0
@@ -308,9 +328,45 @@ class Critic:
             return key == expected
         return True
 
-    def choose_fix(self, comuna, rejected, results):
-        """ONE fix per comuna and round: discovery first (it can settle several findings at once), then
-        re-extraction, then re-analysis; among those, the lowest-scoring finding."""
+    def uncovered(self, checks, table, open_sources):
+        """Claims left unchecked because they name a year no official figure read covers, each with the unread
+        sources whose coverage could check it."""
+        found = []
+        for check in checks or ():
+            claim = check["claim"]
+            if check["result"] != "not checkable" or not claim.get("stated_year") or claim.get("value") is None:
+                continue
+            candidates = [s for s, row in (open_sources or {}).items() if could_explain(row, claim, table)]
+            if candidates:
+                found.append({**figure(claim, table), "candidates": candidates})
+        return found
+
+    def choose_fix(self, comuna, rejected, results, table, uncovered=()):
+        """ONE fix per comuna and round: discovery first (one source can settle several figures at once), then
+        re-extraction, then re-analysis; among those, the lowest-scoring finding. A discovery request carries every
+        figure waiting for a source and every claim left unchecked, each with its candidate sources."""
+        waiting = [(f, x) for f in rejected for x in results[f["id"]]["failures"] if x["check"] == "unread_official_source"]
+        if waiting or uncovered:
+            figures = [{**figure(f["claim"], table, f), "candidates": x["candidates"]} for f, x in waiting] + list(uncovered)
+            fix = {"target_agent": "Planner", "check": "unread_official_source" if waiting else "unchecked_claims",
+                   "finding_id": waiting[0][0]["id"] if waiting else None, "finding_ids": [f["id"] for f, _ in waiting],
+                   "comuna": comuna.name, "cut": comuna.cut, "figures": figures, "suggested_class": None}
+            if len(waiting) == 1 and not uncovered:
+                fix["instruction"] = waiting[0][1]["detail"]
+                return fix
+            parts = []
+            if waiting:
+                parts.append(f"{len(waiting)} figures match no official figure read so far ({waiting[0][1]['held']}): "
+                             + "; ".join(f"{x['value']:,} ({x['source']}, '{x['label']}', called {x['class']})"
+                                         for x in figures[:len(waiting)]))
+            if uncovered:
+                parts.append(f"{len(uncovered)} claim(s) can't be checked with the official figures read: "
+                             + "; ".join(f"{x['value']:,} ({x['source']} {x['location']}, '{x['label']}')"
+                                         for x in uncovered))
+            candidates = sorted({s for x in figures for s in x["candidates"]})
+            fix["instruction"] = (". ".join(parts) + f". Before they are judged, read the official sources whose "
+                                  f"coverage could explain or check them ({', '.join(candidates)}).")
+            return fix
         options = [(AGENT_ORDER[f_["target_agent"]], results[f["id"]]["score"], i, f, f_)
                    for i, f in enumerate(rejected) for f_ in results[f["id"]]["failures"]]
         if not options:
@@ -319,21 +375,9 @@ class Critic:
                     "instruction": f"Revisit the {finding['class']} finding: it scored {results[finding['id']]['score']}/9.",
                     "comuna": comuna.name}
         _, _, _, finding, chosen = min(options, key=lambda o: o[:3])
-        fix = {"target_agent": chosen["target_agent"], "finding_id": finding["id"], "check": chosen["check"],
-               "instruction": chosen["detail"], "suggested_class": chosen.get("suggested_class"),
-               "comuna": comuna.name, "cut": comuna.cut, "figures": [figure(finding)]}
-        if chosen["check"] == "unread_official_source":  # one source can settle every such figure: ask once for all
-            waiting = [f for f in rejected if any(x["check"] == chosen["check"] for x in results[f["id"]]["failures"])]
-            fix["figures"] = [figure(f) for f in waiting]
-            fix["finding_ids"] = [f["id"] for f in waiting]
-            if len(waiting) > 1:
-                listed = "; ".join(f"{x['value']:,} ({x['source']}, '{x['label']}', called {x['class']})"
-                                   for x in fix["figures"])
-                fix["instruction"] = (f"{len(waiting)} figures match no official figure read so far ({chosen['held']}): "
-                                      f"{listed}. Before classifying them, read the official source not yet consulted "
-                                      f"({chosen['unread']}): only its figures can confirm or rule out official "
-                                      f"estimates.")
-        return fix
+        return {"target_agent": chosen["target_agent"], "finding_id": finding["id"], "check": chosen["check"],
+                "instruction": chosen["detail"], "suggested_class": chosen.get("suggested_class"),
+                "comuna": comuna.name, "cut": comuna.cut, "figures": [figure(finding["claim"], table, finding)]}
 
     # ----- drafts ---------------------------------------------------------------------------------------------
 
@@ -391,7 +435,13 @@ def digit_check(finding):
     return f"{value:,} and INE's Census {digits['year']} count {digits['official']:,} differ in {how} only"
 
 
-def figure(finding):
-    claim = finding["claim"]
-    return {"finding_id": finding["id"], "value": claim.get("value"), "source": claim["source_name"],
-            "location": claim.get("location"), "label": claim.get("label"), "class": finding["class"]}
+def figure(claim, table, finding=None):
+    """A figure for a fix: what it is, where it is shown, its label, year and basis, and its size against the latest
+    census count (the cues the Planner chooses a source by)."""
+    value, latest = claim.get("value"), matcher.latest_census(table)
+    return {("finding_id" if finding else "claim_id"): finding["id"] if finding else claim.get("id"), "value": value,
+            "source": claim["source_name"], "location": claim.get("location"), "label": claim.get("label"),
+            "year": claim.get("stated_year"), "basis": claim.get("basis"),
+            "size": f"{matcher.scale(value, latest['value'])} the Census {latest['year']} count"
+            if isinstance(value, int) and latest["value"] else None,
+            "class": finding["class"] if finding else None}

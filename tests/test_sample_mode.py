@@ -61,7 +61,8 @@ def test_the_snapshot_reproduces_the_demo_moment(sample_settings, no_network):
     infobox = next(f for f in hualqui["findings"] if f["target"] == "es" and f["claim"].get("location") == "infobox")
     assert infobox["claim"]["value"] == 26746 and infobox["class"] == "different_definition"
     assert not hualqui["critic"]["history"][0]["approved"] and hualqui["critic"]["history"][-1]["approved"]
-    assert result["summary"]["discoveries"] == ["official_projections"]
+    # projections for Hualqui's figures; Census 2002 for the 2002 figures in Guaitecas's and Quirihue's articles
+    assert result["summary"]["discoveries"] == ["official_projections", "official_census2002"]
 
 
 def test_a_comuna_outside_the_snapshot_is_refused(sample_settings, no_network):
@@ -74,7 +75,7 @@ def test_a_comuna_outside_the_snapshot_is_refused(sample_settings, no_network):
 def test_the_snapshot_answers_the_agents_queries_only():
     sample = SampleData(SAMPLE)
     census = sample.query("SELECT cut, population FROM factsync.official_population "
-                          "WHERE definition = 'census' AND cut IN ('08105')")
+                          "WHERE series = 'official_census' AND cut IN ('08105')")
     assert census.columns == ["cut", "population"] and {r["population"] for r in census.rows} == {"24333", "25795"}
     articles = sample.query("SELECT cut, title FROM factsync.eswiki_infobox WHERE cut IN ('08105') OR cut IS NULL")
     assert {r["cut"] for r in articles.rows} == {"08105", None} and articles.origin.startswith("sample snapshot")

@@ -17,126 +17,6 @@
  ],
  "rows": [
   [
-   "http://www.wikidata.org/entity/Q23660569",
-   null,
-   "Castro",
-   "http://www.wikidata.org/entity/statement/Q23660569-a4b7bee5-4324-3078-f4ab-f63edc0a43b6",
-   "46997",
-   "2024-01-01",
-   "http://www.wikidata.org/entity/Q39825",
-   "NormalRank",
-   null,
-   "http://www.wikidata.org/entity/Q106369845"
-  ],
-  [
-   "http://www.wikidata.org/entity/Q23660622",
-   null,
-   "La Unión",
-   "http://www.wikidata.org/entity/statement/Q23660622-e03ab610-451d-a172-f059-57f803cc0ac2",
-   "39447",
-   "2017-01-01",
-   "http://www.wikidata.org/entity/Q39825",
-   "NormalRank",
-   "https://geoarchivos.ine.cl/File/pub/Cd_Pb_Al_Cs_2019.pdf",
-   "http://www.wikidata.org/entity/Q21001879"
-  ],
-  [
-   "http://www.wikidata.org/entity/Q85867165",
-   null,
-   "Dalcahue",
-   "http://www.wikidata.org/entity/statement/Q85867165-0e8ae46c-4327-05b5-0776-cf1c79c8a440",
-   "13762",
-   "2017-01-01",
-   "http://www.wikidata.org/entity/Q39825",
-   "NormalRank",
-   null,
-   "http://www.wikidata.org/entity/Q21001879"
-  ],
-  [
-   "http://www.wikidata.org/entity/Q3785",
-   "09121",
-   "Cholchol",
-   "http://www.wikidata.org/entity/statement/Q3785-4A22C295-059E-4E2E-A194-1818C56C0741",
-   "11611",
-   "2017-01-01",
-   null,
-   "NormalRank",
-   "https://www.ine.gob.cl/",
-   null
-  ],
-  [
-   "http://www.wikidata.org/entity/Q3785",
-   "09121",
-   "Cholchol",
-   "http://www.wikidata.org/entity/statement/Q3785-4A22C295-059E-4E2E-A194-1818C56C0741",
-   "11611",
-   "2017-01-01",
-   null,
-   "NormalRank",
-   null,
-   "http://www.wikidata.org/entity/Q106369845"
-  ],
-  [
-   "http://www.wikidata.org/entity/Q3880",
-   "09203",
-   "Curacautín",
-   "http://www.wikidata.org/entity/statement/Q3880-73B10DD0-783B-47ED-BD2A-DE62D584E4C6",
-   "16508",
-   "2020-01-01",
-   null,
-   "NormalRank",
-   null,
-   null
-  ],
-  [
-   "http://www.wikidata.org/entity/Q13037",
-   null,
-   "El Carmen",
-   "http://www.wikidata.org/entity/statement/Q13037-785AD318-40FB-44DA-B35B-6D9CB16331A7",
-   "12044",
-   "2017-01-01",
-   null,
-   "NormalRank",
-   "https://www.ine.gob.cl/",
-   null
-  ],
-  [
-   "http://www.wikidata.org/entity/Q13037",
-   null,
-   "El Carmen",
-   "http://www.wikidata.org/entity/statement/Q13037-785AD318-40FB-44DA-B35B-6D9CB16331A7",
-   "12044",
-   "2017-01-01",
-   null,
-   "NormalRank",
-   null,
-   "http://www.wikidata.org/entity/Q106369845"
-  ],
-  [
-   "http://www.wikidata.org/entity/Q13079",
-   "08105",
-   "Hualqui",
-   "http://www.wikidata.org/entity/statement/Q13079-7D60718C-533F-4D3A-BE0A-8D5B39ECE964",
-   "24333",
-   "2020-01-01",
-   null,
-   "NormalRank",
-   null,
-   null
-  ],
-  [
-   "http://www.wikidata.org/entity/Q56137",
-   null,
-   "San Carlos",
-   "http://www.wikidata.org/entity/statement/Q56137-1d277f9b-49a9-21b2-6a89-dd0ae0562bb6",
-   "32529",
-   "2017-01-01",
-   "http://www.wikidata.org/entity/Q39825",
-   "NormalRank",
-   null,
-   null
-  ],
-  [
    "http://www.wikidata.org/entity/Q2390232",
    "11303",
    "Tortel",
@@ -1037,6 +917,126 @@
    null
   ],
   [
+   "http://www.wikidata.org/entity/Q23660569",
+   null,
+   "Castro",
+   "http://www.wikidata.org/entity/statement/Q23660569-a4b7bee5-4324-3078-f4ab-f63edc0a43b6",
+   "46997",
+   "2024-01-01",
+   "http://www.wikidata.org/entity/Q39825",
+   "NormalRank",
+   null,
+   "http://www.wikidata.org/entity/Q106369845"
+  ],
+  [
+   "http://www.wikidata.org/entity/Q23660622",
+   null,
+   "La Unión",
+   "http://www.wikidata.org/entity/statement/Q23660622-e03ab610-451d-a172-f059-57f803cc0ac2",
+   "39447",
+   "2017-01-01",
+   "http://www.wikidata.org/entity/Q39825",
+   "NormalRank",
+   "https://geoarchivos.ine.cl/File/pub/Cd_Pb_Al_Cs_2019.pdf",
+   "http://www.wikidata.org/entity/Q21001879"
+  ],
+  [
+   "http://www.wikidata.org/entity/Q85867165",
+   null,
+   "Dalcahue",
+   "http://www.wikidata.org/entity/statement/Q85867165-0e8ae46c-4327-05b5-0776-cf1c79c8a440",
+   "13762",
+   "2017-01-01",
+   "http://www.wikidata.org/entity/Q39825",
+   "NormalRank",
+   null,
+   "http://www.wikidata.org/entity/Q21001879"
+  ],
+  [
+   "http://www.wikidata.org/entity/Q3785",
+   "09121",
+   "Cholchol",
+   "http://www.wikidata.org/entity/statement/Q3785-4A22C295-059E-4E2E-A194-1818C56C0741",
+   "11611",
+   "2017-01-01",
+   null,
+   "NormalRank",
+   "https://www.ine.gob.cl/",
+   null
+  ],
+  [
+   "http://www.wikidata.org/entity/Q3785",
+   "09121",
+   "Cholchol",
+   "http://www.wikidata.org/entity/statement/Q3785-4A22C295-059E-4E2E-A194-1818C56C0741",
+   "11611",
+   "2017-01-01",
+   null,
+   "NormalRank",
+   null,
+   "http://www.wikidata.org/entity/Q106369845"
+  ],
+  [
+   "http://www.wikidata.org/entity/Q3880",
+   "09203",
+   "Curacautín",
+   "http://www.wikidata.org/entity/statement/Q3880-73B10DD0-783B-47ED-BD2A-DE62D584E4C6",
+   "16508",
+   "2020-01-01",
+   null,
+   "NormalRank",
+   null,
+   null
+  ],
+  [
+   "http://www.wikidata.org/entity/Q13037",
+   null,
+   "El Carmen",
+   "http://www.wikidata.org/entity/statement/Q13037-785AD318-40FB-44DA-B35B-6D9CB16331A7",
+   "12044",
+   "2017-01-01",
+   null,
+   "NormalRank",
+   "https://www.ine.gob.cl/",
+   null
+  ],
+  [
+   "http://www.wikidata.org/entity/Q13037",
+   null,
+   "El Carmen",
+   "http://www.wikidata.org/entity/statement/Q13037-785AD318-40FB-44DA-B35B-6D9CB16331A7",
+   "12044",
+   "2017-01-01",
+   null,
+   "NormalRank",
+   null,
+   "http://www.wikidata.org/entity/Q106369845"
+  ],
+  [
+   "http://www.wikidata.org/entity/Q13079",
+   "08105",
+   "Hualqui",
+   "http://www.wikidata.org/entity/statement/Q13079-7D60718C-533F-4D3A-BE0A-8D5B39ECE964",
+   "24333",
+   "2020-01-01",
+   null,
+   "NormalRank",
+   null,
+   null
+  ],
+  [
+   "http://www.wikidata.org/entity/Q56137",
+   null,
+   "San Carlos",
+   "http://www.wikidata.org/entity/statement/Q56137-1d277f9b-49a9-21b2-6a89-dd0ae0562bb6",
+   "32529",
+   "2017-01-01",
+   "http://www.wikidata.org/entity/Q39825",
+   "NormalRank",
+   null,
+   null
+  ],
+  [
    "http://www.wikidata.org/entity/Q3651",
    "11201",
    "Aysén",
@@ -1097,5 +1097,5 @@
    null
   ]
  ],
- "recorded_at": "2026-10-23T06:58:26Z"
+ "recorded_at": "2026-10-24T17:03:02Z"
 }

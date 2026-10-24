@@ -4,7 +4,6 @@
   "discredited": {
     "2012": "Carried out in 2012 and published in April 2013, but its results were later withdrawn: INE discarded the data because of problems in collecting and processing it, and a new census was carried out in 2017. Figures attributed to it are not official."
   },
-  "held_by_factsync": [2017, 2024],
   "projection_years": [2002, 2035],
   "official_sources": {
     "census_2024": {
@@ -13,6 +12,22 @@
       "publisher": "Instituto Nacional de Estadísticas",
       "url": "https://censo2024.ine.gob.cl/resultados/",
       "year": 2024,
+      "definition": "census"
+    },
+    "census_2002": {
+      "name": "INE Censo 2002",
+      "title": "Censo de Población y Vivienda 2002 (REDATAM)",
+      "publisher": "Instituto Nacional de Estadísticas",
+      "url": "https://redatam-ine.ine.cl/redbin/RpWebEngine.exe/Portal?BASE=CENSO_2002&lang=esp",
+      "year": 2002,
+      "definition": "census"
+    },
+    "census_2017_area": {
+      "name": "INE Censo 2017, población urbana y rural",
+      "title": "Censo 2017 Comuna: Población, viviendas por área y densidad",
+      "publisher": "Instituto Nacional de Estadísticas",
+      "url": "https://geoine-ine-chile.opendata.arcgis.com/datasets/1c64fcb18f5a41e088b25ef9f42b58d7_0",
+      "year": 2017,
       "definition": "census"
     },
     "census_2017": {

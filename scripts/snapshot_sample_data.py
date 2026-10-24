@@ -3,8 +3,9 @@ so FactSync can run without Zetaris (SAMPLE_MODE=true, or run.py --sample).
 
 Usage:  .venv\\Scripts\\python scripts\\snapshot_sample_data.py [input_examples\\example_1.json ...]   (default: all)
 
-The Planner resolves each example's scope; then the Retriever reads every source for all those comunas at once,
-through a wrapper that keeps each query's rows exactly as Zetaris returned them. They go to data/sample/<view>.json
+The Planner reads the source catalog and resolves each example's scope; then the Retriever reads every source in the
+catalog (the ones read on demand too, so discovery works offline) for all those comunas at once, through a wrapper
+that keeps each query's rows exactly as Zetaris returned them. They go to data/sample/<view>.json
 with the SQL and the time; data/sample/manifest.json lists the comunas covered. Needs Zetaris (read-only key is
 enough); never prints secret values.
 """
@@ -19,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.adapters.zetaris import ZetarisClient  # noqa: E402
 from app.agents.planner import Plan, Planner  # noqa: E402
-from app.agents.retriever import SOURCES, Retriever  # noqa: E402
+from app.agents.retriever import Retriever  # noqa: E402
 from app.config import ROOT, load_settings  # noqa: E402
 from app.engines.world_model import WorldModel  # noqa: E402
 from app.schemas import RunInput  # noqa: E402
@@ -53,14 +54,16 @@ def main():
     with tempfile.TemporaryDirectory() as logs:
         tracer = Tracer("snapshot", logs, echo=False)
         planner = Planner(recorder, world, tracer)
-        examples, comunas = {}, {}
+        examples, comunas, catalog = {}, {}, None
         for path in inputs:
             plan = planner.plan(RunInput.model_validate_json(path.read_text(encoding="utf-8")))
             examples[path.name] = plan.cuts
             comunas.update(plan.comunas)
+            catalog = plan.catalog
             print(f"{path.name}: {len(plan.cuts)} comunas ({plan.reason})")
         cuts = sorted(comunas)
-        everything = Plan(cuts=cuts, comunas={c: comunas[c] for c in cuts}, sources=list(SOURCES), reason="snapshot")
+        everything = Plan(cuts=cuts, comunas={c: comunas[c] for c in cuts}, sources=list(catalog), reason="snapshot",
+                          catalog=catalog)
         Retriever(recorder, world, tracer, "snapshot").fetch(everything)
 
     views = {}
@@ -68,7 +71,7 @@ def main():
         view = VIEW.search(result.sql).group(1).lower()
         recorded = views.setdefault(view, {"view": view, "queries": [], "columns": result.columns, "rows": []})
         if result.sql in recorded["queries"]:
-            continue  # the Planner reads the comuna list once per example
+            continue  # the Planner reads the catalog and the comuna list once per example
         recorded["queries"].append(result.sql)
         seen = {json.dumps(r, ensure_ascii=False) for r in recorded["rows"]}
         for row in result.rows:

@@ -39,6 +39,7 @@ METHODS = {"matcher": "code", "rules (Critic's suggestion)": "code, following th
 FINDING_STATUS = {"approved": "Critic approved", "escalated": "escalated to you", "pending": "pending"}
 COMUNA_STATUS = {"approved": "Critic approved", "partial": "partly escalated", "escalated": "escalated", "pending": "pending"}
 SOURCES = {"official_census": "INE census 2017 and 2024", "official_projections": "INE projections 2002–2035",
+           "official_census2002": "INE census 2002", "official_census2017_area": "INE census 2017 urban and rural",
            "wikidata": "Wikidata", "wikipedia_es": "Wikipedia (ES)", "wikipedia_en": "Wikipedia (EN)"}
 STATUS_ORDER = {"escalated": 0, "partial": 1, "pending": 2, "approved": 3}
 

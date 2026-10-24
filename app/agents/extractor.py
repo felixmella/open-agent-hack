@@ -12,6 +12,7 @@ sentences instead, and the claims say so.
 import re
 
 from app.agents.llm import batched, model_note
+from app.knowledge import catalog as sources_catalog
 from app.knowledge.taxonomy import census_facts, is_official_domain
 from app.knowledge.wikitext import (FIGURE, POPULATION_WORDS, article_passages, citation_facts, field_figures,
                                     field_references, historical_populations, infobox_parameters, parse_population,
@@ -39,10 +40,10 @@ INFOBOX_FIELDS = {
 FILLED_FROM_WIKIDATA = {"es"}
 
 
-def checkable_years():
-    """Years whose figures can be checked: the censuses FactSync holds, plus the withdrawn one."""
-    facts = census_facts()
-    return set(facts["held_by_factsync"]) | {int(y) for y in facts["discredited"]}
+def checkable_years(census_years):
+    """Years whose figures can be checked: the censuses whose counts some catalog source holds (read yet or not),
+    plus the withdrawn one."""
+    return set(census_years) | {int(y) for y in census_facts()["discredited"]}
 
 
 def verbatim_figure(value_text, quote):
@@ -82,11 +83,14 @@ def describe_readings(readings):
 class Extractor:
     name = "Extractor"
 
-    def __init__(self, world, tracer, llm, run_id):
+    def __init__(self, world, tracer, llm, run_id, census_years=None):
         self.world = world
         self.tracer = tracer
         self.llm = llm
         self.run_id = run_id
+        if census_years is None:  # the census years of the built-in catalog
+            census_years = sources_catalog.census_years(sources_catalog.normalize(sources_catalog.BUILT_IN))
+        self.census_years = census_years
 
     def extract(self, comuna, observed, *, round_no=0, instruction=None):
         """Read every article of this comuna read this run; returns the number of claims kept."""
@@ -127,7 +131,8 @@ class Extractor:
                 readings = self._infobox(entity, source, base, wikitext, infobox, wikidata)
                 observations += readings
         rows = historical_populations(wikitext)
-        table = [r for i, r in enumerate(rows) if r["year"] in checkable_years() or i == len(rows) - 1]
+        years = checkable_years(self.census_years)
+        table = [r for i, r in enumerate(rows) if r["year"] in years or i == len(rows) - 1]
         for row in table:
             observations.append({"entity": entity, "source": source, "provenance": {**base, "method": "rules"},
                                  "property": "population", "location": "history_table", "extracted_by": self.name,

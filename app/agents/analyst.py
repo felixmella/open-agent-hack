@@ -17,7 +17,8 @@ For each claim below, code compared a population figure for a Chilean comuna wit
 far and found no single explanation. Choose the class that best explains it, from the claim's candidates:
 {classes}
 Facts: since 1950 Chile held censuses in 1952, 1960, 1970, 1982, 1992, 2002, 2017 and 2024; INE withdrew the 2012
-census results. INE also publishes yearly estimates and projections, a different definition from a census count.
+census results. INE also publishes yearly estimates and projections, a different definition from a census count, and
+each census's urban and rural population: parts of a comuna, not its total.
 Use only the figures shown. If a source not read yet could explain a figure, say so rather than guess. Follow any
 critic_instruction.
 JSON: {{"verdicts": [{{"claim_id": "...", "class": "...", "explanation": "one or two sentences", "confidence": 0.5}}]}}"""
@@ -152,7 +153,7 @@ class Analyst:
                 continue
             sourced.add(infobox["article"])
             sourcing = matcher.assess_sourcing(infobox, citations.get(infobox["article"]),
-                                               matcher.assess_value(infobox, table, claims))
+                                               matcher.assess_value(infobox, table, claims), table)
             if sourcing:
                 findings.append(self.finding(comuna, infobox, "sourcing", sourcing, round_no))
         statements = [c for c in claims if c["target"] == "wikidata" and not c.get("missing")]

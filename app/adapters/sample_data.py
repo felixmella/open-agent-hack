@@ -2,8 +2,9 @@
 served through the Zetaris client's query interface. FactSync reads them in sample mode (no Zetaris, no network),
 and when a live Zetaris query fails in a way a retry could fix (a fallback the run escalates).
 
-It answers the agents' own queries only: SELECT <columns> FROM factsync.<view> [WHERE definition = '...' AND]
-[cut IN (...)] [OR cut IS NULL], for comunas the snapshot covers. Anything else is an error, never a guess.
+It answers the agents' own queries only: SELECT <columns> FROM factsync.<view> [WHERE series = '...' AND]
+[cut IN (...)] [OR cut IS NULL], for comunas the snapshot covers, and the source catalog. Anything else is an error,
+never a guess.
 """
 import json
 import re
@@ -14,7 +15,7 @@ from app.adapters.zetaris import QueryResult, ZetarisError
 
 QUERY = re.compile(r"^SELECT\s+(?P<columns>.+?)\s+FROM\s+(?P<view>factsync\.\w+)(?:\s+WHERE\s+(?P<where>.+))?$",
                    re.I | re.S)
-CONDITIONS = re.compile(r"definition\s*=\s*'\w+'|cut\s+IN\s*\([^)]*\)|cut\s+IS\s+NULL|\b(?:AND|OR)\b|\s+", re.I)
+CONDITIONS = re.compile(r"series\s*=\s*'\w+'|cut\s+IN\s*\([^)]*\)|cut\s+IS\s+NULL|\b(?:AND|OR)\b|\s+", re.I)
 
 
 class SampleData:
@@ -52,7 +53,7 @@ class SampleData:
         if missing:
             raise ZetarisError(f"the sample data has no column {', '.join(missing)} in {match.group('view')}",
                                recoverable=False, code="not_in_sample")
-        definition = re.search(r"definition\s*=\s*'(\w+)'", where, re.I)
+        series = re.search(r"series\s*=\s*'(\w+)'", where, re.I)
         listed = re.search(r"cut\s+IN\s*\(([^)]*)\)", where, re.I)
         cuts = set(re.findall(r"'([^']*)'", listed.group(1))) if listed else None
         if cuts is not None and cuts - set(self.comunas):
@@ -64,7 +65,7 @@ class SampleData:
         rows = []
         for values in recorded["rows"]:
             row = dict(zip(recorded["columns"], values))
-            if definition and row.get("definition") != definition.group(1):
+            if series and row.get("series") != series.group(1):
                 continue
             if cuts is not None and not (row.get("cut") in cuts or (with_null and row.get("cut") is None)):
                 continue

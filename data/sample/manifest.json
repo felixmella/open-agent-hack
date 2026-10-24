@@ -1,5 +1,5 @@
 {
- "recorded_at": "2026-10-23T06:58:26Z",
+ "recorded_at": "2026-10-24T17:03:02Z",
  "recorded_by": "scripts/snapshot_sample_data.py",
  "examples": {
   "example_1.json": [
@@ -53,6 +53,7 @@
   "factsync.eswiki_infobox": "eswiki_infobox.json",
   "factsync.ine_census2024": "ine_census2024.json",
   "factsync.official_population": "official_population.json",
+  "factsync.source_catalog": "source_catalog.json",
   "factsync.wikidata_population": "wikidata_population.json"
  }
 }

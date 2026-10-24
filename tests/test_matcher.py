@@ -111,7 +111,7 @@ def test_an_infobox_showing_wikidatas_figure_says_so():
         "The infobox has no figure of its own and shows Wikidata's: 14,019 is INE's Census 2017 count, shown as the "
         "current figure. The current official figure is the Census 2024 count, 11,846. Fixing Wikidata's statement "
         "updates this infobox too.")
-    assert assess_sourcing({**shown, "reference_raw": ""}, None, verdict) is None  # Wikidata's references, not its own
+    assert assess_sourcing({**shown, "reference_raw": ""}, None, verdict, TIERRA_AMARILLA) is None  # Wikidata's references, not its own
     several = claim(None, value_from="wikidata", statements=2)
     assert assess_value(several, TIERRA_AMARILLA) is None  # which statement the infobox shows can't be told
 
@@ -126,7 +126,7 @@ def test_an_infobox_with_an_empty_field_and_nothing_in_wikidata_shows_no_figure(
         "The infobox shows no population figure: its población field is empty, and Wikidata, which fills it then, has "
         "no population statement. Its población_urb field holds 21,492, an urban population, not the comuna total, "
         "which the infobox shows only beside a total. Census 2024 counted 31,256.")
-    assert assess_sourcing({**cabrero, "reference_raw": ""}, None, verdict) is None
+    assert assess_sourcing({**cabrero, "reference_raw": ""}, None, verdict, HUALQUI) is None
 
 
 def test_withdrawn_and_nonexistent_censuses():
@@ -165,11 +165,11 @@ def test_infobox_against_article_text():
 
 
 def test_references():
-    assert assess_sourcing(claim(26746, 2024, reference_raw=""), None, None)["class"] == "unsourced"
-    assert "citation needed" in assess_sourcing(claim(1, reference_raw="{{cr}}"), None, None)["explanation"]
+    assert assess_sourcing(claim(26746, 2024, reference_raw=""), None, None, HUALQUI)["class"] == "unsourced"
+    assert "citation needed" in assess_sourcing(claim(1, reference_raw="{{cr}}"), None, None, HUALQUI)["explanation"]
     match = {"verdict": None, "match": {"definition": "census", "year": 2024, "value": 11746, "obs_id": "c", "source": "INE"}}
     cited_2017 = assess_sourcing(claim(11746, reference_raw="<ref>censo2017.cl</ref>"), {"years": [2017],
-                                 "domains": ["censo2017.cl"]}, match)
+                                 "domains": ["censo2017.cl"]}, match, QUIRIHUE)
     assert cited_2017["class"] == "mislabelled_vintage"
     assert {"kind": "citation", "source": "censo2017.cl", "location": "infobox reference", "years": [2017]} \
         in cited_2017["evidence"]  # the explanation names 2017, so the evidence must hold it
@@ -201,7 +201,7 @@ def test_a_reference_written_after_the_figure_counts():
     isla = claim(7750, 2017, "census", source="Wikipedia EN", label="2017 census", reference_raw=None,
                  value_raw="7750<ref>{{cite web |language= es |url= https://resultados.censo2017.cl/Home/Download "
                            "|title= Censo 2017}}</ref>")
-    assert assess_sourcing(isla, None, None) is None
+    assert assess_sourcing(isla, None, None, HUALQUI) is None
 
 
 def test_rounding_is_not_read_into_a_census_figure_factsync_cannot_check():

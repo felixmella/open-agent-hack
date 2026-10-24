@@ -8,6 +8,7 @@ from app.agents.llm import AgentLLM
 from app.agents.planner import Planner
 from app.agents.retriever import Retriever
 from app.engines.world_model import WorldModel
+from app.knowledge.catalog import BUILT_IN, normalize
 from app.knowledge.matcher import official_table
 from app.orchestration.state import ComunaState
 from app.schemas import RunInput
@@ -29,9 +30,15 @@ def hualqui(tmp_path, sources, llm=None):
 BASE = ["official_census", "wikidata", "wikipedia_es", "wikipedia_en"]
 
 
+def unread(*sources):
+    """Catalog rows of the official sources a run could still read."""
+    catalog = normalize(BUILT_IN)
+    return {s: catalog[s] for s in sources}
+
+
 def test_unexplained_figures_go_to_the_planner_while_an_official_source_is_unread(tmp_path):
     world, _, observed, comuna, findings, critic = hualqui(tmp_path, BASE)
-    review = critic.review(comuna, findings, observed, 1, ["official_projections"])
+    review = critic.review(comuna, findings, observed, 1, unread("official_projections"))
     assert not review["approved"]
     fix = review["fix"]
     assert fix["target_agent"] == "Planner" and fix["check"] == "unread_official_source"
@@ -48,7 +55,7 @@ def test_unexplained_figures_go_to_the_planner_while_an_official_source_is_unrea
 
 def test_with_projections_read_every_code_verdict_passes(tmp_path):
     _, _, observed, comuna, findings, critic = hualqui(tmp_path, BASE + ["official_projections"])
-    review = critic.review(comuna, findings, observed, 1, [])
+    review = critic.review(comuna, findings, observed, 1, {})
     assert review["approved"], review["results"]
     spanish = next(f for f in findings if f["target"] == "es" and f["aspect"] == "value")
     assert spanish["class"] == "different_definition" and review["results"][spanish["id"]]["score"] == 9
@@ -63,7 +70,7 @@ def test_a_model_verdict_the_review_rejects_goes_back_to_the_analyst(tmp_path):
                                                        FakeLLM(Critic=doubts_errors))
     guessed = next(f for f in findings if f["method"] == "llm")
     assert guessed["class"] == "genuine_error" and guessed["claim"]["value"] == 20968
-    review = critic.review(comuna, findings, observed, 1, [])
+    review = critic.review(comuna, findings, observed, 1, {})
     assert review["fix"]["target_agent"] == "Analyst" and review["fix"]["check"] == "class_fit"
     assert review["results"][guessed["id"]]["criteria"]["definition_discipline"] == 0
 
@@ -72,7 +79,7 @@ def test_a_class_the_facts_rule_out_fails_whoever_made_it(tmp_path):
     _, _, observed, comuna, findings, critic = hualqui(tmp_path, BASE + ["official_projections"])
     statement = next(f for f in findings if f["claim"]["value"] == 20968 and f["aspect"] == "value")
     statement["class"] = "different_definition"
-    review = critic.review(comuna, findings, observed, 1, [])
+    review = critic.review(comuna, findings, observed, 1, {})
     result = review["results"][statement["id"]]
     assert not result["approved"] and result["failures"][0]["check"] == "class_allowed"
     assert result["failures"][0]["suggested_class"] == "cross_source_mismatch"
@@ -82,7 +89,7 @@ def test_invented_figures_in_an_explanation_cost_a_point(tmp_path):
     _, _, observed, comuna, findings, critic = hualqui(tmp_path, BASE + ["official_projections"])
     finding = next(f for f in findings if f["class"] == "outdated_vintage" and f["target"] == "en")
     finding["explanation"] += " About 31,000 people live there today."
-    result = critic.review(comuna, findings, observed, 1, [])["results"][finding["id"]]
+    result = critic.review(comuna, findings, observed, 1, {})["results"][finding["id"]]
     assert result["score"] == 8 and result["failures"][0]["check"] == "explanation"
 
 

@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 @dataclass(frozen=True)
 class Caps:
     max_critic_rounds: int = 2      # fixes the Critic may send back per comuna before what still fails is escalated
-    max_discoveries: int = 1        # sources the Planner may add to a run
+    max_discoveries: int = 3        # sources the Planner may add to a run (from the catalog)
     max_draft_revisions: int = 1    # revisions the Editor gets per draft
     max_llm_calls: int = 60         # model requests per run; past it every agent takes its deterministic path
 

@@ -16,8 +16,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app.adapters.zetaris import ZetarisClient, ZetarisError  # noqa: E402
 from app.config import load_settings  # noqa: E402
 
-VIEWS = ["factsync.ine_census2024", "factsync.official_population", "factsync.wikidata_population",
-         "factsync.eswiki_infobox", "factsync.enwiki_infobox"]
+VIEWS = ["factsync.source_catalog", "factsync.ine_census2024", "factsync.official_population",
+         "factsync.wikidata_population", "factsync.eswiki_infobox", "factsync.enwiki_infobox"]
 OUTSIDE = "factsync_rest.ine_census2024_raw"  # a source table under the views: the app key must not read it
 
 

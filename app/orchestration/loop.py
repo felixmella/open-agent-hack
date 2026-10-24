@@ -2,10 +2,11 @@
 
   plan -> retrieve -> extract -> [analyse -> critique -> route the fix]* -> draft -> critique drafts -> output
 
-Each round, the Analyst assesses every comuna still pending and the Critic scores its findings. A comuna whose
-findings all pass is approved. Otherwise the Critic's one fix is routed to the agent responsible: the Planner adds a
-source (discovery, and the Retriever reads it), the Extractor re-reads an article, or the Analyst picks the fix up
-from the World Model next round. After `max_critic_rounds` fixes, findings that still fail are escalated to a human,
+Each round, the Analyst assesses every comuna still pending and the Critic scores its findings and checks its
+unchecked claims. A comuna whose findings all pass, with nothing left unchecked that an unread source could check, is
+approved. Otherwise the Critic's one fix is routed to the agent responsible: the Planner chooses sources to add from
+the catalog (discovery, pooled across comunas; the Retriever reads them), the Extractor re-reads an article, or the
+Analyst picks the fix up from the World Model next round. After `max_critic_rounds` fixes, findings that still fail are escalated to a human,
 and the comuna's approved findings go on to the Editor.
 
 Writes output/<run_id>/result.json, logs/trace-<run_id>.jsonl and logs/world-model-<run_id>.jsonl. A run that can't
@@ -31,7 +32,7 @@ from app.agents.planner import Planner, ScopeError
 from app.agents.retriever import Retriever
 from app.engines.world_model import WorldModel
 from app.errors import RunError
-from app.knowledge import matcher
+from app.knowledge import catalog, matcher
 from app.orchestration.state import Caps, ComunaState, RunState
 from app.report.html import write_report
 from app.tracing import Tracer
@@ -170,7 +171,7 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
                    min_interval=llm_interval)
     planner.llm = llm
     retriever = Retriever(zetaris, world, tracer, run_id, observed=state.observed)
-    extractor = Extractor(world, tracer, llm, run_id)
+    extractor = Extractor(world, tracer, llm, run_id, census_years=catalog.census_years(plan.catalog))
     analyst = Analyst(world, tracer, llm, run_id)
     critic = Critic(world, tracer, llm, run_id)
     editor = Editor(world, tracer, llm, run_id, today=today)
@@ -198,9 +199,10 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
                 except LookupError as exc:
                     fail_comuna(state, comuna, tracer, str(exc), round_no)
                     continue
-                review = critic.review(comuna, comuna.findings, state.observed, round_no, planner.open_sources(plan, state))
-                if review["approved"]:
-                    comuna.status = "approved"
+                review = critic.review(comuna, comuna.findings, state.observed, round_no,
+                                       planner.open_sources(plan, state), comuna.checks)
+                if review["approved"] or (round_no > state.caps.max_critic_rounds and not review["rejected"]):
+                    comuna.status = "approved"  # claims still unchecked after the last round stay "not checkable"
                 elif round_no > state.caps.max_critic_rounds:
                     escalate(state, comuna, world, tracer, review, round_no, run_id)
                 else:
@@ -269,20 +271,19 @@ def route(fixes, state, plan, planner, retriever, extractor, tracer, round_no, r
     for fix in fixes.values():
         tracer.event("Orchestrator", "route_fix", input_summary=f"{fix['comuna']}: {fix['check']}",
                      output_summary=fix["instruction"][:200], target_agent=fix["target_agent"], round_no=round_no)
-    requests = [{"comuna": f["comuna"], "value": x["value"], "source": x["source"], "label": x["label"],
-                 "classified_as": x["class"]} for f in fixes.values() if f["target_agent"] == "Planner"
-                for x in f["figures"]]
-    if requests:
-        source = planner.discover(plan, requests, state, round_no)
-        if source:
-            try:
-                retrieval.update(retriever.fetch(plan, [source]))
-            except ZetarisError as exc:
-                state.declined[source] = f"could not be read: {exc}"
-                state.errors.append({"code": exc.code, "message": str(exc)[:300], "stage": "retrieve",
-                                     "recoverable": exc.recoverable, "source": source})
-                tracer.event("Retriever", "query_zetaris", status="failure", round_no=round_no,
-                             output_summary=f"{source}: {str(exc)[:200]}")
+    requests = [{"comuna": f["comuna"], "value": x["value"], "shown_in": f"{x['source']} {x['location']}",
+                 "label": x["label"], "year": x.get("year"), "basis": x.get("basis"), "size": x.get("size"),
+                 "classified_as": x.get("class"), "candidates": x["candidates"]}
+                for f in fixes.values() if f["target_agent"] == "Planner" for x in f["figures"]]
+    for source in planner.discover(plan, requests, state, round_no) if requests else []:
+        try:
+            retrieval.update(retriever.fetch(plan, [source]))
+        except ZetarisError as exc:
+            state.declined[source] = f"could not be read: {exc}"
+            state.errors.append({"code": exc.code, "message": str(exc)[:300], "stage": "retrieve",
+                                 "recoverable": exc.recoverable, "source": source})
+            tracer.event("Retriever", "query_zetaris", status="failure", round_no=round_no,
+                         output_summary=f"{source}: {str(exc)[:200]}")
     for cut, fix in fixes.items():
         if fix["target_agent"] == "Extractor":
             extractor.extract(state.comunas[cut], state.observed, round_no=round_no, instruction=fix["instruction"])

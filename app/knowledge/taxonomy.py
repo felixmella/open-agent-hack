@@ -1,7 +1,8 @@
 """The conflict taxonomy (why a population figure differs from the official one) and the census facts it rests on.
 
-Census facts live in data/reference/chile_censuses.json: which censuses Chile held, which one INE withdrew (2012),
-which ones FactSync holds figures for, and the official INE sources a correction may cite.
+Census facts live in data/reference/chile_censuses.json: which censuses Chile held, which one INE withdrew (2012), and
+the official INE sources a correction or a check may cite. Which censuses a run holds figures for depends on what it
+read (the source catalog, app/knowledge/catalog.py).
 """
 import json
 from functools import cache
@@ -11,8 +12,9 @@ from app.config import ROOT
 CLASSES = {
     "consistent": "Matches the official figure it says it is.",
     "outdated_vintage": "An older official figure (e.g. the Census 2017 count) shown as the current population.",
-    "different_definition": "An official figure under another definition (an INE estimate or projection) shown where a "
-                            "census count is expected. Not an error in itself.",
+    "different_definition": "An official figure under another definition (an INE estimate or projection, or only the "
+                            "urban or rural part of a census count) shown where the comuna's census count is "
+                            "expected. Not an error in itself.",
     "discredited_source": "Attributed to the 2012 census, whose results INE withdrew.",
     "nonexistent_census": "Attributed to a census Chile never held (e.g. 1999, 2022).",
     "mislabelled_vintage": "A real official figure labelled with the wrong year or census, or cited to a source that "

@@ -1,11 +1,13 @@
-"""Test doubles: a Zetaris that serves real rows recorded on Oct 23, 2026 (Hualqui, Guaitecas, Quirihue; article
-text cut down to the passages that matter), and a model that answers per agent from scripted handlers."""
+"""Test doubles: a Zetaris that serves real rows recorded on Oct 23-24, 2026 (Hualqui, Guaitecas, Quirihue; article
+text cut down to the passages that matter) and the source catalog, and a model that answers per agent from scripted
+handlers."""
 import itertools
 import json
 import re
 
 from app.adapters.meterless import LLMError, LLMResult
 from app.adapters.zetaris import QueryResult
+from app.knowledge.catalog import BUILT_IN, COLUMNS
 from app.knowledge.wikitext import rule_claims
 
 COMUNAS = [("08105", "HUALQUI", "REGIÓN DEL BIOBÍO"), ("11203", "GUAITECAS", "REGIÓN DE AYSÉN"),
@@ -13,6 +15,8 @@ COMUNAS = [("08105", "HUALQUI", "REGIÓN DEL BIOBÍO"), ("11203", "GUAITECAS", "
 CENSUS = {"08105": {2017: 24333, 2024: 25795}, "11203": {2017: 1843, 2024: 1598}, "16201": {2017: 11594, 2024: 11746}}
 PROJECTIONS = {"08105": {2007: 22309, 2017: 25552, 2020: 26201, 2024: 26746},
                "11203": {2017: 1575, 2020: 1599, 2024: 1611}, "16201": {2017: 12076, 2020: 12192, 2024: 12241}}
+CENSUS_2002 = {"08105": 18768, "11203": 1539, "16201": 11429}                       # INE REDATAM, today's boundaries
+AREA_2017 = {"08105": (20889, 3444), "11203": (1705, 138), "16201": (9473, 2121)}  # urban, rural
 INE_REF = ('<ref name="INE">{{Cite web |url= http://www.ine.cl/canales/chile_estadistico/censos_poblacion_vivienda/'
            'censo_pobl_vivi.php |title= National Statistics Institute |accessdate=13 December 2010}}</ref>')
 WIKIDATA = [
@@ -58,6 +62,21 @@ ENWIKI = [
 ]
 
 
+def official_rows(series, cut):
+    """(source, definition, scope, year, value) for one comuna in one series of factsync.official_population."""
+    if series == "official_census":
+        return [(f"INE Censo {year}", "census", "comuna", year, value) for year, value in sorted(CENSUS[cut].items())]
+    if series == "official_projections":
+        return [("INE Proyecciones base 2017", "projection", "comuna", year, value)
+                for year, value in sorted(PROJECTIONS[cut].items())]
+    if series == "official_census2002":
+        return [("INE Censo 2002", "census", "comuna", 2002, CENSUS_2002[cut])]
+    if series == "official_census2017_area":
+        urban, rural = AREA_2017[cut]
+        return [("INE Censo 2017", "census", "urban", 2017, urban), ("INE Censo 2017", "census", "rural", 2017, rural)]
+    raise AssertionError(f"unexpected series {series}")
+
+
 def wikipedia_rows(rows):
     return [{"cut": cut, "wikidata_item": item, "title": title, "revid": revid,
              "revision_timestamp": "2026-10-01T00:00:00Z", "wikitext": text, "value_raw": value, "year_raw": year,
@@ -74,16 +93,17 @@ class FakeZetaris:
     def query(self, sql, limit=100_000):
         self.sql.append(sql)
         wanted = set(re.findall(r"'(\d{5})'", sql)) or self.cuts
-        if "factsync.ine_census2024" in sql:
+        if "factsync.source_catalog" in sql:
+            rows = [{c: None if row[c] is None else str(row[c]).lower() if isinstance(row[c], bool) else str(row[c])
+                     for c in COLUMNS} for row in BUILT_IN]
+        elif "factsync.ine_census2024" in sql:
             rows = [{"cut": c, "comuna": n, "region": r} for c, n, r in COMUNAS]
         elif "factsync.official_population" in sql:
-            projection = "'projection'" in sql
-            table = PROJECTIONS if projection else CENSUS
-            source = "INE Proyecciones base 2017" if projection else None
-            rows = [{"cut": cut, "comuna": name, "source": source or f"INE Censo {year}",
-                     "definition": "projection" if projection else "census", "reference_year": str(year),
-                     "population": str(value)}
-                    for cut, name, _ in COMUNAS if cut in wanted for year, value in sorted(table[cut].items())]
+            series = re.search(r"series = '(\w+)'", sql).group(1)
+            rows = [{"cut": cut, "comuna": name, "source": source, "definition": definition, "scope": scope,
+                     "reference_year": str(year), "population": str(value)}
+                    for cut, name, _ in COMUNAS if cut in wanted
+                    for source, definition, scope, year, value in official_rows(series, cut)]
         elif "factsync.wikidata_population" in sql:
             rows = [{"wikidata_item": f"http://www.wikidata.org/entity/{item}", "cut": cut, "label_es": label,
                      "statement_id": statement, "population": value, "point_in_time": time,
@@ -151,8 +171,12 @@ def critic_agrees(payload):
 
 
 def planner_adds_projections(payload):
-    return {"source": "official_projections",
-            "reason": "A 2024 figure that is no census count may be INE's projection for 2024."}
+    """Projections for the figures they could explain, and the source each other figure names first."""
+    chosen = {"official_projections": "A 2024 figure that is no census count may be INE's projection for 2024."}
+    for figure in payload["figures"]:
+        if "official_projections" not in figure["candidates"]:
+            chosen.setdefault(figure["candidates"][0], f"It could check {figure['value']:,} ('{figure['label']}').")
+    return {"sources": [{"source": s, "reason": r} for s, r in chosen.items() if s in payload["sources_available"]]}
 
 
 def editor_writes(payload):

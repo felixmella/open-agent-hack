@@ -30,9 +30,10 @@ class OneComuna:
         if "factsync.ine_census2024" in sql:
             rows = [{"cut": self.cut, "comuna": self.name, "region": "R"}]
         elif "factsync.official_population" in sql:
-            rows = [] if "'projection'" in sql else [
+            rows = [] if "series = 'official_census'" not in sql else [
                 {"cut": self.cut, "comuna": self.name, "source": f"INE Censo {year}", "definition": "census",
-                 "reference_year": str(year), "population": str(value)} for year, value in self.census.items()]
+                 "scope": "comuna", "reference_year": str(year), "population": str(value)}
+                for year, value in self.census.items()]
         elif "factsync.wikidata_population" in sql:
             rows = [{"wikidata_item": "http://www.wikidata.org/entity/Q1", "cut": self.cut, "label_es": self.name,
                      "statement_id": f"s{i}" if value else None, "population": value, "point_in_time": time,
@@ -104,7 +105,7 @@ def test_without_a_model_sentence_patterns_read_the_prose(tmp_path):
 def test_history_tables_and_named_references_are_read_by_code(tmp_path):
     extracted, _ = extract(tmp_path, "11203", "GUAITECAS")
     history = [(c["stated_year"], c["value"]) for c in claims(extracted, "en") if c["location"] == "history_table"]
-    assert history == [(2017, 1843), (2024, 1598)]
+    assert history == [(2002, 1539), (2017, 1843), (2024, 1598)]  # 1992 left out: no catalog source covers it
     citation = next(o["payload"] for o in extracted if o["source"]["language"] == "en"
                     and o["payload"]["property"] == "population_citation")
     assert citation["domains"] == ["ine.cl"] and citation["official"] and citation["years"] == []

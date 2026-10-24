@@ -1,0 +1,97 @@
+{
+ "view": "factsync.source_catalog",
+ "queries": [
+  "SELECT source_id, view, kind, definition, scope, years_from, years_to, in_default_plan, description FROM factsync.source_catalog"
+ ],
+ "columns": [
+  "source_id",
+  "view",
+  "kind",
+  "definition",
+  "scope",
+  "years_from",
+  "years_to",
+  "in_default_plan",
+  "description"
+ ],
+ "rows": [
+  [
+   "official_census",
+   "factsync.official_population",
+   "official",
+   "census",
+   "comuna",
+   "2017",
+   "2024",
+   "true",
+   "INE census counts of each comuna, Census 2017 and Census 2024: the official headcount."
+  ],
+  [
+   "official_projections",
+   "factsync.official_population",
+   "official",
+   "projection",
+   "comuna",
+   "2002",
+   "2035",
+   "false",
+   "INE estimates and projections of each comuna for every year 2002 to 2035 (base Census 2017): official figures, but modelled estimates, not a headcount."
+  ],
+  [
+   "official_census2002",
+   "factsync.official_population",
+   "official",
+   "census",
+   "comuna",
+   "2002",
+   "2002",
+   "false",
+   "INE Census 2002 count of each comuna, on current comuna boundaries (from the 2002 census database)."
+  ],
+  [
+   "official_census2017_area",
+   "factsync.official_population",
+   "official",
+   "census",
+   "urban_rural",
+   "2017",
+   "2017",
+   "false",
+   "INE Census 2017 urban and rural population of each comuna: parts of a comuna, not its total."
+  ],
+  [
+   "wikidata",
+   "factsync.wikidata_population",
+   "commons",
+   null,
+   "comuna",
+   null,
+   null,
+   "true",
+   "Wikidata population statements of each comuna, with point in time, determination method, rank and references."
+  ],
+  [
+   "wikipedia_es",
+   "factsync.eswiki_infobox",
+   "commons",
+   null,
+   "comuna",
+   null,
+   null,
+   "true",
+   "Spanish Wikipedia comuna articles: infobox figure, reference and article text."
+  ],
+  [
+   "wikipedia_en",
+   "factsync.enwiki_infobox",
+   "commons",
+   null,
+   "comuna",
+   null,
+   null,
+   "true",
+   "English Wikipedia comuna articles: infobox figure, reference and article text."
+  ]
+ ],
+ "recorded_at": "2026-10-24T17:03:02Z"
+}

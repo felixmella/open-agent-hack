@@ -1,6 +1,9 @@
 """Retriever: reads each planned source through its Zetaris view (one SQL statement per source per run) and
 writes what it read into the World Model as provenance-stamped observations.
 
+Every official source is a series of factsync.official_population, read with the same query: a source added to the
+catalog (factsync.source_catalog) needs no new code here. Wikidata and the Wikipedias have views of their own.
+
 Records that lack a CUT (some Wikidata items and articles) are matched to comunas by name through the World Model
 resolver; matches in the review band are reported, not merged.
 """
@@ -10,13 +13,9 @@ from app.adapters.zetaris import as_int, as_str, sql_list
 from app.knowledge.wikitext import parse_population, parse_year
 from app.tracing import utc_now
 
-SOURCES = {
-    "official_census": (
-        "SELECT cut, comuna, source, definition, reference_year, population FROM factsync.official_population "
-        "WHERE definition = 'census' AND cut IN ({cuts})"),
-    "official_projections": (
-        "SELECT cut, comuna, source, definition, reference_year, population FROM factsync.official_population "
-        "WHERE definition = 'projection' AND cut IN ({cuts})"),
+OFFICIAL = ("SELECT cut, comuna, series, source, definition, scope, reference_year, population "
+            "FROM factsync.official_population WHERE series = '{series}' AND cut IN ({cuts})")
+COMMONS = {
     "wikidata": (
         "SELECT wikidata_item, cut, label_es, statement_id, population, point_in_time, determination_method, rank, "
         "reference_url, stated_in FROM factsync.wikidata_population WHERE cut IN ({cuts}) OR cut IS NULL"),
@@ -27,9 +26,15 @@ SOURCES = {
         "SELECT cut, wikidata_item, title, revid, revision_timestamp, wikitext, value_raw, year_raw, reference_raw "
         "FROM factsync.enwiki_infobox WHERE cut IN ({cuts}) OR cut IS NULL"),
 }
-VIEWS = {"official_census": "factsync.official_population", "official_projections": "factsync.official_population",
-         "wikidata": "factsync.wikidata_population", "wikipedia_es": "factsync.eswiki_infobox",
-         "wikipedia_en": "factsync.enwiki_infobox"}
+
+
+def source_query(source, catalog, cuts):
+    """The SQL that reads a source for these comunas: an official series, or a view of its own."""
+    if source in COMMONS:
+        return COMMONS[source].format(cuts=sql_list(cuts))
+    if catalog.get(source, {}).get("kind") != "official":
+        raise KeyError(f"no query for source {source!r}: it isn't in the catalog")
+    return OFFICIAL.format(series=source.replace("'", "''"), cuts=sql_list(cuts))
 
 
 def comuna_entity(cut, name):
@@ -54,12 +59,13 @@ class Retriever:
     def fetch(self, plan, sources=None):
         totals = {}
         for source in sources or plan.sources:
-            result = self.zetaris.query(SOURCES[source].format(cuts=sql_list(plan.cuts)))
-            provenance = {"view": VIEWS[source], "sql": result.sql, "fetched_at": utc_now(), "run_id": self.run_id,
-                          "agent": self.name}
+            result = self.zetaris.query(source_query(source, plan.catalog, plan.cuts))
+            provenance = {"view": plan.catalog[source]["view"], "sql": result.sql, "fetched_at": utc_now(),
+                          "run_id": self.run_id, "agent": self.name}
             if result.origin != "zetaris":
                 provenance["origin"] = result.origin
-            observations, matched, reviews = getattr(self, f"_{source.split('_')[0]}")(source, result.rows, plan, provenance)
+            kind = "official" if plan.catalog[source]["kind"] == "official" else source.split("_")[0]
+            observations, matched, reviews = getattr(self, f"_{kind}")(source, result.rows, plan, provenance)
             self.tracer.event(self.name, "query_zetaris", input_summary=f"{source} for {len(plan.cuts)} comunas",
                               output_summary=f"{len(result.rows)} rows -> {len(observations)} observations"
                                              + (f"; {matched} matched by name" if matched else "")
@@ -101,6 +107,7 @@ class Retriever:
             "provenance": observed(provenance, None),
             "property": "population", "value": as_int(r["population"]), "stated_year": as_int(r["reference_year"]),
             "definition": r["definition"],
+            **({"scope": r["scope"]} if r.get("scope") not in (None, "comuna") else {}),  # urban or rural: a part
         } for r in rows if r["cut"] in plan.comunas]
         return observations, 0, []
 

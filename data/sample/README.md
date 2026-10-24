@@ -11,14 +11,15 @@ These are inputs, not outputs: every verdict and draft is computed from these ro
 
 | File | Zetaris view | Contents |
 |---|---|---|
+| `source_catalog.json` | `factsync.source_catalog` | The sources the agents can read, what each holds and the years it covers: the Planner's catalog |
 | `ine_census2024.json` | `factsync.ine_census2024` | All 346 comunas (code, name, region): the Planner's comuna list |
-| `official_population.json` | `factsync.official_population` | INE Census 2017 and 2024 counts and INE projections 2002–2035 for the 17 comunas |
+| `official_population.json` | `factsync.official_population` | Every official series for the 17 comunas: INE Census 2017 and 2024 counts, INE projections 2002–2035, the Census 2002 count, and the Census 2017 urban and rural population. The series read on demand are recorded too, so discovery works offline |
 | `wikidata_population.json` | `factsync.wikidata_population` | Wikidata population statements for the 17 comunas, plus the items that have no comuna code (the Retriever matches those by name) |
 | `eswiki_infobox.json`, `enwiki_infobox.json` | `factsync.eswiki_infobox`, `factsync.enwiki_infobox` | Spanish and English Wikipedia articles for the 17 comunas (wikitext at the recorded revision, with the infobox population fields), plus the articles that have no comuna code |
 
 ## Licences and attribution
 
-- INE census figures and population projections: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), under INE's [open data terms](https://www.ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos).
+- INE census figures (2002, 2017 with its urban and rural split, 2024) and population projections: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), under INE's [open data terms](https://www.ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos).
 - Wikidata statements: [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 - Wikipedia article text: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Each row gives the article's title, revision id (`revid`) and revision time; its authors are listed in the history of that revision, at `https://es.wikipedia.org/w/index.php?oldid=<revid>` (Spanish) or `https://en.wikipedia.org/w/index.php?oldid=<revid>` (English). The text is unchanged.
 

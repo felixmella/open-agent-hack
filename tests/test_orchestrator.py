@@ -45,8 +45,8 @@ def test_critic_rejection_sends_the_planner_to_projections_and_changes_hualquis_
     discovery = next(e for e in trace if e["action"] == "discover_source")
     assert "official_projections" in discovery["output_summary"]
     assert discovery["decided_by"]["model_served"] == "fake/nemotron" and discovery["decided_by"]["receipt_id"]
-    assert sum("'projection'" in sql for sql in zetaris.sql) == 1
-    assert result["summary"]["discoveries"] == ["official_projections"]
+    assert sum("series = 'official_projections'" in sql for sql in zetaris.sql) == 1
+    assert result["summary"]["discoveries"] == ["official_projections", "official_census2002"]
 
     hualqui = comuna(result, "HUALQUI")
     spanish = finding(hualqui, "es", location="infobox")
@@ -92,7 +92,8 @@ def test_a_finding_the_critic_keeps_rejecting_is_escalated_at_the_cap(settings):
 def test_without_a_model_every_step_takes_its_deterministic_path(settings):
     result, trace, _, _ = go(settings, None, options={"use_llm": False})
     assert result["model_usage"]["calls"] == 0
-    assert result["summary"]["discoveries"] == ["official_projections"]
+    # by cues: projections for Hualqui's 2024 and 2007 figures, Census 2002 for the 2002 figures in the articles
+    assert result["summary"]["discoveries"] == ["official_projections", "official_census2002"]
     assert finding(comuna(result, "HUALQUI"), "es", location="infobox")["class"] == "different_definition"
     assert comuna(result, "GUAITECAS")["drafts"]["explanation_by"] == {"method": "rules"}
     assert result["summary"]["drafts"] == 9
