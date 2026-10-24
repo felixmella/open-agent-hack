@@ -31,12 +31,12 @@ def commit():
         return None
 
 
-def record(path, settings, compare_with=None, name=None):
+def record(path, settings, compare_with=None, name=None, code=None):
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%MZ")
     run_input = RunInput.model_validate_json(path.read_text(encoding="utf-8"))
     options = run_input.options.model_copy(update={"compare_with": compare_with}) if compare_with else run_input.options
     run_input = run_input.model_copy(update={"run_id": f"{path.stem}-live-{stamp}", "options": options})
-    started_at, code = datetime.now(timezone.utc).isoformat(timespec="seconds"), commit()
+    started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     try:
         result = run(run_input, settings)
     except RunError as error:
@@ -93,11 +93,12 @@ def main():
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     settings = load_settings(sample_mode=False)
+    code = commit()  # the code this process loaded: later commits don't change what it runs
     if args.national:
         national(args.national, settings)
         return
     for path in args.inputs or sorted((ROOT / "input_examples").glob("example_*.json")):
-        record(path, settings, args.compare_with, args.name)
+        record(path, settings, args.compare_with, args.name, code)
 
 
 if __name__ == "__main__":
