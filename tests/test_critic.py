@@ -38,6 +38,9 @@ def test_unexplained_figures_go_to_the_planner_while_an_official_source_is_unrea
     assert sorted(f["value"] for f in fix["figures"]) == [20968, 26746]
     stuck = [review["results"][i] for i in fix["finding_ids"]]
     assert all(r["criteria"]["definition_discipline"] == 0 and not r["approved"] for r in stuck)
+    # each finding's own instruction names its figure (a lone unexplained figure is sent back with this text)
+    details = sorted(f["detail"] for r in stuck for f in r["failures"] if f["check"] == "unread_official_source")
+    assert details[0].startswith("20,968 (Wikidata") and details[1].startswith("26,746 (Wikipedia ES")
     rejected = [a for a in world.view("observations").assessments("comuna:cut:08105", agent="Critic")
                 if a["data"]["status"] == "rejected"]
     assert len(rejected) == 2 and any(a["data"]["fix"] for a in rejected)

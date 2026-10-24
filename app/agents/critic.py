@@ -182,9 +182,10 @@ class Critic:
         # evidence fidelity
         fidelity = 0
         observation = store.get_observation(finding["claim"]["id"])
-        shown = store.get_observation((observation or {}).get("provenance", {}).get("wikidata_observation"))
+        # an infobox showing Wikidata's figure: the statement it shows must hold that figure too
+        statement = store.get_observation((observation or {}).get("provenance", {}).get("wikidata_observation"))
         if observation and observation["payload"].get("value") == value and finding["claim"].get("verified") is not False \
-                and (shown is None or shown["payload"].get("value") == value):  # an infobox showing Wikidata's figure
+                and (statement is None or statement["payload"].get("value") == value):
             fidelity += 1
         else:
             extracted = finding["claim"].get("method") in ("llm", "rules")
