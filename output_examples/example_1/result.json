@@ -1,0 +1,1442 @@
+{
+  "run_id": "example_1-live-20261024T2049Z",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 1,
+    "claims": 9,
+    "findings": 8,
+    "findings_by_class": {
+      "cross_source_mismatch": 1,
+      "discredited_source": 2,
+      "genuine_error": 2,
+      "internal_inconsistency": 1,
+      "outdated_vintage": 1,
+      "wikidata_rank_qualifier": 1
+    },
+    "drafts": 3,
+    "escalations": 0,
+    "critic_rejections": 2,
+    "discoveries": [
+      "official_projections",
+      "official_census2002"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 1,
+      "unchanged": 3
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "cuts": [
+      "09203"
+    ],
+    "sources": [
+      "official_census",
+      "wikidata",
+      "wikipedia_es",
+      "wikipedia_en",
+      "official_projections",
+      "official_census2002"
+    ],
+    "reason": "1 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "official_census": {
+      "rows": 2,
+      "observations": 2,
+      "appended": 0,
+      "unchanged": 2,
+      "reviews": 0
+    },
+    "wikidata": {
+      "rows": 75,
+      "observations": 2,
+      "appended": 0,
+      "unchanged": 2,
+      "reviews": 0
+    },
+    "wikipedia_es": {
+      "rows": 14,
+      "observations": 2,
+      "appended": 0,
+      "unchanged": 2,
+      "reviews": 0
+    },
+    "wikipedia_en": {
+      "rows": 8,
+      "observations": 2,
+      "appended": 0,
+      "unchanged": 2,
+      "reviews": 0
+    },
+    "official_projections": {
+      "rows": 34,
+      "observations": 34,
+      "appended": 0,
+      "unchanged": 34,
+      "reviews": 0
+    },
+    "official_census2002": {
+      "rows": 1,
+      "observations": 1,
+      "appended": 0,
+      "unchanged": 1,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "official_projections",
+      "reason": "Year 2020 falls within the 2002–2035 projection range. (chosen for 4 figures)",
+      "requests": [
+        {
+          "comuna": "CURACAUTÍN",
+          "value": 16508,
+          "shown_in": "Wikidata statement",
+          "label": "point in time 2020-01-01",
+          "year": 2020,
+          "basis": null,
+          "size": "89% of the Census 2024 count",
+          "classified_as": "discredited_source",
+          "candidates": [
+            "official_projections"
+          ]
+        },
+        {
+          "comuna": "CURACAUTÍN",
+          "value": 16418,
+          "shown_in": "Wikidata statement",
+          "label": "no point in time",
+          "year": null,
+          "basis": null,
+          "size": "89% of the Census 2024 count",
+          "classified_as": "cross_source_mismatch",
+          "candidates": [
+            "official_projections",
+            "official_census2002",
+            "official_census2017_area"
+          ]
+        },
+        {
+          "comuna": "CURACAUTÍN",
+          "value": 25413,
+          "shown_in": "Wikipedia ES body",
+          "label": "2017 census",
+          "year": 2017,
+          "basis": "census",
+          "size": "1 times the Census 2024 count",
+          "classified_as": "genuine_error",
+          "candidates": [
+            "official_projections"
+          ]
+        },
+        {
+          "comuna": "CURACAUTÍN",
+          "value": 25413,
+          "shown_in": "Wikipedia ES infobox",
+          "label": "2017",
+          "year": 2017,
+          "basis": null,
+          "size": "1 times the Census 2024 count",
+          "classified_as": "genuine_error",
+          "candidates": [
+            "official_projections"
+          ]
+        }
+      ],
+      "method": "llm",
+      "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "receipt_id": "rcpt_req_5xrmw505"
+    },
+    {
+      "round": 1,
+      "source": "official_census2002",
+      "reason": "Year 2002 matches the official Census 2002 coverage exactly. (chosen for 2 figures)",
+      "requests": [
+        {
+          "comuna": "CURACAUTÍN",
+          "value": 16970,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "92% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "CURACAUTÍN",
+          "value": 16970,
+          "shown_in": "Wikipedia EN history_table",
+          "label": "2002 (Historical populations table)",
+          "year": 2002,
+          "basis": "census",
+          "size": "92% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        }
+      ],
+      "method": "llm",
+      "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "receipt_id": "rcpt_req_zchrgy7q"
+    }
+  ],
+  "comunas": [
+    {
+      "cut": "09203",
+      "name": "CURACAUTÍN",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 16970,
+          "2017": 17413,
+          "2024": 18536
+        },
+        "projection": {
+          "2017": 18054,
+          "2020": 18178,
+          "2024": 18211
+        }
+      },
+      "claims_checked": 9,
+      "findings": [
+        {
+          "id": "fnd_8ef74f2f223d0daa",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "The figure 16508 is labelled as a 2012 Census value but INE withdrew those results, discrediting the source.",
+          "confidence": 0.5,
+          "method": "llm",
+          "claim": {
+            "id": "obs_f9302e61e1f37fdc8445a681",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 16508,
+            "value_raw": "16508",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3880",
+            "statement": "http://www.wikidata.org/entity/statement/Q3880-73B10DD0-783B-47ED-BD2A-DE62D584E4C6",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_f9302e61e1f37fdc8445a681",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 16508,
+              "value_raw": "16508",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_205a394dde91138ed17479b5",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 16970
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_61ad56e24dd363078c7bd94a",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 17413
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 18536
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_1a9aa446cc8731d7d81cd603",
+              "source": "INE Proyecciones base 2017",
+              "definition": "projection",
+              "year": 2020,
+              "value": 18178
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_974e5ec8a30c354aa2ac0c5e",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 16508,
+              "value_raw": "16508",
+              "label": "2012 Census",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "human_review"
+          },
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_chseire1"
+          },
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_3q5w8nc8"
+            }
+          }
+        },
+        {
+          "id": "fnd_097449b727d792d7",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "cross_source_mismatch",
+          "explanation": "The figure 16418 does not correspond to any official INE census or projection for Curacautín, and no source provided explains it.",
+          "confidence": 0.5,
+          "method": "llm",
+          "claim": {
+            "id": "obs_40cae897564286cb4671c2b3",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "value": 16418,
+            "value_raw": "16418",
+            "label": "no point in time",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3880",
+            "statement": "http://www.wikidata.org/entity/statement/Q3880-95A90750-3BF0-423B-9F26-DC12F03FB61F",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_40cae897564286cb4671c2b3",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 16418,
+              "value_raw": "16418",
+              "label": "no point in time",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_205a394dde91138ed17479b5",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 16970
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_61ad56e24dd363078c7bd94a",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 17413
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 18536
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 18536,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+            "source_key": "census_2024"
+          },
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_chseire1"
+          },
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_v060yhvt"
+            }
+          }
+        },
+        {
+          "id": "fnd_be1f038e7a292c9f",
+          "target": "es",
+          "aspect": "value",
+          "class": "genuine_error",
+          "explanation": "The claimed 2017 census population of 25,413 differs from INE's official 2017 census count of 17,413; the neighbouring-digit discrepancy and the matcher note indicate this is most likely a typographical error.",
+          "confidence": 0.5,
+          "method": "llm",
+          "claim": {
+            "id": "obs_491638e7c6278479239fc72c",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Curacautín",
+            "revid": "175603195",
+            "location": "body",
+            "role": "historical",
+            "value": 25413,
+            "value_raw": "25.413",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "Según el censo de 2017, la población de la comuna de Curacautín corresponde a un total de 25.413 habitantes, concentrándose principalmente en la localidad homónima.",
+            "method": "llm",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_491638e7c6278479239fc72c",
+              "source": "Wikipedia ES",
+              "location": "body",
+              "value": 25413,
+              "value_raw": "25.413",
+              "label": "2017 census",
+              "quote": "Según el censo de 2017, la población de la comuna de Curacautín corresponde a un total de 25.413 habitantes, concentrándose principalmente en la localidad homónima."
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_61ad56e24dd363078c7bd94a",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 17413
+            }
+          ],
+          "proposal": {
+            "action": "fix_figure",
+            "value": 17413,
+            "year": 2017,
+            "definition": "census",
+            "obs_id": "obs_61ad56e24dd363078c7bd94a",
+            "source_key": "census_2017"
+          },
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_gpkci5wz"
+          },
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_alwny3td"
+            }
+          }
+        },
+        {
+          "id": "fnd_06737c3a26390530",
+          "target": "es",
+          "aspect": "value",
+          "class": "genuine_error",
+          "explanation": "The figure 25,413 does not match the official INE 2017 census count of 17,413, and the matcher note similarly suggests a typo given the neighbouring-digit difference; no source provided explains it as another type of error.",
+          "confidence": 0.5,
+          "method": "llm",
+          "claim": {
+            "id": "obs_8934f8b75099c2f226873840",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Curacautín",
+            "revid": "175603195",
+            "location": "infobox",
+            "role": "current",
+            "value": 25413,
+            "value_raw": "25413",
+            "stated_year": 2017,
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"#1\">{{cita web|autor=Instituto Nacional de Estadísticas Chile|título=Resultados Censo 2017|url=https://resultados.censo2017.cl/Region?R=R09|fechaacceso=2 de septiembre de 2018|urlarchivo=https://web.archive.org/web/20180902151813/https://resultados.censo2017.cl/Region?R=R09|fechaarchivo=2 de septiembre de 2018}}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3880"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_8934f8b75099c2f226873840",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 25413,
+              "value_raw": "25413",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_61ad56e24dd363078c7bd94a",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 17413
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 18536
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 18536,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+            "source_key": "census_2024"
+          },
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_gpkci5wz"
+          },
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_szxrfh9q"
+            }
+          }
+        },
+        {
+          "id": "fnd_f6e1b65ce005c9a3",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "16,508 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 18,536.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_974e5ec8a30c354aa2ac0c5e",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Curacautín",
+            "revid": "1380641303",
+            "location": "infobox",
+            "role": "current",
+            "value": 16508,
+            "value_raw": "16508",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3880"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_974e5ec8a30c354aa2ac0c5e",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 16508,
+              "value_raw": "16508",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 18536
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 18536,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_p61mef65"
+            }
+          }
+        },
+        {
+          "id": "fnd_36cb1c2c53148d41",
+          "target": "en",
+          "aspect": "consistency",
+          "class": "internal_inconsistency",
+          "explanation": "The infobox gives 16,508 ('2012 Census'), while the Historical populations table already gives the 2024 census figure, 18,536.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_974e5ec8a30c354aa2ac0c5e",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Curacautín",
+            "revid": "1380641303",
+            "location": "infobox",
+            "role": "current",
+            "value": 16508,
+            "value_raw": "16508",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3880"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_974e5ec8a30c354aa2ac0c5e",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 16508,
+              "value_raw": "16508",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_40280b522af4d7cf31ca7106",
+              "source": "Wikipedia EN",
+              "location": "history_table",
+              "value": 17413,
+              "value_raw": "17413",
+              "label": "2017 (Historical populations table)",
+              "quote": "|2017 |17413"
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_538f07cfde9dbad7012a6b23",
+              "source": "Wikipedia EN",
+              "location": "history_table",
+              "value": 18536,
+              "value_raw": "18536",
+              "label": "2024 (Historical populations table)",
+              "quote": "|2024 |18536"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 18536,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_637lgwsa"
+            }
+          }
+        },
+        {
+          "id": "fnd_fd3b5d507d448510",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata's newest population statement is 16,508 (point in time 2020-01-01); Census 2024 counted 18,536, and Wikidata has no statement for it.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_f9302e61e1f37fdc8445a681",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 16508,
+            "value_raw": "16508",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3880",
+            "statement": "http://www.wikidata.org/entity/statement/Q3880-73B10DD0-783B-47ED-BD2A-DE62D584E4C6",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_f9302e61e1f37fdc8445a681",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 16508,
+              "value_raw": "16508",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_40cae897564286cb4671c2b3",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 16418,
+              "value_raw": "16418",
+              "label": "no point in time",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 18536
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 18536,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_c0d0e5d2fdef227c2973900a",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_97705a2848fb9c9b",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no point in time on 16,418; no determination method on 16,508, 16,418; no reference on 16,508, 16,418; no statement is ranked preferred, so all of them count as current.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_f9302e61e1f37fdc8445a681",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 16508,
+            "value_raw": "16508",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3880",
+            "statement": "http://www.wikidata.org/entity/statement/Q3880-73B10DD0-783B-47ED-BD2A-DE62D584E4C6",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_f9302e61e1f37fdc8445a681",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 16508,
+              "value_raw": "16508",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_40cae897564286cb4671c2b3",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 16418,
+              "value_raw": "16418",
+              "label": "no point in time",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_40280b522af4d7cf31ca7106",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Curacautín",
+            "revid": "1380641303",
+            "location": "history_table",
+            "role": "historical",
+            "value": 17413,
+            "value_raw": "17413",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 (Historical populations table)",
+            "quote": "|2017 |17413",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "17,413 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_538f07cfde9dbad7012a6b23",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Curacautín",
+            "revid": "1380641303",
+            "location": "history_table",
+            "role": "historical",
+            "value": 18536,
+            "value_raw": "18536",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 (Historical populations table)",
+            "quote": "|2024 |18536",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "18,536 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_11ff6b9b998319c1cd4a379c",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Curacautín",
+            "revid": "1380641303",
+            "location": "body",
+            "role": "historical",
+            "value": 16970,
+            "value_raw": "16,970",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Curacautín spans an area of 1664.0 and has 16,970 inhabitants (8,310 men and 8,660 women)",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "16,970 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_42710b140a26bd9f90638c2a",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Curacautín",
+            "revid": "1380641303",
+            "location": "history_table",
+            "role": "historical",
+            "value": 16970,
+            "value_raw": "16970",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 (Historical populations table)",
+            "quote": "|2002 |16970",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "16,970 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 3,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_8ef74f2f223d0daa",
+              "fnd_097449b727d792d7",
+              "fnd_be1f038e7a292c9f",
+              "fnd_06737c3a26390530"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_8ef74f2f223d0daa",
+              "finding_ids": [
+                "fnd_8ef74f2f223d0daa",
+                "fnd_097449b727d792d7",
+                "fnd_be1f038e7a292c9f",
+                "fnd_06737c3a26390530"
+              ],
+              "comuna": "CURACAUTÍN",
+              "cut": "09203",
+              "figures": [
+                {
+                  "finding_id": "fnd_8ef74f2f223d0daa",
+                  "value": 16508,
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "point in time 2020-01-01",
+                  "year": 2020,
+                  "basis": null,
+                  "size": "89% of the Census 2024 count",
+                  "class": "discredited_source",
+                  "candidates": [
+                    "official_projections"
+                  ]
+                },
+                {
+                  "finding_id": "fnd_097449b727d792d7",
+                  "value": 16418,
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "no point in time",
+                  "year": null,
+                  "basis": null,
+                  "size": "89% of the Census 2024 count",
+                  "class": "cross_source_mismatch",
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002",
+                    "official_census2017_area"
+                  ]
+                },
+                {
+                  "finding_id": "fnd_be1f038e7a292c9f",
+                  "value": 25413,
+                  "source": "Wikipedia ES",
+                  "location": "body",
+                  "label": "2017 census",
+                  "year": 2017,
+                  "basis": "census",
+                  "size": "1 times the Census 2024 count",
+                  "class": "genuine_error",
+                  "candidates": [
+                    "official_projections"
+                  ]
+                },
+                {
+                  "finding_id": "fnd_06737c3a26390530",
+                  "value": 25413,
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "2017",
+                  "year": 2017,
+                  "basis": null,
+                  "size": "1 times the Census 2024 count",
+                  "class": "genuine_error",
+                  "candidates": [
+                    "official_projections"
+                  ]
+                },
+                {
+                  "claim_id": "obs_11ff6b9b998319c1cd4a379c",
+                  "value": 16970,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "92% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_42710b140a26bd9f90638c2a",
+                  "value": 16970,
+                  "source": "Wikipedia EN",
+                  "location": "history_table",
+                  "label": "2002 (Historical populations table)",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "92% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "4 figures match no official figure read so far (Census 2017 17,413, Census 2024 18,536): 16,508 (Wikidata, 'point in time 2020-01-01', called discredited_source); 16,418 (Wikidata, 'no point in time', called cross_source_mismatch); 25,413 (Wikipedia ES, '2017 census', called genuine_error); 25,413 (Wikipedia ES, '2017', called genuine_error). 2 claim(s) can't be checked with the official figures read: 16,970 (Wikipedia EN body, '2002 census'); 16,970 (Wikipedia EN history_table, '2002 (Historical populations table)'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_census2017_area, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_8ef74f2f223d0daa",
+              "fnd_097449b727d792d7"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_097449b727d792d7",
+              "finding_ids": [
+                "fnd_097449b727d792d7"
+              ],
+              "comuna": "CURACAUTÍN",
+              "cut": "09203",
+              "figures": [
+                {
+                  "finding_id": "fnd_097449b727d792d7",
+                  "value": 16418,
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "no point in time",
+                  "year": null,
+                  "basis": null,
+                  "size": "89% of the Census 2024 count",
+                  "class": "cross_source_mismatch",
+                  "candidates": [
+                    "official_census2017_area"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "16,418 (Wikidata, 'no point in time') matches no official figure read so far (Census 2002 16,970, Census 2017 17,413, Census 2024 18,536). Before calling it cross_source_mismatch, read an official source whose coverage could explain it (official_census2017_area (census urban_rural, 2017)): only its figures can confirm or rule out an official figure of another definition or year."
+            }
+          },
+          {
+            "round": 3,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Curacautín",
+          "revid": "175603195",
+          "correction": {
+            "value": 18536,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_c0d0e5d2fdef227c2973900a"
+          },
+          "findings": [
+            "fnd_be1f038e7a292c9f",
+            "fnd_06737c3a26390530"
+          ],
+          "anchor": "obs_8934f8b75099c2f226873840",
+          "url": "https://es.wikipedia.org/wiki/Curacautín",
+          "wikitext": "| población = 18536\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "25413",
+            "year": "2017",
+            "reference": "<ref name=\"#1\">{{cita web|autor=Instituto Nacional de Estadísticas Chile|título=Resultados Censo 2017|url=https://resultados.censo2017.cl/Region?R=R09|fechaacceso=2 de septiembre de 2018|urlarchivo=https://web.archive.org/web/20180902151813/https://resultados.censo2017.cl/Region?R=R09|fechaarchivo=2 de septiembre de 2018}}</ref>"
+          },
+          "text_changes": [
+            {
+              "quote": "Según el censo de 2017, la población de la comuna de Curacautín corresponde a un total de 25.413 habitantes, concentrándose principalmente en la localidad homónima.",
+              "finding": "fnd_be1f038e7a292c9f",
+              "why": "The claimed 2017 census population of 25,413 differs from INE's official 2017 census count of 17,413; the neighbouring-digit discrepancy and the matcher note indicate this is most likely a typographical error.",
+              "replace": "25.413",
+              "by": "17.413"
+            }
+          ],
+          "edit_summary": "Población actualizada a 18.536 hab. según Censo INE 2024, reemplaza dato 25.413 erróneo.",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Curacautín",
+          "revid": "1380641303",
+          "correction": {
+            "value": 18536,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_c0d0e5d2fdef227c2973900a"
+          },
+          "findings": [
+            "fnd_f6e1b65ce005c9a3",
+            "fnd_36cb1c2c53148d41"
+          ],
+          "anchor": "obs_974e5ec8a30c354aa2ac0c5e",
+          "url": "https://en.wikipedia.org/wiki/Curacautín",
+          "wikitext": "| population_total = 18536\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "16508",
+            "year": "2012 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Updated to 18,536 from INE 2024 Census, replaces discredited 2012 figure 16,508.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3880",
+          "url": "https://www.wikidata.org/wiki/Q3880",
+          "correction": {
+            "value": 18536,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_c0d0e5d2fdef227c2973900a"
+          },
+          "findings": [
+            "fnd_8ef74f2f223d0daa",
+            "fnd_097449b727d792d7",
+            "fnd_fd3b5d507d448510",
+            "fnd_97705a2848fb9c9b"
+          ],
+          "anchor": "obs_f9302e61e1f37fdc8445a681",
+          "quickstatements": "Q3880|P1082|18536|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.",
+            "Check the 16,508 statement (point in time 2020-01-01): The figure 16508 is labelled as a 2012 Census value but INE withdrew those results, discrediting the source.",
+            "Check the 16,418 statement (no point in time): The figure 16418 does not correspond to any official INE census or projection for Curacautín, and no source provided explains it."
+          ],
+          "edit_summary": "Add Census 2024 population (18,536) from INE",
+          "status": "approved"
+        },
+        "explanation": "The previous population figures for Curacautín were based on outdated or erroneous census data. The Spanish Wikipedia draft had recorded 25,413, which does not match the official 2017 INE count of 17,413 and appears to be a typo. The English Wikipedia draft used 16,508 attributed to the 2012 census, whose results INE withdrew and is not an official figure. Both drafts now update the population to the official 18,536 inhabitants from the 2024 INE Census.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_h7lqpk7z"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012 Census",
+            "observation": "obs_974e5ec8a30c354aa2ac0c5e",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 16508,
+            "verdict": "discredited_source"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_8934f8b75099c2f226873840",
+            "reference": "<ref name=\"#1\">{{cita web|autor=Instituto Nacional de Estadísticas Chile|título=Resultados Censo 2017|url=https://resultados.censo2017.cl/Region?R=R09|fechaacceso=2 de septiembre de 2018|urlarchivo=https://web.archive.org/web/20180902151813/https://resultados.censo2017.cl/Region?R=R09|fechaarchivo=2 de septiembre de 2018}}</ref>",
+            "status": "approved",
+            "value": 25413,
+            "verdict": "genuine_error"
+          },
+          "wikidata": {
+            "label": "point in time 2020-01-01",
+            "observation": "obs_f9302e61e1f37fdc8445a681",
+            "reference": null,
+            "status": "approved",
+            "value": 16508,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024c-09-la-araucania",
+        "checked_at": "2026-10-24T18:00:55Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 25413,
+              "label": "2017",
+              "reference": "<ref name=\"#1\">{{cita web|autor=Instituto Nacional de Estadísticas Chile|título=Resultados Censo 2017|url=https://resultados.censo2017.cl/Region?R=R09|fechaacceso=2 de septiembre de 2018|urlarchivo=https://web.archive.org/web/20180902151813/https://resultados.censo2017.cl/Region?R=R09|fechaarchivo=2 de septiembre de 2018}}</ref>",
+              "observation": "obs_8934f8b75099c2f226873840",
+              "verdict": "genuine_error",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_8934f8b75099c2f226873840",
+              "reference": "<ref name=\"#1\">{{cita web|autor=Instituto Nacional de Estadísticas Chile|título=Resultados Censo 2017|url=https://resultados.censo2017.cl/Region?R=R09|fechaacceso=2 de septiembre de 2018|urlarchivo=https://web.archive.org/web/20180902151813/https://resultados.censo2017.cl/Region?R=R09|fechaarchivo=2 de septiembre de 2018}}</ref>",
+              "status": "approved",
+              "value": 25413,
+              "verdict": "genuine_error"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 16508,
+              "label": "2012 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_974e5ec8a30c354aa2ac0c5e",
+              "verdict": "discredited_source",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012 Census",
+              "observation": "obs_974e5ec8a30c354aa2ac0c5e",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 16508,
+              "verdict": "discredited_source"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 16508,
+              "label": "point in time 2020-01-01",
+              "reference": null,
+              "observation": "obs_f9302e61e1f37fdc8445a681",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "point in time 2020-01-01",
+              "observation": "obs_f9302e61e1f37fdc8445a681",
+              "reference": null,
+              "status": "approved",
+              "value": 16508,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 20,
+    "requests": 20,
+    "by_agent": {
+      "Extractor": 2,
+      "Analyst": 4,
+      "Critic": 10,
+      "Planner": 3,
+      "Editor": 1
+    },
+    "requested_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 20
+    },
+    "served_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 20
+    },
+    "routed_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 20
+    },
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 26
+  },
+  "trace_file": "logs/trace-example_1-live-20261024T2049Z.jsonl",
+  "world_model_audit_file": "logs/world-model-example_1-live-20261024T2049Z.jsonl",
+  "world_model_audit_entries": 57,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 8,
+        "resolve_by_name": 93,
+        "assess": 56,
+        "context": 6,
+        "view:observations": 7,
+        "reproject": 1,
+        "project_as_of": 1,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/example_1-live-20261024T2049Z/report.html",
+  "execution_time_seconds": 700.2
+}
