@@ -31,7 +31,7 @@ def commit():
         return None
 
 
-def record(path, settings, compare_with=None):
+def record(path, settings, compare_with=None, name=None):
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%MZ")
     run_input = RunInput.model_validate_json(path.read_text(encoding="utf-8"))
     options = run_input.options.model_copy(update={"compare_with": compare_with}) if compare_with else run_input.options
@@ -42,7 +42,7 @@ def record(path, settings, compare_with=None):
     except RunError as error:
         print(f"{path.name}: failed ({error.code} in {error.stage}): {error.message}", flush=True)
         return None
-    target = OUT / path.stem
+    target = OUT / (name or path.stem)
     shutil.rmtree(target, ignore_errors=True)
     target.mkdir(parents=True)
     run_id = result["run_id"]
@@ -51,7 +51,8 @@ def record(path, settings, compare_with=None):
         shutil.copy(ROOT / result["report_file"], target / "report.html")
     shutil.copy(settings.logs_dir / f"trace-{run_id}.jsonl", target / "trace.jsonl")
     shutil.copy(settings.logs_dir / f"world-model-{run_id}.jsonl", target / "world-model-audit.jsonl")
-    about = {"input": json.loads(path.read_text(encoding="utf-8")), "input_file": path.relative_to(ROOT).as_posix(),
+    shutil.copy(path, target / "input.json")  # the input as given, whether or not it lives in input_examples/
+    about = {"input": json.loads(path.read_text(encoding="utf-8")), "input_file": path.name,
              "compare_with": compare_with,
              "run_id": run_id, "started_at": started_at, "commit": code, "status": result["status"],
              "summary": result["summary"], "model_usage": result["model_usage"],
@@ -86,6 +87,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("inputs", nargs="*", type=Path)
     parser.add_argument("--national", metavar="TAG", help="keep the national batch with this tag instead")
+    parser.add_argument("--name", help="the folder to keep a single input's run in (default: the input's name)")
     parser.add_argument("--compare-with", metavar="RUN", help="the runs to compare with for 'since the last check' "
                                                              "(a run-id prefix, e.g. national-20261024c)")
     args = parser.parse_args()
@@ -95,7 +97,7 @@ def main():
         national(args.national, settings)
         return
     for path in args.inputs or sorted((ROOT / "input_examples").glob("example_*.json")):
-        record(path, settings, args.compare_with)
+        record(path, settings, args.compare_with, args.name)
 
 
 if __name__ == "__main__":
