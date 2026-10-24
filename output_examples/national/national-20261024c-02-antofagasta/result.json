@@ -1,0 +1,3885 @@
+{
+  "run_id": "national-20261024c-02-antofagasta",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 9,
+    "claims": 32,
+    "findings": 23,
+    "findings_by_class": {
+      "discredited_source": 4,
+      "mislabelled_vintage": 3,
+      "missing_value": 6,
+      "outdated_vintage": 7,
+      "wikidata_rank_qualifier": 3
+    },
+    "drafts": 16,
+    "escalations": 0,
+    "critic_rejections": 4,
+    "discoveries": [
+      "official_census2002",
+      "official_projections"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 9,
+      "unchanged": 17
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "cuts": [
+      "02101",
+      "02102",
+      "02103",
+      "02104",
+      "02201",
+      "02202",
+      "02203",
+      "02301",
+      "02302"
+    ],
+    "sources": [
+      "official_census",
+      "wikidata",
+      "wikipedia_es",
+      "wikipedia_en",
+      "official_census2002",
+      "official_projections"
+    ],
+    "reason": "9 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "official_census": {
+      "rows": 18,
+      "observations": 18,
+      "appended": 0,
+      "unchanged": 18,
+      "reviews": 0
+    },
+    "wikidata": {
+      "rows": 79,
+      "observations": 10,
+      "appended": 0,
+      "unchanged": 10,
+      "reviews": 0
+    },
+    "wikipedia_es": {
+      "rows": 17,
+      "observations": 8,
+      "appended": 0,
+      "unchanged": 8,
+      "reviews": 0
+    },
+    "wikipedia_en": {
+      "rows": 11,
+      "observations": 8,
+      "appended": 0,
+      "unchanged": 8,
+      "reviews": 0
+    },
+    "official_census2002": {
+      "rows": 9,
+      "observations": 9,
+      "appended": 0,
+      "unchanged": 9,
+      "reviews": 0
+    },
+    "official_projections": {
+      "rows": 306,
+      "observations": 306,
+      "appended": 0,
+      "unchanged": 306,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "official_census2002",
+      "reason": "by coverage (census, 2002), the best fit for 3 figure(s), e.g. 8,418 ('2002 (Historical populations table)')",
+      "requests": [
+        {
+          "comuna": "MEJILLONES",
+          "value": 8418,
+          "shown_in": "Wikipedia EN history_table",
+          "label": "2002 (Historical populations table)",
+          "year": 2002,
+          "basis": "census",
+          "size": "60% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "SIERRA GORDA",
+          "value": 2356,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "2 times the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "TALTAL",
+          "value": 11000,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "91% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 1,
+      "source": "official_projections",
+      "reason": "by coverage (projection, 2002-2035), the best fit for 2 figure(s), e.g. 11,132 ('point in time 2020-01-01')",
+      "requests": [
+        {
+          "comuna": "TALTAL",
+          "value": 11132,
+          "shown_in": "Wikidata statement",
+          "label": "point in time 2020-01-01",
+          "year": 2020,
+          "basis": null,
+          "size": "92% of the Census 2024 count",
+          "classified_as": "discredited_source",
+          "candidates": [
+            "official_projections"
+          ]
+        },
+        {
+          "comuna": "MARÍA ELENA",
+          "value": 7530,
+          "shown_in": "Wikipedia EN infobox",
+          "label": "2012",
+          "year": 2012,
+          "basis": null,
+          "size": "2 times the Census 2024 count",
+          "classified_as": "cross_source_mismatch",
+          "candidates": [
+            "official_projections"
+          ]
+        }
+      ],
+      "method": "rules"
+    }
+  ],
+  "comunas": [
+    {
+      "cut": "02101",
+      "name": "ANTOFAGASTA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 296905,
+          "2017": 361873,
+          "2024": 401096
+        },
+        "projection": {
+          "2017": 381635,
+          "2020": 425725,
+          "2024": 444276
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_760eaa613e938907",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 401,096.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_38e29e2f74237a9f09c64ddb",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q23660303",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_38e29e2f74237a9f09c64ddb",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_f51435dab700d39e3731038c",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 401096
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 401096,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_f51435dab700d39e3731038c",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660303",
+          "url": "https://www.wikidata.org/wiki/Q23660303",
+          "correction": {
+            "value": 401096,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_f51435dab700d39e3731038c"
+          },
+          "findings": [
+            "fnd_760eaa613e938907"
+          ],
+          "anchor": "obs_38e29e2f74237a9f09c64ddb",
+          "quickstatements": "Q23660303|P1082|401096|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (401,096) from INE",
+          "status": "approved"
+        },
+        "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 401,096. The drafts give the Census 2024 count, 401,096, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_38e29e2f74237a9f09c64ddb",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-02-antofagasta",
+        "checked_at": "2026-10-24T17:33:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_38e29e2f74237a9f09c64ddb",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_38e29e2f74237a9f09c64ddb",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02102",
+      "name": "MEJILLONES",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 8418,
+          "2017": 13467,
+          "2024": 14084
+        },
+        "projection": {
+          "2017": 12933,
+          "2020": 14776,
+          "2024": 15877
+        }
+      },
+      "claims_checked": 7,
+      "findings": [
+        {
+          "id": "fnd_2f1d3f331ef8060e",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "mislabelled_vintage",
+          "explanation": "14,084 is INE's Census 2024 count, but it is labelled 'point in time 2020-01-01'.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_001b9bb189bf59ab0d66b219",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 14084,
+            "value_raw": "14084",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q16928",
+            "statement": "http://www.wikidata.org/entity/statement/Q16928-92D9BA63-F137-4C7D-AC40-BA90B2C16375",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_001b9bb189bf59ab0d66b219",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 14084,
+              "value_raw": "14084",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_051b6bf71871ad546074303e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 14084
+            }
+          ],
+          "proposal": {
+            "action": "relabel",
+            "value": 14084,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_051b6bf71871ad546074303e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_9153285b89a87382",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "13,467 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 14,084.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_94101e11b6cfddeda4a47f67",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Mejillones",
+            "revid": "173920642",
+            "location": "infobox",
+            "role": "current",
+            "value": 13467,
+            "value_raw": "13467 <!-- no agregar &+\"nbsp\" : el número es leído para calcular la densidad de pobla -->",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q16928"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_94101e11b6cfddeda4a47f67",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 13467,
+              "value_raw": "13467 <!-- no agregar &+\"nbsp\" : el número es leído para calcular la densidad de pobla -->",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_aaa45270fa0833b967827d0c",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 13467
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_051b6bf71871ad546074303e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 14084
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 14084,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_051b6bf71871ad546074303e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_04dfbc72cd856218",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata gives the Census 2024 count, 14,084, but its statement has point in time 2020-01-01, so no statement is for Census 2024.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_001b9bb189bf59ab0d66b219",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 14084,
+            "value_raw": "14084",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q16928",
+            "statement": "http://www.wikidata.org/entity/statement/Q16928-92D9BA63-F137-4C7D-AC40-BA90B2C16375",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_001b9bb189bf59ab0d66b219",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 14084,
+              "value_raw": "14084",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_051b6bf71871ad546074303e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 14084
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 14084,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_051b6bf71871ad546074303e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_6bfc29aaea9d0136",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no determination method on 14,084; no reference on 14,084.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_001b9bb189bf59ab0d66b219",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 14084,
+            "value_raw": "14084",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q16928",
+            "statement": "http://www.wikidata.org/entity/statement/Q16928-92D9BA63-F137-4C7D-AC40-BA90B2C16375",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_001b9bb189bf59ab0d66b219",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 14084,
+              "value_raw": "14084",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_c4b6519e52a79dcad9eb7369",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Mejillones",
+            "revid": "1376423833",
+            "location": "history_table",
+            "role": "historical",
+            "value": 13467,
+            "value_raw": "13467",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 (Historical populations table)",
+            "quote": "|2017 |13467",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "13,467 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_c0fa14d90ba4de0b7837cf8c",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Mejillones",
+            "revid": "1376423833",
+            "location": "history_table",
+            "role": "historical",
+            "value": 14084,
+            "value_raw": "14084",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 (Historical populations table)",
+            "quote": "|2024 |14084",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "14,084 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_557ad7d268c0ca19e9a6a5f1",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Mejillones",
+            "revid": "1376423833",
+            "location": "body",
+            "role": "historical",
+            "value": 14084,
+            "value_raw": "14,084",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 census",
+            "quote": "As of the 2024 census, the commune has a population of 14,084, of which 49.9% are male and 50.1% are female",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "14,084 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_42b8d648461061bac19f1c65",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Mejillones",
+            "revid": "1376423833",
+            "location": "infobox",
+            "role": "current",
+            "value": 14084,
+            "value_raw": "14084",
+            "stated_year": 2024,
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"2024census\">{{cite web|url=https://censo2024.ine.gob.cl/resultados/|title=Resultados – Censo 2024|trans-title=Results – 2024 Census|lang=es|publisher=[[National Statistics Institute (Chile)|INE]]}}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q16928"
+          },
+          "result": "consistent",
+          "note": "14,084 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_6a77014a7d9064a1948e185a",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Mejillones",
+            "revid": "1376423833",
+            "location": "history_table",
+            "role": "historical",
+            "value": 8418,
+            "value_raw": "8418",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 (Historical populations table)",
+            "quote": "|2002 |8418",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "8,418 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "MEJILLONES",
+              "cut": "02102",
+              "figures": [
+                {
+                  "claim_id": "obs_6a77014a7d9064a1948e185a",
+                  "value": 8418,
+                  "source": "Wikipedia EN",
+                  "location": "history_table",
+                  "label": "2002 (Historical populations table)",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "60% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 claim(s) can't be checked with the official figures read: 8,418 (Wikipedia EN history_table, '2002 (Historical populations table)'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Mejillones",
+          "revid": "173920642",
+          "correction": {
+            "value": 14084,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_051b6bf71871ad546074303e"
+          },
+          "findings": [
+            "fnd_9153285b89a87382"
+          ],
+          "anchor": "obs_94101e11b6cfddeda4a47f67",
+          "url": "https://es.wikipedia.org/wiki/Mejillones",
+          "wikitext": "| población = 14084\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "13467 <!-- no agregar &+\"nbsp\" : el número es leído para calcular la densidad de pobla -->",
+            "year": "2017",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>"
+          },
+          "edit_summary": "Población según el Censo 2024 del INE: 14084 hab. (antes 13467: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q16928",
+          "url": "https://www.wikidata.org/wiki/Q16928",
+          "correction": {
+            "value": 14084,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_051b6bf71871ad546074303e"
+          },
+          "findings": [
+            "fnd_2f1d3f331ef8060e",
+            "fnd_04dfbc72cd856218",
+            "fnd_6bfc29aaea9d0136"
+          ],
+          "anchor": "obs_001b9bb189bf59ab0d66b219",
+          "quickstatements": "-Q16928|P1082|14084\nQ16928|P1082|14084|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.",
+            "Wikidata already has 14,084, but dated point in time 2020-01-01: the first line removes that statement (it has no reference) and the second adds it back with point in time 2024, determination method census and INE as its reference."
+          ],
+          "edit_summary": "Add Census 2024 population (14,084) from INE",
+          "status": "approved"
+        },
+        "explanation": "13,467 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 14,084. 14,084 is INE's Census 2024 count, but it is labelled 'point in time 2020-01-01'. The drafts give the Census 2024 count, 14,084, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2024",
+            "observation": "obs_42b8d648461061bac19f1c65",
+            "reference": "<ref name=\"2024census\">{{cite web|url=https://censo2024.ine.gob.cl/resultados/|title=Resultados – Censo 2024|trans-title=Results – 2024 Census|lang=es|publisher=[[National Statistics Institute (Chile)|INE]]}}</ref>",
+            "status": "checked",
+            "value": 14084,
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_94101e11b6cfddeda4a47f67",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+            "status": "approved",
+            "value": 13467,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "point in time 2020-01-01",
+            "observation": "obs_001b9bb189bf59ab0d66b219",
+            "reference": null,
+            "status": "approved",
+            "value": 14084,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-02-antofagasta",
+        "checked_at": "2026-10-24T17:33:47Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 13467,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+              "observation": "obs_94101e11b6cfddeda4a47f67",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_94101e11b6cfddeda4a47f67",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+              "status": "approved",
+              "value": 13467,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 14084,
+              "label": "2024",
+              "reference": "<ref name=\"2024census\">{{cite web|url=https://censo2024.ine.gob.cl/resultados/|title=Resultados – Censo 2024|trans-title=Results – 2024 Census|lang=es|publisher=[[National Statistics Institute (Chile)|INE]]}}</ref>",
+              "observation": "obs_42b8d648461061bac19f1c65",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "2024",
+              "observation": "obs_42b8d648461061bac19f1c65",
+              "reference": "<ref name=\"2024census\">{{cite web|url=https://censo2024.ine.gob.cl/resultados/|title=Resultados – Censo 2024|trans-title=Results – 2024 Census|lang=es|publisher=[[National Statistics Institute (Chile)|INE]]}}</ref>",
+              "status": "checked",
+              "value": 14084,
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 14084,
+              "label": "point in time 2020-01-01",
+              "reference": null,
+              "observation": "obs_001b9bb189bf59ab0d66b219",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "point in time 2020-01-01",
+              "observation": "obs_001b9bb189bf59ab0d66b219",
+              "reference": null,
+              "status": "approved",
+              "value": 14084,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02103",
+      "name": "SIERRA GORDA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 2356,
+          "2017": 10186,
+          "2024": 1472
+        },
+        "projection": {
+          "2017": 1582,
+          "2020": 1746,
+          "2024": 1800
+        }
+      },
+      "claims_checked": 5,
+      "findings": [
+        {
+          "id": "fnd_03dfcbaa7d3b110d",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 1,472.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_22b39b49fd9a003dcd9bf73d",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q188027",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_22b39b49fd9a003dcd9bf73d",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_00c9a86c9c161c819418fb99",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1472
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1472,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_00c9a86c9c161c819418fb99",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_d84aa982f0f8486b",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "10,186 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 1,472.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_1f684c5cf4c19b57e0d68c11",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Sierra Gorda (Chile)",
+            "revid": "175799867",
+            "location": "infobox",
+            "role": "current",
+            "value": 10186,
+            "value_raw": "10&nbsp;186",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q188027"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_1f684c5cf4c19b57e0d68c11",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 10186,
+              "value_raw": "10&nbsp;186",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_e4455b3ba1146f9676d52e7d",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 10186
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_00c9a86c9c161c819418fb99",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1472
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1472,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_00c9a86c9c161c819418fb99",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_5d6e020e8b8fe28f",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "1,069 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 1,472.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_f7f47a416c8eb2b4096b008e",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Sierra Gorda, Chile",
+            "revid": "1379126341",
+            "location": "infobox",
+            "role": "current",
+            "value": 1069,
+            "value_raw": "1069",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q188027"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_f7f47a416c8eb2b4096b008e",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 1069,
+              "value_raw": "1069",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_00c9a86c9c161c819418fb99",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1472
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1472,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_00c9a86c9c161c819418fb99",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_82b5e0299ed29c1ea0f201a1",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Sierra Gorda (Chile)",
+            "revid": "175799867",
+            "location": "body",
+            "role": "historical",
+            "value": 10186,
+            "value_raw": "10 186",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "Según el censo de 2017, la comuna posee 10 186 habitantes, de los cuales 1524 (14,9 %) son mujeres y 8662 (85,1 %) son hombres.",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "10,186 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_bc87f3d42153ac92b98dc9e2",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Sierra Gorda, Chile",
+            "revid": "1379126341",
+            "location": "body",
+            "role": "historical",
+            "value": 2356,
+            "value_raw": "2,356",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Sierra Gorda had 2,356 inhabitants (1,791 men and 565 women), and is an entirely rural area",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "2,356 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "SIERRA GORDA",
+              "cut": "02103",
+              "figures": [
+                {
+                  "claim_id": "obs_bc87f3d42153ac92b98dc9e2",
+                  "value": 2356,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "2 times the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 claim(s) can't be checked with the official figures read: 2,356 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Sierra Gorda (Chile)",
+          "revid": "175799867",
+          "correction": {
+            "value": 1472,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_00c9a86c9c161c819418fb99"
+          },
+          "findings": [
+            "fnd_d84aa982f0f8486b"
+          ],
+          "anchor": "obs_1f684c5cf4c19b57e0d68c11",
+          "url": "https://es.wikipedia.org/wiki/Sierra_Gorda_(Chile)",
+          "wikitext": "| población = 1&nbsp;472\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "10&nbsp;186",
+            "year": "2017",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>"
+          },
+          "edit_summary": "Población según el Censo 2024 del INE: 1 472 hab. (antes 10 186: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Sierra Gorda, Chile",
+          "revid": "1379126341",
+          "correction": {
+            "value": 1472,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_00c9a86c9c161c819418fb99"
+          },
+          "findings": [
+            "fnd_5d6e020e8b8fe28f"
+          ],
+          "anchor": "obs_f7f47a416c8eb2b4096b008e",
+          "url": "https://en.wikipedia.org/wiki/Sierra_Gorda,_Chile",
+          "wikitext": "| population_total = 1472\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "1069",
+            "year": "2012 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Population per INE's 2024 census: 1,472 (was 1069: the withdrawn 2012 census).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q188027",
+          "url": "https://www.wikidata.org/wiki/Q188027",
+          "correction": {
+            "value": 1472,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_00c9a86c9c161c819418fb99"
+          },
+          "findings": [
+            "fnd_03dfcbaa7d3b110d"
+          ],
+          "anchor": "obs_22b39b49fd9a003dcd9bf73d",
+          "quickstatements": "Q188027|P1082|1472|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (1,472) from INE",
+          "status": "approved"
+        },
+        "explanation": "10,186 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 1,472. 1,069 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. Wikidata has no population figure for this comuna; Census 2024 counted 1,472. The drafts give the Census 2024 count, 1,472, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012 Census",
+            "observation": "obs_f7f47a416c8eb2b4096b008e",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 1069,
+            "verdict": "discredited_source"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_1f684c5cf4c19b57e0d68c11",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+            "status": "approved",
+            "value": 10186,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_22b39b49fd9a003dcd9bf73d",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-02-antofagasta",
+        "checked_at": "2026-10-24T17:33:47Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 10186,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+              "observation": "obs_1f684c5cf4c19b57e0d68c11",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_1f684c5cf4c19b57e0d68c11",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+              "status": "approved",
+              "value": 10186,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1069,
+              "label": "2012 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_f7f47a416c8eb2b4096b008e",
+              "verdict": "discredited_source",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012 Census",
+              "observation": "obs_f7f47a416c8eb2b4096b008e",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 1069,
+              "verdict": "discredited_source"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_22b39b49fd9a003dcd9bf73d",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_22b39b49fd9a003dcd9bf73d",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02104",
+      "name": "TALTAL",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 11100,
+          "2017": 13317,
+          "2024": 12097
+        },
+        "projection": {
+          "2017": 12831,
+          "2020": 13657,
+          "2024": 13967
+        }
+      },
+      "claims_checked": 9,
+      "findings": [
+        {
+          "id": "fnd_2287b8cdb6b73e83",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "11,132 matches no official figure held (Census 2002 11,100, Census 2017 13,317, Census 2024 12,097, projection 2020 13,657), but Wikipedia EN gives the same figure labelled '2012 census'; INE withdrew that census's results.",
+          "confidence": 0.7,
+          "method": "matcher (model unavailable)",
+          "claim": {
+            "id": "obs_97335fd409acd813145bf50b",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 11132,
+            "value_raw": "11132",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q188049",
+            "statement": "http://www.wikidata.org/entity/statement/Q188049-9B2ECEF0-BB06-4E88-B92D-8F2094484D9F",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_97335fd409acd813145bf50b",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 11132,
+              "value_raw": "11132",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_a958e6a9dd564a2682264714",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 11100
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4f1f56b76133214e40aa93ce",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 13317
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_0adbdc68b59cc7c788f3aa58",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 12097
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_1250f5104e9b334946c3fb74",
+              "source": "INE Proyecciones base 2017",
+              "definition": "projection",
+              "year": 2020,
+              "value": 13657
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_e3eafb508059354470612bd9",
+              "source": "Wikipedia EN",
+              "location": "lead",
+              "value": 11132,
+              "value_raw": "11,132",
+              "label": "2012 census",
+              "quote": "According to the 2012 census, the commune has a population of 11,132 and has an area of 20405.1"
+            }
+          ],
+          "proposal": {
+            "action": "human_review"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_b25df24255b0fb0c",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "11,132 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_e3eafb508059354470612bd9",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Taltal",
+            "revid": "1379263827",
+            "location": "lead",
+            "role": "historical",
+            "value": 11132,
+            "value_raw": "11,132",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 census",
+            "quote": "According to the 2012 census, the commune has a population of 11,132 and has an area of 20405.1",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_e3eafb508059354470612bd9",
+              "source": "Wikipedia EN",
+              "location": "lead",
+              "value": 11132,
+              "value_raw": "11,132",
+              "label": "2012 census",
+              "quote": "According to the 2012 census, the commune has a population of 11,132 and has an area of 20405.1"
+            }
+          ],
+          "proposal": {
+            "action": "deprecate"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_7370cceaaaa10880",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "13,317 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 12,097.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_e26905d8b0c435d8afec3007",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Taltal",
+            "revid": "175801343",
+            "location": "infobox",
+            "role": "current",
+            "value": 13317,
+            "value_raw": "13317",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q188049"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_e26905d8b0c435d8afec3007",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 13317,
+              "value_raw": "13317",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4f1f56b76133214e40aa93ce",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 13317
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_0adbdc68b59cc7c788f3aa58",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 12097
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 12097,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_0adbdc68b59cc7c788f3aa58",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_5db2548ed992bb3d",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "11,132 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 12,097.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_042c72075ef897bcdfa6e88c",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Taltal",
+            "revid": "1379263827",
+            "location": "infobox",
+            "role": "current",
+            "value": 11132,
+            "value_raw": "11132",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q188049"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_042c72075ef897bcdfa6e88c",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 11132,
+              "value_raw": "11132",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_0adbdc68b59cc7c788f3aa58",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 12097
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 12097,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_0adbdc68b59cc7c788f3aa58",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_a00dc6d5ced2fcb0",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata's newest population statement is 11,132 (point in time 2020-01-01); Census 2024 counted 12,097, and Wikidata has no statement for it.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_97335fd409acd813145bf50b",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 11132,
+            "value_raw": "11132",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q188049",
+            "statement": "http://www.wikidata.org/entity/statement/Q188049-9B2ECEF0-BB06-4E88-B92D-8F2094484D9F",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_436e823d5e62bb4930348a2c",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 12100,
+              "value_raw": "12100",
+              "label": "no point in time",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_97335fd409acd813145bf50b",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 11132,
+              "value_raw": "11132",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_0adbdc68b59cc7c788f3aa58",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 12097
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 12097,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_0adbdc68b59cc7c788f3aa58",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_337ce0f44f3da1e6",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no point in time on 12,100; no determination method on 12,100, 11,132; no reference on 12,100, 11,132; no statement is ranked preferred, so all of them count as current.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_97335fd409acd813145bf50b",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 11132,
+            "value_raw": "11132",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q188049",
+            "statement": "http://www.wikidata.org/entity/statement/Q188049-9B2ECEF0-BB06-4E88-B92D-8F2094484D9F",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_436e823d5e62bb4930348a2c",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 12100,
+              "value_raw": "12100",
+              "label": "no point in time",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_97335fd409acd813145bf50b",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 11132,
+              "value_raw": "11132",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_436e823d5e62bb4930348a2c",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "value": 12100,
+            "value_raw": "12100",
+            "label": "no point in time",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q188049",
+            "statement": "http://www.wikidata.org/entity/statement/Q188049-5DB2CE6D-5922-4915-B338-D87DF3F36EF9",
+            "references": []
+          },
+          "result": "consistent",
+          "note": "12,100 (12,097 rounded) matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_9962de6cd6fe5d887ecbcbea",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Taltal",
+            "revid": "175801343",
+            "location": "body",
+            "role": "current",
+            "value": 20000,
+            "value_raw": "20.000",
+            "label": "no year",
+            "quote": "En la época del salitre, Taltal llegó a tener 20.000 habitantes, población hasta la fecha no superada y fue el tercer puerto salitrero más importante",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not checkable",
+          "note": "no year stated and no official figure matches, so it can't be told what it refers to"
+        },
+        {
+          "claim": {
+            "id": "obs_850801b70a141492965dfaeb",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Taltal",
+            "revid": "175801343",
+            "location": "body",
+            "role": "historical",
+            "value": 13317,
+            "value_raw": "13.317",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "La comuna tiene una población de 13.317 habitantes de acuerdo al censo del año 2017 distribuidos en 7.481 varones y 5.836 mujeres.",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "13,317 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_149d13c35bb15d6648a8f32c",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Taltal",
+            "revid": "1379263827",
+            "location": "body",
+            "role": "historical",
+            "value": 11000,
+            "value_raw": "11,000",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Taltal had 11,000 inhabitants (6,182 men and 4,918 women)",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "11,000 (11,100 rounded) matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_7dade30bbb508edd30631c70",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Taltal",
+            "revid": "1379263827",
+            "location": "body",
+            "role": "historical",
+            "value": 2262,
+            "value_raw": "2,262",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 census",
+            "quote": "According to data from the 2024 Census, 18.7% of Taltal's population self-identifies as belonging to the Chango indigenous people (2,262 people)",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not the comuna's figure",
+          "note": "2,262 is 19% of INE's Census 2024 count, 12,097: it probably refers to a locality or an area, not the comuna."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_2287b8cdb6b73e83"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_2287b8cdb6b73e83",
+              "finding_ids": [
+                "fnd_2287b8cdb6b73e83"
+              ],
+              "comuna": "TALTAL",
+              "cut": "02104",
+              "figures": [
+                {
+                  "finding_id": "fnd_2287b8cdb6b73e83",
+                  "value": 11132,
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "point in time 2020-01-01",
+                  "year": 2020,
+                  "basis": null,
+                  "size": "92% of the Census 2024 count",
+                  "class": "discredited_source",
+                  "candidates": [
+                    "official_projections"
+                  ]
+                },
+                {
+                  "claim_id": "obs_149d13c35bb15d6648a8f32c",
+                  "value": 11000,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "91% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 figures match no official figure read so far (Census 2017 13,317, Census 2024 12,097): 11,132 (Wikidata, 'point in time 2020-01-01', called discredited_source). 1 claim(s) can't be checked with the official figures read: 11,000 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Taltal",
+          "revid": "175801343",
+          "correction": {
+            "value": 12097,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_0adbdc68b59cc7c788f3aa58"
+          },
+          "findings": [
+            "fnd_7370cceaaaa10880"
+          ],
+          "anchor": "obs_e26905d8b0c435d8afec3007",
+          "url": "https://es.wikipedia.org/wiki/Taltal",
+          "wikitext": "| población = 12097\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "13317",
+            "year": "2017",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>"
+          },
+          "edit_summary": "Población según el Censo 2024 del INE: 12097 hab. (antes 13317: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Taltal",
+          "revid": "1379263827",
+          "correction": {
+            "value": 12097,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_0adbdc68b59cc7c788f3aa58"
+          },
+          "findings": [
+            "fnd_b25df24255b0fb0c",
+            "fnd_5db2548ed992bb3d"
+          ],
+          "anchor": "obs_042c72075ef897bcdfa6e88c",
+          "url": "https://en.wikipedia.org/wiki/Taltal",
+          "wikitext": "| population_total = 12097\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "11132",
+            "year": "2012 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "text_changes": [
+            {
+              "quote": "According to the 2012 census, the commune has a population of 11,132 and has an area of 20405.1",
+              "finding": "fnd_b25df24255b0fb0c",
+              "why": "11,132 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure.",
+              "note": "remove the figure or give its source"
+            }
+          ],
+          "edit_summary": "Population per INE's 2024 census: 12,097 (was 11132: the withdrawn 2012 census).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q188049",
+          "url": "https://www.wikidata.org/wiki/Q188049",
+          "correction": {
+            "value": 12097,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_0adbdc68b59cc7c788f3aa58"
+          },
+          "findings": [
+            "fnd_2287b8cdb6b73e83",
+            "fnd_a00dc6d5ced2fcb0",
+            "fnd_337ce0f44f3da1e6"
+          ],
+          "anchor": "obs_97335fd409acd813145bf50b",
+          "quickstatements": "Q188049|P1082|12097|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.",
+            "Check the 11,132 statement (point in time 2020-01-01): 11,132 matches no official figure held (Census 2002 11,100, Census 2017 13,317, Census 2024 12,097, projection 2020 13,657), but Wikipedia EN gives the same figure labelled '2012 census'; INE withdrew that census's results."
+          ],
+          "edit_summary": "Add Census 2024 population (12,097) from INE",
+          "status": "approved"
+        },
+        "explanation": "13,317 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 12,097. 11,132 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. 11,132 matches no official figure held (Census 2002 11,100, Census 2017 13,317, Census 2024 12,097, projection 2020 13,657), but Wikipedia EN gives the same figure labelled '2012 census'; INE withdrew that census's results. The drafts give the Census 2024 count, 12,097, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012 Census",
+            "observation": "obs_042c72075ef897bcdfa6e88c",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 11132,
+            "verdict": "discredited_source"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_e26905d8b0c435d8afec3007",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+            "status": "approved",
+            "value": 13317,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "point in time 2020-01-01",
+            "observation": "obs_97335fd409acd813145bf50b",
+            "reference": null,
+            "status": "approved",
+            "value": 11132,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-02-antofagasta",
+        "checked_at": "2026-10-24T17:33:47Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 13317,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+              "observation": "obs_e26905d8b0c435d8afec3007",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_e26905d8b0c435d8afec3007",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+              "status": "approved",
+              "value": 13317,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 11132,
+              "label": "2012 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_042c72075ef897bcdfa6e88c",
+              "verdict": "discredited_source",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012 Census",
+              "observation": "obs_042c72075ef897bcdfa6e88c",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 11132,
+              "verdict": "discredited_source"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 11132,
+              "label": "point in time 2020-01-01",
+              "reference": null,
+              "observation": "obs_97335fd409acd813145bf50b",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "point in time 2020-01-01",
+              "observation": "obs_97335fd409acd813145bf50b",
+              "reference": null,
+              "status": "approved",
+              "value": 11132,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02201",
+      "name": "CALAMA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 138402,
+          "2017": 165731,
+          "2024": 166334
+        },
+        "projection": {
+          "2017": 171875,
+          "2020": 190336,
+          "2024": 196152
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_28913289b935df54",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 166,334.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_db942bdb01ef41606c8af76c",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q23660534",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_db942bdb01ef41606c8af76c",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_7ed6254e92441f241e7b21d2",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 166334
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 166334,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_7ed6254e92441f241e7b21d2",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660534",
+          "url": "https://www.wikidata.org/wiki/Q23660534",
+          "correction": {
+            "value": 166334,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_7ed6254e92441f241e7b21d2"
+          },
+          "findings": [
+            "fnd_28913289b935df54"
+          ],
+          "anchor": "obs_db942bdb01ef41606c8af76c",
+          "quickstatements": "Q23660534|P1082|166334|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (166,334) from INE",
+          "status": "approved"
+        },
+        "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 166,334. The drafts give the Census 2024 count, 166,334, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_db942bdb01ef41606c8af76c",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-02-antofagasta",
+        "checked_at": "2026-10-24T17:33:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_db942bdb01ef41606c8af76c",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_db942bdb01ef41606c8af76c",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02202",
+      "name": "OLLAGÜE",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 318,
+          "2017": 321,
+          "2024": 256
+        },
+        "projection": {
+          "2017": 281,
+          "2020": 287,
+          "2024": 269
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_934896a22ae95d09",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 256.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_e66546fd28e3eee3c5fbd524",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q23660235",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_e66546fd28e3eee3c5fbd524",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_ae8f269a7284a79fd1fbaba8",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 256
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 256,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_ae8f269a7284a79fd1fbaba8",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660235",
+          "url": "https://www.wikidata.org/wiki/Q23660235",
+          "correction": {
+            "value": 256,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_ae8f269a7284a79fd1fbaba8"
+          },
+          "findings": [
+            "fnd_934896a22ae95d09"
+          ],
+          "anchor": "obs_e66546fd28e3eee3c5fbd524",
+          "quickstatements": "Q23660235|P1082|256|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (256) from INE",
+          "status": "approved"
+        },
+        "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 256. The drafts give the Census 2024 count, 256, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_e66546fd28e3eee3c5fbd524",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-02-antofagasta",
+        "checked_at": "2026-10-24T17:33:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_e66546fd28e3eee3c5fbd524",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_e66546fd28e3eee3c5fbd524",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02203",
+      "name": "SAN PEDRO DE ATACAMA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 4969,
+          "2017": 10996,
+          "2024": 9843
+        },
+        "projection": {
+          "2017": 9177,
+          "2020": 10434,
+          "2024": 11030
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_2a721f17cc113ae8",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 9,843.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_91b1bd94c3e7335b1d30ae8d",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q23660231",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_91b1bd94c3e7335b1d30ae8d",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_3d0fb3f04b9b78b119e33ead",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 9843
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 9843,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_3d0fb3f04b9b78b119e33ead",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660231",
+          "url": "https://www.wikidata.org/wiki/Q23660231",
+          "correction": {
+            "value": 9843,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_3d0fb3f04b9b78b119e33ead"
+          },
+          "findings": [
+            "fnd_2a721f17cc113ae8"
+          ],
+          "anchor": "obs_91b1bd94c3e7335b1d30ae8d",
+          "quickstatements": "Q23660231|P1082|9843|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (9,843) from INE",
+          "status": "approved"
+        },
+        "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 9,843. The drafts give the Census 2024 count, 9,843, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_91b1bd94c3e7335b1d30ae8d",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-02-antofagasta",
+        "checked_at": "2026-10-24T17:33:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_91b1bd94c3e7335b1d30ae8d",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_91b1bd94c3e7335b1d30ae8d",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02301",
+      "name": "TOCOPILLA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 23986,
+          "2017": 25186,
+          "2024": 25400
+        },
+        "projection": {
+          "2017": 26886,
+          "2020": 28079,
+          "2024": 28354
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_2de697f25f004998",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 25,400.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_a50295d192200e2e86d9e0d4",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q23660225",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_a50295d192200e2e86d9e0d4",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_11dcfcb5c3b512c5dd6f3f2a",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 25400
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 25400,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_11dcfcb5c3b512c5dd6f3f2a",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660225",
+          "url": "https://www.wikidata.org/wiki/Q23660225",
+          "correction": {
+            "value": 25400,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_11dcfcb5c3b512c5dd6f3f2a"
+          },
+          "findings": [
+            "fnd_2de697f25f004998"
+          ],
+          "anchor": "obs_a50295d192200e2e86d9e0d4",
+          "quickstatements": "Q23660225|P1082|25400|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (25,400) from INE",
+          "status": "approved"
+        },
+        "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 25,400. The drafts give the Census 2024 count, 25,400, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_a50295d192200e2e86d9e0d4",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-02-antofagasta",
+        "checked_at": "2026-10-24T17:33:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_a50295d192200e2e86d9e0d4",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_a50295d192200e2e86d9e0d4",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02302",
+      "name": "MARÍA ELENA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 7530,
+          "2017": 6457,
+          "2024": 4834
+        },
+        "projection": {
+          "2017": 6651,
+          "2020": 6814,
+          "2024": 6507
+        }
+      },
+      "claims_checked": 6,
+      "findings": [
+        {
+          "id": "fnd_be79ee3163dcaa76",
+          "target": "en",
+          "aspect": "value",
+          "class": "mislabelled_vintage",
+          "explanation": "7,530 is INE's Census 2002 count, but it is labelled '1992 census'.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_05dd4d69a61d351b85c6c999",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "María Elena, Chile",
+            "revid": "1376414998",
+            "location": "body",
+            "role": "historical",
+            "value": 7530,
+            "value_raw": "7,530",
+            "stated_year": 1992,
+            "basis": "census",
+            "label": "1992 census",
+            "quote": "According to the 1992 census of the National Statistics Institute María Elena had 7,530 inhabitants",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_05dd4d69a61d351b85c6c999",
+              "source": "Wikipedia EN",
+              "location": "body",
+              "value": 7530,
+              "value_raw": "7,530",
+              "label": "1992 census",
+              "quote": "According to the 1992 census of the National Statistics Institute María Elena had 7,530 inhabitants"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_e503a8381ce3d9dfce15616c",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 7530
+            }
+          ],
+          "proposal": {
+            "action": "relabel",
+            "value": 7530,
+            "year": 2002,
+            "definition": "census",
+            "obs_id": "obs_e503a8381ce3d9dfce15616c",
+            "source_key": "census_2002"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_e7751238608b617e",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "6,457 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 4,834.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_f365bc50617b6561e06974f4",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "María Elena (Chile)",
+            "revid": "173450891",
+            "location": "infobox",
+            "role": "current",
+            "value": 6457,
+            "value_raw": "6457",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q16923"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_f365bc50617b6561e06974f4",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 6457,
+              "value_raw": "6457",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_6005b2be93107f4f66eba5d2",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 6457
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_9b45b4c0fe0763815f6aec99",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 4834
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 4834,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_9b45b4c0fe0763815f6aec99",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_dd5e30a1e675034b",
+          "target": "en",
+          "aspect": "value",
+          "class": "mislabelled_vintage",
+          "explanation": "7,530 is INE's Census 2002 count, but it is labelled '2012'. The current official figure is the Census 2024 count, 4,834.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_072ee2ae127d99f9d139b5cc",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "María Elena, Chile",
+            "revid": "1376414998",
+            "location": "infobox",
+            "role": "current",
+            "value": 7530,
+            "value_raw": "7530",
+            "stated_year": 2012,
+            "label": "2012",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q16923"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_072ee2ae127d99f9d139b5cc",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 7530,
+              "value_raw": "7530",
+              "label": "2012",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_e503a8381ce3d9dfce15616c",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 7530
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_9b45b4c0fe0763815f6aec99",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 4834
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 4834,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_9b45b4c0fe0763815f6aec99",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_fa281e2ff60b7c23",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata's newest population statement is 6,457 (point in time 2017-01-01); Census 2024 counted 4,834, and Wikidata has no statement for it.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_dc7c597fa3a689ff10f784ac",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 6457,
+            "value_raw": "6457",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q16923",
+            "statement": "http://www.wikidata.org/entity/statement/Q16923-ed2602bb-42b4-e83c-71ef-8aeaa9cc96cf",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_dc7c597fa3a689ff10f784ac",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 6457,
+              "value_raw": "6457",
+              "label": "point in time 2017-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_9b45b4c0fe0763815f6aec99",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 4834
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 4834,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_9b45b4c0fe0763815f6aec99",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_f6ed16dea88b9459",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no determination method on 6,457; no reference on 6,457.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_dc7c597fa3a689ff10f784ac",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 6457,
+            "value_raw": "6457",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q16923",
+            "statement": "http://www.wikidata.org/entity/statement/Q16923-ed2602bb-42b4-e83c-71ef-8aeaa9cc96cf",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_dc7c597fa3a689ff10f784ac",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 6457,
+              "value_raw": "6457",
+              "label": "point in time 2017-01-01",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_dc7c597fa3a689ff10f784ac",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 6457,
+            "value_raw": "6457",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q16923",
+            "statement": "http://www.wikidata.org/entity/statement/Q16923-ed2602bb-42b4-e83c-71ef-8aeaa9cc96cf",
+            "references": []
+          },
+          "result": "consistent",
+          "note": "6,457 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_b6c22619709a17289099b63f",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "María Elena (Chile)",
+            "revid": "173450891",
+            "location": "lead",
+            "role": "historical",
+            "value": 6457,
+            "value_raw": "6457",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "Tiene una superficie de 12 197,2 km² y cuenta con una población de 6457 habitantes según el Censo del año 2017.",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "6,457 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_bb3aa0d6ceeeffc9d14136c4",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "María Elena (Chile)",
+            "revid": "173450891",
+            "location": "body",
+            "role": "historical",
+            "value": 13765,
+            "value_raw": "13.765",
+            "stated_year": 1992,
+            "basis": "census",
+            "label": "1992 census",
+            "quote": "La comuna tenía 13.765 habitantes para el censo del año 1992, disminuyendo a 6.457 para el de 2017, lo que la convierte en la comuna con mayor disminución porcentual de habitantes en los últimos 25 años.",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not checkable",
+          "note": "refers to 1992, the year of a census whose counts weren't read for this comuna"
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_dd5e30a1e675034b"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_dd5e30a1e675034b",
+              "finding_ids": [
+                "fnd_dd5e30a1e675034b"
+              ],
+              "comuna": "MARÍA ELENA",
+              "cut": "02302",
+              "figures": [
+                {
+                  "finding_id": "fnd_dd5e30a1e675034b",
+                  "value": 7530,
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "2012",
+                  "year": 2012,
+                  "basis": null,
+                  "size": "2 times the Census 2024 count",
+                  "class": "cross_source_mismatch",
+                  "candidates": [
+                    "official_projections"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "7,530 (Wikipedia EN, '2012') matches no official figure read so far (Census 2017 6,457, Census 2024 4,834). Before calling it cross_source_mismatch, read an official source whose coverage could explain it (official_projections (projection, 2002-2035)): only its figures can confirm or rule out an official figure of another definition or year."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "María Elena (Chile)",
+          "revid": "173450891",
+          "correction": {
+            "value": 4834,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_9b45b4c0fe0763815f6aec99"
+          },
+          "findings": [
+            "fnd_e7751238608b617e"
+          ],
+          "anchor": "obs_f365bc50617b6561e06974f4",
+          "url": "https://es.wikipedia.org/wiki/María_Elena_(Chile)",
+          "wikitext": "| población = 4834\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "6457",
+            "year": "2017",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>"
+          },
+          "edit_summary": "Población según el Censo 2024 del INE: 4834 hab. (antes 6457: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "María Elena, Chile",
+          "revid": "1376414998",
+          "correction": {
+            "value": 4834,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_9b45b4c0fe0763815f6aec99"
+          },
+          "findings": [
+            "fnd_be79ee3163dcaa76",
+            "fnd_dd5e30a1e675034b"
+          ],
+          "anchor": "obs_072ee2ae127d99f9d139b5cc",
+          "url": "https://en.wikipedia.org/wiki/María_Elena,_Chile",
+          "wikitext": "| population_total = 4834\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "7530",
+            "year": "2012",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "text_changes": [
+            {
+              "quote": "According to the 1992 census of the National Statistics Institute María Elena had 7,530 inhabitants",
+              "finding": "fnd_be79ee3163dcaa76",
+              "why": "7,530 is INE's Census 2002 count, but it is labelled '1992 census'.",
+              "note": "the figure is the 2002 census figure: correct the year"
+            }
+          ],
+          "edit_summary": "Population per INE's 2024 census: 4,834 (was 7530: mislabelled year or census).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q16923",
+          "url": "https://www.wikidata.org/wiki/Q16923",
+          "correction": {
+            "value": 4834,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_9b45b4c0fe0763815f6aec99"
+          },
+          "findings": [
+            "fnd_fa281e2ff60b7c23",
+            "fnd_f6ed16dea88b9459"
+          ],
+          "anchor": "obs_dc7c597fa3a689ff10f784ac",
+          "quickstatements": "Q16923|P1082|4834|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (4,834) from INE",
+          "status": "approved"
+        },
+        "explanation": "6,457 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 4,834. 7,530 is INE's Census 2002 count, but it is labelled '2012'. Wikidata's newest population statement is 6,457 (point in time 2017-01-01); Census 2024 counted 4,834, and Wikidata has no statement for it. The drafts give the Census 2024 count, 4,834, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012",
+            "observation": "obs_072ee2ae127d99f9d139b5cc",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 7530,
+            "verdict": "mislabelled_vintage"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_f365bc50617b6561e06974f4",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+            "status": "approved",
+            "value": 6457,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "point in time 2017-01-01",
+            "observation": "obs_dc7c597fa3a689ff10f784ac",
+            "reference": null,
+            "status": "approved",
+            "value": 6457,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-02-antofagasta",
+        "checked_at": "2026-10-24T17:33:47Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 6457,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+              "observation": "obs_f365bc50617b6561e06974f4",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_f365bc50617b6561e06974f4",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+              "status": "approved",
+              "value": 6457,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 7530,
+              "label": "2012",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_072ee2ae127d99f9d139b5cc",
+              "verdict": "mislabelled_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012",
+              "observation": "obs_072ee2ae127d99f9d139b5cc",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 7530,
+              "verdict": "mislabelled_vintage"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 6457,
+              "label": "point in time 2017-01-01",
+              "reference": null,
+              "observation": "obs_dc7c597fa3a689ff10f784ac",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "point in time 2017-01-01",
+              "observation": "obs_dc7c597fa3a689ff10f784ac",
+              "reference": null,
+              "status": "approved",
+              "value": 6457,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 0,
+    "requests": 0,
+    "by_agent": {},
+    "requested_model": {},
+    "served_model": {},
+    "routed_model": {},
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 138
+  },
+  "trace_file": "logs/trace-national-20261024c-02-antofagasta.jsonl",
+  "world_model_audit_file": "logs/world-model-national-20261024c-02-antofagasta.jsonl",
+  "world_model_audit_entries": 274,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 14,
+        "resolve_by_name": 93,
+        "assess": 128,
+        "context": 26,
+        "view:observations": 49,
+        "reproject": 9,
+        "project_as_of": 9,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/national-20261024c-02-antofagasta/report.html",
+  "execution_time_seconds": 41.0
+}

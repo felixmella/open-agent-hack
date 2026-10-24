@@ -1,0 +1,267 @@
+{
+  "tag": "20261024c",
+  "made_at": "2026-10-24T18:08:14+00:00",
+  "method": "agents on their deterministic paths (matcher, rule-based Critic, templates): no model calls",
+  "comunas": 346,
+  "regions": 16,
+  "current_figures": 728,
+  "differing_from_census_2024": 666,
+  "share_differing": 0.915,
+  "by_source": {
+    "es": {
+      "comunas_with_a_figure": 291,
+      "census_2024_count": 35,
+      "differs": 256,
+      "missing": 1,
+      "no_page_or_figure": 54,
+      "share_differing": 0.88,
+      "why": {
+        "outdated_vintage": 217,
+        "different_definition": 21,
+        "genuine_error": 9,
+        "cross_source_mismatch": 7,
+        "mislabelled_vintage": 2
+      },
+      "infobox_shows_wikidata": 4,
+      "infobox_shows_wikidata_by_outcome": {
+        "outdated_vintage": 4
+      }
+    },
+    "en": {
+      "comunas_with_a_figure": 287,
+      "census_2024_count": 25,
+      "differs": 262,
+      "missing": 0,
+      "no_page_or_figure": 59,
+      "share_differing": 0.913,
+      "why": {
+        "discredited_source": 186,
+        "outdated_vintage": 52,
+        "cross_source_mismatch": 8,
+        "different_definition": 7,
+        "mislabelled_vintage": 6,
+        "nonexistent_census": 3
+      },
+      "infobox_shows_wikidata": 0,
+      "infobox_shows_wikidata_by_outcome": {}
+    },
+    "wikidata": {
+      "comunas_with_a_figure": 150,
+      "census_2024_count": 2,
+      "differs": 148,
+      "missing": 196,
+      "no_page_or_figure": 0,
+      "share_differing": 0.987,
+      "why": {
+        "outdated_vintage": 138,
+        "genuine_error": 6,
+        "mislabelled_vintage": 4
+      },
+      "infobox_shows_wikidata": 0,
+      "infobox_shows_wikidata_by_outcome": {}
+    }
+  },
+  "findings_by_class": {
+    "outdated_vintage": 460,
+    "discredited_source": 227,
+    "missing_value": 197,
+    "wikidata_rank_qualifier": 138,
+    "internal_inconsistency": 93,
+    "cross_source_mismatch": 83,
+    "different_definition": 48,
+    "unsourced": 42,
+    "mislabelled_vintage": 42,
+    "genuine_error": 31,
+    "nonexistent_census": 5
+  },
+  "checks": {
+    "consistent": 903,
+    "not checkable": 72,
+    "not the comuna's figure": 59,
+    "the comuna's urban population": 1
+  },
+  "not_checkable_by_year": {
+    "no year": 29,
+    "1992": 14,
+    "1865": 2,
+    "2000": 2,
+    "1920": 2,
+    "1895": 2,
+    "1970": 2,
+    "1990": 1,
+    "1854": 1,
+    "1874": 1,
+    "2001": 1,
+    "1985": 1,
+    "1978": 1,
+    "1972": 1,
+    "1897": 1,
+    "1885": 1,
+    "1882": 1,
+    "1836": 1,
+    "1930": 1,
+    "1907": 1,
+    "1940": 1,
+    "1960": 1,
+    "1842": 1,
+    "1843": 1,
+    "1918": 1,
+    "1875": 1
+  },
+  "census_2002_figures": {
+    "consistent": 357,
+    "outdated_vintage": 28,
+    "cross_source_mismatch": 19,
+    "not the comuna's figure": 10,
+    "genuine_error": 4,
+    "different_definition": 1
+  },
+  "discoveries": {
+    "official_census2002": {
+      "runs": 16,
+      "figures": 449
+    },
+    "official_projections": {
+      "runs": 16,
+      "figures": 153
+    },
+    "official_census2017_area": {
+      "runs": 8,
+      "figures": 19
+    }
+  },
+  "since_last_check": {
+    "comunas_checked_before": 346,
+    "unchanged": 925
+  },
+  "runs": [
+    {
+      "run_id": "national-20261024c-01-tarapaca",
+      "status": "success",
+      "comunas": 7,
+      "findings": 33,
+      "drafts": 17,
+      "report": "output/national-20261024c-01-tarapaca/report.html"
+    },
+    {
+      "run_id": "national-20261024c-02-antofagasta",
+      "status": "success",
+      "comunas": 9,
+      "findings": 23,
+      "drafts": 16,
+      "report": "output/national-20261024c-02-antofagasta/report.html"
+    },
+    {
+      "run_id": "national-20261024c-03-atacama",
+      "status": "success",
+      "comunas": 9,
+      "findings": 31,
+      "drafts": 20,
+      "report": "output/national-20261024c-03-atacama/report.html"
+    },
+    {
+      "run_id": "national-20261024c-04-coquimbo",
+      "status": "success",
+      "comunas": 15,
+      "findings": 56,
+      "drafts": 37,
+      "report": "output/national-20261024c-04-coquimbo/report.html"
+    },
+    {
+      "run_id": "national-20261024c-05-valparaiso",
+      "status": "success",
+      "comunas": 38,
+      "findings": 118,
+      "drafts": 91,
+      "report": "output/national-20261024c-05-valparaiso/report.html"
+    },
+    {
+      "run_id": "national-20261024c-06-libertador-general-bernardo-o-higgins",
+      "status": "success",
+      "comunas": 33,
+      "findings": 121,
+      "drafts": 91,
+      "report": "output/national-20261024c-06-libertador-general-bernardo-o-higgins/report.html"
+    },
+    {
+      "run_id": "national-20261024c-07-maule",
+      "status": "success",
+      "comunas": 30,
+      "findings": 106,
+      "drafts": 80,
+      "report": "output/national-20261024c-07-maule/report.html"
+    },
+    {
+      "run_id": "national-20261024c-08-biobio",
+      "status": "success",
+      "comunas": 33,
+      "findings": 165,
+      "drafts": 96,
+      "report": "output/national-20261024c-08-biobio/report.html"
+    },
+    {
+      "run_id": "national-20261024c-09-la-araucania",
+      "status": "success",
+      "comunas": 32,
+      "findings": 166,
+      "drafts": 90,
+      "report": "output/national-20261024c-09-la-araucania/report.html"
+    },
+    {
+      "run_id": "national-20261024c-10-los-lagos",
+      "status": "success",
+      "comunas": 30,
+      "findings": 112,
+      "drafts": 66,
+      "report": "output/national-20261024c-10-los-lagos/report.html"
+    },
+    {
+      "run_id": "national-20261024c-11-aysen-del-general-carlos-ibanez-del-camp",
+      "status": "success",
+      "comunas": 10,
+      "findings": 39,
+      "drafts": 24,
+      "report": "output/national-20261024c-11-aysen-del-general-carlos-ibanez-del-camp/report.html"
+    },
+    {
+      "run_id": "national-20261024c-12-magallanes-y-de-la-antartica-chilena",
+      "status": "success",
+      "comunas": 11,
+      "findings": 53,
+      "drafts": 32,
+      "report": "output/national-20261024c-12-magallanes-y-de-la-antartica-chilena/report.html"
+    },
+    {
+      "run_id": "national-20261024c-13-metropolitana-de-santiago",
+      "status": "success",
+      "comunas": 52,
+      "findings": 207,
+      "drafts": 127,
+      "report": "output/national-20261024c-13-metropolitana-de-santiago/report.html"
+    },
+    {
+      "run_id": "national-20261024c-14-los-rios",
+      "status": "success",
+      "comunas": 12,
+      "findings": 47,
+      "drafts": 27,
+      "report": "output/national-20261024c-14-los-rios/report.html"
+    },
+    {
+      "run_id": "national-20261024c-15-arica-y-parinacota",
+      "status": "success",
+      "comunas": 4,
+      "findings": 11,
+      "drafts": 10,
+      "report": "output/national-20261024c-15-arica-y-parinacota/report.html"
+    },
+    {
+      "run_id": "national-20261024c-16-nuble",
+      "status": "success",
+      "comunas": 21,
+      "findings": 78,
+      "drafts": 60,
+      "report": "output/national-20261024c-16-nuble/report.html"
+    }
+  ]
+}

@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FactSync Chile review queue · national-20261024c-15-arica-y-parinacota</title>
+<style>
+:root {
+  --bg: #f5f6f8; --panel: #ffffff; --ink: #18202b; --muted: #5a6473; --line: #e2e6ec; --soft: #f0f2f5;
+  --accent: #0b5fbf; --code: #f3f5f8;
+  --red: #b42318; --red-bg: #fef1f0; --amber: #a64b05; --amber-bg: #fff6e6; --blue: #175cd3; --blue-bg: #eef5ff;
+  --violet: #6340b8; --violet-bg: #f4f1ff; --slate: #475467; --slate-bg: #eef0f3; --green: #067647; --green-bg: #eafaf1;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1217; --panel: #151b23; --ink: #e5e9ef; --muted: #98a2b3; --line: #252f3c; --soft: #1b2330;
+    --accent: #6aa8ff; --code: #10161e;
+    --red: #ff9b91; --red-bg: #3a1714; --amber: #ffc46b; --amber-bg: #3a2608; --blue: #8fbcff; --blue-bg: #13284a;
+    --violet: #c2b0ff; --violet-bg: #2a1f4a; --slate: #c4cbd6; --slate-bg: #222b37; --green: #7fe0a9; --green-bg: #0f3322;
+    --shadow: none;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--accent); }
+code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+header.top { background: var(--panel); border-bottom: 1px solid var(--line); padding: 28px 0 22px; }
+.brand { font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: 26px; line-height: 1.25; margin: 6px 0 8px; }
+h2 { font-size: 17px; margin: 0 0 12px; }
+h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 22px 0 10px; }
+.meta { color: var(--muted); margin: 0 0 10px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.lede { margin: 0; max-width: 760px; }
+main { padding: 22px 16px 40px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; box-shadow: var(--shadow); }
+.stat b { display: block; font-size: 26px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 13px; }
+.stat.attention b { color: var(--red); }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.panel.attention { border-left: 4px solid var(--red); }
+.panel p { margin: 0 0 8px; }
+.panel p:last-child { margin-bottom: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 13px; background: var(--soft); }
+.chip.new { border-color: var(--blue); color: var(--blue); background: var(--blue-bg); }
+.badge { display: inline-block; border-radius: 6px; padding: 1px 8px; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.tone-red { color: var(--red); background: var(--red-bg); }
+.tone-amber { color: var(--amber); background: var(--amber-bg); }
+.tone-blue { color: var(--blue); background: var(--blue-bg); }
+.tone-violet { color: var(--violet); background: var(--violet-bg); }
+.tone-slate { color: var(--slate); background: var(--slate-bg); }
+.tone-green { color: var(--green); background: var(--green-bg); }
+.status-approved, .status-success { color: var(--green); background: var(--green-bg); }
+.status-partial, .status-sample { color: var(--amber); background: var(--amber-bg); }
+.status-escalated, .status-error { color: var(--red); background: var(--red-bg); }
+.status-pending, .status-live { color: var(--blue); background: var(--blue-bg); }
+ol.timeline { list-style: none; margin: 0; padding: 0; }
+ol.timeline li { display: grid; grid-template-columns: 96px 1fr; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); }
+ol.timeline li:first-child { border-top: 0; }
+.when { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.who { font-weight: 600; }
+.by { color: var(--muted); font-size: 13px; }
+ul.plain { margin: 0; padding-left: 18px; }
+ul.plain li { margin: 4px 0; }
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 18px; margin-top: 12px; font-size: 13.5px; }
+.legend div { display: flex; gap: 8px; align-items: baseline; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 26px 0 14px; }
+.filters input { flex: 1 1 220px; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; }
+.filters button, button.copy { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px; padding: 7px 12px; font: inherit; font-size: 13.5px; cursor: pointer; }
+.filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+article.comuna { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.c-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.c-head h2 { margin: 0; font-size: 21px; }
+.c-head .cut { color: var(--muted); font-size: 13px; }
+.official { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.fig { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; background: var(--soft); }
+.fig small { display: block; color: var(--muted); font-size: 12px; }
+.fig b { font-variant-numeric: tabular-nums; }
+.fig.current { border-color: var(--green); background: var(--green-bg); }
+.finding { border: 1px solid var(--line); border-left-width: 4px; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+.finding.tone-red { border-left-color: var(--red); } .finding.tone-amber { border-left-color: var(--amber); }
+.finding.tone-blue { border-left-color: var(--blue); } .finding.tone-violet { border-left-color: var(--violet); }
+.finding.tone-slate { border-left-color: var(--slate); }
+.finding, .finding.tone-red, .finding.tone-amber, .finding.tone-blue, .finding.tone-violet, .finding.tone-slate { background: var(--panel); color: var(--ink); }
+.f-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.f-head .value { font-weight: 700; font-variant-numeric: tabular-nums; }
+.f-head .label, .f-head .where { color: var(--muted); font-size: 13.5px; }
+.f-head .badge.status-approved, .f-head .badge.status-escalated, .f-head .badge.status-pending { margin-left: auto; }
+.finding p { margin: 8px 0; }
+blockquote { margin: 8px 0; padding: 6px 12px; border-left: 3px solid var(--line); color: var(--muted); font-size: 14px; }
+dl.facts { display: grid; grid-template-columns: 120px 1fr; gap: 4px 12px; margin: 8px 0 0; font-size: 13.5px; }
+dl.facts dt { color: var(--muted); }
+dl.facts dd { margin: 0; }
+.links { font-size: 13px; margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.page { margin-top: 20px; }
+.p-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.p-head h3 { margin: 0; }
+.p-head .links { margin: 0 0 0 auto; }
+.attention-box { border-left: 4px solid var(--red); }
+.draft { border: 1px dashed var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--soft); }
+.draft .code pre { background: var(--panel); }
+.d-head { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; margin-bottom: 8px; }
+.d-head .badge { margin-left: auto; }
+.code { position: relative; }
+.code pre { background: var(--code); border: 1px solid var(--line); border-radius: 8px; padding: 12px 70px 12px 12px; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.code button.copy { position: absolute; top: 8px; right: 8px; padding: 3px 9px; font-size: 12.5px; }
+.summary-line { font-size: 14px; margin: 8px 0 0; }
+.summary-line span, .replaces span { color: var(--muted); font-size: 13px; margin-right: 6px; }
+.replaces { font-size: 14px; margin: 0 0 8px; }
+.note-box { background: var(--soft); border-radius: 8px; padding: 10px 12px; font-size: 14.5px; margin-top: 12px; }
+details { margin-top: 14px; }
+details summary { cursor: pointer; color: var(--muted); font-size: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; margin-top: 8px; }
+.table-scroll { overflow-x: auto; }
+th, td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; }
+footer { color: var(--muted); font-size: 13px; padding: 10px 0 40px; }
+footer p { margin: 4px 0; }
+.empty { color: var(--muted); }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+  h1 { font-size: 21px; }
+  dl.facts { grid-template-columns: 1fr; }
+  dl.facts dt { margin-top: 4px; }
+  ol.timeline li { grid-template-columns: 1fr; gap: 2px; }
+  .f-head .badge.status-approved, .f-head .badge.status-escalated, .f-head .badge.status-pending, .d-head .badge,
+  .p-head .links { margin-left: 0; }
+  article.comuna { padding: 14px; }
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">FactSync Chile · review queue</div>
+  <h1>4 comunas: population figures checked against INE</h1>
+  <p class="meta">
+    <span>Run <code>national-20261024c-15-arica-y-parinacota</code></span>
+    <span class="badge status-success">success</span>
+    <span class="badge status-live">live: read through Zetaris</span>
+    <span>39.7 s</span>
+    <span>generated 2026-10-24 18:07 UTC</span>
+  </p>
+  <p class="lede">Each population figure in Spanish and English Wikipedia and in Wikidata, compared with INE's official figures, with the reason it differs and a sourced correction to review. <b>Drafts only:</b> FactSync never edits Wikipedia or Wikidata; a person reviews and applies each edit.</p>
+</div></header>
+<main class="wrap">
+  <section class="stats" aria-label="Summary">
+    <div class="stat"><b>4</b><span>comunas</span></div>
+    <div class="stat"><b>22</b><span>figures checked</span></div>
+    <div class="stat"><b>11</b><span>findings</span></div>
+    <div class="stat"><b>10</b><span>draft edits</span></div>
+    <div class="stat"><b>0</b><span>need a human</span></div>
+    <div class="stat"><b>3</b><span>Critic rejections</span></div>
+    <div class="stat"><b>0</b><span>fixed since the last check</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>Sources and models</h2>
+    <p class="chips">
+      <span class="chip">INE census 2017 and 2024</span>
+      <span class="chip">Wikidata</span>
+      <span class="chip">Wikipedia (ES)</span>
+      <span class="chip">Wikipedia (EN)</span>
+      <span class="chip new">INE census 2002 · added by the Planner</span>
+      <span class="chip new">INE projections 2002–2035 · added by the Planner</span>
+    </p>
+    <p>Every source was read live through its Zetaris view, one SQL statement per source.</p>
+    <p>No model calls: every step took its deterministic path.</p>
+<p>World Model engine: used upsert_entity (346), ingest (12), resolve_by_name (93), assess (79), context (14), view:observations (23), reproject (4), project_as_of (4), export_audit (1). Dormant in this run: relate, view:graph.</p>  </section>
+
+
+  <section class="panel">
+    <h2>How the agents got here</h2>
+    <ol class="timeline">
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Camarones: 1,220 (Wikipedia EN, &#39;no year&#39;); 1,220 (Wikipedia ES, &#39;2002 census&#39;); 1,220 (Wikipedia EN, &#39;2002 census&#39;) match no official figure read so far, so it sent the Planner to read an official source before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> held Putre back: 1,977 (Wikipedia EN, &#39;2002 census&#39;) can&#39;t be checked with the official figures read, so it sent the Planner to read a source that covers it</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> held General Lagos back: 1,179 (Wikipedia EN, &#39;2002 census&#39;) can&#39;t be checked with the official figures read, so it sent the Planner to read a source that covers it</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Planner</span> added INE census 2002: by coverage (census, 2002), the best fit for 4 figure(s), e.g. 1,220 (&#39;2002 census&#39;) <span class="by">(decided by code)</span></span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Planner</span> added INE projections 2002–2035: by coverage (projection, 2002-2035), the best fit for 1 figure(s), e.g. 1,220 (&#39;no year&#39;) <span class="by">(decided by code)</span></span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Camarones after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Putre after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved General Lagos after the fix</span></li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Why figures differ, across this run</h2>
+    <p class="chips">
+<span class="badge tone-slate">Missing value · 4</span><span class="badge tone-amber">Outdated · 4</span><span class="badge tone-slate">Unsourced · 2</span><span class="badge tone-red">Withdrawn census · 1</span>    </p>
+    <details>
+      <summary>What each class means</summary>
+      <div class="legend">
+<div><span class="badge tone-amber">Outdated</span><span>An older official figure (e.g. the Census 2017 count) shown as the current population.</span></div><div><span class="badge tone-blue">Different definition</span><span>An official figure under another definition (an INE estimate or projection, or only the urban or rural part of a census count) shown where the comuna&#39;s census count is expected. Not an error in itself.</span></div><div><span class="badge tone-red">Withdrawn census</span><span>Attributed to the 2012 census, whose results INE withdrew.</span></div><div><span class="badge tone-red">Nonexistent census</span><span>Attributed to a census Chile never held (e.g. 1999, 2022).</span></div><div><span class="badge tone-amber">Mislabelled vintage</span><span>A real official figure labelled with the wrong year or census, or cited to a source that doesn&#39;t hold it (citation mismatch).</span></div><div><span class="badge tone-violet">Internal inconsistency</span><span>The article contradicts itself (infobox vs body).</span></div><div><span class="badge tone-red">Unexplained mismatch</span><span>Matches no official figure, and nothing in the sources explains it.</span></div><div><span class="badge tone-slate">Rank or qualifiers</span><span>Wikidata statements lack the rank, point in time, method or reference needed to use them correctly.</span></div><div><span class="badge tone-slate">Unsourced</span><span>No reference, or a reference that can&#39;t support the figure.</span></div><div><span class="badge tone-red">Likely error</span><span>A typo, a wrong unit or a corrupted field.</span></div><div><span class="badge tone-slate">Missing value</span><span>The source has no population figure at all.</span></div>      </div>
+    </details>
+  </section>
+
+  <div class="filters" role="search">
+    <input type="search" id="filter-text" placeholder="Filter by comuna name or code" aria-label="Filter by comuna name or code">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="review" aria-pressed="false">Needs a human</button>
+    <button type="button" data-filter="drafts" aria-pressed="false">With drafts</button>
+  </div>
+
+  <article class="comuna" id="comuna-15102" data-name="camarones 15102" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Camarones</h2>
+      <span class="cut">CUT 15102</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">7 figures checked · 4 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>1,220</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>1,255</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>861</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>1,218</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>1,233</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>1,246</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-15-arica-y-parinacota</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> The infobox figure is tagged &#39;citation needed&#39;. 606 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 861. Wikidata has no population figure for this comuna; Census 2024 counted 861. The drafts give the Census 2024 count, 861, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Camarones (comuna)</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175031628" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Camarones_%28comuna%29" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_9f601d76193c2037">
+        <div class="f-head">
+          <span class="badge tone-slate" title="No reference, or a reference that can&#39;t support the figure.">Unsourced</span>
+          <span class="where">infobox</span>
+          <span class="value">861</span>
+<span class="label">2024</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>The infobox figure is tagged &#39;citation needed&#39;.</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Cite INE Censo 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>861</code> (2024)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15102-eswiki">Copy</button><pre id="draft-15102-eswiki">| población = 861
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 861 hab. (misma cifra: sin referencia).</p><div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Camarones_%28comuna%29&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Camarones, Chile</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1375326830" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Camarones%2C_Chile" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_3f9c9bc54ffa0650">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">606</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>606 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 861.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>861</b></dd><dt>Correction</dt><dd>Update to 861 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="finding tone-amber" id="fnd_c1d2d89e6ee4e317">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">lead</span>
+          <span class="value">1,220</span>
+<span class="label">no year</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>1,220 is INE&#39;s Census 2002 count, shown as the current figure. The current official figure is the Census 2024 count, 861.</p>
+<blockquote>It forms part of the administrative Arica Province and has a population of 1,220</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2002: <b>1,220</b> · INE Censo 2024: <b>861</b></dd><dt>Correction</dt><dd>Update to 861 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>606</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15102-enwiki">Copy</button><pre id="draft-15102-enwiki">| population_total = 861
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 861 (was 606: the withdrawn 2012 census).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“It forms part of the administrative Arica Province and has a population of 1,220”: replace <code>1,220</code> with <code>861</code>; state the Census 2024 figure and cite INE</li>        </ul>
+<div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Camarones%2C_Chile&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q3729</span><span class="links"><a href="https://www.wikidata.org/wiki/Q3729#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_684edc171c4a1f1b">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 861.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>861</b></dd><dt>Correction</dt><dd>Update to 861 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15102-wikidata">Copy</button><pre id="draft-15102-wikidata">Q3729|P1082|861|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (861) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q3729%7CP1082%7C861%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>4 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · article text</td><td>861 <span class="by">(2024 census)</span></td><td>consistent</td><td>861 matches INE&#39;s Census 2024 count.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>1.220 <span class="by">(2002 census)</span></td><td>consistent</td><td>1,220 matches INE&#39;s Census 2002 count.</td></tr><tr><td>Wikipedia (EN) · article text</td><td>1,220 <span class="by">(2002 census)</span></td><td>consistent</td><td>1,220 matches INE&#39;s Census 2002 count.</td></tr><tr><td>Wikipedia (ES) · infobox</td><td>861 <span class="by">(2024)</span></td><td>consistent</td><td>861 matches INE&#39;s Census 2024 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-15202" data-name="general lagos 15202" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>General Lagos</h2>
+      <span class="cut">CUT 15202</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">8 figures checked · 3 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>1,179</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>684</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>508</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>795</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>810</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>801</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-15-arica-y-parinacota</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 684 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 508. Wikidata has no population figure for this comuna; Census 2024 counted 508. The drafts give the Census 2024 count, 508, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">General Lagos (comuna)</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175896948" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/General_Lagos_%28comuna%29" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_1c53d930ca243590">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">lead</span>
+          <span class="value">684</span>
+<span class="label">no year</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>684 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 508.</p>
+<blockquote>Ubicada en el extremo norte del altiplano chileno, es la comuna más septentrional y la octava menos poblada del país, con una población de 684 habitantes</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>684</b> · INE Censo 2024: <b>508</b></dd><dt>Correction</dt><dd>Update to 508 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15202-eswiki">Copy</button><pre id="draft-15202-eswiki">Según el [[Censo chileno de 2024|censo de 2024]], la comuna tiene una población de 508 habitantes.&lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 508 hab. (antes sin cifra: cifra de un censo anterior).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“Ubicada en el extremo norte del altiplano chileno, es la comuna más septentrional y la octava menos poblada del país, con una población de 684 habitantes”: replace <code>684</code> with <code>508</code>; state the Census 2024 figure and cite INE</li>        </ul>
+<div class="links"><a href="https://es.wikipedia.org/w/index.php?title=General_Lagos_%28comuna%29&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">General Lagos</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1375892624" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/General_Lagos" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_4e594d1be2a2989a">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">infobox</span>
+          <span class="value">684</span>
+<span class="label">2017 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>684 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 508.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>684</b> · INE Censo 2024: <b>508</b></dd><dt>Correction</dt><dd>Update to 508 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>684</code> (2017 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15202-enwiki">Copy</button><pre id="draft-15202-enwiki">| population_total = 508
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 508 (was 684: an older census count).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=General_Lagos&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q13065</span><span class="links"><a href="https://www.wikidata.org/wiki/Q13065#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_30fe0c7a36c166df">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 508.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>508</b></dd><dt>Correction</dt><dd>Update to 508 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15202-wikidata">Copy</button><pre id="draft-15202-wikidata">Q13065|P1082|508|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (508) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q13065%7CP1082%7C508%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>5 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · article text</td><td>508 <span class="by">(2024 census)</span></td><td>consistent</td><td>508 matches INE&#39;s Census 2024 count.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>684 <span class="by">(2017 census)</span></td><td>consistent</td><td>684 matches INE&#39;s Census 2017 count.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>300 <span class="by">(no year)</span></td><td>not checkable</td><td>no year stated and no official figure matches, so it can&#39;t be told what it refers to</td></tr><tr><td>Wikipedia (EN) · article text</td><td>1,179 <span class="by">(2002 census)</span></td><td>consistent</td><td>1,179 matches INE&#39;s Census 2002 count.</td></tr><tr><td>Wikipedia (ES) · infobox</td><td>508 <span class="by">(2024)</span></td><td>consistent</td><td>508 matches INE&#39;s Census 2024 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-15201" data-name="putre 15201" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Putre</h2>
+      <span class="cut">CUT 15201</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">6 figures checked · 3 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>1,977</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>2,765</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>1,547</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>2,441</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>2,515</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>2,569</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-15-arica-y-parinacota</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> The infobox figure has no reference. 2,765 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 1,547. Wikidata has no population figure for this comuna; Census 2024 counted 1,547. The drafts give the Census 2024 count, 1,547, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Putre</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175750263" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Putre" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_fa35b8a83170620a">
+        <div class="f-head">
+          <span class="badge tone-slate" title="No reference, or a reference that can&#39;t support the figure.">Unsourced</span>
+          <span class="where">infobox</span>
+          <span class="value">1547</span>
+<span class="label">2024</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>The infobox figure has no reference.</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Cite INE Censo 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>1547</code> (2024)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15201-eswiki">Copy</button><pre id="draft-15201-eswiki">| población = 1547
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 1547 hab. (misma cifra: sin referencia).</p><div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Putre&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Putre</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1378968728" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Putre" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_dcd839fc2eec0140">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">infobox</span>
+          <span class="value">2765</span>
+<span class="label">2017 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>2,765 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 1,547.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>2,765</b> · INE Censo 2024: <b>1,547</b></dd><dt>Correction</dt><dd>Update to 1,547 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>2765</code> (2017 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15201-enwiki">Copy</button><pre id="draft-15201-enwiki">| population_total = 1547
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 1,547 (was 2765: an older census count).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Putre&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q51605</span><span class="links"><a href="https://www.wikidata.org/wiki/Q51605#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_bee28cd57712340d">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 1,547.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>1,547</b></dd><dt>Correction</dt><dd>Update to 1,547 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15201-wikidata">Copy</button><pre id="draft-15201-wikidata">Q51605|P1082|1547|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (1,547) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q51605%7CP1082%7C1547%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>4 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · lead</td><td>1547 <span class="by">(2024 census)</span></td><td>consistent</td><td>1,547 matches INE&#39;s Census 2024 count.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>233 <span class="by">(no year)</span></td><td>not the comuna&#39;s figure</td><td>233 is 15% of INE&#39;s Census 2024 count, 1,547: it probably refers to a locality or an area, not the comuna.</td></tr><tr><td>Wikipedia (EN) · article text</td><td>1,977 <span class="by">(2002 census)</span></td><td>consistent</td><td>1,977 matches INE&#39;s Census 2002 count.</td></tr><tr><td>Wikipedia (ES) · infobox</td><td>1547 <span class="by">(2024)</span></td><td>consistent</td><td>1,547 matches INE&#39;s Census 2024 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-15101" data-name="arica 15101" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Arica</h2>
+      <span class="cut">CUT 15101</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">1 figures checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>185,268</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>221,364</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>241,653</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>232,628</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>247,552</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>257,163</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-15-arica-y-parinacota</code>)</span>: 1 page unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata has no population figure for this comuna; Census 2024 counted 241,653. The drafts give the Census 2024 count, 241,653, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q23660598</span><span class="links"><a href="https://www.wikidata.org/wiki/Q23660598#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_0bcb47dc276b2c56">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 241,653.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>241,653</b></dd><dt>Correction</dt><dd>Update to 241,653 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-15101-wikidata">Copy</button><pre id="draft-15101-wikidata">Q23660598|P1082|241653|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (241,653) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q23660598%7CP1082%7C241653%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+  </article>
+  <p class="empty" id="no-match" hidden>No comuna matches the filter.</p>
+</main>
+<footer><div class="wrap">
+<p>Agent trace: <code>logs/trace-national-20261024c-15-arica-y-parinacota.jsonl</code> · World Model audit log: <code>logs/world-model-national-20261024c-15-arica-y-parinacota.jsonl</code> (166 entries) · result: <code>output/national-20261024c-15-arica-y-parinacota/result.json</code></p>  <p>Official figures: INE (Instituto Nacional de Estadísticas), CC BY-SA 4.0. Wikipedia text: CC BY-SA 4.0. Wikidata: CC0. Generated by FactSync Chile, 2026-10-24 18:07 UTC.</p>
+</div></footer>
+<script>
+(function () {
+  document.querySelectorAll("button.copy").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var text = document.getElementById(button.dataset.copy).textContent;
+      var done = function () { button.textContent = "Copied"; setTimeout(function () { button.textContent = "Copy"; }, 1500); };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done);
+      } else {
+        var area = document.createElement("textarea");
+        area.value = text; document.body.appendChild(area); area.select();
+        try { document.execCommand("copy"); done(); } finally { document.body.removeChild(area); }
+      }
+    });
+  });
+  var input = document.getElementById("filter-text");
+  if (!input) return;
+  var mode = "all";
+  var cards = Array.prototype.slice.call(document.querySelectorAll("article.comuna"));
+  function apply() {
+    var text = input.value.trim().toLowerCase(), shown = 0;
+    cards.forEach(function (card) {
+      var visible = (!text || card.dataset.name.indexOf(text) >= 0)
+        && (mode === "all" || (mode === "review" && card.dataset.review === "yes") || (mode === "drafts" && card.dataset.drafts === "yes"));
+      card.hidden = !visible;
+      if (visible) shown++;
+    });
+    document.getElementById("no-match").hidden = shown > 0 || !cards.length;
+  }
+  input.addEventListener("input", apply);
+  document.querySelectorAll(".filters button").forEach(function (button) {
+    button.addEventListener("click", function () {
+      mode = button.dataset.filter;
+      document.querySelectorAll(".filters button").forEach(function (b) { b.setAttribute("aria-pressed", String(b === button)); });
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>

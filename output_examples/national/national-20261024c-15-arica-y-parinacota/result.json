@@ -1,0 +1,2281 @@
+{
+  "run_id": "national-20261024c-15-arica-y-parinacota",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 4,
+    "claims": 22,
+    "findings": 11,
+    "findings_by_class": {
+      "discredited_source": 1,
+      "missing_value": 4,
+      "outdated_vintage": 4,
+      "unsourced": 2
+    },
+    "drafts": 10,
+    "escalations": 0,
+    "critic_rejections": 3,
+    "discoveries": [
+      "official_census2002",
+      "official_projections"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 4,
+      "unchanged": 10
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "cuts": [
+      "15101",
+      "15102",
+      "15201",
+      "15202"
+    ],
+    "sources": [
+      "official_census",
+      "wikidata",
+      "wikipedia_es",
+      "wikipedia_en",
+      "official_census2002",
+      "official_projections"
+    ],
+    "reason": "4 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "official_census": {
+      "rows": 8,
+      "observations": 8,
+      "appended": 0,
+      "unchanged": 8,
+      "reviews": 0
+    },
+    "wikidata": {
+      "rows": 76,
+      "observations": 4,
+      "appended": 0,
+      "unchanged": 4,
+      "reviews": 0
+    },
+    "wikipedia_es": {
+      "rows": 16,
+      "observations": 6,
+      "appended": 0,
+      "unchanged": 6,
+      "reviews": 0
+    },
+    "wikipedia_en": {
+      "rows": 10,
+      "observations": 6,
+      "appended": 0,
+      "unchanged": 6,
+      "reviews": 0
+    },
+    "official_census2002": {
+      "rows": 4,
+      "observations": 4,
+      "appended": 0,
+      "unchanged": 4,
+      "reviews": 0
+    },
+    "official_projections": {
+      "rows": 136,
+      "observations": 136,
+      "appended": 0,
+      "unchanged": 136,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "official_census2002",
+      "reason": "by coverage (census, 2002), the best fit for 4 figure(s), e.g. 1,220 ('2002 census')",
+      "requests": [
+        {
+          "comuna": "CAMARONES",
+          "value": 1220,
+          "shown_in": "Wikipedia ES body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "1 times the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "CAMARONES",
+          "value": 1220,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "1 times the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "PUTRE",
+          "value": 1977,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "1 times the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "GENERAL LAGOS",
+          "value": 1179,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "2 times the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 1,
+      "source": "official_projections",
+      "reason": "by coverage (projection, 2002-2035), the best fit for 1 figure(s), e.g. 1,220 ('no year')",
+      "requests": [
+        {
+          "comuna": "CAMARONES",
+          "value": 1220,
+          "shown_in": "Wikipedia EN lead",
+          "label": "no year",
+          "year": null,
+          "basis": null,
+          "size": "1 times the Census 2024 count",
+          "classified_as": "genuine_error",
+          "candidates": [
+            "official_projections",
+            "official_census2002",
+            "official_census2017_area"
+          ]
+        }
+      ],
+      "method": "rules"
+    }
+  ],
+  "comunas": [
+    {
+      "cut": "15101",
+      "name": "ARICA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 185268,
+          "2017": 221364,
+          "2024": 241653
+        },
+        "projection": {
+          "2017": 232628,
+          "2020": 247552,
+          "2024": 257163
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_0bcb47dc276b2c56",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 241,653.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_b8a032e75b9a27b1409be625",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q23660598",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_b8a032e75b9a27b1409be625",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_76bb5b67c019432fd1890ce9",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 241653
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 241653,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_76bb5b67c019432fd1890ce9",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660598",
+          "url": "https://www.wikidata.org/wiki/Q23660598",
+          "correction": {
+            "value": 241653,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_76bb5b67c019432fd1890ce9"
+          },
+          "findings": [
+            "fnd_0bcb47dc276b2c56"
+          ],
+          "anchor": "obs_b8a032e75b9a27b1409be625",
+          "quickstatements": "Q23660598|P1082|241653|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (241,653) from INE",
+          "status": "approved"
+        },
+        "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 241,653. The drafts give the Census 2024 count, 241,653, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_b8a032e75b9a27b1409be625",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-15-arica-y-parinacota",
+        "checked_at": "2026-10-24T17:47:10Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_b8a032e75b9a27b1409be625",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_b8a032e75b9a27b1409be625",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "15102",
+      "name": "CAMARONES",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 1220,
+          "2017": 1255,
+          "2024": 861
+        },
+        "projection": {
+          "2017": 1218,
+          "2020": 1233,
+          "2024": 1246
+        }
+      },
+      "claims_checked": 7,
+      "findings": [
+        {
+          "id": "fnd_684edc171c4a1f1b",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 861.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_1fc62a97edf6835941df4f49",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q3729",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_1fc62a97edf6835941df4f49",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4a43a09e85769f183b5bc9bc",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 861
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 861,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_4a43a09e85769f183b5bc9bc",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_c1d2d89e6ee4e317",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "1,220 is INE's Census 2002 count, shown as the current figure. The current official figure is the Census 2024 count, 861.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_861d7f8cbdf6bc4cc21a7e10",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Camarones, Chile",
+            "revid": "1375326830",
+            "location": "lead",
+            "role": "current",
+            "value": 1220,
+            "value_raw": "1,220",
+            "label": "no year",
+            "quote": "It forms part of the administrative Arica Province and has a population of 1,220",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_861d7f8cbdf6bc4cc21a7e10",
+              "source": "Wikipedia EN",
+              "location": "lead",
+              "value": 1220,
+              "value_raw": "1,220",
+              "label": "no year",
+              "quote": "It forms part of the administrative Arica Province and has a population of 1,220"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_0d68491280baba95064bc89e",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 1220
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4a43a09e85769f183b5bc9bc",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 861
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 861,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_4a43a09e85769f183b5bc9bc",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_3f9c9bc54ffa0650",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "606 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 861.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_58d6f69f8d4dd63a328b016b",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Camarones, Chile",
+            "revid": "1375326830",
+            "location": "infobox",
+            "role": "current",
+            "value": 606,
+            "value_raw": "606",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3729"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_58d6f69f8d4dd63a328b016b",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 606,
+              "value_raw": "606",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4a43a09e85769f183b5bc9bc",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 861
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 861,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_4a43a09e85769f183b5bc9bc",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_9f601d76193c2037",
+          "target": "es",
+          "aspect": "sourcing",
+          "class": "unsourced",
+          "explanation": "The infobox figure is tagged 'citation needed'.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_13897b4e3640893d35fbd607",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Camarones (comuna)",
+            "revid": "175031628",
+            "location": "infobox",
+            "role": "current",
+            "value": 861,
+            "value_raw": "861",
+            "stated_year": 2024,
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<!-- Mapas de localización -->",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3729"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_13897b4e3640893d35fbd607",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 861,
+              "value_raw": "861",
+              "label": "2024",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "add_citation",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_85b9c807b328989aaddca1a7",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Camarones (comuna)",
+            "revid": "175031628",
+            "location": "body",
+            "role": "historical",
+            "value": 861,
+            "value_raw": "861",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 census",
+            "quote": "La información recolectada por el Censo 2024 indica que Camarones tiene 861 habitantes, donde 430 son hombres y 431 son mujeres .",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "861 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_c5b18bc7070062c982a33218",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Camarones (comuna)",
+            "revid": "175031628",
+            "location": "body",
+            "role": "historical",
+            "value": 1220,
+            "value_raw": "1.220",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "Según los datos recolectados en el censo de población del año 2002 realizado por el Instituto Nacional de Estadísticas, la comuna posee una superficie de 3927,0 km² y una población de 1.220 habitantes (distribuidos en 658 viviendas), de los cuales 475 son mujeres y 745 son hombres",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,220 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_204413d45f91d658712b7adf",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Camarones, Chile",
+            "revid": "1375326830",
+            "location": "body",
+            "role": "historical",
+            "value": 1220,
+            "value_raw": "1,220",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Camarones had 1,220 inhabitants (745 men and 475 women), and it is a rural area",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,220 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_13897b4e3640893d35fbd607",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Camarones (comuna)",
+            "revid": "175031628",
+            "location": "infobox",
+            "role": "current",
+            "value": 861,
+            "value_raw": "861",
+            "stated_year": 2024,
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<!-- Mapas de localización -->",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3729"
+          },
+          "result": "consistent",
+          "note": "861 matches INE's Census 2024 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_c1d2d89e6ee4e317"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_c1d2d89e6ee4e317",
+              "finding_ids": [
+                "fnd_c1d2d89e6ee4e317"
+              ],
+              "comuna": "CAMARONES",
+              "cut": "15102",
+              "figures": [
+                {
+                  "finding_id": "fnd_c1d2d89e6ee4e317",
+                  "value": 1220,
+                  "source": "Wikipedia EN",
+                  "location": "lead",
+                  "label": "no year",
+                  "year": null,
+                  "basis": null,
+                  "size": "1 times the Census 2024 count",
+                  "class": "genuine_error",
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002",
+                    "official_census2017_area"
+                  ]
+                },
+                {
+                  "claim_id": "obs_c5b18bc7070062c982a33218",
+                  "value": 1220,
+                  "source": "Wikipedia ES",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "1 times the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_204413d45f91d658712b7adf",
+                  "value": 1220,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "1 times the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 figures match no official figure read so far (Census 2017 1,255, Census 2024 861): 1,220 (Wikipedia EN, 'no year', called genuine_error). 2 claim(s) can't be checked with the official figures read: 1,220 (Wikipedia ES body, '2002 census'); 1,220 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_census2017_area, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Camarones (comuna)",
+          "revid": "175031628",
+          "correction": {
+            "value": 861,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_4a43a09e85769f183b5bc9bc"
+          },
+          "findings": [
+            "fnd_9f601d76193c2037"
+          ],
+          "anchor": "obs_13897b4e3640893d35fbd607",
+          "url": "https://es.wikipedia.org/wiki/Camarones_(comuna)",
+          "wikitext": "| población = 861\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "861",
+            "year": "2024",
+            "reference": "<!-- Mapas de localización -->"
+          },
+          "edit_summary": "Población según el Censo 2024 del INE: 861 hab. (misma cifra: sin referencia).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Camarones, Chile",
+          "revid": "1375326830",
+          "correction": {
+            "value": 861,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_4a43a09e85769f183b5bc9bc"
+          },
+          "findings": [
+            "fnd_c1d2d89e6ee4e317",
+            "fnd_3f9c9bc54ffa0650"
+          ],
+          "anchor": "obs_58d6f69f8d4dd63a328b016b",
+          "url": "https://en.wikipedia.org/wiki/Camarones,_Chile",
+          "wikitext": "| population_total = 861\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "606",
+            "year": "2012 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "text_changes": [
+            {
+              "quote": "It forms part of the administrative Arica Province and has a population of 1,220",
+              "finding": "fnd_c1d2d89e6ee4e317",
+              "why": "1,220 is INE's Census 2002 count, shown as the current figure. The current official figure is the Census 2024 count, 861.",
+              "replace": "1,220",
+              "by": "861",
+              "note": "state the Census 2024 figure and cite INE"
+            }
+          ],
+          "edit_summary": "Population per INE's 2024 census: 861 (was 606: the withdrawn 2012 census).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3729",
+          "url": "https://www.wikidata.org/wiki/Q3729",
+          "correction": {
+            "value": 861,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_4a43a09e85769f183b5bc9bc"
+          },
+          "findings": [
+            "fnd_684edc171c4a1f1b"
+          ],
+          "anchor": "obs_1fc62a97edf6835941df4f49",
+          "quickstatements": "Q3729|P1082|861|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (861) from INE",
+          "status": "approved"
+        },
+        "explanation": "The infobox figure is tagged 'citation needed'. 606 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 861. Wikidata has no population figure for this comuna; Census 2024 counted 861. The drafts give the Census 2024 count, 861, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012 Census",
+            "observation": "obs_58d6f69f8d4dd63a328b016b",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 606,
+            "verdict": "discredited_source"
+          },
+          "eswiki": {
+            "label": "2024",
+            "observation": "obs_13897b4e3640893d35fbd607",
+            "reference": "<!-- Mapas de localización -->",
+            "status": "checked",
+            "value": 861,
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_1fc62a97edf6835941df4f49",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-15-arica-y-parinacota",
+        "checked_at": "2026-10-24T17:47:10Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 861,
+              "label": "2024",
+              "reference": "<!-- Mapas de localización -->",
+              "observation": "obs_13897b4e3640893d35fbd607",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "2024",
+              "observation": "obs_13897b4e3640893d35fbd607",
+              "reference": "<!-- Mapas de localización -->",
+              "status": "checked",
+              "value": 861,
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 606,
+              "label": "2012 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_58d6f69f8d4dd63a328b016b",
+              "verdict": "discredited_source",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012 Census",
+              "observation": "obs_58d6f69f8d4dd63a328b016b",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 606,
+              "verdict": "discredited_source"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_1fc62a97edf6835941df4f49",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_1fc62a97edf6835941df4f49",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "15201",
+      "name": "PUTRE",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 1977,
+          "2017": 2765,
+          "2024": 1547
+        },
+        "projection": {
+          "2017": 2441,
+          "2020": 2515,
+          "2024": 2569
+        }
+      },
+      "claims_checked": 6,
+      "findings": [
+        {
+          "id": "fnd_bee28cd57712340d",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 1,547.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_71707da2aa3651c3809d3f6d",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q51605",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_71707da2aa3651c3809d3f6d",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_bf5a9fc391fc3bcaa9003460",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1547
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1547,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_bf5a9fc391fc3bcaa9003460",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_dcd839fc2eec0140",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "2,765 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 1,547.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_b47f4556968cc1d13c598ed2",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Putre",
+            "revid": "1378968728",
+            "location": "infobox",
+            "role": "current",
+            "value": 2765,
+            "value_raw": "2765",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q51605"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_b47f4556968cc1d13c598ed2",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 2765,
+              "value_raw": "2765",
+              "label": "2017 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_13b27c098e85c0f13e542c0a",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 2765
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_bf5a9fc391fc3bcaa9003460",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1547
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1547,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_bf5a9fc391fc3bcaa9003460",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_fa35b8a83170620a",
+          "target": "es",
+          "aspect": "sourcing",
+          "class": "unsourced",
+          "explanation": "The infobox figure has no reference.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_16abed822ffa03409af85748",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Putre",
+            "revid": "175750263",
+            "location": "infobox",
+            "role": "current",
+            "value": 1547,
+            "value_raw": "1547",
+            "stated_year": 2024,
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q51605"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_16abed822ffa03409af85748",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 1547,
+              "value_raw": "1547",
+              "label": "2024",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "add_citation",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_6bc372f18f7d09e8c8e6d9de",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Putre",
+            "revid": "175750263",
+            "location": "lead",
+            "role": "historical",
+            "value": 1547,
+            "value_raw": "1547",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 census",
+            "quote": "Tiene una superficie de 5902,5 km² y una población de 1547 habitantes según el censo de 2024 .",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,547 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_d06d4a1d85197e2a7debbe85",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Putre",
+            "revid": "175750263",
+            "location": "body",
+            "role": "current",
+            "value": 233,
+            "value_raw": "233",
+            "label": "no year",
+            "quote": "Uno de los primeros censos de Putre en el año 1750 reportaba 233 habitantes aymaras",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not the comuna's figure",
+          "note": "233 is 15% of INE's Census 2024 count, 1,547: it probably refers to a locality or an area, not the comuna."
+        },
+        {
+          "claim": {
+            "id": "obs_9ae30c8d0493b0feed997302",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Putre",
+            "revid": "1378968728",
+            "location": "body",
+            "role": "historical",
+            "value": 1977,
+            "value_raw": "1,977",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Putre had 1,977 inhabitants (1,345 men and 632 women)",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,977 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_16abed822ffa03409af85748",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Putre",
+            "revid": "175750263",
+            "location": "infobox",
+            "role": "current",
+            "value": 1547,
+            "value_raw": "1547",
+            "stated_year": 2024,
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q51605"
+          },
+          "result": "consistent",
+          "note": "1,547 matches INE's Census 2024 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "PUTRE",
+              "cut": "15201",
+              "figures": [
+                {
+                  "claim_id": "obs_9ae30c8d0493b0feed997302",
+                  "value": 1977,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "1 times the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 claim(s) can't be checked with the official figures read: 1,977 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Putre",
+          "revid": "175750263",
+          "correction": {
+            "value": 1547,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_bf5a9fc391fc3bcaa9003460"
+          },
+          "findings": [
+            "fnd_fa35b8a83170620a"
+          ],
+          "anchor": "obs_16abed822ffa03409af85748",
+          "url": "https://es.wikipedia.org/wiki/Putre",
+          "wikitext": "| población = 1547\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "1547",
+            "year": "2024",
+            "reference": ""
+          },
+          "edit_summary": "Población según el Censo 2024 del INE: 1547 hab. (misma cifra: sin referencia).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Putre",
+          "revid": "1378968728",
+          "correction": {
+            "value": 1547,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_bf5a9fc391fc3bcaa9003460"
+          },
+          "findings": [
+            "fnd_dcd839fc2eec0140"
+          ],
+          "anchor": "obs_b47f4556968cc1d13c598ed2",
+          "url": "https://en.wikipedia.org/wiki/Putre",
+          "wikitext": "| population_total = 1547\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "2765",
+            "year": "2017 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Population per INE's 2024 census: 1,547 (was 2765: an older census count).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q51605",
+          "url": "https://www.wikidata.org/wiki/Q51605",
+          "correction": {
+            "value": 1547,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_bf5a9fc391fc3bcaa9003460"
+          },
+          "findings": [
+            "fnd_bee28cd57712340d"
+          ],
+          "anchor": "obs_71707da2aa3651c3809d3f6d",
+          "quickstatements": "Q51605|P1082|1547|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (1,547) from INE",
+          "status": "approved"
+        },
+        "explanation": "The infobox figure has no reference. 2,765 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 1,547. Wikidata has no population figure for this comuna; Census 2024 counted 1,547. The drafts give the Census 2024 count, 1,547, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2017 Census",
+            "observation": "obs_b47f4556968cc1d13c598ed2",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 2765,
+            "verdict": "outdated_vintage"
+          },
+          "eswiki": {
+            "label": "2024",
+            "observation": "obs_16abed822ffa03409af85748",
+            "reference": null,
+            "status": "checked",
+            "value": 1547,
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_71707da2aa3651c3809d3f6d",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-15-arica-y-parinacota",
+        "checked_at": "2026-10-24T17:47:10Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1547,
+              "label": "2024",
+              "reference": null,
+              "observation": "obs_16abed822ffa03409af85748",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "2024",
+              "observation": "obs_16abed822ffa03409af85748",
+              "reference": null,
+              "status": "checked",
+              "value": 1547,
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 2765,
+              "label": "2017 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_b47f4556968cc1d13c598ed2",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017 Census",
+              "observation": "obs_b47f4556968cc1d13c598ed2",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 2765,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_71707da2aa3651c3809d3f6d",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_71707da2aa3651c3809d3f6d",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "15202",
+      "name": "GENERAL LAGOS",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 1179,
+          "2017": 684,
+          "2024": 508
+        },
+        "projection": {
+          "2017": 795,
+          "2020": 810,
+          "2024": 801
+        }
+      },
+      "claims_checked": 8,
+      "findings": [
+        {
+          "id": "fnd_30fe0c7a36c166df",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 508.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_5f040558bd797239e1cc637d",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q13065",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_5f040558bd797239e1cc637d",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_fbf40ce3a3cc356594df1571",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 508
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 508,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_fbf40ce3a3cc356594df1571",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_1c53d930ca243590",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "684 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 508.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_d315ce302a6392489558723b",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "General Lagos (comuna)",
+            "revid": "175896948",
+            "location": "lead",
+            "role": "current",
+            "value": 684,
+            "value_raw": "684",
+            "label": "no year",
+            "quote": "Ubicada en el extremo norte del altiplano chileno, es la comuna más septentrional y la octava menos poblada del país, con una población de 684 habitantes",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_d315ce302a6392489558723b",
+              "source": "Wikipedia ES",
+              "location": "lead",
+              "value": 684,
+              "value_raw": "684",
+              "label": "no year",
+              "quote": "Ubicada en el extremo norte del altiplano chileno, es la comuna más septentrional y la octava menos poblada del país, con una población de 684 habitantes"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_740ccc358c0a65194f2c22c1",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 684
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_fbf40ce3a3cc356594df1571",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 508
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 508,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_fbf40ce3a3cc356594df1571",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_4e594d1be2a2989a",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "684 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 508.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_04eb5d3a32df140a533b3c80",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "General Lagos",
+            "revid": "1375892624",
+            "location": "infobox",
+            "role": "current",
+            "value": 684,
+            "value_raw": "684",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q13065"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_04eb5d3a32df140a533b3c80",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 684,
+              "value_raw": "684",
+              "label": "2017 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_740ccc358c0a65194f2c22c1",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 684
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_fbf40ce3a3cc356594df1571",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 508
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 508,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_fbf40ce3a3cc356594df1571",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_85239ff41d62f7b25905d3ce",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "General Lagos (comuna)",
+            "revid": "175896948",
+            "location": "body",
+            "role": "historical",
+            "value": 508,
+            "value_raw": "508",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 census",
+            "quote": "La información recabada por el Censo de Vivienda y Población 2024, la comuna tiene 508 habitantes",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "508 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_ff995db2cb2f8d76fa56d894",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "General Lagos (comuna)",
+            "revid": "175896948",
+            "location": "body",
+            "role": "historical",
+            "value": 684,
+            "value_raw": "684",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "Los datos recolectados en el censo de población del año 2017 realizado por el Instituto Nacional de Estadísticas, la comuna posee una superficie de 2.244,4 km² y una población de 684 habitantes, de los cuales 412 son hombres y 272 son mujeres",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "684 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_59761de494d50557d76156d6",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "General Lagos (comuna)",
+            "revid": "175896948",
+            "location": "body",
+            "role": "current",
+            "value": 300,
+            "value_raw": "300",
+            "label": "no year",
+            "quote": "La comuna se caracteriza por la ausencia de población urbana, no cuenta con ciudades o pueblos, siendo los asentamientos más poblados los caseríos de Visviri y Coronel Alcérreca con poblaciones que no llegan a los 300 habitantes en cada una",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not checkable",
+          "note": "no year stated and no official figure matches, so it can't be told what it refers to"
+        },
+        {
+          "claim": {
+            "id": "obs_5f9f0346f5fb9f1a099658d4",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "General Lagos",
+            "revid": "1375892624",
+            "location": "body",
+            "role": "historical",
+            "value": 1179,
+            "value_raw": "1,179",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, General Lagos had 1,179 inhabitants (761 men and 418 women), all listed as living in rural areas",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,179 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_e06c45078a2ae43ee3327fb3",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "General Lagos (comuna)",
+            "revid": "175896948",
+            "location": "infobox",
+            "role": "current",
+            "value": 508,
+            "value_raw": "508",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"censo2024-poblacion-censada\">{{cita web |url=https://censo2024.ine.gob.cl/wp-content/uploads/2025/03/D1_Poblacion-censada-por-sexo-y-edad-en-grupos-quinquenales.xlsx|título=Población censada por sexo y edad en grupos quinquenales|fechaacceso=2025-09-19|idioma=español}}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q13065"
+          },
+          "result": "consistent",
+          "note": "508 matches INE's Census 2024 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "GENERAL LAGOS",
+              "cut": "15202",
+              "figures": [
+                {
+                  "claim_id": "obs_5f9f0346f5fb9f1a099658d4",
+                  "value": 1179,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "2 times the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 claim(s) can't be checked with the official figures read: 1,179 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "General Lagos (comuna)",
+          "revid": "175896948",
+          "correction": {
+            "value": 508,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_fbf40ce3a3cc356594df1571"
+          },
+          "findings": [
+            "fnd_1c53d930ca243590"
+          ],
+          "anchor": "obs_d315ce302a6392489558723b",
+          "url": "https://es.wikipedia.org/wiki/General_Lagos_(comuna)",
+          "text_changes": [
+            {
+              "quote": "Ubicada en el extremo norte del altiplano chileno, es la comuna más septentrional y la octava menos poblada del país, con una población de 684 habitantes",
+              "finding": "fnd_1c53d930ca243590",
+              "why": "684 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 508.",
+              "replace": "684",
+              "by": "508",
+              "note": "state the Census 2024 figure and cite INE"
+            }
+          ],
+          "wikitext": "Según el [[Censo chileno de 2024|censo de 2024]], la comuna tiene una población de 508 habitantes.<ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "edit_summary": "Población según el Censo 2024 del INE: 508 hab. (antes sin cifra: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "General Lagos",
+          "revid": "1375892624",
+          "correction": {
+            "value": 508,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_fbf40ce3a3cc356594df1571"
+          },
+          "findings": [
+            "fnd_4e594d1be2a2989a"
+          ],
+          "anchor": "obs_04eb5d3a32df140a533b3c80",
+          "url": "https://en.wikipedia.org/wiki/General_Lagos",
+          "wikitext": "| population_total = 508\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "684",
+            "year": "2017 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Population per INE's 2024 census: 508 (was 684: an older census count).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q13065",
+          "url": "https://www.wikidata.org/wiki/Q13065",
+          "correction": {
+            "value": 508,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_fbf40ce3a3cc356594df1571"
+          },
+          "findings": [
+            "fnd_30fe0c7a36c166df"
+          ],
+          "anchor": "obs_5f040558bd797239e1cc637d",
+          "quickstatements": "Q13065|P1082|508|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (508) from INE",
+          "status": "approved"
+        },
+        "explanation": "684 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 508. Wikidata has no population figure for this comuna; Census 2024 counted 508. The drafts give the Census 2024 count, 508, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2017 Census",
+            "observation": "obs_04eb5d3a32df140a533b3c80",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 684,
+            "verdict": "outdated_vintage"
+          },
+          "eswiki": {
+            "label": "2024",
+            "observation": "obs_e06c45078a2ae43ee3327fb3",
+            "reference": "<ref name=\"censo2024-poblacion-censada\">{{cita web |url=https://censo2024.ine.gob.cl/wp-content/uploads/2025/03/D1_Poblacion-censada-por-sexo-y-edad-en-grupos-quinquenales.xlsx|título=Población censada por sexo y edad en grupos quinquenales|fechaacceso=2025-09-19|idioma=español}}</ref>",
+            "status": "checked",
+            "value": 508,
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_5f040558bd797239e1cc637d",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-15-arica-y-parinacota",
+        "checked_at": "2026-10-24T17:47:10Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 508,
+              "label": "2024",
+              "reference": "<ref name=\"censo2024-poblacion-censada\">{{cita web |url=https://censo2024.ine.gob.cl/wp-content/uploads/2025/03/D1_Poblacion-censada-por-sexo-y-edad-en-grupos-quinquenales.xlsx|título=Población censada por sexo y edad en grupos quinquenales|fechaacceso=2025-09-19|idioma=español}}</ref>",
+              "observation": "obs_e06c45078a2ae43ee3327fb3",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "2024",
+              "observation": "obs_e06c45078a2ae43ee3327fb3",
+              "reference": "<ref name=\"censo2024-poblacion-censada\">{{cita web |url=https://censo2024.ine.gob.cl/wp-content/uploads/2025/03/D1_Poblacion-censada-por-sexo-y-edad-en-grupos-quinquenales.xlsx|título=Población censada por sexo y edad en grupos quinquenales|fechaacceso=2025-09-19|idioma=español}}</ref>",
+              "status": "checked",
+              "value": 508,
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 684,
+              "label": "2017 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_04eb5d3a32df140a533b3c80",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017 Census",
+              "observation": "obs_04eb5d3a32df140a533b3c80",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 684,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_5f040558bd797239e1cc637d",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_5f040558bd797239e1cc637d",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 0,
+    "requests": 0,
+    "by_agent": {},
+    "requested_model": {},
+    "served_model": {},
+    "routed_model": {},
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 68
+  },
+  "trace_file": "logs/trace-national-20261024c-15-arica-y-parinacota.jsonl",
+  "world_model_audit_file": "logs/world-model-national-20261024c-15-arica-y-parinacota.jsonl",
+  "world_model_audit_entries": 166,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 12,
+        "resolve_by_name": 93,
+        "assess": 79,
+        "context": 14,
+        "view:observations": 23,
+        "reproject": 4,
+        "project_as_of": 4,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/national-20261024c-15-arica-y-parinacota/report.html",
+  "execution_time_seconds": 39.7
+}

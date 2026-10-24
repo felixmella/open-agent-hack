@@ -1,0 +1,4850 @@
+{
+  "run_id": "national-20261024c-01-tarapaca",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 7,
+    "claims": 38,
+    "findings": 33,
+    "findings_by_class": {
+      "cross_source_mismatch": 2,
+      "discredited_source": 4,
+      "genuine_error": 1,
+      "internal_inconsistency": 1,
+      "mislabelled_vintage": 1,
+      "missing_value": 2,
+      "outdated_vintage": 15,
+      "unsourced": 2,
+      "wikidata_rank_qualifier": 5
+    },
+    "drafts": 17,
+    "escalations": 0,
+    "critic_rejections": 5,
+    "discoveries": [
+      "official_census2002",
+      "official_projections"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 7,
+      "unchanged": 17
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "cuts": [
+      "01101",
+      "01107",
+      "01401",
+      "01402",
+      "01403",
+      "01404",
+      "01405"
+    ],
+    "sources": [
+      "official_census",
+      "wikidata",
+      "wikipedia_es",
+      "wikipedia_en",
+      "official_census2002",
+      "official_projections"
+    ],
+    "reason": "7 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "official_census": {
+      "rows": 14,
+      "observations": 14,
+      "appended": 0,
+      "unchanged": 14,
+      "reviews": 0
+    },
+    "wikidata": {
+      "rows": 78,
+      "observations": 7,
+      "appended": 0,
+      "unchanged": 7,
+      "reviews": 0
+    },
+    "wikipedia_es": {
+      "rows": 18,
+      "observations": 10,
+      "appended": 0,
+      "unchanged": 10,
+      "reviews": 0
+    },
+    "wikipedia_en": {
+      "rows": 12,
+      "observations": 10,
+      "appended": 0,
+      "unchanged": 10,
+      "reviews": 0
+    },
+    "official_census2002": {
+      "rows": 7,
+      "observations": 7,
+      "appended": 0,
+      "unchanged": 7,
+      "reviews": 0
+    },
+    "official_projections": {
+      "rows": 238,
+      "observations": 238,
+      "appended": 0,
+      "unchanged": 238,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "official_census2002",
+      "reason": "by coverage (census, 2002), the best fit for 8 figure(s), e.g. 50,215 ('2002 census')",
+      "requests": [
+        {
+          "comuna": "ALTO HOSPICIO",
+          "value": 50215,
+          "shown_in": "Wikipedia ES body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "35% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "ALTO HOSPICIO",
+          "value": 50215,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "35% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "ALTO HOSPICIO",
+          "value": 44000,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "31% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "CAMIÑA",
+          "value": 1275,
+          "shown_in": "Wikipedia ES body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "96% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "CAMIÑA",
+          "value": 1275,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "96% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "HUARA",
+          "value": 2599,
+          "shown_in": "Wikipedia ES body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "91% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "HUARA",
+          "value": 2599,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "91% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "PICA",
+          "value": 6178,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "99% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 1,
+      "source": "official_projections",
+      "reason": "by coverage (projection, 2002-2035), the best fit for 4 figure(s), e.g. 275,000 ('2012')",
+      "requests": [
+        {
+          "comuna": "ALTO HOSPICIO",
+          "value": 275000,
+          "shown_in": "Wikipedia EN lead",
+          "label": "2012",
+          "year": 2012,
+          "basis": null,
+          "size": "2 times the Census 2024 count",
+          "classified_as": "cross_source_mismatch",
+          "candidates": [
+            "official_projections"
+          ]
+        },
+        {
+          "comuna": "CAMIÑA",
+          "value": 1275,
+          "shown_in": "Wikipedia ES lead",
+          "label": "no year",
+          "year": null,
+          "basis": null,
+          "size": "96% of the Census 2024 count",
+          "classified_as": "genuine_error",
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "HUARA",
+          "value": 3510,
+          "shown_in": "Wikidata statement",
+          "label": "no point in time",
+          "year": null,
+          "basis": null,
+          "size": "1 times the Census 2024 count",
+          "classified_as": "cross_source_mismatch",
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "COLCHANE",
+          "value": 1649,
+          "shown_in": "Wikidata statement",
+          "label": "no point in time",
+          "year": null,
+          "basis": null,
+          "size": "2 times the Census 2024 count",
+          "classified_as": "nonexistent_census",
+          "candidates": [
+            "official_projections",
+            "official_census2002",
+            "official_census2017_area"
+          ]
+        }
+      ],
+      "method": "rules"
+    }
+  ],
+  "comunas": [
+    {
+      "cut": "01101",
+      "name": "IQUIQUE",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 166204,
+          "2017": 191468,
+          "2024": 199587
+        },
+        "projection": {
+          "2017": 202891,
+          "2020": 223463,
+          "2024": 231962
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_7f122e89b79cc7ba",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 199,587.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_f26f0677ac838bd2add084ef",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q23660233",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_f26f0677ac838bd2add084ef",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_a1dd506e4d8c5ea7fa58f0c1",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 199587
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 199587,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_a1dd506e4d8c5ea7fa58f0c1",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660233",
+          "url": "https://www.wikidata.org/wiki/Q23660233",
+          "correction": {
+            "value": 199587,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_a1dd506e4d8c5ea7fa58f0c1"
+          },
+          "findings": [
+            "fnd_7f122e89b79cc7ba"
+          ],
+          "anchor": "obs_f26f0677ac838bd2add084ef",
+          "quickstatements": "Q23660233|P1082|199587|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (199,587) from INE",
+          "status": "approved"
+        },
+        "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 199,587. The drafts give the Census 2024 count, 199,587, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_f26f0677ac838bd2add084ef",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-01-tarapaca",
+        "checked_at": "2026-10-24T17:32:50Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_f26f0677ac838bd2add084ef",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_f26f0677ac838bd2add084ef",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01107",
+      "name": "ALTO HOSPICIO",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 50215,
+          "2017": 108375,
+          "2024": 142086
+        },
+        "projection": {
+          "2017": 113098,
+          "2020": 129999,
+          "2024": 143294
+        }
+      },
+      "claims_checked": 10,
+      "findings": [
+        {
+          "id": "fnd_629e251d14e76ad4",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "94,254 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_62dd861ec58f3b6ade326879",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Alto Hospicio",
+            "revid": "1374620798",
+            "location": "lead",
+            "role": "historical",
+            "value": 94254,
+            "value_raw": "94,254",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 census",
+            "quote": "It is a fast-growing popular area in the heights of Iquique and has a population of 94,254 according to the preliminary result of the 2012 census",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_62dd861ec58f3b6ade326879",
+              "source": "Wikipedia EN",
+              "location": "lead",
+              "value": 94254,
+              "value_raw": "94,254",
+              "label": "2012 census",
+              "quote": "It is a fast-growing popular area in the heights of Iquique and has a population of 94,254 according to the preliminary result of the 2012 census"
+            }
+          ],
+          "proposal": {
+            "action": "deprecate"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_3ff15a0fa7fd3b39",
+          "target": "en",
+          "aspect": "value",
+          "class": "cross_source_mismatch",
+          "explanation": "275,000 matches no official figure held (Census 2002 50,215, Census 2017 108,375, Census 2024 142,086, projection 2012 97,654).",
+          "confidence": 0.4,
+          "method": "matcher (model unavailable)",
+          "claim": {
+            "id": "obs_a3bd96f2eb6b418ab0673fbb",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Alto Hospicio",
+            "revid": "1374620798",
+            "location": "lead",
+            "role": "historical",
+            "value": 275000,
+            "value_raw": "275,000",
+            "stated_year": 2012,
+            "label": "2012",
+            "quote": "It is the second largest commune of the Greater Iquique urbanization with a total population of 275,000 in 2012.",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_a3bd96f2eb6b418ab0673fbb",
+              "source": "Wikipedia EN",
+              "location": "lead",
+              "value": 275000,
+              "value_raw": "275,000",
+              "label": "2012",
+              "quote": "It is the second largest commune of the Greater Iquique urbanization with a total population of 275,000 in 2012."
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_22fc9efbdf34c0a7475537d5",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 50215
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_afff7ae0d7c4812d0d3f8ec1",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 108375
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_dd172ce238597e35a484514e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 142086
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_f9f0f1a6009a8a5801ec16b0",
+              "source": "INE Proyecciones base 2017",
+              "definition": "projection",
+              "year": 2012,
+              "value": 97654
+            }
+          ],
+          "proposal": {
+            "action": "human_review"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_fc0703892be1d05b",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "94,254 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_5abb08e52efe5172dc44fd9a",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Alto Hospicio",
+            "revid": "1374620798",
+            "location": "body",
+            "role": "historical",
+            "value": 94254,
+            "value_raw": "94,254",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 census",
+            "quote": "Preliminary results of the 2012 census indicate a population of 94,254 inhabitants of Alto Hospicio",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_5abb08e52efe5172dc44fd9a",
+              "source": "Wikipedia EN",
+              "location": "body",
+              "value": 94254,
+              "value_raw": "94,254",
+              "label": "2012 census",
+              "quote": "Preliminary results of the 2012 census indicate a population of 94,254 inhabitants of Alto Hospicio"
+            }
+          ],
+          "proposal": {
+            "action": "deprecate"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_172d024592149722",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "108,375 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 142,086.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_9999b5ba4edc13e8a81ffbb7",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Alto Hospicio",
+            "revid": "175260668",
+            "location": "infobox",
+            "role": "current",
+            "value": 108375,
+            "value_raw": "108375",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q2217"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_9999b5ba4edc13e8a81ffbb7",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 108375,
+              "value_raw": "108375",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_afff7ae0d7c4812d0d3f8ec1",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 108375
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_dd172ce238597e35a484514e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 142086
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 142086,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_dd172ce238597e35a484514e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_969ce2e79d4664e9",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "94,441 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 142,086.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_1aa5e714e63c2dfa95e180f4",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Alto Hospicio",
+            "revid": "1374620798",
+            "location": "infobox",
+            "role": "current",
+            "value": 94441,
+            "value_raw": "94441",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q2217"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_1aa5e714e63c2dfa95e180f4",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 94441,
+              "value_raw": "94441",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_dd172ce238597e35a484514e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 142086
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 142086,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_dd172ce238597e35a484514e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_4091b927bdcfabd9",
+          "target": "es",
+          "aspect": "sourcing",
+          "class": "unsourced",
+          "explanation": "The infobox figure has no reference.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_9999b5ba4edc13e8a81ffbb7",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Alto Hospicio",
+            "revid": "175260668",
+            "location": "infobox",
+            "role": "current",
+            "value": 108375,
+            "value_raw": "108375",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q2217"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_9999b5ba4edc13e8a81ffbb7",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 108375,
+              "value_raw": "108375",
+              "label": "2017",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "add_citation",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_5b964c3113f73bbf",
+          "target": "en",
+          "aspect": "consistency",
+          "class": "internal_inconsistency",
+          "explanation": "The infobox gives 94,441 for 2012, but the lead gives 94,254 ('2012 census').",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_1aa5e714e63c2dfa95e180f4",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Alto Hospicio",
+            "revid": "1374620798",
+            "location": "infobox",
+            "role": "current",
+            "value": 94441,
+            "value_raw": "94441",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q2217"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_1aa5e714e63c2dfa95e180f4",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 94441,
+              "value_raw": "94441",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_62dd861ec58f3b6ade326879",
+              "source": "Wikipedia EN",
+              "location": "lead",
+              "value": 94254,
+              "value_raw": "94,254",
+              "label": "2012 census",
+              "quote": "It is a fast-growing popular area in the heights of Iquique and has a population of 94,254 according to the preliminary result of the 2012 census"
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_a3bd96f2eb6b418ab0673fbb",
+              "source": "Wikipedia EN",
+              "location": "lead",
+              "value": 275000,
+              "value_raw": "275,000",
+              "label": "2012",
+              "quote": "It is the second largest commune of the Greater Iquique urbanization with a total population of 275,000 in 2012."
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_5abb08e52efe5172dc44fd9a",
+              "source": "Wikipedia EN",
+              "location": "body",
+              "value": 94254,
+              "value_raw": "94,254",
+              "label": "2012 census",
+              "quote": "Preliminary results of the 2012 census indicate a population of 94,254 inhabitants of Alto Hospicio"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 142086,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_dd172ce238597e35a484514e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_c41b642bb87b171f",
+          "target": "en",
+          "aspect": "sourcing",
+          "class": "unsourced",
+          "explanation": "The infobox figure has no reference.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_1aa5e714e63c2dfa95e180f4",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Alto Hospicio",
+            "revid": "1374620798",
+            "location": "infobox",
+            "role": "current",
+            "value": 94441,
+            "value_raw": "94441",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q2217"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_1aa5e714e63c2dfa95e180f4",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 94441,
+              "value_raw": "94441",
+              "label": "2012 Census",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "add_citation",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_1634d58c36c998a5",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata's newest population statement is 108,375 (point in time 2017-01-01); Census 2024 counted 142,086, and Wikidata has no statement for it.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_c800449b35e06ccbf0363612",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 108375,
+            "value_raw": "108375",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q2217",
+            "statement": "http://www.wikidata.org/entity/statement/Q2217-32d76669-40ce-82ea-768e-fefa4c08cea9",
+            "references": [
+              "http://www.wikidata.org/entity/Q21001879"
+            ]
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_c800449b35e06ccbf0363612",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 108375,
+              "value_raw": "108375",
+              "label": "point in time 2017-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_dd172ce238597e35a484514e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 142086
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 142086,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_dd172ce238597e35a484514e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_1652ba4d822900d3",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no determination method on 108,375.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_c800449b35e06ccbf0363612",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 108375,
+            "value_raw": "108375",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q2217",
+            "statement": "http://www.wikidata.org/entity/statement/Q2217-32d76669-40ce-82ea-768e-fefa4c08cea9",
+            "references": [
+              "http://www.wikidata.org/entity/Q21001879"
+            ]
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_c800449b35e06ccbf0363612",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 108375,
+              "value_raw": "108375",
+              "label": "point in time 2017-01-01",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_c800449b35e06ccbf0363612",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 108375,
+            "value_raw": "108375",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q2217",
+            "statement": "http://www.wikidata.org/entity/statement/Q2217-32d76669-40ce-82ea-768e-fefa4c08cea9",
+            "references": [
+              "http://www.wikidata.org/entity/Q21001879"
+            ]
+          },
+          "result": "consistent",
+          "note": "108,375 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_31c5001844a6d98d5e777171",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Alto Hospicio",
+            "revid": "175260668",
+            "location": "body",
+            "role": "historical",
+            "value": 2000,
+            "value_raw": "2000",
+            "stated_year": 1990,
+            "label": "1990",
+            "quote": "El auge económico que experimentó Iquique en la década de 1990 hizo que Alto Hospicio explotara demográficamente, pasando de un pequeño grupo de casas y poblaciones que no superaban los 2000 habitantes a comienzos de los noventa a una enorme ciudad con miles de habitantes",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not checkable",
+          "note": "refers to 1990, a year no official figure read for this comuna covers"
+        },
+        {
+          "claim": {
+            "id": "obs_3fe6663d74eb58ec9187fa66",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Alto Hospicio",
+            "revid": "175260668",
+            "location": "body",
+            "role": "historical",
+            "value": 50215,
+            "value_raw": "50.215",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "Según los datos recolectados en el censo del año 2002 realizado por el Instituto Nacional de Estadísticas, la comuna posee una superficie de 572,9 km² y una población de 50.215 habitantes, mientras el espacio urbano de Alto Hospicio tiene 50.190 habitantes en un área de 17,45 km²",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "50,215 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_42c06b595961421af6885392",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Alto Hospicio",
+            "revid": "1374620798",
+            "location": "body",
+            "role": "historical",
+            "value": 50215,
+            "value_raw": "50,215",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Alto Hospicio had 50,215 inhabitants",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "50,215 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_8c45d6127a22ecede8500e84",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Alto Hospicio",
+            "revid": "1374620798",
+            "location": "body",
+            "role": "historical",
+            "value": 44000,
+            "value_raw": "44,000",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "The population grew by nearly 900% (44,627 persons) between the 1992 and 2002 censuses and similar (90.7%) between 2002 and 2012 by about 44,000 inhabitants.",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not the comuna's figure",
+          "note": "44,000 is 31% of INE's Census 2024 count, 142,086: it probably refers to a locality or an area, not the comuna."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_3ff15a0fa7fd3b39"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_3ff15a0fa7fd3b39",
+              "finding_ids": [
+                "fnd_3ff15a0fa7fd3b39"
+              ],
+              "comuna": "ALTO HOSPICIO",
+              "cut": "01107",
+              "figures": [
+                {
+                  "finding_id": "fnd_3ff15a0fa7fd3b39",
+                  "value": 275000,
+                  "source": "Wikipedia EN",
+                  "location": "lead",
+                  "label": "2012",
+                  "year": 2012,
+                  "basis": null,
+                  "size": "2 times the Census 2024 count",
+                  "class": "cross_source_mismatch",
+                  "candidates": [
+                    "official_projections"
+                  ]
+                },
+                {
+                  "claim_id": "obs_3fe6663d74eb58ec9187fa66",
+                  "value": 50215,
+                  "source": "Wikipedia ES",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "35% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_42c06b595961421af6885392",
+                  "value": 50215,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "35% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_8c45d6127a22ecede8500e84",
+                  "value": 44000,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "31% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 figures match no official figure read so far (Census 2017 108,375, Census 2024 142,086): 275,000 (Wikipedia EN, '2012', called cross_source_mismatch). 3 claim(s) can't be checked with the official figures read: 50,215 (Wikipedia ES body, '2002 census'); 50,215 (Wikipedia EN body, '2002 census'); 44,000 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Alto Hospicio",
+          "revid": "175260668",
+          "correction": {
+            "value": 142086,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_dd172ce238597e35a484514e"
+          },
+          "findings": [
+            "fnd_172d024592149722",
+            "fnd_4091b927bdcfabd9"
+          ],
+          "anchor": "obs_9999b5ba4edc13e8a81ffbb7",
+          "url": "https://es.wikipedia.org/wiki/Alto_Hospicio",
+          "wikitext": "| población = 142086\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "108375",
+            "year": "2017",
+            "reference": ""
+          },
+          "edit_summary": "Población según el Censo 2024 del INE: 142086 hab. (antes 108375: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Alto Hospicio",
+          "revid": "1374620798",
+          "correction": {
+            "value": 142086,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_dd172ce238597e35a484514e"
+          },
+          "findings": [
+            "fnd_629e251d14e76ad4",
+            "fnd_3ff15a0fa7fd3b39",
+            "fnd_fc0703892be1d05b",
+            "fnd_969ce2e79d4664e9",
+            "fnd_5b964c3113f73bbf",
+            "fnd_c41b642bb87b171f"
+          ],
+          "anchor": "obs_1aa5e714e63c2dfa95e180f4",
+          "url": "https://en.wikipedia.org/wiki/Alto_Hospicio",
+          "wikitext": "| population_total = 142086\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "94441",
+            "year": "2012 Census",
+            "reference": ""
+          },
+          "text_changes": [
+            {
+              "quote": "It is a fast-growing popular area in the heights of Iquique and has a population of 94,254 according to the preliminary result of the 2012 census",
+              "finding": "fnd_629e251d14e76ad4",
+              "why": "94,254 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure.",
+              "note": "remove the figure or give its source"
+            },
+            {
+              "quote": "It is the second largest commune of the Greater Iquique urbanization with a total population of 275,000 in 2012.",
+              "finding": "fnd_3ff15a0fa7fd3b39",
+              "why": "275,000 matches no official figure held (Census 2002 50,215, Census 2017 108,375, Census 2024 142,086, projection 2012 97,654).",
+              "note": "remove the figure or give its source"
+            },
+            {
+              "quote": "Preliminary results of the 2012 census indicate a population of 94,254 inhabitants of Alto Hospicio",
+              "finding": "fnd_fc0703892be1d05b",
+              "why": "94,254 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure.",
+              "note": "remove the figure or give its source"
+            }
+          ],
+          "edit_summary": "Population per INE's 2024 census: 142,086 (was 94441: the withdrawn 2012 census).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q2217",
+          "url": "https://www.wikidata.org/wiki/Q2217",
+          "correction": {
+            "value": 142086,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_dd172ce238597e35a484514e"
+          },
+          "findings": [
+            "fnd_1634d58c36c998a5",
+            "fnd_1652ba4d822900d3"
+          ],
+          "anchor": "obs_c800449b35e06ccbf0363612",
+          "quickstatements": "Q2217|P1082|142086|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (142,086) from INE",
+          "status": "approved"
+        },
+        "explanation": "108,375 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 142,086. 94,441 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. Wikidata's newest population statement is 108,375 (point in time 2017-01-01); Census 2024 counted 142,086, and Wikidata has no statement for it. The drafts give the Census 2024 count, 142,086, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012 Census",
+            "observation": "obs_1aa5e714e63c2dfa95e180f4",
+            "reference": null,
+            "status": "approved",
+            "value": 94441,
+            "verdict": "discredited_source"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_9999b5ba4edc13e8a81ffbb7",
+            "reference": null,
+            "status": "approved",
+            "value": 108375,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "point in time 2017-01-01",
+            "observation": "obs_c800449b35e06ccbf0363612",
+            "reference": null,
+            "status": "approved",
+            "value": 108375,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-01-tarapaca",
+        "checked_at": "2026-10-24T17:32:50Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 108375,
+              "label": "2017",
+              "reference": null,
+              "observation": "obs_9999b5ba4edc13e8a81ffbb7",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_9999b5ba4edc13e8a81ffbb7",
+              "reference": null,
+              "status": "approved",
+              "value": 108375,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 94441,
+              "label": "2012 Census",
+              "reference": null,
+              "observation": "obs_1aa5e714e63c2dfa95e180f4",
+              "verdict": "discredited_source",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012 Census",
+              "observation": "obs_1aa5e714e63c2dfa95e180f4",
+              "reference": null,
+              "status": "approved",
+              "value": 94441,
+              "verdict": "discredited_source"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 108375,
+              "label": "point in time 2017-01-01",
+              "reference": null,
+              "observation": "obs_c800449b35e06ccbf0363612",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "point in time 2017-01-01",
+              "observation": "obs_c800449b35e06ccbf0363612",
+              "reference": null,
+              "status": "approved",
+              "value": 108375,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01401",
+      "name": "POZO ALMONTE",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 10830,
+          "2017": 15711,
+          "2024": 16878
+        },
+        "projection": {
+          "2017": 15286,
+          "2020": 17395,
+          "2024": 18713
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_8b3ffb2e2d1bd022",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 16,878.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_982d3ff6e1828eadc347cc89",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q23660626",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_982d3ff6e1828eadc347cc89",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_aef6f0fe5c7498c83f0be65d",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 16878
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 16878,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_aef6f0fe5c7498c83f0be65d",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660626",
+          "url": "https://www.wikidata.org/wiki/Q23660626",
+          "correction": {
+            "value": 16878,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_aef6f0fe5c7498c83f0be65d"
+          },
+          "findings": [
+            "fnd_8b3ffb2e2d1bd022"
+          ],
+          "anchor": "obs_982d3ff6e1828eadc347cc89",
+          "quickstatements": "Q23660626|P1082|16878|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (16,878) from INE",
+          "status": "approved"
+        },
+        "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 16,878. The drafts give the Census 2024 count, 16,878, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_982d3ff6e1828eadc347cc89",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-01-tarapaca",
+        "checked_at": "2026-10-24T17:32:50Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_982d3ff6e1828eadc347cc89",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_982d3ff6e1828eadc347cc89",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01402",
+      "name": "CAMIÑA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 1275,
+          "2017": 1250,
+          "2024": 1335
+        },
+        "projection": {
+          "2017": 1286,
+          "2020": 1375,
+          "2024": 1374
+        }
+      },
+      "claims_checked": 6,
+      "findings": [
+        {
+          "id": "fnd_f5cf2fd09c7723c0",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "1,275 is INE's Census 2002 count, shown as the current figure. The current official figure is the Census 2024 count, 1,335.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_ae852a0160300fa4a711dba2",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Camiña",
+            "revid": "175260202",
+            "location": "lead",
+            "role": "current",
+            "value": 1275,
+            "value_raw": "1275",
+            "label": "no year",
+            "quote": "Tiene una superficie de 2200,2 km² y una población de 1275 habitantes.",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_ae852a0160300fa4a711dba2",
+              "source": "Wikipedia ES",
+              "location": "lead",
+              "value": 1275,
+              "value_raw": "1275",
+              "label": "no year",
+              "quote": "Tiene una superficie de 2200,2 km² y una población de 1275 habitantes."
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_9e93bb4b88bb318fc2303c30",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 1275
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1335
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1335,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_109a7966359cca73",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "1,250 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 1,335.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_b9422a800b0b48264dc3821d",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Camiña",
+            "revid": "175260202",
+            "location": "infobox",
+            "role": "current",
+            "value": 1250,
+            "value_raw": "1250",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3731"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_b9422a800b0b48264dc3821d",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 1250,
+              "value_raw": "1250",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_28183c98d465911aa76f44ec",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 1250
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1335
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1335,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_ef77a91505c18a3e",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "1,156 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 1,335.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_49963ca3ceec5a68cb5c10ca",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Camiña",
+            "revid": "1375327005",
+            "location": "infobox",
+            "role": "current",
+            "value": 1156,
+            "value_raw": "1156",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3731"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_49963ca3ceec5a68cb5c10ca",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 1156,
+              "value_raw": "1156",
+              "label": "2012 census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1335
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1335,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_9bf03d22d7c21f7b",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata's newest population statement is 1,250 (point in time 2017-01-01); Census 2024 counted 1,335, and Wikidata has no statement for it.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_58643cfa83317fc8be2403d2",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 1250,
+            "value_raw": "1250",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3731",
+            "statement": "http://www.wikidata.org/entity/statement/Q3731-b3c2a86c-479c-8005-4c0a-15668bd66d6d",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_58643cfa83317fc8be2403d2",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 1250,
+              "value_raw": "1250",
+              "label": "point in time 2017-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1335
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 1335,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_ff01a881b9f0b3df",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no determination method on 1,250; no reference on 1,250.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_58643cfa83317fc8be2403d2",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 1250,
+            "value_raw": "1250",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3731",
+            "statement": "http://www.wikidata.org/entity/statement/Q3731-b3c2a86c-479c-8005-4c0a-15668bd66d6d",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_58643cfa83317fc8be2403d2",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 1250,
+              "value_raw": "1250",
+              "label": "point in time 2017-01-01",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_58643cfa83317fc8be2403d2",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 1250,
+            "value_raw": "1250",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3731",
+            "statement": "http://www.wikidata.org/entity/statement/Q3731-b3c2a86c-479c-8005-4c0a-15668bd66d6d",
+            "references": []
+          },
+          "result": "consistent",
+          "note": "1,250 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_77060b80bb800ae47ed2badc",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Camiña",
+            "revid": "175260202",
+            "location": "body",
+            "role": "historical",
+            "value": 1275,
+            "value_raw": "1.275",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "Según los datos recolectados en el censo del año 2002 realizado por el Instituto Nacional de Estadísticas, la comuna posee una superficie de 2.200,2 km² y una población de 1.275 habitantes, de los cuales 599 son mujeres y 676 son hombres",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,275 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_dbfe901decfe0c17e6726cd7",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Camiña",
+            "revid": "1375327005",
+            "location": "body",
+            "role": "historical",
+            "value": 1275,
+            "value_raw": "1,275",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Camiña had 1,275 inhabitants (676 men and 599 women), and it is entirely rural",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,275 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_f5cf2fd09c7723c0"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f5cf2fd09c7723c0",
+              "finding_ids": [
+                "fnd_f5cf2fd09c7723c0"
+              ],
+              "comuna": "CAMIÑA",
+              "cut": "01402",
+              "figures": [
+                {
+                  "finding_id": "fnd_f5cf2fd09c7723c0",
+                  "value": 1275,
+                  "source": "Wikipedia ES",
+                  "location": "lead",
+                  "label": "no year",
+                  "year": null,
+                  "basis": null,
+                  "size": "96% of the Census 2024 count",
+                  "class": "genuine_error",
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_77060b80bb800ae47ed2badc",
+                  "value": 1275,
+                  "source": "Wikipedia ES",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "96% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_dbfe901decfe0c17e6726cd7",
+                  "value": 1275,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "96% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 figures match no official figure read so far (Census 2017 1,250, Census 2024 1,335): 1,275 (Wikipedia ES, 'no year', called genuine_error). 2 claim(s) can't be checked with the official figures read: 1,275 (Wikipedia ES body, '2002 census'); 1,275 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Camiña",
+          "revid": "175260202",
+          "correction": {
+            "value": 1335,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb"
+          },
+          "findings": [
+            "fnd_f5cf2fd09c7723c0",
+            "fnd_109a7966359cca73"
+          ],
+          "anchor": "obs_b9422a800b0b48264dc3821d",
+          "url": "https://es.wikipedia.org/wiki/Camiña",
+          "wikitext": "| población = 1335\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "1250",
+            "year": "2017",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>"
+          },
+          "text_changes": [
+            {
+              "quote": "Tiene una superficie de 2200,2 km² y una población de 1275 habitantes.",
+              "finding": "fnd_f5cf2fd09c7723c0",
+              "why": "1,275 is INE's Census 2002 count, shown as the current figure. The current official figure is the Census 2024 count, 1,335.",
+              "replace": "1275",
+              "by": "1335",
+              "note": "state the Census 2024 figure and cite INE"
+            }
+          ],
+          "edit_summary": "Población según el Censo 2024 del INE: 1335 hab. (antes 1250: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Camiña",
+          "revid": "1375327005",
+          "correction": {
+            "value": 1335,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb"
+          },
+          "findings": [
+            "fnd_ef77a91505c18a3e"
+          ],
+          "anchor": "obs_49963ca3ceec5a68cb5c10ca",
+          "url": "https://en.wikipedia.org/wiki/Camiña",
+          "wikitext": "| population_total = 1335\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "1156",
+            "year": "2012 census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Population per INE's 2024 census: 1,335 (was 1156: the withdrawn 2012 census).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3731",
+          "url": "https://www.wikidata.org/wiki/Q3731",
+          "correction": {
+            "value": 1335,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_b7ffcf7daa4ba10775f5f8cb"
+          },
+          "findings": [
+            "fnd_9bf03d22d7c21f7b",
+            "fnd_ff01a881b9f0b3df"
+          ],
+          "anchor": "obs_58643cfa83317fc8be2403d2",
+          "quickstatements": "Q3731|P1082|1335|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (1,335) from INE",
+          "status": "approved"
+        },
+        "explanation": "1,250 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 1,335. 1,156 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. Wikidata's newest population statement is 1,250 (point in time 2017-01-01); Census 2024 counted 1,335, and Wikidata has no statement for it. The drafts give the Census 2024 count, 1,335, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012 census",
+            "observation": "obs_49963ca3ceec5a68cb5c10ca",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 1156,
+            "verdict": "discredited_source"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_b9422a800b0b48264dc3821d",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>",
+            "status": "approved",
+            "value": 1250,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "point in time 2017-01-01",
+            "observation": "obs_58643cfa83317fc8be2403d2",
+            "reference": null,
+            "status": "approved",
+            "value": 1250,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-01-tarapaca",
+        "checked_at": "2026-10-24T17:32:50Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1250,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>",
+              "observation": "obs_b9422a800b0b48264dc3821d",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_b9422a800b0b48264dc3821d",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>",
+              "status": "approved",
+              "value": 1250,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1156,
+              "label": "2012 census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_49963ca3ceec5a68cb5c10ca",
+              "verdict": "discredited_source",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012 census",
+              "observation": "obs_49963ca3ceec5a68cb5c10ca",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 1156,
+              "verdict": "discredited_source"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1250,
+              "label": "point in time 2017-01-01",
+              "reference": null,
+              "observation": "obs_58643cfa83317fc8be2403d2",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "point in time 2017-01-01",
+              "observation": "obs_58643cfa83317fc8be2403d2",
+              "reference": null,
+              "status": "approved",
+              "value": 1250,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01403",
+      "name": "COLCHANE",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 1649,
+          "2017": 1728,
+          "2024": 790
+        },
+        "projection": {
+          "2017": 1500,
+          "2020": 1583,
+          "2024": 1558
+        }
+      },
+      "claims_checked": 6,
+      "findings": [
+        {
+          "id": "fnd_d9698e33bc18f487",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "1,649 is INE's Census 2002 count, shown as the current figure. The current official figure is the Census 2024 count, 790.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_7c546dab3de1dd5b988704dc",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "value": 1649,
+            "value_raw": "1649",
+            "label": "no point in time",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3839",
+            "statement": "http://www.wikidata.org/entity/statement/Q3839-75D1F80A-F6B3-4F29-84D8-A7A2DA2EE0FD",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_7c546dab3de1dd5b988704dc",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 1649,
+              "value_raw": "1649",
+              "label": "no point in time",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_ef66d54e85693d41b3b2415e",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 1649
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 790
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 790,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_9a88fe342d65809e",
+          "target": "es",
+          "aspect": "value",
+          "class": "genuine_error",
+          "explanation": "1,629 differs in one digit from INE's Census 2002 count, 1,649: most likely a typo. The current official figure is the Census 2024 count, 790.",
+          "confidence": 0.85,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_98147d49bbbbfb628dabdf27",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Colchane",
+            "revid": "175416466",
+            "location": "lead",
+            "role": "current",
+            "value": 1629,
+            "value_raw": "1629",
+            "label": "no year",
+            "quote": "Tiene una superficie de 4015,6 km² y una población de 1629 habitantes",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_98147d49bbbbfb628dabdf27",
+              "source": "Wikipedia ES",
+              "location": "lead",
+              "value": 1629,
+              "value_raw": "1629",
+              "label": "no year",
+              "quote": "Tiene una superficie de 4015,6 km² y una población de 1629 habitantes"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_ef66d54e85693d41b3b2415e",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 1649
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 790
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 790,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_b7ea2da5df642a8e",
+          "target": "es",
+          "aspect": "value",
+          "class": "mislabelled_vintage",
+          "explanation": "1,649 is INE's Census 2002 count, but it is labelled '2008 census' (a census that never took place).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_17a06b4b38d203836fef0f1b",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Colchane",
+            "revid": "175416466",
+            "location": "body",
+            "role": "historical",
+            "value": 1649,
+            "value_raw": "1.649",
+            "stated_year": 2008,
+            "basis": "census",
+            "label": "2008 census",
+            "quote": "Según los datos recolectados en el censo del año 2008 realizado por el Instituto Nacional de Estadísticas, la comuna posee una superficie de 4.015,6 km² y una población de 1.649 habitantes, de los cuales 739 son mujeres y 910 son hombres",
+            "method": "rules",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_17a06b4b38d203836fef0f1b",
+              "source": "Wikipedia ES",
+              "location": "body",
+              "value": 1649,
+              "value_raw": "1.649",
+              "label": "2008 census",
+              "quote": "Según los datos recolectados en el censo del año 2008 realizado por el Instituto Nacional de Estadísticas, la comuna posee una superficie de 4.015,6 km² y una población de 1.649 habitantes, de los cuales 739 son mujeres y 910 son hombres"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_ef66d54e85693d41b3b2415e",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 1649
+            }
+          ],
+          "proposal": {
+            "action": "relabel",
+            "value": 1649,
+            "year": 2002,
+            "definition": "census",
+            "obs_id": "obs_ef66d54e85693d41b3b2415e",
+            "source_key": "census_2002"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_25b09ca7704b1a83",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "1,728 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 790.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_e2a766e92369f3b4f4693c2d",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Colchane",
+            "revid": "175416466",
+            "location": "infobox",
+            "role": "current",
+            "value": 1728,
+            "value_raw": "1728",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3839"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_e2a766e92369f3b4f4693c2d",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 1728,
+              "value_raw": "1728",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_dbbac8ad03e9933147c2dac1",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 1728
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 790
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 790,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_e6a36bb4402ca833",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "1,728 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 790.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_68ff52aec9358f5788ef39b8",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Colchane",
+            "revid": "1375649382",
+            "location": "infobox",
+            "role": "current",
+            "value": 1728,
+            "value_raw": "1728",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3839"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_68ff52aec9358f5788ef39b8",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 1728,
+              "value_raw": "1728",
+              "label": "2017 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_dbbac8ad03e9933147c2dac1",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 1728
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 790
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 790,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_3ad0dca856396801",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata's newest population statement is 1,649 (no point in time); Census 2024 counted 790, and Wikidata has no statement for it.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_7c546dab3de1dd5b988704dc",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "value": 1649,
+            "value_raw": "1649",
+            "label": "no point in time",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3839",
+            "statement": "http://www.wikidata.org/entity/statement/Q3839-75D1F80A-F6B3-4F29-84D8-A7A2DA2EE0FD",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_7c546dab3de1dd5b988704dc",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 1649,
+              "value_raw": "1649",
+              "label": "no point in time",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 790
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 790,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_91f014147dd8cbd02a5c67e7",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_52c3d64be6a9a777",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no point in time on 1,649; no determination method on 1,649; no reference on 1,649.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_7c546dab3de1dd5b988704dc",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "value": 1649,
+            "value_raw": "1649",
+            "label": "no point in time",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3839",
+            "statement": "http://www.wikidata.org/entity/statement/Q3839-75D1F80A-F6B3-4F29-84D8-A7A2DA2EE0FD",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_7c546dab3de1dd5b988704dc",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 1649,
+              "value_raw": "1649",
+              "label": "no point in time",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_1e8351e7fdf937cf020815b8",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Colchane",
+            "revid": "1375649382",
+            "location": "body",
+            "role": "historical",
+            "value": 1728,
+            "value_raw": "1,728",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "According to the 2017 census of the National Statistics Institute, Colchane had 1,728 inhabitants (995 men and 733 women), and it is entirely rural",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,728 matches INE's Census 2017 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_d9698e33bc18f487"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_d9698e33bc18f487",
+              "finding_ids": [
+                "fnd_d9698e33bc18f487"
+              ],
+              "comuna": "COLCHANE",
+              "cut": "01403",
+              "figures": [
+                {
+                  "finding_id": "fnd_d9698e33bc18f487",
+                  "value": 1649,
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "no point in time",
+                  "year": null,
+                  "basis": null,
+                  "size": "2 times the Census 2024 count",
+                  "class": "nonexistent_census",
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002",
+                    "official_census2017_area"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1,649 (Wikidata, 'no point in time') matches no official figure read so far (Census 2017 1,728, Census 2024 790). Before calling it nonexistent_census, read an official source whose coverage could explain it (official_projections (projection, 2002-2035), official_census2002 (census, 2002), official_census2017_area (census urban_rural, 2017)): only its figures can confirm or rule out an official figure of another definition or year."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Colchane",
+          "revid": "175416466",
+          "correction": {
+            "value": 790,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_91f014147dd8cbd02a5c67e7"
+          },
+          "findings": [
+            "fnd_9a88fe342d65809e",
+            "fnd_b7ea2da5df642a8e",
+            "fnd_25b09ca7704b1a83"
+          ],
+          "anchor": "obs_e2a766e92369f3b4f4693c2d",
+          "url": "https://es.wikipedia.org/wiki/Colchane",
+          "wikitext": "| población = 790\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "1728",
+            "year": "2017",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>"
+          },
+          "text_changes": [
+            {
+              "quote": "Tiene una superficie de 4015,6 km² y una población de 1629 habitantes",
+              "finding": "fnd_9a88fe342d65809e",
+              "why": "1,629 differs in one digit from INE's Census 2002 count, 1,649: most likely a typo. The current official figure is the Census 2024 count, 790.",
+              "replace": "1629",
+              "by": "790",
+              "note": "state the Census 2024 figure and cite INE"
+            },
+            {
+              "quote": "Según los datos recolectados en el censo del año 2008 realizado por el Instituto Nacional de Estadísticas, la comuna posee una superficie de 4.015,6 km² y una población de 1.649 habitantes, de los cuales 739 son mujeres y 910 son hombres",
+              "finding": "fnd_b7ea2da5df642a8e",
+              "why": "1,649 is INE's Census 2002 count, but it is labelled '2008 census' (a census that never took place).",
+              "note": "the figure is the 2002 census figure: correct the year"
+            }
+          ],
+          "edit_summary": "Población según el Censo 2024 del INE: 790 hab. (antes 1728: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Colchane",
+          "revid": "1375649382",
+          "correction": {
+            "value": 790,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_91f014147dd8cbd02a5c67e7"
+          },
+          "findings": [
+            "fnd_e6a36bb4402ca833"
+          ],
+          "anchor": "obs_68ff52aec9358f5788ef39b8",
+          "url": "https://en.wikipedia.org/wiki/Colchane",
+          "wikitext": "| population_total = 790\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "1728",
+            "year": "2017 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Population per INE's 2024 census: 790 (was 1728: an older census count).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3839",
+          "url": "https://www.wikidata.org/wiki/Q3839",
+          "correction": {
+            "value": 790,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_91f014147dd8cbd02a5c67e7"
+          },
+          "findings": [
+            "fnd_d9698e33bc18f487",
+            "fnd_3ad0dca856396801",
+            "fnd_52c3d64be6a9a777"
+          ],
+          "anchor": "obs_7c546dab3de1dd5b988704dc",
+          "quickstatements": "Q3839|P1082|790|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.",
+            "Check the 1,649 statement (no point in time): 1,649 is INE's Census 2002 count, shown as the current figure. The current official figure is the Census 2024 count, 790."
+          ],
+          "edit_summary": "Add Census 2024 population (790) from INE",
+          "status": "approved"
+        },
+        "explanation": "1,728 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 790. 1,649 is INE's Census 2002 count, shown as the current figure. The drafts give the Census 2024 count, 790, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2017 Census",
+            "observation": "obs_68ff52aec9358f5788ef39b8",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 1728,
+            "verdict": "outdated_vintage"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_e2a766e92369f3b4f4693c2d",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>",
+            "status": "approved",
+            "value": 1728,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "no point in time",
+            "observation": "obs_7c546dab3de1dd5b988704dc",
+            "reference": null,
+            "status": "approved",
+            "value": 1649,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-01-tarapaca",
+        "checked_at": "2026-10-24T17:32:50Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1728,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>",
+              "observation": "obs_e2a766e92369f3b4f4693c2d",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_e2a766e92369f3b4f4693c2d",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017 |fecha= |obra=CENSO |idioma=inglés |cita= |fechaarchivo=14 de diciembre de 2024 |urlarchivo=https://web.archive.org/web/20241214101009/http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/ |deadurl=yes }}</ref>",
+              "status": "approved",
+              "value": 1728,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1728,
+              "label": "2017 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_68ff52aec9358f5788ef39b8",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017 Census",
+              "observation": "obs_68ff52aec9358f5788ef39b8",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 1728,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1649,
+              "label": "no point in time",
+              "reference": null,
+              "observation": "obs_7c546dab3de1dd5b988704dc",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no point in time",
+              "observation": "obs_7c546dab3de1dd5b988704dc",
+              "reference": null,
+              "status": "approved",
+              "value": 1649,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01404",
+      "name": "HUARA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 2599,
+          "2017": 2730,
+          "2024": 2858
+        },
+        "projection": {
+          "2017": 2748,
+          "2020": 3000,
+          "2024": 3095
+        }
+      },
+      "claims_checked": 8,
+      "findings": [
+        {
+          "id": "fnd_09f9be48e3e9d25e",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "cross_source_mismatch",
+          "explanation": "3,510 matches no official figure held (Census 2002 2,599, Census 2017 2,730, Census 2024 2,858). The current official figure is the Census 2024 count, 2,858.",
+          "confidence": 0.4,
+          "method": "matcher (model unavailable)",
+          "claim": {
+            "id": "obs_16508df8527306846d9ad59b",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "value": 3510,
+            "value_raw": "3510",
+            "label": "no point in time",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q13081",
+            "statement": "http://www.wikidata.org/entity/statement/Q13081-F00A71CD-A810-4AAC-841A-F072F09CED96",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_16508df8527306846d9ad59b",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 3510,
+              "value_raw": "3510",
+              "label": "no point in time",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4b7b249cb62a9ebe90922f3e",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 2599
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_92b9693b45e7480198080269",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 2730
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_366ed4f1c41f5d8ed705d467",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 2858
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 2858,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_366ed4f1c41f5d8ed705d467",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_2a1a48695f0ddb79",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "2,730 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 2,858.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_d91a8bf94222980353aa6564",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Huara",
+            "revid": "174864386",
+            "location": "infobox",
+            "role": "current",
+            "value": 2730,
+            "value_raw": "2730",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q13081"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_d91a8bf94222980353aa6564",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 2730,
+              "value_raw": "2730",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_92b9693b45e7480198080269",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 2730
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_366ed4f1c41f5d8ed705d467",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 2858
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 2858,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_366ed4f1c41f5d8ed705d467",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_6253aee3b0a3acfd",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "2,730 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 2,858.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_685f4c60dad96ace92a51cdf",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Huara",
+            "revid": "1376112537",
+            "location": "infobox",
+            "role": "current",
+            "value": 2730,
+            "value_raw": "2730",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q13081"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_685f4c60dad96ace92a51cdf",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 2730,
+              "value_raw": "2730",
+              "label": "2017 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_92b9693b45e7480198080269",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 2730
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_366ed4f1c41f5d8ed705d467",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 2858
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 2858,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_366ed4f1c41f5d8ed705d467",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_84f253196767d908",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata's newest population statement is 3,510 (no point in time); Census 2024 counted 2,858, and Wikidata has no statement for it.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_16508df8527306846d9ad59b",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "value": 3510,
+            "value_raw": "3510",
+            "label": "no point in time",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q13081",
+            "statement": "http://www.wikidata.org/entity/statement/Q13081-F00A71CD-A810-4AAC-841A-F072F09CED96",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_16508df8527306846d9ad59b",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 3510,
+              "value_raw": "3510",
+              "label": "no point in time",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_366ed4f1c41f5d8ed705d467",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 2858
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 2858,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_366ed4f1c41f5d8ed705d467",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_3ec2f660f7e2ec00",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no point in time on 3,510; no determination method on 3,510; no reference on 3,510.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_16508df8527306846d9ad59b",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "value": 3510,
+            "value_raw": "3510",
+            "label": "no point in time",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q13081",
+            "statement": "http://www.wikidata.org/entity/statement/Q13081-F00A71CD-A810-4AAC-841A-F072F09CED96",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_16508df8527306846d9ad59b",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 3510,
+              "value_raw": "3510",
+              "label": "no point in time",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_e8da8be0d5d617bb00733bf5",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Huara",
+            "revid": "174864386",
+            "location": "body",
+            "role": "historical",
+            "value": 2599,
+            "value_raw": "2599",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "Según los datos recolectados en el censo de 2002 realizado por el Instituto Nacional de Estadísticas, la comuna posee una superficie de 10 474,6 km² y una población de 2599 habitantes, de los cuales 1100 son mujeres y 1.499 son hombres",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "2,599 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_5b20dd4a89178e3d4bd6283d",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Huara",
+            "revid": "174864386",
+            "location": "body",
+            "role": "historical",
+            "value": 1972,
+            "value_raw": "1.972",
+            "stated_year": 1992,
+            "label": "1992",
+            "quote": "En lo que respecta a la evolución demográfica de Huara a nivel de comuna, en 1992 había 1.972 habitantes, en 2002 la población aumentó a 2.599 habitantes, y para 2017 se registraron 2.730 habitantes",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not checkable",
+          "note": "refers to 1992, the year of a census whose counts weren't read for this comuna"
+        },
+        {
+          "claim": {
+            "id": "obs_1ebad5ad7b853cbc14536243",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Huara",
+            "revid": "174864386",
+            "location": "body",
+            "role": "historical",
+            "value": 427,
+            "value_raw": "427",
+            "stated_year": 1992,
+            "label": "1992",
+            "quote": "En cuanto a la evolución demográfica de Huara a nivel de aldea, en 1992 vivían 427 personas y en 2002 la población se incrementó a 956 habitantes.",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not checkable",
+          "note": "refers to 1992, the year of a census whose counts weren't read for this comuna"
+        },
+        {
+          "claim": {
+            "id": "obs_3609c54c016d7103f7ce0e35",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Huara",
+            "revid": "174864386",
+            "location": "body",
+            "role": "current",
+            "value": 381,
+            "value_raw": "381",
+            "label": "no year",
+            "quote": "Por otro lado, Huaviña tiene una población de 381 personas y una superficie de 807,5 km², mientras que Pisagua cuenta con 369 habitantes y se extiende sobre 1.714,8 km²",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not the comuna's figure",
+          "note": "381 is 13% of INE's Census 2024 count, 2,858: it probably refers to a locality or an area, not the comuna."
+        },
+        {
+          "claim": {
+            "id": "obs_58073dc06e303d54b7ec21b3",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Huara",
+            "revid": "1376112537",
+            "location": "body",
+            "role": "historical",
+            "value": 2599,
+            "value_raw": "2,599",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute Huara had 2,599 inhabitants (1,499 men and 1,100 women), making it an entirely rural area",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "2,599 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_09f9be48e3e9d25e"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_09f9be48e3e9d25e",
+              "finding_ids": [
+                "fnd_09f9be48e3e9d25e"
+              ],
+              "comuna": "HUARA",
+              "cut": "01404",
+              "figures": [
+                {
+                  "finding_id": "fnd_09f9be48e3e9d25e",
+                  "value": 3510,
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "no point in time",
+                  "year": null,
+                  "basis": null,
+                  "size": "1 times the Census 2024 count",
+                  "class": "cross_source_mismatch",
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_e8da8be0d5d617bb00733bf5",
+                  "value": 2599,
+                  "source": "Wikipedia ES",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "91% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_58073dc06e303d54b7ec21b3",
+                  "value": 2599,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "91% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 figures match no official figure read so far (Census 2017 2,730, Census 2024 2,858): 3,510 (Wikidata, 'no point in time', called cross_source_mismatch). 2 claim(s) can't be checked with the official figures read: 2,599 (Wikipedia ES body, '2002 census'); 2,599 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Huara",
+          "revid": "174864386",
+          "correction": {
+            "value": 2858,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_366ed4f1c41f5d8ed705d467"
+          },
+          "findings": [
+            "fnd_2a1a48695f0ddb79"
+          ],
+          "anchor": "obs_d91a8bf94222980353aa6564",
+          "url": "https://es.wikipedia.org/wiki/Huara",
+          "wikitext": "| población = 2858\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "2730",
+            "year": "2017",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>"
+          },
+          "edit_summary": "Población según el Censo 2024 del INE: 2858 hab. (antes 2730: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Huara",
+          "revid": "1376112537",
+          "correction": {
+            "value": 2858,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_366ed4f1c41f5d8ed705d467"
+          },
+          "findings": [
+            "fnd_6253aee3b0a3acfd"
+          ],
+          "anchor": "obs_685f4c60dad96ace92a51cdf",
+          "url": "https://en.wikipedia.org/wiki/Huara",
+          "wikitext": "| population_total = 2858\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "2730",
+            "year": "2017 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Population per INE's 2024 census: 2,858 (was 2730: an older census count).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q13081",
+          "url": "https://www.wikidata.org/wiki/Q13081",
+          "correction": {
+            "value": 2858,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_366ed4f1c41f5d8ed705d467"
+          },
+          "findings": [
+            "fnd_09f9be48e3e9d25e",
+            "fnd_84f253196767d908",
+            "fnd_3ec2f660f7e2ec00"
+          ],
+          "anchor": "obs_16508df8527306846d9ad59b",
+          "quickstatements": "Q13081|P1082|2858|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.",
+            "Check the 3,510 statement (no point in time): 3,510 matches no official figure held (Census 2002 2,599, Census 2017 2,730, Census 2024 2,858). The current official figure is the Census 2024 count, 2,858."
+          ],
+          "edit_summary": "Add Census 2024 population (2,858) from INE",
+          "status": "approved"
+        },
+        "explanation": "2,730 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 2,858. 3,510 matches no official figure held (Census 2002 2,599, Census 2017 2,730, Census 2024 2,858). The drafts give the Census 2024 count, 2,858, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2017 Census",
+            "observation": "obs_685f4c60dad96ace92a51cdf",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 2730,
+            "verdict": "outdated_vintage"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_d91a8bf94222980353aa6564",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+            "status": "approved",
+            "value": 2730,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "no point in time",
+            "observation": "obs_16508df8527306846d9ad59b",
+            "reference": null,
+            "status": "approved",
+            "value": 3510,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-01-tarapaca",
+        "checked_at": "2026-10-24T17:32:50Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 2730,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+              "observation": "obs_d91a8bf94222980353aa6564",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_d91a8bf94222980353aa6564",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+              "status": "approved",
+              "value": 2730,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 2730,
+              "label": "2017 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_685f4c60dad96ace92a51cdf",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017 Census",
+              "observation": "obs_685f4c60dad96ace92a51cdf",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 2730,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 3510,
+              "label": "no point in time",
+              "reference": null,
+              "observation": "obs_16508df8527306846d9ad59b",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no point in time",
+              "observation": "obs_16508df8527306846d9ad59b",
+              "reference": null,
+              "status": "approved",
+              "value": 3510,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01405",
+      "name": "PICA",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 6178,
+          "2017": 9296,
+          "2024": 6272
+        },
+        "projection": {
+          "2017": 5320,
+          "2020": 5958,
+          "2024": 6291
+        }
+      },
+      "claims_checked": 6,
+      "findings": [
+        {
+          "id": "fnd_55b54fd7c70a63e9",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "9,296 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 6,272.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_2a2f0725fa50c674aff88369",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Pica (Chile)",
+            "revid": "175807106",
+            "location": "infobox",
+            "role": "current",
+            "value": 9296,
+            "value_raw": "9296",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q51102"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_2a2f0725fa50c674aff88369",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 9296,
+              "value_raw": "9296",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_8ad1c16723b2e893f2e516e1",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 9296
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4760f0f34d9fa389b282dd56",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 6272
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 6272,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_4760f0f34d9fa389b282dd56",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_7ad5dc2e4e6ce2db",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "9,296 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 6,272.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_a47352f42270b6d6fd054902",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Pica, Chile",
+            "revid": "1378789654",
+            "location": "infobox",
+            "role": "current",
+            "value": 9296,
+            "value_raw": "9296",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q51102"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_a47352f42270b6d6fd054902",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 9296,
+              "value_raw": "9296",
+              "label": "2017 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_8ad1c16723b2e893f2e516e1",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 9296
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4760f0f34d9fa389b282dd56",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 6272
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 6272,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_4760f0f34d9fa389b282dd56",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_7149627495e53e15",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata's newest population statement is 9,296 (point in time 2017-01-01); Census 2024 counted 6,272, and Wikidata has no statement for it.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_b64f718e497cc341cfb41a00",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 9296,
+            "value_raw": "9296",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q51102",
+            "statement": "http://www.wikidata.org/entity/statement/Q51102-c69bafca-4dac-befc-b908-4f0c64dd3716",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_b64f718e497cc341cfb41a00",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 9296,
+              "value_raw": "9296",
+              "label": "point in time 2017-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4760f0f34d9fa389b282dd56",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 6272
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 6272,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_4760f0f34d9fa389b282dd56",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_dfa32309da1e6874",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no reference on 9,296.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_b64f718e497cc341cfb41a00",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 9296,
+            "value_raw": "9296",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q51102",
+            "statement": "http://www.wikidata.org/entity/statement/Q51102-c69bafca-4dac-befc-b908-4f0c64dd3716",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_b64f718e497cc341cfb41a00",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 9296,
+              "value_raw": "9296",
+              "label": "point in time 2017-01-01",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_b64f718e497cc341cfb41a00",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 9296,
+            "value_raw": "9296",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q51102",
+            "statement": "http://www.wikidata.org/entity/statement/Q51102-c69bafca-4dac-befc-b908-4f0c64dd3716",
+            "references": []
+          },
+          "result": "consistent",
+          "note": "9,296 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_b622298f20bc54ffd654fa9c",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Pica (Chile)",
+            "revid": "175807106",
+            "location": "body",
+            "role": "historical",
+            "value": 9296,
+            "value_raw": "9.296",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "Según los datos recolectados en el censo del año 2017 realizado por el Instituto Nacional de Estadísticas, la comuna posee una superficie de 8.934,3 km² y una población de 9.296 habitantes, de los cuales 2.746 son mujeres y 6.550 son hombres",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "9,296 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_3a278e724bd12dc9b3125271",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Pica (Chile)",
+            "revid": "175807106",
+            "location": "body",
+            "role": "current",
+            "value": 2332,
+            "value_raw": "2.332",
+            "label": "no year",
+            "quote": "La comuna ha experimentado un explosivo crecimiento poblacional, aumentando de 2.332 habitantes a más de tres mil cuatrocientos en 10 años (5,0% de crecimiento anual).",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "not checkable",
+          "note": "no year stated and no official figure matches, so it can't be told what it refers to"
+        },
+        {
+          "claim": {
+            "id": "obs_cc4c2feaaec5d6d32fa037f0",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Pica, Chile",
+            "revid": "1378789654",
+            "location": "body",
+            "role": "historical",
+            "value": 6178,
+            "value_raw": "6,178",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Pica has an area of 8934.3 and 6,178 inhabitants (4,569 men and 1,609 women)",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "6,178 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "PICA",
+              "cut": "01405",
+              "figures": [
+                {
+                  "claim_id": "obs_cc4c2feaaec5d6d32fa037f0",
+                  "value": 6178,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "99% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 claim(s) can't be checked with the official figures read: 6,178 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Pica (Chile)",
+          "revid": "175807106",
+          "correction": {
+            "value": 6272,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_4760f0f34d9fa389b282dd56"
+          },
+          "findings": [
+            "fnd_55b54fd7c70a63e9"
+          ],
+          "anchor": "obs_2a2f0725fa50c674aff88369",
+          "url": "https://es.wikipedia.org/wiki/Pica_(Chile)",
+          "wikitext": "| población = 6272\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "9296",
+            "year": "2017",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>"
+          },
+          "edit_summary": "Población según el Censo 2024 del INE: 6272 hab. (antes 9296: cifra de un censo anterior).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Pica, Chile",
+          "revid": "1378789654",
+          "correction": {
+            "value": 6272,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_4760f0f34d9fa389b282dd56"
+          },
+          "findings": [
+            "fnd_7ad5dc2e4e6ce2db"
+          ],
+          "anchor": "obs_a47352f42270b6d6fd054902",
+          "url": "https://en.wikipedia.org/wiki/Pica,_Chile",
+          "wikitext": "| population_total = 6272\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "9296",
+            "year": "2017 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Population per INE's 2024 census: 6,272 (was 9296: an older census count).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q51102",
+          "url": "https://www.wikidata.org/wiki/Q51102",
+          "correction": {
+            "value": 6272,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_4760f0f34d9fa389b282dd56"
+          },
+          "findings": [
+            "fnd_7149627495e53e15",
+            "fnd_dfa32309da1e6874"
+          ],
+          "anchor": "obs_b64f718e497cc341cfb41a00",
+          "quickstatements": "Q51102|P1082|6272|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (6,272) from INE",
+          "status": "approved"
+        },
+        "explanation": "9,296 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 6,272. Wikidata's newest population statement is 9,296 (point in time 2017-01-01); Census 2024 counted 6,272, and Wikidata has no statement for it. The drafts give the Census 2024 count, 6,272, cited to INE.",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2017 Census",
+            "observation": "obs_a47352f42270b6d6fd054902",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 9296,
+            "verdict": "outdated_vintage"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_2a2f0725fa50c674aff88369",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+            "status": "approved",
+            "value": 9296,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "point in time 2017-01-01",
+            "observation": "obs_b64f718e497cc341cfb41a00",
+            "reference": null,
+            "status": "approved",
+            "value": 9296,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024b-01-tarapaca",
+        "checked_at": "2026-10-24T17:32:50Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 9296,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+              "observation": "obs_2a2f0725fa50c674aff88369",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_2a2f0725fa50c674aff88369",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|obra=CENSO |idioma=inglés }}</ref>",
+              "status": "approved",
+              "value": 9296,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 9296,
+              "label": "2017 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_a47352f42270b6d6fd054902",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017 Census",
+              "observation": "obs_a47352f42270b6d6fd054902",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 9296,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 9296,
+              "label": "point in time 2017-01-01",
+              "reference": null,
+              "observation": "obs_b64f718e497cc341cfb41a00",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "point in time 2017-01-01",
+              "observation": "obs_b64f718e497cc341cfb41a00",
+              "reference": null,
+              "status": "approved",
+              "value": 9296,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 0,
+    "requests": 0,
+    "by_agent": {},
+    "requested_model": {},
+    "served_model": {},
+    "routed_model": {},
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 110
+  },
+  "trace_file": "logs/trace-national-20261024c-01-tarapaca.jsonl",
+  "world_model_audit_file": "logs/world-model-national-20261024c-01-tarapaca.jsonl",
+  "world_model_audit_entries": 358,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 16,
+        "resolve_by_name": 93,
+        "assess": 172,
+        "context": 24,
+        "view:observations": 40,
+        "reproject": 7,
+        "project_as_of": 7,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/national-20261024c-01-tarapaca/report.html",
+  "execution_time_seconds": 44.6
+}

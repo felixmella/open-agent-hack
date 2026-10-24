@@ -1,0 +1,1903 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FactSync Chile review queue · national-20261024c-04-coquimbo</title>
+<style>
+:root {
+  --bg: #f5f6f8; --panel: #ffffff; --ink: #18202b; --muted: #5a6473; --line: #e2e6ec; --soft: #f0f2f5;
+  --accent: #0b5fbf; --code: #f3f5f8;
+  --red: #b42318; --red-bg: #fef1f0; --amber: #a64b05; --amber-bg: #fff6e6; --blue: #175cd3; --blue-bg: #eef5ff;
+  --violet: #6340b8; --violet-bg: #f4f1ff; --slate: #475467; --slate-bg: #eef0f3; --green: #067647; --green-bg: #eafaf1;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1217; --panel: #151b23; --ink: #e5e9ef; --muted: #98a2b3; --line: #252f3c; --soft: #1b2330;
+    --accent: #6aa8ff; --code: #10161e;
+    --red: #ff9b91; --red-bg: #3a1714; --amber: #ffc46b; --amber-bg: #3a2608; --blue: #8fbcff; --blue-bg: #13284a;
+    --violet: #c2b0ff; --violet-bg: #2a1f4a; --slate: #c4cbd6; --slate-bg: #222b37; --green: #7fe0a9; --green-bg: #0f3322;
+    --shadow: none;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--accent); }
+code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+header.top { background: var(--panel); border-bottom: 1px solid var(--line); padding: 28px 0 22px; }
+.brand { font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: 26px; line-height: 1.25; margin: 6px 0 8px; }
+h2 { font-size: 17px; margin: 0 0 12px; }
+h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 22px 0 10px; }
+.meta { color: var(--muted); margin: 0 0 10px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.lede { margin: 0; max-width: 760px; }
+main { padding: 22px 16px 40px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; box-shadow: var(--shadow); }
+.stat b { display: block; font-size: 26px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 13px; }
+.stat.attention b { color: var(--red); }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.panel.attention { border-left: 4px solid var(--red); }
+.panel p { margin: 0 0 8px; }
+.panel p:last-child { margin-bottom: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 13px; background: var(--soft); }
+.chip.new { border-color: var(--blue); color: var(--blue); background: var(--blue-bg); }
+.badge { display: inline-block; border-radius: 6px; padding: 1px 8px; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.tone-red { color: var(--red); background: var(--red-bg); }
+.tone-amber { color: var(--amber); background: var(--amber-bg); }
+.tone-blue { color: var(--blue); background: var(--blue-bg); }
+.tone-violet { color: var(--violet); background: var(--violet-bg); }
+.tone-slate { color: var(--slate); background: var(--slate-bg); }
+.tone-green { color: var(--green); background: var(--green-bg); }
+.status-approved, .status-success { color: var(--green); background: var(--green-bg); }
+.status-partial, .status-sample { color: var(--amber); background: var(--amber-bg); }
+.status-escalated, .status-error { color: var(--red); background: var(--red-bg); }
+.status-pending, .status-live { color: var(--blue); background: var(--blue-bg); }
+ol.timeline { list-style: none; margin: 0; padding: 0; }
+ol.timeline li { display: grid; grid-template-columns: 96px 1fr; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); }
+ol.timeline li:first-child { border-top: 0; }
+.when { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.who { font-weight: 600; }
+.by { color: var(--muted); font-size: 13px; }
+ul.plain { margin: 0; padding-left: 18px; }
+ul.plain li { margin: 4px 0; }
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 18px; margin-top: 12px; font-size: 13.5px; }
+.legend div { display: flex; gap: 8px; align-items: baseline; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 26px 0 14px; }
+.filters input { flex: 1 1 220px; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; }
+.filters button, button.copy { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px; padding: 7px 12px; font: inherit; font-size: 13.5px; cursor: pointer; }
+.filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+article.comuna { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.c-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.c-head h2 { margin: 0; font-size: 21px; }
+.c-head .cut { color: var(--muted); font-size: 13px; }
+.official { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.fig { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; background: var(--soft); }
+.fig small { display: block; color: var(--muted); font-size: 12px; }
+.fig b { font-variant-numeric: tabular-nums; }
+.fig.current { border-color: var(--green); background: var(--green-bg); }
+.finding { border: 1px solid var(--line); border-left-width: 4px; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+.finding.tone-red { border-left-color: var(--red); } .finding.tone-amber { border-left-color: var(--amber); }
+.finding.tone-blue { border-left-color: var(--blue); } .finding.tone-violet { border-left-color: var(--violet); }
+.finding.tone-slate { border-left-color: var(--slate); }
+.finding, .finding.tone-red, .finding.tone-amber, .finding.tone-blue, .finding.tone-violet, .finding.tone-slate { background: var(--panel); color: var(--ink); }
+.f-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.f-head .value { font-weight: 700; font-variant-numeric: tabular-nums; }
+.f-head .label, .f-head .where { color: var(--muted); font-size: 13.5px; }
+.f-head .badge.status-approved, .f-head .badge.status-escalated, .f-head .badge.status-pending { margin-left: auto; }
+.finding p { margin: 8px 0; }
+blockquote { margin: 8px 0; padding: 6px 12px; border-left: 3px solid var(--line); color: var(--muted); font-size: 14px; }
+dl.facts { display: grid; grid-template-columns: 120px 1fr; gap: 4px 12px; margin: 8px 0 0; font-size: 13.5px; }
+dl.facts dt { color: var(--muted); }
+dl.facts dd { margin: 0; }
+.links { font-size: 13px; margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.page { margin-top: 20px; }
+.p-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.p-head h3 { margin: 0; }
+.p-head .links { margin: 0 0 0 auto; }
+.attention-box { border-left: 4px solid var(--red); }
+.draft { border: 1px dashed var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--soft); }
+.draft .code pre { background: var(--panel); }
+.d-head { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; margin-bottom: 8px; }
+.d-head .badge { margin-left: auto; }
+.code { position: relative; }
+.code pre { background: var(--code); border: 1px solid var(--line); border-radius: 8px; padding: 12px 70px 12px 12px; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.code button.copy { position: absolute; top: 8px; right: 8px; padding: 3px 9px; font-size: 12.5px; }
+.summary-line { font-size: 14px; margin: 8px 0 0; }
+.summary-line span, .replaces span { color: var(--muted); font-size: 13px; margin-right: 6px; }
+.replaces { font-size: 14px; margin: 0 0 8px; }
+.note-box { background: var(--soft); border-radius: 8px; padding: 10px 12px; font-size: 14.5px; margin-top: 12px; }
+details { margin-top: 14px; }
+details summary { cursor: pointer; color: var(--muted); font-size: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; margin-top: 8px; }
+.table-scroll { overflow-x: auto; }
+th, td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; }
+footer { color: var(--muted); font-size: 13px; padding: 10px 0 40px; }
+footer p { margin: 4px 0; }
+.empty { color: var(--muted); }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+  h1 { font-size: 21px; }
+  dl.facts { grid-template-columns: 1fr; }
+  dl.facts dt { margin-top: 4px; }
+  ol.timeline li { grid-template-columns: 1fr; gap: 2px; }
+  .f-head .badge.status-approved, .f-head .badge.status-escalated, .f-head .badge.status-pending, .d-head .badge,
+  .p-head .links { margin-left: 0; }
+  article.comuna { padding: 14px; }
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">FactSync Chile · review queue</div>
+  <h1>15 comunas: population figures checked against INE</h1>
+  <p class="meta">
+    <span>Run <code>national-20261024c-04-coquimbo</code></span>
+    <span class="badge status-success">success</span>
+    <span class="badge status-live">live: read through Zetaris</span>
+    <span>43.8 s</span>
+    <span>generated 2026-10-24 17:55 UTC</span>
+  </p>
+  <p class="lede">Each population figure in Spanish and English Wikipedia and in Wikidata, compared with INE's official figures, with the reason it differs and a sourced correction to review. <b>Drafts only:</b> FactSync never edits Wikipedia or Wikidata; a person reviews and applies each edit.</p>
+</div></header>
+<main class="wrap">
+  <section class="stats" aria-label="Summary">
+    <div class="stat"><b>15</b><span>comunas</span></div>
+    <div class="stat"><b>69</b><span>figures checked</span></div>
+    <div class="stat"><b>56</b><span>findings</span></div>
+    <div class="stat"><b>37</b><span>draft edits</span></div>
+    <div class="stat"><b>0</b><span>need a human</span></div>
+    <div class="stat"><b>11</b><span>Critic rejections</span></div>
+    <div class="stat"><b>0</b><span>fixed since the last check</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>Sources and models</h2>
+    <p class="chips">
+      <span class="chip">INE census 2017 and 2024</span>
+      <span class="chip">Wikidata</span>
+      <span class="chip">Wikipedia (ES)</span>
+      <span class="chip">Wikipedia (EN)</span>
+      <span class="chip new">INE census 2002 · added by the Planner</span>
+      <span class="chip new">INE projections 2002–2035 · added by the Planner</span>
+      <span class="chip new">INE census 2017 urban and rural · added by the Planner</span>
+    </p>
+    <p>Every source was read live through its Zetaris view, one SQL statement per source.</p>
+    <p>No model calls: every step took its deterministic path.</p>
+<p>World Model engine: used upsert_entity (346), ingest (29), resolve_by_name (93), assess (300), context (52), view:observations (86), reproject (15), project_as_of (15), export_audit (1). Dormant in this run: relate, view:graph.</p>  </section>
+
+
+  <section class="panel">
+    <h2>How the agents got here</h2>
+    <ol class="timeline">
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> held Andacollo back: 10,288 (Wikipedia EN, &#39;2002 census&#39;) can&#39;t be checked with the official figures read, so it sent the Planner to read a source that covers it</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> held La Higuera back: 3,721 (Wikipedia EN, &#39;2002 census&#39;) can&#39;t be checked with the official figures read, so it sent the Planner to read a source that covers it</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> held Paihuano back: 4,168 (Wikipedia EN, &#39;2002 census&#39;) can&#39;t be checked with the official figures read, so it sent the Planner to read a source that covers it</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Vicuña: 29,741 (Wikipedia ES, &#39;2017&#39;); 26,029 (Wikipedia ES, &#39;2002 census&#39;) match no official figure read so far, so it sent the Planner to read an official source before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Canela: 9,084 (Wikipedia ES, &#39;no year&#39;); 9,546 (Wikipedia ES, &#39;2017&#39;); 9,379 (Wikipedia EN, &#39;2002 census&#39;) match no official figure read so far, so it sent the Planner to read an official source before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Los Vilos: 23,374 (Wikipedia ES, &#39;2017&#39;); 17,453 (Wikipedia EN, &#39;2002 census&#39;) match no official figure read so far, so it sent the Planner to read an official source before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Salamanca: 29,359 (Wikidata, &#39;no point in time&#39;); 29,110 (Wikipedia ES, &#39;2017&#39;); 24,494 (Wikipedia EN, &#39;2002 census&#39;) match no official figure read so far, so it sent the Planner to read an official source before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> held Combarbalá back: 13,483 (Wikipedia EN, &#39;2002 census&#39;) can&#39;t be checked with the official figures read, so it sent the Planner to read a source that covers it</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Monte Patria: 30,056 (Wikidata, &#39;point in time 2020-01-01&#39;); 30,276 (Wikipedia EN, &#39;2002 census&#39;) match no official figure read so far, so it sent the Planner to read an official source before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Punitaqui: 10,418 (Wikipedia EN, &#39;2012&#39;); 7,539 (Wikipedia ES, &#39;2002 census&#39;); 9,539 (Wikipedia EN, &#39;2002 census&#39;) match no official figure read so far, so it sent the Planner to read an official source before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> held Río Hurtado back: 4,771 (Wikipedia EN, &#39;2002 census&#39;) can&#39;t be checked with the official figures read, so it sent the Planner to read a source that covers it</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Planner</span> added INE census 2002: by coverage (census, 2002), the best fit for 12 figure(s), e.g. 10,288 (&#39;2002 census&#39;) <span class="by">(decided by code)</span></span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Planner</span> added INE projections 2002–2035: by coverage (projection, 2002-2035), the best fit for 7 figure(s), e.g. 29,741 (&#39;2017&#39;) <span class="by">(decided by code)</span></span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Planner</span> added INE census 2017 urban and rural: by coverage (census urban_rural, 2017), the best fit for 1 figure(s), e.g. 29,110 (&#39;2017&#39;) <span class="by">(decided by code)</span></span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Andacollo after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved La Higuera after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Paihuano after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Vicuña after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Canela after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Los Vilos after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Salamanca after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Combarbalá after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Monte Patria after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Punitaqui after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Río Hurtado after the fix</span></li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Why figures differ, across this run</h2>
+    <p class="chips">
+<span class="badge tone-amber">Outdated · 14</span><span class="badge tone-red">Withdrawn census · 10</span><span class="badge tone-slate">Missing value · 9</span><span class="badge tone-slate">Rank or qualifiers · 6</span><span class="badge tone-blue">Different definition · 5</span><span class="badge tone-red">Likely error · 5</span><span class="badge tone-red">Unexplained mismatch · 3</span><span class="badge tone-violet">Internal inconsistency · 2</span><span class="badge tone-amber">Mislabelled vintage · 2</span>    </p>
+    <details>
+      <summary>What each class means</summary>
+      <div class="legend">
+<div><span class="badge tone-amber">Outdated</span><span>An older official figure (e.g. the Census 2017 count) shown as the current population.</span></div><div><span class="badge tone-blue">Different definition</span><span>An official figure under another definition (an INE estimate or projection, or only the urban or rural part of a census count) shown where the comuna&#39;s census count is expected. Not an error in itself.</span></div><div><span class="badge tone-red">Withdrawn census</span><span>Attributed to the 2012 census, whose results INE withdrew.</span></div><div><span class="badge tone-red">Nonexistent census</span><span>Attributed to a census Chile never held (e.g. 1999, 2022).</span></div><div><span class="badge tone-amber">Mislabelled vintage</span><span>A real official figure labelled with the wrong year or census, or cited to a source that doesn&#39;t hold it (citation mismatch).</span></div><div><span class="badge tone-violet">Internal inconsistency</span><span>The article contradicts itself (infobox vs body).</span></div><div><span class="badge tone-red">Unexplained mismatch</span><span>Matches no official figure, and nothing in the sources explains it.</span></div><div><span class="badge tone-slate">Rank or qualifiers</span><span>Wikidata statements lack the rank, point in time, method or reference needed to use them correctly.</span></div><div><span class="badge tone-slate">Unsourced</span><span>No reference, or a reference that can&#39;t support the figure.</span></div><div><span class="badge tone-red">Likely error</span><span>A typo, a wrong unit or a corrupted field.</span></div><div><span class="badge tone-slate">Missing value</span><span>The source has no population figure at all.</span></div>      </div>
+    </details>
+  </section>
+
+  <div class="filters" role="search">
+    <input type="search" id="filter-text" placeholder="Filter by comuna name or code" aria-label="Filter by comuna name or code">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="review" aria-pressed="false">Needs a human</button>
+    <button type="button" data-filter="drafts" aria-pressed="false">With drafts</button>
+  </div>
+
+  <article class="comuna" id="comuna-04302" data-name="combarbalá 04302" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Combarbalá</h2>
+      <span class="cut">CUT 04302</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">7 figures checked · 6 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>13,435</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>13,322</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>12,954</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>13,737</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>13,884</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>13,855</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>5,998</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>7,324</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 13,322 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 12,954. 13,605 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. Wikidata&#39;s newest population statement is 13,322 (point in time 2017-01-01); Census 2024 counted 12,954, and Wikidata has no statement for it. The drafts give the Census 2024 count, 12,954, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Combarbalá</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175437544" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Combarbal%C3%A1" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_6b6c34116f883bf8">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">infobox</span>
+          <span class="value">13322</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>13,322 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 12,954.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>13,322</b> · INE Censo 2024: <b>12,954</b></dd><dt>Correction</dt><dd>Update to 12,954 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-amber" id="fnd_bc763b1246544f26">
+        <div class="f-head">
+          <span class="badge tone-amber" title="A real official figure labelled with the wrong year or census, or cited to a source that doesn&#39;t hold it (citation mismatch).">Mislabelled vintage</span>
+          <span class="where">article text</span>
+          <span class="value">13 322</span>
+<span class="label">2002</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>13,322 is INE&#39;s Census 2017 count, but it is labelled &#39;2002&#39;.</p>
+<blockquote>La población total comunal corresponde a 13 322 habitantes, una leve disminución del año 2002 (13 483)</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>13,322</b></dd><dt>Correction</dt><dd>Relabel as the INE census for 2017</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>13322</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04302-eswiki">Copy</button><pre id="draft-04302-eswiki">| población = 12954
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 12954 hab. (antes 13322: cifra de un censo anterior).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“La población total comunal corresponde a 13 322 habitantes, una leve disminución del año 2002 (13 483)”: the figure is the 2017 census figure: correct the year</li>        </ul>
+<div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Combarbal%C3%A1&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Combarbalá</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1375650392" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Combarbal%C3%A1" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_9b555f74b5b87557">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">13605</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>13,605 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 12,954.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>12,954</b></dd><dt>Correction</dt><dd>Update to 12,954 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="finding tone-red" id="fnd_fce9f778b0823b26">
+        <div class="f-head">
+          <span class="badge tone-red" title="A typo, a wrong unit or a corrupted field.">Likely error</span>
+          <span class="where">article text</span>
+          <span class="value">13,483</span>
+<span class="label">2002 census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>13,483 differs in two neighbouring digits from INE&#39;s Census 2002 count, 13,435: possibly a typo.</p>
+<blockquote>According to the 2002 census of the National Statistics Institute, Combarbalá spans an area of 1895.9 and has 13,483 inhabitants (6,695 men and 6,788 women)</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2002: <b>13,435</b></dd><dt>Correction</dt><dd>Correct to 13,435 (INE Census 2002)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code (no model available) · confidence 0.6</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>13605</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04302-enwiki">Copy</button><pre id="draft-04302-enwiki">| population_total = 12954
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 12,954 (was 13605: the withdrawn 2012 census).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“According to the 2002 census of the National Statistics Institute, Combarbalá spans an area of 1895.9 and has 13,483 inhabitants (6,695 men and 6,788 women)”: replace <code>13,483</code> with <code>13,435</code></li>        </ul>
+<div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Combarbal%C3%A1&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q3850</span><span class="links"><a href="https://www.wikidata.org/wiki/Q3850#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_ad2cc1cfe92fea83">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">statement</span>
+          <span class="value">13,322</span>
+<span class="label">point in time 2017-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s newest population statement is 13,322 (point in time 2017-01-01); Census 2024 counted 12,954, and Wikidata has no statement for it.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>12,954</b></dd><dt>Correction</dt><dd>Add the Census 2024 figure, 12,954</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-slate" id="fnd_7da67497dcaca6ac">
+        <div class="f-head">
+          <span class="badge tone-slate" title="Wikidata statements lack the rank, point in time, method or reference needed to use them correctly.">Rank or qualifiers</span>
+          <span class="where">statement</span>
+          <span class="value">13,322</span>
+<span class="label">point in time 2017-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s population statements have no determination method on 13,322.</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Set ranks, points in time, methods and references</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04302-wikidata">Copy</button><pre id="draft-04302-wikidata">Q3850|P1082|12954|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (12,954) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q3850%7CP1082%7C12954%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>3 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikidata · statement</td><td>13322 <span class="by">(point in time 2017-01-01)</span></td><td>consistent</td><td>13,322 matches INE&#39;s Census 2017 count.</td></tr><tr><td>Wikipedia (EN) · article text</td><td>240 <span class="by">(no year)</span></td><td>not the comuna&#39;s figure</td><td>240 is 2% of INE&#39;s Census 2024 count, 12,954: it probably refers to a locality or an area, not the comuna.</td></tr><tr><td>Wikipedia (EN) · article text</td><td>1,140 <span class="by">(no year)</span></td><td>not the comuna&#39;s figure</td><td>1,140 is 9% of INE&#39;s Census 2024 count, 12,954: it probably refers to a locality or an area, not the comuna.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04304" data-name="punitaqui 04304" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Punitaqui</h2>
+      <span class="cut">CUT 04304</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">5 figures checked · 6 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>9,587</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>10,956</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>12,076</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>11,725</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>12,165</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>12,514</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>5,848</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>5,108</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 10,959 differs in one digit from INE&#39;s Census 2017 count, 10,956: most likely a typo. The current official figure is the Census 2024 count, 12,076. 10,418 matches no official figure held (Census 2002 9,587, Census 2017 10,956, Census 2024 12,076, Census 2017 urban 5,848, Census 2017 rural 5,108, projection 2012 11,090). Wikidata&#39;s newest population statement is 10,956 (point in time 2017-01-01); Census 2024 counted 12,076, and Wikidata has no statement for it. The drafts give the Census 2024 count, 12,076, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Punitaqui</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175827663" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Punitaqui" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_90c1ef82f8e31981">
+        <div class="f-head">
+          <span class="badge tone-red" title="A typo, a wrong unit or a corrupted field.">Likely error</span>
+          <span class="where">infobox</span>
+          <span class="value">10959</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>10,959 differs in one digit from INE&#39;s Census 2017 count, 10,956: most likely a typo. The current official figure is the Census 2024 count, 12,076.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>10,956</b> · INE Censo 2024: <b>12,076</b></dd><dt>Correction</dt><dd>Update to 12,076 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.85</dd>
+        </dl>
+      </div>
+      <div class="finding tone-red" id="fnd_f961b2cab08f8b31">
+        <div class="f-head">
+          <span class="badge tone-red" title="Matches no official figure, and nothing in the sources explains it.">Unexplained mismatch</span>
+          <span class="where">lead</span>
+          <span class="value">7539</span>
+<span class="label">2002 census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>7,539 matches no official figure held (Census 2002 9,587, Census 2017 10,956, Census 2024 12,076, Census 2017 urban 5,848, Census 2017 rural 5,108, projection 2002 9,977).</p>
+<blockquote>Su población alcanza a los 7539 habitantes, conforme al censo de 2002</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2002: <b>9,587</b> · INE Censo 2017: <b>10,956</b> · INE Censo 2024: <b>12,076</b> · INE Censo 2017: <b>5,848</b> · INE Censo 2017: <b>5,108</b> · INE Proyecciones base 2017 for 2002: <b>9,977</b></dd><dt>Correction</dt><dd>Needs a human: no official figure explains it</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code (no model available) · confidence 0.4</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>10959</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04304-eswiki">Copy</button><pre id="draft-04304-eswiki">| población = 12076
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 12076 hab. (antes 10959: error de tipeo).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“Su población alcanza a los 7539 habitantes, conforme al censo de 2002”: remove the figure or give its source</li>        </ul>
+<div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Punitaqui&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Punitaqui</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1378968261" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Punitaqui" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_f3081cdd561d495e">
+        <div class="f-head">
+          <span class="badge tone-red" title="Matches no official figure, and nothing in the sources explains it.">Unexplained mismatch</span>
+          <span class="where">infobox</span>
+          <span class="value">10418</span>
+<span class="label">2012</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>10,418 matches no official figure held (Census 2002 9,587, Census 2017 10,956, Census 2024 12,076, Census 2017 urban 5,848, Census 2017 rural 5,108, projection 2012 11,090). The current official figure is the Census 2024 count, 12,076.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2002: <b>9,587</b> · INE Censo 2017: <b>10,956</b> · INE Censo 2024: <b>12,076</b> · INE Censo 2017: <b>5,848</b> · INE Censo 2017: <b>5,108</b> · INE Proyecciones base 2017 for 2012: <b>11,090</b></dd><dt>Correction</dt><dd>Update to 12,076 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code (no model available) · confidence 0.4</dd>
+        </dl>
+      </div>
+      <div class="finding tone-red" id="fnd_7c1d26e906860ba0">
+        <div class="f-head">
+          <span class="badge tone-red" title="A typo, a wrong unit or a corrupted field.">Likely error</span>
+          <span class="where">article text</span>
+          <span class="value">9,539</span>
+<span class="label">2002 census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>9,539 differs in two neighbouring digits from INE&#39;s Census 2002 count, 9,587: possibly a typo.</p>
+<blockquote>According to the 2002 census by the National Statistics Institute, the commune covers an area of 1339.3 with a population of 9,539 inhabitants (4,791 male and 4,748 female)</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2002: <b>9,587</b></dd><dt>Correction</dt><dd>Correct to 9,587 (INE Census 2002)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code (no model available) · confidence 0.6</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>10418</code> (2012)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04304-enwiki">Copy</button><pre id="draft-04304-enwiki">| population_total = 12076
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 12,076 (was 10418: no official source).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“According to the 2002 census by the National Statistics Institute, the commune covers an area of 1339.3 with a population of 9,539 inhabitants (4,791 male and 4,748 female)”: replace <code>9,539</code> with <code>9,587</code></li>        </ul>
+<div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Punitaqui&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q51598</span><span class="links"><a href="https://www.wikidata.org/wiki/Q51598#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_a37c57a7ef9670d9">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">statement</span>
+          <span class="value">10,956</span>
+<span class="label">point in time 2017-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s newest population statement is 10,956 (point in time 2017-01-01); Census 2024 counted 12,076, and Wikidata has no statement for it.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>12,076</b></dd><dt>Correction</dt><dd>Add the Census 2024 figure, 12,076</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-slate" id="fnd_18e91c06b21d3f57">
+        <div class="f-head">
+          <span class="badge tone-slate" title="Wikidata statements lack the rank, point in time, method or reference needed to use them correctly.">Rank or qualifiers</span>
+          <span class="where">statement</span>
+          <span class="value">10,956</span>
+<span class="label">point in time 2017-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s population statements have no determination method on 10,956; no reference on 10,956.</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Set ranks, points in time, methods and references</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04304-wikidata">Copy</button><pre id="draft-04304-wikidata">Q51598|P1082|12076|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (12,076) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q51598%7CP1082%7C12076%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>1 figure with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikidata · statement</td><td>10956 <span class="by">(point in time 2017-01-01)</span></td><td>consistent</td><td>10,956 matches INE&#39;s Census 2017 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04204" data-name="salamanca 04204" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Salamanca</h2>
+      <span class="cut">CUT 04204</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">5 figures checked · 6 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>24,494</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>29,347</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>27,823</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>28,080</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>29,110</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>29,916</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>16,803</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>12,544</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 29,110 is labelled as a census count, but it is INE&#39;s projection for 2020 (base Census 2017); Census 2024 counted 27,823. 25,326 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 27,823. 29,359 is INE&#39;s projection for 2021 (estimates and projections, base Census 2017), not a census count; Census 2024 counted 27,823. The drafts give the Census 2024 count, 27,823, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Salamanca (Chile)</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175794329" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Salamanca_%28Chile%29" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-blue" id="fnd_77a4ed3fd4cbcbbf">
+        <div class="f-head">
+          <span class="badge tone-blue" title="An official figure under another definition (an INE estimate or projection, or only the urban or rural part of a census count) shown where the comuna&#39;s census count is expected. Not an error in itself.">Different definition</span>
+          <span class="where">infobox</span>
+          <span class="value">29&amp;nbsp;110</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>29,110 is labelled as a census count, but it is INE&#39;s projection for 2020 (base Census 2017); Census 2024 counted 27,823.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Proyecciones base 2017 for 2020: <b>29,110</b> · INE Censo 2024: <b>27,823</b></dd><dt>Correction</dt><dd>Update to 27,823 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.85</dd>
+        </dl>
+      </div>
+      <div class="finding tone-violet" id="fnd_800c5dd1997a51cd">
+        <div class="f-head">
+          <span class="badge tone-violet" title="The article contradicts itself (infobox vs body).">Internal inconsistency</span>
+          <span class="where">infobox</span>
+          <span class="value">29&amp;nbsp;110</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>The infobox gives 29,110 for 2017, but the article text gives 29,347 (&#39;2017 census&#39;).</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Update to 27,823 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>29&amp;nbsp;110</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04204-eswiki">Copy</button><pre id="draft-04204-eswiki">| población = 27&amp;nbsp;823
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 27 823 hab. (antes 29 110: proyección del INE, no un conteo censal).</p><div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Salamanca_%28Chile%29&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Salamanca, Chile</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1376760616" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Salamanca%2C_Chile" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_7e8927521d079381">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">25326</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>25,326 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 27,823.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>27,823</b></dd><dt>Correction</dt><dd>Update to 27,823 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>25326</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04204-enwiki">Copy</button><pre id="draft-04204-enwiki">| population_total = 27823
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 27,823 (was 25326: the withdrawn 2012 census).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Salamanca%2C_Chile&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q56134</span><span class="links"><a href="https://www.wikidata.org/wiki/Q56134#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-blue" id="fnd_fc51a3b468b48fb8">
+        <div class="f-head">
+          <span class="badge tone-blue" title="An official figure under another definition (an INE estimate or projection, or only the urban or rural part of a census count) shown where the comuna&#39;s census count is expected. Not an error in itself.">Different definition</span>
+          <span class="where">statement</span>
+          <span class="value">29,359</span>
+<span class="label">no point in time</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>29,359 is INE&#39;s projection for 2021 (estimates and projections, base Census 2017), not a census count; Census 2024 counted 27,823.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Proyecciones base 2017 for 2021: <b>29,359</b> · INE Censo 2024: <b>27,823</b></dd><dt>Correction</dt><dd>Update to 27,823 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-amber" id="fnd_7c28ce6c5b9ba16e">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">statement</span>
+          <span class="value">29,359</span>
+<span class="label">no point in time</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s newest population statement is 29,359 (no point in time); Census 2024 counted 27,823, and Wikidata has no statement for it.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>27,823</b></dd><dt>Correction</dt><dd>Add the Census 2024 figure, 27,823</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-slate" id="fnd_d7ef2b1c92e648a6">
+        <div class="f-head">
+          <span class="badge tone-slate" title="Wikidata statements lack the rank, point in time, method or reference needed to use them correctly.">Rank or qualifiers</span>
+          <span class="where">statement</span>
+          <span class="value">29,359</span>
+<span class="label">no point in time</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s population statements have no point in time on 29,359; no determination method on 29,359; no reference on 29,359.</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Set ranks, points in time, methods and references</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04204-wikidata">Copy</button><pre id="draft-04204-wikidata">Q56134|P1082|27823|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (27,823) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li><li>Check the 29,359 statement (no point in time): 29,359 is INE&#39;s projection for 2021 (estimates and projections, base Census 2017), not a census count; Census 2024 counted 27,823.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q56134%7CP1082%7C27823%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>2 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (EN) · article text</td><td>24,494 <span class="by">(2002 census)</span></td><td>consistent</td><td>24,494 matches INE&#39;s Census 2002 count.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>29.347 <span class="by">(2017 census)</span></td><td>consistent</td><td>29,347 matches INE&#39;s Census 2017 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04103" data-name="andacollo 04103" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Andacollo</h2>
+      <span class="cut">CUT 04103</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">6 figures checked · 5 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>10,288</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>11,044</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>11,566</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>11,604</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>11,791</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>11,836</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>10,008</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>1,036</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 11,044 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 11,566. 11,093 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. Wikidata&#39;s newest population statement is 11,044 (point in time 2017-01-01); Census 2024 counted 11,566, and Wikidata has no statement for it. The drafts give the Census 2024 count, 11,566, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Andacollo (Chile)</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175936407" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Andacollo_%28Chile%29" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_af94725f6c0294cd">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">infobox</span>
+          <span class="value">11&amp;nbsp;044</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>11,044 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 11,566.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>11,044</b> · INE Censo 2024: <b>11,566</b></dd><dt>Correction</dt><dd>Update to 11,566 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-amber" id="fnd_43d906c523c50af4">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">article text</span>
+          <span class="value">11.044</span>
+<span class="label">no year</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>11,044 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 11,566.</p>
+<blockquote>La comuna posee una superficie de 310 km² y una población de 11.044 habitantes, de los cuales 5.525 son mujeres y 5.519 hombres.</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>11,044</b> · INE Censo 2024: <b>11,566</b></dd><dt>Correction</dt><dd>Update to 11,566 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>11&amp;nbsp;044</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04103-eswiki">Copy</button><pre id="draft-04103-eswiki">| población = 11&amp;nbsp;566
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 11 566 hab. (antes 11 044: cifra de un censo anterior).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“La comuna posee una superficie de 310 km² y una población de 11.044 habitantes, de los cuales 5.525 son mujeres y 5.519 hombres.”: replace <code>11.044</code> with <code>11.566</code>; state the Census 2024 figure and cite INE</li>        </ul>
+<div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Andacollo_%28Chile%29&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Andacollo</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1373986888" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Andacollo" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_d6871c999c0f27b0">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">11093</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>11,093 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 11,566.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>11,566</b></dd><dt>Correction</dt><dd>Update to 11,566 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>11093</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04103-enwiki">Copy</button><pre id="draft-04103-enwiki">| population_total = 11566
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 11,566 (was 11093: the withdrawn 2012 census).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Andacollo&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q3602</span><span class="links"><a href="https://www.wikidata.org/wiki/Q3602#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_a7f942d9769588c6">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">statement</span>
+          <span class="value">11,044</span>
+<span class="label">point in time 2017-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s newest population statement is 11,044 (point in time 2017-01-01); Census 2024 counted 11,566, and Wikidata has no statement for it.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>11,566</b></dd><dt>Correction</dt><dd>Add the Census 2024 figure, 11,566</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-slate" id="fnd_6e73aff76e32984a">
+        <div class="f-head">
+          <span class="badge tone-slate" title="Wikidata statements lack the rank, point in time, method or reference needed to use them correctly.">Rank or qualifiers</span>
+          <span class="where">statement</span>
+          <span class="value">11,044</span>
+<span class="label">point in time 2017-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s population statements have no determination method on 11,044; no reference on 11,044.</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Set ranks, points in time, methods and references</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04103-wikidata">Copy</button><pre id="draft-04103-wikidata">Q3602|P1082|11566|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (11,566) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q3602%7CP1082%7C11566%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>3 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikidata · statement</td><td>11044 <span class="by">(point in time 2017-01-01)</span></td><td>consistent</td><td>11,044 matches INE&#39;s Census 2017 count.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>844 <span class="by">(no year)</span></td><td>not the comuna&#39;s figure</td><td>844 is 7% of INE&#39;s Census 2024 count, 11,566: it probably refers to a locality or an area, not the comuna.</td></tr><tr><td>Wikipedia (EN) · article text</td><td>10,288 <span class="by">(2002 census)</span></td><td>consistent</td><td>10,288 matches INE&#39;s Census 2002 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04202" data-name="canela 04202" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Canela</h2>
+      <span class="cut">CUT 04202</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">9 figures checked · 5 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>9,379</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>9,093</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>9,639</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>9,456</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>9,546</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>9,509</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>1,960</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>7,133</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 9,546 is labelled as a census count, but it is INE&#39;s projection for 2020 (base Census 2017); Census 2024 counted 9,639. 9,182 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 9,639. Wikidata has no population figure for this comuna; Census 2024 counted 9,639. The drafts give the Census 2024 count, 9,639, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Canela (Chile)</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175790079" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Canela_%28Chile%29" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-blue" id="fnd_2170e289155bd1f3">
+        <div class="f-head">
+          <span class="badge tone-blue" title="An official figure under another definition (an INE estimate or projection, or only the urban or rural part of a census count) shown where the comuna&#39;s census count is expected. Not an error in itself.">Different definition</span>
+          <span class="where">infobox</span>
+          <span class="value">9546</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>9,546 is labelled as a census count, but it is INE&#39;s projection for 2020 (base Census 2017); Census 2024 counted 9,639.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Proyecciones base 2017 for 2020: <b>9,546</b> · INE Censo 2024: <b>9,639</b></dd><dt>Correction</dt><dd>Update to 9,639 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.85</dd>
+        </dl>
+      </div>
+      <div class="finding tone-red" id="fnd_458945063a3a6dee">
+        <div class="f-head">
+          <span class="badge tone-red" title="A typo, a wrong unit or a corrupted field.">Likely error</span>
+          <span class="where">article text</span>
+          <span class="value">9.084</span>
+<span class="label">no year</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>9,084 differs in two neighbouring digits from INE&#39;s Census 2017 count, 9,093: possibly a typo. The current official figure is the Census 2024 count, 9,639.</p>
+<blockquote>La comuna administra un sistema de salud municipal, a cargo del Departamento de Salud de la Ilustre Municipalidad de Canela, cuenta con un consultorio urbano ubicado en Canela Baja y con 8 postas de salud rural (PSR), en el cual se encuentra un número de población inscrita validada en servicios de salud municipal FONASA de 9.084 personas (98 %)</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>9,093</b> · INE Censo 2024: <b>9,639</b></dd><dt>Correction</dt><dd>Update to 9,639 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code (no model available) · confidence 0.6</dd>
+        </dl>
+      </div>
+      <div class="finding tone-violet" id="fnd_8e01e164573b1335">
+        <div class="f-head">
+          <span class="badge tone-violet" title="The article contradicts itself (infobox vs body).">Internal inconsistency</span>
+          <span class="where">infobox</span>
+          <span class="value">9546</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>The infobox gives 9,546 for 2017, but the article text gives 9,093 (&#39;2017 census&#39;).</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Update to 9,639 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>9546</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04202-eswiki">Copy</button><pre id="draft-04202-eswiki">| población = 9639
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 9639 hab. (antes 9546: proyección del INE, no un conteo censal).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“La comuna administra un sistema de salud municipal, a cargo del Departamento de Salud de la Ilustre Municipalidad de Canela, cuenta con un consultorio urbano ubicado en Canela Baja y con 8 postas de salud rural (PSR), en el cual se encuentra un número de población inscrita validada en servicios de salud municipal FONASA de 9.084 personas (98 %)”: replace <code>9.084</code> with <code>9.639</code>; state the Census 2024 figure and cite INE</li>        </ul>
+<div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Canela_%28Chile%29&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Canela, Chile</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1375327929" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Canela%2C_Chile" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_33ca427fde8ae311">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">9182</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>9,182 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 9,639.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>9,639</b></dd><dt>Correction</dt><dd>Update to 9,639 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>9182</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04202-enwiki">Copy</button><pre id="draft-04202-enwiki">| population_total = 9639
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 9,639 (was 9182: the withdrawn 2012 census).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Canela%2C_Chile&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q3735</span><span class="links"><a href="https://www.wikidata.org/wiki/Q3735#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_405eff49360e65ac">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 9,639.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>9,639</b></dd><dt>Correction</dt><dd>Update to 9,639 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04202-wikidata">Copy</button><pre id="draft-04202-wikidata">Q3735|P1082|9639|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (9,639) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q3735%7CP1082%7C9639%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>5 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · article text</td><td>203 <span class="by">(2017)</span></td><td>not the comuna&#39;s figure</td><td>203 is 2% of INE&#39;s Census 2024 count, 9,639: it probably refers to a locality or an area, not the comuna.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>2000 <span class="by">(2000)</span></td><td>not checkable</td><td>refers to 2000, a year no official figure read for this comuna covers</td></tr><tr><td>Wikipedia (ES) · article text</td><td>20.000 <span class="by">(no year)</span></td><td>not checkable</td><td>no year stated and no official figure matches, so it can&#39;t be told what it refers to</td></tr><tr><td>Wikipedia (EN) · article text</td><td>9,379 <span class="by">(2002 census)</span></td><td>consistent</td><td>9,379 matches INE&#39;s Census 2002 count.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>9.093 <span class="by">(2017 census)</span></td><td>consistent</td><td>9,093 matches INE&#39;s Census 2017 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04303" data-name="monte patria 04303" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Monte Patria</h2>
+      <span class="cut">CUT 04303</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">6 figures checked · 5 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>30,276</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>30,751</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>29,997</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>31,999</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>32,527</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>32,672</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>15,338</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>15,413</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 30,751 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 29,997. 30,056 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. 30,056 matches no official figure held (Census 2002 30,276, Census 2017 30,751, Census 2024 29,997, Census 2017 urban 15,338, Census 2017 rural 15,413, projection 2020 32,527), but Wikipedia EN gives the same figure labelled &#39;2012 Census&#39;; INE withdrew that census&#39;s results. The drafts give the Census 2024 count, 29,997, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Monte Patria</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175937870" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Monte_Patria" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_62a98898fe452f20">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">infobox</span>
+          <span class="value">30&amp;nbsp;751</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>30,751 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 29,997.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>30,751</b> · INE Censo 2024: <b>29,997</b></dd><dt>Correction</dt><dd>Update to 29,997 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>30&amp;nbsp;751</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04303-eswiki">Copy</button><pre id="draft-04303-eswiki">| población = 29&amp;nbsp;997
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 29 997 hab. (antes 30 751: cifra de un censo anterior).</p><div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Monte_Patria&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Monte Patria</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1376839769" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Monte_Patria" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_0aa637e5fe4c8e6e">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">30056</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>30,056 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 29,997.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>29,997</b></dd><dt>Correction</dt><dd>Update to 29,997 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>30056</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04303-enwiki">Copy</button><pre id="draft-04303-enwiki">| population_total = 29997
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 29,997 (was 30056: the withdrawn 2012 census).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Monte_Patria&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q51034</span><span class="links"><a href="https://www.wikidata.org/wiki/Q51034#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-red" id="fnd_966caaaa6827346b">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">statement</span>
+          <span class="value">30,056</span>
+<span class="label">point in time 2020-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>30,056 matches no official figure held (Census 2002 30,276, Census 2017 30,751, Census 2024 29,997, Census 2017 urban 15,338, Census 2017 rural 15,413, projection 2020 32,527), but Wikipedia EN gives the same figure labelled &#39;2012 Census&#39;; INE withdrew that census&#39;s results.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2002: <b>30,276</b> · INE Censo 2017: <b>30,751</b> · INE Censo 2024: <b>29,997</b> · INE Censo 2017: <b>15,338</b> · INE Censo 2017: <b>15,413</b> · INE Proyecciones base 2017 for 2020: <b>32,527</b></dd><dt>Correction</dt><dd>Needs a human: no official figure explains it</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code (no model available) · confidence 0.7</dd>
+        </dl>
+      </div>
+      <div class="finding tone-amber" id="fnd_10bfa6e4459a54b5">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">statement</span>
+          <span class="value">30,056</span>
+<span class="label">point in time 2020-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s newest population statement is 30,056 (point in time 2020-01-01); Census 2024 counted 29,997, and Wikidata has no statement for it.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>29,997</b></dd><dt>Correction</dt><dd>Add the Census 2024 figure, 29,997</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-slate" id="fnd_52dc60fb17d30386">
+        <div class="f-head">
+          <span class="badge tone-slate" title="Wikidata statements lack the rank, point in time, method or reference needed to use them correctly.">Rank or qualifiers</span>
+          <span class="where">statement</span>
+          <span class="value">30,056</span>
+<span class="label">point in time 2020-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s population statements have no determination method on 30,056; no reference on 30,056.</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Set ranks, points in time, methods and references</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04303-wikidata">Copy</button><pre id="draft-04303-wikidata">Q51034|P1082|29997|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (29,997) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li><li>Check the 30,056 statement (point in time 2020-01-01): 30,056 matches no official figure held (Census 2002 30,276, Census 2017 30,751, Census 2024 29,997, Census 2017 urban 15,338, Census 2017 rural 15,413, projection 2020 32,527), but Wikipedia EN gives the same figure labelled &#39;2012 Census&#39;; INE withdrew that census&#39;s results.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q51034%7CP1082%7C29997%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>3 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · article text</td><td>17.411 <span class="by">(no year)</span></td><td>not checkable</td><td>no year stated and no official figure matches, so it can&#39;t be told what it refers to</td></tr><tr><td>Wikipedia (EN) · article text</td><td>30,276 <span class="by">(2002 census)</span></td><td>consistent</td><td>30,276 matches INE&#39;s Census 2002 count.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>30.751 <span class="by">(2017 census)</span></td><td>consistent</td><td>30,751 matches INE&#39;s Census 2017 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04203" data-name="los vilos 04203" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Los Vilos</h2>
+      <span class="cut">CUT 04203</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">4 figures checked · 4 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>17,453</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>21,382</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>22,879</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>22,279</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>23,374</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>24,408</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>17,094</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>4,288</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 23,374 is labelled as a census count, but it is INE&#39;s projection for 2020 (base Census 2017); Census 2024 counted 22,879. 18,275 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 22,879. Wikidata&#39;s newest population statement is 21,382 (point in time 2017-01-01); Census 2024 counted 22,879, and Wikidata has no statement for it. The drafts give the Census 2024 count, 22,879, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Los Vilos</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175937944" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Los_Vilos" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-blue" id="fnd_67ae107a9022dd2e">
+        <div class="f-head">
+          <span class="badge tone-blue" title="An official figure under another definition (an INE estimate or projection, or only the urban or rural part of a census count) shown where the comuna&#39;s census count is expected. Not an error in itself.">Different definition</span>
+          <span class="where">infobox</span>
+          <span class="value">23374</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>23,374 is labelled as a census count, but it is INE&#39;s projection for 2020 (base Census 2017); Census 2024 counted 22,879.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Proyecciones base 2017 for 2020: <b>23,374</b> · INE Censo 2024: <b>22,879</b></dd><dt>Correction</dt><dd>Update to 22,879 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.85</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>23374</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04203-eswiki">Copy</button><pre id="draft-04203-eswiki">| población = 22879
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 22879 hab. (antes 23374: proyección del INE, no un conteo censal).</p><div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Los_Vilos&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Los Vilos</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1379983008" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Los_Vilos" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_017c1f02d0a6e965">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">18275</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>18,275 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 22,879.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>22,879</b></dd><dt>Correction</dt><dd>Update to 22,879 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>18275</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04203-enwiki">Copy</button><pre id="draft-04203-enwiki">| population_total = 22879
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 22,879 (was 18275: the withdrawn 2012 census).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Los_Vilos&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q16908</span><span class="links"><a href="https://www.wikidata.org/wiki/Q16908#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_c5a16c3d13fb01c5">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">statement</span>
+          <span class="value">21,382</span>
+<span class="label">point in time 2017-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s newest population statement is 21,382 (point in time 2017-01-01); Census 2024 counted 22,879, and Wikidata has no statement for it.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>22,879</b></dd><dt>Correction</dt><dd>Add the Census 2024 figure, 22,879</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-slate" id="fnd_8e1de2c80243fd74">
+        <div class="f-head">
+          <span class="badge tone-slate" title="Wikidata statements lack the rank, point in time, method or reference needed to use them correctly.">Rank or qualifiers</span>
+          <span class="where">statement</span>
+          <span class="value">21,382</span>
+<span class="label">point in time 2017-01-01</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata&#39;s population statements have no determination method on 21,382; no reference on 21,382.</p>
+        <dl class="facts">
+<dt>Correction</dt><dd>Set ranks, points in time, methods and references</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04203-wikidata">Copy</button><pre id="draft-04203-wikidata">Q16908|P1082|22879|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (22,879) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q16908%7CP1082%7C22879%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>2 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikidata · statement</td><td>21382 <span class="by">(point in time 2017-01-01)</span></td><td>consistent</td><td>21,382 matches INE&#39;s Census 2017 count.</td></tr><tr><td>Wikipedia (EN) · article text</td><td>17,453 <span class="by">(2002 census)</span></td><td>consistent</td><td>17,453 matches INE&#39;s Census 2002 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04105" data-name="paihuano 04105" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Paihuano</h2>
+      <span class="cut">CUT 04105</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">5 figures checked · 4 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>4,186</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>4,497</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>4,649</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>4,586</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>4,675</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>4,709</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>0</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>4,497</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 4,497 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 4,649. 4,256 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. Wikidata has no population figure for this comuna; Census 2024 counted 4,649. The drafts give the Census 2024 count, 4,649, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Paihuano</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175827676" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Paihuano" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_610f620147b41264">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">infobox</span>
+          <span class="value">4497</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>4,497 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 4,649.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>4,497</b> · INE Censo 2024: <b>4,649</b></dd><dt>Correction</dt><dd>Update to 4,649 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>4497</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04105-eswiki">Copy</button><pre id="draft-04105-eswiki">| población = 4649
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 4649 hab. (antes 4497: cifra de un censo anterior).</p><div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Paihuano&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Paiguano</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1381137097" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Paiguano" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_8764d18c9b86948c">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">4256</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>4,256 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 4,649.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>4,649</b></dd><dt>Correction</dt><dd>Update to 4,649 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="finding tone-red" id="fnd_dec8c842a8d6876c">
+        <div class="f-head">
+          <span class="badge tone-red" title="A typo, a wrong unit or a corrupted field.">Likely error</span>
+          <span class="where">article text</span>
+          <span class="value">4,168</span>
+<span class="label">2002 census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>4,168 differs in one digit from INE&#39;s Census 2002 count, 4,186: most likely a typo.</p>
+<blockquote>According to the 2002 census of the National Statistics Institute, Paiguano had 4,168 inhabitants (2,145 men and 2,023 women), making the commune an entirely rural area</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2002: <b>4,186</b></dd><dt>Correction</dt><dd>Correct to 4,186 (INE Census 2002)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.85</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>4256</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04105-enwiki">Copy</button><pre id="draft-04105-enwiki">| population_total = 4649
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 4,649 (was 4256: the withdrawn 2012 census).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“According to the 2002 census of the National Statistics Institute, Paiguano had 4,168 inhabitants (2,145 men and 2,023 women), making the commune an entirely rural area”: replace <code>4,168</code> with <code>4,186</code></li>        </ul>
+<div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Paiguano&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q51064</span><span class="links"><a href="https://www.wikidata.org/wiki/Q51064#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_e1b1c380f0f22eb4">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 4,649.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>4,649</b></dd><dt>Correction</dt><dd>Update to 4,649 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04105-wikidata">Copy</button><pre id="draft-04105-wikidata">Q51064|P1082|4649|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (4,649) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q51064%7CP1082%7C4649%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>1 figure with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · article text</td><td>4497 <span class="by">(2017 census)</span></td><td>consistent</td><td>4,497 matches INE&#39;s Census 2017 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04305" data-name="río hurtado 04305" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Río Hurtado</h2>
+      <span class="cut">CUT 04305</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">6 figures checked · 4 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>4,771</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>4,278</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>4,334</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>4,374</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>4,372</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>4,308</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>0</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>4,278</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 4,278 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 4,334. 4,137 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. Wikidata has no population figure for this comuna; Census 2024 counted 4,334. The drafts give the Census 2024 count, 4,334, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Río Hurtado (comuna)</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175937751" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/R%C3%ADo_Hurtado_%28comuna%29" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_c421f9946320a722">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">infobox</span>
+          <span class="value">4278</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>4,278 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 4,334.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>4,278</b> · INE Censo 2024: <b>4,334</b></dd><dt>Correction</dt><dd>Update to 4,334 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="finding tone-amber" id="fnd_7b651513002a428f">
+        <div class="f-head">
+          <span class="badge tone-amber" title="A real official figure labelled with the wrong year or census, or cited to a source that doesn&#39;t hold it (citation mismatch).">Mislabelled vintage</span>
+          <span class="where">article text</span>
+          <span class="value">4.278</span>
+<span class="label">1992</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>4,278 is INE&#39;s Census 2017 count, but it is labelled &#39;1992&#39;.</p>
+<blockquote>La comuna de Río Hurtado ha experimentado un paulatino decrecimiento poblacional en las últimas décadas, pasando de 5.090 a 4.278 habitantes entre 1992 y 2017</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>4,278</b></dd><dt>Correction</dt><dd>Relabel as the INE census for 2017</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>4278</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04305-eswiki">Copy</button><pre id="draft-04305-eswiki">| población = 4334
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 4334 hab. (antes 4278: cifra de un censo anterior).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“La comuna de Río Hurtado ha experimentado un paulatino decrecimiento poblacional en las últimas décadas, pasando de 5.090 a 4.278 habitantes entre 1992 y 2017”: the figure is the 2017 census figure: correct the year</li>        </ul>
+<div class="links"><a href="https://es.wikipedia.org/w/index.php?title=R%C3%ADo_Hurtado_%28comuna%29&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Río Hurtado</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1376612041" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/R%C3%ADo_Hurtado" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_6175bfa930e57a66">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">4137</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>4,137 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 4,334.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>4,334</b></dd><dt>Correction</dt><dd>Update to 4,334 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>4137</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04305-enwiki">Copy</button><pre id="draft-04305-enwiki">| population_total = 4334
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 4,334 (was 4137: the withdrawn 2012 census).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=R%C3%ADo_Hurtado&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q56128</span><span class="links"><a href="https://www.wikidata.org/wiki/Q56128#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_222e9dfa2cbfa605">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 4,334.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>4,334</b></dd><dt>Correction</dt><dd>Update to 4,334 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04305-wikidata">Copy</button><pre id="draft-04305-wikidata">Q56128|P1082|4334|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (4,334) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q56128%7CP1082%7C4334%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>2 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · article text</td><td>1543 <span class="by">(1854)</span></td><td>not checkable</td><td>refers to 1854, the year of a census whose counts weren&#39;t read for this comuna</td></tr><tr><td>Wikipedia (EN) · article text</td><td>4,771 <span class="by">(2002 census)</span></td><td>consistent</td><td>4,771 matches INE&#39;s Census 2002 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04106" data-name="vicuña 04106" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Vicuña</h2>
+      <span class="cut">CUT 04106</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">6 figures checked · 4 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>23,992</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>27,771</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>28,047</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>28,706</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>29,741</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>30,541</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>16,993</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>10,778</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 29,741 is labelled as a census count, but it is INE&#39;s projection for 2020 (base Census 2017); Census 2024 counted 28,047. 27,771 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 28,047. Wikidata has no population figure for this comuna; Census 2024 counted 28,047. The drafts give the Census 2024 count, 28,047, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">Vicuña (Chile)</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=175559762" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/Vicu%C3%B1a_%28Chile%29" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-blue" id="fnd_dc83d62eef38c8af">
+        <div class="f-head">
+          <span class="badge tone-blue" title="An official figure under another definition (an INE estimate or projection, or only the urban or rural part of a census count) shown where the comuna&#39;s census count is expected. Not an error in itself.">Different definition</span>
+          <span class="where">infobox</span>
+          <span class="value">29&amp;nbsp;741</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>29,741 is labelled as a census count, but it is INE&#39;s projection for 2020 (base Census 2017); Census 2024 counted 28,047.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Proyecciones base 2017 for 2020: <b>29,741</b> · INE Censo 2024: <b>28,047</b></dd><dt>Correction</dt><dd>Update to 28,047 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.85</dd>
+        </dl>
+      </div>
+      <div class="finding tone-red" id="fnd_19880c64140d4078">
+        <div class="f-head">
+          <span class="badge tone-red" title="Matches no official figure, and nothing in the sources explains it.">Unexplained mismatch</span>
+          <span class="where">article text</span>
+          <span class="value">26 029</span>
+<span class="label">2002 census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>26,029 matches no official figure held (Census 2002 23,992, Census 2017 27,771, Census 2024 28,047, Census 2017 urban 16,993, Census 2017 rural 10,778, projection 2002 24,584).</p>
+<blockquote>La población de la comuna de Vicuña es de 26 029 habitantes, lo cual muestra un incremento del 11,3 % respecto a los 24 010 habitantes del Censo INE del año 2002</blockquote>        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2002: <b>23,992</b> · INE Censo 2017: <b>27,771</b> · INE Censo 2024: <b>28,047</b> · INE Censo 2017: <b>16,993</b> · INE Censo 2017: <b>10,778</b> · INE Proyecciones base 2017 for 2002: <b>24,584</b></dd><dt>Correction</dt><dd>Needs a human: no official figure explains it</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code (no model available) · confidence 0.4</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>29&amp;nbsp;741</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04106-eswiki">Copy</button><pre id="draft-04106-eswiki">| población = 28&amp;nbsp;047
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 28 047 hab. (antes 29 741: proyección del INE, no un conteo censal).</p>        <p class="summary-line"><span>Also in the article text</span></p>
+        <ul class="plain">
+<li>“La población de la comuna de Vicuña es de 26 029 habitantes, lo cual muestra un incremento del 11,3 % respecto a los 24 010 habitantes del Censo INE del año 2002”: remove the figure or give its source</li>        </ul>
+<div class="links"><a href="https://es.wikipedia.org/w/index.php?title=Vicu%C3%B1a_%28Chile%29&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Vicuña, Chile</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1374952663" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Vicu%C3%B1a%2C_Chile" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_520ed8b9378d7455">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">infobox</span>
+          <span class="value">27771</span>
+<span class="label">2017 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>27,771 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 28,047.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>27,771</b> · INE Censo 2024: <b>28,047</b></dd><dt>Correction</dt><dd>Update to 28,047 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>27771</code> (2017 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04106-enwiki">Copy</button><pre id="draft-04106-enwiki">| population_total = 28047
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 28,047 (was 27771: an older census count).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Vicu%C3%B1a%2C_Chile&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q201007</span><span class="links"><a href="https://www.wikidata.org/wiki/Q201007#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_3a9e2bf37dfbe13d">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 28,047.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>28,047</b></dd><dt>Correction</dt><dd>Update to 28,047 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04106-wikidata">Copy</button><pre id="draft-04106-wikidata">Q201007|P1082|28047|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (28,047) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q201007%7CP1082%7C28047%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>2 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · article text</td><td>12 910 <span class="by">(no year)</span></td><td>not checkable</td><td>no year stated and no official figure matches, so it can&#39;t be told what it refers to</td></tr><tr><td>Wikipedia (EN) · article text</td><td>27,771 <span class="by">(2017 census)</span></td><td>consistent</td><td>27,771 matches INE&#39;s Census 2017 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04104" data-name="la higuera 04104" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>La Higuera</h2>
+      <span class="cut">CUT 04104</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">6 figures checked · 3 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>3,721</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>4,241</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>4,335</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>4,321</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>4,450</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>4,533</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>1,293</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>2,948</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> 4,241 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 4,335. 4,285 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. Wikidata has no population figure for this comuna; Census 2024 counted 4,335. The drafts give the Census 2024 count, 4,335, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">La Higuera (Chile)</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=173798066" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/La_Higuera_%28Chile%29" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_b094fdfbcdeb252a">
+        <div class="f-head">
+          <span class="badge tone-amber" title="An older official figure (e.g. the Census 2017 count) shown as the current population.">Outdated</span>
+          <span class="where">infobox</span>
+          <span class="value">4241</span>
+<span class="label">2017</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>4,241 is INE&#39;s Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 4,335.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2017: <b>4,241</b> · INE Censo 2024: <b>4,335</b></dd><dt>Correction</dt><dd>Update to 4,335 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>4241</code> (2017)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04104-eswiki">Copy</button><pre id="draft-04104-eswiki">| población = 4335
+| población_año = [[Censo chileno de 2024|2024]]
+| población_post = &lt;ref name=&#34;censo2024&#34;&gt;{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Población según el Censo 2024 del INE: 4335 hab. (antes 4241: cifra de un censo anterior).</p><div class="links"><a href="https://es.wikipedia.org/w/index.php?title=La_Higuera_%28Chile%29&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">La Higuera, Chile</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1376589799" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/La_Higuera%2C_Chile" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_0b037d2c790e66b5">
+        <div class="f-head">
+          <span class="badge tone-red" title="Attributed to the 2012 census, whose results INE withdrew.">Withdrawn census</span>
+          <span class="where">infobox</span>
+          <span class="value">4285</span>
+<span class="label">2012 Census</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>4,285 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 4,335.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>4,335</b></dd><dt>Correction</dt><dd>Update to 4,335 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>4285</code> (2012 Census)</span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04104-enwiki">Copy</button><pre id="draft-04104-enwiki">| population_total = 4335
+| population_as_of = [[2024 Chilean census|2024 Census]]
+| population_footnotes = &lt;ref name=&#34;Censo2024&#34;&gt;{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Population per INE&#39;s 2024 census: 4,335 (was 4285: the withdrawn 2012 census).</p><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=La_Higuera%2C_Chile&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q14462</span><span class="links"><a href="https://www.wikidata.org/wiki/Q14462#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_f9f99184b856b32a">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 4,335.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>4,335</b></dd><dt>Correction</dt><dd>Update to 4,335 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04104-wikidata">Copy</button><pre id="draft-04104-wikidata">Q14462|P1082|4335|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (4,335) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q14462%7CP1082%7C4335%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>3 figures with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · article text</td><td>811 <span class="by">(no year)</span></td><td>not the comuna&#39;s figure</td><td>811 is 19% of INE&#39;s Census 2024 count, 4,335: it probably refers to a locality or an area, not the comuna.</td></tr><tr><td>Wikipedia (ES) · article text</td><td>231 <span class="by">(no year)</span></td><td>not the comuna&#39;s figure</td><td>231 is 5% of INE&#39;s Census 2024 count, 4,335: it probably refers to a locality or an area, not the comuna.</td></tr><tr><td>Wikipedia (EN) · article text</td><td>3,721 <span class="by">(2002 census)</span></td><td>consistent</td><td>3,721 matches INE&#39;s Census 2002 count.</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-04102" data-name="coquimbo 04102" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Coquimbo</h2>
+      <span class="cut">CUT 04102</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">1 figures checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>163,036</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>227,730</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>263,719</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>239,467</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>256,735</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>275,644</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>214,550</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>13,180</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 1 page unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata has no population figure for this comuna; Census 2024 counted 263,719. The drafts give the Census 2024 count, 263,719, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q23660214</span><span class="links"><a href="https://www.wikidata.org/wiki/Q23660214#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_52c88f753845d31a">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 263,719.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>263,719</b></dd><dt>Correction</dt><dd>Update to 263,719 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04102-wikidata">Copy</button><pre id="draft-04102-wikidata">Q23660214|P1082|263719|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (263,719) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q23660214%7CP1082%7C263719%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+  </article>
+  <article class="comuna" id="comuna-04201" data-name="illapel 04201" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Illapel</h2>
+      <span class="cut">CUT 04201</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">1 figures checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>30,355</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>30,848</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>32,009</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>32,224</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>32,801</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>33,021</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>21,052</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>9,796</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 1 page unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata has no population figure for this comuna; Census 2024 counted 32,009. The drafts give the Census 2024 count, 32,009, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q23660296</span><span class="links"><a href="https://www.wikidata.org/wiki/Q23660296#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_35f6fd6b7a11c07e">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 32,009.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>32,009</b></dd><dt>Correction</dt><dd>Update to 32,009 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04201-wikidata">Copy</button><pre id="draft-04201-wikidata">Q23660296|P1082|32009|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (32,009) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q23660296%7CP1082%7C32009%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+  </article>
+  <article class="comuna" id="comuna-04101" data-name="la serena 04101" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>La Serena</h2>
+      <span class="cut">CUT 04101</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">1 figures checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>160,148</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>221,054</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>250,141</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>233,270</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>249,656</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>267,400</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>200,640</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>20,414</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 1 page unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata has no population figure for this comuna; Census 2024 counted 250,141. The drafts give the Census 2024 count, 250,141, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q23660215</span><span class="links"><a href="https://www.wikidata.org/wiki/Q23660215#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_b87d5e05c6701a99">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 250,141.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>250,141</b></dd><dt>Correction</dt><dd>Update to 250,141 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04101-wikidata">Copy</button><pre id="draft-04101-wikidata">Q23660215|P1082|250141|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (250,141) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q23660215%7CP1082%7C250141%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+  </article>
+  <article class="comuna" id="comuna-04301" data-name="ovalle 04301" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Ovalle</h2>
+      <span class="cut">CUT 04301</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">1 figures checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="Official figures">
+      <div class="fig"><small>INE Census 2002</small><b>98,089</b></div>
+      <div class="fig"><small>INE Census 2017</small><b>111,272</b></div>
+      <div class="fig current"><small>INE Census 2024 · current</small><b>118,696</b></div>
+      <div class="fig"><small>INE projection 2017</small><b>117,221</b></div>
+      <div class="fig"><small>INE projection 2020</small><b>121,269</b></div>
+      <div class="fig"><small>INE projection 2024</small><b>124,401</b></div>
+      <div class="fig"><small>INE Census 2017, urban only</small><b>87,539</b></div>
+      <div class="fig"><small>INE Census 2017, rural only</small><b>23,733</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-24, run <code>national-20261024b-04-coquimbo</code>)</span>: 1 page unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata has no population figure for this comuna; Census 2024 counted 118,696. The drafts give the Census 2024 count, 118,696, cited to INE. <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q23660217</span><span class="links"><a href="https://www.wikidata.org/wiki/Q23660217#P1082" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_cc2646e831fae9e2">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+<span class="label">no population statement</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata has no population figure for this comuna; Census 2024 counted 118,696.</p>
+        <dl class="facts">
+<dt>INE figures</dt><dd>INE Censo 2024: <b>118,696</b></dd><dt>Correction</dt><dd>Update to 118,696 (INE Census 2024)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.95</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-04301-wikidata">Copy</button><pre id="draft-04301-wikidata">Q23660217|P1082|118696|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|&#34;https://censo2024.ine.gob.cl/resultados/&#34;|S813|+2026-10-24T00:00:00Z/11</pre></div>
+<p class="summary-line"><span>Edit summary</span>Add Census 2024 population (118,696) from INE</p><ul class="plain"><li>QuickStatements can&#39;t set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.</li></ul><div class="links"><a href="https://quickstatements.toolforge.org/#/v1=Q23660217%7CP1082%7C118696%7CP585%7C%2B2024-00-00T00%3A00%3A00Z%2F9%7CP459%7CQ39825%7CS854%7C%22https%3A%2F%2Fcenso2024.ine.gob.cl%2Fresultados%2F%22%7CS813%7C%2B2026-10-24T00%3A00%3A00Z%2F11" rel="noopener" target="_blank">open in QuickStatements (review before running)</a></div>      </div>
+    </section>
+
+  </article>
+  <p class="empty" id="no-match" hidden>No comuna matches the filter.</p>
+</main>
+<footer><div class="wrap">
+<p>Agent trace: <code>logs/trace-national-20261024c-04-coquimbo.jsonl</code> · World Model audit log: <code>logs/world-model-national-20261024c-04-coquimbo.jsonl</code> (630 entries) · result: <code>output/national-20261024c-04-coquimbo/result.json</code></p>  <p>Official figures: INE (Instituto Nacional de Estadísticas), CC BY-SA 4.0. Wikipedia text: CC BY-SA 4.0. Wikidata: CC0. Generated by FactSync Chile, 2026-10-24 17:55 UTC.</p>
+</div></footer>
+<script>
+(function () {
+  document.querySelectorAll("button.copy").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var text = document.getElementById(button.dataset.copy).textContent;
+      var done = function () { button.textContent = "Copied"; setTimeout(function () { button.textContent = "Copy"; }, 1500); };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done);
+      } else {
+        var area = document.createElement("textarea");
+        area.value = text; document.body.appendChild(area); area.select();
+        try { document.execCommand("copy"); done(); } finally { document.body.removeChild(area); }
+      }
+    });
+  });
+  var input = document.getElementById("filter-text");
+  if (!input) return;
+  var mode = "all";
+  var cards = Array.prototype.slice.call(document.querySelectorAll("article.comuna"));
+  function apply() {
+    var text = input.value.trim().toLowerCase(), shown = 0;
+    cards.forEach(function (card) {
+      var visible = (!text || card.dataset.name.indexOf(text) >= 0)
+        && (mode === "all" || (mode === "review" && card.dataset.review === "yes") || (mode === "drafts" && card.dataset.drafts === "yes"));
+      card.hidden = !visible;
+      if (visible) shown++;
+    });
+    document.getElementById("no-match").hidden = shown > 0 || !cards.length;
+  }
+  input.addEventListener("input", apply);
+  document.querySelectorAll(".filters button").forEach(function (button) {
+    button.addEventListener("click", function () {
+      mode = button.dataset.filter;
+      document.querySelectorAll(".filters button").forEach(function (b) { b.setAttribute("aria-pressed", String(b === button)); });
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>
