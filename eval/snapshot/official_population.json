@@ -1,0 +1,4312 @@
+{
+ "view": "factsync.official_population",
+ "queries": [
+  "SELECT cut, comuna, series, source, definition, scope, reference_year, population FROM factsync.official_population WHERE series = 'official_census' AND cut IN ('03102', '04202', '05606', '07203', '08110', '08301', '09106', '10401', '13201', '13501', '16304')",
+  "SELECT cut, comuna, series, source, definition, scope, reference_year, population FROM factsync.official_population WHERE series = 'official_projections' AND cut IN ('03102', '04202', '05606', '07203', '08110', '08301', '09106', '10401', '13201', '13501', '16304')",
+  "SELECT cut, comuna, series, source, definition, scope, reference_year, population FROM factsync.official_population WHERE series = 'official_census2002' AND cut IN ('03102', '04202', '05606', '07203', '08110', '08301', '09106', '10401', '13201', '13501', '16304')",
+  "SELECT cut, comuna, series, source, definition, scope, reference_year, population FROM factsync.official_population WHERE series = 'official_census2017_area' AND cut IN ('03102', '04202', '05606', '07203', '08110', '08301', '09106', '10401', '13201', '13501', '16304')"
+ ],
+ "columns": [
+  "cut",
+  "comuna",
+  "series",
+  "source",
+  "definition",
+  "scope",
+  "reference_year",
+  "population"
+ ],
+ "rows": [
+  [
+   "03102",
+   "CALDERA",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "18805"
+  ],
+  [
+   "04202",
+   "CANELA",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "9639"
+  ],
+  [
+   "05606",
+   "SANTO DOMINGO",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "13171"
+  ],
+  [
+   "07203",
+   "PELLUHUE",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "8578"
+  ],
+  [
+   "08110",
+   "TALCAHUANO",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "147322"
+  ],
+  [
+   "08301",
+   "LOS ÁNGELES",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "219441"
+  ],
+  [
+   "09106",
+   "GALVARINO",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "12710"
+  ],
+  [
+   "13201",
+   "PUENTE ALTO",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "568086"
+  ],
+  [
+   "13501",
+   "MELIPILLA",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "136325"
+  ],
+  [
+   "16304",
+   "SAN FABIÁN",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "5245"
+  ],
+  [
+   "10401",
+   "CHAITÉN",
+   "official_census",
+   "INE Censo 2024",
+   "census",
+   "comuna",
+   "2024",
+   "4025"
+  ],
+  [
+   "03102",
+   "CALDERA",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "17662"
+  ],
+  [
+   "04202",
+   "CANELA",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "9093"
+  ],
+  [
+   "05606",
+   "SANTO DOMINGO",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "10900"
+  ],
+  [
+   "13201",
+   "PUENTE ALTO",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "568106"
+  ],
+  [
+   "13501",
+   "MELIPILLA",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "123627"
+  ],
+  [
+   "07203",
+   "PELLUHUE",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "7571"
+  ],
+  [
+   "16304",
+   "SAN FABIÁN",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "4308"
+  ],
+  [
+   "08110",
+   "TALCAHUANO",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "151749"
+  ],
+  [
+   "08301",
+   "LOS ÁNGELES",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "202331"
+  ],
+  [
+   "09106",
+   "GALVARINO",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "11996"
+  ],
+  [
+   "10401",
+   "CHAITÉN",
+   "official_census",
+   "INE Censo 2017",
+   "census",
+   "comuna",
+   "2017",
+   "5071"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "13801"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "14213"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "14593"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "14953"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "15307"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "15656"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "15998"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "16337"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "16669"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "16996"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "17300"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "17586"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "17869"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "18124"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "18362"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "18582"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "18861"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "19149"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "19426"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "19612"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "19746"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "19860"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "19964"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "20057"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "20141"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "20215"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "20281"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "20339"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "20388"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "20433"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "20468"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "20497"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "20519"
+  ],
+  [
+   "03102",
+   "Caldera",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "20535"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "9765"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "9700"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "9639"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "9584"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "9537"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "9494"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "9463"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "9445"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "9433"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "9428"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "9429"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "9428"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "9433"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "9443"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "9446"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "9456"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "9485"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "9516"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "9546"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "9548"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "9537"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "9524"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "9509"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "9494"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "9478"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "9462"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "9446"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "9429"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "9411"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "9394"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "9377"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "9358"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "9339"
+  ],
+  [
+   "04202",
+   "Canela",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "9319"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "7564"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "7838"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "8107"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "8369"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "8627"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "8882"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "9137"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "9389"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "9635"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "9880"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "10121"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "10347"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "10570"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "10792"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "11006"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "11231"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "11467"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "11703"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "11934"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "12126"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "12295"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "12456"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "12609"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "12758"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "12900"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "13037"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "13167"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "13293"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "13413"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "13527"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "13637"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "13743"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "13843"
+  ],
+  [
+   "05606",
+   "Santo Domingo",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "13938"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "6425"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "6505"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "6585"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "6663"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "6743"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "6824"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "6909"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "6999"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "7090"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "7182"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "7270"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "7362"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "7451"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "7556"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "7656"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "7763"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "7872"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "7983"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "8092"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "8187"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "8276"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "8361"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "8444"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "8526"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "8606"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "8684"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "8760"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "8833"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "8905"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "8976"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "9043"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "9109"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "9172"
+  ],
+  [
+   "07203",
+   "Pelluhue",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "9232"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "169916"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "167767"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "165863"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "164193"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "162764"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "161625"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "160690"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "159975"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "159438"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "159080"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "158749"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "158417"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "158202"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "158102"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "158066"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "158038"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "158087"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "158203"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "158345"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "158347"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "158285"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "158222"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "158167"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "158114"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "158061"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "158000"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "157927"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "157841"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "157737"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "157622"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "157487"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "157331"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "157148"
+  ],
+  [
+   "08110",
+   "Talcahuano",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "156940"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "174082"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "177521"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "180700"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "183670"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "186495"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "189284"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "191984"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "194650"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "197269"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "199867"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "202284"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "204496"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "206672"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "208833"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "210920"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "212875"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "214799"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "216695"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "218515"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "220030"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "221361"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "222593"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "223751"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "224828"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "225833"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "226749"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "227589"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "228341"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "229012"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "229615"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "230137"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "230578"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "230941"
+  ],
+  [
+   "08301",
+   "Los Angeles",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "231220"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "13094"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "13019"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "12952"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "12890"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "12834"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "12790"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "12753"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "12729"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "12706"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "12692"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "12679"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "12659"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "12644"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "12637"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "12631"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "12628"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "12628"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "12630"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "12633"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "12623"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "12606"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "12588"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "12568"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "12548"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "12528"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "12507"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "12484"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "12460"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "12434"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "12408"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "12380"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "12352"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "12320"
+  ],
+  [
+   "09106",
+   "Galvarino",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "12287"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "7178"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "6561"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "6132"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "5817"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "5585"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "5410"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "5289"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "5200"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "5128"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "5082"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "5048"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "5012"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "4993"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "4981"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "4977"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "4980"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "4988"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "5001"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "5020"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "5033"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "5050"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "5061"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "5078"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "5094"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "5113"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "5126"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "5145"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "5169"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "5187"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "5205"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "5225"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "5243"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "5261"
+  ],
+  [
+   "10401",
+   "Chaitén",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "5278"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "509453"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "516414"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "523641"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "530614"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "537475"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "544315"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "551202"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "557972"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "564547"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "570891"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "576972"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "582478"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "587905"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "593362"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "598765"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "604744"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "615557"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "629743"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "645909"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "655033"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "660361"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "664370"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "667904"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "671142"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "674064"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "676662"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "678917"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "680830"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "682391"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "683641"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "684567"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "685148"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "685402"
+  ],
+  [
+   "13201",
+   "Puente Alto",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "685324"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "97335"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "100292"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "103023"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "105613"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "108129"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "110603"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "113062"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "115478"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "117836"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "120152"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "122406"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "124500"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "126601"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "128701"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "130840"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "133232"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "135945"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "138793"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "141612"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "143779"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "145583"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "147275"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "148899"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "150466"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "151963"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "153408"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "154771"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "156068"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "157297"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "158461"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "159543"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "160560"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "161497"
+  ],
+  [
+   "13501",
+   "Melipilla",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "162362"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2002",
+   "3700"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2003",
+   "3761"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2004",
+   "3825"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2005",
+   "3882"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2006",
+   "3941"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2007",
+   "4000"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2008",
+   "4056"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2009",
+   "4115"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2010",
+   "4170"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2011",
+   "4225"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2012",
+   "4276"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2013",
+   "4323"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2014",
+   "4369"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2015",
+   "4417"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2016",
+   "4466"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2017",
+   "4513"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2018",
+   "4561"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2019",
+   "4607"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2020",
+   "4654"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2021",
+   "4693"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2022",
+   "4728"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2023",
+   "4761"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2024",
+   "4793"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2025",
+   "4823"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2026",
+   "4851"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2027",
+   "4878"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2028",
+   "4904"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2029",
+   "4929"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2030",
+   "4952"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2031",
+   "4974"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2032",
+   "4995"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2033",
+   "5014"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2034",
+   "5032"
+  ],
+  [
+   "16304",
+   "San Fabián",
+   "official_projections",
+   "INE Proyecciones base 2017",
+   "projection",
+   "comuna",
+   "2035",
+   "5047"
+  ],
+  [
+   "03102",
+   "CALDERA",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "13734"
+  ],
+  [
+   "04202",
+   "CANELA",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "9379"
+  ],
+  [
+   "05606",
+   "SANTO DOMINGO",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "7418"
+  ],
+  [
+   "07203",
+   "PELLUHUE",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "6414"
+  ],
+  [
+   "08110",
+   "TALCAHUANO",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "163626"
+  ],
+  [
+   "08301",
+   "LOS ÁNGELES",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "166556"
+  ],
+  [
+   "09106",
+   "GALVARINO",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "12596"
+  ],
+  [
+   "10401",
+   "CHAITÉN",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "7182"
+  ],
+  [
+   "13201",
+   "PUENTE ALTO",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "493722"
+  ],
+  [
+   "13501",
+   "MELIPILLA",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "94540"
+  ],
+  [
+   "16304",
+   "SAN FABIÁN",
+   "official_census2002",
+   "INE Censo 2002",
+   "census",
+   "comuna",
+   "2002",
+   "3646"
+  ],
+  [
+   "16304",
+   "SAN FABIÁN",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "1694"
+  ],
+  [
+   "16304",
+   "SAN FABIÁN",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "2614"
+  ],
+  [
+   "10401",
+   "CHAITÉN",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "1643"
+  ],
+  [
+   "10401",
+   "CHAITÉN",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "3428"
+  ],
+  [
+   "07203",
+   "PELLUHUE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "4081"
+  ],
+  [
+   "07203",
+   "PELLUHUE",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "3490"
+  ],
+  [
+   "04202",
+   "CANELA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "1960"
+  ],
+  [
+   "04202",
+   "CANELA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "7133"
+  ],
+  [
+   "05606",
+   "SANTO DOMINGO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "6216"
+  ],
+  [
+   "05606",
+   "SANTO DOMINGO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "4684"
+  ],
+  [
+   "09106",
+   "GALVARINO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "4149"
+  ],
+  [
+   "09106",
+   "GALVARINO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "7847"
+  ],
+  [
+   "03102",
+   "CALDERA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "15775"
+  ],
+  [
+   "03102",
+   "CALDERA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "1887"
+  ],
+  [
+   "13501",
+   "MELIPILLA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "84724"
+  ],
+  [
+   "13501",
+   "MELIPILLA",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "38903"
+  ],
+  [
+   "08110",
+   "TALCAHUANO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "150320"
+  ],
+  [
+   "08110",
+   "TALCAHUANO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "1429"
+  ],
+  [
+   "08301",
+   "LOS ÁNGELES",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "151087"
+  ],
+  [
+   "08301",
+   "LOS ÁNGELES",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "51244"
+  ],
+  [
+   "13201",
+   "PUENTE ALTO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "urban",
+   "2017",
+   "568094"
+  ],
+  [
+   "13201",
+   "PUENTE ALTO",
+   "official_census2017_area",
+   "INE Censo 2017",
+   "census",
+   "rural",
+   "2017",
+   "12"
+  ]
+ ],
+ "recorded_at": "2026-10-24T17:41:07Z"
+}

@@ -27,3 +27,7 @@ FactSync's agents have two ways of working. Every step has a deterministic path 
 ## Limits
 
 One recorded input, a few comunas chosen because they are rich in hard cases (and two plain ones), one model run. The model's output varies between runs, so this measures one run of it, not its average. The numbers say what the model changed here, not FactSync's accuracy over the country.
+
+## Licences
+
+`snapshot/` holds rows of the Zetaris views as recorded: INE figures ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)), Wikidata statements ([CC0](https://creativecommons.org/publicdomain/zero/1.0/)) and Wikipedia article text ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)). Each article row names its title and revision, whose history lists its authors.

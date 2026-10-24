@@ -1,0 +1,1744 @@
+{
+ "view": "factsync.ine_census2024",
+ "queries": [
+  "SELECT cut, comuna, region FROM factsync.ine_census2024"
+ ],
+ "columns": [
+  "cut",
+  "comuna",
+  "region"
+ ],
+ "rows": [
+  [
+   "01101",
+   "IQUIQUE",
+   "REGIÓN DE TARAPACÁ"
+  ],
+  [
+   "01107",
+   "ALTO HOSPICIO",
+   "REGIÓN DE TARAPACÁ"
+  ],
+  [
+   "01401",
+   "POZO ALMONTE",
+   "REGIÓN DE TARAPACÁ"
+  ],
+  [
+   "01402",
+   "CAMIÑA",
+   "REGIÓN DE TARAPACÁ"
+  ],
+  [
+   "01403",
+   "COLCHANE",
+   "REGIÓN DE TARAPACÁ"
+  ],
+  [
+   "01404",
+   "HUARA",
+   "REGIÓN DE TARAPACÁ"
+  ],
+  [
+   "01405",
+   "PICA",
+   "REGIÓN DE TARAPACÁ"
+  ],
+  [
+   "02101",
+   "ANTOFAGASTA",
+   "REGIÓN DE ANTOFAGASTA"
+  ],
+  [
+   "02102",
+   "MEJILLONES",
+   "REGIÓN DE ANTOFAGASTA"
+  ],
+  [
+   "02103",
+   "SIERRA GORDA",
+   "REGIÓN DE ANTOFAGASTA"
+  ],
+  [
+   "02104",
+   "TALTAL",
+   "REGIÓN DE ANTOFAGASTA"
+  ],
+  [
+   "02201",
+   "CALAMA",
+   "REGIÓN DE ANTOFAGASTA"
+  ],
+  [
+   "02202",
+   "OLLAGÜE",
+   "REGIÓN DE ANTOFAGASTA"
+  ],
+  [
+   "02203",
+   "SAN PEDRO DE ATACAMA",
+   "REGIÓN DE ANTOFAGASTA"
+  ],
+  [
+   "02301",
+   "TOCOPILLA",
+   "REGIÓN DE ANTOFAGASTA"
+  ],
+  [
+   "02302",
+   "MARÍA ELENA",
+   "REGIÓN DE ANTOFAGASTA"
+  ],
+  [
+   "03101",
+   "COPIAPÓ",
+   "REGIÓN DE ATACAMA"
+  ],
+  [
+   "03102",
+   "CALDERA",
+   "REGIÓN DE ATACAMA"
+  ],
+  [
+   "03103",
+   "TIERRA AMARILLA",
+   "REGIÓN DE ATACAMA"
+  ],
+  [
+   "03201",
+   "CHAÑARAL",
+   "REGIÓN DE ATACAMA"
+  ],
+  [
+   "03202",
+   "DIEGO DE ALMAGRO",
+   "REGIÓN DE ATACAMA"
+  ],
+  [
+   "03301",
+   "VALLENAR",
+   "REGIÓN DE ATACAMA"
+  ],
+  [
+   "03302",
+   "ALTO DEL CARMEN",
+   "REGIÓN DE ATACAMA"
+  ],
+  [
+   "03303",
+   "FREIRINA",
+   "REGIÓN DE ATACAMA"
+  ],
+  [
+   "03304",
+   "HUASCO",
+   "REGIÓN DE ATACAMA"
+  ],
+  [
+   "04101",
+   "LA SERENA",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04102",
+   "COQUIMBO",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04103",
+   "ANDACOLLO",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04104",
+   "LA HIGUERA",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04105",
+   "PAIHUANO",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04106",
+   "VICUÑA",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04201",
+   "ILLAPEL",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04202",
+   "CANELA",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04203",
+   "LOS VILOS",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04204",
+   "SALAMANCA",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04301",
+   "OVALLE",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04302",
+   "COMBARBALÁ",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04303",
+   "MONTE PATRIA",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04304",
+   "PUNITAQUI",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "04305",
+   "RÍO HURTADO",
+   "REGIÓN DE COQUIMBO"
+  ],
+  [
+   "05101",
+   "VALPARAÍSO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05102",
+   "CASABLANCA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05103",
+   "CONCÓN",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05104",
+   "JUAN FERNÁNDEZ",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05105",
+   "PUCHUNCAVÍ",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05107",
+   "QUINTERO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05109",
+   "VIÑA DEL MAR",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05201",
+   "ISLA DE PASCUA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05301",
+   "LOS ANDES",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05302",
+   "CALLE LARGA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05303",
+   "RINCONADA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05304",
+   "SAN ESTEBAN",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05401",
+   "LA LIGUA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05402",
+   "CABILDO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05403",
+   "PAPUDO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05404",
+   "PETORCA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05405",
+   "ZAPALLAR",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05501",
+   "QUILLOTA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05502",
+   "CALERA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05503",
+   "HIJUELAS",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05504",
+   "LA CRUZ",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05506",
+   "NOGALES",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05601",
+   "SAN ANTONIO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05602",
+   "ALGARROBO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05603",
+   "CARTAGENA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05604",
+   "EL QUISCO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05605",
+   "EL TABO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05606",
+   "SANTO DOMINGO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05701",
+   "SAN FELIPE",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05702",
+   "CATEMU",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05703",
+   "LLAILLAY",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05704",
+   "PANQUEHUE",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05705",
+   "PUTAENDO",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05706",
+   "SANTA MARÍA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05801",
+   "QUILPUÉ",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05802",
+   "LIMACHE",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05803",
+   "OLMUÉ",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "05804",
+   "VILLA ALEMANA",
+   "REGIÓN DE VALPARAÍSO"
+  ],
+  [
+   "06101",
+   "RANCAGUA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06102",
+   "CODEGUA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06103",
+   "COINCO",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06104",
+   "COLTAUCO",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06105",
+   "DOÑIHUE",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06106",
+   "GRANEROS",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06107",
+   "LAS CABRAS",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06108",
+   "MACHALÍ",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06109",
+   "MALLOA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06110",
+   "MOSTAZAL",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06111",
+   "OLIVAR",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06112",
+   "PEUMO",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06113",
+   "PICHIDEGUA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06114",
+   "QUINTA DE TILCOCO",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06115",
+   "RENGO",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06116",
+   "REQUÍNOA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06117",
+   "SAN VICENTE",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06201",
+   "PICHILEMU",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06202",
+   "LA ESTRELLA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06203",
+   "LITUECHE",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06204",
+   "MARCHIHUE",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06205",
+   "NAVIDAD",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06206",
+   "PAREDONES",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06301",
+   "SAN FERNANDO",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06302",
+   "CHÉPICA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06303",
+   "CHIMBARONGO",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06304",
+   "LOLOL",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06305",
+   "NANCAGUA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06306",
+   "PALMILLA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06307",
+   "PERALILLO",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06308",
+   "PLACILLA",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06309",
+   "PUMANQUE",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "06310",
+   "SANTA CRUZ",
+   "REGIÓN DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+  ],
+  [
+   "07101",
+   "TALCA",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07102",
+   "CONSTITUCIÓN",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07103",
+   "CUREPTO",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07104",
+   "EMPEDRADO",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07105",
+   "MAULE",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07106",
+   "PELARCO",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07107",
+   "PENCAHUE",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07108",
+   "RÍO CLARO",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07109",
+   "SAN CLEMENTE",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07110",
+   "SAN RAFAEL",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07201",
+   "CAUQUENES",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07202",
+   "CHANCO",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07203",
+   "PELLUHUE",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07301",
+   "CURICÓ",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07302",
+   "HUALAÑÉ",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07303",
+   "LICANTÉN",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07304",
+   "MOLINA",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07305",
+   "RAUCO",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07306",
+   "ROMERAL",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07307",
+   "SAGRADA FAMILIA",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07308",
+   "TENO",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07309",
+   "VICHUQUÉN",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07401",
+   "LINARES",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07402",
+   "COLBÚN",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07403",
+   "LONGAVÍ",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07404",
+   "PARRAL",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07405",
+   "RETIRO",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07406",
+   "SAN JAVIER",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07407",
+   "VILLA ALEGRE",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "07408",
+   "YERBAS BUENAS",
+   "REGIÓN DEL MAULE"
+  ],
+  [
+   "08101",
+   "CONCEPCIÓN",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08102",
+   "CORONEL",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08103",
+   "CHIGUAYANTE",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08104",
+   "FLORIDA",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08105",
+   "HUALQUI",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08106",
+   "LOTA",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08107",
+   "PENCO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08108",
+   "SAN PEDRO DE LA PAZ",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08109",
+   "SANTA JUANA",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08110",
+   "TALCAHUANO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08111",
+   "TOMÉ",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08112",
+   "HUALPÉN",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08201",
+   "LEBU",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08202",
+   "ARAUCO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08203",
+   "CAÑETE",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08204",
+   "CONTULMO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08205",
+   "CURANILAHUE",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08206",
+   "LOS ÁLAMOS",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08207",
+   "TIRÚA",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08301",
+   "LOS ÁNGELES",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08302",
+   "ANTUCO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08303",
+   "CABRERO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08304",
+   "LAJA",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08305",
+   "MULCHÉN",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08306",
+   "NACIMIENTO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08307",
+   "NEGRETE",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08308",
+   "QUILACO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08309",
+   "QUILLECO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08310",
+   "SAN ROSENDO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08311",
+   "SANTA BÁRBARA",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08312",
+   "TUCAPEL",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08313",
+   "YUMBEL",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "08314",
+   "ALTO BIOBÍO",
+   "REGIÓN DEL BIOBÍO"
+  ],
+  [
+   "09101",
+   "TEMUCO",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09102",
+   "CARAHUE",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09103",
+   "CUNCO",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09104",
+   "CURARREHUE",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09105",
+   "FREIRE",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09106",
+   "GALVARINO",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09107",
+   "GORBEA",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09108",
+   "LAUTARO",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09109",
+   "LONCOCHE",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09110",
+   "MELIPEUCO",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09111",
+   "NUEVA IMPERIAL",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09112",
+   "PADRE LAS CASAS",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09113",
+   "PERQUENCO",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09114",
+   "PITRUFQUÉN",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09115",
+   "PUCÓN",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09116",
+   "SAAVEDRA",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09117",
+   "TEODORO SCHMIDT",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09118",
+   "TOLTÉN",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09119",
+   "VILCÚN",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09120",
+   "VILLARRICA",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09121",
+   "CHOLCHOL",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09201",
+   "ANGOL",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09202",
+   "COLLIPULLI",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09203",
+   "CURACAUTÍN",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09204",
+   "ERCILLA",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09205",
+   "LONQUIMAY",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09206",
+   "LOS SAUCES",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09207",
+   "LUMACO",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09208",
+   "PURÉN",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09209",
+   "RENAICO",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09210",
+   "TRAIGUÉN",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "09211",
+   "VICTORIA",
+   "REGIÓN DE LA ARAUCANÍA"
+  ],
+  [
+   "10101",
+   "PUERTO MONTT",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10103",
+   "COCHAMÓ",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10104",
+   "FRESIA",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10105",
+   "FRUTILLAR",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10106",
+   "LOS MUERMOS",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10107",
+   "LLANQUIHUE",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10201",
+   "CASTRO",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10205",
+   "DALCAHUE",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10206",
+   "PUQUELDÓN",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10210",
+   "QUINCHAO",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10301",
+   "OSORNO",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10302",
+   "PUERTO OCTAY",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10303",
+   "PURRANQUE",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10304",
+   "PUYEHUE",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10305",
+   "RÍO NEGRO",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10306",
+   "SAN JUAN DE LA COSTA",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10307",
+   "SAN PABLO",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10402",
+   "FUTALEUFÚ",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10404",
+   "PALENA",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "11101",
+   "COYHAIQUE",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "11102",
+   "LAGO VERDE",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "11301",
+   "COCHRANE",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "11302",
+   "O'HIGGINS",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "11401",
+   "CHILE CHICO",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "11402",
+   "RÍO IBÁÑEZ",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "12102",
+   "LAGUNA BLANCA",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "12402",
+   "TORRES DEL PAINE",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "13107",
+   "HUECHURABA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13110",
+   "LA FLORIDA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13114",
+   "LAS CONDES",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13115",
+   "LO BARNECHEA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13119",
+   "MAIPÚ",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13122",
+   "PEÑALOLÉN",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13124",
+   "PUDAHUEL",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13125",
+   "QUILICURA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13201",
+   "PUENTE ALTO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13202",
+   "PIRQUE",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13203",
+   "SAN JOSÉ DE MAIPO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13301",
+   "COLINA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13302",
+   "LAMPA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13303",
+   "TILTIL",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13401",
+   "SAN BERNARDO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13402",
+   "BUIN",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13403",
+   "CALERA DE TANGO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13404",
+   "PAINE",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13501",
+   "MELIPILLA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13502",
+   "ALHUÉ",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13503",
+   "CURACAVÍ",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13504",
+   "MARÍA PINTO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13505",
+   "SAN PEDRO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13601",
+   "TALAGANTE",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13602",
+   "EL MONTE",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13603",
+   "ISLA DE MAIPO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13604",
+   "PADRE HURTADO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13605",
+   "PEÑAFLOR",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "14101",
+   "VALDIVIA",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14102",
+   "CORRAL",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14103",
+   "LANCO",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14104",
+   "LOS LAGOS",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14105",
+   "MÁFIL",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14106",
+   "MARIQUINA",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14107",
+   "PAILLACO",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14108",
+   "PANGUIPULLI",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14201",
+   "LA UNIÓN",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14202",
+   "FUTRONO",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14203",
+   "LAGO RANCO",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "14204",
+   "RÍO BUENO",
+   "REGIÓN DE LOS RÍOS"
+  ],
+  [
+   "15101",
+   "ARICA",
+   "REGIÓN DE ARICA Y PARINACOTA"
+  ],
+  [
+   "15102",
+   "CAMARONES",
+   "REGIÓN DE ARICA Y PARINACOTA"
+  ],
+  [
+   "15201",
+   "PUTRE",
+   "REGIÓN DE ARICA Y PARINACOTA"
+  ],
+  [
+   "15202",
+   "GENERAL LAGOS",
+   "REGIÓN DE ARICA Y PARINACOTA"
+  ],
+  [
+   "16101",
+   "CHILLÁN",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16102",
+   "BULNES",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16103",
+   "CHILLÁN VIEJO",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16104",
+   "EL CARMEN",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16105",
+   "PEMUCO",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16106",
+   "PINTO",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16107",
+   "QUILLÓN",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16108",
+   "SAN IGNACIO",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16109",
+   "YUNGAY",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16201",
+   "QUIRIHUE",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16202",
+   "COBQUECURA",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16203",
+   "COELEMU",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16204",
+   "NINHUE",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16205",
+   "PORTEZUELO",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16206",
+   "RÁNQUIL",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16207",
+   "TREHUACO",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16301",
+   "SAN CARLOS",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16302",
+   "COIHUECO",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16303",
+   "ÑIQUÉN",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16304",
+   "SAN FABIÁN",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "16305",
+   "SAN NICOLÁS",
+   "REGIÓN DE ÑUBLE"
+  ],
+  [
+   "11201",
+   "AYSÉN",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "11202",
+   "CISNES",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "11203",
+   "GUAITECAS",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "11303",
+   "TORTEL",
+   "REGIÓN DE AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+  ],
+  [
+   "12101",
+   "PUNTA ARENAS",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "12103",
+   "RÍO VERDE",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "12104",
+   "SAN GREGORIO",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "12201",
+   "CABO DE HORNOS",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "12301",
+   "PORVENIR",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "12302",
+   "PRIMAVERA",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "12303",
+   "TIMAUKEL",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "12401",
+   "NATALES",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ],
+  [
+   "13101",
+   "SANTIAGO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13102",
+   "CERRILLOS",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13103",
+   "CERRO NAVIA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13104",
+   "CONCHALÍ",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13105",
+   "EL BOSQUE",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13106",
+   "ESTACIÓN CENTRAL",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13108",
+   "INDEPENDENCIA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13109",
+   "LA CISTERNA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13111",
+   "LA GRANJA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13112",
+   "LA PINTANA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13113",
+   "LA REINA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13116",
+   "LO ESPEJO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13117",
+   "LO PRADO",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13118",
+   "MACUL",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13120",
+   "ÑUÑOA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13121",
+   "PEDRO AGUIRRE CERDA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13123",
+   "PROVIDENCIA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13126",
+   "QUINTA NORMAL",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13127",
+   "RECOLETA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13128",
+   "RENCA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13129",
+   "SAN JOAQUÍN",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13130",
+   "SAN MIGUEL",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13131",
+   "SAN RAMÓN",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "13132",
+   "VITACURA",
+   "REGIÓN METROPOLITANA DE SANTIAGO"
+  ],
+  [
+   "10401",
+   "CHAITÉN",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10403",
+   "HUALAIHUÉ",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10209",
+   "QUEMCHI",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10208",
+   "QUELLÓN",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10207",
+   "QUEILÉN",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10203",
+   "CHONCHI",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10204",
+   "CURACO DE VÉLEZ",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10202",
+   "ANCUD",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10108",
+   "MAULLÍN",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10109",
+   "PUERTO VARAS",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "10102",
+   "CALBUCO",
+   "REGIÓN DE LOS LAGOS"
+  ],
+  [
+   "12202",
+   "ANTÁRTICA",
+   "REGIÓN DE MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+  ]
+ ],
+ "recorded_at": "2026-10-24T17:41:07Z"
+}

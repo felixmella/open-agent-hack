@@ -1,0 +1,40 @@
+{
+ "recorded_at": "2026-10-24T17:41:07Z",
+ "recorded_by": "scripts/snapshot_sample_data.py",
+ "examples": {
+  "scope.json": [
+   "09106",
+   "13501",
+   "08110",
+   "04202",
+   "10401",
+   "08301",
+   "07203",
+   "13201",
+   "05606",
+   "16304",
+   "03102"
+  ]
+ },
+ "comunas": {
+  "03102": "CALDERA",
+  "04202": "CANELA",
+  "05606": "SANTO DOMINGO",
+  "07203": "PELLUHUE",
+  "08110": "TALCAHUANO",
+  "08301": "LOS ÁNGELES",
+  "09106": "GALVARINO",
+  "10401": "CHAITÉN",
+  "13201": "PUENTE ALTO",
+  "13501": "MELIPILLA",
+  "16304": "SAN FABIÁN"
+ },
+ "views": {
+  "factsync.enwiki_infobox": "enwiki_infobox.json",
+  "factsync.eswiki_infobox": "eswiki_infobox.json",
+  "factsync.ine_census2024": "ine_census2024.json",
+  "factsync.official_population": "official_population.json",
+  "factsync.source_catalog": "source_catalog.json",
+  "factsync.wikidata_population": "wikidata_population.json"
+ }
+}
