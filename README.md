@@ -134,7 +134,7 @@ An input names the comunas to check, by comuna code (CUT), by region, or by name
 
 - `{"scope": {"region": "Aysén"}}` checks a whole region.
 - `{"scope": {"comunas": ["Saavedra (Chile)", "Cholchol"]}}` checks comunas by name.
-- `"use_llm": false` runs every agent on its deterministic path. Useful for fast checks: a live run takes 35–50 s that way, against about 15–20 minutes for example 2 with the model.
+- `"use_llm": false` runs every agent on its deterministic path. Useful for fast checks: a live run takes 35–50 s that way, against about 12 minutes for example 2 with the model (20 model calls).
 - An optional `run_id` names the run.
 
 The examples:
@@ -309,7 +309,7 @@ docs/                  sponsor-technology.md   metadata.json   the project in ma
 ## Limitations
 
 - **One model.** Nightshift routed every request to Nemotron 3.5 Lightning, so all agents use it. There is no separate critic model; the Critic's rubric is code, with the model judging class fit and faithfulness.
-- **Model calls are slow.** Lightning reasons at length, so a call takes 20–80 s, and example 2 with the model takes about 15–20 minutes. `use_llm: false` gives the deterministic result in under a minute. The national numbers above come from that deterministic path.
+- **Model calls are slow.** Lightning reasons at length, so a call takes 20–80 s, and example 2 with the model takes about 12 minutes. `use_llm: false` gives the deterministic result in under a minute. The national numbers above come from that deterministic path.
 - **Coverage of Wikipedia.** FactSync reads the article linked from each comuna's Wikidata item: 294 Spanish and 287 English articles for 346 comunas. A comuna whose item links no article (often because the article is attached to the town's item) isn't read.
 - **What can be checked.** FactSync holds the 2017 and 2024 census counts and reads INE's projections for 2002–2035, Census 2002 and the 2017 urban/rural split when needed. Figures for other years (the 1992 census, for example) are reported as *not checkable* rather than judged. INE's base-2002 projections, which some articles probably quote for 2005–2016, are no longer published by INE, so those figures stay unexplained.
 - **Census 2002 on today's boundaries.** INE's REDATAM gives the 2002 count for today's comunas. Iquique, Santa Bárbara, Nueva Imperial and Talcahuano lost territory to comunas created in 2004, so an article quoting their 2002 count on the old boundaries reads as unexplained.
