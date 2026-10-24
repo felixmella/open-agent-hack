@@ -148,3 +148,29 @@ def test_years_a_cited_reference_names_count_as_evidence():
     assert figures_in("1&nbsp;472 y 10 186 y 2.017") == {1472, 10186, 2017}
     citation = {"kind": "citation", "source": "ine.cl", "location": "infobox reference", "years": [2007]}
     assert 2007 in allowed_figures([citation]) and 2007 not in allowed_figures([])
+
+
+def test_a_wikidata_statement_with_the_right_count_under_the_wrong_date_is_replaced(tmp_path):
+    # Wikidata Mejillones (Q16928): 14,084, Census 2024's count, dated 2020, with no reference
+    world, tracer = WorldModel(), Tracer("t", tmp_path, echo=False)
+    table = {"census": {2017: {"value": 13467, "year": 2017, "obs_id": "c17", "definition": "census"},
+                        2024: {"value": 14084, "year": 2024, "obs_id": "c24", "definition": "census"}}, "projection": {}}
+    statement = {"id": "o1", "target": "wikidata", "source_name": "Wikidata", "location": "statement", "role": "historical",
+                 "value": 14084, "stated_year": 2020, "label": "point in time 2020-01-01", "references": [],
+                 "item": "http://www.wikidata.org/entity/Q16928"}
+    finding = {"id": "f1", "target": "wikidata", "aspect": "value", "class": "mislabelled_vintage", "claim": statement,
+               "explanation": "14,084 is INE's Census 2024 count, but it is labelled 'point in time 2020-01-01'.",
+               "proposal": {"action": "relabel", "value": 14084, "year": 2024, "definition": "census"},
+               "evidence": [{"kind": "official", "value": 14084, "year": 2024}]}
+    correction = {"value": 14084, "year": 2024, "definition": "census", "source_key": "census_2024",
+                  "url": "https://censo2024.ine.gob.cl/resultados/", "obs_id": "c24"}
+    draft = Editor(world, tracer, None, "t").wikidata_draft([finding], correction)
+    remove, add = draft["quickstatements"].splitlines()
+    assert remove == "-Q16928|P1082|14084" and add.startswith("Q16928|P1082|14084|P585|+2024-00-00T00:00:00Z/9|P459|Q39825")
+    assert any("removes that statement" in note for note in draft["notes"])
+    review = Critic(world, tracer, None, "t").review_draft(ComunaState("02102", "MEJILLONES"), "wikidata", draft,
+                                                           "Census 2024 counted 14,084.", finding["evidence"], table, 1)
+    assert review["approved"] and review["checks"]["well_formed"]
+    referenced = {**statement, "references": ["https://www.ine.gob.cl/"]}
+    by_hand = Editor(world, tracer, None, "t").wikidata_draft([{**finding, "claim": referenced}], correction)
+    assert not by_hand["quickstatements"].startswith("-") and any("by hand" in n for n in by_hand["notes"])

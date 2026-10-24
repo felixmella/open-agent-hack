@@ -259,11 +259,14 @@ def assess_figure(claim, table, others):
     if near:
         is_latest = near["year"] == latest["year"]
         records = [table["census"][near["year"]]] + ([latest] if current and not is_latest else [])
-        how, likely = ("one digit", "most likely") if near["slip"] == 1 else ("two neighbouring digits", "possibly")
+        how = "one digit" if near["slip"] == 1 else "two neighbouring digits"
+        # a typo is the likely reading only for one digit, under the census's own year (or no year): Chaitén's
+        # 5,073 labelled 2008 is one digit from the 2017 count, but it would take a wrong year too
+        likely = near["slip"] == 1 and stated in (None, near["year"])
         return verdict("genuine_error", f"{fmt(value)} differs in {how} from INE's Census {near['year']} count, "
-                       f"{fmt(near['value'])}: {likely} a typo." + ("" if is_latest else now),
-                       0.85 if near["slip"] == 1 else 0.6, claim, records, near=near,
-                       ambiguous=near["slip"] == 2, candidates=["genuine_error", "cross_source_mismatch"],
+                       f"{fmt(near['value'])}: {'most likely' if likely else 'possibly'} a typo."
+                       + ("" if is_latest else now), 0.85 if likely else 0.6, claim, records, near=near,
+                       ambiguous=not likely, candidates=["genuine_error", "cross_source_mismatch"],
                        proposal=update_proposal(table) if current else {"action": "fix_figure", "value": near["value"],
                                                                          "year": near["year"], "definition": "census",
                                                                          "obs_id": near["obs_id"],

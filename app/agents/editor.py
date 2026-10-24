@@ -166,15 +166,32 @@ class Editor:
         item = next((f["claim"].get("item") for f in findings if f["claim"].get("item")), None)
         draft = {"target": "wikidata", "page": qid(item), "url": f"https://www.wikidata.org/wiki/{qid(item)}",
                  "correction": correction, "findings": [f["id"] for f in findings], "anchor": findings[0]["claim"]["id"]}
-        draft["quickstatements"] = (
-            f"{qid(item)}|{ids['population']}|{correction['value']}|{ids['point_in_time']}|+{correction['year']}-00-00T00:00:00Z/9"
-            f"|{ids['determination_method']}|{ids['census']}|{ids['reference_url']}|\"{correction['url']}\""
-            f"|{ids['retrieved']}|+{self.today.isoformat()}T00:00:00Z/11")
+        statement = (f"{qid(item)}|{ids['population']}|{correction['value']}|{ids['point_in_time']}"
+                     f"|+{correction['year']}-00-00T00:00:00Z/9|{ids['determination_method']}|{ids['census']}"
+                     f"|{ids['reference_url']}|\"{correction['url']}\"|{ids['retrieved']}|+{self.today.isoformat()}T00:00:00Z/11")
         notes = [f"QuickStatements can't set ranks: after adding the Census {correction['year']} statement, set it to "
                  f"preferred rank so it is used as the current population; leave older statements at normal rank."]
+        # The count may already be there under another point in time (Mejillones: 14,084 dated 2020). QuickStatements
+        # adds qualifiers to a statement with the same value, so that statement would end up with two points in time:
+        # remove it and add it back, unless it has references of its own (then it's a hand edit).
+        misdated = next((f["claim"] for f in findings if f["aspect"] == "value"
+                         and f["claim"].get("location") == "statement" and f["claim"].get("value") == correction["value"]
+                         and f["claim"].get("stated_year") not in (None, correction["year"])), None)
+        if misdated and not misdated.get("references"):
+            draft["quickstatements"] = f"-{qid(item)}|{ids['population']}|{correction['value']}\n{statement}"
+            notes.append(f"Wikidata already has {fmt(correction['value'])}, but dated {misdated.get('label')}: the first "
+                         f"line removes that statement (it has no reference) and the second adds it back with point "
+                         f"in time {correction['year']}, determination method census and INE as its reference.")
+        else:
+            draft["quickstatements"] = statement
+            if misdated:
+                notes.append(f"Wikidata already has {fmt(correction['value'])}, but dated {misdated.get('label')}, with "
+                             f"references of its own: edit that statement by hand (point in time {correction['year']}, "
+                             f"determination method census) instead of running the line above, which would give it "
+                             f"a second point in time.")
         for finding in findings:
             claim, proposal = finding["claim"], finding.get("proposal") or {}
-            if claim["location"] != "statement" or finding["aspect"] != "value":
+            if claim["location"] != "statement" or finding["aspect"] != "value" or claim is misdated:
                 continue
             shown = f"{fmt(claim['value'])} statement ({claim.get('label')})"
             if proposal.get("action") == "relabel":

@@ -82,9 +82,9 @@ def allowed_figures(evidence, extra=()):
 
 
 def needs_source(facts):
-    """Whether a verdict rests on figures not read yet: a figure matching nothing, one possibly a typo (two digits
-    off), or one attributed to a census whose counts weren't read."""
-    return bool(facts) and (facts["unexplained"] or (facts.get("near") or {}).get("slip") == 2
+    """Whether a verdict rests on figures not read yet: a figure matching nothing, one only possibly a typo, or one
+    attributed to a census whose counts weren't read."""
+    return bool(facts) and (facts["unexplained"] or bool(facts.get("near") and facts["ambiguous"])
                             or (facts["class"] == "outdated_vintage" and not facts.get("match")))
 
 
@@ -422,10 +422,11 @@ class Critic:
 
 
 def well_formed(body, target):
-    """Balanced templates and references; for Wikidata, one QuickStatements command per line."""
+    """Balanced templates and references; for Wikidata, one QuickStatements command per line (a leading '-' removes
+    a statement)."""
     if body.count("{{") != body.count("}}") or body.count("<ref") != body.count("</ref>"):
         return False
-    return target != "wikidata" or all(re.match(r"^Q\d+\|P\d+\|", line) for line in body.splitlines() if line)
+    return target != "wikidata" or all(re.match(r"^-?Q\d+\|P\d+\|", line) for line in body.splitlines() if line)
 
 
 def digit_check(finding):

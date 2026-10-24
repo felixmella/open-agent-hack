@@ -25,8 +25,8 @@ critic_instruction.
 JSON: {{"verdicts": [{{"claim_id": "...", "class": "...", "explanation": "one or two sentences", "confidence": 0.5}}]}}"""
 
 CLAIM_FIELDS = ("id", "target", "source_name", "title", "revid", "location", "role", "value", "value_raw", "stated_year",
-                "basis", "label", "quote", "method", "verified", "rank", "item", "statement", "missing", "reference_raw",
-                "field", "value_from", "wikidata_item", "wikidata_statement")
+                "basis", "label", "quote", "method", "verified", "rank", "item", "statement", "references", "missing",
+                "reference_raw", "field", "value_from", "wikidata_item", "wikidata_statement")
 # What the Extractor's code reading of an infobox field carries beyond the SQL reading.
 FIELD_EXTRAS = ("field", "value_from", "missing", "statements", "wikidata_item", "wikidata_statement", "urban_field",
                 "urban_value", "quote")

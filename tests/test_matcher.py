@@ -242,3 +242,10 @@ def test_a_label_naming_a_census_factsync_holds_is_no_lead():
     enwiki = claim(240819, 2017, "census", source="Wikipedia EN", label="2017 Census")
     verdict = assess_value(eswiki, pudahuel, [eswiki, enwiki])
     assert verdict["class"] == "cross_source_mismatch" and verdict["unexplained"] and not verdict.get("related")
+
+
+def test_a_one_digit_slip_under_another_year_is_only_possibly_a_typo():
+    chaiten = table({2017: 5071, 2024: 4025}, {2008: 5289})
+    verdict = assess_value(claim(5073, 2008), chaiten)  # eswiki Chaitén: 5,073 (2008), one digit from the 2017 count
+    assert verdict["class"] == "genuine_error" and "possibly a typo" in verdict["explanation"]
+    assert verdict["ambiguous"] and verdict["confidence"] == 0.6
