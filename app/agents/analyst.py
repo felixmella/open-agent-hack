@@ -3,7 +3,8 @@
 It reads the comuna's context payload from the World Model (official figures, Wikidata statements, Wikipedia claims
 read this run, and the Critic's fixes), runs the deterministic matcher on every claim, and asks the model only about
 the claims the matcher can't settle, all in one call per comuna. Every finding is written back to the World Model as
-an append-only assessment attributed to the Analyst and the round.
+an append-only assessment attributed to the Analyst and the round, and so is every claim it found consistent or
+couldn't check: the comuna's picture in the World Model is built from these.
 """
 import hashlib
 
@@ -166,6 +167,10 @@ class Analyst:
         for finding in findings:
             self.world.assess(finding["claim"]["id"], agent=self.name, run_id=self.run_id, round_no=round_no,
                               data={**finding, "status": "proposed"})
+        for check in checks:  # claims found consistent, not checkable, or not the comuna's figure: verdicts too
+            self.world.assess(check["claim"]["id"], agent=self.name, run_id=self.run_id, round_no=round_no,
+                              data={"check": check["result"], "note": check["note"], "claim": check["claim"],
+                                    "status": "checked"})
         by_class = {}
         for finding in findings:
             by_class[finding["class"]] = by_class.get(finding["class"], 0) + 1

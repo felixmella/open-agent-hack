@@ -42,6 +42,8 @@ SOURCES = {"official_census": "INE census 2017 and 2024", "official_projections"
            "official_census2002": "INE census 2002", "official_census2017_area": "INE census 2017 urban and rural",
            "wikidata": "Wikidata", "wikipedia_es": "Wikipedia (ES)", "wikipedia_en": "Wikipedia (EN)"}
 STATUS_ORDER = {"escalated": 0, "partial": 1, "pending": 2, "approved": 3}
+PAGE_LABELS = {"eswiki": "Spanish Wikipedia infobox", "enwiki": "English Wikipedia infobox", "wikidata": "Wikidata"}
+OUTCOMES = {"fixed": "fixed", "changed": "changed", "new": "not in the last check", "gone": "not read this time"}
 
 
 def figure(value):
@@ -174,6 +176,32 @@ def page_views(comuna):
     return pages
 
 
+def shown(page):
+    """What a page showed as the current population, in a few words."""
+    if not page or page.get("value") is None:
+        return "no figure"
+    return f"{figure(page['value'])}" + (f" ({page['label']})" if page.get("label") else "")
+
+
+def since_view(comuna):
+    """What changed on each page since the previous run that checked the comuna (from the World Model's pictures)."""
+    since = comuna.get("since_last_check")
+    if not since:
+        return None
+    changes, unchanged = [], 0
+    for page, change in (since.get("pages") or {}).items():
+        if change["outcome"] == "unchanged":
+            unchanged += 1
+            continue
+        now = change.get("now") or {}
+        changes.append({"page": PAGE_LABELS.get(page, page), "outcome": change["outcome"],
+                      "outcome_label": OUTCOMES.get(change["outcome"], change["outcome"]),
+                      "before": shown(change.get("before")), "now": shown(now),
+                      "verdict": CLASS_LABELS.get(now.get("verdict"), now.get("verdict"))})
+    return {"previous_run": since["previous_run"], "checked_at": (since.get("checked_at") or "")[:10], "changes": changes,
+            "unchanged": unchanged}
+
+
 def comuna_view(comuna):
     drafts = comuna.get("drafts") or {}
     official = comuna.get("official") or {}
@@ -181,6 +209,8 @@ def comuna_view(comuna):
         "cut": comuna["cut"], "name": title_case(comuna["name"]), "status": comuna["status"],
         "status_label": COMUNA_STATUS.get(comuna["status"], comuna["status"]),
         "census": by_year(official.get("census")), "projection": by_year(official.get("projection")),
+        "areas": [(year, area, value) for area in ("urban", "rural") for year, value in by_year(official.get(area))],
+        "since": since_view(comuna),
         "claims_checked": comuna.get("claims_checked", 0),
         "findings": comuna.get("findings") or [],
         "pages": page_views(comuna),
@@ -256,6 +286,10 @@ def timeline(result):
 def rejection_text(name, review):
     """A Critic rejection in one line: discovery requests by their figures, other fixes by their instruction."""
     fix, rejected = review["fix"], len(review["rejected"])
+    if fix.get("check") == "unchecked_claims" and fix.get("figures"):
+        figures = "; ".join(f"{figure(x['value'])} ({x['source']}, '{x['label']}')" for x in fix["figures"])
+        return (f"held {name} back: {figures} can't be checked with the official figures read, so it sent the "
+                f"Planner to read a source that covers {'it' if len(fix['figures']) == 1 else 'them'}")
     if fix.get("check") == "unread_official_source" and fix.get("figures"):
         figures = "; ".join(f"{figure(x['value'])} ({x['source']}, '{x['label']}')" for x in fix["figures"])
         verb = "match" if len(fix["figures"]) > 1 else "matches"
@@ -279,6 +313,16 @@ def model_line(usage):
     return line
 
 
+def engine_line(world_model):
+    """Which World Model capabilities the run used, and which it didn't."""
+    capabilities = (world_model or {}).get("capabilities")
+    if not capabilities:
+        return None
+    live = ", ".join(f"{name} ({count})" for name, count in capabilities["live"].items())
+    return (f"World Model engine: used {live}." + (f" Dormant in this run: {', '.join(capabilities['dormant'])}."
+                                                  if capabilities["dormant"] else ""))
+
+
 def build_view(result):
     if result.get("status") == "error":
         return {"error": result.get("error") or {}, "result": result}
@@ -292,6 +336,7 @@ def build_view(result):
         "result": result, "summary": summary, "comunas": comunas, "timeline": timeline(result),
         "sources": [(SOURCES.get(s, s), s in discovered) for s in plan.get("sources") or []],
         "model_line": model_line(result.get("model_usage")),
+        "engine_line": engine_line(result.get("world_model")),
         "classes": [(name, CLASS_LABELS[name], TONES[name], CLASSES[name]) for name in CLASSES if name != "consistent"],
         "by_class": [(CLASS_LABELS.get(k, k), TONES.get(k, "slate"), v)
                      for k, v in sorted((summary.get("findings_by_class") or {}).items(), key=lambda kv: -kv[1])],

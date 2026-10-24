@@ -3,6 +3,12 @@
 Canonical entities, an append-only observation log, edges with validity intervals and append-only assessments,
 behind one write path (upsert_entity, ingest, relate, assess) and one read surface (view, context, audit).
 Derived aggregates are rebuilt from the log, never edited in place, and every mutation lands in an ordered audit log.
+
+Consumers can register projections: functions of an entity's observations and assessments that the engine runs
+whenever it rebuilds that entity's derived data (`reproject`), and over the log as it stood at an earlier point
+(`project_as_of`): what consuming agents see, and what they saw then. The audit sequence is the log's clock.
+
+Each instance counts the calls to each capability, so a consumer can report which ones it used (`capabilities`).
 """
 import hashlib
 import json
@@ -37,6 +43,23 @@ def _digest(*parts):
     return hashlib.sha256(dumps(parts).encode("utf-8")).hexdigest()[:24]
 
 
+# The engine's capabilities, as `capabilities()` reports them, with what each one is.
+CAPABILITIES = {
+    "upsert_entity": "canonical entities with stable ids (conformance sid-001, sid-002)",
+    "ingest": "the append-only observation log: extract, normalize, resolve, validate, append, project (idem-001, "
+              "idem-002, prov-001)",
+    "resolve_by_name": "entity resolution by name similarity, in bands (band-001)",
+    "assess": "append-only assessments, attributed to an agent, a run and a round",
+    "context": "budgeted context payloads for agents, with trace metadata",
+    "view:observations": "observations and assessments per entity",
+    "reproject": "derived data rebuilt from the log by registered projections",
+    "project_as_of": "point-in-time reconstruction: the projections over the log as it stood at an earlier point",
+    "export_audit": "the ordered audit log, exported (audit-001)",
+    "relate": "time-bounded relationships between entities (bitemp-001)",
+    "view:graph": "point-in-time graph queries over those relationships (bitemp-001)",
+}
+
+
 def _require_source(source, what):
     if not isinstance(source, dict) or not source.get("kind"):
         raise stages.ProvenanceError(f"{what} without provenance: source.kind is required")
@@ -57,6 +80,8 @@ class WorldModel:
         self.resolver = EntityResolver(self.store, strip_suffixes=strip_suffixes)
         self._clock = clock
         self._listeners = []
+        self._projections = {}
+        self.calls = Counter()
 
     def now(self):
         return _iso(self._clock() if self._clock else datetime.now(timezone.utc))
@@ -76,6 +101,7 @@ class WorldModel:
     # ----- write path -----------------------------------------------------------------------------------------
 
     def upsert_entity(self, *, type, name=None, external_key=None, attrs=None, aliases=None, source=None, actor=None):
+        self.calls["upsert_entity"] += 1
         _require_source(source, "entity write")
         if external_key:
             entity_id = entity_id_from_key(type, external_key["system"], external_key["id"])
@@ -111,6 +137,7 @@ class WorldModel:
         return entity, "updated"
 
     def ingest(self, observations, *, actor="ingest"):
+        self.calls["ingest"] += 1
         result = IngestResult()
         touched = set()
         for raw in observations:
@@ -152,17 +179,57 @@ class WorldModel:
         return result
 
     def _project(self, entity_id):
-        """Rebuild an entity's derived aggregates from its observation log."""
+        """Rebuild an entity's derived data from its log: the counts, then every registered projection."""
         observations = self.store.observations(entity_id)
         times = sorted(t for t in (o["observed_at"] for o in observations) if t)
-        self.store.put_derived(entity_id, {
+        derived = {
             "observation_count": len(observations),
             "by_source_kind": dict(Counter(o["source"]["kind"] for o in observations)),
             "first_observed_at": times[0] if times else None,
             "last_observed_at": times[-1] if times else None,
-        })
+        }
+        if self._projections:
+            assessments = self.store.assessments(entity_id=entity_id)
+            derived["projections"] = {name: fn(observations, assessments) for name, fn in self._projections.items()}
+        self.store.put_derived(entity_id, derived)
+
+    def register_projection(self, name, fn):
+        """Add a projection, `fn(observations, assessments) -> dict` over one entity's log (oldest first). The
+        engine runs it whenever it rebuilds that entity's derived data; its result is never edited in place."""
+        self._projections[name] = fn
+
+    def reproject(self, entity_id, *, actor="world_model"):
+        """Rebuild an entity's derived data now (after assessments, which don't trigger a rebuild by themselves);
+        returns it."""
+        self.calls["reproject"] += 1
+        self._project(entity_id)
+        self._audit(actor, "derived.rebuild", entity_id, {"projections": sorted(self._projections)})
+        self.store.commit()
+        return self.store.get_derived(entity_id)
+
+    def project_as_of(self, entity_id, seq):
+        """The registered projections over the entity's log as it stood at audit sequence `seq`: the observations
+        and assessments appended by then. Nothing is stored."""
+        self.calls["project_as_of"] += 1
+        observations = self.store.observations(entity_id)
+        assessments = self.store.assessments(entity_id=entity_id)
+        written = self.store.written_at([o["id"] for o in observations] + [a["id"] for a in assessments])
+        observations = [o for o in observations if written.get(o["id"], 0) <= seq]
+        assessments = [a for a in assessments if written.get(a["id"], 0) <= seq]
+        return {name: fn(observations, assessments) for name, fn in self._projections.items()}
+
+    def runs(self, entity_id):
+        """The runs that assessed an entity, as (run_id, the audit sequence of the run's last assessment of it),
+        oldest first."""
+        assessments = [a for a in self.store.assessments(entity_id=entity_id) if a["run_id"]]
+        written = self.store.written_at([a["id"] for a in assessments])
+        last = {}
+        for assessment in assessments:
+            last[assessment["run_id"]] = max(last.get(assessment["run_id"], 0), written.get(assessment["id"], 0))
+        return sorted(last.items(), key=lambda run: run[1])
 
     def relate(self, *, from_id, type, to_id, valid_from, valid_to=None, source=None, multi=False, actor=None):
+        self.calls["relate"] += 1
         _require_source(source, "edge write")
         for entity_id in (from_id, to_id):
             if self.store.get_entity(entity_id) is None:
@@ -181,6 +248,7 @@ class WorldModel:
 
     def assess(self, observation_id, *, agent, data, run_id=None, round_no=None):
         """Append an agent's assessment of an observation; later assessments supersede earlier ones."""
+        self.calls["assess"] += 1
         observation = self.store.get_observation(observation_id)
         if observation is None:
             raise KeyError(f"unknown observation {observation_id}")
@@ -200,6 +268,7 @@ class WorldModel:
         views = {"graph": GraphView, "observations": ObservationView}
         if name not in views:
             raise KeyError(f"unknown view {name!r}; available: {sorted(views)}")
+        self.calls[f"view:{name}"] += 1
         return views[name](self.store)
 
     def entity(self, entity_id):
@@ -209,6 +278,7 @@ class WorldModel:
         return self.store.entities(entity_type)
 
     def context(self, entity_id, *, intent, budget_chars=8000, include=None, rank=None):
+        self.calls["context"] += 1
         return build_context(self.store, entity_id, intent=intent, budget_chars=budget_chars, include=include,
                              rank=rank)
 
@@ -217,11 +287,19 @@ class WorldModel:
 
     def export_audit(self, path, since_seq=0):
         """Write the audit entries after `since_seq` to a JSONL file (replacing it); returns how many."""
+        self.calls["export_audit"] += 1
         entries = self.audit(since_seq)
         with Path(path).open("w", encoding="utf-8") as f:
             for entry in entries:
                 f.write(json.dumps(entry, ensure_ascii=False, default=str) + "\n")
         return len(entries)
+
+    def capabilities(self):
+        """Which capabilities this instance has used, with how often, and which it hasn't (dormant), counted from
+        its calls. Name resolutions are counted by the resolver."""
+        calls = {**self.calls, "resolve_by_name": self.resolver.calls}
+        return {"live": {name: calls[name] for name in CAPABILITIES if calls.get(name)},
+                "dormant": {name: what for name, what in CAPABILITIES.items() if not calls.get(name)}}
 
     def state_shape_canonical(self):
         """A canonical serialisation of the world's content (no timestamps), for idempotency checks."""

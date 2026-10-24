@@ -52,7 +52,7 @@ def test_critic_rejection_sends_the_planner_to_projections_and_changes_hualquis_
     spanish = finding(hualqui, "es", location="infobox")
     assert spanish["class"] == "different_definition" and spanish["status"] == "approved"
     history = [a["data"]["class"] for a in world.view("observations").assessments("comuna:cut:08105", agent="Analyst")
-               if a["data"]["id"] == spanish["id"]]
+               if a["data"].get("id") == spanish["id"]]
     assert history == ["genuine_error", "different_definition"]  # round 1 guess, round 2 after discovery
     assert hualqui["critic"]["rounds"] == 2 and not hualqui["critic"]["history"][0]["approved"]
 

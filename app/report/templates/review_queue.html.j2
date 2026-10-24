@@ -171,6 +171,9 @@ footer p { margin: 4px 0; }
     <div class="stat"><b>{{ summary.drafts }}</b><span>draft edits</span></div>
     <div class="stat{{ ' attention' if summary.escalations }}"><b>{{ summary.escalations }}</b><span>need a human</span></div>
     <div class="stat"><b>{{ summary.critic_rejections }}</b><span>Critic rejections</span></div>
+    {% if summary.since_last_check and summary.since_last_check.comunas_checked_before %}
+    <div class="stat"><b>{{ summary.since_last_check.fixed or 0 }}</b><span>fixed since the last check</span></div>
+    {% endif %}
   </section>
 
   <section class="panel">
@@ -182,6 +185,7 @@ footer p { margin: 4px 0; }
     </p>
     <p>{% if result.mode == "sample" %}Rows from the sample snapshot of the Zetaris views{% if data.sample_recorded_at %} recorded {{ data.sample_recorded_at[:10] }}{% endif %}; no live service was used.{% else %}Every source was read live through its Zetaris view, one SQL statement per source.{% if data.fallbacks %} <b>{{ data.fallbacks|length }} view(s) came from the sample snapshot</b> because Zetaris failed (see below).{% endif %}{% endif %}</p>
     <p>{{ model_line }}</p>
+    {% if engine_line %}<p>{{ engine_line }}</p>{% endif %}
     {% if unresolved %}<p>Not found and left out of the run: {{ unresolved|join(", ") }}.</p>{% endif %}
   </section>
 
@@ -243,7 +247,16 @@ footer p { margin: 4px 0; }
       {% for year, value in c.projection %}
       <div class="fig"><small>INE projection {{ year }}</small><b>{{ value|figure }}</b></div>
       {% endfor %}
+      {% for year, area, value in c.areas %}
+      <div class="fig"><small>INE Census {{ year }}, {{ area }} only</small><b>{{ value|figure }}</b></div>
+      {% endfor %}
     </div>
+    {% if c.since %}
+    <div class="note-box"><b>Since the last check</b> <span class="by">({{ c.since.checked_at }}, run <code>{{ c.since.previous_run }}</code>)</span>{% if c.since.changes %}:
+      <ul class="plain">{% for item in c.since.changes %}<li><span class="badge {{ 'status-approved' if item.outcome == 'fixed' else 'tone-slate' }}">{{ item.outcome_label }}</span> {{ item.page }}: {{ item.before }} → {{ item.now }}{% if item.outcome != "fixed" and item.verdict %} <span class="by">({{ item.verdict }})</span>{% endif %}</li>{% endfor %}</ul>
+      {% else %}: {% endif %}{% if c.since.unchanged %}{{ c.since.unchanged }} page{{ "s" if c.since.unchanged != 1 }} unchanged.{% endif %}
+    </div>
+    {% endif %}
     {% if c.explanation %}<div class="note-box"><b>In short:</b> {{ c.explanation }} <span class="by">(written by {{ c.explanation_by }})</span></div>{% endif %}
     {% if c.escalations %}
     <div class="note-box attention-box"><b>For a human:</b>

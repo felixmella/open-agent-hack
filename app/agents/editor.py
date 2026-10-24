@@ -89,7 +89,7 @@ class Editor:
         targets = list(drafts)
         self.word(comuna, drafts, findings, correction, round_no, instruction)
         for name in targets:
-            anchor = drafts[name].pop("anchor")
+            anchor = drafts[name]["anchor"]  # the claim the draft corrects first: its assessments carry the draft
             self.world.assess(anchor, agent=self.name, run_id=self.run_id, round_no=round_no,
                               data={"status": "drafted", "draft": name, **drafts[name]})
         self.tracer.event(self.name, "draft_corrections", input_summary=f"{comuna.name}: {len(findings)} approved findings",

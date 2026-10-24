@@ -9,6 +9,10 @@ the catalog (discovery, pooled across comunas; the Retriever reads them), the Ex
 Analyst picks the fix up from the World Model next round. After `max_critic_rounds` fixes, findings that still fail are escalated to a human,
 and the comuna's approved findings go on to the Editor.
 
+At the end, the World Model rebuilds each comuna's picture from its log (the `comuna_picture` projection), and
+rebuilds it as of the end of the previous run that checked the comuna: comparing the two, page by page, tells the
+reviewer what was fixed or changed since that check.
+
 Writes output/<run_id>/result.json, logs/trace-<run_id>.jsonl and logs/world-model-<run_id>.jsonl. A run that can't
 complete (the scope matches no comuna, Zetaris can't be read, a bug) raises RunError with a code, the stage and whether
 retrying can help, after tracing it and writing an error result.
@@ -17,6 +21,7 @@ import json
 import re
 import time
 import uuid
+from collections import Counter
 from contextlib import contextmanager
 from datetime import datetime, timezone
 
@@ -32,7 +37,7 @@ from app.agents.planner import Planner, ScopeError
 from app.agents.retriever import Retriever
 from app.engines.world_model import WorldModel
 from app.errors import RunError
-from app.knowledge import catalog, matcher
+from app.knowledge import catalog, matcher, picture
 from app.orchestration.state import Caps, ComunaState, RunState
 from app.report.html import write_report
 from app.tracing import Tracer
@@ -94,6 +99,30 @@ def open_world(settings):
     """The World Model store; sample-mode runs keep theirs apart from live runs."""
     name = "world-factsync-sample.sqlite" if settings.sample_mode else "world-factsync.sqlite"
     return WorldModel(storage="sqlite", namespace="factsync", path=settings.state_dir / name, strip_suffixes=[", Chile"])
+
+
+def look_back(world, comuna, run_id, tracer):
+    """The engine's picture of the comuna now, and page by page what changed since the previous run that checked it
+    (that run's picture, rebuilt from the log as it stood when the run ended); None when no run checked it before."""
+    now = world.reproject(comuna.entity_id, actor="Orchestrator")["projections"]["comuna_picture"]
+    earlier = [(run, seq) for run, seq in world.runs(comuna.entity_id) if run != run_id]
+    if not earlier:
+        return now, None
+    previous, seq = earlier[-1]
+    before = world.project_as_of(comuna.entity_id, seq)["comuna_picture"]
+    pages = picture.since_last_check(before, now)
+    since = {"previous_run": previous, "checked_at": before.get("checked_at"), "pages": pages}
+    tracer.event("WorldModel", "compare_runs", input_summary=f"{comuna.name}: the picture as of {previous}, rebuilt "
+                 f"from the log to audit seq {seq}", output_summary="; ".join(
+                     f"{page} {change['outcome']}" + (f" ({figure_of(change['before'])} -> {figure_of(change['now'])})"
+                                                      if change["outcome"] in ("fixed", "changed") else "")
+                     for page, change in pages.items()) or "no page to compare", target_agent="Orchestrator",
+                 engine="world_model")
+    return now, since
+
+
+def figure_of(page):
+    return f"{page['value']:,}" if isinstance(page.get("value"), int) else "no figure"
 
 
 def data_source(settings, tracer, fallbacks):
@@ -158,6 +187,7 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
     fallbacks = []
     with stage("setup"):
         world = world or open_world(settings)
+        world.register_projection("comuna_picture", picture.comuna_picture)
         audit_start = (world.audit() or [{"seq": 0}])[-1]["seq"]
         zetaris = zetaris or data_source(settings, tracer, fallbacks)
         if llm_client is None and run_input.options.use_llm and not settings.sample_mode:
@@ -224,9 +254,12 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
 
 
 def finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm, data):
+    looked = {cut: look_back(world, c, run_id, tracer) for cut, c in state.comunas.items()}
     audit_path = settings.logs_dir / f"world-model-{run_id}.jsonl"
     exported = world.export_audit(audit_path, since_seq=audit_start)
-    comunas = [comuna_result(c, world, state) for c in state.comunas.values()]
+    comunas = [comuna_result(c, world, state, *looked[cut]) for cut, c in state.comunas.items()]
+    since = Counter(change["outcome"] for c in comunas for change in ((c["since_last_check"] or {}).get("pages") or {})
+                    .values())
     findings = [f for c in comunas for f in c["findings"]]
     by_class = {}
     for finding in findings:
@@ -242,6 +275,8 @@ def finish(run_id, settings, tracer, started, world, audit_start, state, plan, r
             "escalations": len(state.escalations),
             "critic_rejections": sum(1 for c in state.comunas.values() for r in c.reviews if not r["approved"]),
             "discoveries": [d["source"] for d in state.discoveries],
+            "since_last_check": {"comunas_checked_before": sum(1 for c in comunas if c["since_last_check"]),
+                                 **{k: since[k] for k in ("fixed", "changed", "unchanged", "new", "gone") if since[k]}},
         },
         "data": data,
         "plan": {"cuts": plan.cuts, "sources": plan.sources, "reason": plan.reason, "unresolved": plan.unresolved,
@@ -256,6 +291,7 @@ def finish(run_id, settings, tracer, started, world, audit_start, state, plan, r
         "trace_file": relative(tracer.path, settings),
         "world_model_audit_file": relative(audit_path, settings),
         "world_model_audit_entries": exported,
+        "world_model": {"capabilities": world.capabilities()},
         "report_file": None,
         "execution_time_seconds": round(time.monotonic() - started, 1),
     }
@@ -352,10 +388,13 @@ def write_drafts(comuna, approved, state, world, editor, critic, tracer, run_id)
     for key in TARGETS:
         if key in drafts:
             drafts[key].setdefault("status", "approved")
+            final = comuna.draft_reviews[-1].get(key) or {}
+            world.assess(drafts[key]["anchor"], agent="Critic", run_id=run_id, round_no=final.get("round"),
+                         data={"draft": key, "status": drafts[key]["status"], "score": final.get("score")})
     comuna.drafts = drafts
 
 
-def comuna_result(comuna, world, state):
+def comuna_result(comuna, world, state, now, since):
     observations = [o for o in world.view("observations").for_entity(comuna.entity_id) if o["id"] in state.observed]
     table = matcher.official_table(sorted(observations, key=claims_first))
     last = comuna.reviews[-1]["results"] if comuna.reviews else {}
@@ -385,4 +424,6 @@ def comuna_result(comuna, world, state):
                    "draft_reviews": comuna.draft_reviews},
         "drafts": comuna.drafts,
         "escalations": comuna.escalations,
+        "picture": {"pages": now["pages"], "built_by": "World Model projection comuna_picture"},
+        "since_last_check": since,
     }

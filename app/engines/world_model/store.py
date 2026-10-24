@@ -22,10 +22,12 @@ CREATE TABLE IF NOT EXISTS assessments (
     id TEXT PRIMARY KEY, seq INTEGER NOT NULL, observation_id TEXT NOT NULL, entity_id TEXT NOT NULL,
     agent TEXT NOT NULL, run_id TEXT, round INTEGER, data TEXT NOT NULL, created_at TEXT NOT NULL);
 CREATE INDEX IF NOT EXISTS assessments_observation ON assessments (observation_id, seq);
+CREATE INDEX IF NOT EXISTS assessments_entity ON assessments (entity_id, seq);
 CREATE TABLE IF NOT EXISTS derived (entity_id TEXT PRIMARY KEY, data TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS audit (
     seq INTEGER PRIMARY KEY AUTOINCREMENT, ts TEXT NOT NULL, actor TEXT, action TEXT NOT NULL,
     target TEXT, details TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS audit_target ON audit (target);
 """
 
 
@@ -134,6 +136,16 @@ class Store:
     def audit(self, since_seq=0):
         rows = self.db.execute("SELECT * FROM audit WHERE seq > ? ORDER BY seq", (since_seq,))
         return [dict(r, details=json.loads(r["details"])) for r in rows]
+
+    def written_at(self, ids):
+        """The audit sequence at which each observation or assessment was appended: the log's common clock."""
+        found, ids = {}, list(ids)
+        for start in range(0, len(ids), 500):
+            chunk = ids[start:start + 500]
+            rows = self.db.execute(f"SELECT target, MIN(seq) FROM audit WHERE target IN ({', '.join('?' * len(chunk))}) "
+                                   "AND action IN ('observation.append', 'assessment.add') GROUP BY target", chunk)
+            found.update((target, seq) for target, seq in rows)
+        return found
 
     def commit(self):
         self.db.commit()

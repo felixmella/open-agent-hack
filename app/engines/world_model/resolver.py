@@ -19,6 +19,7 @@ class EntityResolver:
     def __init__(self, store, *, strip_suffixes=()):
         self.store = store
         self.strip_suffixes = [normalize_name(s) for s in strip_suffixes]
+        self.calls = 0  # resolutions by name, reported among the World Model's capabilities
 
     def clean(self, name):
         """Normalize a name and drop disambiguators such as a trailing "(Chile)" or configured suffixes."""
@@ -32,6 +33,7 @@ class EntityResolver:
         if external_key:
             entity_id = entity_id_from_key(entity_type, external_key["system"], external_key["id"])
             return Resolution(entity_id, "exact", 1.0, name)
+        self.calls += 1
         exact = entity_id_from_name(entity_type, name)
         if self.store.get_entity(exact):
             return Resolution(exact, "exact", 1.0, name)
