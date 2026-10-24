@@ -184,16 +184,19 @@ class Planner:
             unknown = [c.get("source") for c in choices if c.get("source") not in (*options, None)]
             return f"unknown source(s) {unknown}" if unknown else None
 
-        picks, notes, asked = {}, {}, False  # source -> [(figure, why)] in the order chosen; source -> who chose it
+        picks, notes = {}, {}  # source -> [(figure, why)] in the order chosen; source -> who chose it
+        refusals, refused_by = [], None  # the model's reasons for choosing no source for a figure
         for batch in batched(groups, payload):  # requests small enough to stream (see app/agents/llm.py)
             reply = self.llm.ask_json(self.name, "choose_sources", DISCOVERY_PROMPT, payload(batch),
                                       target_agent="Retriever", round_no=round_no, validate=valid) if self.llm else None
             if reply:
-                asked = True
                 for choice in reply[0]["choices"]:
                     number = str(choice.get("figure"))
-                    if choice.get("source") and number.isdigit() and 1 <= int(number) <= len(batch):
-                        why = str(choice.get("reason") or "")[:300]
+                    why = str(choice.get("reason") or "")[:300]
+                    if not choice.get("source"):
+                        refusals.append(why)
+                        refused_by = model_note(reply[1])
+                    elif number.isdigit() and 1 <= int(number) <= len(batch):
                         picks.setdefault(choice["source"], []).extend((f, why) for f in batch[int(number) - 1])
                         notes.setdefault(choice["source"], model_note(reply[1]))
             else:
@@ -201,12 +204,15 @@ class Planner:
                     picks.setdefault(source, []).extend(chosen)
                     notes.setdefault(source, {"method": "rules"})
         if not picks:
-            reason = "no candidate fits these figures" + (" (the model chose none)" if asked else "")
+            reason = next((r for r in refusals if r.strip()), None) or "no candidate fits these figures"
+            note = refused_by or {"method": "rules"}
             for option in options:
                 state.declined[option] = reason
+            state.declines.append({"round": round_no, "sources": list(options), "reason": reason, "requests": requests,
+                                   **note})
             self.tracer.event(self.name, "discover_source", round_no=round_no, status="declined",
                               input_summary=f"{len(requests)} figure(s); candidates: {', '.join(options)}",
-                              output_summary=reason)
+                              output_summary=f"declined {', '.join(options)}: {reason}", decided_by=note)
             return []
         order = list(options)
         added = []

@@ -42,6 +42,7 @@ class RunState:
     observed: set = field(default_factory=set)         # ids of the observations this run read or extracted
     declined: dict = field(default_factory=dict)       # sources the Planner considered and didn't add -> reason
     discoveries: list = field(default_factory=list)
+    declines: list = field(default_factory=list)       # discovery steps where the Planner chose no source
     escalations: list = field(default_factory=list)
     errors: list = field(default_factory=list)
     compare_with: str | None = None                    # "since the last check": the baseline runs' id prefix

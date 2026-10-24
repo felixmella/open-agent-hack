@@ -252,6 +252,10 @@ def timeline(result):
         events.append((discovery["round"], 1, f"round {discovery['round']}", "discovery", "Planner",
                        f"added {SOURCES.get(discovery['source'], discovery['source'])}: {discovery.get('reason', '')}",
                        decided_by(discovery)))
+    for decline in result.get("declined_discoveries") or []:
+        events.append((decline["round"], 1, f"round {decline['round']}", "discovery", "Planner",
+                       f"read none of {', '.join(SOURCES.get(s, s) for s in decline['sources'])}: "
+                       f"{decline.get('reason', '')}", decided_by(decline)))
     for comuna in result.get("comunas") or []:
         name = title_case(comuna["name"])
         history = (comuna.get("critic") or {}).get("history") or []

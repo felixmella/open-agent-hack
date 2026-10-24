@@ -141,10 +141,14 @@ def test_the_model_chooses_and_explains_or_declines_and_is_not_asked_again(tmp_p
     assert "Coverage: census, 2002." in payload["sources_available"]["official_census2002"]
     assert state.discoveries[0]["model_served"] == "fake/nemotron"
 
-    declining = FakeLLM(Planner=lambda p: {"choices": [{"figure": n, "source": None} for n in p["figures"]]})
+    declining = FakeLLM(Planner=lambda p: {"choices": [{"figure": n, "source": None,
+                                                        "reason": "No candidate's coverage fits this figure."}
+                                                       for n in p["figures"]]})
     planner, plan, state, _ = plan_for(FakeZetaris(), tmp_path, AgentLLM(declining, tracer, min_interval=0))
     assert planner.discover(plan, REQUESTS, state, 1) == []
     assert set(state.declined) == {"official_projections", "official_census2002"}
+    (decline,) = state.declines  # kept for the result and the review queue, with the model's own reason
+    assert decline["reason"] == "No candidate's coverage fits this figure." and decline["model_served"] == "fake/nemotron"
     assert planner.discover(plan, REQUESTS, state, 2) == [] and len(declining.calls) == 1
 
 

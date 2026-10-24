@@ -291,6 +291,7 @@ def finish(run_id, settings, tracer, started, world, audit_start, state, plan, r
         "retrieval": {k: {kk: vv for kk, vv in v.items() if kk != "reviews"} | {"reviews": len(v["reviews"])}
                       for k, v in retrieval.items()},
         "discoveries": state.discoveries,
+        "declined_discoveries": state.declines,
         "comunas": comunas,
         "escalations": state.escalations,
         "errors": state.errors,
