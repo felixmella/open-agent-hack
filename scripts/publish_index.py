@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app.config import ROOT  # noqa: E402
 
 OUT = ROOT / "output_examples"
+REPO = "https://github.com/felixmella/open-agent-hack/blob/main"  # Markdown reads best on GitHub
 STYLE = """
 :root { --bg: #f5f6f8; --panel: #fff; --ink: #18202b; --muted: #5a6473; --line: #e2e6ec; --accent: #0b5fbf; }
 @media (prefers-color-scheme: dark) { :root { --bg: #0e1217; --panel: #151b23; --ink: #e5e9ef; --muted: #98a2b3;
@@ -68,7 +69,7 @@ def main():
         headline = (f"<p>Of <b>{summary['current_figures']}</b> current population figures shown across Spanish and "
                     f"English Wikipedia and Wikidata, <b>{summary['differing_from_census_2024']} "
                     f"({summary['share_differing']:.0%})</b> are not INE's Census 2024 count. {esc(summary['method'])}. "
-                    f'<a href="national/summary.md">Summary</a>.</p>')
+                    f'<a href="{REPO}/output_examples/national/summary.md">Summary</a>.</p>')
     page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FactSync Chile runs</title><style>{STYLE}</style></head>
@@ -77,7 +78,7 @@ def main():
 <h1>Recorded runs</h1>
 <p>Real runs of FactSync Chile, kept as evidence: each one's review queue, result, agent trace and World Model audit
 log, as the run wrote them. Every source was read live through Zetaris, and every model call went through Meterless
-Nightshift to NVIDIA Nemotron. FactSync never reads these files. <a href="../README.md">About the project</a>.</p>
+Nightshift to NVIDIA Nemotron. FactSync never reads these files. <a href="{REPO}/README.md">About the project</a>.</p>
 <h2>Live runs with the model</h2>
 <div class="table"><table><thead><tr><th>Run</th><th>Comunas</th><th>Findings</th><th>Drafts</th><th>Critic rejections</th>
 <th>Sources discovered</th><th>Model calls</th><th>Time</th><th>Files</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
@@ -86,7 +87,7 @@ Nightshift to NVIDIA Nemotron. FactSync never reads these files. <a href="../REA
 <tbody>{''.join(regions)}</tbody></table></div>''' if regions else ''}
 <h2>What the model adds</h2>
 <p>The same comunas from the same recorded rows, with and without the model, every difference adjudicated:
-<a href="../eval/results.md">eval/results.md</a>.</p>
+<a href="{REPO}/eval/results.md">eval/results.md</a>.</p>
 </div></body></html>
 """
     (OUT / "index.html").write_text(page, encoding="utf-8")

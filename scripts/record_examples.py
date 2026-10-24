@@ -3,6 +3,7 @@ result, the review queue, the agents' trace and the World Model's audit log, as 
 (the input, the commit the code was at, and when). FactSync never reads output_examples/: it is for readers.
 
 Usage:  .venv\\Scripts\\python scripts\\record_examples.py [input_examples\\example_1.json ...]   (default: all four)
+        .venv\\Scripts\\python scripts\\record_examples.py --national 20261024c   (keep a national batch's runs instead)
 """
 import argparse
 import json
@@ -59,12 +60,36 @@ def record(path, settings):
     return result
 
 
+def national(tag, settings):
+    """Keep a national batch (scripts/batch_national.py) as it ran: its summary, and each region's result, review queue,
+    trace and World Model audit log, in output_examples/national/."""
+    target = OUT / "national"
+    shutil.rmtree(target, ignore_errors=True)
+    target.mkdir(parents=True)
+    batch = settings.output_dir / f"national-{tag}"
+    summary = json.loads((batch / "summary.json").read_text(encoding="utf-8"))
+    for name in ("summary.json", "summary.md"):
+        shutil.copy(batch / name, target / name)
+    for region in summary["runs"]:
+        folder, run_id = target / region["run_id"], region["run_id"]
+        folder.mkdir()
+        shutil.copy(settings.output_dir / run_id / "result.json", folder / "result.json")
+        shutil.copy(settings.output_dir / run_id / "report.html", folder / "report.html")
+        shutil.copy(settings.logs_dir / f"trace-{run_id}.jsonl", folder / "trace.jsonl")
+        shutil.copy(settings.logs_dir / f"world-model-{run_id}.jsonl", folder / "world-model-audit.jsonl")
+    print(f"national-{tag}: {len(summary['runs'])} regions -> {target}")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("inputs", nargs="*", type=Path)
+    parser.add_argument("--national", metavar="TAG", help="keep the national batch with this tag instead")
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     settings = load_settings(sample_mode=False)
+    if args.national:
+        national(args.national, settings)
+        return
     for path in args.inputs or sorted((ROOT / "input_examples").glob("example_*.json")):
         record(path, settings)
 
