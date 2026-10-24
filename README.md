@@ -2,37 +2,58 @@
 
 **FactSync Chile checks the population figure of each Chilean comuna in Spanish and English Wikipedia and in Wikidata against INE's official figures, works out why each one differs, and drafts a sourced correction for a human editor to review.**
 
-It is a multi-agent system. A Planner, a Retriever, an Extractor, an Analyst, a Critic that can reject work and send it back, and an Editor share one World Model. Every source they compare is read through **Zetaris**, and every model call goes through **Meterless Nightshift** to **NVIDIA Nemotron**. FactSync never edits Wikipedia or Wikidata: it writes drafts, and a person reviews and applies them.
+It is for the Wikipedia and Wikidata editors who keep Chile's 346 comuna pages up to date by hand. Six agents work together: a Planner, a Retriever, an Extractor, an Analyst, a Critic that can reject work and send it back, and an Editor. They share one Meterless World Model. Every source they compare is read through **Zetaris**, and every model call goes through **Meterless Nightshift** to **NVIDIA Nemotron**. FactSync never edits Wikipedia or Wikidata: it writes drafts, and a person reviews and applies them.
 
-Built for the Open Agent Hackathon 2026, Track 1 (Fragmented Intelligence).
+Built for the Open Agent Hackathon 2026, **Track 1: Solving Fragmented Intelligence**.
+
+**See it work without running anything:**
+- [`output_examples/`](output_examples/): live runs with the model, each with its review queue (`report.html`; download and open it in a browser), its `result.json`, the agents' trace and the World Model's audit log.
+- [`output_examples/national/`](output_examples/national/): all 346 comunas, region by region.
+- [`eval/results.md`](eval/results.md): what the model changes, measured.
+- [`docs/sponsor-technology.md`](docs/sponsor-technology.md): how Zetaris, the World Model engine, Nightshift and Nemotron are used.
 
 ## Why
 
-Chile counted its population in 2024 (INE, *Censo de Población y Vivienda 2024*). The public reference sources still disagree with that count, and with each other:
+Chile counted its population in 2024 (INE, *Censo de Población y Vivienda 2024*). The public references haven't caught up, and they disagree with each other. A national run on Oct 24, 2026 (all 346 comunas; agents on their deterministic paths, so no model) found:
 
-- Wikidata, which feeds search-engine panels and AI assistants, rarely has the 2024 figure. When we checked on Oct 22, 2026, only a handful of comunas carried it, and about 200 had no population at all.
-- Wikipedia infoboxes mix census counts with INE projections, cite the 2012 census whose results INE withdrew, label a figure with the wrong year, or contradict their own article text.
+- **666 of 728 current population figures (92%)** shown across Spanish Wikipedia, English Wikipedia and Wikidata are not INE's Census 2024 count.
+- 212 Spanish infoboxes still show the Census 2017 count. 186 English infoboxes give a figure attributed to the 2012 census, whose results INE withdrew, and 29 still show the 2002 count.
+- Wikidata, which many search panels, apps and AI systems reuse, has no population for 196 comunas, and only 2 have Census 2024's count, correctly dated. Some Spanish infoboxes have no figure of their own and show Wikidata's, so Wikidata's staleness reaches the article.
+- Some figures are something else entirely:
+  - INE projections labelled as census counts;
+  - a census year that never existed;
+  - typos;
+  - another place's population (Wikidata gives Santo Domingo, a town of 13,171, the Dominican capital's 1,029,110).
 
-Finding a number is easy. The hard part is explaining *why* two numbers differ: a projection is a different definition, not an error; a 2017 count is out of date but real; a 2012 count was never official. FactSync makes that call for each figure and shows its evidence, and a Critic must approve the call before anything is drafted.
+Finding a number is easy. The hard part is saying *why* two numbers differ. A projection is a different definition, not an error. A 2017 count is out of date but real. A 2012 count was never official. FactSync makes that call for every figure and shows its evidence, and a Critic must approve the call before anything is drafted. The full summary is in [`output_examples/national/summary.md`](output_examples/national/summary.md).
 
 ## What a run produces
 
 For each comuna in scope:
 
-- **INE's official figures**: Census 2017, Census 2024 and, when needed, INE's projections.
-- **Every figure the sources give, and a verdict on each one.** Each verdict carries a class from an 11-class taxonomy (for example *outdated vintage*, *different definition*, *withdrawn census*, *mislabelled vintage*, *internal inconsistency*), an explanation, the INE figures cited as evidence, a proposed correction, and the Critic's score out of 9.
-- **Draft edits.** For Spanish Wikipedia, infobox lines with a `{{cita web}}` reference to INE and an edit summary in Spanish. For English Wikipedia, the infobox lines with `{{cite web}}`. For Wikidata, QuickStatements plus rank and qualifier notes.
+- **INE's official figures:** Census 2017 and 2024, plus whatever the agents chose to read on the way: INE's projections, Census 2002, the 2017 urban and rural population.
+- **A verdict on every figure the sources give.** Each carries:
+  - a class from an 11-class taxonomy, for example *outdated vintage*, *different definition*, *withdrawn census*, *mislabelled vintage* or *internal inconsistency*;
+  - an explanation and the INE figures cited as evidence;
+  - a proposed correction;
+  - the Critic's score out of 9.
+- **Draft edits.** Spanish Wikipedia gets infobox lines with a `{{cita web}}` reference to INE and an edit summary in Spanish. English Wikipedia gets the infobox lines with `{{cite web}}`. Wikidata gets QuickStatements, plus notes on rank and qualifiers.
+- **Since the last check:** what changed on each page since the previous run that checked the comuna (fixed, changed, unchanged), rebuilt by the World Model from its log.
 
 Written to disk:
 
 | File | What it is |
 |---|---|
-| `output/<run_id>/result.json` | The whole result: verdicts, evidence, Critic scores and history, drafts, escalations, model usage, structured errors |
-| `output/<run_id>/report.html` | **The review queue**: one self-contained page with why each figure differs, the drafts with copy buttons, and what the agents did |
-| `logs/trace-<run_id>.jsonl` | One JSON object per agent action: agent, action, target agent, round, status, confidence, retries, latency, the SQL sent to Zetaris, and for each model call the model requested, served and routed plus Nightshift's receipt id |
-| `logs/world-model-<run_id>.jsonl` | The World Model's audit log for the run: every entity, observation and assessment written |
+| `output/<run_id>/result.json` | The whole result: verdicts, evidence, Critic scores and history, discoveries, drafts, escalations, model usage, the World Model's capabilities used, structured errors |
+| `output/<run_id>/report.html` | **The review queue:** one self-contained page with why each figure differs, the drafts with copy buttons, what changed since the last check, and what the agents did |
+| `logs/trace-<run_id>.jsonl` | One JSON object per agent action: agent, action, target agent, round, status, confidence, retries, latency, the SQL sent to Zetaris. Each model call also records the model requested, served and routed, and Nightshift's receipt id |
+| `logs/world-model-<run_id>.jsonl` | The World Model's audit log for the run: every entity, observation, assessment and rebuild written |
 
-**Example (example 2, the demo moment).** Spanish Wikipedia gives Hualqui's population as 26,746 (2024). That figure matches no census count. In round 1, the Critic rejects calling it an error while an official source is still unread, and sends one fix to the Planner. The Planner adds INE's projections, the Retriever reads them through Zetaris, and 26,746 turns out to be **INE's projection for 2024, not a census count** (Census 2024 counted 25,795). The verdict changes to *different definition*, the Critic approves it, and the Editor drafts the correction.
+**Example (example 2, the demo moment).**
+1. Spanish Wikipedia gives Hualqui's population as 26,746 (2024), which matches no census count.
+2. In round 1, the Critic refuses to let the Analyst call it anything while an official source that could explain it is unread. It sends one fix to the Planner.
+3. The Planner chooses INE's projections for that figure, and Census 2002 for the 2002 figures in the other two comunas' articles. The Retriever reads both through Zetaris.
+4. 26,746 turns out to be **INE's projection for 2024, not a census count** (Census 2024 counted 25,795). The verdict changes to *different definition*, the Critic approves it, and the Editor drafts the correction.
 
 ## Quick start: sample mode (no services needed)
 
@@ -46,7 +67,7 @@ python -m venv .venv
 .venv\Scripts\python run.py input_examples\example_2.json --sample
 ```
 
-Then open `output\<run_id>\report.html`; the CLI prints the exact path. On macOS or Linux, use `.venv/bin/python` and forward slashes. `SAMPLE_MODE=true` in the environment does the same as `--sample`.
+Then open `output\<run_id>\report.html`; the CLI prints the exact path. On macOS or Linux, use `.venv/bin/python` and forward slashes. Setting `SAMPLE_MODE=true` in the environment does the same as `--sample`.
 
 ## Full setup (live)
 
@@ -76,13 +97,12 @@ Then open `output\<run_id>\report.html`; the CLI prints the exact path. On macOS
 .venv\Scripts\python scripts\zetaris_sql.py zetaris\01_sources_create.sql
 ```
 
-Run them in this order (add `--skip-exists` when re-running):
-
-1. `zetaris/01_sources_create.sql`: INE Census 2024 by comuna (INE's ArcGIS REST API) and Wikidata population statements (SPARQL).
-2. `scripts/upload_filestore.py`: copies `data/official/ine_projections_base2017_comunas.csv` into the Zetaris file store (with `docker cp` into the driver container).
-3. `zetaris/02_official_create.sql`: INE Census 2017 (ArcGIS) and INE's population projections 2002–2035 (file store).
-4. `zetaris/03_wikipedia_create.sql`: each comuna's Spanish and English Wikipedia article (MediaWiki API, 50 titles per request). It is generated by `scripts/build_wikipedia_sql.py`.
-5. `zetaris/04_unified_create.sql`: the unified views. `factsync.official_population` holds every official figure with its definition and year. `factsync.eswiki_infobox` and `factsync.enwiki_infobox` hold infobox fields extracted in SQL. `factsync.population_picture` puts every claim from every source in one view, keyed by comuna code.
+The order, what each step creates, and how each object was checked against its source are in [`zetaris/README.md`](zetaris/README.md). In short:
+1. INE Census 2024 and Wikidata (`01`).
+2. The two INE files, prepared by `scripts/prepare_ine_projections.py` and `scripts/prepare_ine_census2002.py`, then copied into the file store by `scripts/upload_filestore.py`.
+3. Census 2017 with its urban/rural split, the projections and Census 2002 (`02`).
+4. Wikipedia (`03`).
+5. The unified views and the source catalog (`04`).
 
 **3. Create the read-only app user.** The agents only read, so they use a General-role (view-only) Zetaris user:
 
@@ -114,17 +134,17 @@ An input names the comunas to check, by comuna code (CUT), by region, or by name
 
 - `{"scope": {"region": "Aysén"}}` checks a whole region.
 - `{"scope": {"comunas": ["Saavedra (Chile)", "Cholchol"]}}` checks comunas by name.
-- `"use_llm": false` runs every agent on its deterministic path. It's useful for fast checks; a live run like that takes 35–50 s, against about 15 minutes for example 2 with the model.
+- `"use_llm": false` runs every agent on its deterministic path. Useful for fast checks: a live run takes 35–50 s that way, against about 15–20 minutes for example 2 with the model.
 - An optional `run_id` names the run.
 
-The four examples are:
+The examples:
 
 1. Curacautín: a typo, a 2012 figure, and a mis-dated Wikidata value.
 2. Hualqui, Guaitecas and Quirihue: the demo moment.
 3. The Aysén region: 10 comunas.
-4. Four comunas given by name.
+4. Four comunas given by name (Saavedra, Cholchol, La Pintana, Paredones).
 
-The CLI prints progress and a summary, and exits with 0 on success, 1 if the run fails, and 2 if the input is invalid. A failed run prints a structured error, `{"status": "error", "error": {"code", "message", "stage", "recoverable"}}`, and still leaves its trace and an error `result.json`.
+The CLI prints progress and a summary. It exits with 0 on success, 1 if the run fails, and 2 if the input is invalid. A failed run prints a structured error, `{"status": "error", "error": {"code", "message", "stage", "recoverable"}}`, and still leaves its trace and an error `result.json`.
 
 ### HTTP API
 
@@ -165,63 +185,91 @@ docker run --rm --network none -e SAMPLE_MODE=true factsync python run.py input_
 docker run --rm factsync pytest
 ```
 
-Mount `output`, `logs` and `state` (`-v ${PWD}/output:/app/output`, and the same for the other two) to keep a container's runs. No secret is baked into the image.
+To keep a container's runs, mount `output`, `logs` and `state` (`-v ${PWD}/output:/app/output`, and the same for the other two). No secret is baked into the image.
 
-### National batch
+### Other scripts
 
-```powershell
-.venv\Scripts\python scripts\batch_national.py --tag 20261023
-```
-
-It runs all 346 comunas, one region per run, and writes `output/national-<tag>/summary.json` and `summary.md`. For each source, the summary counts how many current figures are INE's Census 2024 count and why the others differ. By default the agents take their deterministic paths, since the whole country through Nightshift would take days; the summary says which way it ran.
+- `scripts/batch_national.py --tag <tag>` runs all 346 comunas, one region per run, and writes a summary (`output/national-<tag>/summary.md`). By default the agents take their deterministic paths, since the whole country through Nightshift would take days; the summary says which way it ran.
+- `scripts/record_examples.py` records the live output examples into `output_examples/`.
+- `scripts/evaluate.py` runs the evaluation in `eval/`.
 
 ## How it works
 
 ```
-input.json ─► Planner ──plan──► Retriever ──one SQL per source──► Zetaris views
-                 ▲                  │ observations + provenance
-     discovery:  │                  ▼
-     add source  │        World Model (comunas, claims, assessments, audit log)
-                 │                  │ context payloads
-                 └── Analyst ◄── Extractor (article text → verified claims)
-                        │ findings (class, evidence, confidence)
-                        ▼
-                     Critic ── one specific fix per round, ≤2 rounds ──► Planner | Extractor | Analyst
-                        │ approved (or escalated to a human)
-                        ▼
-                     Editor ── drafts ──► Critic (draft review, ≤1 revision)
-                        ▼
+input.json ─► Planner ◄── source catalog (Zetaris) ──plan──► Retriever ──one SQL per source──► Zetaris views
+                 ▲                                             │ observations + provenance
+     discovery:  │                                             ▼
+     choose from │          World Model (comunas, observations, assessments, the comuna picture, audit log)
+     the catalog │                                             │ context payloads
+                 └──────── Analyst ◄── Extractor (article text → verified claims)
+                              │ findings (class, evidence, confidence)
+                              ▼
+                           Critic ── one specific fix per round, ≤2 rounds ──► Planner | Extractor | Analyst
+                              │ approved (or escalated to a human)
+                              ▼
+                           Editor ── drafts ──► Critic (draft review, ≤1 revision)
+                              ▼
+          World Model rebuilds each comuna's picture, and the picture at the last check: what changed since
+                              ▼
               result.json + report.html + logs/trace-<run>.jsonl + logs/world-model-<run>.jsonl
 ```
 
 | Agent | What it does | Model use |
 |---|---|---|
-| Planner | Resolves the scope (comuna codes, a region, or names through the World Model's resolver) and picks the sources. **Discovery:** when the Critic says a figure can't be classified while an official source is unread, the Planner chooses which source to add and justifies it. | Chooses the source to add |
-| Retriever | Runs one SQL statement per source per run against the Zetaris views, and writes each row into the World Model as an observation stamped with view, SQL, fetch time, agent and run. Records without a comuna code are matched by name. | None |
-| Extractor | Code reads the infobox reference, the *Historical populations* table and the sentences that state a population. The model labels those sentences as claims (figure, year, census or projection). **Code keeps a claim only if its figure and year appear verbatim in the sentence, and the sentence verbatim in the article.** | Reads article text |
-| Analyst | A deterministic matcher compares each claim with every official figure (census counts, projections, census-validity facts such as the withdrawn 2012 census and censuses Chile never held). The model is asked only about the claims the matcher can't settle. | Ambiguous cases only |
-| Critic | Scores every finding on a 9-point rubric (evidence fidelity, definition discipline, correction sourcing) and approves at 7 or more. Otherwise it sends **one specific fix** to the agent responsible: the Planner, the Extractor or the Analyst. After 2 rounds, what still fails goes to a human. It also reviews every draft. | Judges class fit and faithfulness; the facts are recomputed by code |
+| Planner | Reads the source catalog in Zetaris and resolves the scope (comuna codes, a region, or names through the World Model's resolver). **Discovery:** when the Critic sends back figures that nothing read so far explains, each with the unread sources whose coverage could, the Planner chooses which to read. | Chooses a source per figure, with a reason |
+| Retriever | Runs one SQL statement per source per run against the Zetaris views, and writes each row into the World Model as an observation stamped with its view, SQL, fetch time, agent and run. Records without a comuna code are matched by name. | None |
+| Extractor | Code reads the infobox reference, the *Historical populations* table and the sentences that mention a population. The model labels those sentences as claims (figure, year, census or projection). **Code keeps a claim only if its figure and year appear verbatim in the sentence, and the sentence verbatim in the article.** | Reads article text |
+| Analyst | A deterministic matcher compares each claim with every official figure read: census counts, projections, urban and rural populations, and census-validity facts such as the withdrawn 2012 census and censuses Chile never held. The model is asked only about the claims the matcher can't settle. | Ambiguous cases only |
+| Critic | Scores every finding on a 9-point rubric (evidence fidelity, definition discipline, correction sourcing) and approves at 7 or more. Otherwise it sends **one specific fix** to the agent responsible: the Planner, the Extractor or the Analyst. It holds back a comuna whose claims nothing read can check while a catalog source could. After 2 rounds, what still fails goes to a human. It also reviews every draft. | Judges class fit and faithfulness; the facts are recomputed by code |
 | Editor | Builds the wikitext, citations and QuickStatements from templates, so every figure and source in a draft is the approved one. The model writes the edit summaries and the explanation for the reviewer, and the Critic checks them. | Wording |
 
 Every loop is capped: Critic rounds, discovery steps, draft revisions, and model calls per run. Any model failure (an error, an empty or invalid reply, a spent budget) sends that step down its deterministic path, and the trace says so. A run always completes.
 
+**Discovery from the Zetaris catalog.** `factsync.source_catalog` lists every source, what it holds and the years it covers:
+- Census 2017 and 2024 are read by default.
+- INE's projections 2002–2035, Census 2002 and the Census 2017 urban/rural split are read only when the agents need them.
+
+When a figure matches nothing read, or a claim names a year nothing read covers, the Critic sends it to the Planner with its candidate sources. The Planner chooses a source per figure: Nemotron gives a reason for each choice, and without the model, code picks by the figure's cues (a census year it names, a year no census was held in, a figure below the comuna's total). Discovery can take more than one round. Curacautín's undated 16,418 is checked against the projections and Census 2002, then the urban and rural populations, and still matches nothing, so it stays an unexplained mismatch. One real catch: once Census 2002 was read, Spanish Wikipedia's 2002 figure for Coltauco (17,121) turned out not to be INE's count (16,228).
+
 **The World Model (Meterless engine).** `app/engines/world_model/` implements the Meterless World Model engine spec in Python. It is the agents' shared state:
 
-- Comunas are entities keyed by comuna code (`comuna:cut:08105`), and the resolver matches names (and flags uncertain matches for review).
+- Comunas are entities keyed by comuna code (`comuna:cut:08105`). The resolver matches names, and flags uncertain matches for review.
 - Every source row and every extracted claim is an append-only observation with provenance; writes without a source are rejected.
 - Every agent's assessment is appended and attributed, never edited in place.
 - Each agent gets a budgeted context payload, which is traced.
-- Each run's audit log is exported to `logs/`.
+- **The comuna picture is a projection the engine holds.** For each page, it holds the figure shown as the current population and the verdict on it, rebuilt from the log.
+- **The engine rebuilds it as of any earlier point.** Comparing the picture at the previous check with today's shows what was fixed since, so FactSync is something editors rerun, not a one-off audit.
+- Each run reports the engine capabilities it used and the dormant ones (`result.json`, `world_model.capabilities`). `relate` and the graph view pass conformance but no feature uses them yet.
 
-It passes the engine's 8 official conformance checks, ported one-to-one in `tests/test_world_model_conformance.py`: sid-001, sid-002, band-001, prov-001, idem-001, idem-002, bitemp-001 and audit-001.
+It passes the engine's 8 official conformance checks, ported one-to-one in `tests/test_world_model_conformance.py`: sid-001, sid-002, band-001, prov-001, idem-001, idem-002, bitemp-001 and audit-001. FactSync's own uses are tested in `tests/test_world_model_factsync.py` and `tests/test_world_model_picture.py`.
 
-**Zetaris.** Every source the agents compare is a Zetaris view in the `factsync` container. The official INE figures, Wikidata and both Wikipedias are virtualised from public APIs and from INE's file, and joined by comuna code in `factsync.population_picture`. The app reads them with a read-only user. Agent state stays local: the World Model's SQLite store in `state/`.
+**Zetaris.**
+- Every source the agents compare is a Zetaris view in the `factsync` container. The official INE figures, Wikidata and both Wikipedias are virtualised from public APIs and from INE files in the file store.
+- The agents read the per-source views, one query per source. `factsync.official_population` holds every official series in one shape, and `factsync.population_picture` puts every claim from every source in one table keyed by comuna code, for exploration.
+- The app reads with a read-only user. Agent state stays local, in the World Model's SQLite store in `state/`.
 
-**Nightshift.** The app requests `nvidia/nemotron-3.5-lightning-30b-a3b` through Nightshift's OpenAI-compatible API. Every request sends `meterless-app: open-agent-hack` and `meterless-scope: user`. Nightshift decides the route, so each trace event records the model requested, the model Nightshift says served the call, the receipt's routed model and the receipt id. It also records when Nightshift replayed an answer from its cache. Three adaptations keep the model in the loop despite Nightshift's 45-second limit on time to first byte (`app/adapters/meterless.py`):
+**Nightshift.**
+- The app requests `nvidia/nemotron-3.5-lightning-30b-a3b` through Nightshift's OpenAI-compatible API. Every request sends `meterless-app: open-agent-hack` and `meterless-scope: user`.
+- Nightshift decides the route, so each trace event records the model requested, the model Nightshift says served the call, the receipt's routed model and the receipt id. It also records when Nightshift replayed an answer from its cache.
+
+Three adaptations keep the model in the loop despite Nightshift's 45-second limit on time to first byte (`app/adapters/meterless.py`):
 
 - Chat calls stream.
 - Every request sends `meterless-tier-split: off`.
 - Agents keep each request below the size at which Nightshift switches to a buffered best-of-N "quality race", splitting larger work into batches.
+
+More detail: [`docs/sponsor-technology.md`](docs/sponsor-technology.md).
+
+## What the model adds
+
+[`eval/`](eval/) runs the same 11 comunas from the same recorded rows twice: every agent on its deterministic path, then with Nemotron. Every difference is adjudicated against its evidence ([results](eval/results.md)).
+
+- On reading article text, the model was right 16 times to the rules' once. It drops the town, men-only, density and health-system figures that sentence patterns keep, which removed five false or misleading findings.
+- It missed one real typo (Los Ángeles), and its verdict on Santo Domingo was vaguer than the matcher's.
+- It cost 114 calls and 78 minutes, against one second.
+- Separately, a random sample of 25 of the national run's verdicts was checked against the pages and INE's figures: all 25 are right.
+
+The adjudication was done by Claude (the coding assistant), and every judgment lists its evidence for checking.
 
 ## Tests
 
@@ -229,15 +277,16 @@ It passes the engine's 8 official conformance checks, ported one-to-one in `test
 .venv\Scripts\python -m pytest
 ```
 
-100 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
+146 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
 
-- the World Model's 8 conformance checks;
+- the World Model's 8 conformance checks, its projections, point-in-time rebuilds and capability counts;
 - the matcher, the wikitext parser, the Extractor's verbatim checks and the Critic's rubric;
+- discovery from the catalog: coverage, the Planner's choice with and without a model, and the Critic holding back unchecked claims;
 - the orchestrator's loops: rejection → discovery → changed verdict, the cap leading to escalation, no model at all, and a broken model;
-- request sizing for Nightshift;
-- structured errors;
+- a draft applied to an article, seen as fixed on the next run;
+- request sizing for Nightshift, and structured errors;
 - sample mode with the network blocked, including the fallback from live Zetaris to the snapshot;
-- the review queue page and the API.
+- the review queue page, the API, and `metadata.json`.
 
 ## Project layout
 
@@ -245,34 +294,45 @@ It passes the engine's 8 official conformance checks, ported one-to-one in `test
 app/adapters/          zetaris.py (REST client) · meterless.py (Nightshift client) · sample_data.py (snapshot + fallback)
 app/agents/            planner · retriever · extractor · analyst · critic · editor · llm (budget, pacing, tracing)
 app/engines/world_model/   the World Model engine
-app/knowledge/         taxonomy · matcher · wikitext parsing   (+ data/reference/chile_censuses.json)
+app/knowledge/         taxonomy · matcher · catalog · picture · wikitext   (+ data/reference/chile_censuses.json)
 app/orchestration/     loop.py (the state machine) · state.py (run state and caps)
 app/report/            the review queue (Jinja2 template)
 app/main.py            the HTTP API          run.py   the CLI
-zetaris/               Lightning SQL that registers the sources and views, and the read-only grants
-scripts/               zetaris_sql · upload_filestore · build_wikipedia_sql · prepare_ine_projections ·
-                       snapshot_sample_data · verify_readonly · batch_national · smoke_test
-data/                  official/ (INE projections file) · reference/ (census facts) · sample/ (recorded view rows)
-input_examples/        four example inputs            tests/   100 tests
+zetaris/               Lightning SQL that registers the sources, views and catalog, the read-only grants, and a log of what was run
+scripts/               zetaris_sql · upload_filestore · build_wikipedia_sql · prepare_ine_projections · prepare_ine_census2002 ·
+                       snapshot_sample_data · verify_readonly · batch_national · record_examples · evaluate · smoke_test
+data/                  official/ (INE files) · reference/ (census facts) · sample/ (recorded view rows)
+input_examples/        four example inputs     output_examples/   live runs, the national batch     eval/   the evaluation
+docs/                  sponsor-technology.md   metadata.json   the project in machine-readable form
 ```
 
 ## Limitations
 
-- **One model.** Nightshift 1.2.1 routed every request to Nemotron 3.5 Lightning whatever we asked for, so all agents use it. There is no separate critic model; the Critic's rubric is code, with the model judging class fit and faithfulness.
-- **Model calls are slow.** Lightning reasons at length, so a call takes 20–80 s, and example 2 with the model takes about 15 minutes. `use_llm: false` gives the deterministic result in under a minute.
-- **Coverage of Wikipedia.** FactSync reads the article linked from each comuna's Wikidata item: 294 Spanish and 287 English articles for 346 comunas. A comuna whose item links no article, often because the article is attached to the town's item, isn't read.
-- **What can be checked.** FactSync holds the 2017 and 2024 census counts and INE's projections for 2002–2035. Historical figures from other years (the 2002 census, for example) are reported as *not checkable* rather than judged.
-- **Sample data** covers the 17 comunas of the four examples, recorded on Oct 23, 2026. Any other scope is refused in sample mode.
-- **Drafts only.** FactSync never edits Wikipedia or Wikidata, and its drafts are meant to be reviewed: QuickStatements can't set ranks, so the Wikidata notes say what to do by hand.
+- **One model.** Nightshift routed every request to Nemotron 3.5 Lightning, so all agents use it. There is no separate critic model; the Critic's rubric is code, with the model judging class fit and faithfulness.
+- **Model calls are slow.** Lightning reasons at length, so a call takes 20–80 s, and example 2 with the model takes about 15–20 minutes. `use_llm: false` gives the deterministic result in under a minute. The national numbers above come from that deterministic path.
+- **Coverage of Wikipedia.** FactSync reads the article linked from each comuna's Wikidata item: 294 Spanish and 287 English articles for 346 comunas. A comuna whose item links no article (often because the article is attached to the town's item) isn't read.
+- **What can be checked.** FactSync holds the 2017 and 2024 census counts and reads INE's projections for 2002–2035, Census 2002 and the 2017 urban/rural split when needed. Figures for other years (the 1992 census, for example) are reported as *not checkable* rather than judged. INE's base-2002 projections, which some articles probably quote for 2005–2016, are no longer published by INE, so those figures stay unexplained.
+- **Census 2002 on today's boundaries.** INE's REDATAM gives the 2002 count for today's comunas. Iquique, Santa Bárbara, Nueva Imperial and Talcahuano lost territory to comunas created in 2004, so an article quoting their 2002 count on the old boundaries reads as unexplained.
+- **Sample data** covers the 17 comunas of the four examples, recorded on Oct 24, 2026. Any other scope is refused in sample mode.
+- **Drafts only.** FactSync never edits Wikipedia or Wikidata, and its drafts are meant to be reviewed. QuickStatements can't set ranks, so the Wikidata notes say what to do by hand.
 
 ## AI and model usage
 
-- **In the product:** NVIDIA Nemotron 3.5 Lightning (`nvidia/nemotron-3.5-lightning-30b-a3b`), reached only through Meterless Nightshift. It reads article sentences, classifies ambiguous figures, judges the Analyst's findings, chooses the source to add on discovery, and writes the edit summaries and explanations. Code checks each of these outputs, and every one has a deterministic fallback. The traces record which model Nightshift says answered each call, with its receipt id.
+- **In the product:** NVIDIA Nemotron 3.5 Lightning (`nvidia/nemotron-3.5-lightning-30b-a3b`), reached only through Meterless Nightshift. It:
+  - reads article sentences;
+  - classifies ambiguous figures;
+  - judges the Analyst's findings;
+  - chooses the sources to add on discovery;
+  - writes the edit summaries and explanations.
+
+  Code checks each of these outputs, and every one has a deterministic fallback. The traces record which model Nightshift says answered each call, with its receipt id.
 - **In development:** the code was written with Claude Code (Anthropic), using Claude Opus 5.5. Commits carry a `Co-Authored-By: Claude` trailer. Cursor was not used.
 
-## Data sources and licences
+## Licence, data and attribution
 
-- INE census counts (2017, 2024) and population projections 2002–2035 by comuna: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), under INE's [open data terms](https://www.ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos). The projections file in `data/official/` is aggregated from INE's workbook (see its README).
-- Wikidata: [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-- Wikipedia article text, in `data/sample/` and in the drafts' context: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Each row names its article and revision, so the authors can be found in that revision's history.
-- Python dependencies: `requirements.txt`.
+- **Code:** [Apache License 2.0](LICENSE). See [`NOTICE`](NOTICE).
+- **The World Model engine** implements the Meterless World Model specification, and `tests/test_world_model_conformance.py` ports its official conformance cases (github.com/Meterless/Meterless, Apache-2.0).
+- **INE data** (census counts for 2002, 2017 and 2024, the 2017 urban/rural split, projections 2002–2035): [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), under INE's [open data terms](https://www.ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos). The files in `data/official/` are described in its README.
+- **Wikidata:** [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **Wikipedia article text** (in `data/sample/`, `eval/snapshot/`, and in the outputs' quotes): [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Each row names its article and revision, so the authors can be found in that revision's history.
+- **Python dependencies:** `requirements.txt`.
