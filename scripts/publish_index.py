@@ -12,9 +12,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.config import ROOT  # noqa: E402
+from app.report.html import SOURCES, title_case  # noqa: E402
 
 OUT = ROOT / "output_examples"
 REPO = "https://github.com/felixmella/open-agent-hack/blob/main"  # Markdown reads best on GitHub
+REGIONS = {"tarapaca": "Tarapacá", "antofagasta": "Antofagasta", "atacama": "Atacama", "coquimbo": "Coquimbo",
+           "valparaiso": "Valparaíso", "libertador-general-bernardo-o-higgins": "O'Higgins", "maule": "Maule",
+           "biobio": "Biobío", "la-araucania": "La Araucanía", "los-lagos": "Los Lagos",
+           "aysen-del-general-carlos-ibanez-del-camp": "Aysén", "magallanes-y-de-la-antartica-chilena": "Magallanes",
+           "metropolitana-de-santiago": "Metropolitana de Santiago", "los-rios": "Los Ríos",
+           "arica-y-parinacota": "Arica y Parinacota", "nuble": "Ñuble"}
 STYLE = """
 :root { --bg: #f5f6f8; --panel: #fff; --ink: #18202b; --muted: #5a6473; --line: #e2e6ec; --accent: #0b5fbf; }
 @media (prefers-color-scheme: dark) { :root { --bg: #0e1217; --panel: #151b23; --ink: #e5e9ef; --muted: #98a2b3;
@@ -43,12 +50,12 @@ def row(name, about, folder):
     files = " · ".join(f'<a href="{folder}/{f}">{label}</a>' for f, label in (
         ("report.html", "review queue"), ("result.json", "result"), ("trace.jsonl", "trace"),
         ("world-model-audit.jsonl", "World Model audit")) if (OUT / folder / f).exists())
-    scope = about["input"]["scope"]
-    described = scope.get("region") or ", ".join(scope.get("comunas") or scope.get("cuts") or [])
+    result = json.loads((OUT / folder / "result.json").read_text(encoding="utf-8"))
+    described = ", ".join(title_case(c["name"]) for c in result["comunas"])
     return (f"<tr><td><b>{esc(name)}</b><br><span class=muted>{esc(described)}</span></td>"
             f"<td class=num>{summary['comunas']}</td><td class=num>{summary['findings']}</td>"
             f"<td class=num>{summary['drafts']}</td><td class=num>{summary['critic_rejections']}</td>"
-            f"<td>{esc(', '.join(summary.get('discoveries') or []) or '—')}</td>"
+            f"<td>{esc(', '.join(SOURCES.get(s, s) for s in summary.get('discoveries') or []) or '—')}</td>"
             f"<td class=num>{usage['calls']}<br><span class=muted>{esc(served)}</span></td>"
             f"<td class=num>{round(about['seconds'] / 60, 1)} min</td><td>{files}</td></tr>")
 
@@ -62,13 +69,15 @@ def main():
     if (national / "summary.json").exists():
         summary = json.loads((national / "summary.json").read_text(encoding="utf-8"))
         for run in summary["runs"]:
-            name = run["run_id"].split("-", 3)[-1].replace("-", " ").title()
+            slug = run["run_id"].split("-", 3)[-1]
+            name = REGIONS.get(slug, slug.replace("-", " ").title())
             regions.append(f'<tr><td><a href="national/{esc(run["run_id"])}/report.html">{esc(name)}</a></td>'
                            f"<td class=num>{run['comunas']}</td><td class=num>{run['findings']}</td>"
                            f"<td class=num>{run['drafts']}</td></tr>")
         headline = (f"<p>Of <b>{summary['current_figures']}</b> current population figures shown across Spanish and "
                     f"English Wikipedia and Wikidata, <b>{summary['differing_from_census_2024']} "
-                    f"({summary['share_differing']:.0%})</b> are not INE's Census 2024 count. {esc(summary['method'])}. "
+                    f"({summary['share_differing']:.0%})</b> are not INE's Census 2024 count. Run with the "
+                    f"{esc(summary['method'])}. "
                     f'<a href="{REPO}/output_examples/national/summary.md">Summary</a>.</p>')
     page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
