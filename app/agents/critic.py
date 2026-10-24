@@ -69,9 +69,10 @@ def states(text, value):
 
 
 def allowed_figures(evidence, extra=()):
-    """Figures an explanation may state: those in the evidence (and the years a cited reference names), and
-    differences between them."""
-    numbers = set(extra)
+    """Figures an explanation may state: those in the evidence (and the years a cited reference names), differences
+    between them, and the years of Chile's censuses, which explanations name ('the 2017 Census' is no figure)."""
+    facts = census_facts()
+    numbers = set(extra) | set(facts["valid"]) | {int(year) for year in facts["discredited"]}
     for item in evidence:
         numbers |= {y for y in item.get("years") or [] if isinstance(y, int)}
         for key in ("value", "year", "value_raw", "label", "quote", "source"):

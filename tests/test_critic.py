@@ -174,3 +174,22 @@ def test_a_wikidata_statement_with_the_right_count_under_the_wrong_date_is_repla
     referenced = {**statement, "references": ["https://www.ine.gob.cl/"]}
     by_hand = Editor(world, tracer, None, "t").wikidata_draft([{**finding, "claim": referenced}], correction)
     assert not by_hand["quickstatements"].startswith("-") and any("by hand" in n for n in by_hand["notes"])
+
+
+def test_a_census_year_in_the_wording_is_no_figure(tmp_path):
+    # Coyhaique's Wikidata draft, live on Oct 24: "older projections or the 2017 Census" read as the figure 2,017
+    critic = Critic(WorldModel(), Tracer("t", tmp_path, echo=False), None, "t")
+    table = {"census": {2017: {"value": 57818, "year": 2017, "obs_id": "a"},
+                        2024: {"value": 57823, "year": 2024, "obs_id": "b"}}, "projection": {}}
+    draft = {"target": "wikidata", "correction": {"value": 57823, "source_key": "census_2024"},
+             "quickstatements": 'Q23660241|P1082|57823|P585|+2024-00-00T00:00:00Z/9|P459|Q39825'
+                                '|S854|"https://censo2024.ine.gob.cl/resultados/"|S813|+2026-10-24T00:00:00Z/11'}
+    explanation = ("Previous population figures for Coyhaique were based on older projections or the 2017 Census, "
+                   "not the actual 2024 Census count. The drafts update the count to 57,823.")
+    review = critic.review_draft(ComunaState("11101", "COYHAIQUE"), "wikidata", draft, explanation,
+                                 [{"kind": "official", "value": 57823, "year": 2024}], table, 1)
+    assert review["checks"]["figures_faithful"] and review["approved"]
+    padded = critic.review_draft(ComunaState("11101", "COYHAIQUE"), "wikidata", draft,
+                                 explanation + " About 61,000 people live there.",
+                                 [{"kind": "official", "value": 57823, "year": 2024}], table, 1)
+    assert not padded["checks"]["figures_faithful"]  # a real figure the evidence doesn't hold still fails
