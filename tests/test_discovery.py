@@ -131,8 +131,9 @@ def test_without_a_model_the_planner_chooses_by_each_figures_cues(tmp_path):
 
 def test_the_model_chooses_and_explains_or_declines_and_is_not_asked_again(tmp_path):
     tracer = Tracer("t", tmp_path, echo=False)
-    llm = FakeLLM(Planner=lambda p: {"sources": [{"source": "official_census2002",
-                                                  "reason": "Only the 2002 count can check a 2002 census row."}]})
+    llm = FakeLLM(Planner=lambda p: {"choices": [
+        {"figure": "1", "source": None, "reason": "A 2024 label fits no source that is unread here."},
+        {"figure": "3", "source": "official_census2002", "reason": "Only the 2002 count can check a 2002 census row."}]})
     planner, plan, state, _ = plan_for(FakeZetaris(), tmp_path, AgentLLM(llm, tracer, min_interval=0))
     assert planner.discover(plan, REQUESTS, state, 1) == ["official_census2002"]
     (agent, payload), = llm.calls
@@ -140,7 +141,7 @@ def test_the_model_chooses_and_explains_or_declines_and_is_not_asked_again(tmp_p
     assert "Coverage: census, 2002." in payload["sources_available"]["official_census2002"]
     assert state.discoveries[0]["model_served"] == "fake/nemotron"
 
-    declining = FakeLLM(Planner=lambda p: {"sources": []})
+    declining = FakeLLM(Planner=lambda p: {"choices": [{"figure": n, "source": None} for n in p["figures"]]})
     planner, plan, state, _ = plan_for(FakeZetaris(), tmp_path, AgentLLM(declining, tracer, min_interval=0))
     assert planner.discover(plan, REQUESTS, state, 1) == []
     assert set(state.declined) == {"official_projections", "official_census2002"}

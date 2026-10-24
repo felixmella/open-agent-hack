@@ -61,8 +61,8 @@ def test_the_snapshot_reproduces_the_demo_moment(sample_settings, no_network):
     infobox = next(f for f in hualqui["findings"] if f["target"] == "es" and f["claim"].get("location") == "infobox")
     assert infobox["claim"]["value"] == 26746 and infobox["class"] == "different_definition"
     assert not hualqui["critic"]["history"][0]["approved"] and hualqui["critic"]["history"][-1]["approved"]
-    # projections for Hualqui's figures; Census 2002 for the 2002 figures in Guaitecas's and Quirihue's articles
-    assert result["summary"]["discoveries"] == ["official_projections", "official_census2002"]
+    # Census 2002 for the three 2002 figures in Guaitecas's and Quirihue's articles; projections for Hualqui's two
+    assert result["summary"]["discoveries"] == ["official_census2002", "official_projections"]
 
 
 def test_a_comuna_outside_the_snapshot_is_refused(sample_settings, no_network):

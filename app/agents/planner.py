@@ -12,18 +12,18 @@ below the comuna's total). A source the Planner turns down isn't offered again i
 from dataclasses import dataclass, field
 
 from app.adapters.zetaris import ZetarisError, as_str
-from app.agents.llm import fits, model_note
+from app.agents.llm import batched, model_note
 from app.engines.world_model import normalize_name
 from app.knowledge import catalog as sources_catalog
 from app.knowledge.taxonomy import census_status
 
 DISCOVERY_PROMPT = """FactSync Chile - Planner.
 The Critic sent back population figures for Chilean comunas that the official figures read so far can't explain or
-check. Each figure lists its candidates: the unread sources whose coverage (definition and years) could. Choose the
-sources to read now, at most {limit}, from sources_available. Decide from each figure's label, year and size and each
-source's coverage: you can't know a source's figures before it is read, so never rule one out by guessing them.
-Choose none only if no candidate fits any figure.
-JSON: {{"sources": [{{"source": "<source id>", "reason": "<one sentence: which figures it could explain, and why>"}}]}}"""
+check. Each numbered figure lists its candidates: the unread sources whose coverage (definition and years) could.
+"like_it" counts other figures with the same label, year and candidates. For EACH figure, choose the candidate that
+fits it best, or null if none does. Decide from the figure's label, year and size and each source's coverage: you
+can't know a source's figures before it is read, so never rule one out by guessing them.
+JSON: {"choices": [{"figure": "1", "source": "<source id or null>", "reason": "<one short sentence>"}]}"""
 
 
 class ScopeError(ValueError):
@@ -156,76 +156,87 @@ class Planner:
                               output_summary="no candidate source left to add (all read, declined or cap reached)")
             return []
 
-        def payload(figures, described=True):
-            body = {"figures": [{k: v for k, v in f.items() if v is not None} for f in figures],
-                    "sources_read": {s: plan.catalog[s]["description"] for s in plan.sources} if described
-                    else plan.sources,
-                    "sources_available": {s: f"{row['description']} Coverage: {sources_catalog.coverage(row)}."
-                                          for s, row in options.items()}}
-            if len(figures) < len(requests):
-                body["more_figures"] = len(requests) - len(figures)
-            return body
+        groups = {}  # figures with the same cues get one decision
+        for request in requests:
+            candidates = tuple(s for s in request["candidates"] if s in options)
+            if candidates:
+                groups.setdefault((request.get("year"), request.get("basis"), candidates), []).append(request)
+        groups = list(groups.values())
 
-        body = payload(requests)  # one decision for every figure: shrink the request until it can stream
-        if not fits(body):
-            body = payload(requests, described=False)
-        while not fits(body) and len(body["figures"]) > 1:
-            body = payload(requests[:len(body["figures"]) - 1], described=False)
+        def entry(group):
+            item = {k: group[0][k] for k in ("comuna", "value", "shown_in", "label", "year", "basis", "size")
+                    if group[0].get(k) is not None}
+            item["candidates"] = [s for s in group[0]["candidates"] if s in options]
+            return {**item, "like_it": len(group) - 1} if len(group) > 1 else item
+
+        def payload(batch):
+            used = [s for s in options if any(s in entry(g)["candidates"] for g in batch)]
+            return {"figures": {str(i): entry(g) for i, g in enumerate(batch, 1)},
+                    "sources_read": {s: sources_catalog.coverage(plan.catalog[s]) for s in plan.sources
+                                     if plan.catalog[s]["kind"] == "official"},
+                    "sources_available": {s: f"{options[s]['description']} Coverage: "
+                                             f"{sources_catalog.coverage(options[s])}." for s in used}}
 
         def valid(data):
-            chosen = data.get("sources")
-            if not isinstance(chosen, list):
-                return "no 'sources' list"
-            unknown = [c.get("source") if isinstance(c, dict) else c for c in chosen
-                       if not isinstance(c, dict) or c.get("source") not in options]
+            choices = data.get("choices")
+            if not isinstance(choices, list) or not all(isinstance(c, dict) for c in choices):
+                return "no 'choices' list"
+            unknown = [c.get("source") for c in choices if c.get("source") not in (*options, None)]
             return f"unknown source(s) {unknown}" if unknown else None
 
-        reply = self.llm.ask_json(self.name, "choose_sources", DISCOVERY_PROMPT.format(limit=limit), body,
-                                  target_agent="Retriever", round_no=round_no, validate=valid) if self.llm else None
-        if reply:
-            note = model_note(reply[1])
-            chosen = {}
-            for item in reply[0]["sources"]:
-                chosen.setdefault(item["source"], str(item.get("reason") or "")[:500])
-            chosen = list(chosen.items())[:limit]
-        else:
-            note = {"method": "rules"}
-            chosen = self.by_cues(requests, options, limit)
-        if not chosen:
-            reason = "the model chose no source: none of the candidates fits these figures"
+        picks, notes, asked = {}, {}, False  # source -> [(figure, why)] in the order chosen; source -> who chose it
+        for batch in batched(groups, payload):  # requests small enough to stream (see app/agents/llm.py)
+            reply = self.llm.ask_json(self.name, "choose_sources", DISCOVERY_PROMPT, payload(batch),
+                                      target_agent="Retriever", round_no=round_no, validate=valid) if self.llm else None
+            if reply:
+                asked = True
+                for choice in reply[0]["choices"]:
+                    number = str(choice.get("figure"))
+                    if choice.get("source") and number.isdigit() and 1 <= int(number) <= len(batch):
+                        why = str(choice.get("reason") or "")[:300]
+                        picks.setdefault(choice["source"], []).extend((f, why) for f in batch[int(number) - 1])
+                        notes.setdefault(choice["source"], model_note(reply[1]))
+            else:
+                for source, chosen in self.by_cues([f for g in batch for f in g], options).items():
+                    picks.setdefault(source, []).extend(chosen)
+                    notes.setdefault(source, {"method": "rules"})
+        if not picks:
+            reason = "no candidate fits these figures" + (" (the model chose none)" if asked else "")
             for option in options:
                 state.declined[option] = reason
             self.tracer.event(self.name, "discover_source", round_no=round_no, status="declined",
                               input_summary=f"{len(requests)} figure(s); candidates: {', '.join(options)}",
-                              output_summary=reason, decided_by=note)
+                              output_summary=reason)
             return []
+        order = list(options)
         added = []
-        for source, reason in chosen:
-            served = [r for r in requests if source in r["candidates"]]
+        for source in sorted(picks, key=lambda s: (-len(picks[s]), order.index(s)))[:limit]:
+            served = [figure for figure, _ in picks[source]]
+            note = notes[source]
+            if note["method"] == "llm":
+                reason = "; ".join(dict.fromkeys(why for _, why in picks[source] if why))[:500]
+            else:
+                reason = (f"by coverage ({sources_catalog.coverage(options[source])}), the best fit for {len(served)} "
+                          f"figure(s), e.g. {served[0]['value']:,} ('{served[0]['label']}')")
             plan.sources.append(source)
             state.discoveries.append({"round": round_no, "source": source, "reason": reason, "requests": served, **note})
-            self.tracer.event(self.name, "discover_source", input_summary=f"{len(served)} of {len(requests)} figure(s): "
-                              + "; ".join(f"{r['comuna']} {r['value']:,} ({r['shown_in']}, '{r['label']}')"
-                                          for r in served[:4]),
+            self.tracer.event(self.name, "discover_source", input_summary=f"chosen for {len(served)} of {len(requests)} "
+                              f"figure(s): " + "; ".join(f"{r['comuna']} {r['value']:,} ({r['shown_in']}, '{r['label']}')"
+                                                         for r in served[:4]),
                               output_summary=f"add {source}: {reason}", target_agent="Retriever", round_no=round_no,
                               decided_by=note)
             added.append(source)
         return added
 
     @staticmethod
-    def by_cues(requests, options, limit):
+    def by_cues(requests, options):
         """The deterministic choice: for each figure, the candidate whose coverage best fits its cues (catalog order
-        breaks ties); every source chosen once, at most `limit`."""
+        breaks ties). Returns {source: [(figure, None)]}: the reason is the fit itself."""
         order = list(options)
-        chosen = {}
+        picks = {}
         for request in requests:
             candidates = [s for s in request["candidates"] if s in options]
-            if not candidates:
-                continue
-            best = min(candidates, key=lambda s: (fit(options[s], request), order.index(s)))
-            chosen.setdefault(best, [])
-            chosen[best].append(request)
-        picked = sorted(chosen, key=order.index)[:limit]
-        return [(s, f"deterministic choice by coverage: fits {len(chosen[s])} figure(s), e.g. "
-                    f"{chosen[s][0]['value']:,} ('{chosen[s][0]['label']}'), best of {', '.join(chosen[s][0]['candidates'])}")
-                for s in picked]
+            if candidates:
+                best = min(candidates, key=lambda s: (fit(options[s], request), order.index(s)))
+                picks.setdefault(best, []).append((request, None))
+        return picks

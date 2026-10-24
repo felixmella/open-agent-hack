@@ -171,12 +171,17 @@ def critic_agrees(payload):
 
 
 def planner_adds_projections(payload):
-    """Projections for the figures they could explain, and the source each other figure names first."""
-    chosen = {"official_projections": "A 2024 figure that is no census count may be INE's projection for 2024."}
-    for figure in payload["figures"]:
-        if "official_projections" not in figure["candidates"]:
-            chosen.setdefault(figure["candidates"][0], f"It could check {figure['value']:,} ('{figure['label']}').")
-    return {"sources": [{"source": s, "reason": r} for s, r in chosen.items() if s in payload["sources_available"]]}
+    """Per figure: the census of the year a census-labelled figure names, else the projections, else the first
+    candidate."""
+    def choose(figure):
+        census = f"official_census{figure.get('year')}"
+        if figure.get("basis") == "census" and census in figure["candidates"]:
+            return census, f"{figure['value']:,} is labelled as the {figure['year']} census count."
+        if "official_projections" in figure["candidates"]:
+            return "official_projections", "A figure that is no census count may be INE's projection for its year."
+        return figure["candidates"][0], f"It could check {figure['value']:,} ('{figure['label']}')."
+    return {"choices": [{"figure": number, "source": choose(figure)[0], "reason": choose(figure)[1]}
+                        for number, figure in payload["figures"].items()]}
 
 
 def editor_writes(payload):
