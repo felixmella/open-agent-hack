@@ -50,7 +50,7 @@ The Critic's model doubted 2 verdicts. Both flags were wrong, but understandably
 
 **The Critic's two flags.** It doubted two *internal inconsistency* verdicts: an infobox showing an older figure than a newer census count the article itself gives (Galvarino, Melipilla). The model read the class description of that time, "the article contradicts itself", literally. Two figures for different years don't contradict each other, so the doubt was fair. The verdicts were right, and each lost only a point (8/9). The class description has since been reworded to say what the class covers.
 
-**Discovery.** Both runs added the same three sources. The model chose all three in the first round. By cues, code left the urban/rural split for the second round. The model's reasons are in the trace (`runs/model/logs/trace-eval-model.jsonl`, `llm_choose_sources`); some are thin. Its reason for an undated figure cites a year the figure doesn't have.
+**Discovery.** Both runs added the same three sources. The model chose all three in the first round. By cues, code left the urban/rural split for the second round. The model's reasons are in the trace (`runs/model/trace.jsonl`, `llm_choose_sources`); some are thin. Its reason for an undated figure cites a year the figure doesn't have.
 
 **What it costs.** 114 calls and 78 minutes, against one second, for 11 comunas. So the national numbers come from the deterministic path, and the model is for the comunas a reviewer is working on.
 

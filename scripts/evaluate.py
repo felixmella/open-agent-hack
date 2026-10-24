@@ -51,12 +51,20 @@ def run_both():
                                              "options": {"use_llm": mode == "model", "max_critic_rounds": 2}})
         world = WorldModel(strip_suffixes=[", Chile"])  # in memory: neither run sees the other's conclusions
         result = run(run_input, settings, zetaris=SampleData(EVAL / "snapshot"), world=world)
+        # kept flat in eval/runs/<mode>/ (folders named output/ or logs/ are ignored by git)
+        for source, name in ((f"output/eval-{mode}/result.json", "result.json"),
+                             (f"output/eval-{mode}/report.html", "report.html"),
+                             (f"logs/trace-eval-{mode}.jsonl", "trace.jsonl"),
+                             (f"logs/world-model-eval-{mode}.jsonl", "world-model-audit.jsonl")):
+            shutil.move(out / source, out / name)
+        for folder in ("output", "logs", "state"):
+            shutil.rmtree(out / folder, ignore_errors=True)
         print(f"{mode}: {result['status']}, {result['summary']['findings']} findings, "
               f"{result['model_usage']['calls']} model calls, {result['execution_time_seconds']} s")
 
 
 def result_of(mode):
-    return json.loads((EVAL / "runs" / mode / "output" / f"eval-{mode}" / "result.json").read_text(encoding="utf-8"))
+    return json.loads((EVAL / "runs" / mode / "result.json").read_text(encoding="utf-8"))
 
 
 def judged(result):
