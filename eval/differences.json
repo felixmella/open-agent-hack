@@ -1,0 +1,934 @@
+{
+ "runs": {
+  "rules": {
+   "findings": 70,
+   "drafts": 31,
+   "escalations": 0,
+   "critic_rejections": 14,
+   "discoveries": [
+    "official_projections",
+    "official_census2002",
+    "official_census2017_area"
+   ],
+   "model_calls": 0,
+   "fallbacks": {},
+   "served_model": {},
+   "seconds": 0.9,
+   "draft_reviews_failed": 0
+  },
+  "model": {
+   "findings": 65,
+   "drafts": 31,
+   "escalations": 0,
+   "critic_rejections": 10,
+   "discoveries": [
+    "official_projections",
+    "official_census2002",
+    "official_census2017_area"
+   ],
+   "model_calls": 114,
+   "fallbacks": {},
+   "served_model": {
+    "nvidia/nemotron-3.5-lightning-30b-a3b": 114
+   },
+   "seconds": 4709.3,
+   "draft_reviews_failed": 0
+  }
+ },
+ "differences": [
+  {
+   "id": "d729ee86b",
+   "kind": "extraction",
+   "cut": "04202",
+   "page": "es",
+   "location": "body",
+   "value": 2000,
+   "year": 2000,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Canela",
+     "verdict": "check: not checkable",
+     "label": "2000",
+     "quote": "La población de Canela Baja no supera los 2000 habitantes.",
+     "basis": null,
+     "method": "rules",
+     "explanation": "refers to 2000, a year no official figure read for this comuna covers",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 9379,
+       "2017": 9093,
+       "2024": 9639
+      },
+      "projection": {
+       "2017": 9456,
+       "2020": 9546,
+       "2024": 9509
+      },
+      "urban": {
+       "2017": 1960
+      },
+      "rural": {
+       "2017": 7133
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "dffcf85c1",
+   "kind": "extraction",
+   "cut": "04202",
+   "page": "es",
+   "location": "body",
+   "value": 20000,
+   "year": null,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Canela",
+     "verdict": "check: not checkable",
+     "label": "no year",
+     "quote": "Se calcula que para el evento llegó aproximadamente una población flotante de 20.000 personas, visitantes que acamparon en terrenos aledaños a la parada oficial del Rally Dakar en un terreno municipal a la salida norte del pueblo, en lo que se denomina \"El Badén\"",
+     "basis": null,
+     "method": "rules",
+     "explanation": "no year stated and no official figure matches, so it can't be told what it refers to",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 9379,
+       "2017": 9093,
+       "2024": 9639
+      },
+      "projection": {
+       "2017": 9456,
+       "2020": 9546,
+       "2024": 9509
+      },
+      "urban": {
+       "2017": 1960
+      },
+      "rural": {
+       "2017": 7133
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "d6e2ae8a9",
+   "kind": "extraction",
+   "cut": "04202",
+   "page": "es",
+   "location": "body",
+   "value": 203,
+   "year": 2017,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Canela",
+     "verdict": "check: not the comuna's figure",
+     "label": "2017",
+     "quote": "A 2017, en la localidad de Canela Baja habitaban 1918, en Canela Alta y Población La Manga 808, Huentelauquén Norte 798, Huentelauquén Sur 518, El Llano 223, Mincha Norte 214 y Los Rulos 203 personas.",
+     "basis": null,
+     "method": "rules",
+     "explanation": "203 is 2% of INE's Census 2024 count, 9,639: it probably refers to a locality or an area, not the comuna.",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 9379,
+       "2017": 9093,
+       "2024": 9639
+      },
+      "projection": {
+       "2017": 9456,
+       "2020": 9546,
+       "2024": 9509
+      },
+      "urban": {
+       "2017": 1960
+      },
+      "rural": {
+       "2017": 7133
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "d4e39f8ff",
+   "kind": "extraction",
+   "cut": "04202",
+   "page": "es",
+   "location": "body",
+   "value": 9084,
+   "year": null,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Canela",
+     "verdict": "genuine_error",
+     "label": "no year",
+     "quote": "La comuna administra un sistema de salud municipal, a cargo del Departamento de Salud de la Ilustre Municipalidad de Canela, cuenta con un consultorio urbano ubicado en Canela Baja y con 8 postas de salud rural (PSR), en el cual se encuentra un número de población inscrita validada en servicios de salud municipal FONASA de 9.084 personas (98 %)",
+     "basis": null,
+     "method": "rules",
+     "explanation": "9,084 differs in two neighbouring digits from INE's Census 2017 count, 9,093: possibly a typo. The current official figure is the Census 2024 count, 9,639.",
+     "status": "approved",
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 9379,
+       "2017": 9093,
+       "2024": 9639
+      },
+      "projection": {
+       "2017": 9456,
+       "2020": 9546,
+       "2024": 9509
+      },
+      "urban": {
+       "2017": 1960
+      },
+      "rural": {
+       "2017": 7133
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "db63dd247",
+   "kind": "verdict",
+   "cut": "05606",
+   "page": "wikidata",
+   "location": "statement",
+   "value": 1029110,
+   "year": 2020,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Santo Domingo",
+     "verdict": "genuine_error",
+     "label": "point in time 2020-01-01",
+     "quote": null,
+     "basis": null,
+     "method": null,
+     "explanation": "1,029,110 is 78 times INE's Census 2024 count, 13,171: probably another place's figure (with the same name), an area larger than the comuna, or a unit slip.",
+     "status": "approved",
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 7418,
+       "2017": 10900,
+       "2024": 13171
+      },
+      "projection": {
+       "2017": 11231,
+       "2020": 11934,
+       "2024": 12609
+      },
+      "urban": {
+       "2017": 6216
+      },
+      "rural": {
+       "2017": 4684
+      }
+     }
+    }
+   ],
+   "model": [
+    {
+     "comuna": "Santo Domingo",
+     "verdict": "cross_source_mismatch",
+     "label": "point in time 2020-01-01",
+     "quote": null,
+     "basis": null,
+     "method": null,
+     "explanation": "The figure 1,029,110 does not match any official INE census, projection, urban, or rural figure for Santo Domingo, and no read source explains it.",
+     "status": "approved",
+     "decided_by": "nvidia/nemotron-3.5-lightning-30b-a3b",
+     "official": {
+      "census": {
+       "2002": 7418,
+       "2017": 10900,
+       "2024": 13171
+      },
+      "projection": {
+       "2017": 11231,
+       "2020": 11934,
+       "2024": 12609
+      },
+      "urban": {
+       "2017": 6216
+      },
+      "rural": {
+       "2017": 4684
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "d8b0c7bee",
+   "kind": "extraction",
+   "cut": "07203",
+   "page": "es",
+   "location": "body",
+   "value": 2537,
+   "year": null,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Pelluhue",
+     "verdict": "check: not the comuna's figure",
+     "label": "no year",
+     "quote": "Un 39,6% (2.537 habitantes) corresponde a población rural, y un 60,4% (3.877 habitantes) corresponde a población urbana.",
+     "basis": null,
+     "method": "rules",
+     "explanation": "2,537 is 30% of INE's Census 2024 count, 8,578: it probably refers to a locality or an area, not the comuna.",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 6414,
+       "2017": 7571,
+       "2024": 8578
+      },
+      "projection": {
+       "2017": 7763,
+       "2020": 8092,
+       "2024": 8444
+      },
+      "urban": {
+       "2017": 4081
+      },
+      "rural": {
+       "2017": 3490
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "d9fc543d5",
+   "kind": "extraction",
+   "cut": "08110",
+   "page": "en",
+   "location": "body",
+   "value": 1873,
+   "year": null,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Talcahuano",
+     "verdict": "check: not the comuna's figure",
+     "label": "no year",
+     "quote": "With a population density of 1,873 inhabitants per square kilometre, it is the seventh most populated city of the country.",
+     "basis": null,
+     "method": "rules",
+     "explanation": "1,873 is 1% of INE's Census 2024 count, 147,322: it probably refers to a locality or an area, not the comuna.",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 163626,
+       "2017": 151749,
+       "2024": 147322
+      },
+      "projection": {
+       "2017": 158038,
+       "2020": 158345,
+       "2024": 158167
+      },
+      "urban": {
+       "2017": 150320
+      },
+      "rural": {
+       "2017": 1429
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "d28ae5bdd",
+   "kind": "extraction",
+   "cut": "08301",
+   "page": "es",
+   "location": "body",
+   "value": 105436,
+   "year": 2024,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Los Ángeles",
+     "verdict": "cross_source_mismatch",
+     "label": "2024 census",
+     "quote": "Entre los datos estadísticos que nos entregó el censo de 2024 podemos decir que 105.436 habitantes son hombres y 114.005 mujeres, con un promedio de edad de 37,6 años.",
+     "basis": "census",
+     "method": "rules",
+     "explanation": "105,436 matches no official figure held (Census 2002 166,556, Census 2017 202,331, Census 2024 219,441, Census 2017 urban 151,087, Census 2017 rural 51,244, projection 2024 223,751).",
+     "status": "approved",
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 166556,
+       "2017": 202331,
+       "2024": 219441
+      },
+      "projection": {
+       "2017": 212875,
+       "2020": 218515,
+       "2024": 223751
+      },
+      "urban": {
+       "2017": 151087
+      },
+      "rural": {
+       "2017": 51244
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "d9f3ec389",
+   "kind": "extraction",
+   "cut": "08301",
+   "page": "es",
+   "location": "lead",
+   "value": 220441,
+   "year": 2024,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Los Ángeles",
+     "verdict": "genuine_error",
+     "label": "2024 census",
+     "quote": "Es una de las ciudades con mayor crecimiento del país en las últimas décadas, alcanzando los 220.441 habitantes de acuerdo al censo de 2024",
+     "basis": "census",
+     "method": "rules",
+     "explanation": "220,441 differs in two neighbouring digits from INE's Census 2024 count, 219,441: possibly a typo.",
+     "status": "approved",
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 166556,
+       "2017": 202331,
+       "2024": 219441
+      },
+      "projection": {
+       "2017": 212875,
+       "2020": 218515,
+       "2024": 223751
+      },
+      "urban": {
+       "2017": 151087
+      },
+      "rural": {
+       "2017": 51244
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "d2e81b59d",
+   "kind": "extraction",
+   "cut": "09106",
+   "page": "es",
+   "location": "body",
+   "value": 4414,
+   "year": null,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Galvarino",
+     "verdict": "check: not checkable",
+     "label": "no year",
+     "quote": "Aproximadamente el 36,8% de la población (4.414 habitantes) tiene más de 45 años",
+     "basis": null,
+     "method": "rules",
+     "explanation": "no year stated and no official figure matches, so it can't be told what it refers to",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 12596,
+       "2017": 11996,
+       "2024": 12710
+      },
+      "projection": {
+       "2017": 12628,
+       "2020": 12633,
+       "2024": 12568
+      },
+      "urban": {
+       "2017": 4149
+      },
+      "rural": {
+       "2017": 7847
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "d540a66ce",
+   "kind": "extraction",
+   "cut": "09106",
+   "page": "es",
+   "location": "body",
+   "value": 600,
+   "year": null,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Galvarino",
+     "verdict": "check: not the comuna's figure",
+     "label": "no year",
+     "quote": "Solo el 5% de la población (600 habitantes) posee un título profesional, excluyendo títulos técnicos",
+     "basis": null,
+     "method": "rules",
+     "explanation": "600 is 5% of INE's Census 2024 count, 12,710: it probably refers to a locality or an area, not the comuna.",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 12596,
+       "2017": 11996,
+       "2024": 12710
+      },
+      "projection": {
+       "2017": 12628,
+       "2020": 12633,
+       "2024": 12568
+      },
+      "urban": {
+       "2017": 4149
+      },
+      "rural": {
+       "2017": 7847
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "df2e67bd4",
+   "kind": "extraction",
+   "cut": "09106",
+   "page": "es",
+   "location": "body",
+   "value": 7077,
+   "year": null,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Galvarino",
+     "verdict": "check: not checkable",
+     "label": "no year",
+     "quote": "La presencia de la comunidad mapuche es notable, constituyendo el 59% de la población, o sea, 7.077 habitantes",
+     "basis": null,
+     "method": "rules",
+     "explanation": "no year stated and no official figure matches, so it can't be told what it refers to",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 12596,
+       "2017": 11996,
+       "2024": 12710
+      },
+      "projection": {
+       "2017": 12628,
+       "2020": 12633,
+       "2024": 12568
+      },
+      "urban": {
+       "2017": 4149
+      },
+      "rural": {
+       "2017": 7847
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "db711e11b",
+   "kind": "extraction",
+   "cut": "09106",
+   "page": "es",
+   "location": "body",
+   "value": 7797,
+   "year": null,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Galvarino",
+     "verdict": "check: not checkable",
+     "label": "no year",
+     "quote": "En cuanto a creencias religiosas, el 65% de la población (7.797 habitantes) se declara creyente, con un 41% identificándose como católicos y un 24% como protestantes",
+     "basis": null,
+     "method": "rules",
+     "explanation": "no year stated and no official figure matches, so it can't be told what it refers to",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 12596,
+       "2017": 11996,
+       "2024": 12710
+      },
+      "projection": {
+       "2017": 12628,
+       "2020": 12633,
+       "2024": 12568
+      },
+      "urban": {
+       "2017": 4149
+      },
+      "rural": {
+       "2017": 7847
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "ddaaa2ede",
+   "kind": "extraction",
+   "cut": "10401",
+   "page": "es",
+   "location": "body",
+   "value": 1637,
+   "year": 2017,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Chaitén",
+     "verdict": "cross_source_mismatch",
+     "label": "2017",
+     "quote": "Al 2017 la ciudad tenía una población de 1637 personas",
+     "basis": null,
+     "method": "rules",
+     "explanation": "1,637 matches no official figure held (Census 2002 7,182, Census 2017 5,071, Census 2024 4,025, Census 2017 urban 1,643, Census 2017 rural 3,428, projection 2017 4,980).",
+     "status": "approved",
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 7182,
+       "2017": 5071,
+       "2024": 4025
+      },
+      "projection": {
+       "2017": 4980,
+       "2020": 5020,
+       "2024": 5078
+      },
+      "urban": {
+       "2017": 1643
+      },
+      "rural": {
+       "2017": 3428
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "dd4c81c95",
+   "kind": "extraction",
+   "cut": "10401",
+   "page": "es",
+   "location": "body",
+   "value": 189,
+   "year": 2006,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Chaitén",
+     "verdict": "check: not the comuna's figure",
+     "label": "2006",
+     "quote": "En 2006, la encuesta CASEN determinó que 189 personas en Chaitén eran consideradas como pobres y 244 como indigentes, representando el 2,95 % y el 3,81 % de la población comunal",
+     "basis": null,
+     "method": "rules",
+     "explanation": "189 is 5% of INE's Census 2024 count, 4,025: it probably refers to a locality or an area, not the comuna.",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 7182,
+       "2017": 5071,
+       "2024": 4025
+      },
+      "projection": {
+       "2017": 4980,
+       "2020": 5020,
+       "2024": 5078
+      },
+      "urban": {
+       "2017": 1643
+      },
+      "rural": {
+       "2017": 3428
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "def9a7478",
+   "kind": "extraction",
+   "cut": "10401",
+   "page": "es",
+   "location": "body",
+   "value": 4065,
+   "year": 2002,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Chaitén",
+     "verdict": "genuine_error",
+     "label": "2002",
+     "quote": "El pueblo de Chaitén tenía, en 2002, una población de 4065 habitantes (2117 hombres y 1948 mujeres) y una cantidad de 1224 viviendas extendidas en una superficie de 1,92 km²",
+     "basis": null,
+     "method": "rules",
+     "explanation": "4,065 differs in one digit from INE's Census 2024 count, 4,025: possibly a typo.",
+     "status": "approved",
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 7182,
+       "2017": 5071,
+       "2024": 4025
+      },
+      "projection": {
+       "2017": 4980,
+       "2020": 5020,
+       "2024": 5078
+      },
+      "urban": {
+       "2017": 1643
+      },
+      "rural": {
+       "2017": 3428
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "df9ac8a01",
+   "kind": "extraction",
+   "cut": "13201",
+   "page": "es",
+   "location": "body",
+   "value": 500000,
+   "year": null,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Puente Alto",
+     "verdict": "check: not checkable",
+     "label": "no year",
+     "quote": "Fundada como un pequeño pueblo rural a fines del con el nombre de «Pueblito de Las Arañas», fue en sus inicios pionera en las actividades vitivinícolas de la Región Metropolitana, pero debido al aumento y expansión de la ciudad de Santiago, Puente Alto fue creciendo y pasando de ser un pequeño pueblo rural a ser la comuna con mayor población de Chile, superando los 500 000 habitantes.",
+     "basis": null,
+     "method": "rules",
+     "explanation": "no year stated and no official figure matches, so it can't be told what it refers to",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 493722,
+       "2017": 568106,
+       "2024": 568086
+      },
+      "projection": {
+       "2017": 604744,
+       "2020": 645909,
+       "2024": 667904
+      },
+      "urban": {
+       "2017": 568094
+      },
+      "rural": {
+       "2017": 12
+      }
+     }
+    }
+   ],
+   "model": null
+  },
+  {
+   "id": "d7ae86064",
+   "kind": "follow-on",
+   "cut": "13501",
+   "page": "en",
+   "location": "infobox",
+   "value": 108540,
+   "year": 2002,
+   "aspect": "consistency",
+   "rules": null,
+   "model": [
+    {
+     "comuna": "Melipilla",
+     "verdict": "internal_inconsistency",
+     "label": "2002 Census",
+     "quote": null,
+     "basis": "census",
+     "method": "zetaris",
+     "explanation": "The infobox gives 108,540 ('2002 Census'), while the lead already gives the 2017 census figure, 123,627.",
+     "status": "approved",
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 94540,
+       "2017": 123627,
+       "2024": 136325
+      },
+      "projection": {
+       "2017": 133232,
+       "2020": 141612,
+       "2024": 148899
+      },
+      "urban": {
+       "2017": 84724
+      },
+      "rural": {
+       "2017": 38903
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "d08baa347",
+   "kind": "extraction",
+   "cut": "13501",
+   "page": "en",
+   "location": "lead",
+   "value": 141612,
+   "year": 2020,
+   "aspect": "value",
+   "rules": null,
+   "model": [
+    {
+     "comuna": "Melipilla",
+     "verdict": "check: consistent",
+     "label": "2020 projection",
+     "quote": "According to the 2017 census, the commune alone has 123,627 residents and is projected to have 141,612 residents by 2020.",
+     "basis": "projection",
+     "method": "llm",
+     "explanation": "141,612 matches INE's projection for 2020.",
+     "status": null,
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 94540,
+       "2017": 123627,
+       "2024": 136325
+      },
+      "projection": {
+       "2017": 133232,
+       "2020": 141612,
+       "2024": 148899
+      },
+      "urban": {
+       "2017": 84724
+      },
+      "rural": {
+       "2017": 38903
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "d3fd960e7",
+   "kind": "extraction",
+   "cut": "13501",
+   "page": "es",
+   "location": "lead",
+   "value": 150466,
+   "year": 2017,
+   "aspect": "value",
+   "rules": [
+    {
+     "comuna": "Melipilla",
+     "verdict": "different_definition",
+     "label": "2017 census",
+     "quote": "La comuna central, sin considerar el resto de la provincia, en 2025 tiene 150.466 habitantes (basado en el censo 2017 con 123.627 habitantes) .",
+     "basis": "census",
+     "method": "rules",
+     "explanation": "150,466 is labelled as a census count, but it is INE's projection for 2025 (base Census 2017); Census 2024 counted 136,325.",
+     "status": "approved",
+     "decided_by": "code",
+     "official": {
+      "census": {
+       "2002": 94540,
+       "2017": 123627,
+       "2024": 136325
+      },
+      "projection": {
+       "2017": 133232,
+       "2020": 141612,
+       "2024": 148899
+      },
+      "urban": {
+       "2017": 84724
+      },
+      "rural": {
+       "2017": 38903
+      }
+     }
+    }
+   ],
+   "model": null
+  }
+ ],
+ "critic_flags": [
+  {
+   "id": "dc8854c96",
+   "kind": "critic flag",
+   "comuna": "Galvarino",
+   "page": "en",
+   "value": 12469,
+   "class": "internal_inconsistency",
+   "explanation": "The infobox gives 12,469 ('2016 (INE)'), while the Historical populations table already gives the 2024 census figure, 12,710.",
+   "flag": "class doubted on review: The infobox and historical populations table refer to different years (2016 and 2024), so there is no internal contradiction; the class internal_inconsistency does not fit.",
+   "final_status": "approved"
+  },
+  {
+   "id": "df0c57a75",
+   "kind": "critic flag",
+   "comuna": "Melipilla",
+   "page": "en",
+   "value": 108540,
+   "class": "internal_inconsistency",
+   "explanation": "The infobox gives 108,540 ('2002 Census'), while the lead already gives the 2017 census figure, 123,627.",
+   "flag": "class doubted on review: The 2002 and 2017 census figures do not contradict each other; they represent population counts from different years.",
+   "final_status": "approved"
+  }
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "runs": {
+  "rules": {
+   "findings": 70,
+   "drafts": 31,
+   "escalations": 0,
+   "critic_rejections": 14,
+   "discoveries": [
+    "official_projections",
+    "official_census2002",
+    "official_census2017_area"
+   ],
+   "model_calls": 0,
+   "fallbacks": {},
+   "served_model": {},
+   "seconds": 0.9,
+   "draft_reviews_failed": 0
+  },
+  "model": {
+   "findings": 65,
+   "drafts": 31,
+   "escalations": 0,
+   "critic_rejections": 10,
+   "discoveries": [
+    "official_projections",
+    "official_census2002",
+    "official_census2017_area"
+   ],
+   "model_calls": 114,
+   "fallbacks": {},
+   "served_model": {
+    "nvidia/nemotron-3.5-lightning-30b-a3b": 114
+   },
+   "seconds": 4709.3,
+   "draft_reviews_failed": 0
+  }
+ },
+ "adjudicated": {
+  "extraction": {
+   "model": 16,
+   "rules": 1,
+   "both": 1
+  },
+  "verdict": {
+   "rules": 1
+  },
+  "follow-on": {
+   "model": 1
+  },
+  "critic flag": {
+   "flag wrong": 2
+  }
+ },
+ "differences_in_findings": {
+  "model": 6,
+  "rules": 2
+ },
+ "headline_sample": {
+  "right": 25
+ }
+}

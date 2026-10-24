@@ -19,7 +19,9 @@ CLASSES = {
     "nonexistent_census": "Attributed to a census Chile never held (e.g. 1999, 2022).",
     "mislabelled_vintage": "A real official figure labelled with the wrong year or census, or cited to a source that "
                            "doesn't hold it (citation mismatch).",
-    "internal_inconsistency": "The article contradicts itself (infobox vs body).",
+    "internal_inconsistency": "The article disagrees with itself: its infobox gives another figure for the same year "
+                              "than its text or population table, or an older figure than a newer census count the "
+                              "article itself gives.",
     "cross_source_mismatch": "Matches no official figure, and nothing in the sources explains it.",
     "wikidata_rank_qualifier": "Wikidata statements lack the rank, point in time, method or reference needed to use "
                                "them correctly.",

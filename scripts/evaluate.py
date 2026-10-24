@@ -163,25 +163,96 @@ def diff():
     print(f"{len(found)} differences ({dict(Counter(d['kind'] for d in found))}), {len(flags)} Critic flags")
 
 
+def fields_shown(wikitext, language):
+    """The infobox's population fields as the article writes them, parsed from its wikitext (a template-aware parse,
+    independent of the SQL that read them)."""
+    from app.agents.extractor import INFOBOX_FIELDS
+    from app.knowledge.wikitext import infobox_parameters
+    params = infobox_parameters(wikitext)
+    names = [n for key in ("value", "year", "reference") for n in INFOBOX_FIELDS[language][key]]
+    return [f"{name} = {params[name]}" for name in names if params.get(name)] or ["no population field"]
+
+
+def headline(tag, n=25, seed=2024):
+    """A random sample of the national batch's current-figure verdicts (the ones its headline counts), each with its
+    raw evidence from the World Model: the infobox's population fields parsed again from the article's wikitext, or
+    the item's Wikidata statements. For checking the headline's precision by hand."""
+    import random
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from batch_national import TARGETS, current_figure
+    settings = load_settings(sample_mode=False)
+    world = WorldModel(storage="sqlite", path=settings.state_dir / "world-factsync.sqlite")
+    verdicts = []
+    for path in sorted(settings.output_dir.glob(f"national-{tag}-*/result.json")):
+        for comuna in json.loads(path.read_text(encoding="utf-8"))["comunas"]:
+            for target in TARGETS:
+                outcome = current_figure(comuna, target)
+                if outcome and outcome != "missing_value":
+                    verdicts.append((comuna, target, outcome))
+    sample = []
+    for comuna, target, outcome in random.Random(seed).sample(verdicts, n):
+        page = (comuna.get("picture") or {}).get("pages", {}).get({"es": "eswiki", "en": "enwiki"}.get(target, target), {})
+        observations = world.view("observations").for_entity(f"comuna:cut:{comuna['cut']}")
+        if target == "wikidata":
+            evidence = sorted({(o["payload"].get("value"), o["payload"].get("point_in_time"), o["payload"].get("rank"))
+                               for o in observations if o["source"].get("kind") == "wikidata"
+                               and o["payload"].get("value") is not None}, key=str)
+            evidence = [f"{v} (point in time {t}, {r})" for v, t, r in evidence]
+        else:
+            article = next((o for o in observations if o["payload"].get("document") == "article"
+                            and o["source"].get("revid") == str((page.get("revid") or "")) or
+                            (o["payload"].get("document") == "article" and o["source"].get("language") == target)), None)
+            evidence = fields_shown(article["payload"]["wikitext"], target) if article else ["article not in the store"]
+        sample.append({"id": "h" + hashlib.sha1(f"{comuna['cut']}{target}".encode()).hexdigest()[:8],
+                       "comuna": title_case(comuna["name"]), "cut": comuna["cut"], "page": target, "verdict": outcome,
+                       "figure": page.get("value"), "label": page.get("label"),
+                       "census_2024": comuna["official"]["census"].get("2024"), "evidence": evidence})
+    (EVAL / "headline_sample.json").write_text(json.dumps(sample, ensure_ascii=False, indent=1), encoding="utf-8")
+    lines = [f"# Headline spot check: {n} current-figure verdicts from national batch {tag}", "",
+             f"Drawn at random (seed {seed}) from the verdicts the headline counts. Each verdict is checked against the "
+             "page's own fields (parsed again from the article's wikitext) or Wikidata's statements, and INE's Census "
+             "2024 count; the judgment is in adjudication.json.", "",
+             "| Id | Comuna | Page | Verdict | Figure | Census 2024 | Evidence |", "|---|---|---|---|---|---|---|"]
+    for s in sample:
+        figure = f"{s['figure']:,}" if isinstance(s["figure"], int) else "—"
+        lines.append(f"| {s['id']} | {s['comuna']} | {s['page']} | {CLASS_LABELS.get(s['verdict'], s['verdict'])} | "
+                     f"{figure} ({s['label']}) | {s['census_2024']:,} | {'; '.join(s['evidence'])[:300].replace('|', '/')} |")
+    (EVAL / "headline_sample.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"{len(sample)} verdicts sampled into eval/headline_sample.md")
+
+
 def score():
     data = json.loads((EVAL / "differences.json").read_text(encoding="utf-8"))
     answers = json.loads((EVAL / "adjudication.json").read_text(encoding="utf-8"))
-    tally = {}
+    tally, findings = {}, Counter()
     for item in data["differences"] + data["critic_flags"]:
         answer = answers.get(item["id"]) or {}
         if answer.get("correct") not in VERDICTS + ("flag right", "flag wrong"):
             raise SystemExit(f"{item['id']} isn't adjudicated yet (eval/adjudication.json)")
         tally.setdefault(item["kind"], Counter())[answer["correct"]] += 1
-    results = {"runs": data["runs"], "adjudicated": {kind: dict(counts) for kind, counts in tally.items()}}
+        sides = [e["verdict"] for mode in MODES for e in item.get(mode) or []]
+        if item["kind"] != "critic flag" and any(not v.startswith("check:") for v in sides):
+            findings[answer["correct"]] += 1  # a difference in what the reviewer sees, not only in internal checks
+    results = {"runs": data["runs"], "adjudicated": {kind: dict(counts) for kind, counts in tally.items()},
+               "differences_in_findings": dict(findings)}
+    sample = EVAL / "headline_sample.json"
+    if sample.exists():
+        verdicts = [answers.get(s["id"], {}).get("correct") for s in json.loads(sample.read_text(encoding="utf-8"))]
+        results["headline_sample"] = dict(Counter(verdicts))
     (EVAL / "results.json").write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(results, ensure_ascii=False, indent=1))
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("step", choices=["record", "run", "diff", "score"])
+    parser.add_argument("step", choices=["record", "run", "diff", "score", "headline"])
+    parser.add_argument("--tag", help="headline: the national batch to sample")
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if args.step == "headline":
+        headline(args.tag)
+        return
     {"record": record, "run": run_both, "diff": diff, "score": score}[args.step]()
 
 

@@ -1,0 +1,369 @@
+[
+ {
+  "id": "h676f4155",
+  "comuna": "Cisnes",
+  "cut": "11202",
+  "page": "es",
+  "verdict": "outdated_vintage",
+  "figure": 6517,
+  "label": "2017",
+  "census_2024": 5137,
+  "evidence": [
+   "población = 6517",
+   "población_año = [[Censo chileno de 2017|2017]]",
+   "población_post = <ref>{{cita web|url=http://www.censo2017.cl/wp-content/uploads/2017/12/Cantidad-de-Personas-por-Sexo-y-Edad.xlsx|título=Censo 2017: Primera entrega de resultados definitivos - Cantidad de personas por sexo y edad|fechaacceso=23 de diciembre de 2017 |formato=XLSX |autor=Instituto Nacional de Estadísticas|fecha=22 de diciembre de 2017}}</ref>"
+  ]
+ },
+ {
+  "id": "hc67b2682",
+  "comuna": "Litueche",
+  "cut": "06203",
+  "page": "es",
+  "verdict": "outdated_vintage",
+  "figure": 6294,
+  "label": "2017",
+  "census_2024": 8852,
+  "evidence": [
+   "población = 6294",
+   "población_año = [[Censo chileno de 2017|2017]]",
+   "población_post = <ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>"
+  ]
+ },
+ {
+  "id": "hb674bebc",
+  "comuna": "San Miguel",
+  "cut": "13130",
+  "page": "en",
+  "verdict": "up to date",
+  "figure": 150829,
+  "label": "2024",
+  "census_2024": 150829,
+  "evidence": [
+   "population_total = 150829",
+   "population_as_of = 2024",
+   "population_footnotes = <ref name=\"2024census\">{{cite web|url=https://censo2024.ine.gob.cl/resultados/|title=Resultados – Censo 2024|trans-title=Results – 2024 Census|lang=es|publisher=[[National Statistics Institute (Chile)|INE]]}}</ref>"
+  ]
+ },
+ {
+  "id": "hbcc2ac8f",
+  "comuna": "Cañete",
+  "cut": "08203",
+  "page": "wikidata",
+  "verdict": "outdated_vintage",
+  "figure": 34537,
+  "label": "point in time 2017-01-01",
+  "census_2024": 34640,
+  "evidence": [
+   "33535 (point in time 2009-01-01, NormalRank)",
+   "34537 (point in time 2017-01-01, NormalRank)"
+  ]
+ },
+ {
+  "id": "h538b6f88",
+  "comuna": "Palmilla",
+  "cut": "06306",
+  "page": "en",
+  "verdict": "discredited_source",
+  "figure": 11844,
+  "label": "2012 Census",
+  "census_2024": 13060,
+  "evidence": [
+   "population_total = 11844",
+   "population_as_of = 2012 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "had5861a9",
+  "comuna": "Purén",
+  "cut": "09208",
+  "page": "es",
+  "verdict": "outdated_vintage",
+  "figure": 11779,
+  "label": "2017",
+  "census_2024": 12184,
+  "evidence": [
+   "población = 11779",
+   "población_año = 2017",
+   "población_post = <ref>{{cita web|autor=Instituto Nacional de Estadísticas Chile|título=Resultados Censo 2017|url=https://resultados.censo2017.cl/Region?R=R09|fechaacceso=2 de septiembre de 2018|urlarchivo=https://web.archive.org/web/20180902151813/https://resultados.censo2017.cl/Region?R=R09|fechaarchivo=2 de septiembre de 2018}}</ref>"
+  ]
+ },
+ {
+  "id": "hd5f587d0",
+  "comuna": "Retiro",
+  "cut": "07405",
+  "page": "en",
+  "verdict": "discredited_source",
+  "figure": 18754,
+  "label": "2012 Census",
+  "census_2024": 22310,
+  "evidence": [
+   "population_total = 18754",
+   "population_as_of = 2012 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "h0ff7aec5",
+  "comuna": "La Pintana",
+  "cut": "13112",
+  "page": "es",
+  "verdict": "up to date",
+  "figure": 175421,
+  "label": "2024",
+  "census_2024": 175421,
+  "evidence": [
+   "población = 175421",
+   "población_año = [[Censo chileno de 2024|2024]]",
+   "población_post = <ref name=censo24>{{cita web |url=https://censo2024.ine.gob.cl/resultados/|título=Censo 2024 |fechaacceso=19 de agosto de 2025|obra=CENSO |idioma=español }}</ref>"
+  ]
+ },
+ {
+  "id": "hd488a4ff",
+  "comuna": "Rauco",
+  "cut": "07305",
+  "page": "en",
+  "verdict": "discredited_source",
+  "figure": 9543,
+  "label": "2012 Census",
+  "census_2024": 11266,
+  "evidence": [
+   "population_total = 9543",
+   "population_as_of = 2012 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "hdb3231cb",
+  "comuna": "Peñaflor",
+  "cut": "13605",
+  "page": "es",
+  "verdict": "cross_source_mismatch",
+  "figure": 96489,
+  "label": "2017",
+  "census_2024": 94402,
+  "evidence": [
+   "población = 96.489",
+   "población_año = [[Censo chileno de 2017|2017]]"
+  ]
+ },
+ {
+  "id": "ha4fb04a8",
+  "comuna": "Timaukel",
+  "cut": "12303",
+  "page": "en",
+  "verdict": "discredited_source",
+  "figure": 204,
+  "label": "2012 Census",
+  "census_2024": 157,
+  "evidence": [
+   "population_total = 204",
+   "population_as_of = 2012 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "h1f02bd05",
+  "comuna": "Freire",
+  "cut": "09105",
+  "page": "es",
+  "verdict": "different_definition",
+  "figure": 25485,
+  "label": "2024",
+  "census_2024": 26164,
+  "evidence": [
+   "población = 25,485",
+   "población_año = 2024",
+   "población_post = <ref>{{cita web|autor=Instituto Nacional de Estadísticas Chile|título=Resultados Censo 2017|url=https://resultados.censo2017.cl/Region?R=R09|fechaacceso=2 de septiembre de 2018|urlarchivo=https://web.archive.org/web/20180902151813/https://resultados.censo2017.cl/Region?R=R09|fechaarchivo=2 de septiembre de 2018}}</ref>"
+  ]
+ },
+ {
+  "id": "h3deb4701",
+  "comuna": "Traiguén",
+  "cut": "09210",
+  "page": "en",
+  "verdict": "discredited_source",
+  "figure": 17164,
+  "label": "2012 Census",
+  "census_2024": 18873,
+  "evidence": [
+   "population_total = 17164",
+   "population_as_of = 2012 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "h0918fd27",
+  "comuna": "La Florida",
+  "cut": "13110",
+  "page": "es",
+  "verdict": "up to date",
+  "figure": 374836,
+  "label": "2024",
+  "census_2024": 374836,
+  "evidence": [
+   "población = 374836",
+   "población_año = [[Censo chileno de 2024|2024]]",
+   "población_post = <ref name=censo24>{{cita web |url=https://censo2024.ine.gob.cl/resultados/|título=Censo 2024 |fechaacceso=19 de agosto de 2025|obra=CENSO |idioma=español }}</ref>"
+  ]
+ },
+ {
+  "id": "hea7a7583",
+  "comuna": "Alhué",
+  "cut": "13502",
+  "page": "en",
+  "verdict": "outdated_vintage",
+  "figure": 4435,
+  "label": "2002 Census",
+  "census_2024": 7768,
+  "evidence": [
+   "population_total = 4435",
+   "population_as_of = 2002 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "h05070db6",
+  "comuna": "Maule",
+  "cut": "07105",
+  "page": "en",
+  "verdict": "discredited_source",
+  "figure": 38270,
+  "label": "2012 Census",
+  "census_2024": 61081,
+  "evidence": [
+   "population_total = 38270",
+   "population_as_of = 2012 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "h0b8d5aa7",
+  "comuna": "Curanilahue",
+  "cut": "08205",
+  "page": "en",
+  "verdict": "discredited_source",
+  "figure": 32000,
+  "label": "2012 Census",
+  "census_2024": 31119,
+  "evidence": [
+   "population_total = 32000",
+   "population_as_of = 2012 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "h785aad58",
+  "comuna": "Lo Barnechea",
+  "cut": "13115",
+  "page": "wikidata",
+  "verdict": "outdated_vintage",
+  "figure": 105833,
+  "label": "no point in time",
+  "census_2024": 112620,
+  "evidence": [
+   "105833 (point in time None, NormalRank)"
+  ]
+ },
+ {
+  "id": "h07177314",
+  "comuna": "Ñiquén",
+  "cut": "16303",
+  "page": "es",
+  "verdict": "outdated_vintage",
+  "figure": 11152,
+  "label": "2017",
+  "census_2024": 12797,
+  "evidence": [
+   "población = 11&nbsp;152",
+   "población_año = [[Censo chileno de 2017|2017]]",
+   "población_post = <ref name=censo17>[http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/]</ref>"
+  ]
+ },
+ {
+  "id": "h50949a80",
+  "comuna": "Quilaco",
+  "cut": "08308",
+  "page": "en",
+  "verdict": "discredited_source",
+  "figure": 3850,
+  "label": "2012 Census",
+  "census_2024": 4440,
+  "evidence": [
+   "population_total = 3850",
+   "population_as_of = 2012 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "hbd055b7f",
+  "comuna": "Estación Central",
+  "cut": "13106",
+  "page": "wikidata",
+  "verdict": "outdated_vintage",
+  "figure": 147041,
+  "label": "point in time 2017-01-01",
+  "census_2024": 181049,
+  "evidence": [
+   "147041 (point in time 2017-01-01, NormalRank)"
+  ]
+ },
+ {
+  "id": "h5b58671d",
+  "comuna": "Concón",
+  "cut": "05103",
+  "page": "en",
+  "verdict": "outdated_vintage",
+  "figure": 42152,
+  "label": "2017 Census",
+  "census_2024": 48294,
+  "evidence": [
+   "population_total = 42152",
+   "population_as_of = 2017 Census",
+   "population_footnotes = <ref name=\"INE\"/>"
+  ]
+ },
+ {
+  "id": "h693404e1",
+  "comuna": "Pumanque",
+  "cut": "06309",
+  "page": "es",
+  "verdict": "outdated_vintage",
+  "figure": 3421,
+  "label": "2017",
+  "census_2024": 4559,
+  "evidence": [
+   "población = 3421",
+   "población_año = [[Censo chileno de 2017|2017]]",
+   "población_post = <ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>"
+  ]
+ },
+ {
+  "id": "h04bb28a9",
+  "comuna": "Coelemu",
+  "cut": "16203",
+  "page": "wikidata",
+  "verdict": "outdated_vintage",
+  "figure": 15995,
+  "label": "point in time 2017-01-01",
+  "census_2024": 15895,
+  "evidence": [
+   "15995 (point in time 2017-01-01, NormalRank)"
+  ]
+ },
+ {
+  "id": "h4b0c30c8",
+  "comuna": "Aysén",
+  "cut": "11201",
+  "page": "en",
+  "verdict": "discredited_source",
+  "figure": 22421,
+  "label": "2012 Census",
+  "census_2024": 23170,
+  "evidence": [
+   "population_total = 22421",
+   "population_as_of = 2012 Census",
+   "population_footnotes = <ref name=\"INE\">{{cite web |url= http://www.ine.cl/canales/chile_estadistico/censos_poblacion_vivienda/censo_pobl_vivi.php |title= National Institute of Statistics |accessdate=10 September 2010|language=es}}</ref>"
+  ]
+ }
+]

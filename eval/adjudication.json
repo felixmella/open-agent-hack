@@ -1,0 +1,237 @@
+{
+ "d729ee86b": {
+  "correct": "model",
+  "note": "'La población de Canela Baja no supera los 2000 habitantes': a locality, not the comuna (and 2000 is no year). The rules kept it; it ended as 'not checkable', so no finding.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "dffcf85c1": {
+  "correct": "model",
+  "note": "A floating population of 20,000 visitors at the Rally Dakar: not the comuna's population. The rules kept it ('not checkable').",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d6e2ae8a9": {
+  "correct": "model",
+  "note": "203 people in the locality of Los Rulos, from a list of localities: not the comuna's population. The rules kept it, and their size check then filed it as not the comuna's figure.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d4e39f8ff": {
+  "correct": "model",
+  "note": "9,084 comes from a sentence about the municipal health system (people enrolled), not the comuna's population. The rules raised a false 'likely error' finding on it.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d8b0c7bee": {
+  "correct": "model",
+  "note": "2,537 is the rural population (39.6%). The rules kept it; their size check filed it as not the comuna's figure.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d9fc543d5": {
+  "correct": "model",
+  "note": "1,873 inhabitants per square kilometre is a density. The rules kept it; their size check filed it as not the comuna's figure.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d28ae5bdd": {
+  "correct": "model",
+  "note": "105,436 is the number of men in the 2024 census (the sentence gives men and women). The rules raised a false 'unexplained mismatch' finding.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d9f3ec389": {
+  "correct": "rules",
+  "note": "The lead says the 2024 census counted 220,441; INE counted 219,441, which is the article's own 105,436 men plus 114,005 women. A real typo about the comuna: the rules found it ('possibly a typo'), the model dropped the sentence (it speaks of 'ciudades').",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d2e81b59d": {
+  "correct": "model",
+  "note": "4,414 people over 45 (36.8%): an age group, not the comuna's population.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d540a66ce": {
+  "correct": "model",
+  "note": "600 people with a professional degree: not the comuna's population.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "df2e67bd4": {
+  "correct": "model",
+  "note": "7,077 Mapuche (59% of the population): a part of the population, not its total.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "db711e11b": {
+  "correct": "model",
+  "note": "7,797 believers (65%): a part of the population, not its total.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "ddaaa2ede": {
+  "correct": "model",
+  "note": "'Al 2017 la ciudad tenía una población de 1637 personas': the town, not the comuna. The rules raised a false 'unexplained mismatch' finding.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "dd4c81c95": {
+  "correct": "model",
+  "note": "189 people classed as poor by the 2006 CASEN survey: not a population figure. The rules' size check filed it as not the comuna's figure.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "def9a7478": {
+  "correct": "model",
+  "note": "'El pueblo de Chaitén tenía, en 2002, una población de 4065': the town's 2002 population, not the comuna's (INE counted 7,182 in the comuna). The rules raised a false 'likely error' finding.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "df9ac8a01": {
+  "correct": "both",
+  "note": "'superando los 500 000 habitantes': a true lower bound for the comuna (568,086 in 2024), not a figure to check. Kept as 'not checkable' by the rules, dropped by the model: no finding either way.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d7ae86064": {
+  "correct": "model",
+  "note": "The English infobox gives the 2002 census figure while the lead already gives the 2017 count (123,627). The model read that sentence's 2017 figure as a census count; the rules read the whole sentence as a projection (it also says 'projected'), so they missed this finding.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d08baa347": {
+  "correct": "model",
+  "note": "'is projected to have 141,612 residents by 2020': INE's 2020 projection, correctly attributed. The model kept it (consistent); the rules missed it.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "d3fd960e7": {
+  "correct": "model",
+  "note": "'en 2025 tiene 150.466 habitantes (basado en el censo 2017...)': INE's 2025 projection, correctly described. The rules took the year from 'censo 2017' and raised a misleading finding ('labelled as a census count'); the model raised none, which is right for a correct sentence (it didn't keep the claim, so it didn't confirm it either).",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "db63dd247": {
+  "correct": "rules",
+  "note": "Santo Domingo's 1,029,110 is 78 times INE's count: the rules call it a likely error, probably another place's figure (it is the Dominican capital's population). The model's 'unexplained mismatch' is true but less precise. Both flag it for correction.",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "dc8854c96": {
+  "correct": "flag wrong",
+  "note": "The infobox shows 12,469 (2016) while the article's own population table gives the 2024 count, 12,710: the class is meant for an infobox behind its own article. The model read the class description ('contradicts itself') literally; the description was ambiguous, and has been reworded. The verdict stood (8/9).",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "df0c57a75": {
+  "correct": "flag wrong",
+  "note": "Same pattern: the infobox gives the 2002 census figure while the lead gives the 2017 one. A fair reading of the old class description, now reworded; the verdict stood (8/9).",
+  "by": "Claude (the coding assistant), from the evidence in differences.md"
+ },
+ "h676f4155": {
+  "correct": "right",
+  "note": "6,517 is Cisnes's Census 2017 count, shown as current: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "hc67b2682": {
+  "correct": "right",
+  "note": "6,294 is Litueche's Census 2017 count: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "hb674bebc": {
+  "correct": "right",
+  "note": "150,829 is San Miguel's Census 2024 count, labelled 2024: up to date.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "hbcc2ac8f": {
+  "correct": "right",
+  "note": "Wikidata's newest statement, 34,537, is the 2017 count; no 2024 statement: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h538b6f88": {
+  "correct": "right",
+  "note": "Labelled '2012 Census', a census INE withdrew (11,844 is no official count).",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "had5861a9": {
+  "correct": "right",
+  "note": "11,779 is Purén's 2017 count: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "hd5f587d0": {
+  "correct": "right",
+  "note": "Labelled '2012 Census': withdrawn census.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h0ff7aec5": {
+  "correct": "right",
+  "note": "175,421 is La Pintana's 2024 count: up to date.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "hd488a4ff": {
+  "correct": "right",
+  "note": "Labelled '2012 Census': withdrawn census.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "hdb3231cb": {
+  "correct": "right",
+  "note": "96,489 labelled 2017 matches no INE figure (2017 count 90,201; projections 95,420 for 2017, 97,255 for 2018): unexplained.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "ha4fb04a8": {
+  "correct": "right",
+  "note": "Labelled '2012 Census': withdrawn census.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h1f02bd05": {
+  "correct": "right",
+  "note": "25,485 labelled 2024 is exactly INE's projection for 2025 (the 2024 projection is 25,488): a different definition, as the verdict says.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h3deb4701": {
+  "correct": "right",
+  "note": "Labelled '2012 Census': withdrawn census.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h0918fd27": {
+  "correct": "right",
+  "note": "374,836 is La Florida's 2024 count: up to date.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "hea7a7583": {
+  "correct": "right",
+  "note": "4,435 is Alhué's Census 2002 count, shown as current: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h05070db6": {
+  "correct": "right",
+  "note": "Labelled '2012 Census': withdrawn census.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h0b8d5aa7": {
+  "correct": "right",
+  "note": "Labelled '2012 Census': withdrawn census (32,000 is no official count; rounding doesn't override the label).",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h785aad58": {
+  "correct": "right",
+  "note": "Wikidata's only statement, 105,833, undated, is the 2017 count: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h07177314": {
+  "correct": "right",
+  "note": "11,152 is Ñiquén's 2017 count: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h50949a80": {
+  "correct": "right",
+  "note": "Labelled '2012 Census': withdrawn census.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "hbd055b7f": {
+  "correct": "right",
+  "note": "Wikidata's 147,041 (2017) is the 2017 count; no 2024 statement: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h5b58671d": {
+  "correct": "right",
+  "note": "42,152 is Concón's 2017 count: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h693404e1": {
+  "correct": "right",
+  "note": "3,421 is Pumanque's 2017 count: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h04bb28a9": {
+  "correct": "right",
+  "note": "Wikidata's 15,995 (2017) is the 2017 count; no 2024 statement: outdated.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ },
+ "h4b0c30c8": {
+  "correct": "right",
+  "note": "Labelled '2012 Census': withdrawn census.",
+  "by": "Claude (the coding assistant), from the page's own fields and INE's figures"
+ }
+}
