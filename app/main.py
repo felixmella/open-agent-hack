@@ -36,7 +36,7 @@ from app.schemas import RUN_ID, RunInput
 from app.tracing import utc_now
 
 log = logging.getLogger("factsync")
-VERSION = "0.3.0"
+VERSION = "0.4.0"
 
 
 def not_found(run_id):

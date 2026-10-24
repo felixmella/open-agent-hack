@@ -1,0 +1,73 @@
+"""Run example inputs live (Zetaris and Nightshift) and keep each run's evidence in output_examples/<example>/: the
+result, the review queue, the agents' trace and the World Model's audit log, as the run wrote them, plus about.json
+(the input, the commit the code was at, and when). FactSync never reads output_examples/: it is for readers.
+
+Usage:  .venv\\Scripts\\python scripts\\record_examples.py [input_examples\\example_1.json ...]   (default: all four)
+"""
+import argparse
+import json
+import shutil
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from app.config import ROOT, load_settings  # noqa: E402
+from app.errors import RunError  # noqa: E402
+from app.orchestration.loop import run  # noqa: E402
+from app.schemas import RunInput  # noqa: E402
+
+OUT = ROOT / "output_examples"
+
+
+def commit():
+    try:
+        return subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True,
+                              check=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def record(path, settings):
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%MZ")
+    run_input = RunInput.model_validate_json(path.read_text(encoding="utf-8"))
+    run_input = run_input.model_copy(update={"run_id": f"{path.stem}-live-{stamp}"})
+    started_at, code = datetime.now(timezone.utc).isoformat(timespec="seconds"), commit()
+    try:
+        result = run(run_input, settings)
+    except RunError as error:
+        print(f"{path.name}: failed ({error.code} in {error.stage}): {error.message}", flush=True)
+        return None
+    target = OUT / path.stem
+    shutil.rmtree(target, ignore_errors=True)
+    target.mkdir(parents=True)
+    run_id = result["run_id"]
+    shutil.copy(settings.output_dir / run_id / "result.json", target / "result.json")
+    if result.get("report_file"):
+        shutil.copy(ROOT / result["report_file"], target / "report.html")
+    shutil.copy(settings.logs_dir / f"trace-{run_id}.jsonl", target / "trace.jsonl")
+    shutil.copy(settings.logs_dir / f"world-model-{run_id}.jsonl", target / "world-model-audit.jsonl")
+    about = {"input": json.loads(path.read_text(encoding="utf-8")), "input_file": path.relative_to(ROOT).as_posix(),
+             "run_id": run_id, "started_at": started_at, "commit": code, "status": result["status"],
+             "summary": result["summary"], "model_usage": result["model_usage"],
+             "seconds": result["execution_time_seconds"]}
+    (target / "about.json").write_text(json.dumps(about, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"{path.name}: {result['status']}, {result['summary']['findings']} findings, "
+          f"{result['model_usage']['calls']} model calls, {result['execution_time_seconds']} s -> {target}", flush=True)
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("inputs", nargs="*", type=Path)
+    args = parser.parse_args()
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    settings = load_settings(sample_mode=False)
+    for path in args.inputs or sorted((ROOT / "input_examples").glob("example_*.json")):
+        record(path, settings)
+
+
+if __name__ == "__main__":
+    main()
