@@ -31,10 +31,11 @@ def commit():
         return None
 
 
-def record(path, settings):
+def record(path, settings, compare_with=None):
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%MZ")
     run_input = RunInput.model_validate_json(path.read_text(encoding="utf-8"))
-    run_input = run_input.model_copy(update={"run_id": f"{path.stem}-live-{stamp}"})
+    options = run_input.options.model_copy(update={"compare_with": compare_with}) if compare_with else run_input.options
+    run_input = run_input.model_copy(update={"run_id": f"{path.stem}-live-{stamp}", "options": options})
     started_at, code = datetime.now(timezone.utc).isoformat(timespec="seconds"), commit()
     try:
         result = run(run_input, settings)
@@ -51,6 +52,7 @@ def record(path, settings):
     shutil.copy(settings.logs_dir / f"trace-{run_id}.jsonl", target / "trace.jsonl")
     shutil.copy(settings.logs_dir / f"world-model-{run_id}.jsonl", target / "world-model-audit.jsonl")
     about = {"input": json.loads(path.read_text(encoding="utf-8")), "input_file": path.relative_to(ROOT).as_posix(),
+             "compare_with": compare_with,
              "run_id": run_id, "started_at": started_at, "commit": code, "status": result["status"],
              "summary": result["summary"], "model_usage": result["model_usage"],
              "seconds": result["execution_time_seconds"]}
@@ -84,6 +86,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("inputs", nargs="*", type=Path)
     parser.add_argument("--national", metavar="TAG", help="keep the national batch with this tag instead")
+    parser.add_argument("--compare-with", metavar="RUN", help="the runs to compare with for 'since the last check' "
+                                                             "(a run-id prefix, e.g. national-20261024c)")
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     settings = load_settings(sample_mode=False)
@@ -91,7 +95,7 @@ def main():
         national(args.national, settings)
         return
     for path in args.inputs or sorted((ROOT / "input_examples").glob("example_*.json")):
-        record(path, settings)
+        record(path, settings, args.compare_with)
 
 
 if __name__ == "__main__":

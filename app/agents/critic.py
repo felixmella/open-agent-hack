@@ -193,7 +193,8 @@ class Critic:
     def score(self, finding, claim, table, claims, open_sources, judgment):
         failures, notes = [], []
         store = self.world.store
-        value, label, source = finding["claim"].get("value"), finding["claim"].get("label"), finding["claim"]["source_name"]
+        value, source = finding["claim"].get("value"), finding["claim"]["source_name"]
+        label = finding["claim"].get("label") or "no year"
         shown = f"{value:,}" if isinstance(value, int) else "no figure"
 
         # evidence fidelity
@@ -441,7 +442,7 @@ def figure(claim, table, finding=None):
     census count (the cues the Planner chooses a source by)."""
     value, latest = claim.get("value"), matcher.latest_census(table)
     return {("finding_id" if finding else "claim_id"): finding["id"] if finding else claim.get("id"), "value": value,
-            "source": claim["source_name"], "location": claim.get("location"), "label": claim.get("label"),
+            "source": claim["source_name"], "location": claim.get("location"), "label": claim.get("label") or "no year",
             "year": claim.get("stated_year"), "basis": claim.get("basis"),
             "size": f"{matcher.scale(value, latest['value'])} the Census {latest['year']} count"
             if isinstance(value, int) and latest["value"] else None,

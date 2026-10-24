@@ -213,8 +213,10 @@ class Planner:
         for source in sorted(picks, key=lambda s: (-len(picks[s]), order.index(s)))[:limit]:
             served = [figure for figure, _ in picks[source]]
             note = notes[source]
-            if note["method"] == "llm":
-                reason = "; ".join(dict.fromkeys(why for _, why in picks[source] if why))[:500]
+            if note["method"] == "llm":  # the model's reason for its first figure, and how many it chose this for
+                reasons = list(dict.fromkeys(why.strip() for _, why in picks[source] if why and why.strip()))
+                reason = (reasons[0] if reasons else "chosen by the model") + \
+                    (f" (chosen for {len(served)} figures)" if len(served) > 1 else "")
             else:
                 reason = (f"by coverage ({sources_catalog.coverage(options[source])}), the best fit for {len(served)} "
                           f"figure(s), e.g. {served[0]['value']:,} ('{served[0]['label']}')")
