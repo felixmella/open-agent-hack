@@ -1,0 +1,11 @@
+FactSync Chile
+Copyright 2026 Felix Mella
+
+The code is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+app/engines/world_model implements the specification of the Meterless World Model engine, and
+tests/test_world_model_conformance.py ports the cases of its official conformance suite
+(engines/world-model in https://github.com/Meterless/Meterless, Apache License, Version 2.0).
+
+Data files keep their own licences: INE data and Wikipedia text are CC BY-SA 4.0, Wikidata is CC0.
+See README.md, data/official/README.md and data/sample/README.md.

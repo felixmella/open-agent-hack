@@ -1,0 +1,58 @@
+{
+  "project": "FactSync Chile",
+  "description": "For Wikipedia and Wikidata editors: checks every Chilean comuna's population figure in Spanish and English Wikipedia and in Wikidata against INE's official figures, explains why each one differs, and drafts sourced corrections for a person to review and apply.",
+  "track": "Track 1: Solving Fragmented Intelligence",
+  "repository": "https://github.com/felixmella/open-agent-hack",
+  "license": "Apache-2.0 (code); data files keep their own licences (see README)",
+  "entry_points": {
+    "cli": "python run.py input_examples/example_2.json [--sample]",
+    "api": "uvicorn app.main:app (POST /run, GET /runs/{run_id}/report)",
+    "national_batch": "python scripts/batch_national.py --tag <tag>"
+  },
+  "agents": [
+    {"name": "Planner", "path": "app/agents/planner.py", "role": "Reads the source catalog in Zetaris, resolves the scope, plans the default sources; on discovery chooses which catalog sources to add for the figures the Critic sends back", "model": "chooses a source per figure, with a reason"},
+    {"name": "Retriever", "path": "app/agents/retriever.py", "role": "Runs one SQL statement per source against the Zetaris views and writes each row into the World Model with provenance", "model": "none"},
+    {"name": "Extractor", "path": "app/agents/extractor.py", "role": "Reads infobox references, population tables and the sentences that state a population; keeps a claim only if its figure and year are verbatim in the sentence and the sentence in the article", "model": "labels sentences as claims"},
+    {"name": "Analyst", "path": "app/agents/analyst.py", "role": "Matches every claim against every official figure read and classifies why it differs (11-class taxonomy)", "model": "classifies the claims the matcher can't settle"},
+    {"name": "Critic", "path": "app/agents/critic.py", "role": "Scores each finding on a 9-point rubric, recomputing the facts; rejects and sends one fix to the Planner, Extractor or Analyst; holds up comunas with claims nothing read can check; reviews every draft", "model": "judges class fit and faithfulness"},
+    {"name": "Editor", "path": "app/agents/editor.py", "role": "Builds wikitext, citations and QuickStatements from templates; drafts only, never edits", "model": "writes edit summaries and the reviewer's explanation"}
+  ],
+  "orchestration": {"path": "app/orchestration/loop.py", "loops": ["Critic rounds (max 2 fixes per comuna)", "discovery (max 3 sources per run)", "draft revision (max 1)", "model calls per run (budget)"]},
+  "zetaris": {
+    "role": "The data layer: every source the agents compare is a view in the factsync container, virtualised from public APIs (INE ArcGIS, Wikidata SPARQL, MediaWiki) and INE files in the Zetaris file store",
+    "views_read_by_agents": ["factsync.source_catalog", "factsync.ine_census2024", "factsync.official_population", "factsync.wikidata_population", "factsync.eswiki_infobox", "factsync.enwiki_infobox"],
+    "other_views": ["factsync.ine_census2017", "factsync.ine_census2017_area", "factsync.ine_census2002", "factsync.ine_projections", "factsync.wikidata_comunas", "factsync.eswiki_articles", "factsync.enwiki_articles", "factsync.population_picture"],
+    "source_catalog": "factsync.source_catalog lists every source, its definition, scope and years; the Planner reads it at plan time and chooses from it on discovery",
+    "app_user": "a General-role (read-only) user with SELECT on the factsync views only (zetaris/05_readonly_grants.sql, checked by scripts/verify_readonly.py)",
+    "setup": "zetaris/README.md"
+  },
+  "meterless": {
+    "engine": "World Model",
+    "spec": "https://github.com/Meterless/Meterless/tree/main/engines/world-model",
+    "path": "app/engines/world_model",
+    "feature": "The agents' shared state: comunas keyed by INE code, every source row and extracted claim as a provenance-stamped observation, append-only assessments by agent and round, budgeted context payloads, the comuna picture as a registered projection, and point-in-time reconstruction to show what changed since the last check",
+    "tests": ["tests/test_world_model_conformance.py", "tests/test_world_model_factsync.py", "tests/test_world_model_picture.py"],
+    "conformance": "the 8 checks of the official suite (sid-001, sid-002, band-001, prov-001, idem-001, idem-002, bitemp-001, audit-001), ported one-to-one",
+    "capabilities_report": "result.json world_model.capabilities lists the capabilities each run used and the dormant ones"
+  },
+  "nightshift": {
+    "role": "primary AI provider: every model call goes through Meterless Nightshift's OpenAI-compatible API",
+    "adapter": "app/adapters/meterless.py",
+    "headers": {"meterless-app": "open-agent-hack", "meterless-scope": "user", "meterless-tier-split": "off"},
+    "evidence": "each model call's trace event records the model requested, the model Nightshift says served it, the receipt's routed model and the receipt id"
+  },
+  "nvidia": {
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "via": "Meterless Nightshift (the NVIDIA key lives only in Nightshift)",
+    "used_by": ["Planner", "Extractor", "Analyst", "Critic", "Editor"]
+  },
+  "data_sources": [
+    {"name": "INE Censo 2024, population by comuna", "access": "INE ArcGIS REST layer, read live by Zetaris", "licence": "CC BY-SA 4.0"},
+    {"name": "INE Censo 2017, population by comuna, and its urban and rural split", "access": "INE ArcGIS REST layers, read live by Zetaris", "licence": "CC BY-SA 4.0"},
+    {"name": "INE Censo 2002, population by comuna", "access": "INE REDATAM, counted by scripts/prepare_ine_census2002.py into the Zetaris file store", "licence": "CC BY-SA 4.0"},
+    {"name": "INE estimates and projections 2002-2035 by comuna (base Census 2017)", "access": "INE workbook, aggregated by scripts/prepare_ine_projections.py into the Zetaris file store", "licence": "CC BY-SA 4.0"},
+    {"name": "Wikidata population statements", "access": "Wikidata SPARQL, read live by Zetaris", "licence": "CC0"},
+    {"name": "Spanish and English Wikipedia comuna articles", "access": "MediaWiki API, read live by Zetaris", "licence": "CC BY-SA 4.0"}
+  ],
+  "development": {"coding_tool": "Claude Code (Anthropic), Claude Opus 5.5", "cursor": "not used"}
+}
