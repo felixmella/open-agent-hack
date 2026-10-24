@@ -1,0 +1,74 @@
+{
+ "input": {
+  "scope": {
+   "cuts": [
+    "08105",
+    "11203",
+    "16201"
+   ]
+  },
+  "languages": [
+   "es",
+   "en"
+  ],
+  "options": {
+   "max_critic_rounds": 2
+  }
+ },
+ "input_file": "example_2.json",
+ "compare_with": "national-20261024c",
+ "run_id": "example_2-live-20261024T2102Z",
+ "started_at": "2026-10-24T21:02:05+00:00",
+ "commit": "4e7822d06d10506abd34321e187fa54d114e8439",
+ "status": "success",
+ "summary": {
+  "comunas": 3,
+  "claims": 22,
+  "findings": 19,
+  "findings_by_class": {
+   "cross_source_mismatch": 1,
+   "different_definition": 2,
+   "internal_inconsistency": 3,
+   "mislabelled_vintage": 4,
+   "missing_value": 2,
+   "outdated_vintage": 4,
+   "unsourced": 2,
+   "wikidata_rank_qualifier": 1
+  },
+  "drafts": 9,
+  "escalations": 0,
+  "critic_rejections": 3,
+  "discoveries": [
+   "official_census2002",
+   "official_projections"
+  ],
+  "since_last_check": {
+   "comunas_checked_before": 3,
+   "unchanged": 9
+  }
+ },
+ "model_usage": {
+  "calls": 20,
+  "requests": 20,
+  "by_agent": {
+   "Extractor": 6,
+   "Analyst": 2,
+   "Critic": 8,
+   "Planner": 1,
+   "Editor": 3
+  },
+  "requested_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 20
+  },
+  "served_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 20
+  },
+  "routed_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 20
+  },
+  "nightshift_cache": {},
+  "fallbacks": {},
+  "budget": 54
+ },
+ "seconds": 739.4
+}

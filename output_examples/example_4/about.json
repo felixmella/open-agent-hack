@@ -1,0 +1,72 @@
+{
+ "input": {
+  "scope": {
+   "comunas": [
+    "Saavedra (Chile)",
+    "Cholchol",
+    "La Pintana",
+    "Paredones"
+   ]
+  },
+  "languages": [
+   "es",
+   "en"
+  ]
+ },
+ "input_file": "example_4.json",
+ "compare_with": "national-20261024c",
+ "run_id": "example_4-live-20261024T2114Z",
+ "started_at": "2026-10-24T21:14:25+00:00",
+ "commit": "69fc7801948b122bd3e4337143aaac999b8a68c6",
+ "status": "success",
+ "summary": {
+  "comunas": 4,
+  "claims": 26,
+  "findings": 17,
+  "findings_by_class": {
+   "cross_source_mismatch": 2,
+   "discredited_source": 1,
+   "internal_inconsistency": 2,
+   "missing_value": 2,
+   "nonexistent_census": 3,
+   "outdated_vintage": 5,
+   "wikidata_rank_qualifier": 2
+  },
+  "drafts": 11,
+  "escalations": 0,
+  "critic_rejections": 4,
+  "discoveries": [
+   "official_census2002",
+   "official_projections",
+   "official_census2017_area"
+  ],
+  "since_last_check": {
+   "comunas_checked_before": 4,
+   "unchanged": 12
+  }
+ },
+ "model_usage": {
+  "calls": 23,
+  "requests": 23,
+  "by_agent": {
+   "Extractor": 7,
+   "Critic": 7,
+   "Analyst": 4,
+   "Planner": 1,
+   "Editor": 4
+  },
+  "requested_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 23
+  },
+  "served_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 23
+  },
+  "routed_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 23
+  },
+  "nightshift_cache": {},
+  "fallbacks": {},
+  "budget": 68
+ },
+ "seconds": 813.6
+}

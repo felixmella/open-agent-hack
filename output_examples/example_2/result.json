@@ -1,0 +1,2809 @@
+{
+  "run_id": "example_2-live-20261024T2102Z",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 3,
+    "claims": 22,
+    "findings": 19,
+    "findings_by_class": {
+      "cross_source_mismatch": 1,
+      "different_definition": 2,
+      "internal_inconsistency": 3,
+      "mislabelled_vintage": 4,
+      "missing_value": 2,
+      "outdated_vintage": 4,
+      "unsourced": 2,
+      "wikidata_rank_qualifier": 1
+    },
+    "drafts": 9,
+    "escalations": 0,
+    "critic_rejections": 3,
+    "discoveries": [
+      "official_census2002",
+      "official_projections"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 3,
+      "unchanged": 9
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "cuts": [
+      "08105",
+      "11203",
+      "16201"
+    ],
+    "sources": [
+      "official_census",
+      "wikidata",
+      "wikipedia_es",
+      "wikipedia_en",
+      "official_census2002",
+      "official_projections"
+    ],
+    "reason": "3 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "official_census": {
+      "rows": 6,
+      "observations": 6,
+      "appended": 0,
+      "unchanged": 6,
+      "reviews": 0
+    },
+    "wikidata": {
+      "rows": 77,
+      "observations": 4,
+      "appended": 0,
+      "unchanged": 4,
+      "reviews": 0
+    },
+    "wikipedia_es": {
+      "rows": 16,
+      "observations": 6,
+      "appended": 0,
+      "unchanged": 6,
+      "reviews": 0
+    },
+    "wikipedia_en": {
+      "rows": 10,
+      "observations": 6,
+      "appended": 0,
+      "unchanged": 6,
+      "reviews": 0
+    },
+    "official_census2002": {
+      "rows": 3,
+      "observations": 3,
+      "appended": 0,
+      "unchanged": 3,
+      "reviews": 0
+    },
+    "official_projections": {
+      "rows": 102,
+      "observations": 102,
+      "appended": 0,
+      "unchanged": 102,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "official_census2002",
+      "reason": "It provides the official 2002 census count for each comuna on current boundaries, matching the figure's year (chosen for 3 figures)",
+      "requests": [
+        {
+          "comuna": "GUAITECAS",
+          "value": 1539,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "96% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "GUAITECAS",
+          "value": 1539,
+          "shown_in": "Wikipedia EN history_table",
+          "label": "2002 (Historical populations table)",
+          "year": 2002,
+          "basis": "census",
+          "size": "96% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "QUIRIHUE",
+          "value": 11429,
+          "shown_in": "Wikipedia ES body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "97% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        }
+      ],
+      "method": "llm",
+      "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "receipt_id": "rcpt_req_3rj070x5"
+    },
+    {
+      "round": 1,
+      "source": "official_projections",
+      "reason": "year 2007 falls within the 2002–2035 projection range (chosen for 2 figures)",
+      "requests": [
+        {
+          "comuna": "HUALQUI",
+          "value": 20968,
+          "shown_in": "Wikidata statement",
+          "label": "point in time 2007-01-01",
+          "year": 2007,
+          "basis": null,
+          "size": "81% of the Census 2024 count",
+          "classified_as": "cross_source_mismatch",
+          "candidates": [
+            "official_projections"
+          ]
+        },
+        {
+          "comuna": "HUALQUI",
+          "value": 26746,
+          "shown_in": "Wikipedia ES infobox",
+          "label": "2024",
+          "year": 2024,
+          "basis": null,
+          "size": "1 times the Census 2024 count",
+          "classified_as": "cross_source_mismatch",
+          "candidates": [
+            "official_projections"
+          ]
+        }
+      ],
+      "method": "llm",
+      "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "receipt_id": "rcpt_req_3rj070x5"
+    }
+  ],
+  "comunas": [
+    {
+      "cut": "08105",
+      "name": "HUALQUI",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 18768,
+          "2017": 24333,
+          "2024": 25795
+        },
+        "projection": {
+          "2017": 25552,
+          "2020": 26201,
+          "2024": 26746
+        }
+      },
+      "claims_checked": 6,
+      "findings": [
+        {
+          "id": "fnd_fcd835b7c12e0b60",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "cross_source_mismatch",
+          "explanation": "The figure 20,968 does not match any official INE census or projection figure for Hualqui, and no source provided explains it.",
+          "confidence": 0.5,
+          "method": "llm",
+          "claim": {
+            "id": "obs_4c1b588813299782c870d88c",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 20968,
+            "value_raw": "20968",
+            "stated_year": 2007,
+            "label": "point in time 2007-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q13079",
+            "statement": "http://www.wikidata.org/entity/statement/Q13079-4c3b3854-4db6-8c9b-4f59-3b1db012032e",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_4c1b588813299782c870d88c",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 20968,
+              "value_raw": "20968",
+              "label": "point in time 2007-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_a6a04f989b0696c3a04df6c5",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 18768
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_c9e56660d66da9c2bd9665f6",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 24333
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_079028847e450454aa1f0b2d",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 25795
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_cf525d3ed50ef17b06d9666c",
+              "source": "INE Proyecciones base 2017",
+              "definition": "projection",
+              "year": 2007,
+              "value": 22309
+            }
+          ],
+          "proposal": {
+            "action": "human_review"
+          },
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_i8s41uji"
+          },
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_jdv4hapr"
+            }
+          }
+        },
+        {
+          "id": "fnd_5c8d0787b9871825",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "mislabelled_vintage",
+          "explanation": "24,333 is INE's Census 2017 count, but it is labelled 'point in time 2020-01-01'.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_eda3f0921cd618c2c878b154",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 24333,
+            "value_raw": "24333",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q13079",
+            "statement": "http://www.wikidata.org/entity/statement/Q13079-7D60718C-533F-4D3A-BE0A-8D5B39ECE964",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_eda3f0921cd618c2c878b154",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 24333,
+              "value_raw": "24333",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_c9e56660d66da9c2bd9665f6",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 24333
+            }
+          ],
+          "proposal": {
+            "action": "relabel",
+            "value": 24333,
+            "year": 2017,
+            "definition": "census",
+            "obs_id": "obs_c9e56660d66da9c2bd9665f6",
+            "source_key": "census_2017"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_gfi9yrc9"
+            }
+          }
+        },
+        {
+          "id": "fnd_5b3a1b61b238f43e",
+          "target": "es",
+          "aspect": "value",
+          "class": "different_definition",
+          "explanation": "26,746 is INE's projection for 2024 (estimates and projections, base Census 2017), not a census count; Census 2024 counted 25,795.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_71abeb6bdc1dc54827273067",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Hualqui",
+            "revid": "175069356",
+            "location": "infobox",
+            "role": "current",
+            "value": 26746,
+            "value_raw": "26.746",
+            "stated_year": 2024,
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q13079"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_71abeb6bdc1dc54827273067",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 26746,
+              "value_raw": "26.746",
+              "label": "2024",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_3fb8b681eb2a03e18fa99933",
+              "source": "INE Proyecciones base 2017",
+              "definition": "projection",
+              "year": 2024,
+              "value": 26746
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_079028847e450454aa1f0b2d",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 25795
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 25795,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_079028847e450454aa1f0b2d",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_u06y2toy"
+            }
+          }
+        },
+        {
+          "id": "fnd_20704f61df9950a2",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "24,333 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 25,795.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_bb32c347cb79953032e5c2c8",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Hualqui",
+            "revid": "1376112018",
+            "location": "infobox",
+            "role": "current",
+            "value": 24333,
+            "value_raw": "24333",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q13079"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_bb32c347cb79953032e5c2c8",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 24333,
+              "value_raw": "24333",
+              "label": "2017 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_c9e56660d66da9c2bd9665f6",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 24333
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_079028847e450454aa1f0b2d",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 25795
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 25795,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_079028847e450454aa1f0b2d",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_da286c2841a0fc2f",
+          "target": "es",
+          "aspect": "consistency",
+          "class": "internal_inconsistency",
+          "explanation": "The infobox gives 26,746 for 2024, but the article text gives 25,795 ('2024 census').",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_71abeb6bdc1dc54827273067",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Hualqui",
+            "revid": "175069356",
+            "location": "infobox",
+            "role": "current",
+            "value": 26746,
+            "value_raw": "26.746",
+            "stated_year": 2024,
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q13079"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_71abeb6bdc1dc54827273067",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 26746,
+              "value_raw": "26.746",
+              "label": "2024",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_1f2ada2415aed67bcd18dc93",
+              "source": "Wikipedia ES",
+              "location": "body",
+              "value": 25795,
+              "value_raw": "25.795",
+              "label": "2024 census",
+              "quote": "Según el Censo de 2024, su población es de aproximadamente 25.795 habitantes"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 25795,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_079028847e450454aa1f0b2d",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_wyqydv12"
+            }
+          }
+        },
+        {
+          "id": "fnd_855486b6d1e7c329",
+          "target": "es",
+          "aspect": "sourcing",
+          "class": "unsourced",
+          "explanation": "The infobox figure has no reference.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_71abeb6bdc1dc54827273067",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Hualqui",
+            "revid": "175069356",
+            "location": "infobox",
+            "role": "current",
+            "value": 26746,
+            "value_raw": "26.746",
+            "stated_year": 2024,
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q13079"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_71abeb6bdc1dc54827273067",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 26746,
+              "value_raw": "26.746",
+              "label": "2024",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "add_citation",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_7729ed2d9092b771",
+          "target": "wikidata",
+          "aspect": "currency",
+          "class": "outdated_vintage",
+          "explanation": "Wikidata's newest population statement is 24,333 (point in time 2020-01-01); Census 2024 counted 25,795, and Wikidata has no statement for it.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_eda3f0921cd618c2c878b154",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 24333,
+            "value_raw": "24333",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q13079",
+            "statement": "http://www.wikidata.org/entity/statement/Q13079-7D60718C-533F-4D3A-BE0A-8D5B39ECE964",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_4c1b588813299782c870d88c",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 20968,
+              "value_raw": "20968",
+              "label": "point in time 2007-01-01",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_eda3f0921cd618c2c878b154",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 24333,
+              "value_raw": "24333",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_079028847e450454aa1f0b2d",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 25795
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "value": 25795,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_079028847e450454aa1f0b2d",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_2c2eeaa2ab33681f",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no determination method on 20,968, 24,333; no reference on 20,968, 24,333; no statement is ranked preferred, so all of them count as current.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_eda3f0921cd618c2c878b154",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 24333,
+            "value_raw": "24333",
+            "stated_year": 2020,
+            "label": "point in time 2020-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q13079",
+            "statement": "http://www.wikidata.org/entity/statement/Q13079-7D60718C-533F-4D3A-BE0A-8D5B39ECE964",
+            "references": []
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_4c1b588813299782c870d88c",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 20968,
+              "value_raw": "20968",
+              "label": "point in time 2007-01-01",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_eda3f0921cd618c2c878b154",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 24333,
+              "value_raw": "24333",
+              "label": "point in time 2020-01-01",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_1f2ada2415aed67bcd18dc93",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Hualqui",
+            "revid": "175069356",
+            "location": "body",
+            "role": "historical",
+            "value": 25795,
+            "value_raw": "25.795",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 census",
+            "quote": "Según el Censo de 2024, su población es de aproximadamente 25.795 habitantes",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "25,795 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_db359de7d8f5c3bd75b1ca6c",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Hualqui",
+            "revid": "1376112018",
+            "location": "lead",
+            "role": "historical",
+            "value": 24333,
+            "value_raw": "24,333",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "It had a population of 24,333 inhabitants according to the 2017 census.",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "24,333 matches INE's Census 2017 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_fcd835b7c12e0b60",
+              "fnd_5b3a1b61b238f43e"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_fcd835b7c12e0b60",
+              "finding_ids": [
+                "fnd_fcd835b7c12e0b60",
+                "fnd_5b3a1b61b238f43e"
+              ],
+              "comuna": "HUALQUI",
+              "cut": "08105",
+              "figures": [
+                {
+                  "finding_id": "fnd_fcd835b7c12e0b60",
+                  "value": 20968,
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "point in time 2007-01-01",
+                  "year": 2007,
+                  "basis": null,
+                  "size": "81% of the Census 2024 count",
+                  "class": "cross_source_mismatch",
+                  "candidates": [
+                    "official_projections"
+                  ]
+                },
+                {
+                  "finding_id": "fnd_5b3a1b61b238f43e",
+                  "value": 26746,
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "2024",
+                  "year": 2024,
+                  "basis": null,
+                  "size": "1 times the Census 2024 count",
+                  "class": "cross_source_mismatch",
+                  "candidates": [
+                    "official_projections"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "2 figures match no official figure read so far (Census 2017 24,333, Census 2024 25,795): 20,968 (Wikidata, 'point in time 2007-01-01', called cross_source_mismatch); 26,746 (Wikipedia ES, '2024', called cross_source_mismatch). Before they are judged, read the official sources whose coverage could explain or check them (official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Hualqui",
+          "revid": "175069356",
+          "correction": {
+            "value": 25795,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_079028847e450454aa1f0b2d"
+          },
+          "findings": [
+            "fnd_5b3a1b61b238f43e",
+            "fnd_da286c2841a0fc2f",
+            "fnd_855486b6d1e7c329"
+          ],
+          "anchor": "obs_71abeb6bdc1dc54827273067",
+          "url": "https://es.wikipedia.org/wiki/Hualqui",
+          "wikitext": "| población = 25.795\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "26.746",
+            "year": "2024",
+            "reference": ""
+          },
+          "edit_summary": "Hualqui: 25.795 hab. según Censo INE 2024.",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Hualqui",
+          "revid": "1376112018",
+          "correction": {
+            "value": 25795,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_079028847e450454aa1f0b2d"
+          },
+          "findings": [
+            "fnd_20704f61df9950a2"
+          ],
+          "anchor": "obs_bb32c347cb79953032e5c2c8",
+          "url": "https://en.wikipedia.org/wiki/Hualqui",
+          "wikitext": "| population_total = 25795\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "24333",
+            "year": "2017 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Hualqui: 25,795 residents, sourced from INE 2024 Census.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q13079",
+          "url": "https://www.wikidata.org/wiki/Q13079",
+          "correction": {
+            "value": 25795,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_079028847e450454aa1f0b2d"
+          },
+          "findings": [
+            "fnd_fcd835b7c12e0b60",
+            "fnd_5c8d0787b9871825",
+            "fnd_7729ed2d9092b771",
+            "fnd_2c2eeaa2ab33681f"
+          ],
+          "anchor": "obs_4c1b588813299782c870d88c",
+          "quickstatements": "Q13079|P1082|25795|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank.",
+            "Check the 20,968 statement (point in time 2007-01-01): The figure 20,968 does not match any official INE census or projection figure for Hualqui, and no source provided explains it.",
+            "The 24,333 statement (point in time 2020-01-01) is the 2017 census figure: set its point in time to 2017 and its determination method to census (Q39825)."
+          ],
+          "edit_summary": "Add Census 2024 population (25,795) from INE",
+          "status": "approved"
+        },
+        "explanation": "The previous figures for Hualqui derived from the 2017 Census (24,333) and INE's 2024 projection (26,746), not from an actual 2024 census count. Both drafts update the population to the official 2024 Census figure of 25,795, sourced from INE.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_9zoe54fz"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2017 Census",
+            "observation": "obs_bb32c347cb79953032e5c2c8",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 24333,
+            "verdict": "outdated_vintage"
+          },
+          "eswiki": {
+            "label": "2024",
+            "observation": "obs_71abeb6bdc1dc54827273067",
+            "reference": null,
+            "status": "approved",
+            "value": 26746,
+            "verdict": "different_definition"
+          },
+          "wikidata": {
+            "label": "point in time 2020-01-01",
+            "observation": "obs_eda3f0921cd618c2c878b154",
+            "reference": null,
+            "status": "approved",
+            "value": 24333,
+            "verdict": "outdated_vintage"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024c-08-biobio",
+        "checked_at": "2026-10-24T17:59:45Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 26746,
+              "label": "2024",
+              "reference": null,
+              "observation": "obs_71abeb6bdc1dc54827273067",
+              "verdict": "different_definition",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2024",
+              "observation": "obs_71abeb6bdc1dc54827273067",
+              "reference": null,
+              "status": "approved",
+              "value": 26746,
+              "verdict": "different_definition"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 24333,
+              "label": "2017 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_bb32c347cb79953032e5c2c8",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017 Census",
+              "observation": "obs_bb32c347cb79953032e5c2c8",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 24333,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 24333,
+              "label": "point in time 2020-01-01",
+              "reference": null,
+              "observation": "obs_eda3f0921cd618c2c878b154",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "point in time 2020-01-01",
+              "observation": "obs_eda3f0921cd618c2c878b154",
+              "reference": null,
+              "status": "approved",
+              "value": 24333,
+              "verdict": "outdated_vintage"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "11203",
+      "name": "GUAITECAS",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 1539,
+          "2017": 1843,
+          "2024": 1598
+        },
+        "projection": {
+          "2017": 1575,
+          "2020": 1599,
+          "2024": 1611
+        }
+      },
+      "claims_checked": 9,
+      "findings": [
+        {
+          "id": "fnd_206049f7f631932c",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 1,598.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_14064410b664a7af5d88135a",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q13069",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_14064410b664a7af5d88135a",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_39d50cc7c09073da2a253c3e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1598
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1598,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_39d50cc7c09073da2a253c3e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_cb27ef2a4552ca4f",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "1,843 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 1,598.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_c86748774067aa8e96c4632e",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Guaitecas",
+            "revid": "175824791",
+            "location": "infobox",
+            "role": "current",
+            "value": 1843,
+            "value_raw": "1843",
+            "stated_year": 2017,
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q13069"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_c86748774067aa8e96c4632e",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 1843,
+              "value_raw": "1843",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_914c3d4d48146cc2f59026b0",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 1843
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_39d50cc7c09073da2a253c3e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1598
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1598,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_39d50cc7c09073da2a253c3e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_3ae3f1d66c0698ca",
+          "target": "en",
+          "aspect": "value",
+          "class": "different_definition",
+          "explanation": "1,473 is labelled as a census count, but it is INE's projection for 2006 (base Census 2017); Census 2024 counted 1,598.",
+          "confidence": 0.85,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_b96b4e77469028f97633a252",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Guaitecas",
+            "revid": "1375958518",
+            "location": "infobox",
+            "role": "current",
+            "value": 1473,
+            "value_raw": "1473",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q13069"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_b96b4e77469028f97633a252",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 1473,
+              "value_raw": "1473",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_f1e5fe4286c66f90de0df564",
+              "source": "INE Proyecciones base 2017",
+              "definition": "projection",
+              "year": 2006,
+              "value": 1473
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_39d50cc7c09073da2a253c3e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 1598
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1598,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_39d50cc7c09073da2a253c3e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_o3ec5aqq"
+            }
+          }
+        },
+        {
+          "id": "fnd_6fe5b121f036d28a",
+          "target": "es",
+          "aspect": "consistency",
+          "class": "internal_inconsistency",
+          "explanation": "The infobox gives 1,843 ('2017'), while the lead already gives the 2024 census figure, 1,598.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_c86748774067aa8e96c4632e",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Guaitecas",
+            "revid": "175824791",
+            "location": "infobox",
+            "role": "current",
+            "value": 1843,
+            "value_raw": "1843",
+            "stated_year": 2017,
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q13069"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_c86748774067aa8e96c4632e",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 1843,
+              "value_raw": "1843",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_c439a044ca71b15ec9b1786d",
+              "source": "Wikipedia ES",
+              "location": "lead",
+              "value": 1598,
+              "value_raw": "1 598",
+              "label": "2024 census",
+              "quote": "Según el censo de 2024, tiene una población de 1 598 habitantes."
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1598,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_39d50cc7c09073da2a253c3e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_uhdtapyl"
+            }
+          }
+        },
+        {
+          "id": "fnd_133734d555e228f7",
+          "target": "es",
+          "aspect": "sourcing",
+          "class": "unsourced",
+          "explanation": "The infobox figure has no reference.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_c86748774067aa8e96c4632e",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Guaitecas",
+            "revid": "175824791",
+            "location": "infobox",
+            "role": "current",
+            "value": 1843,
+            "value_raw": "1843",
+            "stated_year": 2017,
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "wikidata_item": "http://www.wikidata.org/entity/Q13069"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_c86748774067aa8e96c4632e",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 1843,
+              "value_raw": "1843",
+              "label": "2017",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "add_citation",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_110b358688da01a0",
+          "target": "en",
+          "aspect": "consistency",
+          "class": "internal_inconsistency",
+          "explanation": "The infobox gives 1,473 ('2012 Census'), while the Historical populations table already gives the 2024 census figure, 1,598.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_b96b4e77469028f97633a252",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Guaitecas",
+            "revid": "1375958518",
+            "location": "infobox",
+            "role": "current",
+            "value": 1473,
+            "value_raw": "1473",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q13069"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_b96b4e77469028f97633a252",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 1473,
+              "value_raw": "1473",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_d25004b744c3a0ccb4e76c96",
+              "source": "Wikipedia EN",
+              "location": "history_table",
+              "value": 1843,
+              "value_raw": "1843",
+              "label": "2017 (Historical populations table)",
+              "quote": "|2017 |1843"
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_87c48ba72b0101cee90f6896",
+              "source": "Wikipedia EN",
+              "location": "history_table",
+              "value": 1598,
+              "value_raw": "1598",
+              "label": "2024 (Historical populations table)",
+              "quote": "|2024 |1598"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 1598,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_39d50cc7c09073da2a253c3e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_uhdtapyl"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_c439a044ca71b15ec9b1786d",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Guaitecas",
+            "revid": "175824791",
+            "location": "lead",
+            "role": "historical",
+            "value": 1598,
+            "value_raw": "1 598",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 census",
+            "quote": "Según el censo de 2024, tiene una población de 1 598 habitantes.",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,598 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_d25004b744c3a0ccb4e76c96",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Guaitecas",
+            "revid": "1375958518",
+            "location": "history_table",
+            "role": "historical",
+            "value": 1843,
+            "value_raw": "1843",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 (Historical populations table)",
+            "quote": "|2017 |1843",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,843 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_87c48ba72b0101cee90f6896",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Guaitecas",
+            "revid": "1375958518",
+            "location": "history_table",
+            "role": "historical",
+            "value": 1598,
+            "value_raw": "1598",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 (Historical populations table)",
+            "quote": "|2024 |1598",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,598 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_b51b8edcf969fab63d952538",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Guaitecas",
+            "revid": "175824791",
+            "location": "body",
+            "role": "historical",
+            "value": 1843,
+            "value_raw": "1843",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "Según el censo de 2017 la comuna tiene una población de 1843 habitantes (1166 hombres y 677 mujeres)",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,843 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_3d4b2803e7b01e9ebf13b694",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Guaitecas",
+            "revid": "1375958518",
+            "location": "body",
+            "role": "historical",
+            "value": 1539,
+            "value_raw": "1,539",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Guaitecas spans an area of 787 and has 1,539 inhabitants (913 men and 626 women)",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,539 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_32e42f98ba0466ff5b7d40d1",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Guaitecas",
+            "revid": "1375958518",
+            "location": "history_table",
+            "role": "historical",
+            "value": 1539,
+            "value_raw": "1539",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 (Historical populations table)",
+            "quote": "|2002 |1539",
+            "method": "rules",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "1,539 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "GUAITECAS",
+              "cut": "11203",
+              "figures": [
+                {
+                  "claim_id": "obs_3d4b2803e7b01e9ebf13b694",
+                  "value": 1539,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "96% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_32e42f98ba0466ff5b7d40d1",
+                  "value": 1539,
+                  "source": "Wikipedia EN",
+                  "location": "history_table",
+                  "label": "2002 (Historical populations table)",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "96% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "2 claim(s) can't be checked with the official figures read: 1,539 (Wikipedia EN body, '2002 census'); 1,539 (Wikipedia EN history_table, '2002 (Historical populations table)'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Guaitecas",
+          "revid": "175824791",
+          "correction": {
+            "value": 1598,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_39d50cc7c09073da2a253c3e"
+          },
+          "findings": [
+            "fnd_cb27ef2a4552ca4f",
+            "fnd_6fe5b121f036d28a",
+            "fnd_133734d555e228f7"
+          ],
+          "anchor": "obs_c86748774067aa8e96c4632e",
+          "url": "https://es.wikipedia.org/wiki/Guaitecas",
+          "wikitext": "| población = 1598\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "1843",
+            "year": "2017",
+            "reference": ""
+          },
+          "edit_summary": "Censo INE 2024: 1.598 habitantes, actualiza los 1.843 del censo 2017.",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Guaitecas",
+          "revid": "1375958518",
+          "correction": {
+            "value": 1598,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_39d50cc7c09073da2a253c3e"
+          },
+          "findings": [
+            "fnd_3ae3f1d66c0698ca",
+            "fnd_110b358688da01a0"
+          ],
+          "anchor": "obs_b96b4e77469028f97633a252",
+          "url": "https://en.wikipedia.org/wiki/Guaitecas",
+          "wikitext": "| population_total = 1598\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "1473",
+            "year": "2012 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "INE 2024 Census: 1,598 residents, replaces 1,473 (2012 Census).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q13069",
+          "url": "https://www.wikidata.org/wiki/Q13069",
+          "correction": {
+            "value": 1598,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_39d50cc7c09073da2a253c3e"
+          },
+          "findings": [
+            "fnd_206049f7f631932c"
+          ],
+          "anchor": "obs_14064410b664a7af5d88135a",
+          "quickstatements": "Q13069|P1082|1598|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (1,598) from INE",
+          "status": "approved"
+        },
+        "explanation": "The old figures (1,843 for the Spanish draft from 2017, and 1,473 for the English draft labelled 2012) are outdated or mislabelled. Both Wikipedia drafts will update the population to the official 2024 INE Census count of 1,598, with proper sourcing.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_win5lfw0"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012 Census",
+            "observation": "obs_b96b4e77469028f97633a252",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 1473,
+            "verdict": "different_definition"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_c86748774067aa8e96c4632e",
+            "reference": null,
+            "status": "approved",
+            "value": 1843,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_14064410b664a7af5d88135a",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024c-11-aysen-del-general-carlos-ibanez-del-camp",
+        "checked_at": "2026-10-24T18:03:05Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1843,
+              "label": "2017",
+              "reference": null,
+              "observation": "obs_c86748774067aa8e96c4632e",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_c86748774067aa8e96c4632e",
+              "reference": null,
+              "status": "approved",
+              "value": 1843,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 1473,
+              "label": "2012 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_b96b4e77469028f97633a252",
+              "verdict": "different_definition",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012 Census",
+              "observation": "obs_b96b4e77469028f97633a252",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 1473,
+              "verdict": "different_definition"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_14064410b664a7af5d88135a",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_14064410b664a7af5d88135a",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "16201",
+      "name": "QUIRIHUE",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 11429,
+          "2017": 11594,
+          "2024": 11746
+        },
+        "projection": {
+          "2017": 12076,
+          "2020": 12192,
+          "2024": 12241
+        }
+      },
+      "claims_checked": 7,
+      "findings": [
+        {
+          "id": "fnd_3a72522a4ff655ba",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 11,746.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_7ed3beeb728538fcb0e082b3",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q56115",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_7ed3beeb728538fcb0e082b3",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_ed7d5a11cc9004a75b739740",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 11746
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 11746,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_ed7d5a11cc9004a75b739740",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_9862895806f950e2",
+          "target": "en",
+          "aspect": "value",
+          "class": "mislabelled_vintage",
+          "explanation": "11,746 is INE's Census 2024 count, but it is labelled '2017 census'.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_cfcfb1b04813781db1f65cc0",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Quirihue",
+            "revid": "1376581405",
+            "location": "lead",
+            "role": "historical",
+            "value": 11746,
+            "value_raw": "11,746",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "As per 2017 census, it had a population of 11,746 inhabitants.",
+            "method": "llm",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_cfcfb1b04813781db1f65cc0",
+              "source": "Wikipedia EN",
+              "location": "lead",
+              "value": 11746,
+              "value_raw": "11,746",
+              "label": "2017 census",
+              "quote": "As per 2017 census, it had a population of 11,746 inhabitants."
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_ed7d5a11cc9004a75b739740",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 11746
+            }
+          ],
+          "proposal": {
+            "action": "relabel",
+            "value": 11746,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_ed7d5a11cc9004a75b739740",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_mu6d3rhg"
+            }
+          }
+        },
+        {
+          "id": "fnd_fa5ecb947c1b1c2f",
+          "target": "en",
+          "aspect": "value",
+          "class": "mislabelled_vintage",
+          "explanation": "11,746 is INE's Census 2024 count, but it is labelled '2017 census'.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_ac8900c7aa5c83d25d009790",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Quirihue",
+            "revid": "1376581405",
+            "location": "body",
+            "role": "historical",
+            "value": 11746,
+            "value_raw": "11,746",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "According to the 2017 census conducted by the National Statistics Institute, Quirihue had a population of 11,746 inhabitants",
+            "method": "llm",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_ac8900c7aa5c83d25d009790",
+              "source": "Wikipedia EN",
+              "location": "body",
+              "value": 11746,
+              "value_raw": "11,746",
+              "label": "2017 census",
+              "quote": "According to the 2017 census conducted by the National Statistics Institute, Quirihue had a population of 11,746 inhabitants"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_ed7d5a11cc9004a75b739740",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 11746
+            }
+          ],
+          "proposal": {
+            "action": "relabel",
+            "value": 11746,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_ed7d5a11cc9004a75b739740",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_mu6d3rhg"
+            }
+          }
+        },
+        {
+          "id": "fnd_3566aa75d4e30b76",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "11,594 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 11,746.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_87d99906d5af897ad31bd858",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Quirihue",
+            "revid": "175813057",
+            "location": "infobox",
+            "role": "current",
+            "value": 11594,
+            "value_raw": "11.594",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>[http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/]</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q56115"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_87d99906d5af897ad31bd858",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 11594,
+              "value_raw": "11.594",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_0e413456bf2ff5f9a8818f73",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 11594
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_ed7d5a11cc9004a75b739740",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 11746
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 11746,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_ed7d5a11cc9004a75b739740",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_e264a299b7fc9525",
+          "target": "en",
+          "aspect": "value",
+          "class": "mislabelled_vintage",
+          "explanation": "11,746 is INE's Census 2024 count, but it is labelled '2017 Census'.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_18da98b8a2df12d783810a42",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Quirihue",
+            "revid": "1376581405",
+            "location": "infobox",
+            "role": "current",
+            "value": 11746,
+            "value_raw": "11746",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"CP\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q56115"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_18da98b8a2df12d783810a42",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 11746,
+              "value_raw": "11746",
+              "label": "2017 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_ed7d5a11cc9004a75b739740",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 11746
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 11746,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_ed7d5a11cc9004a75b739740",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_h39g9h8h"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_d92f23a7bfa62f4dd73ec23e",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Quirihue",
+            "revid": "175813057",
+            "location": "body",
+            "role": "historical",
+            "value": 11594,
+            "value_raw": "11 594",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "La comuna de Quirihue, según datos preliminares del censo abreviado de 2017, tiene una población de 11 594 habitantes, de los cuales 5 852 eran hombres y 5 577 eran mujeres, contando con una densidad poblacional de 19,6 hab/km²",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "11,594 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_2dcc8cd0b34f60dbb5991ad2",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Quirihue",
+            "revid": "175813057",
+            "location": "body",
+            "role": "historical",
+            "value": 11429,
+            "value_raw": "11 429",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "De acuerdo al censo de 2002, esta cifra era de 11 429 habitantes, de los cuales 5 679 eran hombres y 5 915 eran mujeres.",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "11,429 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "QUIRIHUE",
+              "cut": "16201",
+              "figures": [
+                {
+                  "claim_id": "obs_2dcc8cd0b34f60dbb5991ad2",
+                  "value": 11429,
+                  "source": "Wikipedia ES",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "97% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 claim(s) can't be checked with the official figures read: 11,429 (Wikipedia ES body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Quirihue",
+          "revid": "175813057",
+          "correction": {
+            "value": 11746,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_ed7d5a11cc9004a75b739740"
+          },
+          "findings": [
+            "fnd_3566aa75d4e30b76"
+          ],
+          "anchor": "obs_87d99906d5af897ad31bd858",
+          "url": "https://es.wikipedia.org/wiki/Quirihue",
+          "wikitext": "| población = 11.746\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=24 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "11.594",
+            "year": "2017",
+            "reference": "<ref name=censo17>[http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/]</ref>"
+          },
+          "edit_summary": "Censo INE 2024: Quirihue actualiza a 11.746 habitantes, sustituye la cifra 11.594.",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Quirihue",
+          "revid": "1376581405",
+          "correction": {
+            "value": 11746,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_ed7d5a11cc9004a75b739740"
+          },
+          "findings": [
+            "fnd_9862895806f950e2",
+            "fnd_fa5ecb947c1b1c2f",
+            "fnd_e264a299b7fc9525"
+          ],
+          "anchor": "obs_18da98b8a2df12d783810a42",
+          "url": "https://en.wikipedia.org/wiki/Quirihue",
+          "wikitext": "| population_total = 11746\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=24 October 2026}}</ref>",
+          "replaces": {
+            "value": "11746",
+            "year": "2017 Census",
+            "reference": "<ref name=\"CP\"/>"
+          },
+          "text_changes": [
+            {
+              "quote": "As per 2017 census, it had a population of 11,746 inhabitants.",
+              "finding": "fnd_9862895806f950e2",
+              "why": "11,746 is INE's Census 2024 count, but it is labelled '2017 census'.",
+              "note": "the figure is the 2024 census figure: correct the year"
+            },
+            {
+              "quote": "According to the 2017 census conducted by the National Statistics Institute, Quirihue had a population of 11,746 inhabitants",
+              "finding": "fnd_fa5ecb947c1b1c2f",
+              "why": "11,746 is INE's Census 2024 count, but it is labelled '2017 census'.",
+              "note": "the figure is the 2024 census figure: correct the year"
+            }
+          ],
+          "edit_summary": "INE 2024 Census: Quirihue population updated to 11,746, replacing the 2017 figure.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q56115",
+          "url": "https://www.wikidata.org/wiki/Q56115",
+          "correction": {
+            "value": 11746,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_ed7d5a11cc9004a75b739740"
+          },
+          "findings": [
+            "fnd_3a72522a4ff655ba"
+          ],
+          "anchor": "obs_7ed3beeb728538fcb0e082b3",
+          "quickstatements": "Q56115|P1082|11746|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-24T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (11,746) from INE",
+          "status": "approved"
+        },
+        "explanation": "The previous figure of 11,594 was from the 2017 INE Census. The drafts update the population to the official 2024 Census count of 11,746, sourced from INE. They also correct the vintage labeling to reflect the 2024 data.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_xfamn6cn"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2017 Census",
+            "observation": "obs_18da98b8a2df12d783810a42",
+            "reference": "<ref name=\"CP\"/>",
+            "status": "approved",
+            "value": 11746,
+            "verdict": "mislabelled_vintage"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_87d99906d5af897ad31bd858",
+            "reference": "<ref name=censo17>[http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/]</ref>",
+            "status": "approved",
+            "value": 11594,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_7ed3beeb728538fcb0e082b3",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024c-16-nuble",
+        "checked_at": "2026-10-24T18:08:14Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 11594,
+              "label": "2017",
+              "reference": "<ref name=censo17>[http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/]</ref>",
+              "observation": "obs_87d99906d5af897ad31bd858",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_87d99906d5af897ad31bd858",
+              "reference": "<ref name=censo17>[http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/]</ref>",
+              "status": "approved",
+              "value": 11594,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 11746,
+              "label": "2017 Census",
+              "reference": "<ref name=\"CP\"/>",
+              "observation": "obs_18da98b8a2df12d783810a42",
+              "verdict": "mislabelled_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017 Census",
+              "observation": "obs_18da98b8a2df12d783810a42",
+              "reference": "<ref name=\"CP\"/>",
+              "status": "approved",
+              "value": 11746,
+              "verdict": "mislabelled_vintage"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_7ed3beeb728538fcb0e082b3",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_7ed3beeb728538fcb0e082b3",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 20,
+    "requests": 20,
+    "by_agent": {
+      "Extractor": 6,
+      "Analyst": 2,
+      "Critic": 8,
+      "Planner": 1,
+      "Editor": 3
+    },
+    "requested_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 20
+    },
+    "served_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 20
+    },
+    "routed_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 20
+    },
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 54
+  },
+  "trace_file": "logs/trace-example_2-live-20261024T2102Z.jsonl",
+  "world_model_audit_file": "logs/world-model-example_2-live-20261024T2102Z.jsonl",
+  "world_model_audit_entries": 101,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 12,
+        "resolve_by_name": 93,
+        "assess": 98,
+        "context": 12,
+        "view:observations": 18,
+        "reproject": 3,
+        "project_as_of": 3,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/example_2-live-20261024T2102Z/report.html",
+  "execution_time_seconds": 739.4
+}
