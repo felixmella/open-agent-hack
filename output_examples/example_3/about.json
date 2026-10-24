@@ -1,0 +1,67 @@
+{
+ "input": {
+  "scope": {
+   "region": "Aysén"
+  },
+  "languages": [
+   "es",
+   "en"
+  ]
+ },
+ "input_file": "example_3.json",
+ "compare_with": "national-20261024c",
+ "run_id": "example_3-live-20261024T2216Z",
+ "started_at": "2026-10-24T22:16:51+00:00",
+ "commit": "fe905998f0c6c6d6ccaceff4c5057df9968612f0",
+ "status": "success",
+ "summary": {
+  "comunas": 10,
+  "claims": 64,
+  "findings": 39,
+  "findings_by_class": {
+   "cross_source_mismatch": 1,
+   "different_definition": 1,
+   "discredited_source": 7,
+   "internal_inconsistency": 8,
+   "missing_value": 9,
+   "outdated_vintage": 9,
+   "unsourced": 3,
+   "wikidata_rank_qualifier": 1
+  },
+  "drafts": 24,
+  "escalations": 0,
+  "critic_rejections": 7,
+  "discoveries": [
+   "official_census2002",
+   "official_projections"
+  ],
+  "since_last_check": {
+   "comunas_checked_before": 10,
+   "unchanged": 24
+  }
+ },
+ "model_usage": {
+  "calls": 38,
+  "requests": 38,
+  "by_agent": {
+   "Extractor": 14,
+   "Critic": 11,
+   "Analyst": 2,
+   "Planner": 1,
+   "Editor": 10
+  },
+  "requested_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 38
+  },
+  "served_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 38
+  },
+  "routed_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 38
+  },
+  "nightshift_cache": {},
+  "fallbacks": {},
+  "budget": 152
+ },
+ "seconds": 1733.8
+}
