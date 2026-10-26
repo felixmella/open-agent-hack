@@ -277,7 +277,7 @@ The adjudication was done by Claude (the coding assistant), and every judgment l
 .venv\Scripts\python -m pytest
 ```
 
-146 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
+147 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
 
 - the World Model's 8 conformance checks, its projections, point-in-time rebuilds and capability counts;
 - the matcher, the wikitext parser, the Extractor's verbatim checks and the Critic's rubric;
@@ -327,6 +327,10 @@ docs/                  sponsor-technology.md   metadata.json   the project in ma
 
   Code checks each of these outputs, and every one has a deterministic fallback. The traces record which model Nightshift says answered each call, with its receipt id.
 - **In development:** the code was written with Claude Code (Anthropic), using Claude Opus 5.5. Commits carry a `Co-Authored-By: Claude` trailer. Cursor was not used.
+
+## Pre-existing work
+
+None. The idea, the code and the data preparation all date from the hackathon's build window; the first commit is from Oct 22, 2026 (UTC). Open-source libraries are listed in `requirements.txt`. The Meterless World Model specification and its conformance cases are attributed in [`NOTICE`](NOTICE).
 
 ## Licence, data and attribution
 
