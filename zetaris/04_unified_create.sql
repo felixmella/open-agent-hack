@@ -15,12 +15,8 @@
 --                        Wikidata, Wikipedia ES/EN), keyed by CUT, for exploring
 --                        the whole picture in one query. The agents read the
 --                        per-source views instead, one query per source.
---   source_catalog       every source the agents can read: its view, definition,
---                        scope and the years it covers, and whether a run reads it
---                        by default. The Planner reads it to plan a run, and to
---                        choose what to add when the Critic finds figures nothing
---                        read so far explains (discovery). Adding a source is one
---                        view plus one row here.
+--   (source_catalog, which lists every source the agents can read, is defined in
+--   08_mayors_create.sql, with the sources of both facts.)
 --
 -- Gotchas: backslashes in regexes don't survive the trip to Zetaris's engine, so
 -- the patterns avoid them ([ ] for a space, [|] for a pipe, [.,] for separators).
@@ -106,25 +102,5 @@ SELECT cut, 'Wikipedia EN', 'commons', cast(NULL AS string),
        cast(revid AS string), reference_raw, cast(NULL AS string)
 FROM factsync.enwiki_infobox;
 
-CREATE OR REPLACE SCHEMASTORE VIEW source_catalog WITH CONTAINER factsync AS
-SELECT 'official_census' AS source_id, 'factsync.official_population' AS view, 'official' AS kind, 'census' AS definition,
-       'comuna' AS scope, 2017 AS years_from, 2024 AS years_to, true AS in_default_plan,
-       'INE census counts of each comuna, Census 2017 and Census 2024: the official headcount.' AS description
-UNION ALL
-SELECT 'official_projections', 'factsync.official_population', 'official', 'projection', 'comuna', 2002, 2035, false,
-       'INE estimates and projections of each comuna for every year 2002 to 2035 (base Census 2017): official figures, but modelled estimates, not a headcount.'
-UNION ALL
-SELECT 'official_census2002', 'factsync.official_population', 'official', 'census', 'comuna', 2002, 2002, false,
-       'INE Census 2002 count of each comuna, on current comuna boundaries (from the 2002 census database).'
-UNION ALL
-SELECT 'official_census2017_area', 'factsync.official_population', 'official', 'census', 'urban_rural', 2017, 2017, false,
-       'INE Census 2017 urban and rural population of each comuna: parts of a comuna, not its total.'
-UNION ALL
-SELECT 'wikidata', 'factsync.wikidata_population', 'commons', cast(NULL AS string), 'comuna', cast(NULL AS int), cast(NULL AS int), true,
-       'Wikidata population statements of each comuna, with point in time, determination method, rank and references.'
-UNION ALL
-SELECT 'wikipedia_es', 'factsync.eswiki_infobox', 'commons', cast(NULL AS string), 'comuna', cast(NULL AS int), cast(NULL AS int), true,
-       'Spanish Wikipedia comuna articles: infobox figure, reference and article text.'
-UNION ALL
-SELECT 'wikipedia_en', 'factsync.enwiki_infobox', 'commons', cast(NULL AS string), 'comuna', cast(NULL AS int), cast(NULL AS int), true,
-       'English Wikipedia comuna articles: infobox figure, reference and article text.';
+-- source_catalog was created here until Oct 26; it now lives in 08_mayors_create.sql, which lists
+-- the sources of both facts (population and mayor).

@@ -13,10 +13,15 @@ At the end, the World Model rebuilds each comuna's picture from its log (the `co
 rebuilds it as of the end of the previous run that checked the comuna: comparing the two, page by page, tells the
 reviewer what was fixed or changed since that check.
 
+A run checks one fact: population (INE's figures) or mayor (SERVEL's election results). The loop, the caps and the
+World Model are the same for both; each agent brings its reading of the fact (app/agents/mayors.py for mayors), and
+the World Model keeps one picture per fact (`comuna_picture`, `mayor_picture`).
+
 Writes output/<run_id>/result.json, logs/trace-<run_id>.jsonl and logs/world-model-<run_id>.jsonl. A run that can't
 complete (the scope matches no comuna, Zetaris can't be read, a bug) raises RunError with a code, the stage and whether
 retrying can help, after tracing it and writing an error result.
 """
+import dataclasses
 import json
 import re
 import time
@@ -33,16 +38,19 @@ from app.agents.critic import Critic, signature
 from app.agents.editor import Editor
 from app.agents.extractor import Extractor
 from app.agents.llm import AgentLLM
+from app.agents.mayors import MayorAnalyst, MayorCritic, MayorEditor, MayorExtractor
 from app.agents.planner import Planner, ScopeError
 from app.agents.retriever import Retriever
 from app.engines.world_model import WorldModel
 from app.errors import RunError
-from app.knowledge import catalog, matcher, picture
+from app.knowledge import catalog, matcher, mayors, picture
 from app.orchestration.state import Caps, ComunaState, RunState
 from app.report.html import write_report
 from app.tracing import Tracer
 
 TARGETS = ("eswiki", "enwiki", "wikidata")
+PICTURES = {"population": "comuna_picture", "mayor": "mayor_picture"}
+MAYOR_ROUNDS = 3  # one election further back per round: 2024, then 2021, 2016 and 2012
 ZETARIS_STATUS = {"zetaris_not_configured": 503, "zetaris_unreachable": 503, "sample_data_missing": 503,
                   "not_in_sample": 422}  # other Zetaris failures: 502
 
@@ -101,12 +109,19 @@ def open_world(settings):
     return WorldModel(storage="sqlite", namespace="factsync", path=settings.state_dir / name, strip_suffixes=[", Chile"])
 
 
-def look_back(world, comuna, run_id, tracer, compare_with=None):
+def runs_of(world, entity_id, fact):
+    """The runs that assessed an entity for one fact (population runs left no fact mark on their assessments)."""
+    marked = {a["run_id"] for a in world.view("observations").assessments(entity_id) if (a["data"] or {}).get("fact")}
+    return [(run, seq) for run, seq in world.runs(entity_id) if (run in marked) == (fact != "population")]
+
+
+def look_back(world, comuna, run_id, tracer, compare_with=None, fact="population"):
     """The engine's picture of the comuna now, and page by page what changed since the previous run that checked it
-    (that run's picture, rebuilt from the log as it stood when the run ended), or since the latest run whose id starts
-    with `compare_with`; None when no such run checked it before."""
-    now = world.reproject(comuna.entity_id, actor="Orchestrator")["projections"]["comuna_picture"]
-    earlier = [(run, seq) for run, seq in world.runs(comuna.entity_id)
+    for the same fact (that run's picture, rebuilt from the log as it stood when the run ended), or since the latest
+    run whose id starts with `compare_with`; None when no such run checked it before."""
+    projection = PICTURES[fact]
+    now = world.reproject(comuna.entity_id, actor="Orchestrator")["projections"][projection]
+    earlier = [(run, seq) for run, seq in runs_of(world, comuna.entity_id, fact)
                if run != run_id and (not compare_with or run.startswith(compare_with))]
     if not earlier:
         if compare_with:
@@ -114,7 +129,7 @@ def look_back(world, comuna, run_id, tracer, compare_with=None):
                          output_summary=f"{comuna.name}: no run '{compare_with}...' checked it before")
         return now, None
     previous, seq = earlier[-1]
-    before = world.project_as_of(comuna.entity_id, seq)["comuna_picture"]
+    before = world.project_as_of(comuna.entity_id, seq)[projection]
     pages = picture.since_last_check(before, now)
     since = {"previous_run": previous, "checked_at": before.get("checked_at"), "pages": pages}
     tracer.event("WorldModel", "compare_runs", input_summary=f"{comuna.name}: the picture as of {previous}, rebuilt "
@@ -127,7 +142,9 @@ def look_back(world, comuna, run_id, tracer, compare_with=None):
 
 
 def figure_of(page):
-    return f"{page['value']:,}" if isinstance(page.get("value"), int) else "no figure"
+    if isinstance(page.get("value"), int):
+        return f"{page['value']:,}"
+    return f"'{page['value']}'" if page.get("value") else "no figure"
 
 
 def data_source(settings, tracer, fallbacks):
@@ -190,9 +207,12 @@ def run(run_input, settings, *, echo=True, zetaris=None, llm_client=None, world=
 
 def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client, world, today, llm_interval):
     fallbacks = []
+    fact = run_input.fact
     with stage("setup"):
         world = world or open_world(settings)
         world.register_projection("comuna_picture", picture.comuna_picture)
+        if fact == "mayor":
+            world.register_projection("mayor_picture", mayors.mayor_picture)
         audit_start = (world.audit() or [{"seq": 0}])[-1]["seq"]
         zetaris = zetaris or data_source(settings, tracer, fallbacks)
         if llm_client is None and run_input.options.use_llm and not settings.sample_mode:
@@ -200,17 +220,25 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
     with stage("plan"):
         planner = Planner(zetaris, world, tracer)
         plan = planner.plan(run_input)
-    state = RunState(run_id, Caps.for_run(run_input.options, len(plan.cuts)),
-                     {cut: ComunaState(cut, name) for cut, name in plan.comunas.items()},
+    caps = Caps.for_run(run_input.options, len(plan.cuts))
+    if fact == "mayor" and "max_critic_rounds" not in run_input.options.model_fields_set:
+        caps = dataclasses.replace(caps, max_critic_rounds=MAYOR_ROUNDS)
+    state = RunState(run_id, caps, {cut: ComunaState(cut, name) for cut, name in plan.comunas.items()},
                      compare_with=run_input.options.compare_with)
     llm = AgentLLM(llm_client if run_input.options.use_llm else None, tracer, max_calls=state.caps.max_llm_calls,
                    min_interval=llm_interval)
     planner.llm = llm
     retriever = Retriever(zetaris, world, tracer, run_id, observed=state.observed)
-    extractor = Extractor(world, tracer, llm, run_id, census_years=catalog.census_years(plan.catalog))
-    analyst = Analyst(world, tracer, llm, run_id)
-    critic = Critic(world, tracer, llm, run_id)
-    editor = Editor(world, tracer, llm, run_id, today=today)
+    if fact == "mayor":
+        extractor = MayorExtractor(world, tracer, llm, run_id)
+        analyst = MayorAnalyst(world, tracer, llm, run_id, catalog=plan.catalog, today=today)
+        critic = MayorCritic(world, tracer, llm, run_id, today=today)
+        editor = MayorEditor(world, tracer, llm, run_id, today=today)
+    else:
+        extractor = Extractor(world, tracer, llm, run_id, census_years=catalog.census_years(plan.catalog))
+        analyst = Analyst(world, tracer, llm, run_id)
+        critic = Critic(world, tracer, llm, run_id)
+        editor = Editor(world, tracer, llm, run_id, today=today)
     for review in plan.reviews:
         state.escalations.append({"kind": "entity_resolution", "reason": "name matched a comuna only in the review band",
                                   **review})
@@ -249,7 +277,7 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
         for comuna in state.comunas.values():
             approved = [f for f in comuna.findings if (comuna.approved.get(f["id"]) or {}).get("signature") == signature(f)]
             if approved:
-                write_drafts(comuna, approved, state, world, editor, critic, tracer, run_id)
+                write_drafts(comuna, approved, state, world, editor, critic, tracer, run_id, fact)
 
     with stage("output"):
         state.escalations.extend(fallbacks)
@@ -261,10 +289,11 @@ def execute(run_id, run_input, settings, tracer, started, *, zetaris, llm_client
 
 
 def finish(run_id, settings, tracer, started, world, audit_start, state, plan, retrieval, llm, data):
-    looked = {cut: look_back(world, c, run_id, tracer, state.compare_with) for cut, c in state.comunas.items()}
+    looked = {cut: look_back(world, c, run_id, tracer, state.compare_with, plan.fact)
+              for cut, c in state.comunas.items()}
     audit_path = settings.logs_dir / f"world-model-{run_id}.jsonl"
     exported = world.export_audit(audit_path, since_seq=audit_start)
-    comunas = [comuna_result(c, world, state, *looked[cut]) for cut, c in state.comunas.items()]
+    comunas = [comuna_result(c, world, state, *looked[cut], fact=plan.fact) for cut, c in state.comunas.items()]
     since = Counter(change["outcome"] for c in comunas for change in ((c["since_last_check"] or {}).get("pages") or {})
                     .values())
     findings = [f for c in comunas for f in c["findings"]]
@@ -273,6 +302,7 @@ def finish(run_id, settings, tracer, started, world, audit_start, state, plan, r
         by_class[finding["class"]] = by_class.get(finding["class"], 0) + 1
     result = {
         "run_id": run_id,
+        "fact": plan.fact,
         "status": "success" if not (state.errors or state.escalations) else "partial",
         "mode": mode_of(settings),
         "summary": {
@@ -286,8 +316,8 @@ def finish(run_id, settings, tracer, started, world, audit_start, state, plan, r
                                  **{k: since[k] for k in ("fixed", "changed", "unchanged", "new", "gone") if since[k]}},
         },
         "data": data,
-        "plan": {"cuts": plan.cuts, "sources": plan.sources, "reason": plan.reason, "unresolved": plan.unresolved,
-                 "reviews": plan.reviews},
+        "plan": {"fact": plan.fact, "cuts": plan.cuts, "sources": plan.sources, "reason": plan.reason,
+                 "unresolved": plan.unresolved, "reviews": plan.reviews},
         "retrieval": {k: {kk: vv for kk, vv in v.items() if kk != "reviews"} | {"reviews": len(v["reviews"])}
                       for k, v in retrieval.items()},
         "discoveries": state.discoveries,
@@ -348,7 +378,8 @@ def escalate(state, comuna, world, tracer, review, round_no, run_id):
         comuna.escalations.append(entry)
         state.escalations.append(entry)
         world.assess(finding["claim"]["id"], agent="Orchestrator", run_id=run_id, round_no=round_no,
-                     data={"finding_id": finding["id"], "status": "escalated", "reason": reason})
+                     data={"finding_id": finding["id"], "status": "escalated", "reason": reason,
+                           **({"fact": finding["fact"]} if finding.get("fact") else {})})
     comuna.status = "partial" if approved_any else "escalated"
     tracer.event("Orchestrator", "escalate", round_no=round_no, status="escalated", target_agent="human",
                  input_summary=f"{comuna.name}: Critic rounds used up ({state.caps.max_critic_rounds})",
@@ -366,10 +397,10 @@ def fail_comuna(state, comuna, tracer, message, round_no):
                  output_summary=f"{comuna.name}: {message}")
 
 
-def write_drafts(comuna, approved, state, world, editor, critic, tracer, run_id):
+def write_drafts(comuna, approved, state, world, editor, critic, tracer, run_id, fact="population"):
     """Draft, have the Critic review each draft, allow one revision, escalate what still fails."""
     observations = [o for o in world.view("observations").for_entity(comuna.entity_id) if o["id"] in state.observed]
-    table = matcher.official_table(observations)
+    table = mayors.election_table(observations) if fact == "mayor" else matcher.official_table(observations)
     evidence = [e for f in approved for e in f["evidence"]]
     drafts = editor.draft(comuna, approved, table, round_no=1)
     for revision in range(state.caps.max_draft_revisions + 1):
@@ -398,12 +429,15 @@ def write_drafts(comuna, approved, state, world, editor, critic, tracer, run_id)
             drafts[key].setdefault("status", "approved")
             final = comuna.draft_reviews[-1].get(key) or {}
             world.assess(drafts[key]["anchor"], agent="Critic", run_id=run_id, round_no=final.get("round"),
-                         data={"draft": key, "status": drafts[key]["status"], "score": final.get("score")})
+                         data={"draft": key, "status": drafts[key]["status"], "score": final.get("score"),
+                               **({"fact": fact} if fact != "population" else {})})
     comuna.drafts = drafts
 
 
-def comuna_result(comuna, world, state, now, since):
+def comuna_result(comuna, world, state, now, since, fact="population"):
     observations = [o for o in world.view("observations").for_entity(comuna.entity_id) if o["id"] in state.observed]
+    if fact == "mayor":
+        return mayor_result(comuna, state, now, since, mayors.election_table(observations))
     table = matcher.official_table(sorted(observations, key=claims_first))
     last = comuna.reviews[-1]["results"] if comuna.reviews else {}
     findings = []
@@ -433,5 +467,46 @@ def comuna_result(comuna, world, state, now, since):
         "drafts": comuna.drafts,
         "escalations": comuna.escalations,
         "picture": {"pages": now["pages"], "built_by": "World Model projection comuna_picture"},
+        "since_last_check": since,
+    }
+
+
+def finding_result(comuna, finding):
+    """A mayor finding as the result shows it, with its status and the Critic's last word on it."""
+    last = comuna.reviews[-1]["results"] if comuna.reviews else {}
+    result = last.get(finding["id"], {})
+    rounds = [r["round"] for r in comuna.reviews if finding["id"] in r["results"]]
+    status = "approved" if result.get("approved") else \
+        "escalated" if any(e.get("finding_id") == finding["id"] for e in comuna.escalations) else "pending"
+    return {**{k: finding.get(k) for k in ("id", "target", "aspect", "class", "explanation", "confidence", "method",
+                                           "claim", "evidence", "proposal", "match", "matches", "reading", "signals")},
+            "model": finding.get("model"), "status": status,
+            "critic": {"score": result.get("score"), "criteria": result.get("criteria"), "rounds": len(rounds),
+                       "failures": result.get("failures", []), "notes": result.get("notes", []),
+                       "judged_by_model": result.get("judged_by_model")}}
+
+
+def mayor_result(comuna, state, now, since, table):
+    """A comuna's mayor result: SERVEL's results by election read, every page's verdict, the drafts."""
+    elections = {}
+    for year, rows in table.items():
+        top = mayors.winner(table, year)
+        elections[year] = {"elected": top["name"], "party": top["party"], "pact": top["pact"], "votes": top["votes"],
+                           "candidates": [{"name": r["name"], "party": r["party"], "votes": r["votes"],
+                                           "elected": r["elected"]} for r in rows]}
+    return {
+        "cut": comuna.cut, "name": comuna.name, "status": comuna.status,
+        "elections": elections,
+        "claims_checked": len({f["claim"]["id"] for f in comuna.findings} | {c["claim"]["id"] for c in comuna.checks}),
+        "findings": [finding_result(comuna, f) for f in comuna.findings],
+        "checks": comuna.checks,
+        "critic": {"rounds": len(comuna.reviews),
+                   "history": [{"round": r["round"], "approved": r["approved"], "rejected": r["rejected"],
+                                "fix": r["fix"]} for r in comuna.reviews],
+                   "draft_reviews": comuna.draft_reviews},
+        "drafts": {k: {kk: vv for kk, vv in v.items() if kk != "named"} if isinstance(v, dict) else v
+                   for k, v in comuna.drafts.items()},
+        "escalations": comuna.escalations,
+        "picture": {"pages": now["pages"], "built_by": "World Model projection mayor_picture"},
         "since_last_check": since,
     }

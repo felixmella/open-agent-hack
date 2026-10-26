@@ -1,4 +1,5 @@
-"""Run input: which comunas to check, in which Wikipedia languages, with which limits."""
+"""Run input: which fact to check (population or mayor), for which comunas, in which Wikipedia languages, with
+which limits."""
 from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator
@@ -35,9 +36,12 @@ class RunInput(BaseModel):
         {"scope": {"cuts": ["08105", "11203", "16201"]}, "languages": ["es", "en"], "options": {"max_critic_rounds": 2}},
         {"scope": {"region": "Aysén"}, "languages": ["es", "en"], "options": {"use_llm": False}},
         {"scope": {"comunas": ["Saavedra (Chile)", "Cholchol"]}},
+        {"fact": "mayor", "scope": {"cuts": ["06115", "05703"]}},
     ]}}
 
     run_id: str | None = Field(None, pattern=RUN_ID)
+    fact: Literal["population", "mayor"] = Field("population", description=(
+        "what to check: each comuna's population (INE) or its mayor (SERVEL's election results)"))
     scope: Scope
     languages: list[Literal["es", "en"]] = ["es", "en"]
     options: Options = Options()

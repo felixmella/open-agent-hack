@@ -17,7 +17,8 @@ from app.adapters.zetaris import ZetarisClient, ZetarisError  # noqa: E402
 from app.config import load_settings  # noqa: E402
 
 VIEWS = ["factsync.source_catalog", "factsync.ine_census2024", "factsync.official_population",
-         "factsync.wikidata_population", "factsync.eswiki_infobox", "factsync.enwiki_infobox"]
+         "factsync.wikidata_population", "factsync.eswiki_infobox", "factsync.enwiki_infobox",
+         "factsync.servel_mayors", "factsync.wikidata_mayor", "factsync.eswiki_mayor", "factsync.enwiki_mayor"]
 OUTSIDE = "factsync_rest.ine_census2024_raw"  # a source table under the views: the app key must not read it
 
 

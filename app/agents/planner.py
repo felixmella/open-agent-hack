@@ -15,6 +15,7 @@ from app.adapters.zetaris import ZetarisError, as_str
 from app.agents.llm import batched, model_note
 from app.engines.world_model import normalize_name
 from app.knowledge import catalog as sources_catalog
+from app.knowledge import mayors
 from app.knowledge.taxonomy import census_status
 
 DISCOVERY_PROMPT = """FactSync Chile - Planner.
@@ -24,6 +25,17 @@ check. Each numbered figure lists its candidates: the unread sources whose cover
 fits it best, or null if none does. Decide from the figure's label, year and size and each source's coverage: you
 can't know a source's figures before it is read, so never rule one out by guessing them.
 JSON: {"choices": [{"figure": "1", "source": "<source id or null>", "reason": "<one short sentence>"}]}"""
+
+MAYOR_DISCOVERY_PROMPT = """FactSync Chile - Planner.
+The Critic sent back names that Wikipedia or Wikidata give as the mayor of a Chilean comuna and that SERVEL's election
+results read so far can't explain: each matches no one elected, or no candidate at all, in the elections read. Each
+numbered name lists its candidates: SERVEL elections not read yet. "like_it" counts other names with the same cues and
+candidates; "year" is a year the page itself points to (a reference's date, a term), if any. For EACH name, choose the
+election most likely to explain it (a former mayor was most likely elected in the election before the latest one read,
+unless the page points to an earlier year), or null if none could. You can't know an election's candidates before it
+is read, so never rule one out by guessing them.
+JSON: {"choices": [{"figure": "1", "source": "<source id or null>", "reason": "<one short sentence>"}]}"""
+PROMPTS = {"population": DISCOVERY_PROMPT, "mayor": MAYOR_DISCOVERY_PROMPT}
 
 
 class ScopeError(ValueError):
@@ -39,6 +51,7 @@ class Plan:
     unresolved: list = field(default_factory=list)
     reviews: list = field(default_factory=list)
     catalog: dict = field(default_factory=lambda: sources_catalog.normalize(sources_catalog.BUILT_IN))
+    fact: str = "population"
 
 
 def fit(source, figure):
@@ -123,14 +136,17 @@ class Planner:
             how = f"{len(scope.comunas)} name(s) resolved to {len(cuts)} comunas"
         if not cuts:
             raise ScopeError(f"the scope matched no comuna ({how}; unresolved: {unresolved or reviews})")
-        sources = sources_catalog.default_sources(catalog, run_input.languages)
+        fact = run_input.fact
+        sources = sources_catalog.default_sources(catalog, run_input.languages, fact)
+        if not any(catalog[s]["kind"] == "official" for s in sources):
+            raise ScopeError(f"the source catalog lists no official {fact} source to read by default")
         plan = Plan(cuts=cuts, comunas={c: comunas[c]["name"] for c in cuts}, sources=sources, reason=how,
-                    unresolved=unresolved, reviews=reviews, catalog=catalog)
+                    unresolved=unresolved, reviews=reviews, catalog=catalog, fact=fact)
         status = "success" if not (unresolved or reviews) else "partial"
         self.tracer.event(self.name, "create_plan", input_summary=scope.model_dump_json(exclude_none=True),
-                          output_summary=f"{how}; sources: {', '.join(sources)}; on demand: "
-                                         + ", ".join(s for s, row in catalog.items() if row["kind"] == "official"
-                                                     and s not in sources)
+                          output_summary=f"{how}; fact: {fact}; sources: {', '.join(sources)}; on demand: "
+                                         + ", ".join(s for s, row in sources_catalog.of_fact(catalog, fact).items()
+                                                     if row["kind"] == "official" and s not in sources)
                                          + (f"; unresolved: {unresolved}" if unresolved else "")
                                          + (f"; needs review: {reviews}" if reviews else ""),
                           target_agent="Retriever", status=status)
@@ -141,7 +157,7 @@ class Planner:
         discovery cap not reached."""
         if len(state.discoveries) >= state.caps.max_discoveries:
             return {}
-        return {s: row for s, row in plan.catalog.items()
+        return {s: row for s, row in sources_catalog.of_fact(plan.catalog, plan.fact).items()
                 if row["kind"] == "official" and s not in plan.sources and s not in state.declined}
 
     def discover(self, plan, requests, state, round_no):
@@ -187,7 +203,7 @@ class Planner:
         picks, notes = {}, {}  # source -> [(figure, why)] in the order chosen; source -> who chose it
         refusals, refused_by = [], None  # the model's reasons for choosing no source for a figure
         for batch in batched(groups, payload):  # requests small enough to stream (see app/agents/llm.py)
-            reply = self.llm.ask_json(self.name, "choose_sources", DISCOVERY_PROMPT, payload(batch),
+            reply = self.llm.ask_json(self.name, "choose_sources", PROMPTS[plan.fact], payload(batch),
                                       target_agent="Retriever", round_no=round_no, validate=valid) if self.llm else None
             if reply:
                 for choice in reply[0]["choices"]:
@@ -200,7 +216,7 @@ class Planner:
                         picks.setdefault(choice["source"], []).extend((f, why) for f in batch[int(number) - 1])
                         notes.setdefault(choice["source"], model_note(reply[1]))
             else:
-                for source, chosen in self.by_cues([f for g in batch for f in g], options).items():
+                for source, chosen in self.by_cues([f for g in batch for f in g], options, plan.fact).items():
                     picks.setdefault(source, []).extend(chosen)
                     notes.setdefault(source, {"method": "rules"})
         if not picks:
@@ -225,11 +241,11 @@ class Planner:
                     (f" (chosen for {len(served)} figures)" if len(served) > 1 else "")
             else:
                 reason = (f"by coverage ({sources_catalog.coverage(options[source])}), the best fit for {len(served)} "
-                          f"figure(s), e.g. {served[0]['value']:,} ('{served[0]['label']}')")
+                          f"figure(s), e.g. {mayors.shown(served[0]['value'])} ('{served[0]['label']}')")
             plan.sources.append(source)
             state.discoveries.append({"round": round_no, "source": source, "reason": reason, "requests": served, **note})
             self.tracer.event(self.name, "discover_source", input_summary=f"chosen for {len(served)} of {len(requests)} "
-                              f"figure(s): " + "; ".join(f"{r['comuna']} {r['value']:,} ({r['shown_in']}, '{r['label']}')"
+                              f"figure(s): " + "; ".join(f"{r['comuna']} {mayors.shown(r['value'])} ({r['shown_in']}, '{r['label']}')"
                                                          for r in served[:4]),
                               output_summary=f"add {source}: {reason}", target_agent="Retriever", round_no=round_no,
                               decided_by=note)
@@ -237,14 +253,15 @@ class Planner:
         return added
 
     @staticmethod
-    def by_cues(requests, options):
+    def by_cues(requests, options, fact="population"):
         """The deterministic choice: for each figure, the candidate whose coverage best fits its cues (catalog order
         breaks ties). Returns {source: [(figure, None)]}: the reason is the fit itself."""
         order = list(options)
+        fits = mayors.fit if fact == "mayor" else fit
         picks = {}
         for request in requests:
             candidates = [s for s in request["candidates"] if s in options]
             if candidates:
-                best = min(candidates, key=lambda s: (fit(options[s], request), order.index(s)))
+                best = min(candidates, key=lambda s: (fits(options[s], request), order.index(s)))
                 picks.setdefault(best, []).append((request, None))
         return picks

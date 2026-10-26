@@ -12,6 +12,7 @@ FIGURE = ("value", "label", "reference")
 
 
 def comuna_picture(observations, assessments):
+    assessments = [a for a in assessments if not (a["data"] or {}).get("fact")]  # population only: mayor runs mark theirs
     official = {}
     for o in observations:
         p = o["payload"]

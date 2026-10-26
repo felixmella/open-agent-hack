@@ -1,0 +1,35 @@
+{
+  "about": "Chile's mayoral elections whose results FactSync Chile reads (SERVEL), the terms they started, and the official source drafts cite. Compiled by FactSync Chile in October 2026. Terms: Ley Orgánica Constitucional de Municipalidades (the council is installed on December 6 of the election year), except 2021, whose elections Ley 21.324 moved to May 15-16 and whose installation to June 28, 2021, which also extended the 2016 term.",
+  "elections": {
+    "2012": {"date": "2012-10-28", "days": "28 October 2012", "term_from": "2012-12-06", "term_to": "2016-12-06"},
+    "2016": {"date": "2016-10-23", "days": "23 October 2016", "term_from": "2016-12-06", "term_to": "2021-06-28"},
+    "2021": {"date": "2021-05-16", "days": "15-16 May 2021", "term_from": "2021-06-28", "term_to": "2024-12-06"},
+    "2024": {"date": "2024-10-27", "days": "26-27 October 2024", "term_from": "2024-12-06", "term_to": "2028-12-06"}
+  },
+  "official_sources": {
+    "servel_2024": {"name": "SERVEL, elección de alcaldes 2024", "title": "Resultados electorales históricos: Alcaldes 2024", "publisher": "Servicio Electoral de Chile (SERVEL)", "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/", "year": 2024},
+    "servel_2021": {"name": "SERVEL, elección de alcaldes 2021", "title": "Resultados electorales históricos: Alcaldes 2021", "publisher": "Servicio Electoral de Chile (SERVEL)", "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/", "year": 2021},
+    "servel_2016": {"name": "SERVEL, elección de alcaldes 2016", "title": "Resultados electorales históricos: Alcaldes 2016", "publisher": "Servicio Electoral de Chile (SERVEL)", "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/", "year": 2016},
+    "servel_2012": {"name": "SERVEL, elección de alcaldes 2012", "title": "Resultados electorales históricos: Alcaldes 2012", "publisher": "Servicio Electoral de Chile (SERVEL)", "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/", "year": 2012}
+  },
+  "stand_in_words": ["suplente", "subrogante", "interino", "interina", "(s)", "acting", "interim"],
+  "parties": {
+    "RENOVACION NACIONAL": {"es": "RN", "en": "RN"},
+    "UNION DEMOCRATA INDEPENDIENTE": {"es": "UDI", "en": "UDI"},
+    "PARTIDO SOCIALISTA DE CHILE": {"es": "PS", "en": "PS"},
+    "PARTIDO POR LA DEMOCRACIA": {"es": "PPD", "en": "PPD"},
+    "PARTIDO DEMOCRATA CRISTIANO": {"es": "PDC", "en": "PDC"},
+    "PARTIDO COMUNISTA DE CHILE": {"es": "PC", "en": "PC"},
+    "PARTIDO RADICAL DE CHILE": {"es": "PR", "en": "PR"},
+    "EVOLUCION POLITICA": {"es": "Evópoli", "en": "Evópoli"},
+    "FRENTE AMPLIO": {"es": "FA", "en": "FA"},
+    "PARTIDO REPUBLICANO DE CHILE": {"es": "REP", "en": "Republican"},
+    "PARTIDO SOCIAL CRISTIANO": {"es": "PSC", "en": "PSC"},
+    "FEDERACION REGIONALISTA VERDE SOCIAL": {"es": "FRVS", "en": "FRVS"},
+    "PARTIDO LIBERAL DE CHILE": {"es": "PL", "en": "PL"},
+    "DEMOCRATAS": {"es": "Demócratas", "en": "Demócratas"},
+    "PARTIDO DE LA GENTE": {"es": "PDG", "en": "PDG"},
+    "INDEPENDIENTES": {"es": "Ind.", "en": "Independent"}
+  },
+  "wikidata": {"head_of_government": "P6", "start_time": "P580", "end_time": "P582", "reference_url": "S854", "retrieved": "S813"}
+}
