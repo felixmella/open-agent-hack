@@ -33,6 +33,7 @@ from app.knowledge.wikitext import infobox_parameters
 
 FACT = mayors.FACT
 PAGE_OF = {"eswiki": "es", "enwiki": "en", "wikidata": "wikidata"}
+PAGES_OF = {v: k for k, v in PAGE_OF.items()}
 NAME_FIELDS = {"es": ("dirigentes_nombres", "alcalde", "dirigentes_nombres1", "dirigente1_nombre",
                       "nombres de dirigentes"),
                "en": ("leader_name", "leader_name1", "mayor")}
@@ -327,6 +328,9 @@ class MayorAnalyst(Analyst):
         except (TypeError, ValueError):
             confidence = 0.5
         explanation = str(answer.get("explanation") or "").strip()[:600] or finding["explanation"]
+        changed = mayors.office_changed(finding["signals"], names.title_case(comuna.name)) if finding["signals"] else None
+        if changed and changed not in explanation:  # a fact code found stays in the verdict, whoever words it
+            explanation = f"{explanation} {changed}"
         chosen = answer.get("same_person_as")
         claim = finding["claim"]
         if chosen:
@@ -363,8 +367,8 @@ YEARS = re.compile(r"\b(19[5-9]\d|20[0-4]\d)\b")
 DRAFT_CHECKS = ("person", "citation", "official_url", "access_date", "well_formed", "summary", "names_faithful",
                 "caveat", "explanation")
 CRITICAL = ("person", "official_url", "names_faithful", "caveat")
-VERDICT_WORDS = re.compile(r"\b(incorrect\w*|wrong\w*|erroneous\w*|mistaken|incorrect[oa]s?|err[oó]ne[oa]s?|"
-                           r"equivocad[oa]s?|corrig\w*)\b", re.I)  # SERVEL can't show a page wrong, only different
+VERDICT_WORDS = re.compile(r"\b(incorrect\w*|wrong\w*|erroneous\w*|mistaken|correct(?:s|ed|ing)?|"
+                           r"incorrect[oa]s?|err[oó]ne[oa]s?|equivocad[oa]s?|corrig\w*)\b", re.I)  # SERVEL can't show a page wrong, only different
 
 
 class MayorCritic(Critic):
@@ -689,8 +693,9 @@ item. A human editor will review the drafts; nothing is published automatically.
   drop no name
 - es_summary: a Spanish Wikipedia edit summary (at most 250 characters), if there is an eswiki draft
 - en_summary: an English Wikipedia edit summary (at most 250 characters), if there is an enwiki draft
-- explanation: 2 to 4 plain English sentences for the reviewer: what each page says, what SERVEL's results show, and
-  what the drafts change
+- explanation: 2 to 4 plain English sentences for the reviewer: what the pages in "drafts" say, what SERVEL's results
+  show, and what the drafts change. "pages" says what every page names now; a page not in "drafts" needs no change,
+  so don't describe it as changing
 Each summary must name the elected mayor and say it comes from SERVEL. SERVEL records who was elected, not who holds
 the office today: never claim who is mayor now, and never call the name a page gives wrong or incorrect (it may be a
 stand-in or a replacement): say how it differs from SERVEL's results (a former mayor, a name SERVEL doesn't list).
@@ -792,6 +797,7 @@ class MayorEditor(Editor):
         body = {"comuna": comuna.name, "elected": {"name": top["name"], "year": year, "party": top.get("party"),
                                                    "votes": top.get("votes"), "source": "SERVEL"},
                 "name_needs_accents": spelled_from == "servel",
+                "pages": self.pages(comuna, findings),
                 "drafts": {k: {"page_names": next((c.get("name") for c in d["named"] if c["target"] == PAGE_OF[k]), None),
                                "findings": [{"class": f["class"], "explanation": f["explanation"][:300]}
                                             for f in findings if f["id"] in d["findings"]]}
@@ -800,6 +806,18 @@ class MayorEditor(Editor):
             body["critic_instruction"] = instruction[:300]
         return self.llm.ask_json(self.name, "word_drafts", EDITOR_PROMPT, body, target_agent="Critic",
                                  round_no=round_no, validate=lambda d: None if d.get("explanation") else "no explanation")
+
+    @staticmethod
+    def pages(comuna, findings):
+        """What every page of the comuna names now, and the verdict on it: the approved findings, and the pages
+        already naming the elected mayor."""
+        shown = {}
+        for check in [c for c in comuna.checks if c["result"] == "consistent"]:
+            shown.setdefault(PAGES_OF[check["claim"]["target"]], {"names": check["claim"].get("name"),
+                                                                  "verdict": "names the elected mayor"})
+        for finding in findings:
+            shown[PAGES_OF[finding["target"]]] = {"names": finding["claim"].get("name"), "verdict": finding["class"]}
+        return shown
 
     def infobox_lines(self, target, lead, spelled, party, source, year):
         office = (lead["claim"].get("office") or "").strip()

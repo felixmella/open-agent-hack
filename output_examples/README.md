@@ -48,6 +48,8 @@ What to look at in each:
 
   The next run rebuilt each comuna's picture as of the national batch and compared it with today's. It reports **4 pages fixed**: the three edited, plus Coltauco's Spanish infobox, which shows Wikidata's figure (19,597 → 21,373). The other 5 pages are unchanged (`since_last_check` in `result.json`, `compare_runs` in the trace). The pages' remaining findings, such as Rengo's English infobox and its withdrawn 2012 figure, are still in the queue. The input is `input.json` in the folder.
 
-## The national batch
+## The national batches
 
 [`national/`](national/) holds a run over all 346 comunas, one region per run, with the agents on their deterministic paths (no model calls; the whole country through the model would take days). [`national/summary.md`](national/summary.md) has the numbers the README quotes. Each region's folder has its review queue, result, trace and audit log.
+
+[`national_mayors/`](national_mayors/) is the same for the second fact, mayors, run on Oct 26, 2026 (batch `mayors-20261026b`). [`national_mayors/summary.md`](national_mayors/summary.md) has, per source, how many pages name the mayor elected in 2024 and why the others differ, which elections the Planner added in each region, and every name SERVEL doesn't have, for a person to look at. 20 random verdicts from it were checked by hand ([`eval/mayors_spot_check.md`](../eval/mayors_spot_check.md)). An earlier run that day (`mayors-20261026`) isn't kept: it found that SERVEL writes some mayors' given names differently from one election to the next, which split one person in two; the matcher was fixed and the run repeated.

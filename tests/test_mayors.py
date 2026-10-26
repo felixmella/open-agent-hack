@@ -93,6 +93,11 @@ def test_the_model_decides_who_a_name_is_and_code_derives_the_class(settings):
     discovery = next(e for e in trace if e["action"] == "discover_source")
     assert discovery["decided_by"]["method"] == "llm" and "servel_mayors_2021" in discovery["output_summary"]
     assert result["summary"]["discoveries"][0] == "servel_mayors_2021"
+    yerbas = page(comuna(result, "YERBAS BUENAS"), "es")  # worded by the model; the signal code found stays
+    assert yerbas["method"] == "llm" and "Wikidata records the end of" in yerbas["explanation"]
+    worded = [p for agent, p in llm.calls if agent == "Editor" and p["comuna"] == "PINTO"][0]
+    assert worded["pages"]["eswiki"] == {"names": "Jairo del Pino", "verdict": "names the elected mayor"}
+    assert set(worded["drafts"]) == {"enwiki", "wikidata"}
 
 
 def test_a_model_answer_naming_no_listed_candidate_is_ignored(settings):
