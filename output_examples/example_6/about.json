@@ -1,0 +1,75 @@
+{
+ "input": {
+  "fact": "mayor",
+  "scope": {
+   "cuts": [
+    "06115",
+    "05703",
+    "06104",
+    "08105",
+    "13107",
+    "16106",
+    "07408",
+    "06303"
+   ]
+  },
+  "languages": [
+   "es",
+   "en"
+  ]
+ },
+ "input_file": "example_6.json",
+ "compare_with": "national-mayors-20261026b",
+ "run_id": "example_6-live-20261026T2226Z",
+ "started_at": "2026-10-26T22:26:38+00:00",
+ "commit": "2d68c00b409b9a5f0e3fa0d840caae054122c306",
+ "status": "partial",
+ "summary": {
+  "comunas": 8,
+  "claims": 24,
+  "findings": 15,
+  "findings_by_class": {
+   "missing_value": 8,
+   "not_elected": 1,
+   "outdated_mayor": 3,
+   "unknown_name": 3
+  },
+  "drafts": 14,
+  "escalations": 1,
+  "critic_rejections": 16,
+  "discoveries": [
+   "servel_mayors_2021",
+   "servel_mayors_2016",
+   "servel_mayors_2012"
+  ],
+  "since_last_check": {
+   "comunas_checked_before": 8,
+   "unchanged": 24
+  }
+ },
+ "model_usage": {
+  "calls": 40,
+  "requests": 41,
+  "by_agent": {
+   "Critic": 22,
+   "Analyst": 5,
+   "Planner": 2,
+   "Editor": 11
+  },
+  "requested_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 40
+  },
+  "served_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 40
+  },
+  "routed_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 40
+  },
+  "nightshift_cache": {},
+  "fallbacks": {
+   "Planner": 1
+  },
+  "budget": 124
+ },
+ "seconds": 2350.1
+}

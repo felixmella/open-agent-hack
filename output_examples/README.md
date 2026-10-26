@@ -14,7 +14,7 @@ Every source was read live through Zetaris, and every model call went through Me
 
 ## The runs
 
-All were recorded live: every source through Zetaris, every model call through Nightshift, answered by `nvidia/nemotron-3.5-lightning-30b-a3b`. Each compares the comunas with national batch `20261024c` ("since the last check"). Examples 1 to 4 were recorded on Oct 24, 2026, when no page had changed since that batch. Example 5 was recorded on Oct 26, after four of FactSync's drafts had been applied by hand.
+All were recorded live: every source through Zetaris, every model call through Nightshift, answered by `nvidia/nemotron-3.5-lightning-30b-a3b`. Examples 1 to 5 check population and compare the comunas with national batch `20261024c` ("since the last check"). Examples 1 to 4 were recorded on Oct 24, 2026, when no page had changed since that batch. Example 5 was recorded on Oct 26, after four of FactSync's drafts had been applied by hand. Example 6 checks mayors, on Oct 26, compared with the national mayor batch `mayors-20261026b`.
 
 | Folder | Scope | Findings | Drafts | Critic rejections | Sources discovered | Model calls | Time |
 |---|---|---|---|---|---|---|---|
@@ -24,6 +24,7 @@ All were recorded live: every source through Zetaris, every model call through N
 | [`example_3`](example_3/) | the Aysén region (10 comunas) | 39 | 24 | 7 | Census 2002, projections | 38 | 29 min |
 | [`example_4`](example_4/) | Saavedra, Cholchol, La Pintana, Paredones (by name) | 17 | 11 | 4 | Census 2002, projections, urban/rural | 23 | 14 min |
 | [`example_5`](example_5/) | Coltauco, Rengo, Llay-Llay, after real edits | 7 | 7 | 4 | Census 2002, projections | 17 | 11 min |
+| [`example_6`](example_6/) | **Mayors**: Rengo, Llay-Llay, Coltauco, Hualqui, Huechuraba, Pinto, Yerbas Buenas, Chimbarongo | 15 | 14 | 16 | SERVEL elections 2021, 2016, 2012 | 40 (1 fell back to code) | 39 min |
 
 What to look at in each:
 
@@ -47,6 +48,13 @@ What to look at in each:
   - Llay-Llay's English infobox ([diff](https://en.wikipedia.org/w/index.php?title=Llay-Llay&diff=1382101060&oldid=1376738169)).
 
   The next run rebuilt each comuna's picture as of the national batch and compared it with today's. It reports **4 pages fixed**: the three edited, plus Coltauco's Spanish infobox, which shows Wikidata's figure (19,597 → 21,373). The other 5 pages are unchanged (`since_last_check` in `result.json`, `compare_runs` in the trace). The pages' remaining findings, such as Rengo's English infobox and its withdrawn 2012 figure, are still in the queue. The input is `input.json` in the folder.
+
+- **Example 6: mayors, the second fact.** The same agents, checking who each page names as mayor against SERVEL's election results.
+  - Round 1 reads only the 2024 election. The Critic holds back every name it can't explain and sends the Planner back an election per round: Nemotron chose 2021 ("a former mayor was most likely elected in the election before the latest read"), code chose 2016 when Nightshift failed after a retry (traced), and Nemotron chose 2012.
+  - Rengo's English infobox names Carlos Soto, elected 2012–2021; Coltauco's names the mayor elected in 2016; Llay-Llay's the one elected in 2012. Hualqui's pages are up to date.
+  - Nemotron confirms that Huechuraba's "Max Luksic" is SERVEL's Maximiliano Luksic Lederer (up to date), reads Pinto's "Wyatt Mathis" as vandalism and Chimbarongo's "Alejando Arenas Arenas (ALCALDE SUPLENTE)" as a stand-in.
+  - Yerbas Buenas: both Wikipedias name a candidate who lost in 2024, and Wikidata records the elected mayor's term ending on Oct 22, 2026. The English draft asks the editor to check first. For the Spanish page, Nemotron answered "no listed candidate" while its own explanation named one; the Critic refused the class (5/9) and, its rounds used up, escalated the page to a human: the run's one escalation, so its status is `partial`.
+  - Compared with the national mayor batch, all 24 pages are unchanged.
 
 ## The national batches
 

@@ -1,0 +1,5185 @@
+{
+  "run_id": "example_6-live-20261026T2226Z",
+  "fact": "mayor",
+  "status": "partial",
+  "mode": "live",
+  "summary": {
+    "comunas": 8,
+    "claims": 24,
+    "findings": 15,
+    "findings_by_class": {
+      "missing_value": 8,
+      "not_elected": 1,
+      "outdated_mayor": 3,
+      "unknown_name": 3
+    },
+    "drafts": 14,
+    "escalations": 1,
+    "critic_rejections": 16,
+    "discoveries": [
+      "servel_mayors_2021",
+      "servel_mayors_2016",
+      "servel_mayors_2012"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 8,
+      "unchanged": 24
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "fact": "mayor",
+    "cuts": [
+      "06115",
+      "05703",
+      "06104",
+      "08105",
+      "13107",
+      "16106",
+      "07408",
+      "06303"
+    ],
+    "sources": [
+      "servel_mayors_2024",
+      "wikidata_mayor",
+      "wikipedia_es_mayor",
+      "wikipedia_en_mayor",
+      "servel_mayors_2021",
+      "servel_mayors_2016",
+      "servel_mayors_2012"
+    ],
+    "reason": "8 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "servel_mayors_2024": {
+      "rows": 40,
+      "observations": 40,
+      "appended": 0,
+      "unchanged": 40,
+      "reviews": 0
+    },
+    "wikidata_mayor": {
+      "rows": 79,
+      "observations": 8,
+      "appended": 0,
+      "unchanged": 8,
+      "reviews": 0
+    },
+    "wikipedia_es_mayor": {
+      "rows": 20,
+      "observations": 16,
+      "appended": 0,
+      "unchanged": 16,
+      "reviews": 0
+    },
+    "wikipedia_en_mayor": {
+      "rows": 14,
+      "observations": 16,
+      "appended": 0,
+      "unchanged": 16,
+      "reviews": 0
+    },
+    "servel_mayors_2021": {
+      "rows": 30,
+      "observations": 30,
+      "appended": 0,
+      "unchanged": 30,
+      "reviews": 0
+    },
+    "servel_mayors_2016": {
+      "rows": 23,
+      "observations": 23,
+      "appended": 0,
+      "unchanged": 23,
+      "reviews": 0
+    },
+    "servel_mayors_2012": {
+      "rows": 27,
+      "observations": 27,
+      "appended": 0,
+      "unchanged": 27,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "servel_mayors_2021",
+      "reason": "a former mayor was most likely elected in the election before the latest read (2024), which is 2021 (chosen for 7 figures)",
+      "requests": [
+        {
+          "comuna": "RENGO",
+          "value": "Carlos Soto",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "LLAILLAY",
+          "value": "Mario Marillanca",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "COLTAUCO",
+          "value": "Ruben Jorquera Vidal",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "PINTO",
+          "value": "Wyatt Mathis",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "YERBAS BUENAS",
+          "value": "Rafael Viguera González",
+          "shown_in": "Wikipedia ES infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "YERBAS BUENAS",
+          "value": "Rafael Viguera González",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Mayor)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "CHIMBARONGO",
+          "value": "Alejando Arenas Arenas",
+          "shown_in": "Wikipedia ES infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "llm",
+      "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "receipt_id": "rcpt_req_e2jgnvap"
+    },
+    {
+      "round": 2,
+      "source": "servel_mayors_2016",
+      "reason": "by coverage (election, 2016), the best fit for 6 figure(s), e.g. 'Mario Marillanca' ('named as mayor (Alcalde)')",
+      "requests": [
+        {
+          "comuna": "LLAILLAY",
+          "value": "Mario Marillanca",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "COLTAUCO",
+          "value": "Ruben Jorquera Vidal",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "PINTO",
+          "value": "Wyatt Mathis",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "YERBAS BUENAS",
+          "value": "Rafael Viguera González",
+          "shown_in": "Wikipedia ES infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "YERBAS BUENAS",
+          "value": "Rafael Viguera González",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Mayor)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "CHIMBARONGO",
+          "value": "Alejando Arenas Arenas",
+          "shown_in": "Wikipedia ES infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 3,
+      "source": "servel_mayors_2012",
+      "reason": "The only listed candidate source is the 2012 SERVEL mayoral election, which could explain the Wikipedia naming since no match exists in the read 2024, 2021, or 2016 elections. (chosen for 5 figures)",
+      "requests": [
+        {
+          "comuna": "LLAILLAY",
+          "value": "Mario Marillanca",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "PINTO",
+          "value": "Wyatt Mathis",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "YERBAS BUENAS",
+          "value": "Rafael Viguera González",
+          "shown_in": "Wikipedia ES infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "YERBAS BUENAS",
+          "value": "Rafael Viguera González",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Mayor)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "CHIMBARONGO",
+          "value": "Alejando Arenas Arenas",
+          "shown_in": "Wikipedia ES infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "llm",
+      "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "receipt_id": "rcpt_req_9mjqt9eq"
+    }
+  ],
+  "declined_discoveries": [],
+  "comunas": [
+    {
+      "cut": "06115",
+      "name": "RENGO",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "CARLOS ERNESTO SOTO GONZALEZ",
+          "party": "INDEPENDIENTES LISTA F",
+          "pact": "CONCERTACION DEMOCRATICA",
+          "votes": 11556,
+          "candidates": [
+            {
+              "name": "CARLOS ERNESTO SOTO GONZALEZ",
+              "party": "INDEPENDIENTES LISTA F",
+              "votes": 11556,
+              "elected": true
+            },
+            {
+              "name": "MARCOS GREGORIO GATICA MUÑOZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 5489,
+              "elected": false
+            },
+            {
+              "name": "ANGEL RODRIGO GONZALEZ CARRASCO",
+              "party": "INDEPENDIENTES",
+              "votes": 2255,
+              "elected": false
+            },
+            {
+              "name": "MARCO EUGENIO VICUÑA MUÑOZ",
+              "party": "INDEPENDIENTES LISTA G",
+              "votes": 779,
+              "elected": false
+            },
+            {
+              "name": "CRISTIAN ANDRES MORALES MORALES",
+              "party": "INDEPENDIENTES LISTA C",
+              "votes": 408,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "CARLOS ERNESTO SOTO GONZALEZ",
+          "party": "INDEPENDIENTE LISTA E",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 10790,
+          "candidates": [
+            {
+              "name": "CARLOS ERNESTO SOTO GONZALEZ",
+              "party": "INDEPENDIENTE LISTA E",
+              "votes": 10790,
+              "elected": true
+            },
+            {
+              "name": "MARCOS JOSE GATICA EMPARANZA",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 7476,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "CARLOS ERNESTO SOTO GONZALEZ",
+          "party": "INDEPENDIENTES-LISTA K",
+          "pact": "UNIDAD POR EL APRUEBO",
+          "votes": 5974,
+          "candidates": [
+            {
+              "name": "CARLOS ERNESTO SOTO GONZALEZ",
+              "party": "INDEPENDIENTES-LISTA K",
+              "votes": 5974,
+              "elected": true
+            },
+            {
+              "name": "JULIO IVAN IBARRA MARIPANGUE",
+              "party": "INDEPENDIENTES",
+              "votes": 5256,
+              "elected": false
+            },
+            {
+              "name": "ALVARO VALENTIN LIZANA FUENTES",
+              "party": "REVOLUCION DEMOCRATICA",
+              "votes": 4475,
+              "elected": false
+            },
+            {
+              "name": "MARCOS GREGORIO GATICA MUÑOZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 3461,
+              "elected": false
+            },
+            {
+              "name": "YOSSELIN ELISETH MOYANO CALABRANO",
+              "party": "INDEPENDIENTES",
+              "votes": 2281,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "ENRIQUE DEL BARRIO HERNANDEZ",
+          "party": "INDEPENDIENTES",
+          "pact": "CHILE VAMOS",
+          "votes": 23819,
+          "candidates": [
+            {
+              "name": "ENRIQUE DEL BARRIO HERNANDEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 23819,
+              "elected": true
+            },
+            {
+              "name": "ALVARO VALENTIN LIZANA FUENTES",
+              "party": "INDEPENDIENTES",
+              "votes": 7464,
+              "elected": false
+            },
+            {
+              "name": "KAREN LORCA SAAVEDRA",
+              "party": "INDEPENDIENTES",
+              "votes": 4884,
+              "elected": false
+            },
+            {
+              "name": "DENISSE TAMARA LEON ROJAS",
+              "party": "PARTIDO REPUBLICANO DE CHILE",
+              "votes": 3464,
+              "elected": false
+            },
+            {
+              "name": "SAMANTA JORQUERA JORQUERA",
+              "party": "INDEPENDIENTES",
+              "votes": 2082,
+              "elected": false
+            },
+            {
+              "name": "FRANCISCO GONZALEZ ALEGRIA",
+              "party": "INDEPENDIENTES",
+              "votes": 1082,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_69ba70610dec996e",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Enrique del Barrio Hernandez was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_738d805f3940d66c0d666ea1",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q56120"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_cb3766a0ff9d1c73e007447f",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ENRIQUE DEL BARRIO HERNANDEZ",
+              "elected": true,
+              "votes": 23819,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "ENRIQUE DEL BARRIO HERNANDEZ",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_cb3766a0ff9d1c73e007447f",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_a8f2f633ed74f61a",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Carlos Soto is Carlos Ernesto Soto Gonzalez, elected mayor in 2021 (SERVEL). Enrique del Barrio Hernandez was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_59d4d7af93f7e5f5ad2accee",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Rengo",
+            "revid": "1380227873",
+            "location": "infobox",
+            "role": "current",
+            "name": "Carlos Soto",
+            "name_raw": "Carlos Soto",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_cb3766a0ff9d1c73e007447f",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ENRIQUE DEL BARRIO HERNANDEZ",
+              "elected": true,
+              "votes": 23819,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_62e61493a2bc38c22669e5fb",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "CARLOS ERNESTO SOTO GONZALEZ",
+              "elected": true,
+              "votes": 5974,
+              "party": "INDEPENDIENTES-LISTA K"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "ENRIQUE DEL BARRIO HERNANDEZ",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_cb3766a0ff9d1c73e007447f",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_carlos_ernesto_soto_gonzalez",
+            "name": "CARLOS ERNESTO SOTO GONZALEZ",
+            "ran": [
+              2021
+            ],
+            "won": [
+              2021
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name",
+              "id": "p_carlos_ernesto_soto_gonzalez",
+              "name": "CARLOS ERNESTO SOTO GONZALEZ",
+              "ran": [
+                2021
+              ],
+              "won": [
+                2021
+              ]
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_592d7e5ddb61e9121177f0d4",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Rengo",
+            "revid": "176011339",
+            "location": "infobox",
+            "role": "current",
+            "name": "Enrique Alfonso del Barrio Hernández",
+            "name_raw": "Enrique Alfonso del Barrio Hernández",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Enrique Alfonso del Barrio Hernández is Enrique del Barrio Hernandez, elected mayor of Rengo in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_a8f2f633ed74f61a"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_a8f2f633ed74f61a",
+              "finding_ids": [
+                "fnd_a8f2f633ed74f61a"
+              ],
+              "comuna": "RENGO",
+              "cut": "06115",
+              "figures": [
+                {
+                  "finding_id": "fnd_a8f2f633ed74f61a",
+                  "value": "Carlos Soto",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Carlos Soto' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 8,
+              "approved": false,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": false,
+                "explanation": true
+              },
+              "instruction": "Fix: caveat. Don't call the page's name wrong or incorrect: say how it differs from SERVEL's results."
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 8,
+              "approved": false,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": false,
+                "explanation": true
+              },
+              "instruction": "Fix: caveat. Don't call the page's name wrong or incorrect: say how it differs from SERVEL's results."
+            }
+          },
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 2,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 2,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Rengo",
+          "revid": "1380227873",
+          "findings": [
+            "fnd_a8f2f633ed74f61a"
+          ],
+          "anchor": "obs_59d4d7af93f7e5f5ad2accee",
+          "replaces": {
+            "name": "Carlos Soto",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Rengo",
+          "correction": {
+            "person": "ENRIQUE DEL BARRIO HERNANDEZ",
+            "name_as_written": "Enrique Alfonso del Barrio Hernández",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_cb3766a0ff9d1c73e007447f"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Enrique Alfonso del Barrio Hernández<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Enrique del Barrio Hernández elected mayor (SERVEL, 2024). Page currently names Carlos Soto, elected in 2021; differs from SERVEL's 2024 result.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q56120",
+          "url": "https://www.wikidata.org/wiki/Q56120",
+          "findings": [
+            "fnd_69ba70610dec996e"
+          ],
+          "anchor": "obs_738d805f3940d66c0d666ea1",
+          "correction": {
+            "person": "ENRIQUE DEL BARRIO HERNANDEZ",
+            "name_as_written": "Enrique Alfonso del Barrio Hernández",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_cb3766a0ff9d1c73e007447f"
+          },
+          "statement": "Q56120: add P6 (head of government) = Enrique Alfonso del Barrio Hernández (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Enrique Alfonso del Barrio Hernández",
+          "status": "approved"
+        },
+        "explanation": "The English Wikipedia page currently gives Carlos Soto, elected mayor in 2021 (SERVEL), differing from the 2024 elected mayor Enrique del Barrio Hernández. Wikidata has no head of government statement, while SERVEL records Enrique del Barrio Hernández as the 2024 elected mayor. The drafts will update the enwiki page and wikidata entry to reflect SERVEL's 2024 election result, adding appropriate caveats about the name difference.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_v99ckbx6"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_59d4d7af93f7e5f5ad2accee",
+            "reference": null,
+            "status": "approved",
+            "value": "Carlos Soto",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_592d7e5ddb61e9121177f0d4",
+            "reference": null,
+            "status": "checked",
+            "value": "Enrique Alfonso del Barrio Hernández",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_738d805f3940d66c0d666ea1",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026b-06-libertador-general-bernardo-o-higgi",
+        "checked_at": "2026-10-26T21:40:02Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Enrique Alfonso del Barrio Hernández",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_592d7e5ddb61e9121177f0d4",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_592d7e5ddb61e9121177f0d4",
+              "reference": null,
+              "status": "checked",
+              "value": "Enrique Alfonso del Barrio Hernández",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Carlos Soto",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_59d4d7af93f7e5f5ad2accee",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_59d4d7af93f7e5f5ad2accee",
+              "reference": null,
+              "status": "approved",
+              "value": "Carlos Soto",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_738d805f3940d66c0d666ea1",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_738d805f3940d66c0d666ea1",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "05703",
+      "name": "LLAILLAY",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "MARIO REGINO MARILLANCA RAMIREZ",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "CONCERTACION DEMOCRATICA",
+          "votes": 5843,
+          "candidates": [
+            {
+              "name": "MARIO REGINO MARILLANCA RAMIREZ",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 5843,
+              "elected": true
+            },
+            {
+              "name": "MARCO ANTONIO FLORES GOMEZ",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 4305,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "EDGARDO RAUL GONZALEZ ARANCIBIA",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 6955,
+          "candidates": [
+            {
+              "name": "EDGARDO RAUL GONZALEZ ARANCIBIA",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 6955,
+              "elected": true
+            },
+            {
+              "name": "JAIME MIRANDA HERRERA",
+              "party": "INDEPENDIENTE LISTA M",
+              "votes": 551,
+              "elected": false
+            },
+            {
+              "name": "CAROLINA MONTENEGRO ROJAS",
+              "party": "RENOVACION NACIONAL",
+              "votes": 513,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "EDGARDO RAUL GONZALEZ ARANCIBIA",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 5927,
+          "candidates": [
+            {
+              "name": "EDGARDO RAUL GONZALEZ ARANCIBIA",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 5927,
+              "elected": true
+            },
+            {
+              "name": "CARLOS JAVIER MIRANDA ROZAS",
+              "party": "PARTIDO COMUNISTA DE CHILE",
+              "votes": 2112,
+              "elected": false
+            },
+            {
+              "name": "FERNANDO MARCELO ASTORGA TERRAZA",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 2100,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "EDGARDO GONZALEZ ARANCIBIA",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 12776,
+          "candidates": [
+            {
+              "name": "EDGARDO GONZALEZ ARANCIBIA",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 12776,
+              "elected": true
+            },
+            {
+              "name": "DANIEL ZAMORA HINOSTROZA",
+              "party": "INDEPENDIENTES",
+              "votes": 4401,
+              "elected": false
+            },
+            {
+              "name": "MARIO MARCHANT SILVA",
+              "party": "INDEPENDIENTES",
+              "votes": 1076,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_c306969d1896497a",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Edgardo Gonzalez Arancibia was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_7a0a563387c901a7c855de74",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q14498"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_a10f21a2c4d153806f834714",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "EDGARDO GONZALEZ ARANCIBIA",
+              "elected": true,
+              "votes": 12776,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "EDGARDO GONZALEZ ARANCIBIA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_a10f21a2c4d153806f834714",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_f7b5e85f498ff601",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Mario Marillanca is Mario Regino Marillanca Ramirez, elected mayor in 2012 (SERVEL). Edgardo Gonzalez Arancibia was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_48bbc80db40b556e42e3ad65",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Llay-Llay",
+            "revid": "1382101060",
+            "location": "infobox",
+            "role": "current",
+            "name": "Mario Marillanca",
+            "name_raw": "Mario Marillanca",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_a10f21a2c4d153806f834714",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "EDGARDO GONZALEZ ARANCIBIA",
+              "elected": true,
+              "votes": 12776,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_b9c1a42485d06b0178f4f684",
+              "source": "SERVEL 2012",
+              "year": 2012,
+              "name": "MARIO REGINO MARILLANCA RAMIREZ",
+              "elected": true,
+              "votes": 5843,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "EDGARDO GONZALEZ ARANCIBIA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_a10f21a2c4d153806f834714",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_mario_regino_marillanca_ramirez",
+            "name": "MARIO REGINO MARILLANCA RAMIREZ",
+            "ran": [
+              2012
+            ],
+            "won": [
+              2012
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name",
+              "id": "p_mario_regino_marillanca_ramirez",
+              "name": "MARIO REGINO MARILLANCA RAMIREZ",
+              "ran": [
+                2012
+              ],
+              "won": [
+                2012
+              ]
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_4258cb600b2f6a69b40ddb86",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Llay-Llay",
+            "revid": "175514873",
+            "location": "infobox",
+            "role": "current",
+            "name": "Edgardo González Arancibia",
+            "name_raw": "Edgardo González Arancibia ([[Partido Demócrata Cristiano (Chile)|PDC]])",
+            "notes": [
+              "PDC"
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Edgardo González Arancibia was elected mayor of Llaillay in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 4,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_f7b5e85f498ff601"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f7b5e85f498ff601",
+              "finding_ids": [
+                "fnd_f7b5e85f498ff601"
+              ],
+              "comuna": "LLAILLAY",
+              "cut": "05703",
+              "figures": [
+                {
+                  "finding_id": "fnd_f7b5e85f498ff601",
+                  "value": "Mario Marillanca",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Mario Marillanca' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_f7b5e85f498ff601"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f7b5e85f498ff601",
+              "finding_ids": [
+                "fnd_f7b5e85f498ff601"
+              ],
+              "comuna": "LLAILLAY",
+              "cut": "05703",
+              "figures": [
+                {
+                  "finding_id": "fnd_f7b5e85f498ff601",
+                  "value": "Mario Marillanca",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Mario Marillanca' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": false,
+            "rejected": [
+              "fnd_f7b5e85f498ff601"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f7b5e85f498ff601",
+              "finding_ids": [
+                "fnd_f7b5e85f498ff601"
+              ],
+              "comuna": "LLAILLAY",
+              "cut": "05703",
+              "figures": [
+                {
+                  "finding_id": "fnd_f7b5e85f498ff601",
+                  "value": "Mario Marillanca",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Mario Marillanca' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2016, 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 4,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Llay-Llay",
+          "revid": "1382101060",
+          "findings": [
+            "fnd_f7b5e85f498ff601"
+          ],
+          "anchor": "obs_48bbc80db40b556e42e3ad65",
+          "replaces": {
+            "name": "Mario Marillanca",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Llay-Llay",
+          "correction": {
+            "person": "EDGARDO GONZALEZ ARANCIBIA",
+            "name_as_written": "Edgardo González Arancibia",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_a10f21a2c4d153806f834714"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Edgardo González Arancibia<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = PDC",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor changed to Edgardo González Arancibia (SERVEL, 2024 election).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q14498",
+          "url": "https://www.wikidata.org/wiki/Q14498",
+          "findings": [
+            "fnd_c306969d1896497a"
+          ],
+          "anchor": "obs_7a0a563387c901a7c855de74",
+          "correction": {
+            "person": "EDGARDO GONZALEZ ARANCIBIA",
+            "name_as_written": "Edgardo González Arancibia",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_a10f21a2c4d153806f834714"
+          },
+          "statement": "Q14498: add P6 (head of government) = Edgardo González Arancibia (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Edgardo González Arancibia",
+          "status": "approved"
+        },
+        "explanation": "The English Wikipedia page currently names Mario Marillanca, who was elected mayor in 2012, while SERVEL records Edgardo Gonzalez Arancibia as the 2024 election winner. The Wikidata item has no head of government statement, so it needs Edgardo Gonzalez Arancibia added. The drafts propose updating the mayor name and populating Wikidata per SERVEL's results.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_b0sd1h92"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_48bbc80db40b556e42e3ad65",
+            "reference": null,
+            "status": "approved",
+            "value": "Mario Marillanca",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_4258cb600b2f6a69b40ddb86",
+            "reference": null,
+            "status": "checked",
+            "value": "Edgardo González Arancibia",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_7a0a563387c901a7c855de74",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026b-05-valparaiso",
+        "checked_at": "2026-10-26T21:39:17Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Edgardo González Arancibia",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_4258cb600b2f6a69b40ddb86",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_4258cb600b2f6a69b40ddb86",
+              "reference": null,
+              "status": "checked",
+              "value": "Edgardo González Arancibia",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Mario Marillanca",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_48bbc80db40b556e42e3ad65",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_48bbc80db40b556e42e3ad65",
+              "reference": null,
+              "status": "approved",
+              "value": "Mario Marillanca",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_7a0a563387c901a7c855de74",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_7a0a563387c901a7c855de74",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "06104",
+      "name": "COLTAUCO",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "RUBEN ENRIQUE JORQUERA VIDAL",
+          "party": "PARTIDO SOCIALISTA DE CHILE",
+          "pact": "CONCERTACION DEMOCRATICA",
+          "votes": 3505,
+          "candidates": [
+            {
+              "name": "RUBEN ENRIQUE JORQUERA VIDAL",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 3505,
+              "elected": true
+            },
+            {
+              "name": "MARCIAL DEL CARMEN ABARCA ORELLANA",
+              "party": "INDEPENDIENTES",
+              "votes": 1436,
+              "elected": false
+            },
+            {
+              "name": "CARLOS EUGENIO RIVAS LIBERONA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 1301,
+              "elected": false
+            },
+            {
+              "name": "ENRIQUE FERNANDO MIRANDA CORTES",
+              "party": "INDEPENDIENTES LISTA C",
+              "votes": 501,
+              "elected": false
+            },
+            {
+              "name": "JONATHAN DAVID VASQUEZ LAGOS",
+              "party": "PARTIDO REGIONALISTA DE LOS INDEPENDIENTES",
+              "votes": 359,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "RUBEN JORQUERA VIDAL",
+          "party": "INDEPENDIENTE LISTA E",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 3948,
+          "candidates": [
+            {
+              "name": "RUBEN JORQUERA VIDAL",
+              "party": "INDEPENDIENTE LISTA E",
+              "votes": 3948,
+              "elected": true
+            },
+            {
+              "name": "MARCIAL ABARCA ORELLANA",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 2891,
+              "elected": false
+            },
+            {
+              "name": "JESUS SIDHARTA PEREZ FRANCO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 384,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "FELIX ANDRES SANCHEZ VERGARA",
+          "party": "RENOVACION NACIONAL",
+          "pact": "CHILE VAMOS",
+          "votes": 2030,
+          "candidates": [
+            {
+              "name": "FELIX ANDRES SANCHEZ VERGARA",
+              "party": "RENOVACION NACIONAL",
+              "votes": 2030,
+              "elected": true
+            },
+            {
+              "name": "JONATHAN VASQUEZ LAGOS",
+              "party": "INDEPENDIENTES-LISTA K",
+              "votes": 1631,
+              "elected": false
+            },
+            {
+              "name": "CRISTOPHER ALEXIS VIDAL MEDINA",
+              "party": "INDEPENDIENTES",
+              "votes": 1629,
+              "elected": false
+            },
+            {
+              "name": "JORGE ANTONIO CERDA MUÑOZ",
+              "party": "INDEPENDIENTES",
+              "votes": 1418,
+              "elected": false
+            },
+            {
+              "name": "PILAR ANDREA ABARCA OSORIO",
+              "party": "INDEPENDIENTES",
+              "votes": 869,
+              "elected": false
+            },
+            {
+              "name": "JEMAEL SIDHARTA PEREZ FRANCO",
+              "party": "INDEPENDIENTES-LISTA XZ",
+              "votes": 485,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "FELIX SANCHEZ VERGARA",
+          "party": "RENOVACION NACIONAL",
+          "pact": "CHILE VAMOS",
+          "votes": 8800,
+          "candidates": [
+            {
+              "name": "FELIX SANCHEZ VERGARA",
+              "party": "RENOVACION NACIONAL",
+              "votes": 8800,
+              "elected": true
+            },
+            {
+              "name": "RUBEN ENRIQUE JORQUERA VIDAL",
+              "party": "INDEPENDIENTES",
+              "votes": 4005,
+              "elected": false
+            },
+            {
+              "name": "MARCIAL ABARCA ORELLANA",
+              "party": "INDEPENDIENTES",
+              "votes": 2665,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_e5bb0bf420b0bdcf",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Felix Sanchez Vergara was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_406e6d7a3844766fa9930a70",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q3847"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_68446b7171c365640d473632",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "FELIX SANCHEZ VERGARA",
+              "elected": true,
+              "votes": 8800,
+              "party": "RENOVACION NACIONAL"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "FELIX SANCHEZ VERGARA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_68446b7171c365640d473632",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_d30f0c23939d57b4",
+          "target": "es",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "The Spanish Wikipedia infobox names no mayor. Felix Sanchez Vergara was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_571dc761e5b51aa4d958277f",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Coltauco",
+            "revid": "175430871",
+            "location": "infobox",
+            "role": "current",
+            "method": "rules",
+            "verified": true,
+            "missing": true,
+            "field": "dirigentes_nombres"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_68446b7171c365640d473632",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "FELIX SANCHEZ VERGARA",
+              "elected": true,
+              "votes": 8800,
+              "party": "RENOVACION NACIONAL"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "FELIX SANCHEZ VERGARA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_68446b7171c365640d473632",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_5774e812fc2e7546",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Ruben Jorquera Vidal is Ruben Enrique Jorquera Vidal, elected mayor in 2016 (SERVEL). Felix Sanchez Vergara was elected in the 2024 election (SERVEL; term from 2024-12-06). Ruben Enrique Jorquera Vidal ran again in 2024 and wasn't elected (4,005 votes to 8,800).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_656d6aefafeb64a222210cb9",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Coltauco",
+            "revid": "1375650116",
+            "location": "infobox",
+            "role": "current",
+            "name": "Ruben Jorquera Vidal",
+            "name_raw": "Ruben Jorquera Vidal",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_68446b7171c365640d473632",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "FELIX SANCHEZ VERGARA",
+              "elected": true,
+              "votes": 8800,
+              "party": "RENOVACION NACIONAL"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_a829500fdb0a0bb02cede1b5",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "RUBEN ENRIQUE JORQUERA VIDAL",
+              "elected": false,
+              "votes": 4005,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_0079da626278f1de089b7d70",
+              "source": "SERVEL 2016",
+              "year": 2016,
+              "name": "RUBEN JORQUERA VIDAL",
+              "elected": true,
+              "votes": 3948,
+              "party": "INDEPENDIENTE LISTA E"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "FELIX SANCHEZ VERGARA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_68446b7171c365640d473632",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_ruben_enrique_jorquera_vidal",
+            "name": "RUBEN ENRIQUE JORQUERA VIDAL",
+            "ran": [
+              2016,
+              2024
+            ],
+            "won": [
+              2016
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_ruben_enrique_jorquera_vidal",
+              "name": "RUBEN ENRIQUE JORQUERA VIDAL",
+              "ran": [
+                2016,
+                2024
+              ],
+              "won": [
+                2016
+              ]
+            },
+            {
+              "level": "partial",
+              "why": "the surname fits but not the given name (RUBEN JORQUERA)",
+              "id": "p_cristopher_alexis_vidal_medina",
+              "name": "CRISTOPHER ALEXIS VIDAL MEDINA",
+              "ran": [
+                2021
+              ],
+              "won": []
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 3,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_5774e812fc2e7546"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_5774e812fc2e7546",
+              "finding_ids": [
+                "fnd_5774e812fc2e7546"
+              ],
+              "comuna": "COLTAUCO",
+              "cut": "06104",
+              "figures": [
+                {
+                  "finding_id": "fnd_5774e812fc2e7546",
+                  "value": "Ruben Jorquera Vidal",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Ruben Jorquera Vidal' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_5774e812fc2e7546"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_5774e812fc2e7546",
+              "finding_ids": [
+                "fnd_5774e812fc2e7546"
+              ],
+              "comuna": "COLTAUCO",
+              "cut": "06104",
+              "figures": [
+                {
+                  "finding_id": "fnd_5774e812fc2e7546",
+                  "value": "Ruben Jorquera Vidal",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Ruben Jorquera Vidal' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Coltauco",
+          "revid": "175430871",
+          "findings": [
+            "fnd_d30f0c23939d57b4"
+          ],
+          "anchor": "obs_571dc761e5b51aa4d958277f",
+          "replaces": {
+            "name": null,
+            "office": null
+          },
+          "url": "https://es.wikipedia.org/wiki/Coltauco",
+          "correction": {
+            "person": "FELIX SANCHEZ VERGARA",
+            "name_as_written": "Felix Sanchez Vergara",
+            "spelled_from": "model",
+            "year": 2024,
+            "party": "RENOVACION NACIONAL",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_68446b7171c365640d473632"
+          },
+          "wikitext": "| dirigentes_títulos = [[Alcalde]]\n| dirigentes_nombres = Felix Sanchez Vergara (RN)<ref name=\"servel2024\">{{cita web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |título=Resultados electorales históricos: Alcaldes 2024 |editorial=Servicio Electoral de Chile (SERVEL) |fechaacceso=26 de octubre de 2026}}</ref>",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Añadido alcalde electo Felix Sanchez Vergara (SERVEL 2024) a la infobox de la comuna de Coltauco.",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Coltauco",
+          "revid": "1375650116",
+          "findings": [
+            "fnd_5774e812fc2e7546"
+          ],
+          "anchor": "obs_656d6aefafeb64a222210cb9",
+          "replaces": {
+            "name": "Ruben Jorquera Vidal",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Coltauco",
+          "correction": {
+            "person": "FELIX SANCHEZ VERGARA",
+            "name_as_written": "Felix Sanchez Vergara",
+            "spelled_from": "model",
+            "year": 2024,
+            "party": "RENOVACION NACIONAL",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_68446b7171c365640d473632"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Felix Sanchez Vergara<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = RN",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Updated mayor of Coltauco to Felix Sanchez Vergara (elected 2024, SERVEL).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3847",
+          "url": "https://www.wikidata.org/wiki/Q3847",
+          "findings": [
+            "fnd_e5bb0bf420b0bdcf"
+          ],
+          "anchor": "obs_406e6d7a3844766fa9930a70",
+          "correction": {
+            "person": "FELIX SANCHEZ VERGARA",
+            "name_as_written": "Felix Sanchez Vergara",
+            "spelled_from": "model",
+            "year": 2024,
+            "party": "RENOVACION NACIONAL",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_68446b7171c365640d473632"
+          },
+          "statement": "Q3847: add P6 (head of government) = Felix Sanchez Vergara (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Felix Sanchez Vergara",
+          "status": "approved"
+        },
+        "explanation": "The Spanish Wikipedia page for Coltauco currently names no mayor in its infobox, while SERVEL records Felix Sanchez Vergara as the elected mayor from the 2024 election. The English Wikipedia page currently names Ruben Jorquera Vidal, who was elected mayor in 2016 per SERVEL, but Felix Sanchez Vergara won the 2024 election with 8,800 votes. The drafts will update the infoboxes on Wikidata, eswiki, and enwiki to reflect the newly elected mayor Felix Sanchez Vergara as determined by SERVEL.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_qoyykfw2"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_656d6aefafeb64a222210cb9",
+            "reference": null,
+            "status": "approved",
+            "value": "Ruben Jorquera Vidal",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": null,
+            "observation": "obs_571dc761e5b51aa4d958277f",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_406e6d7a3844766fa9930a70",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026b-06-libertador-general-bernardo-o-higgi",
+        "checked_at": "2026-10-26T21:40:01Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_571dc761e5b51aa4d958277f",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_571dc761e5b51aa4d958277f",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Ruben Jorquera Vidal",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_656d6aefafeb64a222210cb9",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_656d6aefafeb64a222210cb9",
+              "reference": null,
+              "status": "approved",
+              "value": "Ruben Jorquera Vidal",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_406e6d7a3844766fa9930a70",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_406e6d7a3844766fa9930a70",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "08105",
+      "name": "HUALQUI",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "RICARDO WLADIMIR FUENTES PALMA",
+          "party": "INDEPENDIENTES LISTA F",
+          "pact": "CONCERTACION DEMOCRATICA",
+          "votes": 7220,
+          "candidates": [
+            {
+              "name": "RICARDO WLADIMIR FUENTES PALMA",
+              "party": "INDEPENDIENTES LISTA F",
+              "votes": 7220,
+              "elected": true
+            },
+            {
+              "name": "MARIO FABIAN MAQUEIRA SOLAR",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 2505,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "RICARDO FUENTES PALMA",
+          "party": "INDEPENDIENTE LISTA E",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 5218,
+          "candidates": [
+            {
+              "name": "RICARDO FUENTES PALMA",
+              "party": "INDEPENDIENTE LISTA E",
+              "votes": 5218,
+              "elected": true
+            },
+            {
+              "name": "JORGE MARDONES RODRIGUEZ",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 2225,
+              "elected": false
+            },
+            {
+              "name": "ROBERTO ANDRES FRANCESCONI RIQUELME",
+              "party": "PARTIDO PROGRESISTA",
+              "votes": 957,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "JORGE ALEJANDRO CONTANZO BRAVO",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 6760,
+          "candidates": [
+            {
+              "name": "JORGE ALEJANDRO CONTANZO BRAVO",
+              "party": "INDEPENDIENTES",
+              "votes": 6760,
+              "elected": true
+            },
+            {
+              "name": "ERIKA DORALISA MONTOYA LLANOS",
+              "party": "INDEPENDIENTES-LISTA K",
+              "votes": 2767,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "RICARDO FUENTES PALMA",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 6712,
+          "candidates": [
+            {
+              "name": "RICARDO FUENTES PALMA",
+              "party": "INDEPENDIENTES",
+              "votes": 6712,
+              "elected": true
+            },
+            {
+              "name": "JORGE CONTANZO BRAVO",
+              "party": "INDEPENDIENTES",
+              "votes": 5945,
+              "elected": false
+            },
+            {
+              "name": "SIGRID RAMIREZ ARIAS",
+              "party": "INDEPENDIENTES",
+              "votes": 2209,
+              "elected": false
+            },
+            {
+              "name": "DAVID FRANCISCO MUÑOZ MORALES",
+              "party": "INDEPENDIENTES",
+              "votes": 1379,
+              "elected": false
+            },
+            {
+              "name": "BASTIAN LEONARDO STUARDO PEÑA",
+              "party": "INDEPENDIENTES",
+              "votes": 725,
+              "elected": false
+            },
+            {
+              "name": "PABLO FERNANDO MEDINA CABEZAS",
+              "party": "INDEPENDIENTES",
+              "votes": 661,
+              "elected": false
+            },
+            {
+              "name": "RIGOBERTO FUENTES SANHUEZA",
+              "party": "INDEPENDIENTES",
+              "votes": 354,
+              "elected": false
+            },
+            {
+              "name": "FABIAN MAQUEIRA SOLAR",
+              "party": "INDEPENDIENTES",
+              "votes": 155,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_69b7c7f94b11a4b5",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Ricardo Fuentes Palma was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_d6450b02e4506d0988f2baef",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q13079"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_044f763258994da6f984bc30",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "RICARDO FUENTES PALMA",
+              "elected": true,
+              "votes": 6712,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "RICARDO FUENTES PALMA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_044f763258994da6f984bc30",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_f3d986f8f04103560b6096f6",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Hualqui",
+            "revid": "175069356",
+            "location": "infobox",
+            "role": "current",
+            "name": "Ricardo Fuentes Palma",
+            "name_raw": "[[Ricardo Fuentes Palma]] (Ind-[[PPD]])",
+            "notes": [
+              "Ind-PPD"
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Ricardo Fuentes Palma was elected mayor of Hualqui in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_ef78a22c3f3bb5348bfdefb5",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Hualqui",
+            "revid": "1376112018",
+            "location": "infobox",
+            "role": "current",
+            "name": "Ricardo Fuentes Palma",
+            "name_raw": "Ricardo Fuentes Palma",
+            "office": "Alcalde",
+            "party": "Ind.",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Ricardo Fuentes Palma was elected mayor of Hualqui in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q13079",
+          "url": "https://www.wikidata.org/wiki/Q13079",
+          "findings": [
+            "fnd_69b7c7f94b11a4b5"
+          ],
+          "anchor": "obs_d6450b02e4506d0988f2baef",
+          "correction": {
+            "person": "RICARDO FUENTES PALMA",
+            "name_as_written": "Ricardo Fuentes Palma",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_044f763258994da6f984bc30"
+          },
+          "statement": "Q13079: add P6 (head of government) = Ricardo Fuentes Palma (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Ricardo Fuentes Palma",
+          "status": "approved"
+        },
+        "explanation": "Wikidata currently has no head of government statement (missing_value). SERVEL records Ricardo Fuentes Palma as the elected mayor for the 2024 election (term starting 2024-12-06). The wikidata draft will add this mayoral information, while the eswiki and enwiki pages already correctly name the elected mayor so no change is needed.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_qgagsvzb"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_ef78a22c3f3bb5348bfdefb5",
+            "reference": null,
+            "status": "checked",
+            "value": "Ricardo Fuentes Palma",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_f3d986f8f04103560b6096f6",
+            "reference": null,
+            "status": "checked",
+            "value": "Ricardo Fuentes Palma",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_d6450b02e4506d0988f2baef",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026b-08-biobio",
+        "checked_at": "2026-10-26T21:41:45Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Ricardo Fuentes Palma",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_f3d986f8f04103560b6096f6",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_f3d986f8f04103560b6096f6",
+              "reference": null,
+              "status": "checked",
+              "value": "Ricardo Fuentes Palma",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Ricardo Fuentes Palma",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_ef78a22c3f3bb5348bfdefb5",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_ef78a22c3f3bb5348bfdefb5",
+              "reference": null,
+              "status": "checked",
+              "value": "Ricardo Fuentes Palma",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_d6450b02e4506d0988f2baef",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_d6450b02e4506d0988f2baef",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "13107",
+      "name": "HUECHURABA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "CARLOS CESAR CUADRADO PRATS",
+          "party": "PARTIDO POR LA DEMOCRACIA",
+          "pact": "POR UN CHILE JUSTO",
+          "votes": 12381,
+          "candidates": [
+            {
+              "name": "CARLOS CESAR CUADRADO PRATS",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 12381,
+              "elected": true
+            },
+            {
+              "name": "MARCELO ALEJANDRO TEUBER CARRILLO",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 7431,
+              "elected": false
+            },
+            {
+              "name": "DANIEL ALEJANDRO BUSTOS AGUAYO",
+              "party": "INDEPENDIENTES",
+              "votes": 2943,
+              "elected": false
+            },
+            {
+              "name": "LUIS GONZALO RAMIREZ FLORES",
+              "party": "INDEPENDIENTES LISTA C",
+              "votes": 1839,
+              "elected": false
+            },
+            {
+              "name": "GONZALO LEONARDO MERA RUMINOT",
+              "party": "INDEPENDIENTES",
+              "votes": 1723,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "CARLOS CUADRADO PRATS",
+          "party": "PARTIDO POR LA DEMOCRACIA",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 16208,
+          "candidates": [
+            {
+              "name": "CARLOS CUADRADO PRATS",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 16208,
+              "elected": true
+            },
+            {
+              "name": "CAROLINA PLAZA GUZMAN",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 5944,
+              "elected": false
+            },
+            {
+              "name": "VICTOR MAURICIO URZUA MAULEN",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 2412,
+              "elected": false
+            },
+            {
+              "name": "OSVALDO JAVIER NAVARRO JAMETT",
+              "party": "INDEPENDIENTE LISTA M",
+              "votes": 262,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "CARLOS CESAR LUIS CUADRADO PRATS",
+          "party": "PARTIDO POR LA DEMOCRACIA",
+          "pact": "UNIDAD POR EL APRUEBO",
+          "votes": 20724,
+          "candidates": [
+            {
+              "name": "CARLOS CESAR LUIS CUADRADO PRATS",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 20724,
+              "elected": true
+            },
+            {
+              "name": "MIGUEL ANGEL RAMIREZ MIRANDA",
+              "party": "INDEPENDIENTES-LISTA XS",
+              "votes": 6775,
+              "elected": false
+            },
+            {
+              "name": "REMZA DELIC SASSO",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 5303,
+              "elected": false
+            },
+            {
+              "name": "DANIEL ALEJANDRO BUSTOS AGUAYO",
+              "party": "INDEPENDIENTES-LISTA XY",
+              "votes": 3852,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "MAXIMILIANO LUKSIC LEDERER",
+          "party": "INDEPENDIENTES",
+          "pact": "CHILE VAMOS",
+          "votes": 23969,
+          "candidates": [
+            {
+              "name": "MAXIMILIANO LUKSIC LEDERER",
+              "party": "INDEPENDIENTES",
+              "votes": 23969,
+              "elected": true
+            },
+            {
+              "name": "CAROLINA PAOLA ROJAS CHARCAS",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 21112,
+              "elected": false
+            },
+            {
+              "name": "JOSE ROSSI GIACOSA",
+              "party": "INDEPENDIENTES",
+              "votes": 10500,
+              "elected": false
+            },
+            {
+              "name": "DANIEL ALEJANDRO BUSTOS AGUAYO",
+              "party": "INDEPENDIENTES",
+              "votes": 2612,
+              "elected": false
+            },
+            {
+              "name": "SERGIO BRAVO CAMPOS",
+              "party": "INDEPENDIENTES",
+              "votes": 2597,
+              "elected": false
+            },
+            {
+              "name": "JOHNY PEREZ VIDAL",
+              "party": "PARTIDO ALIANZA VERDE POPULAR",
+              "votes": 1576,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_61c6cd52cf7c1bf9",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Maximiliano Luksic Lederer was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_262431fce6ba42cdf83bd2ee",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q14433"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_677a605920e7ba56f2428816",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "MAXIMILIANO LUKSIC LEDERER",
+              "elected": true,
+              "votes": 23969,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "MAXIMILIANO LUKSIC LEDERER",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_677a605920e7ba56f2428816",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_4d8d364fcf987ed09296b691",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Huechuraba",
+            "revid": "1376113280",
+            "location": "infobox",
+            "role": "current",
+            "name": "Maximiliano Luksic Lederer",
+            "name_raw": "Maximiliano Luksic Lederer",
+            "office": "Alcalde",
+            "party": "Ind/UDI",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Maximiliano Luksic Lederer was elected mayor of Huechuraba in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_28e8713073e3c7e2cc181ee2",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Huechuraba",
+            "revid": "175893694",
+            "location": "infobox",
+            "role": "current",
+            "name": "Max Luksic",
+            "name_raw": "[[Max Luksic]] ([[Candidato independiente|Ind.]]/[[Unión Demócrata Independiente|UDI]])",
+            "notes": [
+              "Ind./UDI"
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Max Luksic is a nickname for Maximiliano Luksic Lederer, elected mayor of Huechuraba in 2024 (SERVEL).",
+          "method": "llm",
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_kv3rux1w"
+          }
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q14433",
+          "url": "https://www.wikidata.org/wiki/Q14433",
+          "findings": [
+            "fnd_61c6cd52cf7c1bf9"
+          ],
+          "anchor": "obs_262431fce6ba42cdf83bd2ee",
+          "correction": {
+            "person": "MAXIMILIANO LUKSIC LEDERER",
+            "name_as_written": "Maximiliano Luksic Lederer",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_677a605920e7ba56f2428816"
+          },
+          "statement": "Q14433: add P6 (head of government) = Maximiliano Luksic Lederer (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Maximiliano Luksic Lederer",
+          "status": "approved"
+        },
+        "explanation": "Wikidata currently has no head of government listed. SERVEL's records show Maximiliano Luksic Lederer was elected mayor in the 2024 election. The draft would add this name to Wikidata, completing the head of government statement.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_z791tcuo"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_4d8d364fcf987ed09296b691",
+            "reference": null,
+            "status": "checked",
+            "value": "Maximiliano Luksic Lederer",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_28e8713073e3c7e2cc181ee2",
+            "reference": null,
+            "status": "checked",
+            "value": "Max Luksic",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_262431fce6ba42cdf83bd2ee",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026b-13-metropolitana-de-santiago",
+        "checked_at": "2026-10-26T21:45:32Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Max Luksic",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_28e8713073e3c7e2cc181ee2",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_28e8713073e3c7e2cc181ee2",
+              "reference": null,
+              "status": "checked",
+              "value": "Max Luksic",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Maximiliano Luksic Lederer",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_4d8d364fcf987ed09296b691",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_4d8d364fcf987ed09296b691",
+              "reference": null,
+              "status": "checked",
+              "value": "Maximiliano Luksic Lederer",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_262431fce6ba42cdf83bd2ee",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_262431fce6ba42cdf83bd2ee",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "16106",
+      "name": "PINTO",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "MANUEL FERNANDO CHAVEZ GUIÑEZ",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "COALICION",
+          "votes": 5401,
+          "candidates": [
+            {
+              "name": "MANUEL FERNANDO CHAVEZ GUIÑEZ",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 5401,
+              "elected": true
+            },
+            {
+              "name": "EDUARDO ANTONIO LARENAS SUAZO",
+              "party": "INDEPENDIENTES LISTA E",
+              "votes": 1226,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "MANUEL JESUS GUZMAN AEDO",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 4073,
+          "candidates": [
+            {
+              "name": "MANUEL JESUS GUZMAN AEDO",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 4073,
+              "elected": true
+            },
+            {
+              "name": "EDUARDO LARENAS SUAZO",
+              "party": "INDEPENDIENTE LISTA E",
+              "votes": 1394,
+              "elected": false
+            },
+            {
+              "name": "ADRIANA ARCE DIAZ",
+              "party": "INDEPENDIENTE LISTA O",
+              "votes": 328,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "MANUEL JESUS GUZMAN AEDO",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "CHILE VAMOS",
+          "votes": 3068,
+          "candidates": [
+            {
+              "name": "MANUEL JESUS GUZMAN AEDO",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 3068,
+              "elected": true
+            },
+            {
+              "name": "JUAN CARLOS SAEZ FREIRE",
+              "party": "INDEPENDIENTES",
+              "votes": 1292,
+              "elected": false
+            },
+            {
+              "name": "JORGE GUILLERMO ARIAS ZUMAETA",
+              "party": "INDEPENDIENTES-LISTA K",
+              "votes": 727,
+              "elected": false
+            },
+            {
+              "name": "MARIA GABRIELA RODRIGUEZ BUSTAMANTE",
+              "party": "INDEPENDIENTES",
+              "votes": 495,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "JAIRO DEL PINO LEMA",
+          "party": "INDEPENDIENTES",
+          "pact": "REPUBLICANOS E INDEPENDIENTES",
+          "votes": 5537,
+          "candidates": [
+            {
+              "name": "JAIRO DEL PINO LEMA",
+              "party": "INDEPENDIENTES",
+              "votes": 5537,
+              "elected": true
+            },
+            {
+              "name": "MARCELO OJEDA CARCAMO",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 4235,
+              "elected": false
+            },
+            {
+              "name": "GUSTAVO RODRIGUEZ PALMA",
+              "party": "INDEPENDIENTES",
+              "votes": 830,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_29cf057a3ac024cf",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Jairo del Pino Lema was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_5b025c004e97392a7a0cf842",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q51106"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_00368c09a73be927030052be",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JAIRO DEL PINO LEMA",
+              "elected": true,
+              "votes": 5537,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "JAIRO DEL PINO LEMA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_00368c09a73be927030052be",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_f6bbffbaa51d1bcb",
+          "target": "en",
+          "aspect": "value",
+          "class": "unknown_name",
+          "explanation": "The name 'Wyatt Mathis' does not match any SERVEL candidate for Pinto in the 2012, 2016, 2021, or 2024 elections (which include Manuel Fernando Chávez Guínez, Manuel Jesús Guzmán Aedo, Jairo del Pino Lema, Marcelo Ojeda Carcamo, and Gustavo Rodríguez Palma), and most likely constitutes vandalism given the complete lack of correspondence.",
+          "confidence": 0.7,
+          "method": "llm",
+          "claim": {
+            "id": "obs_5754e341968f0a4024e0e3f1",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Pinto, Chile",
+            "revid": "1378790942",
+            "location": "infobox",
+            "role": "current",
+            "name": "Wyatt Mathis",
+            "name_raw": "Wyatt Mathis",
+            "office": "Alcalde",
+            "party": "UDI",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_00368c09a73be927030052be",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JAIRO DEL PINO LEMA",
+              "elected": true,
+              "votes": 5537,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "JAIRO DEL PINO LEMA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_00368c09a73be927030052be",
+            "check_first": true
+          },
+          "match": null,
+          "matches": [],
+          "reading": "vandalism",
+          "signals": [],
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_lnaph2an"
+          },
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_sic7wsq5"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_526963dc47ac9f31084fa19c",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Pinto (Chile)",
+            "revid": "175893369",
+            "location": "infobox",
+            "role": "current",
+            "name": "Jairo del Pino",
+            "name_raw": "[[Jairo del Pino Lema|Jairo del Pino]] ([[Partido Republicano de Chile (2019)|REP]])",
+            "notes": [
+              "REP"
+            ],
+            "linked": "Jairo del Pino Lema",
+            "office": "Alcalde",
+            "cues": [
+              2019
+            ],
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Jairo del Pino is Jairo del Pino Lema, elected mayor of Pinto in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 4,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_f6bbffbaa51d1bcb"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f6bbffbaa51d1bcb",
+              "finding_ids": [
+                "fnd_f6bbffbaa51d1bcb"
+              ],
+              "comuna": "PINTO",
+              "cut": "16106",
+              "figures": [
+                {
+                  "finding_id": "fnd_f6bbffbaa51d1bcb",
+                  "value": "Wyatt Mathis",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Wyatt Mathis' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_f6bbffbaa51d1bcb"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f6bbffbaa51d1bcb",
+              "finding_ids": [
+                "fnd_f6bbffbaa51d1bcb"
+              ],
+              "comuna": "PINTO",
+              "cut": "16106",
+              "figures": [
+                {
+                  "finding_id": "fnd_f6bbffbaa51d1bcb",
+                  "value": "Wyatt Mathis",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Wyatt Mathis' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": false,
+            "rejected": [
+              "fnd_f6bbffbaa51d1bcb"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f6bbffbaa51d1bcb",
+              "finding_ids": [
+                "fnd_f6bbffbaa51d1bcb"
+              ],
+              "comuna": "PINTO",
+              "cut": "16106",
+              "figures": [
+                {
+                  "finding_id": "fnd_f6bbffbaa51d1bcb",
+                  "value": "Wyatt Mathis",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Wyatt Mathis' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2016, 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 4,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Pinto, Chile",
+          "revid": "1378790942",
+          "findings": [
+            "fnd_f6bbffbaa51d1bcb"
+          ],
+          "anchor": "obs_5754e341968f0a4024e0e3f1",
+          "replaces": {
+            "name": "Wyatt Mathis",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Pinto,_Chile",
+          "correction": {
+            "person": "JAIRO DEL PINO LEMA",
+            "name_as_written": "Jairo del Pino Lema",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_00368c09a73be927030052be"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Jairo del Pino Lema<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "Check first: The name 'Wyatt Mathis' does not match any SERVEL candidate for Pinto in the 2012, 2016, 2021, or 2024 elections (which include Manuel Fernando Chávez Guínez, Manuel Jesús Guzmán Aedo, Jairo del Pino Lema, Marcelo Ojeda Carcamo, and Gustavo Rodríguez Palma), and most likely constitutes vandalism given the complete lack of correspondence.",
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Updated mayor to Jairo del Pino Lema, elected in 2024 per SERVEL.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q51106",
+          "url": "https://www.wikidata.org/wiki/Q51106",
+          "findings": [
+            "fnd_29cf057a3ac024cf"
+          ],
+          "anchor": "obs_5b025c004e97392a7a0cf842",
+          "correction": {
+            "person": "JAIRO DEL PINO LEMA",
+            "name_as_written": "Jairo del Pino Lema",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_00368c09a73be927030052be"
+          },
+          "statement": "Q51106: add P6 (head of government) = Jairo del Pino Lema (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Jairo del Pino Lema",
+          "status": "approved"
+        },
+        "explanation": "The English Wikipedia page currently names Wyatt Mathis as mayor, which SERVEL does not list as an elected mayor for Pinto in 2024. The Wikidata item has no head of government recorded. Drafts will set the mayor to Jairo del Pino Lema, elected in the 2024 SERVEL election.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_r7jqvpp9"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_5754e341968f0a4024e0e3f1",
+            "reference": null,
+            "status": "approved",
+            "value": "Wyatt Mathis",
+            "verdict": "unknown_name"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_526963dc47ac9f31084fa19c",
+            "reference": null,
+            "status": "checked",
+            "value": "Jairo del Pino",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_5b025c004e97392a7a0cf842",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026b-16-nuble",
+        "checked_at": "2026-10-26T21:47:58Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Jairo del Pino",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_526963dc47ac9f31084fa19c",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_526963dc47ac9f31084fa19c",
+              "reference": null,
+              "status": "checked",
+              "value": "Jairo del Pino",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Wyatt Mathis",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_5754e341968f0a4024e0e3f1",
+              "verdict": "unknown_name",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_5754e341968f0a4024e0e3f1",
+              "reference": null,
+              "status": "approved",
+              "value": "Wyatt Mathis",
+              "verdict": "unknown_name"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_5b025c004e97392a7a0cf842",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_5b025c004e97392a7a0cf842",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "07408",
+      "name": "YERBAS BUENAS",
+      "status": "partial",
+      "elections": {
+        "2012": {
+          "elected": "LUIS GILBERTO CADEGAN MORAN",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES (FUERA DE PACTO)",
+          "votes": 4131,
+          "candidates": [
+            {
+              "name": "LUIS GILBERTO CADEGAN MORAN",
+              "party": "INDEPENDIENTES",
+              "votes": 4131,
+              "elected": true
+            },
+            {
+              "name": "LUIS ALBERTO GUZMAN TRUJILLO",
+              "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+              "votes": 3340,
+              "elected": false
+            },
+            {
+              "name": "JUAN ERNESTO PEREIRA MUÑOZ",
+              "party": "INDEPENDIENTES",
+              "votes": 872,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "LUIS CADEGAN MORAN",
+          "party": "INDEPENDIENTE LISTA E",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 4140,
+          "candidates": [
+            {
+              "name": "LUIS CADEGAN MORAN",
+              "party": "INDEPENDIENTE LISTA E",
+              "votes": 4140,
+              "elected": true
+            },
+            {
+              "name": "EVA PALMA LEAL",
+              "party": "RENOVACION NACIONAL",
+              "votes": 2718,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "LUIS GILBERTO CADEGAN MORAN",
+          "party": "INDEPENDIENTES-LISTA XU",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 3759,
+          "candidates": [
+            {
+              "name": "LUIS GILBERTO CADEGAN MORAN",
+              "party": "INDEPENDIENTES-LISTA XU",
+              "votes": 3759,
+              "elected": true
+            },
+            {
+              "name": "EVA DEL CARMEN PALMA LEAL",
+              "party": "RENOVACION NACIONAL",
+              "votes": 2611,
+              "elected": false
+            },
+            {
+              "name": "JAIME RODOLFO CLARET ARIAS",
+              "party": "INDEPENDIENTES",
+              "votes": 304,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "JONATHAN NORAMBUENA BARROS",
+          "party": "INDEPENDIENTES",
+          "pact": "CHILE VAMOS",
+          "votes": 5572,
+          "candidates": [
+            {
+              "name": "JONATHAN NORAMBUENA BARROS",
+              "party": "INDEPENDIENTES",
+              "votes": 5572,
+              "elected": true
+            },
+            {
+              "name": "RAFAEL ENRIQUE VIGUERA GONZALEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 4214,
+              "elected": false
+            },
+            {
+              "name": "JOSE MOSQUEIRA MIRANDA",
+              "party": "INDEPENDIENTES",
+              "votes": 2059,
+              "elected": false
+            },
+            {
+              "name": "ALEJANDRA CADEGAN MALDONADO",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 1958,
+              "elected": false
+            },
+            {
+              "name": "RODEN FABRICIANO AREVALO PARADA",
+              "party": "INDEPENDIENTES",
+              "votes": 343,
+              "elected": false
+            },
+            {
+              "name": "FERNANDO ARTURO ASTETE MENDIBURO",
+              "party": "INDEPENDIENTES",
+              "votes": 303,
+              "elected": false
+            },
+            {
+              "name": "JAIME CLARET ARIAS",
+              "party": "INDEPENDIENTES",
+              "votes": 210,
+              "elected": false
+            },
+            {
+              "name": "ADRIAN RODRIGO SEPULVEDA JARA",
+              "party": "INDEPENDIENTES",
+              "votes": 151,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_ef3f3ae67eb95716",
+          "target": "es",
+          "aspect": "value",
+          "class": "unknown_name",
+          "explanation": "Rafael Viguera González omits the given name Enrique, matching candidate Rafael Enrique Viguera Gonzalez who ran in the 2024 election but was not elected; the actual elected mayor of Yerbas Buenas is Jonathan Norambuena Barros. Wikidata records the end of Jonathan Norambuena Barros's term on 2026-10-22: the office of mayor of Yerbas Buenas may have changed hands since the election.",
+          "confidence": 0.7,
+          "method": "llm",
+          "claim": {
+            "id": "obs_966eb66693dcdf59560467fa",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Yerbas Buenas",
+            "revid": "176001633",
+            "location": "infobox",
+            "role": "current",
+            "name": "Rafael Viguera González",
+            "name_raw": "Rafael Viguera González",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_b25b92df8c52541b478810d8",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JONATHAN NORAMBUENA BARROS",
+              "elected": true,
+              "votes": 5572,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "JONATHAN NORAMBUENA BARROS",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_b25b92df8c52541b478810d8",
+            "check_first": true
+          },
+          "match": null,
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_rafael_enrique_viguera_gonzalez",
+              "name": "RAFAEL ENRIQUE VIGUERA GONZALEZ",
+              "ran": [
+                2024
+              ],
+              "won": []
+            }
+          ],
+          "reading": "misspelling",
+          "signals": [
+            {
+              "kind": "term_ended",
+              "source": "Wikidata",
+              "date": "2026-10-22",
+              "person": "JONATHAN NORAMBUENA BARROS",
+              "statement": "http://www.wikidata.org/entity/statement/Q201046-5ca035f4-4a45-a8d4-f50e-957134c17196"
+            }
+          ],
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_ivasd4rb"
+          },
+          "status": "escalated",
+          "critic": {
+            "score": 5,
+            "criteria": {
+              "evidence_fidelity": 2,
+              "definition_discipline": 0,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [
+              {
+                "check": "explanation",
+                "detail": "The explanation goes beyond the evidence: explanation includes Rafael Enrique Viguera Gonzalez who ran but was not elected, unsupported by SERVEL evidence or signals. Explain using only the evidence.",
+                "target_agent": "Analyst"
+              },
+              {
+                "check": "class_allowed",
+                "detail": "'Rafael Viguera González' (Wikipedia ES) can't be unknown_name: Rafael Viguera González is Rafael Enrique Viguera Gonzalez, a candidate in 2024, not elected in any election read (2012, 2016, 2021 and 2024). Jonathan Norambuena Barros was elected in the 2024 election (SERVEL; term from 2024-12-06). Rafael Enrique Viguera Gonzalez may hold the office as a replacement, or may have been mayor before 2012: check before changing it. Classes the facts allow: not_elected.",
+                "target_agent": "Analyst",
+                "suggested_class": "not_elected"
+              }
+            ],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_9iozg1nw"
+            }
+          }
+        },
+        {
+          "id": "fnd_7b295f8d2456cf0c",
+          "target": "en",
+          "aspect": "value",
+          "class": "not_elected",
+          "explanation": "Rafael Viguera González refers to candidate Rafael Enrique Viguera Gonzalez, who ran in the 2024 election but was not elected; the actual mayor elected in 2024 is Jonathan Norambuena Barros. Wikidata records the end of Jonathan Norambuena Barros's term on 2026-10-22: the office of mayor of Yerbas Buenas may have changed hands since the election.",
+          "confidence": 0.8,
+          "method": "llm",
+          "claim": {
+            "id": "obs_1cc042159deb431fc2f1d059",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Yerbas Buenas",
+            "revid": "1381926554",
+            "location": "infobox",
+            "role": "current",
+            "name": "Rafael Viguera González",
+            "name_raw": "Rafael Viguera González",
+            "office": "Mayor",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_b25b92df8c52541b478810d8",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JONATHAN NORAMBUENA BARROS",
+              "elected": true,
+              "votes": 5572,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_28c4ab1b0f4ea9c29ac0b9dc",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "RAFAEL ENRIQUE VIGUERA GONZALEZ",
+              "elected": false,
+              "votes": 4214,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "JONATHAN NORAMBUENA BARROS",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_b25b92df8c52541b478810d8",
+            "check_first": true
+          },
+          "match": {
+            "id": "p_rafael_enrique_viguera_gonzalez",
+            "name": "RAFAEL ENRIQUE VIGUERA GONZALEZ",
+            "ran": [
+              2024
+            ],
+            "won": []
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_rafael_enrique_viguera_gonzalez",
+              "name": "RAFAEL ENRIQUE VIGUERA GONZALEZ",
+              "ran": [
+                2024
+              ],
+              "won": []
+            }
+          ],
+          "reading": null,
+          "signals": [
+            {
+              "kind": "term_ended",
+              "source": "Wikidata",
+              "date": "2026-10-22",
+              "person": "JONATHAN NORAMBUENA BARROS",
+              "statement": "http://www.wikidata.org/entity/statement/Q201046-5ca035f4-4a45-a8d4-f50e-957134c17196"
+            }
+          ],
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_pw2okhk6"
+          },
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_hkdys8ot"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_979337e10531a6534975736e",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "name": "Jonathan Eduardo Norambuena Barros",
+            "item": "http://www.wikidata.org/entity/Q201046",
+            "statement": "http://www.wikidata.org/entity/statement/Q201046-5ca035f4-4a45-a8d4-f50e-957134c17196",
+            "person_item": "http://www.wikidata.org/entity/Q141736795",
+            "start_time": "2024-12-06",
+            "end_time": "2026-10-22",
+            "rank": "NormalRank",
+            "references": [
+              "https://datos.sinim.gov.cl/impresion_ficha_comunal.php?municipio=07408&provincia=T&region=T"
+            ]
+          },
+          "result": "consistent",
+          "note": "Jonathan Eduardo Norambuena Barros is Jonathan Norambuena Barros, elected mayor of Yerbas Buenas in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 4,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_ef3f3ae67eb95716",
+              "fnd_7b295f8d2456cf0c"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_ef3f3ae67eb95716",
+              "finding_ids": [
+                "fnd_ef3f3ae67eb95716",
+                "fnd_7b295f8d2456cf0c"
+              ],
+              "comuna": "YERBAS BUENAS",
+              "cut": "07408",
+              "figures": [
+                {
+                  "finding_id": "fnd_ef3f3ae67eb95716",
+                  "value": "Rafael Viguera González",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                },
+                {
+                  "finding_id": "fnd_7b295f8d2456cf0c",
+                  "value": "Rafael Viguera González",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Mayor)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "2 names match no one elected in the elections read so far (SERVEL 2024): 'Rafael Viguera González' (Wikipedia ES infobox, called not_elected); 'Rafael Viguera González' (Wikipedia EN infobox, called not_elected). Before they are judged, read the elections that could explain them (servel_mayors_2012, servel_mayors_2016, servel_mayors_2021)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_ef3f3ae67eb95716",
+              "fnd_7b295f8d2456cf0c"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_ef3f3ae67eb95716",
+              "finding_ids": [
+                "fnd_ef3f3ae67eb95716",
+                "fnd_7b295f8d2456cf0c"
+              ],
+              "comuna": "YERBAS BUENAS",
+              "cut": "07408",
+              "figures": [
+                {
+                  "finding_id": "fnd_ef3f3ae67eb95716",
+                  "value": "Rafael Viguera González",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                },
+                {
+                  "finding_id": "fnd_7b295f8d2456cf0c",
+                  "value": "Rafael Viguera González",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Mayor)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "2 names match no one elected in the elections read so far (SERVEL 2021 and 2024): 'Rafael Viguera González' (Wikipedia ES infobox, called not_elected); 'Rafael Viguera González' (Wikipedia EN infobox, called not_elected). Before they are judged, read the elections that could explain them (servel_mayors_2012, servel_mayors_2016)."
+            }
+          },
+          {
+            "round": 3,
+            "approved": false,
+            "rejected": [
+              "fnd_ef3f3ae67eb95716",
+              "fnd_7b295f8d2456cf0c"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_ef3f3ae67eb95716",
+              "finding_ids": [
+                "fnd_ef3f3ae67eb95716",
+                "fnd_7b295f8d2456cf0c"
+              ],
+              "comuna": "YERBAS BUENAS",
+              "cut": "07408",
+              "figures": [
+                {
+                  "finding_id": "fnd_ef3f3ae67eb95716",
+                  "value": "Rafael Viguera González",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2012"
+                  ]
+                },
+                {
+                  "finding_id": "fnd_7b295f8d2456cf0c",
+                  "value": "Rafael Viguera González",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Mayor)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "2 names match no one elected in the elections read so far (SERVEL 2016, 2021 and 2024): 'Rafael Viguera González' (Wikipedia ES infobox, called not_elected); 'Rafael Viguera González' (Wikipedia EN infobox, called not_elected). Before they are judged, read the elections that could explain them (servel_mayors_2012)."
+            }
+          },
+          {
+            "round": 4,
+            "approved": false,
+            "rejected": [
+              "fnd_ef3f3ae67eb95716"
+            ],
+            "fix": {
+              "target_agent": "Analyst",
+              "finding_id": "fnd_ef3f3ae67eb95716",
+              "check": "explanation",
+              "instruction": "The explanation goes beyond the evidence: explanation includes Rafael Enrique Viguera Gonzalez who ran but was not elected, unsupported by SERVEL evidence or signals. Explain using only the evidence.",
+              "suggested_class": null,
+              "comuna": "YERBAS BUENAS",
+              "cut": "07408",
+              "figures": [
+                {
+                  "finding_id": "fnd_ef3f3ae67eb95716",
+                  "value": "Rafael Viguera González",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name"
+                }
+              ]
+            }
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 8,
+              "approved": false,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": false,
+                "explanation": true
+              },
+              "instruction": "Fix: caveat. Don't call the page's name wrong or incorrect: say how it differs from SERVEL's results."
+            }
+          },
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 2,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Yerbas Buenas",
+          "revid": "1381926554",
+          "findings": [
+            "fnd_7b295f8d2456cf0c"
+          ],
+          "anchor": "obs_1cc042159deb431fc2f1d059",
+          "replaces": {
+            "name": "Rafael Viguera González",
+            "office": "Mayor"
+          },
+          "url": "https://en.wikipedia.org/wiki/Yerbas_Buenas",
+          "correction": {
+            "person": "JONATHAN NORAMBUENA BARROS",
+            "name_as_written": "Jonathan Eduardo Norambuena Barros",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_b25b92df8c52541b478810d8"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Jonathan Eduardo Norambuena Barros<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "Check first: Rafael Viguera González refers to candidate Rafael Enrique Viguera Gonzalez, who ran in the 2024 election but was not elected; the actual mayor elected in 2024 is Jonathan Norambuena Barros. Wikidata records the end of Jonathan Norambuena Barros's term on 2026-10-22: the office of mayor of Yerbas Buenas may have changed hands since the election.",
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Rafael Viguera González is not the elected mayor; SERVEL records Jonathan Norambuena Barros as elected in 2024 for Yerbas Buenas.",
+          "status": "approved"
+        },
+        "explanation": "The English Wikipedia page currently lists Rafael Viguera González as mayor. SERVEL's 2024 election results record Jonathan Norambuena Barros as the elected mayor for Yerbas Buenas. The draft will add a caveat explaining this discrepancy, per the editor's instructions.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_vk0p04ut"
+        }
+      },
+      "escalations": [
+        {
+          "kind": "finding",
+          "cut": "07408",
+          "comuna": "YERBAS BUENAS",
+          "finding_id": "fnd_ef3f3ae67eb95716",
+          "class": "unknown_name",
+          "target": "es",
+          "score": 5,
+          "reason": "The explanation goes beyond the evidence: explanation includes Rafael Enrique Viguera Gonzalez who ran but was not elected, unsupported by SERVEL evidence or signals. Explain using only the evidence.; 'Rafael Viguera González' (Wikipedia ES) can't be unknown_name: Rafael Viguera González is Rafael Enrique Viguera Gonzalez, a candidate in 2024, not elected in any election read (2012, 2016, 2021 and 2024). Jonathan Norambuena Barros was elected in the 2024 election (SERVEL; term from 2024-12-06). Rafael Enrique Viguera Gonzalez may hold the office as a replacement, or may have been mayor before 2012: check before changing it. Classes the facts allow: not_elected.",
+          "round": 4
+        }
+      ],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Mayor",
+            "observation": "obs_1cc042159deb431fc2f1d059",
+            "reference": null,
+            "status": "approved",
+            "value": "Rafael Viguera González",
+            "verdict": "not_elected"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_966eb66693dcdf59560467fa",
+            "reference": null,
+            "status": "escalated",
+            "value": "Rafael Viguera González",
+            "verdict": "unknown_name"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_979337e10531a6534975736e",
+            "reference": null,
+            "status": "checked",
+            "value": "Jonathan Eduardo Norambuena Barros",
+            "verdict": "consistent"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026b-07-maule",
+        "checked_at": "2026-10-26T21:40:55Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Rafael Viguera González",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_966eb66693dcdf59560467fa",
+              "verdict": "not_elected",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_966eb66693dcdf59560467fa",
+              "reference": null,
+              "status": "escalated",
+              "value": "Rafael Viguera González",
+              "verdict": "unknown_name"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Rafael Viguera González",
+              "label": "Mayor",
+              "reference": null,
+              "observation": "obs_1cc042159deb431fc2f1d059",
+              "verdict": "not_elected",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Mayor",
+              "observation": "obs_1cc042159deb431fc2f1d059",
+              "reference": null,
+              "status": "approved",
+              "value": "Rafael Viguera González",
+              "verdict": "not_elected"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Jonathan Eduardo Norambuena Barros",
+              "label": null,
+              "reference": null,
+              "observation": "obs_979337e10531a6534975736e",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_979337e10531a6534975736e",
+              "reference": null,
+              "status": "checked",
+              "value": "Jonathan Eduardo Norambuena Barros",
+              "verdict": "consistent"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "06303",
+      "name": "CHIMBARONGO",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "COSME LEOPOLDO MELLADO PINO",
+          "party": "PARTIDO REGIONALISTA DE LOS INDEPENDIENTES",
+          "pact": "REGIONALISTAS E INDEPENDIENTES",
+          "votes": 6908,
+          "candidates": [
+            {
+              "name": "COSME LEOPOLDO MELLADO PINO",
+              "party": "PARTIDO REGIONALISTA DE LOS INDEPENDIENTES",
+              "votes": 6908,
+              "elected": true
+            },
+            {
+              "name": "ALYSON DEL CARMEN HADAD REYES",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 5411,
+              "elected": false
+            },
+            {
+              "name": "MANUEL ELISEO PEREZ BOCAZ",
+              "party": "INDEPENDIENTES LISTA C",
+              "votes": 726,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "MARCO ANTONIO CONTRERAS JORQUERA",
+          "party": "INDEPENDIENTE LISTA F",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 5763,
+          "candidates": [
+            {
+              "name": "MARCO ANTONIO CONTRERAS JORQUERA",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 5763,
+              "elected": true
+            },
+            {
+              "name": "COSME MELLADO PINO",
+              "party": "MOVIMIENTO IND. REGIONALISTA AGRARIO Y SOCIAL",
+              "votes": 5655,
+              "elected": false
+            },
+            {
+              "name": "ALYSON HADAD REYES",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 2070,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "MARCO ANTONIO CONTRERAS JORQUERA",
+          "party": "INDEPENDIENTES-LISTA XX",
+          "pact": "CHILE VAMOS",
+          "votes": 8975,
+          "candidates": [
+            {
+              "name": "MARCO ANTONIO CONTRERAS JORQUERA",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 8975,
+              "elected": true
+            },
+            {
+              "name": "LOREDANA VALESKA GUAJARDO BARAHONA",
+              "party": "PARTIDO RADICAL DE CHILE",
+              "votes": 2386,
+              "elected": false
+            },
+            {
+              "name": "PATRICIO ANTONIO DONOSO GUTIERREZ",
+              "party": "INDEPENDIENTES",
+              "votes": 923,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "MARCO ANTONIO CONTRERAS JORQUERA",
+          "party": "INDEPENDIENTES",
+          "pact": "CHILE VAMOS",
+          "votes": 17928,
+          "candidates": [
+            {
+              "name": "MARCO ANTONIO CONTRERAS JORQUERA",
+              "party": "INDEPENDIENTES",
+              "votes": 17928,
+              "elected": true
+            },
+            {
+              "name": "DORIS EDITH RODRIGUEZ ZAVALLA",
+              "party": "INDEPENDIENTES",
+              "votes": 8573,
+              "elected": false
+            },
+            {
+              "name": "CARLOS GERMAN REYES FECCI",
+              "party": "INDEPENDIENTES",
+              "votes": 816,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_037ce505be819fc8",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Marco Antonio Contreras Jorquera was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_3a56a479086d18973c1c97c8",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q3782"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_06d02b65fdca597497e66d2d",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "MARCO ANTONIO CONTRERAS JORQUERA",
+              "elected": true,
+              "votes": 17928,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "MARCO ANTONIO CONTRERAS JORQUERA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_06d02b65fdca597497e66d2d",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_ee83d98b140f63f7",
+          "target": "es",
+          "aspect": "value",
+          "class": "unknown_name",
+          "explanation": "The name 'Alejando Arenas Arenas' does not match any SERVEL-listed candidate for Chimbarongo across 2012–2024; the note 'ALCALDE SUPLENTE' indicates a substitute mayor, consistent with a stand-in not reflected in the election results.",
+          "confidence": 0.7,
+          "method": "llm",
+          "claim": {
+            "id": "obs_f023f81a97d6ed2972b80e5c",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Chimbarongo",
+            "revid": "175706407",
+            "location": "infobox",
+            "role": "current",
+            "name": "Alejando Arenas Arenas",
+            "name_raw": "Alejando Arenas Arenas (ALCALDE SUPLENTE)",
+            "notes": [
+              "ALCALDE SUPLENTE"
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_06d02b65fdca597497e66d2d",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "MARCO ANTONIO CONTRERAS JORQUERA",
+              "elected": true,
+              "votes": 17928,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "MARCO ANTONIO CONTRERAS JORQUERA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_06d02b65fdca597497e66d2d",
+            "check_first": true
+          },
+          "match": null,
+          "matches": [],
+          "reading": "stand_in",
+          "signals": [],
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_1f209ztn"
+          },
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_kw99j1oi"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_810c903a827f13b0984a7ae8",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Chimbarongo",
+            "revid": "1375478120",
+            "location": "infobox",
+            "role": "current",
+            "name": "Marco Contreras Jorquera",
+            "name_raw": "Marco Contreras Jorquera",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Marco Contreras Jorquera is Marco Antonio Contreras Jorquera, elected mayor of Chimbarongo in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 4,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_ee83d98b140f63f7"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_ee83d98b140f63f7",
+              "finding_ids": [
+                "fnd_ee83d98b140f63f7"
+              ],
+              "comuna": "CHIMBARONGO",
+              "cut": "06303",
+              "figures": [
+                {
+                  "finding_id": "fnd_ee83d98b140f63f7",
+                  "value": "Alejando Arenas Arenas",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Alejando Arenas Arenas' (Wikipedia ES) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_ee83d98b140f63f7"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_ee83d98b140f63f7",
+              "finding_ids": [
+                "fnd_ee83d98b140f63f7"
+              ],
+              "comuna": "CHIMBARONGO",
+              "cut": "06303",
+              "figures": [
+                {
+                  "finding_id": "fnd_ee83d98b140f63f7",
+                  "value": "Alejando Arenas Arenas",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Alejando Arenas Arenas' (Wikipedia ES) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": false,
+            "rejected": [
+              "fnd_ee83d98b140f63f7"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_ee83d98b140f63f7",
+              "finding_ids": [
+                "fnd_ee83d98b140f63f7"
+              ],
+              "comuna": "CHIMBARONGO",
+              "cut": "06303",
+              "figures": [
+                {
+                  "finding_id": "fnd_ee83d98b140f63f7",
+                  "value": "Alejando Arenas Arenas",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Alejando Arenas Arenas' (Wikipedia ES) matches no one elected in the elections read so far (SERVEL 2016, 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 4,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 8,
+              "approved": false,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": false,
+                "explanation": true
+              },
+              "instruction": "Fix: caveat. Don't call the page's name wrong or incorrect: say how it differs from SERVEL's results."
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 8,
+              "approved": false,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": false,
+                "explanation": true
+              },
+              "instruction": "Fix: caveat. Don't call the page's name wrong or incorrect: say how it differs from SERVEL's results."
+            }
+          },
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 2,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 2,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Chimbarongo",
+          "revid": "175706407",
+          "findings": [
+            "fnd_ee83d98b140f63f7"
+          ],
+          "anchor": "obs_f023f81a97d6ed2972b80e5c",
+          "replaces": {
+            "name": "Alejando Arenas Arenas (ALCALDE SUPLENTE)",
+            "office": "Alcalde"
+          },
+          "url": "https://es.wikipedia.org/wiki/Chimbarongo",
+          "correction": {
+            "person": "MARCO ANTONIO CONTRERAS JORQUERA",
+            "name_as_written": "Marco Contreras Jorquera",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_06d02b65fdca597497e66d2d"
+          },
+          "wikitext": "| dirigentes_títulos = [[Alcalde]]\n| dirigentes_nombres = Marco Contreras Jorquera (Ind.)<ref name=\"servel2024\">{{cita web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |título=Resultados electorales históricos: Alcaldes 2024 |editorial=Servicio Electoral de Chile (SERVEL) |fechaacceso=26 de octubre de 2026}}</ref>",
+          "notes": [
+            "Check first: The name 'Alejando Arenas Arenas' does not match any SERVEL-listed candidate for Chimbarongo across 2012–2024; the note 'ALCALDE SUPLENTE' indicates a substitute mayor, consistent with a stand-in not reflected in the election results.",
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Cambia la referencia del alcalde en la Wikipedia en español de Alejando Arenas Arenas a Marco Antonio Contreras Jorquera, electo según SERVEL en 2024.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3782",
+          "url": "https://www.wikidata.org/wiki/Q3782",
+          "findings": [
+            "fnd_037ce505be819fc8"
+          ],
+          "anchor": "obs_3a56a479086d18973c1c97c8",
+          "correction": {
+            "person": "MARCO ANTONIO CONTRERAS JORQUERA",
+            "name_as_written": "Marco Contreras Jorquera",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_06d02b65fdca597497e66d2d"
+          },
+          "statement": "Q3782: add P6 (head of government) = Marco Contreras Jorquera (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Marco Contreras Jorquera",
+          "status": "approved"
+        },
+        "explanation": "The Spanish Wikipedia page currently names Alejando Arenas Arenas as mayor, but SERVEL lists Marco Antonio Contreras Jorquera as the elected mayor for Chimbarongo in 2024. The draft updates the name to reflect SERVEL's official election results. Wikidata has no head of government statement, so the draft would add the SERVEL-elected mayor.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_0lar5mj6"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_810c903a827f13b0984a7ae8",
+            "reference": null,
+            "status": "checked",
+            "value": "Marco Contreras Jorquera",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_f023f81a97d6ed2972b80e5c",
+            "reference": null,
+            "status": "approved",
+            "value": "Alejando Arenas Arenas",
+            "verdict": "unknown_name"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_3a56a479086d18973c1c97c8",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026b-06-libertador-general-bernardo-o-higgi",
+        "checked_at": "2026-10-26T21:40:02Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Alejando Arenas Arenas",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_f023f81a97d6ed2972b80e5c",
+              "verdict": "unknown_name",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_f023f81a97d6ed2972b80e5c",
+              "reference": null,
+              "status": "approved",
+              "value": "Alejando Arenas Arenas",
+              "verdict": "unknown_name"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Marco Contreras Jorquera",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_810c903a827f13b0984a7ae8",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_810c903a827f13b0984a7ae8",
+              "reference": null,
+              "status": "checked",
+              "value": "Marco Contreras Jorquera",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_3a56a479086d18973c1c97c8",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_3a56a479086d18973c1c97c8",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [
+    {
+      "kind": "finding",
+      "cut": "07408",
+      "comuna": "YERBAS BUENAS",
+      "finding_id": "fnd_ef3f3ae67eb95716",
+      "class": "unknown_name",
+      "target": "es",
+      "score": 5,
+      "reason": "The explanation goes beyond the evidence: explanation includes Rafael Enrique Viguera Gonzalez who ran but was not elected, unsupported by SERVEL evidence or signals. Explain using only the evidence.; 'Rafael Viguera González' (Wikipedia ES) can't be unknown_name: Rafael Viguera González is Rafael Enrique Viguera Gonzalez, a candidate in 2024, not elected in any election read (2012, 2016, 2021 and 2024). Jonathan Norambuena Barros was elected in the 2024 election (SERVEL; term from 2024-12-06). Rafael Enrique Viguera Gonzalez may hold the office as a replacement, or may have been mayor before 2012: check before changing it. Classes the facts allow: not_elected.",
+      "round": 4
+    }
+  ],
+  "errors": [],
+  "model_usage": {
+    "calls": 40,
+    "requests": 41,
+    "by_agent": {
+      "Critic": 22,
+      "Analyst": 5,
+      "Planner": 2,
+      "Editor": 11
+    },
+    "requested_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 40
+    },
+    "served_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 40
+    },
+    "routed_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 40
+    },
+    "nightshift_cache": {},
+    "fallbacks": {
+      "Planner": 1
+    },
+    "budget": 124
+  },
+  "trace_file": "logs/trace-example_6-live-20261026T2226Z.jsonl",
+  "world_model_audit_file": "logs/world-model-example_6-live-20261026T2226Z.jsonl",
+  "world_model_audit_entries": 144,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 23,
+        "resolve_by_name": 92,
+        "assess": 136,
+        "context": 46,
+        "view:observations": 55,
+        "reproject": 8,
+        "project_as_of": 8,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/example_6-live-20261026T2226Z/report.html",
+  "execution_time_seconds": 2350.1
+}

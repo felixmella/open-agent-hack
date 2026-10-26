@@ -9,7 +9,7 @@ The same agents check both facts. A fact is a module: its official source regist
 Built for the Open Agent Hackathon 2026, **Track 1: Solving Fragmented Intelligence**.
 
 **See it work without running anything:**
-- **[Demo video](https://drive.google.com/file/d/1g2-rFbYHHKEmtUeC5HOJ_52xPl6URa8E/view?usp=sharing)** (§VIDEO§; built from real outputs of live runs, with a synthetic voice).
+- **[Demo video](https://drive.google.com/file/d/1g2-rFbYHHKEmtUeC5HOJ_52xPl6URa8E/view?usp=sharing)** (3:42; built from real outputs of live runs, with a synthetic voice).
 - **[The review queues, online](https://felixmella.github.io/open-agent-hack/output_examples/)**: every live run's review queue opens in the browser, for example [example 2](https://felixmella.github.io/open-agent-hack/output_examples/example_2/report.html) (the Critic rejects, a source is discovered, the verdict changes), [example 5](https://felixmella.github.io/open-agent-hack/output_examples/example_5/report.html) (fixed since the last check, after real edits) and [example 6](https://felixmella.github.io/open-agent-hack/output_examples/example_6/report.html) (mayors: a former mayor, a nickname, vandalism, a stand-in).
 - [`output_examples/`](output_examples/): live runs with the model, each with its review queue (`report.html`), its `result.json`, the agents' trace and the World Model's audit log.
 - [`output_examples/national/`](output_examples/national/) and [`national_mayors/`](output_examples/national_mayors/): all 346 comunas, region by region, for each fact.
@@ -41,7 +41,7 @@ Chile elected its mayors on 26–27 October 2024, two years ago this week (SERVE
 - **160 of the 272 English Wikipedia infoboxes that name a mayor (59%)** don't name the one elected in 2024. 50 name the mayor last elected in 2021, 55 in 2016, and 18 in 2012, three terms ago. Rengo's still names Carlos Soto, elected in 2012, 2016 and 2021; SERVEL's 2024 results elected Enrique del Barrio.
 - Spanish Wikipedia is closer: 23 of 286 (8%).
 - Wikidata, which search panels and AI assistants reuse, names a mayor for 5 comunas. Arica's is the mayor elected in 2012.
-- 24 names match no candidate SERVEL lists for their comuna from 2012 on: a mayor from before 2012, a stand-in (Chimbarongo's Spanish infobox says "alcalde suplente"), or vandalism ("Wyatt Mathis" in Pinto's English article, "Joey Meehan" in Florida's).
+- 24 names match no candidate SERVEL lists for their comuna from 2012 on: a mayor from before 2012, a stand-in (Chimbarongo's Spanish infobox says "alcalde suplente"), or what looks like vandalism ("Wyatt Mathis" in Pinto's English article, "Joey Meehan" in Florida's).
 
 The hard part is again saying *why*: a former mayor, a nickname ("Max Luksic" is SERVEL's Maximiliano Luksic Lederer), a compound surname, a candidate who lost, or vandalism. And SERVEL says who was elected, not who holds the office today. In Yerbas Buenas both Wikipedias name a candidate who lost in 2024, and Wikidata records the elected mayor's term ending on Oct 22, 2026: the office may have changed hands. FactSync never calls such a page wrong; its draft asks the editor to check first. The summary is in [`output_examples/national_mayors/summary.md`](output_examples/national_mayors/summary.md), and 20 random verdicts checked by hand are all right ([`eval/mayors_spot_check.md`](eval/mayors_spot_check.md)).
 
@@ -318,6 +318,13 @@ Nemotron's main job is reading. Articles are full of figures that aren't the com
 - It is slow (114 calls and 78 minutes for those 11 comunas), so the national numbers come from the deterministic path, and the model works on the comunas a reviewer is looking at.
 - Separately, a random sample of 25 of the national run's verdicts was checked against the pages and INE's figures: all 25 are right.
 
+For mayors ([example 6](output_examples/example_6/)), Nemotron decides what a name means, and code derives the verdict from SERVEL's rows:
+- it confirmed that "Max Luksic" (Huechuraba's Spanish infobox) is SERVEL's MAXIMILIANO LUKSIC LEDERER, so the page is up to date;
+- it read "Wyatt Mathis" (Pinto's English infobox) as vandalism, and "Alejando Arenas Arenas (ALCALDE SUPLENTE)" (Chimbarongo's Spanish one) as a stand-in;
+- it chose which earlier election to read, with a reason, and wrote the drafts' summaries and the reviewer's explanation.
+
+Code accepts only a person among the candidates it listed, and the class always follows from that person's record. Once the model contradicted itself: for Yerbas Buenas's Spanish infobox it answered "no listed candidate" while its own explanation named one. The Critic recomputed the match, refused the class, and, its rounds used up, sent the page to a human instead of drafting. This part is shown in example 6, not measured: the national mayor numbers come from the deterministic path, and 20 of its verdicts were checked by hand.
+
 The adjudication was done by Claude (the coding assistant), and every judgment lists its evidence for checking.
 
 ## Tests
@@ -326,7 +333,7 @@ The adjudication was done by Claude (the coding assistant), and every judgment l
 .venv\Scripts\python -m pytest
 ```
 
-172 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`, and `tests/fakes_mayors.py` with SERVEL's real rows), and need no services. They cover:
+175 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`, and `tests/fakes_mayors.py` with SERVEL's real rows), and need no services. They cover:
 
 - the World Model's 8 conformance checks, its projections, point-in-time rebuilds and capability counts;
 - the matcher, the wikitext parser, the Extractor's verbatim checks and the Critic's rubric;
