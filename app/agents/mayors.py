@@ -362,7 +362,9 @@ JSON: {{"reviews": [{{"finding_id": "...", "class_fits": true, "explanation_fait
 YEARS = re.compile(r"\b(19[5-9]\d|20[0-4]\d)\b")
 DRAFT_CHECKS = ("person", "citation", "official_url", "access_date", "well_formed", "summary", "names_faithful",
                 "caveat", "explanation")
-CRITICAL = ("person", "official_url", "names_faithful")
+CRITICAL = ("person", "official_url", "names_faithful", "caveat")
+VERDICT_WORDS = re.compile(r"\b(incorrect\w*|wrong\w*|erroneous\w*|mistaken|incorrect[oa]s?|err[oó]ne[oa]s?|"
+                           r"equivocad[oa]s?|corrig\w*)\b", re.I)  # SERVEL can't show a page wrong, only different
 
 
 class MayorCritic(Critic):
@@ -619,7 +621,7 @@ class MayorCritic(Critic):
             "well_formed": body.count("{{") == body.count("}}") and body.count("<ref") == body.count("</ref>"),
             "summary": 0 < len(summary) <= 500 and all(w in names.tokens(summary) for w in surname),
             "names_faithful": not (capitalized(summary) | capitalized(explanation)) - allowed - KNOWN_WORDS,
-            "caveat": "SERVEL" in notes and str(year) in notes,
+            "caveat": "SERVEL" in notes and str(year) in notes and not VERDICT_WORDS.search(f"{summary} {explanation}"),
             "explanation": bool(explanation) and all(w in names.tokens(explanation) for w in surname),
         }
         score = sum(checks.values())
@@ -632,7 +634,9 @@ class MayorCritic(Critic):
                 f" The edit summary or explanation names {', '.join(w.title() for w in stray)}, whom no evidence "
                 f"names." if stray else "") + (
                 f" The edit summary must name the mayor elected in {year}, {names.title_case(top['name'])}, and cite "
-                f"SERVEL." if not checks["summary"] else "")
+                f"SERVEL." if not checks["summary"] else "") + (
+                " Don't call the page's name wrong or incorrect: say how it differs from SERVEL's results."
+                if VERDICT_WORDS.search(f"{summary} {explanation}") else "")
         self.tracer.event(self.name, "review_draft", input_summary=f"{comuna.name} {key} mayor draft",
                           output_summary=f"{comuna.name} {key} draft: {score}/9"
                                          + (f"; failed: {', '.join(issues)}" if issues else ""),
@@ -688,7 +692,9 @@ item. A human editor will review the drafts; nothing is published automatically.
 - explanation: 2 to 4 plain English sentences for the reviewer: what each page says, what SERVEL's results show, and
   what the drafts change
 Each summary must name the elected mayor and say it comes from SERVEL. SERVEL records who was elected, not who holds
-the office today: never claim who is mayor now. Use only the names and years given. Follow any critic_instruction.
+the office today: never claim who is mayor now, and never call the name a page gives wrong or incorrect (it may be a
+stand-in or a replacement): say how it differs from SERVEL's results (a former mayor, a name SERVEL doesn't list).
+Use only the names and years given. Follow any critic_instruction.
 JSON: {"name": "...", "es_summary": "...", "en_summary": "...", "explanation": "..."}"""
 
 

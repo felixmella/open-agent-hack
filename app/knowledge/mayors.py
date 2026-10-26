@@ -170,7 +170,8 @@ def explain(cls, name, entry, table, comuna, notes=(), target=None):
     elected = f"{title(top)} was elected in the {year} election (SERVEL; term from {election(year)['term_from']})"
     read = terms(list(table))
     if cls == "consistent":
-        return f"{name} is {title(top)}, elected mayor of {comuna} in {year} (SERVEL)."
+        who = f"{name} is {title(top)}," if names.fold(name) != names.fold(top["name"]) else f"{name} was"
+        return f"{who} elected mayor of {comuna} in {year} (SERVEL)."
     if cls == "missing_value":
         return f"{PAGE_NAMES.get(target, 'The page')} names no mayor. {elected}."
     who = title(max(entry["rows"], key=lambda r: len(r["name"]))) if entry else None

@@ -30,10 +30,10 @@ MAYOR_DISCOVERY_PROMPT = """FactSync Chile - Planner.
 The Critic sent back names that Wikipedia or Wikidata give as the mayor of a Chilean comuna and that SERVEL's election
 results read so far can't explain: each matches no one elected, or no candidate at all, in the elections read. Each
 numbered name lists its candidates: SERVEL elections not read yet. "like_it" counts other names with the same cues and
-candidates; "year" is a year the page itself points to (a reference's date, a term), if any. For EACH name, choose the
-election most likely to explain it (a former mayor was most likely elected in the election before the latest one read,
-unless the page points to an earlier year), or null if none could. You can't know an election's candidates before it
-is read, so never rule one out by guessing them.
+candidates; "year", when given, is a year the page itself points to (a reference's date, a term); a name without one
+points to no year, so don't invent one. For EACH name, choose the election most likely to explain it (a former mayor
+was most likely elected in the election before the latest one read, unless the page points to an earlier year), or
+null if none could. You can't know an election's candidates before it is read, so never rule one out by guessing them.
 JSON: {"choices": [{"figure": "1", "source": "<source id or null>", "reason": "<one short sentence>"}]}"""
 PROMPTS = {"population": DISCOVERY_PROMPT, "mayor": MAYOR_DISCOVERY_PROMPT}
 

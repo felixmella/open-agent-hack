@@ -128,3 +128,16 @@ def test_the_review_queue_speaks_of_mayors(settings):
     page_html = render_report(result, generated_at="2026-10-26 00:00 UTC")
     assert "mayors checked against SERVEL" in page_html and "SERVEL 2024 · elected" in page_html
     assert "Former mayor" in page_html and "Election results: SERVEL" in page_html
+
+
+def test_a_draft_that_calls_the_page_wrong_is_sent_back(settings):
+    def judges(payload):
+        name = payload["elected"]["name"].title()
+        return {"name": name, "es_summary": f"Corrige el nombre incorrecto: {name} (SERVEL).",
+                "en_summary": f"Fix the wrong mayor: {name} (SERVEL).", "explanation": f"The page is wrong; {name}."}
+    result, trace, _, _ = go(settings, FakeLLM(**{**MAYOR_HANDLERS, "Editor": judges}))
+    review = next(e for e in trace if e["action"] == "review_draft" and e["status"] == "rejected")
+    assert "caveat" in review["output_summary"]
+    pinto = comuna(result, "PINTO")
+    assert pinto["drafts"]["enwiki"]["status"] == "escalated" and pinto["critic"]["draft_reviews"][0]["enwiki"][
+        "instruction"].endswith("say how it differs from SERVEL's results.")
