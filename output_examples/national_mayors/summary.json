@@ -1,0 +1,411 @@
+{
+  "tag": "mayors-20261026b",
+  "fact": "mayor",
+  "made_at": "2026-10-26T21:48:58+00:00",
+  "method": "agents on their deterministic paths (name matcher, rule-based Critic, templates): no model calls",
+  "comunas": 346,
+  "regions": 16,
+  "pages_naming_a_mayor": 563,
+  "naming_someone_else": 184,
+  "share_someone_else": 0.327,
+  "by_source": {
+    "es": {
+      "pages_naming_a_mayor": 286,
+      "name_the_2024_winner": 263,
+      "name_someone_else": 23,
+      "name_no_one": 6,
+      "not_read": 54,
+      "share_someone_else": 0.08,
+      "why": {
+        "outdated_mayor_2021": 11,
+        "unknown_name": 9,
+        "not_elected": 2,
+        "outdated_mayor_2016": 1
+      }
+    },
+    "en": {
+      "pages_naming_a_mayor": 272,
+      "name_the_2024_winner": 112,
+      "name_someone_else": 160,
+      "name_no_one": 15,
+      "not_read": 59,
+      "share_someone_else": 0.588,
+      "why": {
+        "outdated_mayor_2016": 55,
+        "outdated_mayor_2021": 50,
+        "not_elected": 22,
+        "outdated_mayor_2012": 18,
+        "unknown_name": 15
+      }
+    },
+    "wikidata": {
+      "pages_naming_a_mayor": 5,
+      "name_the_2024_winner": 4,
+      "name_someone_else": 1,
+      "name_no_one": 341,
+      "not_read": 0,
+      "share_someone_else": 0.2,
+      "why": {
+        "outdated_mayor_2012": 1
+      }
+    }
+  },
+  "findings_by_class": {
+    "missing_value": 369,
+    "outdated_mayor": 136,
+    "not_elected": 24,
+    "unknown_name": 24,
+    "wikidata_qualifier": 1
+  },
+  "wikidata_qualifier_findings": 1,
+  "unknown_names": [
+    {
+      "comuna": "La Higuera",
+      "cut": "04104",
+      "source": "English Wikipedia",
+      "name": "Sylvia Clavería Mondaca",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Rinconada",
+      "cut": "05303",
+      "source": "English Wikipedia",
+      "name": "Juan Pablo Galdames Burgos",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Nogales",
+      "cut": "05506",
+      "source": "Spanish Wikipedia",
+      "name": "Leslie Pacheco Matte",
+      "notes": [
+        "Ind."
+      ],
+      "reading": null
+    },
+    {
+      "comuna": "Las Cabras",
+      "cut": "06107",
+      "source": "Spanish Wikipedia",
+      "name": "Claudio Andres Osorio Benavides",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Chimbarongo",
+      "cut": "06303",
+      "source": "Spanish Wikipedia",
+      "name": "Alejando Arenas Arenas",
+      "notes": [
+        "ALCALDE SUPLENTE"
+      ],
+      "reading": null
+    },
+    {
+      "comuna": "Nancagua",
+      "cut": "06305",
+      "source": "Spanish Wikipedia",
+      "name": "Gabriel Ahumada Díaz",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Empedrado",
+      "cut": "07104",
+      "source": "Spanish Wikipedia",
+      "name": "Juan Nicolas de la luna",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Pelluhue",
+      "cut": "07203",
+      "source": "English Wikipedia",
+      "name": "Carlos Zúñiga Villaseñor",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Chiguayante",
+      "cut": "08103",
+      "source": "English Wikipedia",
+      "name": "Tomás Solís Nava",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Florida",
+      "cut": "08104",
+      "source": "English Wikipedia",
+      "name": "Joey Meehan",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Contulmo",
+      "cut": "08204",
+      "source": "English Wikipedia",
+      "name": "Eduardo Aguayo Thiele",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Mulchén",
+      "cut": "08305",
+      "source": "English Wikipedia",
+      "name": "Nicolas Benjamin Cuevas Cuevas",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Lautaro",
+      "cut": "09108",
+      "source": "English Wikipedia",
+      "name": "Renato Hauri",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Melipeuco",
+      "cut": "09110",
+      "source": "Spanish Wikipedia",
+      "name": "Vicente Alexander Sepúlveda Saldias",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Perquenco",
+      "cut": "09113",
+      "source": "Spanish Wikipedia",
+      "name": "Ariel Aedo Nuñez",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Ercilla",
+      "cut": "09204",
+      "source": "English Wikipedia",
+      "name": "Ramón Vilches Álvarez",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Lonquimay",
+      "cut": "09205",
+      "source": "English Wikipedia",
+      "name": "Guillermo Vásquez Veroiza",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Victoria",
+      "cut": "09211",
+      "source": "English Wikipedia",
+      "name": "Aaron Taylor",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "San Gregorio",
+      "cut": "12104",
+      "source": "Spanish Wikipedia",
+      "name": "Jeannette Andrade Luis",
+      "notes": [
+        "PDC"
+      ],
+      "reading": null
+    },
+    {
+      "comuna": "Bulnes",
+      "cut": "16102",
+      "source": "English Wikipedia",
+      "name": "Rodrigo De La Puente Acuña",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Pinto",
+      "cut": "16106",
+      "source": "English Wikipedia",
+      "name": "Wyatt Mathis",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Yungay",
+      "cut": "16109",
+      "source": "English Wikipedia",
+      "name": "Angel Castro Medina",
+      "notes": [
+        "PDC"
+      ],
+      "reading": null
+    },
+    {
+      "comuna": "Quirihue",
+      "cut": "16201",
+      "source": "English Wikipedia",
+      "name": "Tomás Irribarra De La Torre",
+      "notes": [],
+      "reading": null
+    },
+    {
+      "comuna": "Coihueco",
+      "cut": "16302",
+      "source": "Spanish Wikipedia",
+      "name": "Wilson Palma Jeldres",
+      "notes": [],
+      "reading": null
+    }
+  ],
+  "office_may_have_changed": [
+    "Yerbas Buenas (Spanish Wikipedia)",
+    "Yerbas Buenas (English Wikipedia)"
+  ],
+  "discoveries": {
+    "servel_mayors_2021": {
+      "runs": 16,
+      "names": 187
+    },
+    "servel_mayors_2016": {
+      "runs": 15,
+      "names": 123
+    },
+    "servel_mayors_2012": {
+      "runs": 15,
+      "names": 67
+    }
+  },
+  "runs": [
+    {
+      "run_id": "national-mayors-20261026b-01-tarapaca",
+      "status": "success",
+      "comunas": 7,
+      "findings": 9,
+      "drafts": 9,
+      "report": "output/national-mayors-20261026b-01-tarapaca/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-02-antofagasta",
+      "status": "success",
+      "comunas": 9,
+      "findings": 13,
+      "drafts": 13,
+      "report": "output/national-mayors-20261026b-02-antofagasta/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-03-atacama",
+      "status": "success",
+      "comunas": 9,
+      "findings": 13,
+      "drafts": 13,
+      "report": "output/national-mayors-20261026b-03-atacama/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-04-coquimbo",
+      "status": "success",
+      "comunas": 15,
+      "findings": 26,
+      "drafts": 26,
+      "report": "output/national-mayors-20261026b-04-coquimbo/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-05-valparaiso",
+      "status": "success",
+      "comunas": 38,
+      "findings": 47,
+      "drafts": 47,
+      "report": "output/national-mayors-20261026b-05-valparaiso/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-06-libertador-general-bernardo-o-higgi",
+      "status": "success",
+      "comunas": 33,
+      "findings": 58,
+      "drafts": 58,
+      "report": "output/national-mayors-20261026b-06-libertador-general-bernardo-o-higgi/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-07-maule",
+      "status": "success",
+      "comunas": 30,
+      "findings": 55,
+      "drafts": 55,
+      "report": "output/national-mayors-20261026b-07-maule/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-08-biobio",
+      "status": "success",
+      "comunas": 33,
+      "findings": 62,
+      "drafts": 57,
+      "report": "output/national-mayors-20261026b-08-biobio/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-09-la-araucania",
+      "status": "success",
+      "comunas": 32,
+      "findings": 61,
+      "drafts": 61,
+      "report": "output/national-mayors-20261026b-09-la-araucania/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-10-los-lagos",
+      "status": "success",
+      "comunas": 30,
+      "findings": 42,
+      "drafts": 42,
+      "report": "output/national-mayors-20261026b-10-los-lagos/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-11-aysen-del-general-carlos-ibanez-del",
+      "status": "success",
+      "comunas": 10,
+      "findings": 18,
+      "drafts": 18,
+      "report": "output/national-mayors-20261026b-11-aysen-del-general-carlos-ibanez-del/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen",
+      "status": "success",
+      "comunas": 11,
+      "findings": 17,
+      "drafts": 17,
+      "report": "output/national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-13-metropolitana-de-santiago",
+      "status": "success",
+      "comunas": 52,
+      "findings": 66,
+      "drafts": 66,
+      "report": "output/national-mayors-20261026b-13-metropolitana-de-santiago/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-14-los-rios",
+      "status": "success",
+      "comunas": 12,
+      "findings": 18,
+      "drafts": 18,
+      "report": "output/national-mayors-20261026b-14-los-rios/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-15-arica-y-parinacota",
+      "status": "success",
+      "comunas": 4,
+      "findings": 5,
+      "drafts": 5,
+      "report": "output/national-mayors-20261026b-15-arica-y-parinacota/report.html"
+    },
+    {
+      "run_id": "national-mayors-20261026b-16-nuble",
+      "status": "success",
+      "comunas": 21,
+      "findings": 44,
+      "drafts": 43,
+      "report": "output/national-mayors-20261026b-16-nuble/report.html"
+    }
+  ]
+}

@@ -1,0 +1,2218 @@
+{
+  "run_id": "national-mayors-20261026b-15-arica-y-parinacota",
+  "fact": "mayor",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 4,
+    "claims": 10,
+    "findings": 5,
+    "findings_by_class": {
+      "missing_value": 3,
+      "outdated_mayor": 2
+    },
+    "drafts": 5,
+    "escalations": 0,
+    "critic_rejections": 5,
+    "discoveries": [
+      "servel_mayors_2021",
+      "servel_mayors_2016",
+      "servel_mayors_2012"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 4,
+      "unchanged": 10
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "fact": "mayor",
+    "cuts": [
+      "15101",
+      "15102",
+      "15201",
+      "15202"
+    ],
+    "sources": [
+      "servel_mayors_2024",
+      "wikidata_mayor",
+      "wikipedia_es_mayor",
+      "wikipedia_en_mayor",
+      "servel_mayors_2021",
+      "servel_mayors_2016",
+      "servel_mayors_2012"
+    ],
+    "reason": "4 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "servel_mayors_2024": {
+      "rows": 23,
+      "observations": 23,
+      "appended": 0,
+      "unchanged": 23,
+      "reviews": 0
+    },
+    "wikidata_mayor": {
+      "rows": 75,
+      "observations": 4,
+      "appended": 0,
+      "unchanged": 4,
+      "reviews": 0
+    },
+    "wikipedia_es_mayor": {
+      "rows": 16,
+      "observations": 6,
+      "appended": 0,
+      "unchanged": 6,
+      "reviews": 0
+    },
+    "wikipedia_en_mayor": {
+      "rows": 10,
+      "observations": 6,
+      "appended": 0,
+      "unchanged": 6,
+      "reviews": 0
+    },
+    "servel_mayors_2021": {
+      "rows": 21,
+      "observations": 21,
+      "appended": 0,
+      "unchanged": 21,
+      "reviews": 0
+    },
+    "servel_mayors_2016": {
+      "rows": 22,
+      "observations": 22,
+      "appended": 0,
+      "unchanged": 22,
+      "reviews": 0
+    },
+    "servel_mayors_2012": {
+      "rows": 20,
+      "observations": 20,
+      "appended": 0,
+      "unchanged": 20,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "servel_mayors_2021",
+      "reason": "by coverage (election, 2021), the best fit for 2 figure(s), e.g. 'Salvador Urrutia' ('named as mayor (infobox)')",
+      "requests": [
+        {
+          "comuna": "ARICA",
+          "value": "Salvador Urrutia",
+          "shown_in": "Wikidata statement",
+          "label": "named as mayor (infobox)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "CAMARONES",
+          "value": "Ivan Martin Romero Menacho",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 2,
+      "source": "servel_mayors_2016",
+      "reason": "by coverage (election, 2016), the best fit for 2 figure(s), e.g. 'Salvador Urrutia' ('named as mayor (infobox)')",
+      "requests": [
+        {
+          "comuna": "ARICA",
+          "value": "Salvador Urrutia",
+          "shown_in": "Wikidata statement",
+          "label": "named as mayor (infobox)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "CAMARONES",
+          "value": "Ivan Martin Romero Menacho",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 3,
+      "source": "servel_mayors_2012",
+      "reason": "by coverage (election, 2012), the best fit for 1 figure(s), e.g. 'Salvador Urrutia' ('named as mayor (infobox)')",
+      "requests": [
+        {
+          "comuna": "ARICA",
+          "value": "Salvador Urrutia",
+          "shown_in": "Wikidata statement",
+          "label": "named as mayor (infobox)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    }
+  ],
+  "declined_discoveries": [],
+  "comunas": [
+    {
+      "cut": "15101",
+      "name": "ARICA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "SALVADOR PEDRO URRUTIA CARDENAS",
+          "party": "PARTIDO PROGRESISTA",
+          "pact": "EL CAMBIO POR TI",
+          "votes": 17687,
+          "candidates": [
+            {
+              "name": "SALVADOR PEDRO URRUTIA CARDENAS",
+              "party": "PARTIDO PROGRESISTA",
+              "votes": 17687,
+              "elected": true
+            },
+            {
+              "name": "XIMENA VERONICA VALCARCE BECERRA",
+              "party": "RENOVACION NACIONAL",
+              "votes": 11668,
+              "elected": false
+            },
+            {
+              "name": "LUIS ALBERTO ROCAFULL LOPEZ",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 11384,
+              "elected": false
+            },
+            {
+              "name": "LUIS IVAN PAREDES FIERRO",
+              "party": "INDEPENDIENTES LISTA I",
+              "votes": 6395,
+              "elected": false
+            },
+            {
+              "name": "GABRIEL MASHID ALAMO ALAMO",
+              "party": "PARTIDO REGIONALISTA DE LOS INDEPENDIENTES",
+              "votes": 1008,
+              "elected": false
+            },
+            {
+              "name": "EVA FELIPA CHANG CHAMBE",
+              "party": "PARTIDO IGUALDAD",
+              "votes": 626,
+              "elected": false
+            },
+            {
+              "name": "ANTONELLA MISSAR MUÑOZ ARAYA",
+              "party": "INDEPENDIENTES",
+              "votes": 544,
+              "elected": false
+            },
+            {
+              "name": "SERGIO JUAN STANCIC MACHICAO",
+              "party": "INDEPENDIENTES",
+              "votes": 426,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "GERARDO ESPINDOLA ROJAS",
+          "party": "PARTIDO LIBERAL DE CHILE",
+          "pact": "PACTO ALTERNATIVA DEMOCRATICA",
+          "votes": 11558,
+          "candidates": [
+            {
+              "name": "GERARDO ESPINDOLA ROJAS",
+              "party": "PARTIDO LIBERAL DE CHILE",
+              "votes": 11558,
+              "elected": true
+            },
+            {
+              "name": "RODRIGO CUEVAS TRONCOSO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 11424,
+              "elected": false
+            },
+            {
+              "name": "JOSE DURANA SEMIR",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 10056,
+              "elected": false
+            },
+            {
+              "name": "ANDREA MURILLO NEUMANN",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 6601,
+              "elected": false
+            },
+            {
+              "name": "JOSE GUSTAVO LEE RODRIGUEZ",
+              "party": "PODER",
+              "votes": 2995,
+              "elected": false
+            },
+            {
+              "name": "CHRISTIAN RODRIGO ALVAREZ MANCILLA",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 1248,
+              "elected": false
+            },
+            {
+              "name": "ANDREA PEREZ CORTES",
+              "party": "UNIDOS RESULTA EN DEMOCRACIA",
+              "votes": 998,
+              "elected": false
+            },
+            {
+              "name": "BERNARDO OLIVOS AZUA",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 799,
+              "elected": false
+            },
+            {
+              "name": "MARCOS NAVARRO ARGANDOÑA",
+              "party": "AMPLITUD",
+              "votes": 497,
+              "elected": false
+            },
+            {
+              "name": "ANIBAL DIAZ GONZALEZ",
+              "party": "PARTIDO IGUALDAD",
+              "votes": 484,
+              "elected": false
+            },
+            {
+              "name": "GABRIEL ALAMO ALAMO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 477,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "GERARDO ALFREDO ESPINDOLA ROJAS",
+          "party": "PARTIDO LIBERAL DE CHILE",
+          "pact": "FRENTE AMPLIO",
+          "votes": 20992,
+          "candidates": [
+            {
+              "name": "GERARDO ALFREDO ESPINDOLA ROJAS",
+              "party": "PARTIDO LIBERAL DE CHILE",
+              "votes": 20992,
+              "elected": true
+            },
+            {
+              "name": "LUIS IVAN PAREDES FIERRO",
+              "party": "INDEPENDIENTES-LISTA M",
+              "votes": 7614,
+              "elected": false
+            },
+            {
+              "name": "RICARDO LUIS SANZANA OTEIZA",
+              "party": "INDEPENDIENTES",
+              "votes": 7096,
+              "elected": false
+            },
+            {
+              "name": "RAYKO ALEJANDRO KARMELIC PAVLOV",
+              "party": "INDEPENDIENTES",
+              "votes": 6906,
+              "elected": false
+            },
+            {
+              "name": "PAUL EDUARDO CARVAJAL QUIROZ",
+              "party": "PARTIDO HUMANISTA",
+              "votes": 5867,
+              "elected": false
+            },
+            {
+              "name": "GIANCARLO BALTOLU QUINTANO",
+              "party": "EVOLUCION POLITICA",
+              "votes": 5395,
+              "elected": false
+            },
+            {
+              "name": "CARLOS RAUL VALCARCE MEDINA",
+              "party": "INDEPENDIENTES",
+              "votes": 4398,
+              "elected": false
+            },
+            {
+              "name": "LEONARDO ENRIQUE BORQUEZ CASTILLO",
+              "party": "INDEPENDIENTES",
+              "votes": 4334,
+              "elected": false
+            },
+            {
+              "name": "RAFAEL DEL CARMEN ORTEGA ALIAGA",
+              "party": "INDEPENDIENTES",
+              "votes": 1118,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "ORLANDO SEVERO VARGAS PIZARRO",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 41665,
+          "candidates": [
+            {
+              "name": "ORLANDO SEVERO VARGAS PIZARRO",
+              "party": "INDEPENDIENTES",
+              "votes": 41665,
+              "elected": true
+            },
+            {
+              "name": "GERARDO ESPINDOLA ROJAS",
+              "party": "PARTIDO LIBERAL DE CHILE",
+              "votes": 27139,
+              "elected": false
+            },
+            {
+              "name": "STEPHANIE JELDREZ ORTIZ",
+              "party": "PARTIDO REPUBLICANO DE CHILE",
+              "votes": 24614,
+              "elected": false
+            },
+            {
+              "name": "RAYKO ALEJANDRO KARMELIC PAVLOV",
+              "party": "PARTIDO DE LA GENTE",
+              "votes": 8247,
+              "elected": false
+            },
+            {
+              "name": "JOSE GUSTAVO LEE RODRIGUEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 7305,
+              "elected": false
+            },
+            {
+              "name": "RAUL GIL GONZALEZ",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 6981,
+              "elected": false
+            },
+            {
+              "name": "DANIEL CHIPANA CASTRO",
+              "party": "INDEPENDIENTES",
+              "votes": 4429,
+              "elected": false
+            },
+            {
+              "name": "JORGE ARMANDO GUILLEN OLIVARES",
+              "party": "INDEPENDIENTES",
+              "votes": 4356,
+              "elected": false
+            },
+            {
+              "name": "SEBASTIAN ARELLANO PESCETTO",
+              "party": "INDEPENDIENTES",
+              "votes": 2806,
+              "elected": false
+            },
+            {
+              "name": "ESTEBAN CLAUDIO ROMERO MAMANI",
+              "party": "INDEPENDIENTES",
+              "votes": 2749,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_b29b300166c56d00",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Salvador Urrutia is Salvador Pedro Urrutia Cardenas, elected mayor in 2012 (SERVEL). Orlando Severo Vargas Pizarro was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_1bd73c8cf1cbd631cc454ae1",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "current",
+            "name": "Salvador Urrutia",
+            "item": "http://www.wikidata.org/entity/Q23660598",
+            "statement": "http://www.wikidata.org/entity/statement/Q23660598-d389354e-4923-568f-e98b-fd3f6f1b1708",
+            "person_item": "http://www.wikidata.org/entity/Q6117807",
+            "rank": "NormalRank"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_11ad2aa0181566affbcef9b0",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ORLANDO SEVERO VARGAS PIZARRO",
+              "elected": true,
+              "votes": 41665,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_52ef2f0867ad256a801ccbc1",
+              "source": "SERVEL 2012",
+              "year": 2012,
+              "name": "SALVADOR PEDRO URRUTIA CARDENAS",
+              "elected": true,
+              "votes": 17687,
+              "party": "PARTIDO PROGRESISTA"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "ORLANDO SEVERO VARGAS PIZARRO",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_11ad2aa0181566affbcef9b0",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_salvador_pedro_urrutia_cardenas",
+            "name": "SALVADOR PEDRO URRUTIA CARDENAS",
+            "ran": [
+              2012
+            ],
+            "won": [
+              2012
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name",
+              "id": "p_salvador_pedro_urrutia_cardenas",
+              "name": "SALVADOR PEDRO URRUTIA CARDENAS",
+              "ran": [
+                2012
+              ],
+              "won": [
+                2012
+              ]
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 4,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_b29b300166c56d00"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_b29b300166c56d00",
+              "finding_ids": [
+                "fnd_b29b300166c56d00"
+              ],
+              "comuna": "ARICA",
+              "cut": "15101",
+              "figures": [
+                {
+                  "finding_id": "fnd_b29b300166c56d00",
+                  "value": "Salvador Urrutia",
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "named as mayor (infobox)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Salvador Urrutia' (Wikidata) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_b29b300166c56d00"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_b29b300166c56d00",
+              "finding_ids": [
+                "fnd_b29b300166c56d00"
+              ],
+              "comuna": "ARICA",
+              "cut": "15101",
+              "figures": [
+                {
+                  "finding_id": "fnd_b29b300166c56d00",
+                  "value": "Salvador Urrutia",
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "named as mayor (infobox)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Salvador Urrutia' (Wikidata) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": false,
+            "rejected": [
+              "fnd_b29b300166c56d00"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_b29b300166c56d00",
+              "finding_ids": [
+                "fnd_b29b300166c56d00"
+              ],
+              "comuna": "ARICA",
+              "cut": "15101",
+              "figures": [
+                {
+                  "finding_id": "fnd_b29b300166c56d00",
+                  "value": "Salvador Urrutia",
+                  "source": "Wikidata",
+                  "location": "statement",
+                  "label": "named as mayor (infobox)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Salvador Urrutia' (Wikidata) matches no one elected in the elections read so far (SERVEL 2016, 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 4,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660598",
+          "url": "https://www.wikidata.org/wiki/Q23660598",
+          "findings": [
+            "fnd_b29b300166c56d00"
+          ],
+          "anchor": "obs_1bd73c8cf1cbd631cc454ae1",
+          "correction": {
+            "person": "ORLANDO SEVERO VARGAS PIZARRO",
+            "name_as_written": "Orlando Severo Vargas Pizarro",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_11ad2aa0181566affbcef9b0"
+          },
+          "statement": "Q23660598: add P6 (head of government) = Orlando Severo Vargas Pizarro (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.\nThe statement for Salvador Urrutia has no end time: add P582 (end time) = the end of their term, and keep it at normal rank.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Orlando Severo Vargas Pizarro",
+          "status": "approved"
+        },
+        "explanation": "Salvador Urrutia is Salvador Pedro Urrutia Cardenas, elected mayor in 2012 (SERVEL). Orlando Severo Vargas Pizarro was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Orlando Severo Vargas Pizarro, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": null,
+            "observation": "obs_1bd73c8cf1cbd631cc454ae1",
+            "reference": null,
+            "status": "approved",
+            "value": "Salvador Urrutia",
+            "verdict": "outdated_mayor"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-15-arica-y-parinacota",
+        "checked_at": "2026-10-26T21:31:50Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Salvador Urrutia",
+              "label": null,
+              "reference": null,
+              "observation": "obs_1bd73c8cf1cbd631cc454ae1",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_1bd73c8cf1cbd631cc454ae1",
+              "reference": null,
+              "status": "approved",
+              "value": "Salvador Urrutia",
+              "verdict": "outdated_mayor"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "15102",
+      "name": "CAMARONES",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "IVAN MARTIN ROMERO MENACHO",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES (FUERA DE PACTO)",
+          "votes": 1157,
+          "candidates": [
+            {
+              "name": "IVAN MARTIN ROMERO MENACHO",
+              "party": "INDEPENDIENTES",
+              "votes": 1157,
+              "elected": true
+            },
+            {
+              "name": "JULIO CESAR YUCRA MORALES",
+              "party": "PARTIDO REGIONALISTA DE LOS INDEPENDIENTES",
+              "votes": 901,
+              "elected": false
+            },
+            {
+              "name": "VICTOR MANUEL ALTINA SOZA",
+              "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+              "votes": 502,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "IVAN MARTIN ROMERO MENACHO",
+          "party": "PARTIDO SOCIALISTA DE CHILE",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 1111,
+          "candidates": [
+            {
+              "name": "IVAN MARTIN ROMERO MENACHO",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 1111,
+              "elected": true
+            },
+            {
+              "name": "MARTIN MONTECINOS ROMERO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 1046,
+              "elected": false
+            },
+            {
+              "name": "XIMENA VALCARCE BECERRA",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 242,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "CRISTIAN JAVIER ZAVALA SOTO",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 585,
+          "candidates": [
+            {
+              "name": "CRISTIAN JAVIER ZAVALA SOTO",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 585,
+              "elected": true
+            },
+            {
+              "name": "MARTIN RICARDO MONTECINOS ROMERO",
+              "party": "INDEPENDIENTES",
+              "votes": 543,
+              "elected": false
+            },
+            {
+              "name": "RICARDO EDUARDO CEPEDA SOTO",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 419,
+              "elected": false
+            },
+            {
+              "name": "VLADIMIR GUSTAVO CACERES SALINAS",
+              "party": "INDEPENDIENTES",
+              "votes": 137,
+              "elected": false
+            },
+            {
+              "name": "JAVIER ENRIQUE DIAZ CALDERON",
+              "party": "INDEPENDIENTES",
+              "votes": 50,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "CRISTIAN ZAVALA SOTO",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 1662,
+          "candidates": [
+            {
+              "name": "CRISTIAN ZAVALA SOTO",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 1662,
+              "elected": true
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_1599d692d1419a69",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Cristian Zavala Soto was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_3ce7a247a7956ec3abc13a5a",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q3729"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_d89bcf9c73bf14ac5bf7bab9",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "CRISTIAN ZAVALA SOTO",
+              "elected": true,
+              "votes": 1662,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "CRISTIAN ZAVALA SOTO",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_d89bcf9c73bf14ac5bf7bab9",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_d821e98425793b20",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Ivan Martin Romero Menacho was elected mayor in 2016 (SERVEL). Cristian Zavala Soto was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_1fbb5621268afbb23496df91",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Camarones, Chile",
+            "revid": "1375326830",
+            "location": "infobox",
+            "role": "current",
+            "name": "Ivan Martin Romero Menacho",
+            "name_raw": "Ivan Martin Romero Menacho",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_d89bcf9c73bf14ac5bf7bab9",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "CRISTIAN ZAVALA SOTO",
+              "elected": true,
+              "votes": 1662,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_bcb664d19d2afd1bfb31a5e1",
+              "source": "SERVEL 2016",
+              "year": 2016,
+              "name": "IVAN MARTIN ROMERO MENACHO",
+              "elected": true,
+              "votes": 1111,
+              "party": "PARTIDO SOCIALISTA DE CHILE"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "CRISTIAN ZAVALA SOTO",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_d89bcf9c73bf14ac5bf7bab9",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_ivan_martin_romero_menacho",
+            "name": "IVAN MARTIN ROMERO MENACHO",
+            "ran": [
+              2016
+            ],
+            "won": [
+              2016
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_ivan_martin_romero_menacho",
+              "name": "IVAN MARTIN ROMERO MENACHO",
+              "ran": [
+                2016
+              ],
+              "won": [
+                2016
+              ]
+            },
+            {
+              "level": "partial",
+              "why": "the given name and second surname fit, but not the first surname",
+              "id": "p_martin_ricardo_montecinos_romero",
+              "name": "MARTIN RICARDO MONTECINOS ROMERO",
+              "ran": [
+                2016,
+                2021
+              ],
+              "won": []
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_4d69a45b4b82cbcbc118a26d",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Camarones (comuna)",
+            "revid": "175031628",
+            "location": "infobox",
+            "role": "current",
+            "name": "Cristián Zavala Soto",
+            "name_raw": "Cristián Zavala Soto (PDC)",
+            "notes": [
+              "PDC"
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Cristián Zavala Soto was elected mayor of Camarones in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 3,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_d821e98425793b20"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_d821e98425793b20",
+              "finding_ids": [
+                "fnd_d821e98425793b20"
+              ],
+              "comuna": "CAMARONES",
+              "cut": "15102",
+              "figures": [
+                {
+                  "finding_id": "fnd_d821e98425793b20",
+                  "value": "Ivan Martin Romero Menacho",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Ivan Martin Romero Menacho' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_d821e98425793b20"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_d821e98425793b20",
+              "finding_ids": [
+                "fnd_d821e98425793b20"
+              ],
+              "comuna": "CAMARONES",
+              "cut": "15102",
+              "figures": [
+                {
+                  "finding_id": "fnd_d821e98425793b20",
+                  "value": "Ivan Martin Romero Menacho",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Ivan Martin Romero Menacho' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Camarones, Chile",
+          "revid": "1375326830",
+          "findings": [
+            "fnd_d821e98425793b20"
+          ],
+          "anchor": "obs_1fbb5621268afbb23496df91",
+          "replaces": {
+            "name": "Ivan Martin Romero Menacho",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Camarones,_Chile",
+          "correction": {
+            "person": "CRISTIAN ZAVALA SOTO",
+            "name_as_written": "Cristián Zavala Soto",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_d89bcf9c73bf14ac5bf7bab9"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Cristián Zavala Soto<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = PDC",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Cristián Zavala Soto (was Ivan Martin Romero Menacho).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3729",
+          "url": "https://www.wikidata.org/wiki/Q3729",
+          "findings": [
+            "fnd_1599d692d1419a69"
+          ],
+          "anchor": "obs_3ce7a247a7956ec3abc13a5a",
+          "correction": {
+            "person": "CRISTIAN ZAVALA SOTO",
+            "name_as_written": "Cristián Zavala Soto",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_d89bcf9c73bf14ac5bf7bab9"
+          },
+          "statement": "Q3729: add P6 (head of government) = Cristián Zavala Soto (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Cristián Zavala Soto",
+          "status": "approved"
+        },
+        "explanation": "Ivan Martin Romero Menacho was elected mayor in 2016 (SERVEL). Cristian Zavala Soto was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Cristián Zavala Soto, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_1fbb5621268afbb23496df91",
+            "reference": null,
+            "status": "approved",
+            "value": "Ivan Martin Romero Menacho",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_4d69a45b4b82cbcbc118a26d",
+            "reference": null,
+            "status": "checked",
+            "value": "Cristián Zavala Soto",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_3ce7a247a7956ec3abc13a5a",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-15-arica-y-parinacota",
+        "checked_at": "2026-10-26T21:31:50Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Cristián Zavala Soto",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_4d69a45b4b82cbcbc118a26d",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_4d69a45b4b82cbcbc118a26d",
+              "reference": null,
+              "status": "checked",
+              "value": "Cristián Zavala Soto",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Ivan Martin Romero Menacho",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_1fbb5621268afbb23496df91",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_1fbb5621268afbb23496df91",
+              "reference": null,
+              "status": "approved",
+              "value": "Ivan Martin Romero Menacho",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_3ce7a247a7956ec3abc13a5a",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_3ce7a247a7956ec3abc13a5a",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "15201",
+      "name": "PUTRE",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "ANGELO ALEJANDRO CARRASCO ARIAS",
+          "party": "PARTIDO POR LA DEMOCRACIA",
+          "pact": "POR UN CHILE JUSTO",
+          "votes": 1488,
+          "candidates": [
+            {
+              "name": "ANGELO ALEJANDRO CARRASCO ARIAS",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 1488,
+              "elected": true
+            },
+            {
+              "name": "FRANCISCO HUMIRE ALEJANDRO",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 864,
+              "elected": false
+            },
+            {
+              "name": "FILIDOR LINO YUCRA GUTIERREZ",
+              "party": "PARTIDO PROGRESISTA",
+              "votes": 263,
+              "elected": false
+            },
+            {
+              "name": "FERNANDA SANTOS TICLLE",
+              "party": "INDEPENDIENTES LISTA A",
+              "votes": 57,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "MARICEL PATRICIA GUTIERREZ CASTRO",
+          "party": "INDEPENDIENTE LISTA T",
+          "pact": "CANDIDATURA INDEPENDIENTE",
+          "votes": 1242,
+          "candidates": [
+            {
+              "name": "MARICEL PATRICIA GUTIERREZ CASTRO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 1242,
+              "elected": true
+            },
+            {
+              "name": "ANGELO ALEJANDRO CARRASCO ARIAS",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 941,
+              "elected": false
+            },
+            {
+              "name": "LORENA VENTURA VASQUEZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 263,
+              "elected": false
+            },
+            {
+              "name": "GINO RAUL GRUNEWALD CONDORI",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 68,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "MARICEL PATRICIA GUTIERREZ CASTRO",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 1303,
+          "candidates": [
+            {
+              "name": "MARICEL PATRICIA GUTIERREZ CASTRO",
+              "party": "INDEPENDIENTES",
+              "votes": 1303,
+              "elected": true
+            },
+            {
+              "name": "CRISTIAN ANDRES BILBAO APATA",
+              "party": "INDEPENDIENTES",
+              "votes": 500,
+              "elected": false
+            },
+            {
+              "name": "LINO EUSTAQUIO MAMANI VICENTE",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 366,
+              "elected": false
+            },
+            {
+              "name": "SERGIO DAVID GAMBOA MORALES",
+              "party": "INDEPENDIENTES-LISTA M",
+              "votes": 86,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "JAVIER TITO HUAYLLA",
+          "party": "INDEPENDIENTES",
+          "pact": "CHILE VAMOS",
+          "votes": 1497,
+          "candidates": [
+            {
+              "name": "JAVIER TITO HUAYLLA",
+              "party": "INDEPENDIENTES",
+              "votes": 1497,
+              "elected": true
+            },
+            {
+              "name": "FABIAN ALBERTO HILAJA HUMIRE",
+              "party": "INDEPENDIENTES",
+              "votes": 866,
+              "elected": false
+            },
+            {
+              "name": "ANGELO ALEJANDRO CARRASCO ARIAS",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 461,
+              "elected": false
+            },
+            {
+              "name": "JOSE ANTONIO SARCO JIMENEZ",
+              "party": "PARTIDO HUMANISTA",
+              "votes": 394,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_3bd6a8a852668e02",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Javier Tito Huaylla was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_49067593fe64e40b704736cd",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q51605"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_f1eba7dac63aaa33a0635298",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JAVIER TITO HUAYLLA",
+              "elected": true,
+              "votes": 1497,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "JAVIER TITO HUAYLLA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_f1eba7dac63aaa33a0635298",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_8789abdad54b4aba7b9dfeb1",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Putre",
+            "revid": "175750263",
+            "location": "infobox",
+            "role": "current",
+            "name": "Javier Tito Huaylla",
+            "name_raw": "Javier Tito Huaylla (Ind.)",
+            "notes": [
+              "Ind."
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Javier Tito Huaylla was elected mayor of Putre in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_51b13acc250beeed703b87c4",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Putre",
+            "revid": "1378968728",
+            "location": "infobox",
+            "role": "current",
+            "name": "Javier Tito",
+            "name_raw": "Javier Tito",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Javier Tito is Javier Tito Huaylla, elected mayor of Putre in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q51605",
+          "url": "https://www.wikidata.org/wiki/Q51605",
+          "findings": [
+            "fnd_3bd6a8a852668e02"
+          ],
+          "anchor": "obs_49067593fe64e40b704736cd",
+          "correction": {
+            "person": "JAVIER TITO HUAYLLA",
+            "name_as_written": "Javier Tito Huaylla",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_f1eba7dac63aaa33a0635298"
+          },
+          "statement": "Q51605: add P6 (head of government) = Javier Tito Huaylla (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Javier Tito Huaylla",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Javier Tito Huaylla was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Javier Tito Huaylla, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_51b13acc250beeed703b87c4",
+            "reference": null,
+            "status": "checked",
+            "value": "Javier Tito",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_8789abdad54b4aba7b9dfeb1",
+            "reference": null,
+            "status": "checked",
+            "value": "Javier Tito Huaylla",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_49067593fe64e40b704736cd",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-15-arica-y-parinacota",
+        "checked_at": "2026-10-26T21:31:50Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Javier Tito Huaylla",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_8789abdad54b4aba7b9dfeb1",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_8789abdad54b4aba7b9dfeb1",
+              "reference": null,
+              "status": "checked",
+              "value": "Javier Tito Huaylla",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Javier Tito",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_51b13acc250beeed703b87c4",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_51b13acc250beeed703b87c4",
+              "reference": null,
+              "status": "checked",
+              "value": "Javier Tito",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_49067593fe64e40b704736cd",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_49067593fe64e40b704736cd",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "15202",
+      "name": "GENERAL LAGOS",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "GREGORIO MARIO MENDOZA CHURA",
+          "party": "RENOVACION NACIONAL",
+          "pact": "COALICION",
+          "votes": 629,
+          "candidates": [
+            {
+              "name": "GREGORIO MARIO MENDOZA CHURA",
+              "party": "RENOVACION NACIONAL",
+              "votes": 629,
+              "elected": true
+            },
+            {
+              "name": "JORGE ROLANDO FLORES VALDES",
+              "party": "INDEPENDIENTES",
+              "votes": 405,
+              "elected": false
+            },
+            {
+              "name": "PATRICIO EDMUNDO BARRAZA CORNEJO",
+              "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+              "votes": 184,
+              "elected": false
+            },
+            {
+              "name": "EDUARDO BERNARDINO VASQUEZ MAMANI",
+              "party": "INDEPENDIENTES",
+              "votes": 26,
+              "elected": false
+            },
+            {
+              "name": "JULIO VICTOR HUANCA SARCO",
+              "party": "PARTIDO REGIONALISTA DE LOS INDEPENDIENTES",
+              "votes": 17,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "ALEX FERNANDO CASTILLO BLAS",
+          "party": "INDEPENDIENTE LISTA T",
+          "pact": "CANDIDATURA INDEPENDIENTE",
+          "votes": 404,
+          "candidates": [
+            {
+              "name": "ALEX FERNANDO CASTILLO BLAS",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 404,
+              "elected": true
+            },
+            {
+              "name": "MARISOL BEATRIZ PAREDES TARQUI",
+              "party": "RENOVACION NACIONAL",
+              "votes": 356,
+              "elected": false
+            },
+            {
+              "name": "ROLANDO MANZANO BUTRON",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 292,
+              "elected": false
+            },
+            {
+              "name": "LUCIO CONDORI ALAVE",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 131,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "ALEX FERNANDO CASTILLO BLAS",
+          "party": "RENOVACION NACIONAL",
+          "pact": "CHILE VAMOS",
+          "votes": 374,
+          "candidates": [
+            {
+              "name": "ALEX FERNANDO CASTILLO BLAS",
+              "party": "RENOVACION NACIONAL",
+              "votes": 374,
+              "elected": true
+            },
+            {
+              "name": "FLORENCIO MARTIN VILLANUEVA SARCO",
+              "party": "INDEPENDIENTES",
+              "votes": 276,
+              "elected": false
+            },
+            {
+              "name": "ROSA EUSTAQUIA MAITA QUERQUEZANA",
+              "party": "INDEPENDIENTES-LISTA K",
+              "votes": 92,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "ALEX FERNANDO CASTILLO BLAS",
+          "party": "PARTIDO REPUBLICANO DE CHILE",
+          "pact": "REPUBLICANOS E INDEPENDIENTES",
+          "votes": 281,
+          "candidates": [
+            {
+              "name": "ALEX FERNANDO CASTILLO BLAS",
+              "party": "PARTIDO REPUBLICANO DE CHILE",
+              "votes": 281,
+              "elected": true
+            },
+            {
+              "name": "GREGORIO MENDOZA CHURA",
+              "party": "RENOVACION NACIONAL",
+              "votes": 221,
+              "elected": false
+            },
+            {
+              "name": "RUSSEL BASILIO AQUINO ALCON",
+              "party": "INDEPENDIENTES",
+              "votes": 155,
+              "elected": false
+            },
+            {
+              "name": "VERONICA LUISA MITA TANCARA",
+              "party": "PARTIDO DE LA GENTE",
+              "votes": 144,
+              "elected": false
+            },
+            {
+              "name": "IGNACIO PABLO FLORES HUANCA",
+              "party": "INDEPENDIENTES",
+              "votes": 54,
+              "elected": false
+            },
+            {
+              "name": "LUIS MAURICIO CHAMBILLA CHURA",
+              "party": "INDEPENDIENTES",
+              "votes": 27,
+              "elected": false
+            },
+            {
+              "name": "ROLANDO MANZANO BUTRON",
+              "party": "INDEPENDIENTES",
+              "votes": 21,
+              "elected": false
+            },
+            {
+              "name": "CHRISTIAN SERGIO MAMANI FLORES",
+              "party": "INDEPENDIENTES",
+              "votes": 13,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_82608694407081e1",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Alex Fernando Castillo Blas was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_4781ce7f2689044ae7272812",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q13065"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_182e1cc48c0fa46ca1d83fe3",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ALEX FERNANDO CASTILLO BLAS",
+              "elected": true,
+              "votes": 281,
+              "party": "PARTIDO REPUBLICANO DE CHILE"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "ALEX FERNANDO CASTILLO BLAS",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_182e1cc48c0fa46ca1d83fe3",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_5bb8aaf35e6d906018d82dd6",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "General Lagos (comuna)",
+            "revid": "175896948",
+            "location": "infobox",
+            "role": "current",
+            "name": "Álex Castillo",
+            "name_raw": "[[Álex Castillo Blas|Álex Castillo]] ([[Partido Republicano de Chile (2019)|PRCh]])",
+            "notes": [
+              "PRCh"
+            ],
+            "linked": "Álex Castillo Blas",
+            "office": "Alcalde",
+            "cues": [
+              2019
+            ],
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Álex Castillo is Alex Fernando Castillo Blas, elected mayor of General Lagos in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_6192354ef5a9a77fd29c2001",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "General Lagos",
+            "revid": "1375892624",
+            "location": "infobox",
+            "role": "current",
+            "name": "Álex Castillo",
+            "name_raw": "Álex Castillo",
+            "office": "Alcalde",
+            "party": "REP",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Álex Castillo is Alex Fernando Castillo Blas, elected mayor of General Lagos in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q13065",
+          "url": "https://www.wikidata.org/wiki/Q13065",
+          "findings": [
+            "fnd_82608694407081e1"
+          ],
+          "anchor": "obs_4781ce7f2689044ae7272812",
+          "correction": {
+            "person": "ALEX FERNANDO CASTILLO BLAS",
+            "name_as_written": "Álex Castillo Blas",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "PARTIDO REPUBLICANO DE CHILE",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_182e1cc48c0fa46ca1d83fe3"
+          },
+          "statement": "Q13065: add P6 (head of government) = Álex Castillo Blas (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Álex Castillo Blas",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Alex Fernando Castillo Blas was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Álex Castillo Blas, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_6192354ef5a9a77fd29c2001",
+            "reference": null,
+            "status": "checked",
+            "value": "Álex Castillo",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_5bb8aaf35e6d906018d82dd6",
+            "reference": null,
+            "status": "checked",
+            "value": "Álex Castillo",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_4781ce7f2689044ae7272812",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-15-arica-y-parinacota",
+        "checked_at": "2026-10-26T21:31:50Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Álex Castillo",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_5bb8aaf35e6d906018d82dd6",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_5bb8aaf35e6d906018d82dd6",
+              "reference": null,
+              "status": "checked",
+              "value": "Álex Castillo",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Álex Castillo",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_6192354ef5a9a77fd29c2001",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_6192354ef5a9a77fd29c2001",
+              "reference": null,
+              "status": "checked",
+              "value": "Álex Castillo",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_4781ce7f2689044ae7272812",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_4781ce7f2689044ae7272812",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 0,
+    "requests": 0,
+    "by_agent": {},
+    "requested_model": {},
+    "served_model": {},
+    "routed_model": {},
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 68
+  },
+  "trace_file": "logs/trace-national-mayors-20261026b-15-arica-y-parinacota.jsonl",
+  "world_model_audit_file": "logs/world-model-national-mayors-20261026b-15-arica-y-parinacota.jsonl",
+  "world_model_audit_entries": 43,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 13,
+        "resolve_by_name": 92,
+        "assess": 39,
+        "context": 18,
+        "view:observations": 25,
+        "reproject": 4,
+        "project_as_of": 4,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/national-mayors-20261026b-15-arica-y-parinacota/report.html",
+  "execution_time_seconds": 46.2
+}

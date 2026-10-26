@@ -23,7 +23,8 @@ CLASSES = {
     "not_elected": "Names someone SERVEL lists as a candidate for this comuna who wasn't elected in any election "
                    "read: possibly a replacement chosen after the election, or a mayor from before 2012.",
     "unknown_name": "Names no one SERVEL lists as a candidate for this comuna in the elections read: possibly a "
-                    "stand-in or a replacement, a misspelling, or vandalism. Never called wrong without a human.",
+                    "mayor from before 2012, a stand-in or a replacement, a misspelling, or vandalism. Never called "
+                    "wrong without a human.",
     "missing_value": "The source names no mayor at all.",
     "wikidata_qualifier": "A Wikidata mayor statement lacks the start time, end time or reference needed to read it "
                           "correctly, or gives a wrong one.",
@@ -192,8 +193,8 @@ def explain(cls, name, entry, table, comuna, notes=(), target=None):
                 f"{elected}. {who} may hold the office as a replacement, or may have been mayor before 2012: check "
                 f"before changing it.")
     note = f" The page itself calls them '{'; '.join(notes)}'." if stand_in(notes) else ""
-    return (f"{name} matches no candidate SERVEL lists for {comuna} in {read}. {elected}. It may be a stand-in or a "
-            f"replacement chosen by the council, a misspelling, or vandalism.{note}")
+    return (f"{name} matches no candidate SERVEL lists for {comuna} in {read}. {elected}. It may be a mayor from "
+            f"before 2012, a stand-in or a replacement chosen by the council, a misspelling, or vandalism.{note}")
 
 
 def assess(claim, table, comuna, unread=()):

@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FactSync Chile review queue · national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen</title>
+<style>
+:root {
+  --bg: #f5f6f8; --panel: #ffffff; --ink: #18202b; --muted: #5a6473; --line: #e2e6ec; --soft: #f0f2f5;
+  --accent: #0b5fbf; --code: #f3f5f8;
+  --red: #b42318; --red-bg: #fef1f0; --amber: #a64b05; --amber-bg: #fff6e6; --blue: #175cd3; --blue-bg: #eef5ff;
+  --violet: #6340b8; --violet-bg: #f4f1ff; --slate: #475467; --slate-bg: #eef0f3; --green: #067647; --green-bg: #eafaf1;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1217; --panel: #151b23; --ink: #e5e9ef; --muted: #98a2b3; --line: #252f3c; --soft: #1b2330;
+    --accent: #6aa8ff; --code: #10161e;
+    --red: #ff9b91; --red-bg: #3a1714; --amber: #ffc46b; --amber-bg: #3a2608; --blue: #8fbcff; --blue-bg: #13284a;
+    --violet: #c2b0ff; --violet-bg: #2a1f4a; --slate: #c4cbd6; --slate-bg: #222b37; --green: #7fe0a9; --green-bg: #0f3322;
+    --shadow: none;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--accent); }
+code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 13px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+header.top { background: var(--panel); border-bottom: 1px solid var(--line); padding: 28px 0 22px; }
+.brand { font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: 26px; line-height: 1.25; margin: 6px 0 8px; }
+h2 { font-size: 17px; margin: 0 0 12px; }
+h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 22px 0 10px; }
+.meta { color: var(--muted); margin: 0 0 10px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.lede { margin: 0; max-width: 760px; }
+main { padding: 22px 16px 40px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; box-shadow: var(--shadow); }
+.stat b { display: block; font-size: 26px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 13px; }
+.stat.attention b { color: var(--red); }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.panel.attention { border-left: 4px solid var(--red); }
+.panel p { margin: 0 0 8px; }
+.panel p:last-child { margin-bottom: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 13px; background: var(--soft); }
+.chip.new { border-color: var(--blue); color: var(--blue); background: var(--blue-bg); }
+.badge { display: inline-block; border-radius: 6px; padding: 1px 8px; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.tone-red { color: var(--red); background: var(--red-bg); }
+.tone-amber { color: var(--amber); background: var(--amber-bg); }
+.tone-blue { color: var(--blue); background: var(--blue-bg); }
+.tone-violet { color: var(--violet); background: var(--violet-bg); }
+.tone-slate { color: var(--slate); background: var(--slate-bg); }
+.tone-green { color: var(--green); background: var(--green-bg); }
+.status-approved, .status-success { color: var(--green); background: var(--green-bg); }
+.status-partial, .status-sample { color: var(--amber); background: var(--amber-bg); }
+.status-escalated, .status-error { color: var(--red); background: var(--red-bg); }
+.status-pending, .status-live { color: var(--blue); background: var(--blue-bg); }
+ol.timeline { list-style: none; margin: 0; padding: 0; }
+ol.timeline li { display: grid; grid-template-columns: 96px 1fr; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); }
+ol.timeline li:first-child { border-top: 0; }
+.when { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.who { font-weight: 600; }
+.by { color: var(--muted); font-size: 13px; }
+ul.plain { margin: 0; padding-left: 18px; }
+ul.plain li { margin: 4px 0; }
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 18px; margin-top: 12px; font-size: 13.5px; }
+.legend div { display: flex; gap: 8px; align-items: baseline; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 26px 0 14px; }
+.filters input { flex: 1 1 220px; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; }
+.filters button, button.copy { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px; padding: 7px 12px; font: inherit; font-size: 13.5px; cursor: pointer; }
+.filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+article.comuna { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.c-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.c-head h2 { margin: 0; font-size: 21px; }
+.c-head .cut { color: var(--muted); font-size: 13px; }
+.official { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.fig { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; background: var(--soft); }
+.fig small { display: block; color: var(--muted); font-size: 12px; }
+.fig b { font-variant-numeric: tabular-nums; }
+.fig.current { border-color: var(--green); background: var(--green-bg); }
+.finding { border: 1px solid var(--line); border-left-width: 4px; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+.finding.tone-red { border-left-color: var(--red); } .finding.tone-amber { border-left-color: var(--amber); }
+.finding.tone-blue { border-left-color: var(--blue); } .finding.tone-violet { border-left-color: var(--violet); }
+.finding.tone-slate { border-left-color: var(--slate); }
+.finding, .finding.tone-red, .finding.tone-amber, .finding.tone-blue, .finding.tone-violet, .finding.tone-slate { background: var(--panel); color: var(--ink); }
+.f-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.f-head .value { font-weight: 700; font-variant-numeric: tabular-nums; }
+.f-head .label, .f-head .where { color: var(--muted); font-size: 13.5px; }
+.f-head .badge.status-approved, .f-head .badge.status-escalated, .f-head .badge.status-pending { margin-left: auto; }
+.finding p { margin: 8px 0; }
+blockquote { margin: 8px 0; padding: 6px 12px; border-left: 3px solid var(--line); color: var(--muted); font-size: 14px; }
+dl.facts { display: grid; grid-template-columns: 120px 1fr; gap: 4px 12px; margin: 8px 0 0; font-size: 13.5px; }
+dl.facts dt { color: var(--muted); }
+dl.facts dd { margin: 0; }
+.links { font-size: 13px; margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.page { margin-top: 20px; }
+.p-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.p-head h3 { margin: 0; }
+.p-head .links { margin: 0 0 0 auto; }
+.attention-box { border-left: 4px solid var(--red); }
+.draft { border: 1px dashed var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--soft); }
+.draft .code pre { background: var(--panel); }
+.d-head { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; margin-bottom: 8px; }
+.d-head .badge { margin-left: auto; }
+.code { position: relative; }
+.code pre { background: var(--code); border: 1px solid var(--line); border-radius: 8px; padding: 12px 70px 12px 12px; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.code button.copy { position: absolute; top: 8px; right: 8px; padding: 3px 9px; font-size: 12.5px; }
+.summary-line { font-size: 14px; margin: 8px 0 0; }
+.summary-line span, .replaces span { color: var(--muted); font-size: 13px; margin-right: 6px; }
+.replaces { font-size: 14px; margin: 0 0 8px; }
+.note-box { background: var(--soft); border-radius: 8px; padding: 10px 12px; font-size: 14.5px; margin-top: 12px; }
+details { margin-top: 14px; }
+details summary { cursor: pointer; color: var(--muted); font-size: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; margin-top: 8px; }
+.table-scroll { overflow-x: auto; }
+th, td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; }
+footer { color: var(--muted); font-size: 13px; padding: 10px 0 40px; }
+footer p { margin: 4px 0; }
+.empty { color: var(--muted); }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+  h1 { font-size: 21px; }
+  dl.facts { grid-template-columns: 1fr; }
+  dl.facts dt { margin-top: 4px; }
+  ol.timeline li { grid-template-columns: 1fr; gap: 2px; }
+  .f-head .badge.status-approved, .f-head .badge.status-escalated, .f-head .badge.status-pending, .d-head .badge,
+  .p-head .links { margin-left: 0; }
+  article.comuna { padding: 14px; }
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">FactSync Chile · review queue</div>
+  <h1>11 comunas: mayors checked against SERVEL&#39;s election results</h1>
+  <p class="meta">
+    <span>Run <code>national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen</code></span>
+    <span class="badge status-success">success</span>
+    <span class="badge status-live">live: read through Zetaris</span>
+    <span>37.8 s</span>
+    <span>generated 2026-10-26 21:44 UTC</span>
+  </p>
+  <p class="lede">The mayor each Spanish and English Wikipedia infobox and Wikidata names, compared with who SERVEL&#39;s results say was elected in 2024 (and in 2021, 2016 and 2012 when a name needs explaining), with the reason it differs and a sourced correction to review. SERVEL records who was elected, not who holds the office today: every draft asks you to check that first. <b>Drafts only:</b> FactSync never edits Wikipedia or Wikidata; a person reviews and applies each edit.</p>
+</div></header>
+<main class="wrap">
+  <section class="stats" aria-label="Summary">
+    <div class="stat"><b>11</b><span>comunas</span></div>
+    <div class="stat"><b>32</b><span>names checked</span></div>
+    <div class="stat"><b>17</b><span>findings</span></div>
+    <div class="stat"><b>17</b><span>draft edits</span></div>
+    <div class="stat"><b>0</b><span>need a human</span></div>
+    <div class="stat"><b>9</b><span>Critic rejections</span></div>
+    <div class="stat"><b>0</b><span>fixed since the last check</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>Sources and models</h2>
+    <p class="chips">
+      <span class="chip">SERVEL election 2024</span>
+      <span class="chip">Wikidata (P6)</span>
+      <span class="chip">Wikipedia (ES)</span>
+      <span class="chip">Wikipedia (EN)</span>
+      <span class="chip new">SERVEL election 2021 · added by the Planner</span>
+      <span class="chip new">SERVEL election 2016 · added by the Planner</span>
+      <span class="chip new">SERVEL election 2012 · added by the Planner</span>
+    </p>
+    <p>Every source was read live through its Zetaris view, one SQL statement per source.</p>
+    <p>No model calls: every step took its deterministic path.</p>
+<p>World Model engine: used upsert_entity (346), ingest (28), resolve_by_name (92), assess (122), context (40), view:observations (64), reproject (11), project_as_of (11), export_audit (1). Dormant in this run: relate, view:graph.</p>  </section>
+
+
+  <section class="panel">
+    <h2>How the agents got here</h2>
+    <ol class="timeline">
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected San Gregorio: &#39;Jeannette Andrade Luis&#39; (Wikipedia ES, &#39;named as mayor (Alcaldesa)&#39;); &#39;Edgar Cárcamo Alderete&#39; (Wikipedia EN, &#39;named as mayor (Alcalde)&#39;) match no one elected in the elections read so far, so it sent the Planner to read an earlier election before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Porvenir: &#39;Marisol Andrade Cárdenas&#39; (Wikipedia EN, &#39;named as mayor (Alcalde)&#39;) matches no one elected in the elections read so far, so it sent the Planner to read an earlier election before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Primavera: &#39;Blagomir Brztilo Avendaño&#39; (Wikipedia EN, &#39;named as mayor (Alcalde)&#39;) matches no one elected in the elections read so far, so it sent the Planner to read an earlier election before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Timaukel: &#39;Marcos Martic Haros&#39; (Wikipedia EN, &#39;named as mayor (Alcalde)&#39;) matches no one elected in the elections read so far, so it sent the Planner to read an earlier election before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Critic</span> rejected Natales: &#39;Antonieta Oyarzo Alvarado&#39; (Wikipedia EN, &#39;named as mayor (Alcaldesa)&#39;) matches no one elected in the elections read so far, so it sent the Planner to read an earlier election before anything is classified</span></li>
+      <li><span class="when">round 1</span>
+        <span><span class="who">Planner</span> added SERVEL election 2021: by coverage (election, 2021), the best fit for 6 figure(s), e.g. &#39;Jeannette Andrade Luis&#39; (&#39;named as mayor (Alcaldesa)&#39;) <span class="by">(decided by code)</span></span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> rejected San Gregorio: &#39;Jeannette Andrade Luis&#39; (Wikipedia ES, &#39;named as mayor (Alcaldesa)&#39;); &#39;Edgar Cárcamo Alderete&#39; (Wikipedia EN, &#39;named as mayor (Alcalde)&#39;) match no one elected in the elections read so far, so it sent the Planner to read an earlier election before anything is classified</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> rejected Porvenir: &#39;Marisol Andrade Cárdenas&#39; (Wikipedia EN, &#39;named as mayor (Alcalde)&#39;) matches no one elected in the elections read so far, so it sent the Planner to read an earlier election before anything is classified</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> rejected Timaukel: &#39;Marcos Martic Haros&#39; (Wikipedia EN, &#39;named as mayor (Alcalde)&#39;) matches no one elected in the elections read so far, so it sent the Planner to read an earlier election before anything is classified</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Planner</span> added SERVEL election 2016: by coverage (election, 2016), the best fit for 4 figure(s), e.g. &#39;Jeannette Andrade Luis&#39; (&#39;named as mayor (Alcaldesa)&#39;) <span class="by">(decided by code)</span></span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Primavera after the fix</span></li>
+      <li><span class="when">round 2</span>
+        <span><span class="who">Critic</span> approved Natales after the fix</span></li>
+      <li><span class="when">round 3</span>
+        <span><span class="who">Critic</span> rejected San Gregorio: &#39;Jeannette Andrade Luis&#39; (Wikipedia ES, &#39;named as mayor (Alcaldesa)&#39;) matches no one elected in the elections read so far, so it sent the Planner to read an earlier election before anything is classified</span></li>
+      <li><span class="when">round 3</span>
+        <span><span class="who">Planner</span> added SERVEL election 2012: by coverage (election, 2012), the best fit for 1 figure(s), e.g. &#39;Jeannette Andrade Luis&#39; (&#39;named as mayor (Alcaldesa)&#39;) <span class="by">(decided by code)</span></span></li>
+      <li><span class="when">round 3</span>
+        <span><span class="who">Critic</span> approved Porvenir after the fix</span></li>
+      <li><span class="when">round 3</span>
+        <span><span class="who">Critic</span> approved Timaukel after the fix</span></li>
+      <li><span class="when">round 4</span>
+        <span><span class="who">Critic</span> approved San Gregorio after the fix</span></li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Why names differ, across this run</h2>
+    <p class="chips">
+<span class="badge tone-slate">Missing value · 11</span><span class="badge tone-amber">Former mayor · 5</span><span class="badge tone-red">Unknown name · 1</span>    </p>
+    <details>
+      <summary>What each class means</summary>
+      <div class="legend">
+<div><span class="badge tone-amber">Former mayor</span><span>Names a mayor elected in an earlier election who wasn&#39;t elected in the latest one: a former mayor shown as the current one.</span></div><div><span class="badge tone-violet">Not elected</span><span>Names someone SERVEL lists as a candidate for this comuna who wasn&#39;t elected in any election read: possibly a replacement chosen after the election, or a mayor from before 2012.</span></div><div><span class="badge tone-red">Unknown name</span><span>Names no one SERVEL lists as a candidate for this comuna in the elections read: possibly a stand-in or a replacement, a misspelling, or vandalism. Never called wrong without a human.</span></div><div><span class="badge tone-slate">Missing value</span><span>The source names no mayor at all.</span></div><div><span class="badge tone-slate">Qualifiers</span><span>A Wikidata mayor statement lacks the start time, end time or reference needed to read it correctly, or gives a wrong one.</span></div>      </div>
+    </details>
+  </section>
+
+  <div class="filters" role="search">
+    <input type="search" id="filter-text" placeholder="Filter by comuna name or code" aria-label="Filter by comuna name or code">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="review" aria-pressed="false">Needs a human</button>
+    <button type="button" data-filter="drafts" aria-pressed="false">With drafts</button>
+  </div>
+
+  <article class="comuna" id="comuna-12104" data-name="san gregorio 12104" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>San Gregorio</h2>
+      <span class="cut">CUT 12104</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 3 findings · 4 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Edgar Milan Carcamo Alderete</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Edgar Carcamo Alderete</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Jeannette Isabel Andrade Ruiz</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Jeannette Isabel Andrade Ruiz</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Jeannette Andrade Luis matches no candidate SERVEL lists for San Gregorio in 2012, 2016, 2021 and 2024. Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06). It may be a stand-in or a replacement chosen by the council, a misspelling, or vandalism. Edgar Cárcamo Alderete is Edgar Milan Carcamo Alderete, elected mayor in 2012 and 2016 (SERVEL). Wikidata (no head of government statement) names no mayor. The drafts name Jeannette Isabel Andrade Ruiz, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Spanish Wikipedia">
+      <div class="p-head">
+        <h3>Spanish Wikipedia</h3><span class="by">San Gregorio (comuna de Magallanes)</span><span class="links"><a href="https://es.wikipedia.org/w/index.php?oldid=173058528" rel="noopener" target="_blank">revision read</a><a href="https://es.wikipedia.org/wiki/San_Gregorio_%28comuna_de_Magallanes%29" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-red" id="fnd_4c86b388b0c3380d">
+        <div class="f-head">
+          <span class="badge tone-red" title="Names no one SERVEL lists as a candidate for this comuna in the elections read: possibly a stand-in or a replacement, a misspelling, or vandalism. Never called wrong without a human.">Unknown name</span>
+          <span class="where">infobox</span>
+          <span class="value">Jeannette Andrade Luis</span>
+<span class="label">(PDC)</span>          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Jeannette Andrade Luis matches no candidate SERVEL lists for San Gregorio in 2012, 2016, 2021 and 2024. Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06). It may be a stand-in or a replacement chosen by the council, a misspelling, or vandalism.</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Jeannette Isabel Andrade Ruiz (elected, 132 votes)</b> · SERVEL 2021: <b>Jeannette Isabel Andrade Ruiz (elected, 217 votes)</b></dd><dt>Correction</dt><dd>Check first, then: update to Jeannette Isabel Andrade Ruiz, elected in 2024 (SERVEL)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 4 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code (no model available) · confidence 0.5</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>Jeannette Andrade Luis ([[PDC (Chile)|PDC]])</code></span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12104-eswiki">Copy</button><pre id="draft-12104-eswiki">| dirigentes_títulos = [[Alcaldesa]]
+| dirigentes_nombres = Jeannette Isabel Andrade Ruiz (PDC)&lt;ref name=&#34;servel2024&#34;&gt;{{cita web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |título=Resultados electorales históricos: Alcaldes 2024 |editorial=Servicio Electoral de Chile (SERVEL) |fechaacceso=26 de octubre de 2026}}&lt;/ref&gt;</pre></div>
+<p class="summary-line"><span>Edit summary</span>Alcalde según SERVEL (elección de alcaldes 2024): Jeannette Isabel Andrade Ruiz (antes: Jeannette Andrade Luis).</p><ul class="plain"><li>Check first: Jeannette Andrade Luis matches no candidate SERVEL lists for San Gregorio in 2012, 2016, 2021 and 2024. Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06). It may be a stand-in or a replacement chosen by the council, a misspelling, or vandalism.</li><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>SERVEL writes names in capitals without accents: check the spelling of the name.</li></ul><div class="links"><a href="https://es.wikipedia.org/w/index.php?title=San_Gregorio_%28comuna_de_Magallanes%29&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">San Gregorio, Chile</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1377560966" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/San_Gregorio%2C_Chile" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_93129ec62700f117">
+        <div class="f-head">
+          <span class="badge tone-amber" title="Names a mayor elected in an earlier election who wasn&#39;t elected in the latest one: a former mayor shown as the current one.">Former mayor</span>
+          <span class="where">infobox</span>
+          <span class="value">Edgar Cárcamo Alderete</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Edgar Cárcamo Alderete is Edgar Milan Carcamo Alderete, elected mayor in 2012 and 2016 (SERVEL). Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Jeannette Isabel Andrade Ruiz (elected, 132 votes)</b> · SERVEL 2012: <b>Edgar Milan Carcamo Alderete (elected, 202 votes)</b> · SERVEL 2021: <b>Edgar Milan Carcamo Alderete (not elected, 166 votes)</b> · SERVEL 2016: <b>Edgar Carcamo Alderete (elected, 362 votes)</b></dd><dt>Correction</dt><dd>Update to Jeannette Isabel Andrade Ruiz, elected in 2024 (SERVEL)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 4 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>Edgar Cárcamo Alderete</code></span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12104-enwiki">Copy</button><pre id="draft-12104-enwiki">| leader_title = [[Alcalde]]
+| leader_name = Jeannette Isabel Andrade Ruiz&lt;ref name=&#34;SERVEL2024&#34;&gt;{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}&lt;/ref&gt;
+| leader_party = PDC</pre></div>
+<p class="summary-line"><span>Edit summary</span>Mayor per SERVEL&#39;s 2024 mayoral election results: Jeannette Isabel Andrade Ruiz (was Edgar Cárcamo Alderete).</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>SERVEL writes names in capitals without accents: check the spelling of the name.</li></ul><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=San_Gregorio%2C_Chile&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q187816</span><span class="links"><a href="https://www.wikidata.org/wiki/Q187816#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_284cdcb21b4dbd51">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Jeannette Isabel Andrade Ruiz (elected, 132 votes)</b></dd><dt>Correction</dt><dd>Add Jeannette Isabel Andrade Ruiz as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 4 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12104-wikidata">Copy</button><pre id="draft-12104-wikidata">Q187816: add P6 (head of government) = Jeannette Isabel Andrade Ruiz (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Jeannette Isabel Andrade Ruiz</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>SERVEL writes names in capitals without accents: check the spelling of the name.</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q187816" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+  </article>
+  <article class="comuna" id="comuna-12401" data-name="natales 12401" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Natales</h2>
+      <span class="cut">CUT 12401</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 2 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Jose Fernando Paredes Mansilla</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Fernando Paredes Mansilla</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Antonieta Daniela del Carmen Oyarzo Alvarado</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Ana Ester Mayorga Bahamonde</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Antonieta Oyarzo Alvarado is Antonieta Daniela del Carmen Oyarzo Alvarado, elected mayor in 2021 (SERVEL). Ana Ester Mayorga Bahamonde was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Ana Ester Mayorga Bahamonde, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Natales</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1376921098" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Natales" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_6c00d9b3f356e697">
+        <div class="f-head">
+          <span class="badge tone-amber" title="Names a mayor elected in an earlier election who wasn&#39;t elected in the latest one: a former mayor shown as the current one.">Former mayor</span>
+          <span class="where">infobox</span>
+          <span class="value">Antonieta Oyarzo Alvarado</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Antonieta Oyarzo Alvarado is Antonieta Daniela del Carmen Oyarzo Alvarado, elected mayor in 2021 (SERVEL). Ana Ester Mayorga Bahamonde was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Ana Ester Mayorga Bahamonde (elected, 9,437 votes)</b> · SERVEL 2021: <b>Antonieta Daniela del Carmen Oyarzo Alvarado (elected, 5,092 votes)</b></dd><dt>Correction</dt><dd>Update to Ana Ester Mayorga Bahamonde, elected in 2024 (SERVEL)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>Antonieta Oyarzo Alvarado</code></span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12401-enwiki">Copy</button><pre id="draft-12401-enwiki">| leader_title = [[Alcalde]]
+| leader_name = Ana Ester Mayorga Bahamonde&lt;ref name=&#34;SERVEL2024&#34;&gt;{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}&lt;/ref&gt;
+| leader_party = Independent</pre></div>
+<p class="summary-line"><span>Edit summary</span>Mayor per SERVEL&#39;s 2024 mayoral election results: Ana Ester Mayorga Bahamonde (was Antonieta Oyarzo Alvarado).</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>SERVEL writes names in capitals without accents: check the spelling of the name.</li></ul><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Natales&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q51043</span><span class="links"><a href="https://www.wikidata.org/wiki/Q51043#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_cbc19adc3a4204d6">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Ana Ester Mayorga Bahamonde was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Ana Ester Mayorga Bahamonde (elected, 9,437 votes)</b></dd><dt>Correction</dt><dd>Add Ana Ester Mayorga Bahamonde as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12401-wikidata">Copy</button><pre id="draft-12401-wikidata">Q51043: add P6 (head of government) = Ana Ester Mayorga Bahamonde (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Ana Ester Mayorga Bahamonde</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>SERVEL writes names in capitals without accents: check the spelling of the name.</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q51043" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>1 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>Ana Mayorga Bahamondes [IND]</td><td>consistent</td><td>Ana Mayorga Bahamondes [IND] is Ana Ester Mayorga Bahamonde, elected mayor of Natales in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-12301" data-name="porvenir 12301" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Porvenir</h2>
+      <span class="cut">CUT 12301</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 2 findings · 3 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Marisol Andrade Cardenas</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Marisol Andrade Cardenas</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Jose Gabriel Parada Aguilar</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Jose Gabriel Parada Aguilar</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Marisol Andrade Cárdenas was elected mayor in 2016 (SERVEL). Jose Gabriel Parada Aguilar was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name José Gabriel Parada Aguilar, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Porvenir, Chile</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1374792918" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Porvenir%2C_Chile" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_c9e707e43bf6b233">
+        <div class="f-head">
+          <span class="badge tone-amber" title="Names a mayor elected in an earlier election who wasn&#39;t elected in the latest one: a former mayor shown as the current one.">Former mayor</span>
+          <span class="where">infobox</span>
+          <span class="value">Marisol Andrade Cárdenas</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Marisol Andrade Cárdenas was elected mayor in 2016 (SERVEL). Jose Gabriel Parada Aguilar was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Jose Gabriel Parada Aguilar (elected, 1,607 votes)</b> · SERVEL 2016: <b>Marisol Andrade Cardenas (elected, 1,321 votes)</b> · SERVEL 2021: <b>Marisol Andrade Cardenas (not elected, 784 votes)</b></dd><dt>Correction</dt><dd>Update to Jose Gabriel Parada Aguilar, elected in 2024 (SERVEL)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 3 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>Marisol Andrade Cárdenas</code></span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12301-enwiki">Copy</button><pre id="draft-12301-enwiki">| leader_title = [[Alcalde]]
+| leader_name = José Gabriel Parada Aguilar&lt;ref name=&#34;SERVEL2024&#34;&gt;{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}&lt;/ref&gt;
+| leader_party = Independent</pre></div>
+<p class="summary-line"><span>Edit summary</span>Mayor per SERVEL&#39;s 2024 mayoral election results: José Gabriel Parada Aguilar (was Marisol Andrade Cárdenas).</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li></ul><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Porvenir%2C_Chile&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q51120</span><span class="links"><a href="https://www.wikidata.org/wiki/Q51120#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_a6b43878343f9444">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Jose Gabriel Parada Aguilar was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Jose Gabriel Parada Aguilar (elected, 1,607 votes)</b></dd><dt>Correction</dt><dd>Add Jose Gabriel Parada Aguilar as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 3 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12301-wikidata">Copy</button><pre id="draft-12301-wikidata">Q51120: add P6 (head of government) = José Gabriel Parada Aguilar (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: José Gabriel Parada Aguilar</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q51120" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>1 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>José Gabriel Parada Aguilar</td><td>consistent</td><td>José Gabriel Parada Aguilar was elected mayor of Porvenir in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-12302" data-name="primavera 12302" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Primavera</h2>
+      <span class="cut">CUT 12302</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 2 findings · 2 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Blagomir Fernando Brztilo Avendaño</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Blagomir Fernando Brztilo Avendaño</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Blagomir Fernando Brztilo Avendaño</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Karina Fernandez Marin</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Blagomir Brztilo Avendaño is Blagomir Fernando Brztilo Avendaño, elected mayor in 2021 (SERVEL). Karina Fernandez Marin was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Karina Fernández Marín, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Primavera, Chile</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1377104210" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Primavera%2C_Chile" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_62f4aa0d30c37f94">
+        <div class="f-head">
+          <span class="badge tone-amber" title="Names a mayor elected in an earlier election who wasn&#39;t elected in the latest one: a former mayor shown as the current one.">Former mayor</span>
+          <span class="where">infobox</span>
+          <span class="value">Blagomir Brztilo Avendaño</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Blagomir Brztilo Avendaño is Blagomir Fernando Brztilo Avendaño, elected mayor in 2021 (SERVEL). Karina Fernandez Marin was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Karina Fernandez Marin (elected, 342 votes)</b> · SERVEL 2021: <b>Blagomir Fernando Brztilo Avendaño (elected, 300 votes)</b></dd><dt>Correction</dt><dd>Update to Karina Fernandez Marin, elected in 2024 (SERVEL)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>Blagomir Brztilo Avendaño</code></span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12302-enwiki">Copy</button><pre id="draft-12302-enwiki">| leader_title = [[Alcalde]]
+| leader_name = Karina Fernández Marín&lt;ref name=&#34;SERVEL2024&#34;&gt;{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}&lt;/ref&gt;
+| leader_party = Independent</pre></div>
+<p class="summary-line"><span>Edit summary</span>Mayor per SERVEL&#39;s 2024 mayoral election results: Karina Fernández Marín (was Blagomir Brztilo Avendaño).</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li></ul><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Primavera%2C_Chile&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q51586</span><span class="links"><a href="https://www.wikidata.org/wiki/Q51586#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_af42d51897369af0">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Karina Fernandez Marin was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Karina Fernandez Marin (elected, 342 votes)</b></dd><dt>Correction</dt><dd>Add Karina Fernandez Marin as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 2 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12302-wikidata">Copy</button><pre id="draft-12302-wikidata">Q51586: add P6 (head of government) = Karina Fernández Marín (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Karina Fernández Marín</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q51586" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>1 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>Karina Fernández Marín</td><td>consistent</td><td>Karina Fernández Marín was elected mayor of Primavera in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-12303" data-name="timaukel 12303" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Timaukel</h2>
+      <span class="cut">CUT 12303</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 2 findings · 3 Critic rounds</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Alfonso de Lourdes Simunovic Ojeda</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Marcos Martic Haros</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Luis Segundo Barria Andrade</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Luis Barria Andrade</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Marcos Martic Haros is Marcos Patricio Martic Haros, elected mayor in 2016 (SERVEL). Luis Barria Andrade was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Luis Barría Andrade, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="English Wikipedia">
+      <div class="p-head">
+        <h3>English Wikipedia</h3><span class="by">Timaukel</span><span class="links"><a href="https://en.wikipedia.org/w/index.php?oldid=1379269790" rel="noopener" target="_blank">revision read</a><a href="https://en.wikipedia.org/wiki/Timaukel" rel="noopener" target="_blank">article</a></span>      </div>
+      <div class="finding tone-amber" id="fnd_835238df9f25ab88">
+        <div class="f-head">
+          <span class="badge tone-amber" title="Names a mayor elected in an earlier election who wasn&#39;t elected in the latest one: a former mayor shown as the current one.">Former mayor</span>
+          <span class="where">infobox</span>
+          <span class="value">Marcos Martic Haros</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Marcos Martic Haros is Marcos Patricio Martic Haros, elected mayor in 2016 (SERVEL). Luis Barria Andrade was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Luis Barria Andrade (elected, 329 votes)</b> · SERVEL 2021: <b>Marcos Patricio Martic Haros (not elected, 169 votes)</b> · SERVEL 2016: <b>Marcos Martic Haros (elected, 339 votes)</b></dd><dt>Correction</dt><dd>Update to Luis Barria Andrade, elected in 2024 (SERVEL)</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 3 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+<span class="by">replaces <code>Marcos Martic Haros</code></span>          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12303-enwiki">Copy</button><pre id="draft-12303-enwiki">| leader_title = [[Alcalde]]
+| leader_name = Luis Barría Andrade&lt;ref name=&#34;SERVEL2024&#34;&gt;{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}&lt;/ref&gt;
+| leader_party = Independent</pre></div>
+<p class="summary-line"><span>Edit summary</span>Mayor per SERVEL&#39;s 2024 mayoral election results: Luis Barría Andrade (was Marcos Martic Haros).</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li></ul><div class="links"><a href="https://en.wikipedia.org/w/index.php?title=Timaukel&amp;action=edit" rel="noopener" target="_blank">edit the article</a></div>      </div>
+    </section>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q188177</span><span class="links"><a href="https://www.wikidata.org/wiki/Q188177#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_2ca1b1ac3453a83a">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Luis Barria Andrade was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Luis Barria Andrade (elected, 329 votes)</b></dd><dt>Correction</dt><dd>Add Luis Barria Andrade as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 3 rounds · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12303-wikidata">Copy</button><pre id="draft-12303-wikidata">Q188177: add P6 (head of government) = Luis Barría Andrade (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Luis Barría Andrade</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q188177" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>1 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>Luis Barría Andrade</td><td>consistent</td><td>Luis Barría Andrade was elected mayor of Timaukel in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-12202" data-name="antártica 12202" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Antártica</h2>
+      <span class="cut">CUT 12202</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Pamela Rosanna Tapia Villarroel</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Patricio Fernandez Alarcon</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Jaime Patricio Fernandez Alarcon</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Patricio Fernandez Alarcon</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata (no head of government statement) names no mayor. Patricio Fernandez Alarcon was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Patricio Fernandez Alarcon, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q15050531</span><span class="links"><a href="https://www.wikidata.org/wiki/Q15050531#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_b5329788d458865f">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Patricio Fernandez Alarcon was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Patricio Fernandez Alarcon (elected, 13 votes)</b></dd><dt>Correction</dt><dd>Add Patricio Fernandez Alarcon as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12202-wikidata">Copy</button><pre id="draft-12202-wikidata">Q15050531: add P6 (head of government) = Patricio Fernandez Alarcon (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Patricio Fernandez Alarcon</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>SERVEL writes names in capitals without accents: check the spelling of the name.</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q15050531" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>2 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>Patricio Fernández</td><td>consistent</td><td>Patricio Fernández is Patricio Fernandez Alarcon, elected mayor of Antártica in 2024 (SERVEL).</td></tr><tr><td>Wikipedia (EN) · infobox</td><td>Patricio Fernández</td><td>consistent</td><td>Patricio Fernández is Patricio Fernandez Alarcon, elected mayor of Antártica in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-12201" data-name="cabo de hornos 12201" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Cabo de Hornos</h2>
+      <span class="cut">CUT 12201</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Pamela Rosanna Tapia Villarroel</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Patricio Fernandez Alarcon</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Jaime Patricio Fernandez Alarcon</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Patricio Fernandez Alarcon</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata (no head of government statement) names no mayor. Patricio Fernandez Alarcon was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Patricio Fernandez Alarcon, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q3673</span><span class="links"><a href="https://www.wikidata.org/wiki/Q3673#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_b1d6deb96d239d3f">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Patricio Fernandez Alarcon was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Patricio Fernandez Alarcon (elected, 674 votes)</b></dd><dt>Correction</dt><dd>Add Patricio Fernandez Alarcon as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12201-wikidata">Copy</button><pre id="draft-12201-wikidata">Q3673: add P6 (head of government) = Patricio Fernandez Alarcon (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Patricio Fernandez Alarcon</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>SERVEL writes names in capitals without accents: check the spelling of the name.</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q3673" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>2 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>Patricio Fernández</td><td>consistent</td><td>Patricio Fernández is Patricio Fernandez Alarcon, elected mayor of Cabo de Hornos in 2024 (SERVEL).</td></tr><tr><td>Wikipedia (EN) · infobox</td><td>Patricio Fernández</td><td>consistent</td><td>Patricio Fernández is Patricio Fernandez Alarcon, elected mayor of Cabo de Hornos in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-12102" data-name="laguna blanca 12102" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Laguna Blanca</h2>
+      <span class="cut">CUT 12102</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Eleazar Augusto Ricardo Ritter Rodriguez</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Ricardo Ritter Rodriguez</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Fernando Ivan Ojeda Gonzalez</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Fernando Ojeda Gonzalez</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata (no head of government statement) names no mayor. Fernando Ojeda Gonzalez was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Fernando Ojeda González, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q14474</span><span class="links"><a href="https://www.wikidata.org/wiki/Q14474#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_49d61b420519d5fd">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Fernando Ojeda Gonzalez was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Fernando Ojeda Gonzalez (elected, 265 votes)</b></dd><dt>Correction</dt><dd>Add Fernando Ojeda Gonzalez as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12102-wikidata">Copy</button><pre id="draft-12102-wikidata">Q14474: add P6 (head of government) = Fernando Ojeda González (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Fernando Ojeda González</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q14474" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>2 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>Fernando Ojeda González</td><td>consistent</td><td>Fernando Ojeda González was elected mayor of Laguna Blanca in 2024 (SERVEL).</td></tr><tr><td>Wikipedia (EN) · infobox</td><td>Fernando Ojeda González</td><td>consistent</td><td>Fernando Ojeda González was elected mayor of Laguna Blanca in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-12101" data-name="punta arenas 12101" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Punta Arenas</h2>
+      <span class="cut">CUT 12101</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">2 names checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Emilio Oscar Boccazzi Campos</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Claudio Radonich Jimenez</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Claudio Andres Radonich Jimenez</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Claudio Radonich Jimenez</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 2 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata (no head of government statement) names no mayor. Claudio Radonich Jimenez was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Claudio Radonich Jiménez, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q20530729</span><span class="links"><a href="https://www.wikidata.org/wiki/Q20530729#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_cb1b5f95a54a24e2">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Claudio Radonich Jimenez was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Claudio Radonich Jimenez (elected, 51,734 votes)</b></dd><dt>Correction</dt><dd>Add Claudio Radonich Jimenez as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12101-wikidata">Copy</button><pre id="draft-12101-wikidata">Q20530729: add P6 (head of government) = Claudio Radonich Jiménez (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Claudio Radonich Jiménez</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q20530729" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>1 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>Claudio Radonich Jiménez</td><td>consistent</td><td>Claudio Radonich Jiménez was elected mayor of Punta Arenas in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-12103" data-name="río verde 12103" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Río Verde</h2>
+      <span class="cut">CUT 12103</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Silvia Tatiana Vasquez Barrientos</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Tatiana Vasquez Barrientos</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Sabina Alejandra Ballesteros Vargas</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Tatiana Vasquez Barrientos</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata (no head of government statement) names no mayor. Tatiana Vasquez Barrientos was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Tatiana Vásquez Barrientos, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q56131</span><span class="links"><a href="https://www.wikidata.org/wiki/Q56131#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_6bf11f0aad5b0a42">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Tatiana Vasquez Barrientos was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Tatiana Vasquez Barrientos (elected, 253 votes)</b></dd><dt>Correction</dt><dd>Add Tatiana Vasquez Barrientos as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12103-wikidata">Copy</button><pre id="draft-12103-wikidata">Q56131: add P6 (head of government) = Tatiana Vásquez Barrientos (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Tatiana Vásquez Barrientos</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q56131" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>2 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>Tatiana Vásquez</td><td>consistent</td><td>Tatiana Vásquez is Tatiana Vasquez Barrientos, elected mayor of Río Verde in 2024 (SERVEL).</td></tr><tr><td>Wikipedia (EN) · infobox</td><td>Tatiana Vásquez Barrientos</td><td>consistent</td><td>Tatiana Vásquez Barrientos was elected mayor of Río Verde in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <article class="comuna" id="comuna-12402" data-name="torres del paine 12402" data-review="no" data-drafts="yes">
+    <div class="c-head">
+      <h2>Torres del Paine</h2>
+      <span class="cut">CUT 12402</span>
+      <span class="badge status-approved">Critic approved</span>
+      <span class="by">3 names checked · 1 finding · 1 Critic round</span>
+    </div>
+    <div class="official" aria-label="SERVEL election results">
+      <div class="fig"><small>SERVEL 2012 · elected</small><b>Anahi Marcela Cardenas Rodriguez</b></div>
+      <div class="fig"><small>SERVEL 2016 · elected</small><b>Roberto Danilo Cardenas Silva</b></div>
+      <div class="fig"><small>SERVEL 2021 · elected</small><b>Anahi Marcela Cardenas Rodriguez</b></div>
+      <div class="fig current"><small>SERVEL 2024 · elected · latest</small><b>Anahi Cardenas Rodriguez</b></div>
+    </div>
+    <div class="note-box"><b>Since the last check</b> <span class="by">(2026-10-26, run <code>national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena</code>)</span>: 3 pages unchanged.    </div>
+<div class="note-box"><b>In short:</b> Wikidata (no head of government statement) names no mayor. Anahi Cardenas Rodriguez was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Anahí Cárdenas Rodríguez, elected in 2024 (SERVEL). <span class="by">(written by code)</span></div>
+    <section class="page" aria-label="Wikidata">
+      <div class="p-head">
+        <h3>Wikidata</h3><span class="by">Q200948</span><span class="links"><a href="https://www.wikidata.org/wiki/Q200948#P6" rel="noopener" target="_blank">item</a></span>      </div>
+      <div class="finding tone-slate" id="fnd_dea288814ddc181b">
+        <div class="f-head">
+          <span class="badge tone-slate" title="The source has no population figure at all.">Missing value</span>
+          <span class="where">item</span>
+          <span class="value">—</span>
+          <span class="badge status-approved">Critic approved</span>
+        </div>
+        <p>Wikidata (no head of government statement) names no mayor. Anahi Cardenas Rodriguez was elected in the 2024 election (SERVEL; term from 2024-12-06).</p>
+        <dl class="facts">
+<dt>SERVEL results</dt><dd>SERVEL 2024: <b>Anahi Cardenas Rodriguez (elected, 665 votes)</b></dd><dt>Correction</dt><dd>Add Anahi Cardenas Rodriguez as head of government (P6), from 2024</dd>          <dt>Critic</dt><dd><b>9/9</b> (evidence 3 · definition 3 · sourcing 3) · 1 round · reviewed by code</dd>
+          <dt>Classified by</dt><dd>code · confidence 0.9</dd>
+        </dl>
+      </div>
+      <div class="draft">
+        <div class="d-head">
+          <b>Draft edit</b>
+          <span class="badge status-approved">passed the Critic · 9/9</span>
+        </div>
+        <div class="code"><button type="button" class="copy" data-copy="draft-12402-wikidata">Copy</button><pre id="draft-12402-wikidata">Q200948: add P6 (head of government) = Anahí Cárdenas Rodríguez (the person&#39;s item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.</pre></div>
+<p class="summary-line"><span>Edit summary</span>Head of government per SERVEL&#39;s 2024 election results: Anahí Cárdenas Rodríguez</p><ul class="plain"><li>SERVEL&#39;s results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don&#39;t say who holds the office today. Before applying this, check that it hasn&#39;t changed hands since (a resignation, a removal, a death, a stand-in).</li><li>QuickStatements needs the person&#39;s own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand.</li></ul><div class="links"><a href="https://www.wikidata.org/wiki/Q200948" rel="noopener" target="_blank">open the item</a></div>      </div>
+    </section>
+
+    <details>
+      <summary>2 names with no finding (the elected mayor, or a former term Wikidata dates correctly)</summary>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Where</th><th>Name</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody>
+<tr><td>Wikipedia (ES) · infobox</td><td>Anahí Cárdenas Rodríguez</td><td>consistent</td><td>Anahí Cárdenas Rodríguez was elected mayor of Torres del Paine in 2024 (SERVEL).</td></tr><tr><td>Wikipedia (EN) · infobox</td><td>Anahi Cardenas Rodríguez</td><td>consistent</td><td>Anahi Cardenas Rodríguez was elected mayor of Torres del Paine in 2024 (SERVEL).</td></tr>        </tbody>
+      </table></div>
+    </details>
+  </article>
+  <p class="empty" id="no-match" hidden>No comuna matches the filter.</p>
+</main>
+<footer><div class="wrap">
+<p>Agent trace: <code>logs/trace-national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen.jsonl</code> · World Model audit log: <code>logs/world-model-national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen.jsonl</code> (133 entries) · result: <code>output/national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen/result.json</code></p>  <p>Election results: SERVEL (Servicio Electoral de Chile). Wikipedia text: CC BY-SA 4.0. Wikidata: CC0. Generated by FactSync Chile, 2026-10-26 21:44 UTC.</p>
+</div></footer>
+<script>
+(function () {
+  document.querySelectorAll("button.copy").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var text = document.getElementById(button.dataset.copy).textContent;
+      var done = function () { button.textContent = "Copied"; setTimeout(function () { button.textContent = "Copy"; }, 1500); };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done);
+      } else {
+        var area = document.createElement("textarea");
+        area.value = text; document.body.appendChild(area); area.select();
+        try { document.execCommand("copy"); done(); } finally { document.body.removeChild(area); }
+      }
+    });
+  });
+  var input = document.getElementById("filter-text");
+  if (!input) return;
+  var mode = "all";
+  var cards = Array.prototype.slice.call(document.querySelectorAll("article.comuna"));
+  function apply() {
+    var text = input.value.trim().toLowerCase(), shown = 0;
+    cards.forEach(function (card) {
+      var visible = (!text || card.dataset.name.indexOf(text) >= 0)
+        && (mode === "all" || (mode === "review" && card.dataset.review === "yes") || (mode === "drafts" && card.dataset.drafts === "yes"));
+      card.hidden = !visible;
+      if (visible) shown++;
+    });
+    document.getElementById("no-match").hidden = shown > 0 || !cards.length;
+  }
+  input.addEventListener("input", apply);
+  document.querySelectorAll(".filters button").forEach(function (button) {
+    button.addEventListener("click", function () {
+      mode = button.dataset.filter;
+      document.querySelectorAll(".filters button").forEach(function (b) { b.setAttribute("aria-pressed", String(b === button)); });
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>

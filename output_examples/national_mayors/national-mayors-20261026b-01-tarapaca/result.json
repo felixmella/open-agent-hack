@@ -1,0 +1,2547 @@
+{
+  "run_id": "national-mayors-20261026b-01-tarapaca",
+  "fact": "mayor",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 7,
+    "claims": 17,
+    "findings": 9,
+    "findings_by_class": {
+      "missing_value": 8,
+      "outdated_mayor": 1
+    },
+    "drafts": 9,
+    "escalations": 0,
+    "critic_rejections": 1,
+    "discoveries": [
+      "servel_mayors_2021"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 7,
+      "unchanged": 17
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "fact": "mayor",
+    "cuts": [
+      "01101",
+      "01107",
+      "01401",
+      "01402",
+      "01403",
+      "01404",
+      "01405"
+    ],
+    "sources": [
+      "servel_mayors_2024",
+      "wikidata_mayor",
+      "wikipedia_es_mayor",
+      "wikipedia_en_mayor",
+      "servel_mayors_2021"
+    ],
+    "reason": "7 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "servel_mayors_2024": {
+      "rows": 26,
+      "observations": 26,
+      "appended": 0,
+      "unchanged": 26,
+      "reviews": 0
+    },
+    "wikidata_mayor": {
+      "rows": 77,
+      "observations": 7,
+      "appended": 0,
+      "unchanged": 7,
+      "reviews": 0
+    },
+    "wikipedia_es_mayor": {
+      "rows": 18,
+      "observations": 10,
+      "appended": 0,
+      "unchanged": 10,
+      "reviews": 0
+    },
+    "wikipedia_en_mayor": {
+      "rows": 12,
+      "observations": 10,
+      "appended": 0,
+      "unchanged": 10,
+      "reviews": 0
+    },
+    "servel_mayors_2021": {
+      "rows": 25,
+      "observations": 25,
+      "appended": 0,
+      "unchanged": 25,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "servel_mayors_2021",
+      "reason": "by coverage (election, 2021), the best fit for 1 figure(s), e.g. 'Javier García Choque' ('named as mayor (Alcalde)')",
+      "requests": [
+        {
+          "comuna": "COLCHANE",
+          "value": "Javier García Choque",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    }
+  ],
+  "declined_discoveries": [],
+  "comunas": [
+    {
+      "cut": "01101",
+      "name": "IQUIQUE",
+      "status": "approved",
+      "elections": {
+        "2021": {
+          "elected": "MAURICIO ALEJANDRO SORIA MACCHIAVELLO",
+          "party": "INDEPENDIENTES-LISTA K",
+          "pact": "UNIDAD POR EL APRUEBO",
+          "votes": 28346,
+          "candidates": [
+            {
+              "name": "MAURICIO ALEJANDRO SORIA MACCHIAVELLO",
+              "party": "INDEPENDIENTES-LISTA K",
+              "votes": 28346,
+              "elected": true
+            },
+            {
+              "name": "MATIAS FELIPE RAMIREZ PASCAL",
+              "party": "PARTIDO COMUNISTA DE CHILE",
+              "votes": 13529,
+              "elected": false
+            },
+            {
+              "name": "DANIELA CECILIA SOLARI VEGA",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 12513,
+              "elected": false
+            },
+            {
+              "name": "FRANCISCO JAVIER ALCAYAGA MOTTA",
+              "party": "INDEPENDIENTES-LISTA XZ",
+              "votes": 6784,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "MAURICIO ALEJANDRO SORIA MACCHIAVELLO",
+          "party": "INDEPENDIENTES",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 45113,
+          "candidates": [
+            {
+              "name": "MAURICIO ALEJANDRO SORIA MACCHIAVELLO",
+              "party": "INDEPENDIENTES",
+              "votes": 45113,
+              "elected": true
+            },
+            {
+              "name": "XIMENA NARANJO PINTO",
+              "party": "INDEPENDIENTES",
+              "votes": 38654,
+              "elected": false
+            },
+            {
+              "name": "FELIPE FRANCISCO ROJAS ANDRADE",
+              "party": "INDEPENDIENTES",
+              "votes": 20063,
+              "elected": false
+            },
+            {
+              "name": "JORGE ZAVALA VALENZUELA",
+              "party": "PARTIDO DEMOCRATAS CHILE",
+              "votes": 11008,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_f91f896f80153c1f",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Mauricio Alejandro Soria Macchiavello was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_da0b1b93487f1b7b21eedf73",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q23660233"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_bf5b4b5cb202d3573b5f9151",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "MAURICIO ALEJANDRO SORIA MACCHIAVELLO",
+              "elected": true,
+              "votes": 45113,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "MAURICIO ALEJANDRO SORIA MACCHIAVELLO",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_bf5b4b5cb202d3573b5f9151",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660233",
+          "url": "https://www.wikidata.org/wiki/Q23660233",
+          "findings": [
+            "fnd_f91f896f80153c1f"
+          ],
+          "anchor": "obs_da0b1b93487f1b7b21eedf73",
+          "correction": {
+            "person": "MAURICIO ALEJANDRO SORIA MACCHIAVELLO",
+            "name_as_written": "Mauricio Alejandro Soria Macchiavello",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_bf5b4b5cb202d3573b5f9151"
+          },
+          "statement": "Q23660233: add P6 (head of government) = Mauricio Alejandro Soria Macchiavello (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Mauricio Alejandro Soria Macchiavello",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Mauricio Alejandro Soria Macchiavello was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Mauricio Alejandro Soria Macchiavello, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": null,
+            "observation": "obs_da0b1b93487f1b7b21eedf73",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-01-tarapaca",
+        "checked_at": "2026-10-26T21:20:52Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_da0b1b93487f1b7b21eedf73",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_da0b1b93487f1b7b21eedf73",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01107",
+      "name": "ALTO HOSPICIO",
+      "status": "approved",
+      "elections": {
+        "2021": {
+          "elected": "PATRICIO ELIAS FERREIRA RIVERA",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 6833,
+          "candidates": [
+            {
+              "name": "PATRICIO ELIAS FERREIRA RIVERA",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 6833,
+              "elected": true
+            },
+            {
+              "name": "GERMAN ANTONIO QUIROZ CANCINO",
+              "party": "INDEPENDIENTES",
+              "votes": 3462,
+              "elected": false
+            },
+            {
+              "name": "CAMILA ISABEL ARCE FAJARDO",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 2457,
+              "elected": false
+            },
+            {
+              "name": "JORGE ANTONIO ZAVALA VALENZUELA",
+              "party": "INDEPENDIENTES",
+              "votes": 2191,
+              "elected": false
+            },
+            {
+              "name": "PAULA ANDREA ASTUDILLO DIAZ",
+              "party": "INDEPENDIENTES",
+              "votes": 2132,
+              "elected": false
+            },
+            {
+              "name": "RENE DANIEL CACERES ARAYA",
+              "party": "INDEPENDIENTES",
+              "votes": 1643,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "PATRICIO ELIAS FERREIRA RIVERA",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 20946,
+          "candidates": [
+            {
+              "name": "PATRICIO ELIAS FERREIRA RIVERA",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 20946,
+              "elected": true
+            },
+            {
+              "name": "RAMON GALLEGUILLOS CASTILLO",
+              "party": "RENOVACION NACIONAL",
+              "votes": 18557,
+              "elected": false
+            },
+            {
+              "name": "FERNANDO ORTEGA ORTEGA",
+              "party": "PARTIDO SOCIAL CRISTIANO",
+              "votes": 5837,
+              "elected": false
+            },
+            {
+              "name": "TANYA JACQUELINE PRECILLA CRUZ",
+              "party": "INDEPENDIENTES",
+              "votes": 5753,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_bd35ac6af129e9bd",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Patricio Elias Ferreira Rivera was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_1d6aefb41ed2338fef7d2ab8",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q2217"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_0429232aa9cbe5e4d05c6d56",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "PATRICIO ELIAS FERREIRA RIVERA",
+              "elected": true,
+              "votes": 20946,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "PATRICIO ELIAS FERREIRA RIVERA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_0429232aa9cbe5e4d05c6d56",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_e0564d9251b755c64f8e117d",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Alto Hospicio",
+            "revid": "175260668",
+            "location": "infobox",
+            "role": "current",
+            "name": "Patricio Elías Ferreira Rivera",
+            "name_raw": "Patricio Elías Ferreira Rivera ([[PDC (Chile)|PDC]])",
+            "notes": [
+              "PDC"
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Patricio Elías Ferreira Rivera was elected mayor of Alto Hospicio in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_1fbe2ed9aab7f89d9dfdfd45",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Alto Hospicio",
+            "revid": "1374620798",
+            "location": "infobox",
+            "role": "current",
+            "name": "Patricio Ferreira",
+            "name_raw": "Patricio Ferreira ([[Christian Democratic Party (Chile)|PDC]])",
+            "notes": [
+              "PDC"
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Patricio Ferreira is Patricio Elias Ferreira Rivera, elected mayor of Alto Hospicio in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q2217",
+          "url": "https://www.wikidata.org/wiki/Q2217",
+          "findings": [
+            "fnd_bd35ac6af129e9bd"
+          ],
+          "anchor": "obs_1d6aefb41ed2338fef7d2ab8",
+          "correction": {
+            "person": "PATRICIO ELIAS FERREIRA RIVERA",
+            "name_as_written": "Patricio Elías Ferreira Rivera",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_0429232aa9cbe5e4d05c6d56"
+          },
+          "statement": "Q2217: add P6 (head of government) = Patricio Elías Ferreira Rivera (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Patricio Elías Ferreira Rivera",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Patricio Elias Ferreira Rivera was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Patricio Elías Ferreira Rivera, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_1fbe2ed9aab7f89d9dfdfd45",
+            "reference": null,
+            "status": "checked",
+            "value": "Patricio Ferreira",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_e0564d9251b755c64f8e117d",
+            "reference": null,
+            "status": "checked",
+            "value": "Patricio Elías Ferreira Rivera",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_1d6aefb41ed2338fef7d2ab8",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-01-tarapaca",
+        "checked_at": "2026-10-26T21:20:52Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Patricio Elías Ferreira Rivera",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_e0564d9251b755c64f8e117d",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_e0564d9251b755c64f8e117d",
+              "reference": null,
+              "status": "checked",
+              "value": "Patricio Elías Ferreira Rivera",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Patricio Ferreira",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_1fbe2ed9aab7f89d9dfdfd45",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_1fbe2ed9aab7f89d9dfdfd45",
+              "reference": null,
+              "status": "checked",
+              "value": "Patricio Ferreira",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_1d6aefb41ed2338fef7d2ab8",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_1d6aefb41ed2338fef7d2ab8",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01401",
+      "name": "POZO ALMONTE",
+      "status": "approved",
+      "elections": {
+        "2021": {
+          "elected": "RICHARD ALFONSO GODOY AGUIRRE",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 2922,
+          "candidates": [
+            {
+              "name": "RICHARD ALFONSO GODOY AGUIRRE",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 2922,
+              "elected": true
+            },
+            {
+              "name": "JOSE FERNANDO MUÑOZ CACERES",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 1586,
+              "elected": false
+            },
+            {
+              "name": "EDWIN GONZALO LOPEZ PAVEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 904,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "RICHARD GODOY AGUIRRE",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 5622,
+          "candidates": [
+            {
+              "name": "RICHARD GODOY AGUIRRE",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 5622,
+              "elected": true
+            },
+            {
+              "name": "GIOVANA POVEDA PEMPELFORT",
+              "party": "RENOVACION NACIONAL",
+              "votes": 1624,
+              "elected": false
+            },
+            {
+              "name": "JOSE FERNANDO MUÑOZ CACERES",
+              "party": "INDEPENDIENTES",
+              "votes": 1410,
+              "elected": false
+            },
+            {
+              "name": "CARLOS FRANCISCO SMITH PASCAL",
+              "party": "INDEPENDIENTES",
+              "votes": 231,
+              "elected": false
+            },
+            {
+              "name": "JUAN PABLO CORTES ROJAS",
+              "party": "INDEPENDIENTES",
+              "votes": 211,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_36158d6b8463870b",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Richard Godoy Aguirre was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_26a3e068334c7f233fcb23df",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q23660626"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_0a252b7b3a2b4fc57e60fc63",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "RICHARD GODOY AGUIRRE",
+              "elected": true,
+              "votes": 5622,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "RICHARD GODOY AGUIRRE",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_0a252b7b3a2b4fc57e60fc63",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660626",
+          "url": "https://www.wikidata.org/wiki/Q23660626",
+          "findings": [
+            "fnd_36158d6b8463870b"
+          ],
+          "anchor": "obs_26a3e068334c7f233fcb23df",
+          "correction": {
+            "person": "RICHARD GODOY AGUIRRE",
+            "name_as_written": "Richard Godoy Aguirre",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_0a252b7b3a2b4fc57e60fc63"
+          },
+          "statement": "Q23660626: add P6 (head of government) = Richard Godoy Aguirre (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Richard Godoy Aguirre",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Richard Godoy Aguirre was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Richard Godoy Aguirre, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": null,
+            "observation": "obs_26a3e068334c7f233fcb23df",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-01-tarapaca",
+        "checked_at": "2026-10-26T21:20:52Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_26a3e068334c7f233fcb23df",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_26a3e068334c7f233fcb23df",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01402",
+      "name": "CAMIÑA",
+      "status": "approved",
+      "elections": {
+        "2021": {
+          "elected": "EVELYN MARIA MAMANI VIZA",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 596,
+          "candidates": [
+            {
+              "name": "EVELYN MARIA MAMANI VIZA",
+              "party": "INDEPENDIENTES",
+              "votes": 596,
+              "elected": true
+            },
+            {
+              "name": "MARINA DEL CARMEN LUNA PLATERO",
+              "party": "RENOVACION NACIONAL",
+              "votes": 499,
+              "elected": false
+            },
+            {
+              "name": "ALEX DEMETRIO CARLOS SANCHEZ",
+              "party": "INDEPENDIENTES-LISTA M",
+              "votes": 372,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "EVELYN MAMANI VIZA",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 997,
+          "candidates": [
+            {
+              "name": "EVELYN MAMANI VIZA",
+              "party": "INDEPENDIENTES",
+              "votes": 997,
+              "elected": true
+            },
+            {
+              "name": "SANDRA CHALLAPA MAMANI",
+              "party": "PARTIDO SOCIAL CRISTIANO",
+              "votes": 877,
+              "elected": false
+            },
+            {
+              "name": "MONICA CHAMACA CASTRO",
+              "party": "INDEPENDIENTES",
+              "votes": 489,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_9538f6e90b756c1e",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Evelyn Mamani Viza was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_db5402a197c8e67345cf841b",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q3731"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_f0c3b507650adfa7a304103b",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "EVELYN MAMANI VIZA",
+              "elected": true,
+              "votes": 997,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "EVELYN MAMANI VIZA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_f0c3b507650adfa7a304103b",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_7490a5d3a4336897",
+          "target": "en",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "The English Wikipedia infobox names no mayor. Evelyn Mamani Viza was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_86ad39849c842dc732ffc9ad",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Camiña",
+            "revid": "1375327005",
+            "location": "infobox",
+            "role": "current",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": true,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_f0c3b507650adfa7a304103b",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "EVELYN MAMANI VIZA",
+              "elected": true,
+              "votes": 997,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "EVELYN MAMANI VIZA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_f0c3b507650adfa7a304103b",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_0c9b7eae6b1d205d9c7a7eda",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Camiña",
+            "revid": "175260202",
+            "location": "infobox",
+            "role": "current",
+            "name": "Evelyn Mamani Viza",
+            "name_raw": "Evelyn Mamani Viza",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Evelyn Mamani Viza was elected mayor of Camiña in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Camiña",
+          "revid": "1375327005",
+          "findings": [
+            "fnd_7490a5d3a4336897"
+          ],
+          "anchor": "obs_86ad39849c842dc732ffc9ad",
+          "replaces": {
+            "name": null,
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Camiña",
+          "correction": {
+            "person": "EVELYN MAMANI VIZA",
+            "name_as_written": "Evelyn Mamani Viza",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_f0c3b507650adfa7a304103b"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Evelyn Mamani Viza<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Evelyn Mamani Viza.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3731",
+          "url": "https://www.wikidata.org/wiki/Q3731",
+          "findings": [
+            "fnd_9538f6e90b756c1e"
+          ],
+          "anchor": "obs_db5402a197c8e67345cf841b",
+          "correction": {
+            "person": "EVELYN MAMANI VIZA",
+            "name_as_written": "Evelyn Mamani Viza",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_f0c3b507650adfa7a304103b"
+          },
+          "statement": "Q3731: add P6 (head of government) = Evelyn Mamani Viza (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Evelyn Mamani Viza",
+          "status": "approved"
+        },
+        "explanation": "The English Wikipedia infobox names no mayor. Evelyn Mamani Viza was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Evelyn Mamani Viza, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_86ad39849c842dc732ffc9ad",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_0c9b7eae6b1d205d9c7a7eda",
+            "reference": null,
+            "status": "checked",
+            "value": "Evelyn Mamani Viza",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_db5402a197c8e67345cf841b",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-01-tarapaca",
+        "checked_at": "2026-10-26T21:20:52Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Evelyn Mamani Viza",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_0c9b7eae6b1d205d9c7a7eda",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_0c9b7eae6b1d205d9c7a7eda",
+              "reference": null,
+              "status": "checked",
+              "value": "Evelyn Mamani Viza",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_86ad39849c842dc732ffc9ad",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_86ad39849c842dc732ffc9ad",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_db5402a197c8e67345cf841b",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_db5402a197c8e67345cf841b",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01403",
+      "name": "COLCHANE",
+      "status": "approved",
+      "elections": {
+        "2021": {
+          "elected": "JAVIER IGNACIO GARCIA CHOQUE",
+          "party": "INDEPENDIENTES-LISTA XU",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 1120,
+          "candidates": [
+            {
+              "name": "JAVIER IGNACIO GARCIA CHOQUE",
+              "party": "INDEPENDIENTES-LISTA XU",
+              "votes": 1120,
+              "elected": true
+            },
+            {
+              "name": "ANDRES RODRIGO GARCIA FLORES",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 622,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "TEOFILO PEDRO MAMANI GARCIA",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 746,
+          "candidates": [
+            {
+              "name": "TEOFILO PEDRO MAMANI GARCIA",
+              "party": "INDEPENDIENTES",
+              "votes": 746,
+              "elected": true
+            },
+            {
+              "name": "JAVIER IGNACIO GARCIA CHOQUE",
+              "party": "PARTIDO DEMOCRATAS CHILE",
+              "votes": 691,
+              "elected": false
+            },
+            {
+              "name": "ROSAURO DONATO GARCIA CHOQUE",
+              "party": "INDEPENDIENTES",
+              "votes": 384,
+              "elected": false
+            },
+            {
+              "name": "JUAN SEGUNDO CHOQUE MAMANI",
+              "party": "INDEPENDIENTES",
+              "votes": 235,
+              "elected": false
+            },
+            {
+              "name": "KIARA ANTONIA ALIAGA CALDERON",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 15,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_6132c31849fcdb00",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Teofilo Pedro Mamani Garcia was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_eeb0b7b6064419f15ac6b76e",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q3839"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_94f625c7c6a1b7220786a1f9",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "TEOFILO PEDRO MAMANI GARCIA",
+              "elected": true,
+              "votes": 746,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "TEOFILO PEDRO MAMANI GARCIA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_94f625c7c6a1b7220786a1f9",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_a67ba3864ff2e0c7",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Javier García Choque is Javier Ignacio Garcia Choque, elected mayor in 2021 (SERVEL). Teofilo Pedro Mamani Garcia was elected in the 2024 election (SERVEL; term from 2024-12-06). Javier Ignacio Garcia Choque ran again in 2024 and wasn't elected (691 votes to 746).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_634ae32717e568bc24dab493",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Colchane",
+            "revid": "1375649382",
+            "location": "infobox",
+            "role": "current",
+            "name": "Javier García Choque",
+            "name_raw": "[[Javier García Choque]]",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_94f625c7c6a1b7220786a1f9",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "TEOFILO PEDRO MAMANI GARCIA",
+              "elected": true,
+              "votes": 746,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_6e8d3cf13c70b01da4d2bc5a",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "JAVIER IGNACIO GARCIA CHOQUE",
+              "elected": true,
+              "votes": 1120,
+              "party": "INDEPENDIENTES-LISTA XU"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_5275086a3d81ef4093180d62",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JAVIER IGNACIO GARCIA CHOQUE",
+              "elected": false,
+              "votes": 691,
+              "party": "PARTIDO DEMOCRATAS CHILE"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "TEOFILO PEDRO MAMANI GARCIA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_94f625c7c6a1b7220786a1f9",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_javier_ignacio_garcia_choque",
+            "name": "JAVIER IGNACIO GARCIA CHOQUE",
+            "ran": [
+              2021,
+              2024
+            ],
+            "won": [
+              2021
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_javier_ignacio_garcia_choque",
+              "name": "JAVIER IGNACIO GARCIA CHOQUE",
+              "ran": [
+                2021,
+                2024
+              ],
+              "won": [
+                2021
+              ]
+            },
+            {
+              "level": "partial",
+              "why": "the surname fits but not the given name (JAVIER)",
+              "id": "p_rosauro_donato_garcia_choque",
+              "name": "ROSAURO DONATO GARCIA CHOQUE",
+              "ran": [
+                2024
+              ],
+              "won": []
+            },
+            {
+              "level": "partial",
+              "why": "the surname fits but not the given name (JAVIER GARCIA)",
+              "id": "p_juan_segundo_choque_mamani",
+              "name": "JUAN SEGUNDO CHOQUE MAMANI",
+              "ran": [
+                2024
+              ],
+              "won": []
+            },
+            {
+              "level": "partial",
+              "why": "another second surname (CHOQUE, not FLORES)",
+              "id": "p_andres_rodrigo_garcia_flores",
+              "name": "ANDRES RODRIGO GARCIA FLORES",
+              "ran": [
+                2021
+              ],
+              "won": []
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_f4923784c7d3b21cb585a63f",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Colchane",
+            "revid": "175416466",
+            "location": "infobox",
+            "role": "current",
+            "name": "Teófilo Mamani",
+            "name_raw": "[[Teófilo Mamani García|Teófilo Mamani]] (Ind.)",
+            "notes": [
+              "Ind."
+            ],
+            "linked": "Teófilo Mamani García",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Teófilo Mamani is Teofilo Pedro Mamani Garcia, elected mayor of Colchane in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_a67ba3864ff2e0c7"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_a67ba3864ff2e0c7",
+              "finding_ids": [
+                "fnd_a67ba3864ff2e0c7"
+              ],
+              "comuna": "COLCHANE",
+              "cut": "01403",
+              "figures": [
+                {
+                  "finding_id": "fnd_a67ba3864ff2e0c7",
+                  "value": "Javier García Choque",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Javier García Choque' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Colchane",
+          "revid": "1375649382",
+          "findings": [
+            "fnd_a67ba3864ff2e0c7"
+          ],
+          "anchor": "obs_634ae32717e568bc24dab493",
+          "replaces": {
+            "name": "[[Javier García Choque]]",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Colchane",
+          "correction": {
+            "person": "TEOFILO PEDRO MAMANI GARCIA",
+            "name_as_written": "Teófilo Mamani García",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_94f625c7c6a1b7220786a1f9"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Teófilo Mamani García<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Teófilo Mamani García (was Javier García Choque).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3839",
+          "url": "https://www.wikidata.org/wiki/Q3839",
+          "findings": [
+            "fnd_6132c31849fcdb00"
+          ],
+          "anchor": "obs_eeb0b7b6064419f15ac6b76e",
+          "correction": {
+            "person": "TEOFILO PEDRO MAMANI GARCIA",
+            "name_as_written": "Teófilo Mamani García",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_94f625c7c6a1b7220786a1f9"
+          },
+          "statement": "Q3839: add P6 (head of government) = Teófilo Mamani García (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Teófilo Mamani García",
+          "status": "approved"
+        },
+        "explanation": "Javier García Choque is Javier Ignacio Garcia Choque, elected mayor in 2021 (SERVEL). Teofilo Pedro Mamani Garcia was elected in the 2024 election (SERVEL; term from 2024-12-06). Javier Ignacio Garcia Choque ran again in 2024 and wasn't elected (691 votes to 746). Wikidata (no head of government statement) names no mayor. The drafts name Teófilo Mamani García, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_634ae32717e568bc24dab493",
+            "reference": null,
+            "status": "approved",
+            "value": "Javier García Choque",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_f4923784c7d3b21cb585a63f",
+            "reference": null,
+            "status": "checked",
+            "value": "Teófilo Mamani",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_eeb0b7b6064419f15ac6b76e",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-01-tarapaca",
+        "checked_at": "2026-10-26T21:20:52Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Teófilo Mamani",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_f4923784c7d3b21cb585a63f",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_f4923784c7d3b21cb585a63f",
+              "reference": null,
+              "status": "checked",
+              "value": "Teófilo Mamani",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Javier García Choque",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_634ae32717e568bc24dab493",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_634ae32717e568bc24dab493",
+              "reference": null,
+              "status": "approved",
+              "value": "Javier García Choque",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_eeb0b7b6064419f15ac6b76e",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_eeb0b7b6064419f15ac6b76e",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01404",
+      "name": "HUARA",
+      "status": "approved",
+      "elections": {
+        "2021": {
+          "elected": "JOSE ANDRES BARTOLO VINAYA",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "CHILE VAMOS",
+          "votes": 1463,
+          "candidates": [
+            {
+              "name": "JOSE ANDRES BARTOLO VINAYA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 1463,
+              "elected": true
+            },
+            {
+              "name": "CARLOS ENRIQUE SILVA RIQUELME",
+              "party": "INDEPENDIENTES",
+              "votes": 841,
+              "elected": false
+            },
+            {
+              "name": "OSCAR EDMUNDO PANTOJA TORO",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 232,
+              "elected": false
+            },
+            {
+              "name": "PAMELA ISABEL CARVAJAL CARLOS",
+              "party": "INDEPENDIENTES",
+              "votes": 42,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "JOSE BARTOLO VINAYA",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "CHILE VAMOS",
+          "votes": 1934,
+          "candidates": [
+            {
+              "name": "JOSE BARTOLO VINAYA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 1934,
+              "elected": true
+            },
+            {
+              "name": "SAMUEL ANTONIO CAYO FLORES",
+              "party": "INDEPENDIENTES",
+              "votes": 869,
+              "elected": false
+            },
+            {
+              "name": "WILLIAMS CARLOS MAMANI TICUNA",
+              "party": "INDEPENDIENTES",
+              "votes": 93,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_8814cd68604fc81d",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Jose Bartolo Vinaya was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_914ca3dc9fb17ac118b4ec57",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q13081"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_6f7ee327fc3e0e4cb3528e53",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JOSE BARTOLO VINAYA",
+              "elected": true,
+              "votes": 1934,
+              "party": "UNION DEMOCRATA INDEPENDIENTE"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "JOSE BARTOLO VINAYA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_6f7ee327fc3e0e4cb3528e53",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_3cba2382667bf7928264a15d",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Huara",
+            "revid": "174864386",
+            "location": "infobox",
+            "role": "current",
+            "name": "José Bartolo Vinaya",
+            "name_raw": "José Bartolo Vinaya",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "José Bartolo Vinaya was elected mayor of Huara in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_9eba73fb4dd16e98e9d51d98",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Huara",
+            "revid": "1376112537",
+            "location": "infobox",
+            "role": "current",
+            "name": "José Bartolo",
+            "name_raw": "José Bartolo",
+            "office": "Alcalde",
+            "party": "UDI",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "José Bartolo is Jose Bartolo Vinaya, elected mayor of Huara in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q13081",
+          "url": "https://www.wikidata.org/wiki/Q13081",
+          "findings": [
+            "fnd_8814cd68604fc81d"
+          ],
+          "anchor": "obs_914ca3dc9fb17ac118b4ec57",
+          "correction": {
+            "person": "JOSE BARTOLO VINAYA",
+            "name_as_written": "José Bartolo Vinaya",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "UNION DEMOCRATA INDEPENDIENTE",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_6f7ee327fc3e0e4cb3528e53"
+          },
+          "statement": "Q13081: add P6 (head of government) = José Bartolo Vinaya (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: José Bartolo Vinaya",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Jose Bartolo Vinaya was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name José Bartolo Vinaya, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_9eba73fb4dd16e98e9d51d98",
+            "reference": null,
+            "status": "checked",
+            "value": "José Bartolo",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_3cba2382667bf7928264a15d",
+            "reference": null,
+            "status": "checked",
+            "value": "José Bartolo Vinaya",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_914ca3dc9fb17ac118b4ec57",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-01-tarapaca",
+        "checked_at": "2026-10-26T21:20:52Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "José Bartolo Vinaya",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_3cba2382667bf7928264a15d",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_3cba2382667bf7928264a15d",
+              "reference": null,
+              "status": "checked",
+              "value": "José Bartolo Vinaya",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "José Bartolo",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_9eba73fb4dd16e98e9d51d98",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_9eba73fb4dd16e98e9d51d98",
+              "reference": null,
+              "status": "checked",
+              "value": "José Bartolo",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_914ca3dc9fb17ac118b4ec57",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_914ca3dc9fb17ac118b4ec57",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "01405",
+      "name": "PICA",
+      "status": "approved",
+      "elections": {
+        "2021": {
+          "elected": "IVAN MANUEL INFANTE CHACON",
+          "party": "INDEPENDIENTES-LISTA XX",
+          "pact": "CHILE VAMOS",
+          "votes": 2086,
+          "candidates": [
+            {
+              "name": "IVAN MANUEL INFANTE CHACON",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 2086,
+              "elected": true
+            },
+            {
+              "name": "RODRIGO FERNANDO VARGAS BRIONES",
+              "party": "PARTIDO RADICAL DE CHILE",
+              "votes": 1159,
+              "elected": false
+            },
+            {
+              "name": "LEONEL ANTONIO VILAXA RAMIREZ",
+              "party": "INDEPENDIENTES-LISTA XY",
+              "votes": 236,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "IVAN INFANTE CHACON",
+          "party": "INDEPENDIENTES",
+          "pact": "CHILE VAMOS",
+          "votes": 2736,
+          "candidates": [
+            {
+              "name": "IVAN INFANTE CHACON",
+              "party": "INDEPENDIENTES",
+              "votes": 2736,
+              "elected": true
+            },
+            {
+              "name": "JUAN CARLOS GODOY APALA",
+              "party": "INDEPENDIENTES",
+              "votes": 2431,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_806691951d8f2472",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Ivan Infante Chacon was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_4cc84bb10bc1a20f8b32e4ef",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q51102"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_fb7f7ae7f77bf1e6c1360879",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "IVAN INFANTE CHACON",
+              "elected": true,
+              "votes": 2736,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "IVAN INFANTE CHACON",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_fb7f7ae7f77bf1e6c1360879",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_03b48050d3e52b833d583d3c",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Pica (Chile)",
+            "revid": "175807106",
+            "location": "infobox",
+            "role": "current",
+            "name": "Iván Infante Chacón",
+            "name_raw": "Iván Infante Chacón",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Iván Infante Chacón was elected mayor of Pica in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_a822eac3d7801334b89562bd",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Pica, Chile",
+            "revid": "1378789654",
+            "location": "infobox",
+            "role": "current",
+            "name": "Iván Infante",
+            "name_raw": "Iván Infante",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Iván Infante is Ivan Infante Chacon, elected mayor of Pica in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q51102",
+          "url": "https://www.wikidata.org/wiki/Q51102",
+          "findings": [
+            "fnd_806691951d8f2472"
+          ],
+          "anchor": "obs_4cc84bb10bc1a20f8b32e4ef",
+          "correction": {
+            "person": "IVAN INFANTE CHACON",
+            "name_as_written": "Iván Infante Chacón",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_fb7f7ae7f77bf1e6c1360879"
+          },
+          "statement": "Q51102: add P6 (head of government) = Iván Infante Chacón (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Iván Infante Chacón",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Ivan Infante Chacon was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Iván Infante Chacón, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_a822eac3d7801334b89562bd",
+            "reference": null,
+            "status": "checked",
+            "value": "Iván Infante",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_03b48050d3e52b833d583d3c",
+            "reference": null,
+            "status": "checked",
+            "value": "Iván Infante Chacón",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_4cc84bb10bc1a20f8b32e4ef",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-01-tarapaca",
+        "checked_at": "2026-10-26T21:20:52Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Iván Infante Chacón",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_03b48050d3e52b833d583d3c",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_03b48050d3e52b833d583d3c",
+              "reference": null,
+              "status": "checked",
+              "value": "Iván Infante Chacón",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Iván Infante",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_a822eac3d7801334b89562bd",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_a822eac3d7801334b89562bd",
+              "reference": null,
+              "status": "checked",
+              "value": "Iván Infante",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_4cc84bb10bc1a20f8b32e4ef",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_4cc84bb10bc1a20f8b32e4ef",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 0,
+    "requests": 0,
+    "by_agent": {},
+    "requested_model": {},
+    "served_model": {},
+    "routed_model": {},
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 110
+  },
+  "trace_file": "logs/trace-national-mayors-20261026b-01-tarapaca.jsonl",
+  "world_model_audit_file": "logs/world-model-national-mayors-20261026b-01-tarapaca.jsonl",
+  "world_model_audit_entries": 55,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 15,
+        "resolve_by_name": 92,
+        "assess": 48,
+        "context": 16,
+        "view:observations": 36,
+        "reproject": 7,
+        "project_as_of": 7,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/national-mayors-20261026b-01-tarapaca/report.html",
+  "execution_time_seconds": 40.5
+}

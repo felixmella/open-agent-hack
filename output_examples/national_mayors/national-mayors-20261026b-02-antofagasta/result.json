@@ -1,0 +1,4303 @@
+{
+  "run_id": "national-mayors-20261026b-02-antofagasta",
+  "fact": "mayor",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 9,
+    "claims": 17,
+    "findings": 13,
+    "findings_by_class": {
+      "missing_value": 10,
+      "outdated_mayor": 3
+    },
+    "drafts": 13,
+    "escalations": 0,
+    "critic_rejections": 7,
+    "discoveries": [
+      "servel_mayors_2021",
+      "servel_mayors_2016",
+      "servel_mayors_2012"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 9,
+      "unchanged": 17
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "fact": "mayor",
+    "cuts": [
+      "02101",
+      "02102",
+      "02103",
+      "02104",
+      "02201",
+      "02202",
+      "02203",
+      "02301",
+      "02302"
+    ],
+    "sources": [
+      "servel_mayors_2024",
+      "wikidata_mayor",
+      "wikipedia_es_mayor",
+      "wikipedia_en_mayor",
+      "servel_mayors_2021",
+      "servel_mayors_2016",
+      "servel_mayors_2012"
+    ],
+    "reason": "9 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "servel_mayors_2024": {
+      "rows": 41,
+      "observations": 41,
+      "appended": 0,
+      "unchanged": 41,
+      "reviews": 0
+    },
+    "wikidata_mayor": {
+      "rows": 77,
+      "observations": 9,
+      "appended": 0,
+      "unchanged": 9,
+      "reviews": 0
+    },
+    "wikipedia_es_mayor": {
+      "rows": 17,
+      "observations": 8,
+      "appended": 0,
+      "unchanged": 8,
+      "reviews": 0
+    },
+    "wikipedia_en_mayor": {
+      "rows": 11,
+      "observations": 8,
+      "appended": 0,
+      "unchanged": 8,
+      "reviews": 0
+    },
+    "servel_mayors_2021": {
+      "rows": 47,
+      "observations": 47,
+      "appended": 0,
+      "unchanged": 47,
+      "reviews": 0
+    },
+    "servel_mayors_2016": {
+      "rows": 42,
+      "observations": 42,
+      "appended": 0,
+      "unchanged": 42,
+      "reviews": 0
+    },
+    "servel_mayors_2012": {
+      "rows": 42,
+      "observations": 42,
+      "appended": 0,
+      "unchanged": 42,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "servel_mayors_2021",
+      "reason": "by coverage (election, 2021), the best fit for 3 figure(s), e.g. 'José Guerrero Venegas' ('named as mayor (Alcalde)')",
+      "requests": [
+        {
+          "comuna": "SIERRA GORDA",
+          "value": "José Guerrero Venegas",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "TALTAL",
+          "value": "Sergio Belmor Orellana Montejo",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "MARÍA ELENA",
+          "value": "Jorge Godoy Bolvarán",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 2,
+      "source": "servel_mayors_2016",
+      "reason": "by coverage (election, 2016), the best fit for 3 figure(s), e.g. 'José Guerrero Venegas' ('named as mayor (Alcalde)')",
+      "requests": [
+        {
+          "comuna": "SIERRA GORDA",
+          "value": "José Guerrero Venegas",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "TALTAL",
+          "value": "Sergio Belmor Orellana Montejo",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "MARÍA ELENA",
+          "value": "Jorge Godoy Bolvarán",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 3,
+      "source": "servel_mayors_2012",
+      "reason": "by coverage (election, 2012), the best fit for 1 figure(s), e.g. 'Jorge Godoy Bolvarán' ('named as mayor (Alcalde)')",
+      "requests": [
+        {
+          "comuna": "MARÍA ELENA",
+          "value": "Jorge Godoy Bolvarán",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    }
+  ],
+  "declined_discoveries": [],
+  "comunas": [
+    {
+      "cut": "02101",
+      "name": "ANTOFAGASTA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "KAREN PAULINA ROJO VENEGAS",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES (FUERA DE PACTO)",
+          "votes": 35110,
+          "candidates": [
+            {
+              "name": "KAREN PAULINA ROJO VENEGAS",
+              "party": "INDEPENDIENTES",
+              "votes": 35110,
+              "elected": true
+            },
+            {
+              "name": "MARCELA XIMENA HERNANDO PEREZ",
+              "party": "INDEPENDIENTES LISTA F",
+              "votes": 21340,
+              "elected": false
+            },
+            {
+              "name": "ESLAYNE DAVID PORTILLA BARRAZA",
+              "party": "INDEPENDIENTES LISTA D",
+              "votes": 9058,
+              "elected": false
+            },
+            {
+              "name": "ROBERT GERHARD ARAYA ALQUINTA",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 4147,
+              "elected": false
+            },
+            {
+              "name": "CARLOS ENRIQUE LOPEZ VEGA",
+              "party": "INDEPENDIENTES",
+              "votes": 2684,
+              "elected": false
+            },
+            {
+              "name": "GUILLERMO ANTONIO ACUÑA CHAVEZ",
+              "party": "INDEPENDIENTES LISTA G",
+              "votes": 958,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "KAREN PAULINA ROJO VENEGAS",
+          "party": "INDEPENDIENTE LISTA T",
+          "pact": "CANDIDATURA INDEPENDIENTE",
+          "votes": 18157,
+          "candidates": [
+            {
+              "name": "KAREN PAULINA ROJO VENEGAS",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 18157,
+              "elected": true
+            },
+            {
+              "name": "MANUEL ERNESTO ROJAS MOLINA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 14329,
+              "elected": false
+            },
+            {
+              "name": "DANIEL ERNESTO ADARO SILVA",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 11655,
+              "elected": false
+            },
+            {
+              "name": "RICARDO HERIBERTO DIAZ CORTES",
+              "party": "INDEPENDIENTE LISTA K",
+              "votes": 7475,
+              "elected": false
+            },
+            {
+              "name": "ANDREA MERINO DIAZ",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 5725,
+              "elected": false
+            },
+            {
+              "name": "JAIME ARAYA GUERRERO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 5288,
+              "elected": false
+            },
+            {
+              "name": "JENNIFER VIOLETA MUNDACA GREZ",
+              "party": "INDEPENDIENTE LISTA C",
+              "votes": 1442,
+              "elected": false
+            },
+            {
+              "name": "JORGE PEREZ JELVES",
+              "party": "INDEPENDIENTE LISTA M",
+              "votes": 468,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "JONATHAN RODRIGO VELASQUEZ RAMIREZ",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 26913,
+          "candidates": [
+            {
+              "name": "JONATHAN RODRIGO VELASQUEZ RAMIREZ",
+              "party": "INDEPENDIENTES",
+              "votes": 26913,
+              "elected": true
+            },
+            {
+              "name": "SEBASTIAN PATRICIO VIDELA CASTILLO",
+              "party": "INDEPENDIENTES",
+              "votes": 17294,
+              "elected": false
+            },
+            {
+              "name": "PABLO ANDRES IRIARTE RAMIREZ",
+              "party": "PARTIDO COMUNISTA DE CHILE",
+              "votes": 17264,
+              "elected": false
+            },
+            {
+              "name": "FABIAN MAURICIO OSSANDON BRICEÑO",
+              "party": "INDEPENDIENTES",
+              "votes": 11645,
+              "elected": false
+            },
+            {
+              "name": "WILSON MANUEL DIAZ VASQUEZ",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 11338,
+              "elected": false
+            },
+            {
+              "name": "MARIA INES VERDUGO ESCOBAR",
+              "party": "INDEPENDIENTES",
+              "votes": 9936,
+              "elected": false
+            },
+            {
+              "name": "ROBERTO CARLOS SOTO ALBALLAY",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 8870,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "SACHA RAZMILIC BURGOS",
+          "party": "EVOLUCION POLITICA",
+          "pact": "CHILE VAMOS",
+          "votes": 56653,
+          "candidates": [
+            {
+              "name": "SACHA RAZMILIC BURGOS",
+              "party": "EVOLUCION POLITICA",
+              "votes": 56653,
+              "elected": true
+            },
+            {
+              "name": "PABLO ANDRES IRIARTE RAMIREZ",
+              "party": "PARTIDO COMUNISTA DE CHILE",
+              "votes": 41777,
+              "elected": false
+            },
+            {
+              "name": "JONATHAN VELASQUEZ RAMIREZ",
+              "party": "INDEPENDIENTES",
+              "votes": 41388,
+              "elected": false
+            },
+            {
+              "name": "ROBERTO CARLOS SOTO ALBALLAY",
+              "party": "PARTIDO REPUBLICANO DE CHILE",
+              "votes": 19324,
+              "elected": false
+            },
+            {
+              "name": "ESLAYNE PORTILLA BARRAZA",
+              "party": "INDEPENDIENTES",
+              "votes": 17372,
+              "elected": false
+            },
+            {
+              "name": "LUIS ANDRES AGUILERA VILLEGAS",
+              "party": "INDEPENDIENTES",
+              "votes": 13698,
+              "elected": false
+            },
+            {
+              "name": "DANIELA BEATRIZ AVILES HONORES",
+              "party": "INDEPENDIENTES",
+              "votes": 9695,
+              "elected": false
+            },
+            {
+              "name": "RICARDO VARGAS VALENZUELA",
+              "party": "PARTIDO DE LA GENTE",
+              "votes": 9087,
+              "elected": false
+            },
+            {
+              "name": "ADELA MARIA PIZARRO GONCALVEZ",
+              "party": "PARTIDO HUMANISTA",
+              "votes": 4211,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_f02fe71c5b9c5bf2",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Sacha Razmilic Burgos was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_3096e70725f915ac4badf7b3",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q23660303"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_d0feb4d6f5ac2d0f3ba00e27",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "SACHA RAZMILIC BURGOS",
+              "elected": true,
+              "votes": 56653,
+              "party": "EVOLUCION POLITICA"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "SACHA RAZMILIC BURGOS",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_d0feb4d6f5ac2d0f3ba00e27",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660303",
+          "url": "https://www.wikidata.org/wiki/Q23660303",
+          "findings": [
+            "fnd_f02fe71c5b9c5bf2"
+          ],
+          "anchor": "obs_3096e70725f915ac4badf7b3",
+          "correction": {
+            "person": "SACHA RAZMILIC BURGOS",
+            "name_as_written": "Sacha Razmilic Burgos",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "EVOLUCION POLITICA",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_d0feb4d6f5ac2d0f3ba00e27"
+          },
+          "statement": "Q23660303: add P6 (head of government) = Sacha Razmilic Burgos (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Sacha Razmilic Burgos",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Sacha Razmilic Burgos was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Sacha Razmilic Burgos, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": null,
+            "observation": "obs_3096e70725f915ac4badf7b3",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-02-antofagasta",
+        "checked_at": "2026-10-26T21:21:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_3096e70725f915ac4badf7b3",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_3096e70725f915ac4badf7b3",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02102",
+      "name": "MEJILLONES",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+          "party": "PARTIDO POR LA DEMOCRACIA",
+          "pact": "POR UN CHILE JUSTO",
+          "votes": 2395,
+          "candidates": [
+            {
+              "name": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 2395,
+              "elected": true
+            },
+            {
+              "name": "SERGIO ELIAS VEGA VENEGAS",
+              "party": "INDEPENDIENTES",
+              "votes": 1958,
+              "elected": false
+            },
+            {
+              "name": "ROLANDO ARMANDO CORTES MOURGUEZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 259,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "SERGIO VEGA VENEGAS",
+          "party": "INDEPENDIENTE LISTA F",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 2394,
+          "candidates": [
+            {
+              "name": "SERGIO VEGA VENEGAS",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 2394,
+              "elected": true
+            },
+            {
+              "name": "MARCELINO CARVAJAL FERREIRA",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 2260,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+          "party": "PARTIDO POR LA DEMOCRACIA",
+          "pact": "UNIDAD POR EL APRUEBO",
+          "votes": 2840,
+          "candidates": [
+            {
+              "name": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 2840,
+              "elected": true
+            },
+            {
+              "name": "ENRIQUE ALEJANDRO VENEGAS AVENDAÑO",
+              "party": "INDEPENDIENTES",
+              "votes": 1754,
+              "elected": false
+            },
+            {
+              "name": "RODRIGO ALEJANDRO SANCHEZ ALVAREZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 326,
+              "elected": false
+            },
+            {
+              "name": "SERGIO ELIAS VEGA VENEGAS",
+              "party": "INDEPENDIENTES",
+              "votes": 314,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+          "party": "PARTIDO POR LA DEMOCRACIA",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 5557,
+          "candidates": [
+            {
+              "name": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 5557,
+              "elected": true
+            },
+            {
+              "name": "GRECIA BIAGGINI SANCHEZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 1463,
+              "elected": false
+            },
+            {
+              "name": "LUIS CONTRERAS PEREZ",
+              "party": "INDEPENDIENTES",
+              "votes": 1288,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_05593b4fd43874e3",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Marcelino Segundo Carvajal Ferreira was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_9b4f0f7cd7a9873f8a711d70",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q16928"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_35e58c35a7e031247d12114f",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+              "elected": true,
+              "votes": 5557,
+              "party": "PARTIDO POR LA DEMOCRACIA"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_35e58c35a7e031247d12114f",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_20cbaa41e0882da6",
+          "target": "en",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "The English Wikipedia infobox names no mayor. Marcelino Segundo Carvajal Ferreira was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_5bfa09c3ce56ea4ae7128ad0",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Mejillones",
+            "revid": "1376423833",
+            "location": "infobox",
+            "role": "current",
+            "name_raw": "<!-- add &nbsp; (no-break space) to disable automatic links -->",
+            "office": "Mayor",
+            "method": "rules",
+            "verified": true,
+            "missing": true,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_35e58c35a7e031247d12114f",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+              "elected": true,
+              "votes": 5557,
+              "party": "PARTIDO POR LA DEMOCRACIA"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_35e58c35a7e031247d12114f",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_ecebc4ff939a0ce595b1fd2a",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Mejillones",
+            "revid": "173920642",
+            "location": "infobox",
+            "role": "current",
+            "name": "Marcelino Carvajal Ferreira",
+            "name_raw": "Marcelino Carvajal Ferreira",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Marcelino Carvajal Ferreira is Marcelino Segundo Carvajal Ferreira, elected mayor of Mejillones in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Mejillones",
+          "revid": "1376423833",
+          "findings": [
+            "fnd_20cbaa41e0882da6"
+          ],
+          "anchor": "obs_5bfa09c3ce56ea4ae7128ad0",
+          "replaces": {
+            "name": "<!-- add &nbsp; (no-break space) to disable automatic links -->",
+            "office": "Mayor"
+          },
+          "url": "https://en.wikipedia.org/wiki/Mejillones",
+          "correction": {
+            "person": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+            "name_as_written": "Marcelino Carvajal Ferreira",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "PARTIDO POR LA DEMOCRACIA",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_35e58c35a7e031247d12114f"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Marcelino Carvajal Ferreira<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = PPD",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Marcelino Carvajal Ferreira.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q16928",
+          "url": "https://www.wikidata.org/wiki/Q16928",
+          "findings": [
+            "fnd_05593b4fd43874e3"
+          ],
+          "anchor": "obs_9b4f0f7cd7a9873f8a711d70",
+          "correction": {
+            "person": "MARCELINO SEGUNDO CARVAJAL FERREIRA",
+            "name_as_written": "Marcelino Carvajal Ferreira",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "PARTIDO POR LA DEMOCRACIA",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_35e58c35a7e031247d12114f"
+          },
+          "statement": "Q16928: add P6 (head of government) = Marcelino Carvajal Ferreira (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Marcelino Carvajal Ferreira",
+          "status": "approved"
+        },
+        "explanation": "The English Wikipedia infobox names no mayor. Marcelino Segundo Carvajal Ferreira was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Marcelino Carvajal Ferreira, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Mayor",
+            "observation": "obs_5bfa09c3ce56ea4ae7128ad0",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_ecebc4ff939a0ce595b1fd2a",
+            "reference": null,
+            "status": "checked",
+            "value": "Marcelino Carvajal Ferreira",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_9b4f0f7cd7a9873f8a711d70",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-02-antofagasta",
+        "checked_at": "2026-10-26T21:21:47Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Marcelino Carvajal Ferreira",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_ecebc4ff939a0ce595b1fd2a",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_ecebc4ff939a0ce595b1fd2a",
+              "reference": null,
+              "status": "checked",
+              "value": "Marcelino Carvajal Ferreira",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "Mayor",
+              "reference": null,
+              "observation": "obs_5bfa09c3ce56ea4ae7128ad0",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Mayor",
+              "observation": "obs_5bfa09c3ce56ea4ae7128ad0",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_9b4f0f7cd7a9873f8a711d70",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_9b4f0f7cd7a9873f8a711d70",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02103",
+      "name": "SIERRA GORDA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "JOSE AGUSTIN GUERRERO VENEGAS",
+          "party": "INDEPENDIENTES LISTA F",
+          "pact": "CONCERTACION DEMOCRATICA",
+          "votes": 598,
+          "candidates": [
+            {
+              "name": "JOSE AGUSTIN GUERRERO VENEGAS",
+              "party": "INDEPENDIENTES LISTA F",
+              "votes": 598,
+              "elected": true
+            },
+            {
+              "name": "JULIO ALBERTO ECHEVERRIA RIVERA",
+              "party": "PARTIDO PROGRESISTA",
+              "votes": 207,
+              "elected": false
+            },
+            {
+              "name": "JUAN PABLO ARRIAGADA CAMPOS",
+              "party": "RENOVACION NACIONAL",
+              "votes": 187,
+              "elected": false
+            },
+            {
+              "name": "GUILLERMO RAUL SAGAL PIZARRO",
+              "party": "INDEPENDIENTES",
+              "votes": 82,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "JOSE GUERRERO VENEGAS",
+          "party": "INDEPENDIENTE LISTA E",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 635,
+          "candidates": [
+            {
+              "name": "JOSE GUERRERO VENEGAS",
+              "party": "INDEPENDIENTE LISTA E",
+              "votes": 635,
+              "elected": true
+            },
+            {
+              "name": "CARLOS LOPEZ VEGA",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 624,
+              "elected": false
+            },
+            {
+              "name": "JULIO ALBERTO ECHEVERRIA RIVERA",
+              "party": "PARTIDO PROGRESISTA",
+              "votes": 211,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "DEBORAH DEL PILAR PAREDES CUEVAS",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 456,
+          "candidates": [
+            {
+              "name": "DEBORAH DEL PILAR PAREDES CUEVAS",
+              "party": "INDEPENDIENTES",
+              "votes": 456,
+              "elected": true
+            },
+            {
+              "name": "ADRIANA NATALI RIVERA VEGA",
+              "party": "RENOVACION NACIONAL",
+              "votes": 412,
+              "elected": false
+            },
+            {
+              "name": "INGRID FERNANDA GUERRERO GUERRERO",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 390,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "ADRIANA NATALI RIVERA VEGA",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 472,
+          "candidates": [
+            {
+              "name": "ADRIANA NATALI RIVERA VEGA",
+              "party": "INDEPENDIENTES",
+              "votes": 472,
+              "elected": true
+            },
+            {
+              "name": "DEBORAH PAREDES CUEVAS",
+              "party": "INDEPENDIENTES",
+              "votes": 407,
+              "elected": false
+            },
+            {
+              "name": "JOSE GUERRERO VENEGAS",
+              "party": "INDEPENDIENTES",
+              "votes": 355,
+              "elected": false
+            },
+            {
+              "name": "DIEGO FERNANDEZ SOTO",
+              "party": "INDEPENDIENTES",
+              "votes": 238,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_ea1fb835ab486e5e",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Adriana Natali Rivera Vega was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_b68281c4b70ce2e46bf43645",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q188027"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_2f611da5287c1ac936a455bc",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ADRIANA NATALI RIVERA VEGA",
+              "elected": true,
+              "votes": 472,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "ADRIANA NATALI RIVERA VEGA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_2f611da5287c1ac936a455bc",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_479deeca6a28560c",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "José Guerrero Venegas was elected mayor in 2016 (SERVEL). Adriana Natali Rivera Vega was elected in the 2024 election (SERVEL; term from 2024-12-06). Jose Guerrero Venegas ran again in 2024 and wasn't elected (355 votes to 472).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_c1d9efab82c53f648b063117",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Sierra Gorda, Chile",
+            "revid": "1379126341",
+            "location": "infobox",
+            "role": "current",
+            "name": "José Guerrero Venegas",
+            "name_raw": "José Guerrero Venegas",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_2f611da5287c1ac936a455bc",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ADRIANA NATALI RIVERA VEGA",
+              "elected": true,
+              "votes": 472,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_df16ab92741df38f79370b94",
+              "source": "SERVEL 2016",
+              "year": 2016,
+              "name": "JOSE GUERRERO VENEGAS",
+              "elected": true,
+              "votes": 635,
+              "party": "INDEPENDIENTE LISTA E"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_f89b32c9ac21c462792843a1",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JOSE GUERRERO VENEGAS",
+              "elected": false,
+              "votes": 355,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "ADRIANA NATALI RIVERA VEGA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_2f611da5287c1ac936a455bc",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_jose_guerrero_venegas",
+            "name": "JOSE GUERRERO VENEGAS",
+            "ran": [
+              2016,
+              2024
+            ],
+            "won": [
+              2016
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_jose_guerrero_venegas",
+              "name": "JOSE GUERRERO VENEGAS",
+              "ran": [
+                2016,
+                2024
+              ],
+              "won": [
+                2016
+              ]
+            },
+            {
+              "level": "partial",
+              "why": "another second surname (VENEGAS, not GUERRERO)",
+              "id": "p_ingrid_fernanda_guerrero_guerrero",
+              "name": "INGRID FERNANDA GUERRERO GUERRERO",
+              "ran": [
+                2021
+              ],
+              "won": []
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_e3acd57ff91ae92fd3275c12",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Sierra Gorda (Chile)",
+            "revid": "175799867",
+            "location": "infobox",
+            "role": "current",
+            "name": "Adriana Rivera Vega",
+            "name_raw": "[[Adriana Rivera Vega]]",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Adriana Rivera Vega is Adriana Natali Rivera Vega, elected mayor of Sierra Gorda in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 3,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_479deeca6a28560c"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_479deeca6a28560c",
+              "finding_ids": [
+                "fnd_479deeca6a28560c"
+              ],
+              "comuna": "SIERRA GORDA",
+              "cut": "02103",
+              "figures": [
+                {
+                  "finding_id": "fnd_479deeca6a28560c",
+                  "value": "José Guerrero Venegas",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'José Guerrero Venegas' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_479deeca6a28560c"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_479deeca6a28560c",
+              "finding_ids": [
+                "fnd_479deeca6a28560c"
+              ],
+              "comuna": "SIERRA GORDA",
+              "cut": "02103",
+              "figures": [
+                {
+                  "finding_id": "fnd_479deeca6a28560c",
+                  "value": "José Guerrero Venegas",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'José Guerrero Venegas' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Sierra Gorda, Chile",
+          "revid": "1379126341",
+          "findings": [
+            "fnd_479deeca6a28560c"
+          ],
+          "anchor": "obs_c1d9efab82c53f648b063117",
+          "replaces": {
+            "name": "José Guerrero Venegas",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Sierra_Gorda,_Chile",
+          "correction": {
+            "person": "ADRIANA NATALI RIVERA VEGA",
+            "name_as_written": "Adriana Rivera Vega",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_2f611da5287c1ac936a455bc"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Adriana Rivera Vega<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Adriana Rivera Vega (was José Guerrero Venegas).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q188027",
+          "url": "https://www.wikidata.org/wiki/Q188027",
+          "findings": [
+            "fnd_ea1fb835ab486e5e"
+          ],
+          "anchor": "obs_b68281c4b70ce2e46bf43645",
+          "correction": {
+            "person": "ADRIANA NATALI RIVERA VEGA",
+            "name_as_written": "Adriana Rivera Vega",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_2f611da5287c1ac936a455bc"
+          },
+          "statement": "Q188027: add P6 (head of government) = Adriana Rivera Vega (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Adriana Rivera Vega",
+          "status": "approved"
+        },
+        "explanation": "José Guerrero Venegas was elected mayor in 2016 (SERVEL). Adriana Natali Rivera Vega was elected in the 2024 election (SERVEL; term from 2024-12-06). Jose Guerrero Venegas ran again in 2024 and wasn't elected (355 votes to 472). Wikidata (no head of government statement) names no mayor. The drafts name Adriana Rivera Vega, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_c1d9efab82c53f648b063117",
+            "reference": null,
+            "status": "approved",
+            "value": "José Guerrero Venegas",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_e3acd57ff91ae92fd3275c12",
+            "reference": null,
+            "status": "checked",
+            "value": "Adriana Rivera Vega",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_b68281c4b70ce2e46bf43645",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-02-antofagasta",
+        "checked_at": "2026-10-26T21:21:47Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Adriana Rivera Vega",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_e3acd57ff91ae92fd3275c12",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_e3acd57ff91ae92fd3275c12",
+              "reference": null,
+              "status": "checked",
+              "value": "Adriana Rivera Vega",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "José Guerrero Venegas",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_c1d9efab82c53f648b063117",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_c1d9efab82c53f648b063117",
+              "reference": null,
+              "status": "approved",
+              "value": "José Guerrero Venegas",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_b68281c4b70ce2e46bf43645",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_b68281c4b70ce2e46bf43645",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02104",
+      "name": "TALTAL",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "SERGIO BELMOR ORELLANA MONTEJO",
+          "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+          "pact": "POR UN CHILE JUSTO",
+          "votes": 2886,
+          "candidates": [
+            {
+              "name": "SERGIO BELMOR ORELLANA MONTEJO",
+              "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+              "votes": 2886,
+              "elected": true
+            },
+            {
+              "name": "GUILLERMO GRICERIO HIDALGO OCAMPO",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 1824,
+              "elected": false
+            },
+            {
+              "name": "JUAN MANUEL MEDIANO PACHECO",
+              "party": "INDEPENDIENTES",
+              "votes": 278,
+              "elected": false
+            },
+            {
+              "name": "CARLOS HECTOR CASAREGGIO MARTIN",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 218,
+              "elected": false
+            },
+            {
+              "name": "HORTENSIA DEL ROSARIO AVENDAÑO ASPILLAGA",
+              "party": "PARTIDO PROGRESISTA",
+              "votes": 36,
+              "elected": false
+            },
+            {
+              "name": "LUIS PEDRO VALENZUELA GALLARDO",
+              "party": "INDEPENDIENTES",
+              "votes": 14,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "SERGIO BELMOR ORELLANA MONTEJO",
+          "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 2181,
+          "candidates": [
+            {
+              "name": "SERGIO BELMOR ORELLANA MONTEJO",
+              "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+              "votes": 2181,
+              "elected": true
+            },
+            {
+              "name": "OSVALDO CHAVEZ MIRANDA",
+              "party": "REVOLUCION DEMOCRATICA",
+              "votes": 1580,
+              "elected": false
+            },
+            {
+              "name": "JUAN MANUEL MEDIANO PACHECO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 992,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "GUILLERMO GRICERIO HIDALGO OCAMPO",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 2170,
+          "candidates": [
+            {
+              "name": "GUILLERMO GRICERIO HIDALGO OCAMPO",
+              "party": "INDEPENDIENTES",
+              "votes": 2170,
+              "elected": true
+            },
+            {
+              "name": "MARIO GILBERTO ACUÑA VILLALOBOS",
+              "party": "INDEPENDIENTES",
+              "votes": 1381,
+              "elected": false
+            },
+            {
+              "name": "SERGIO BELMOR ORELLANA MONTEJO",
+              "party": "PARTIDO RADICAL DE CHILE",
+              "votes": 923,
+              "elected": false
+            },
+            {
+              "name": "PATRICIA DEBORA MUJICA SILVA",
+              "party": "INDEPENDIENTES",
+              "votes": 313,
+              "elected": false
+            },
+            {
+              "name": "MESAC MOLGAS MUSTAFA",
+              "party": "INDEPENDIENTES",
+              "votes": 179,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "MARIO ACUÑA VILLALOBOS",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 4153,
+          "candidates": [
+            {
+              "name": "MARIO ACUÑA VILLALOBOS",
+              "party": "INDEPENDIENTES",
+              "votes": 4153,
+              "elected": true
+            },
+            {
+              "name": "GUILLERMO HIDALGO OCAMPO",
+              "party": "INDEPENDIENTES",
+              "votes": 2902,
+              "elected": false
+            },
+            {
+              "name": "ROSAMERY ANDREA ORELLANA FIGUEROA",
+              "party": "INDEPENDIENTES",
+              "votes": 548,
+              "elected": false
+            },
+            {
+              "name": "JOSE EDUARDO GUTIERREZ UBEDA",
+              "party": "INDEPENDIENTES",
+              "votes": 260,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_47e9c32a752a9742",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Mario Acuña Villalobos was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_ed177d40587cf93a158e96f1",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q188049"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_17122cc3355ebfb7f6dfff98",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "MARIO ACUÑA VILLALOBOS",
+              "elected": true,
+              "votes": 4153,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "MARIO ACUÑA VILLALOBOS",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_17122cc3355ebfb7f6dfff98",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_7166007fc370b43b",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Sergio Belmor Orellana Montejo was elected mayor in 2016 (SERVEL). Mario Acuña Villalobos was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_239265077540543ff30573ed",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Taltal",
+            "revid": "1379263827",
+            "location": "infobox",
+            "role": "current",
+            "name": "Sergio Belmor Orellana Montejo",
+            "name_raw": "Sergio Belmor Orellana Montejo",
+            "office": "Alcalde",
+            "party": "PRSD",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_17122cc3355ebfb7f6dfff98",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "MARIO ACUÑA VILLALOBOS",
+              "elected": true,
+              "votes": 4153,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_b2783fb71f9e47f87a988c08",
+              "source": "SERVEL 2016",
+              "year": 2016,
+              "name": "SERGIO BELMOR ORELLANA MONTEJO",
+              "elected": true,
+              "votes": 2181,
+              "party": "PARTIDO RADICAL SOCIALDEMOCRATA"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_7a093f808392c3c078eb54ec",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "SERGIO BELMOR ORELLANA MONTEJO",
+              "elected": false,
+              "votes": 923,
+              "party": "PARTIDO RADICAL DE CHILE"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "MARIO ACUÑA VILLALOBOS",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_17122cc3355ebfb7f6dfff98",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_sergio_belmor_orellana_montejo",
+            "name": "SERGIO BELMOR ORELLANA MONTEJO",
+            "ran": [
+              2016,
+              2021
+            ],
+            "won": [
+              2016
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_sergio_belmor_orellana_montejo",
+              "name": "SERGIO BELMOR ORELLANA MONTEJO",
+              "ran": [
+                2016,
+                2021
+              ],
+              "won": [
+                2016
+              ]
+            },
+            {
+              "level": "partial",
+              "why": "another second surname (MONTEJO, not FIGUEROA)",
+              "id": "p_rosamery_andrea_orellana_figueroa",
+              "name": "ROSAMERY ANDREA ORELLANA FIGUEROA",
+              "ran": [
+                2024
+              ],
+              "won": []
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_5cf8286215b7ef754bd0491e",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Taltal",
+            "revid": "175801343",
+            "location": "infobox",
+            "role": "current",
+            "name": "Mario Acuña Villalobos",
+            "name_raw": "Mario Acuña Villalobos",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Mario Acuña Villalobos was elected mayor of Taltal in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 3,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_7166007fc370b43b"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_7166007fc370b43b",
+              "finding_ids": [
+                "fnd_7166007fc370b43b"
+              ],
+              "comuna": "TALTAL",
+              "cut": "02104",
+              "figures": [
+                {
+                  "finding_id": "fnd_7166007fc370b43b",
+                  "value": "Sergio Belmor Orellana Montejo",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Sergio Belmor Orellana Montejo' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_7166007fc370b43b"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_7166007fc370b43b",
+              "finding_ids": [
+                "fnd_7166007fc370b43b"
+              ],
+              "comuna": "TALTAL",
+              "cut": "02104",
+              "figures": [
+                {
+                  "finding_id": "fnd_7166007fc370b43b",
+                  "value": "Sergio Belmor Orellana Montejo",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Sergio Belmor Orellana Montejo' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Taltal",
+          "revid": "1379263827",
+          "findings": [
+            "fnd_7166007fc370b43b"
+          ],
+          "anchor": "obs_239265077540543ff30573ed",
+          "replaces": {
+            "name": "Sergio Belmor Orellana Montejo",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Taltal",
+          "correction": {
+            "person": "MARIO ACUÑA VILLALOBOS",
+            "name_as_written": "Mario Acuña Villalobos",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_17122cc3355ebfb7f6dfff98"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Mario Acuña Villalobos<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Mario Acuña Villalobos (was Sergio Belmor Orellana Montejo).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q188049",
+          "url": "https://www.wikidata.org/wiki/Q188049",
+          "findings": [
+            "fnd_47e9c32a752a9742"
+          ],
+          "anchor": "obs_ed177d40587cf93a158e96f1",
+          "correction": {
+            "person": "MARIO ACUÑA VILLALOBOS",
+            "name_as_written": "Mario Acuña Villalobos",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_17122cc3355ebfb7f6dfff98"
+          },
+          "statement": "Q188049: add P6 (head of government) = Mario Acuña Villalobos (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Mario Acuña Villalobos",
+          "status": "approved"
+        },
+        "explanation": "Sergio Belmor Orellana Montejo was elected mayor in 2016 (SERVEL). Mario Acuña Villalobos was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Mario Acuña Villalobos, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_239265077540543ff30573ed",
+            "reference": null,
+            "status": "approved",
+            "value": "Sergio Belmor Orellana Montejo",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_5cf8286215b7ef754bd0491e",
+            "reference": null,
+            "status": "checked",
+            "value": "Mario Acuña Villalobos",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_ed177d40587cf93a158e96f1",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-02-antofagasta",
+        "checked_at": "2026-10-26T21:21:47Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Mario Acuña Villalobos",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_5cf8286215b7ef754bd0491e",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_5cf8286215b7ef754bd0491e",
+              "reference": null,
+              "status": "checked",
+              "value": "Mario Acuña Villalobos",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Sergio Belmor Orellana Montejo",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_239265077540543ff30573ed",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_239265077540543ff30573ed",
+              "reference": null,
+              "status": "approved",
+              "value": "Sergio Belmor Orellana Montejo",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_ed177d40587cf93a158e96f1",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_ed177d40587cf93a158e96f1",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02201",
+      "name": "CALAMA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "ESTEBAN JORGE VELASQUEZ NUÑEZ",
+          "party": "INDEPENDIENTES LISTA C",
+          "pact": "EL CAMBIO POR TI",
+          "votes": 23769,
+          "candidates": [
+            {
+              "name": "ESTEBAN JORGE VELASQUEZ NUÑEZ",
+              "party": "INDEPENDIENTES LISTA C",
+              "votes": 23769,
+              "elected": true
+            },
+            {
+              "name": "ARTURO ROSAMEL MOLINA HENRIQUEZ",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 13892,
+              "elected": false
+            },
+            {
+              "name": "NELSON EDUARDO VELASQUEZ RAMOS",
+              "party": "PARTIDO REGIONALISTA DE LOS INDEPENDIENTES",
+              "votes": 3248,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "DANIEL AGUSTO PEREZ",
+          "party": "RENOVACION NACIONAL",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 11696,
+          "candidates": [
+            {
+              "name": "DANIEL AGUSTO PEREZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 11696,
+              "elected": true
+            },
+            {
+              "name": "ANGELIQUE NICOLE ARAYA HERNANDEZ",
+              "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+              "votes": 7764,
+              "elected": false
+            },
+            {
+              "name": "ESTEBAN JORGE VELASQUEZ NUÑEZ",
+              "party": "INDEPENDIENTE LISTA O",
+              "votes": 7293,
+              "elected": false
+            },
+            {
+              "name": "SANDRA JEANETTE CORTES DIAZ",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 2719,
+              "elected": false
+            },
+            {
+              "name": "OMER EMETH TORRES MORA",
+              "party": "AMPLITUD",
+              "votes": 2088,
+              "elected": false
+            },
+            {
+              "name": "PATRICIA ALEJANDRA RODRIGUEZ CHELMES",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 1518,
+              "elected": false
+            },
+            {
+              "name": "JUAN DE DIOS ALFARO CUTIPA",
+              "party": "PARTIDO IGUALDAD",
+              "votes": 567,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "ELIECER DANIEL CHAMORRO VARGAS",
+          "party": "FEDERACION REGIONALISTA VERDE SOCIAL",
+          "pact": "CHILE DIGNO VERDE Y SOBERANO",
+          "votes": 11528,
+          "candidates": [
+            {
+              "name": "ELIECER DANIEL CHAMORRO VARGAS",
+              "party": "FEDERACION REGIONALISTA VERDE SOCIAL",
+              "votes": 11528,
+              "elected": true
+            },
+            {
+              "name": "DANIEL ISAIAS AGUSTO PEREZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 9902,
+              "elected": false
+            },
+            {
+              "name": "CAROLINA PAZ LATORRE CRUZ",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 6889,
+              "elected": false
+            },
+            {
+              "name": "JORGE RICHARD OLIVARES PUENTES",
+              "party": "INDEPENDIENTES",
+              "votes": 6738,
+              "elected": false
+            },
+            {
+              "name": "MIGUEL ALBERTO BALLESTEROS CANDIA",
+              "party": "REVOLUCION DEMOCRATICA",
+              "votes": 3582,
+              "elected": false
+            },
+            {
+              "name": "LEDY ANA OSANDON FERRER",
+              "party": "INDEPENDIENTES",
+              "votes": 3399,
+              "elected": false
+            },
+            {
+              "name": "DINKA SOLANGE LOPEZ DURAN",
+              "party": "NUEVO TIEMPO",
+              "votes": 2848,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "ELIECER DANIEL CHAMORRO VARGAS",
+          "party": "FEDERACION REGIONALISTA VERDE SOCIAL",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 51440,
+          "candidates": [
+            {
+              "name": "ELIECER DANIEL CHAMORRO VARGAS",
+              "party": "FEDERACION REGIONALISTA VERDE SOCIAL",
+              "votes": 51440,
+              "elected": true
+            },
+            {
+              "name": "DANIEL AGUSTO PEREZ",
+              "party": "INDEPENDIENTES",
+              "votes": 15827,
+              "elected": false
+            },
+            {
+              "name": "CAROLINA PAZ LATORRE CRUZ",
+              "party": "PARTIDO DEMOCRATAS CHILE",
+              "votes": 11788,
+              "elected": false
+            },
+            {
+              "name": "SERGIO JORGE RODRIGO MARMIE IBARRONDO",
+              "party": "PARTIDO DE LA GENTE",
+              "votes": 5375,
+              "elected": false
+            },
+            {
+              "name": "ALEJANDRA OLIDEN VEGA",
+              "party": "INDEPENDIENTES",
+              "votes": 4957,
+              "elected": false
+            },
+            {
+              "name": "LESLIE MOLL VERA",
+              "party": "PARTIDO SOCIAL CRISTIANO",
+              "votes": 3774,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_89f0df5bbd0b0694",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Eliecer Daniel Chamorro Vargas was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_4d08e44c4755625e80c1e329",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q23660534"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_81c6d5a13f4426d3f0687e25",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ELIECER DANIEL CHAMORRO VARGAS",
+              "elected": true,
+              "votes": 51440,
+              "party": "FEDERACION REGIONALISTA VERDE SOCIAL"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "ELIECER DANIEL CHAMORRO VARGAS",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_81c6d5a13f4426d3f0687e25",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660534",
+          "url": "https://www.wikidata.org/wiki/Q23660534",
+          "findings": [
+            "fnd_89f0df5bbd0b0694"
+          ],
+          "anchor": "obs_4d08e44c4755625e80c1e329",
+          "correction": {
+            "person": "ELIECER DANIEL CHAMORRO VARGAS",
+            "name_as_written": "Eliecer Daniel Chamorro Vargas",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "FEDERACION REGIONALISTA VERDE SOCIAL",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_81c6d5a13f4426d3f0687e25"
+          },
+          "statement": "Q23660534: add P6 (head of government) = Eliecer Daniel Chamorro Vargas (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Eliecer Daniel Chamorro Vargas",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Eliecer Daniel Chamorro Vargas was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Eliecer Daniel Chamorro Vargas, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": null,
+            "observation": "obs_4d08e44c4755625e80c1e329",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-02-antofagasta",
+        "checked_at": "2026-10-26T21:21:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_4d08e44c4755625e80c1e329",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_4d08e44c4755625e80c1e329",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02202",
+      "name": "OLLAGÜE",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "CARLOS WILLIAN REYGADAS BAVESTRELLO",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "COALICION",
+          "votes": 436,
+          "candidates": [
+            {
+              "name": "CARLOS WILLIAN REYGADAS BAVESTRELLO",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 436,
+              "elected": true
+            },
+            {
+              "name": "JOSE DOMINGO CID ORTEGA",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 145,
+              "elected": false
+            },
+            {
+              "name": "CARLOS PATRICIO ANZA MUÑOZ",
+              "party": "CHILEPRIMERO",
+              "votes": 123,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "CARLOS REYGADAS BAVESTRELLO",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 523,
+          "candidates": [
+            {
+              "name": "CARLOS REYGADAS BAVESTRELLO",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 523,
+              "elected": true
+            },
+            {
+              "name": "VICTOR NINA HUANCA",
+              "party": "INDEPENDIENTE LISTA E",
+              "votes": 370,
+              "elected": false
+            },
+            {
+              "name": "HUMBERTO JOSE FLORES GONZALEZ",
+              "party": "INDEPENDIENTE LISTA O",
+              "votes": 68,
+              "elected": false
+            },
+            {
+              "name": "JAVIER VICENTELO VICENTELO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 50,
+              "elected": false
+            },
+            {
+              "name": "CARLOS ANZA MUÑOZ",
+              "party": "PARTIDO LIBERAL DE CHILE",
+              "votes": 44,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "HUMBERTO JOSE FLORES GONZALEZ",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 290,
+          "candidates": [
+            {
+              "name": "HUMBERTO JOSE FLORES GONZALEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 290,
+              "elected": true
+            },
+            {
+              "name": "MARCOS AURELIO GAETE FLORES",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 205,
+              "elected": false
+            },
+            {
+              "name": "VICTOR ADALBERTO NINA HUANCA",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 177,
+              "elected": false
+            },
+            {
+              "name": "MARLENE PAMELA HURTADO MENDOZA",
+              "party": "INDEPENDIENTES-LISTA XS",
+              "votes": 73,
+              "elected": false
+            },
+            {
+              "name": "YESSICA ANGELICA MAMANI MORALES",
+              "party": "FEDERACION REGIONALISTA VERDE SOCIAL",
+              "votes": 32,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "JHEAN CAMILO RAMIREZ DOMINGUEZ",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 394,
+          "candidates": [
+            {
+              "name": "JHEAN CAMILO RAMIREZ DOMINGUEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 394,
+              "elected": true
+            },
+            {
+              "name": "MARCOS GAETE FLORES",
+              "party": "INDEPENDIENTES",
+              "votes": 287,
+              "elected": false
+            },
+            {
+              "name": "HUMBERTO FLORES GONZALEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 222,
+              "elected": false
+            },
+            {
+              "name": "PATRICIA CASTILLO SALVA",
+              "party": "INDEPENDIENTES",
+              "votes": 74,
+              "elected": false
+            },
+            {
+              "name": "MARISOL LUGO NINA",
+              "party": "INDEPENDIENTES",
+              "votes": 55,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_ab40f57a5b4e3341",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Jhean Camilo Ramirez Dominguez was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_afa9aa06415c75c894d88837",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q23660235"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_eb7f211e4d39ab4c3e3ad5aa",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JHEAN CAMILO RAMIREZ DOMINGUEZ",
+              "elected": true,
+              "votes": 394,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "JHEAN CAMILO RAMIREZ DOMINGUEZ",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_eb7f211e4d39ab4c3e3ad5aa",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660235",
+          "url": "https://www.wikidata.org/wiki/Q23660235",
+          "findings": [
+            "fnd_ab40f57a5b4e3341"
+          ],
+          "anchor": "obs_afa9aa06415c75c894d88837",
+          "correction": {
+            "person": "JHEAN CAMILO RAMIREZ DOMINGUEZ",
+            "name_as_written": "Jhean Camilo Ramirez Dominguez",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_eb7f211e4d39ab4c3e3ad5aa"
+          },
+          "statement": "Q23660235: add P6 (head of government) = Jhean Camilo Ramirez Dominguez (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Jhean Camilo Ramirez Dominguez",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Jhean Camilo Ramirez Dominguez was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Jhean Camilo Ramirez Dominguez, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": null,
+            "observation": "obs_afa9aa06415c75c894d88837",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-02-antofagasta",
+        "checked_at": "2026-10-26T21:21:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_afa9aa06415c75c894d88837",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_afa9aa06415c75c894d88837",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02203",
+      "name": "SAN PEDRO DE ATACAMA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "SANDRA BERNA MARTINEZ",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "CONCERTACION DEMOCRATICA",
+          "votes": 1295,
+          "candidates": [
+            {
+              "name": "SANDRA BERNA MARTINEZ",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 1295,
+              "elected": true
+            },
+            {
+              "name": "MARINO ALIRO CATUR ZULETA",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 578,
+              "elected": false
+            },
+            {
+              "name": "MANUEL GUILLERMO CORTES MORA",
+              "party": "INDEPENDIENTES",
+              "votes": 508,
+              "elected": false
+            },
+            {
+              "name": "ANGELICA DEL CARMEN CABALLERO CORTES",
+              "party": "INDEPENDIENTES LISTA D",
+              "votes": 304,
+              "elected": false
+            },
+            {
+              "name": "JULIO ALEXIS RAMOS OSSANDON",
+              "party": "INDEPENDIENTES LISTA C",
+              "votes": 124,
+              "elected": false
+            },
+            {
+              "name": "ROLANDO PEDRO HUMIRE COCA",
+              "party": "INDEPENDIENTES",
+              "votes": 123,
+              "elected": false
+            },
+            {
+              "name": "MARIELA DE LOURDES ESPINDOLA CRUZ",
+              "party": "INDEPENDIENTES LISTA B",
+              "votes": 93,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "ALIRO CATUR ZULETA",
+          "party": "INDEPENDIENTE LISTA F",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 1405,
+          "candidates": [
+            {
+              "name": "ALIRO CATUR ZULETA",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 1405,
+              "elected": true
+            },
+            {
+              "name": "SANDRA BERNA MARTINEZ",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 1060,
+              "elected": false
+            },
+            {
+              "name": "EVA DE GUADALUPE SIARES FLORES",
+              "party": "INDEPENDIENTE LISTA I",
+              "votes": 373,
+              "elected": false
+            },
+            {
+              "name": "MARIA GUTIERREZ RAMOS",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 64,
+              "elected": false
+            },
+            {
+              "name": "LUIS ALBERTO ALFARO CUTIPA",
+              "party": "PARTIDO IGUALDAD",
+              "votes": 17,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "JUSTO ALEXIS ZULETA SANTANDER",
+          "party": "INDEPENDIENTES-LISTA M",
+          "pact": "CHILE DIGNO VERDE Y SOBERANO",
+          "votes": 1106,
+          "candidates": [
+            {
+              "name": "JUSTO ALEXIS ZULETA SANTANDER",
+              "party": "INDEPENDIENTES-LISTA M",
+              "votes": 1106,
+              "elected": true
+            },
+            {
+              "name": "MARIA TERESA VELIZ GUERRA",
+              "party": "PARTIDO RADICAL DE CHILE",
+              "votes": 1035,
+              "elected": false
+            },
+            {
+              "name": "MANUEL ALEJANDRO GARRIDO HERMOSILLA",
+              "party": "INDEPENDIENTES",
+              "votes": 730,
+              "elected": false
+            },
+            {
+              "name": "MARINO ALIRO CATUR ZULETA",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 509,
+              "elected": false
+            },
+            {
+              "name": "SERGIO LUIS CUBILLOS VERASAY",
+              "party": "INDEPENDIENTES",
+              "votes": 411,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "JUSTO ALEXIS ZULETA SANTANDER",
+          "party": "INDEPENDIENTES",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 3004,
+          "candidates": [
+            {
+              "name": "JUSTO ALEXIS ZULETA SANTANDER",
+              "party": "INDEPENDIENTES",
+              "votes": 3004,
+              "elected": true
+            },
+            {
+              "name": "DENIS ROBERTH CONDORI ANZA",
+              "party": "INDEPENDIENTES",
+              "votes": 1679,
+              "elected": false
+            },
+            {
+              "name": "RICARDO MARIO MALLORCA QUISPE",
+              "party": "PARTIDO DE LA GENTE",
+              "votes": 760,
+              "elected": false
+            },
+            {
+              "name": "ALIRO CATUR ZULETA",
+              "party": "INDEPENDIENTES",
+              "votes": 633,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_1630cda47c9d1ec0",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Justo Alexis Zuleta Santander was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_07cf1924d72101c0bc9b0a16",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q23660231"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_5959b128fa2a228c458740c1",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JUSTO ALEXIS ZULETA SANTANDER",
+              "elected": true,
+              "votes": 3004,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "JUSTO ALEXIS ZULETA SANTANDER",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_5959b128fa2a228c458740c1",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660231",
+          "url": "https://www.wikidata.org/wiki/Q23660231",
+          "findings": [
+            "fnd_1630cda47c9d1ec0"
+          ],
+          "anchor": "obs_07cf1924d72101c0bc9b0a16",
+          "correction": {
+            "person": "JUSTO ALEXIS ZULETA SANTANDER",
+            "name_as_written": "Justo Alexis Zuleta Santander",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_5959b128fa2a228c458740c1"
+          },
+          "statement": "Q23660231: add P6 (head of government) = Justo Alexis Zuleta Santander (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Justo Alexis Zuleta Santander",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Justo Alexis Zuleta Santander was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Justo Alexis Zuleta Santander, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": null,
+            "observation": "obs_07cf1924d72101c0bc9b0a16",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-02-antofagasta",
+        "checked_at": "2026-10-26T21:21:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_07cf1924d72101c0bc9b0a16",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_07cf1924d72101c0bc9b0a16",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02301",
+      "name": "TOCOPILLA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "FERNANDO SEBASTIAN SAN ROMAN BASCUÑAN",
+          "party": "INDEPENDIENTES LISTA C",
+          "pact": "EL CAMBIO POR TI",
+          "votes": 3073,
+          "candidates": [
+            {
+              "name": "FERNANDO SEBASTIAN SAN ROMAN BASCUÑAN",
+              "party": "INDEPENDIENTES LISTA C",
+              "votes": 3073,
+              "elected": true
+            },
+            {
+              "name": "GIOVANNA FRANCESCA ROSSI BIZJAK",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 2382,
+              "elected": false
+            },
+            {
+              "name": "LUIS RAFAEL MOYANO CRUZ",
+              "party": "INDEPENDIENTES",
+              "votes": 1739,
+              "elected": false
+            },
+            {
+              "name": "HUGO ABEL HERRERA MAFFET",
+              "party": "INDEPENDIENTES",
+              "votes": 924,
+              "elected": false
+            },
+            {
+              "name": "JORGE JULIAN PERALTA VILLAGRA",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 727,
+              "elected": false
+            },
+            {
+              "name": "OSVALDO RODRIGO VILLACORTA TORO",
+              "party": "INDEPENDIENTES",
+              "votes": 174,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "LUIS MOYANO CRUZ",
+          "party": "INDEPENDIENTE LISTA T",
+          "pact": "CANDIDATURA INDEPENDIENTE",
+          "votes": 3621,
+          "candidates": [
+            {
+              "name": "LUIS MOYANO CRUZ",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 3621,
+              "elected": true
+            },
+            {
+              "name": "JAVIER RODRIGO PIZARRO SEGURA",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 1820,
+              "elected": false
+            },
+            {
+              "name": "FERNANDO SAN ROMAN BASCUÑAN",
+              "party": "PARTIDO PROGRESISTA",
+              "votes": 1581,
+              "elected": false
+            },
+            {
+              "name": "ROYLESTER MENDOZA ARANCIBIA",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 811,
+              "elected": false
+            },
+            {
+              "name": "MARIA CRISTINA OLIVARES SOTO",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 420,
+              "elected": false
+            },
+            {
+              "name": "OSVALDO VILLACORTA TORO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 95,
+              "elected": false
+            },
+            {
+              "name": "GRICELDA DEL CARMEN MUÑIZ ANCH",
+              "party": "INDEPENDIENTE LISTA C",
+              "votes": 65,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "LJUBICA ELENA KURTOVIC CORTES",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 3583,
+          "candidates": [
+            {
+              "name": "LJUBICA ELENA KURTOVIC CORTES",
+              "party": "INDEPENDIENTES",
+              "votes": 3583,
+              "elected": true
+            },
+            {
+              "name": "LUIS RAFAEL MOYANO CRUZ",
+              "party": "INDEPENDIENTES",
+              "votes": 2131,
+              "elected": false
+            },
+            {
+              "name": "JORGE ORLANDO PEREZ GUAMAN",
+              "party": "RENOVACION NACIONAL",
+              "votes": 1046,
+              "elected": false
+            },
+            {
+              "name": "GONZALO EUGENIO COVARRUBIAS FIGUEROA",
+              "party": "INDEPENDIENTES",
+              "votes": 929,
+              "elected": false
+            },
+            {
+              "name": "JUAN ENRIQUE ARRIAZA GAJARDO",
+              "party": "INDEPENDIENTES",
+              "votes": 368,
+              "elected": false
+            },
+            {
+              "name": "PABLO PINASCO YAÑEZ",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 120,
+              "elected": false
+            },
+            {
+              "name": "JAIME PATRICIO ROJAS ALATA",
+              "party": "COMUNES",
+              "votes": 101,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "LJUBICA ELENA KURTOVIC CORTES",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 6305,
+          "candidates": [
+            {
+              "name": "LJUBICA ELENA KURTOVIC CORTES",
+              "party": "INDEPENDIENTES",
+              "votes": 6305,
+              "elected": true
+            },
+            {
+              "name": "DANIELA VECCHIOLA RIQUELME",
+              "party": "INDEPENDIENTES",
+              "votes": 5701,
+              "elected": false
+            },
+            {
+              "name": "PABLO GABRIEL ALBORNOZ CAMPUSANO",
+              "party": "FEDERACION REGIONALISTA VERDE SOCIAL",
+              "votes": 3215,
+              "elected": false
+            },
+            {
+              "name": "LUIS RAFAEL MOYANO CRUZ",
+              "party": "INDEPENDIENTES",
+              "votes": 170,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 1,
+      "findings": [
+        {
+          "id": "fnd_6aacd02e27a9d9f1",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Ljubica Elena Kurtovic Cortes was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_a0d1d627677bf93768fd9b1e",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q23660225"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_d636f2bdf027bc08aa1f2f22",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "LJUBICA ELENA KURTOVIC CORTES",
+              "elected": true,
+              "votes": 6305,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "LJUBICA ELENA KURTOVIC CORTES",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_d636f2bdf027bc08aa1f2f22",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q23660225",
+          "url": "https://www.wikidata.org/wiki/Q23660225",
+          "findings": [
+            "fnd_6aacd02e27a9d9f1"
+          ],
+          "anchor": "obs_a0d1d627677bf93768fd9b1e",
+          "correction": {
+            "person": "LJUBICA ELENA KURTOVIC CORTES",
+            "name_as_written": "Ljubica Elena Kurtovic Cortes",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_d636f2bdf027bc08aa1f2f22"
+          },
+          "statement": "Q23660225: add P6 (head of government) = Ljubica Elena Kurtovic Cortes (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Ljubica Elena Kurtovic Cortes",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Ljubica Elena Kurtovic Cortes was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Ljubica Elena Kurtovic Cortes, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "wikidata": {
+            "label": null,
+            "observation": "obs_a0d1d627677bf93768fd9b1e",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-02-antofagasta",
+        "checked_at": "2026-10-26T21:21:47Z",
+        "pages": {
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_a0d1d627677bf93768fd9b1e",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_a0d1d627677bf93768fd9b1e",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "02302",
+      "name": "MARÍA ELENA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "JORGE FRANCISCO GODOY BOLVARAN",
+          "party": "PARTIDO SOCIALISTA DE CHILE",
+          "pact": "CONCERTACION DEMOCRATICA",
+          "votes": 1284,
+          "candidates": [
+            {
+              "name": "JORGE FRANCISCO GODOY BOLVARAN",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 1284,
+              "elected": true
+            },
+            {
+              "name": "OMAR FRANCISCO NORAMBUENA RIVERA",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 727,
+              "elected": false
+            },
+            {
+              "name": "SANTIAGO ALBERTO LAMBERT ESCOBAR",
+              "party": "INDEPENDIENTES LISTA D",
+              "votes": 321,
+              "elected": false
+            },
+            {
+              "name": "RANDOLPH JAVIER HENRIQUEZ ESPINOZA",
+              "party": "INDEPENDIENTES",
+              "votes": 247,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "OMAR NORAMBUENA RIVERA",
+          "party": "INDEPENDIENTE LISTA F",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 1290,
+          "candidates": [
+            {
+              "name": "OMAR NORAMBUENA RIVERA",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 1290,
+              "elected": true
+            },
+            {
+              "name": "JORGE FRANCISCO GODOY BOLVARAN",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 912,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "OMAR FRANCISCO NORAMBUENA RIVERA",
+          "party": "INDEPENDIENTES-LISTA XX",
+          "pact": "CHILE VAMOS",
+          "votes": 1056,
+          "candidates": [
+            {
+              "name": "OMAR FRANCISCO NORAMBUENA RIVERA",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 1056,
+              "elected": true
+            },
+            {
+              "name": "VIVIANA DEL ROSARIO CUELLO RIVERA",
+              "party": "INDEPENDIENTES",
+              "votes": 446,
+              "elected": false
+            },
+            {
+              "name": "JORGE FRANCISCO GODOY BOLVARAN",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 337,
+              "elected": false
+            },
+            {
+              "name": "CRISTIAN ALBERTO GARRIDO GARRIDO",
+              "party": "PARTIDO HUMANISTA",
+              "votes": 299,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "VIVIANA CUELLO RIVERA",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 1704,
+          "candidates": [
+            {
+              "name": "VIVIANA CUELLO RIVERA",
+              "party": "INDEPENDIENTES",
+              "votes": 1704,
+              "elected": true
+            },
+            {
+              "name": "OMAR NORAMBUENA RIVERA",
+              "party": "INDEPENDIENTES",
+              "votes": 1477,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_fd05ced377f02518",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Viviana Cuello Rivera was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_73936600ba046a808f23bae4",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q16923"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_4598abb50e5432df85a66abc",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "VIVIANA CUELLO RIVERA",
+              "elected": true,
+              "votes": 1704,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "VIVIANA CUELLO RIVERA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_4598abb50e5432df85a66abc",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_f4e42d2c0241604f",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Jorge Godoy Bolvarán is Jorge Francisco Godoy Bolvaran, elected mayor in 2012 (SERVEL). Viviana Cuello Rivera was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_22ab4fc726f06c4b8da94a88",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "María Elena, Chile",
+            "revid": "1376414998",
+            "location": "infobox",
+            "role": "current",
+            "name": "Jorge Godoy Bolvarán",
+            "name_raw": "Jorge Godoy Bolvarán",
+            "office": "Alcalde",
+            "party": "PS",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_4598abb50e5432df85a66abc",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "VIVIANA CUELLO RIVERA",
+              "elected": true,
+              "votes": 1704,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_aa10e305ae53cc220caf0ccc",
+              "source": "SERVEL 2012",
+              "year": 2012,
+              "name": "JORGE FRANCISCO GODOY BOLVARAN",
+              "elected": true,
+              "votes": 1284,
+              "party": "PARTIDO SOCIALISTA DE CHILE"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_028366629a582f29cf4cde3c",
+              "source": "SERVEL 2016",
+              "year": 2016,
+              "name": "JORGE FRANCISCO GODOY BOLVARAN",
+              "elected": false,
+              "votes": 912,
+              "party": "PARTIDO SOCIALISTA DE CHILE"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_02b4dcac004f0e8cb839d3d1",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "JORGE FRANCISCO GODOY BOLVARAN",
+              "elected": false,
+              "votes": 337,
+              "party": "PARTIDO SOCIALISTA DE CHILE"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "VIVIANA CUELLO RIVERA",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_4598abb50e5432df85a66abc",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_jorge_francisco_godoy_bolvaran",
+            "name": "JORGE FRANCISCO GODOY BOLVARAN",
+            "ran": [
+              2012,
+              2016,
+              2021
+            ],
+            "won": [
+              2012
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_jorge_francisco_godoy_bolvaran",
+              "name": "JORGE FRANCISCO GODOY BOLVARAN",
+              "ran": [
+                2012,
+                2016,
+                2021
+              ],
+              "won": [
+                2012
+              ]
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_ca133720ccf8c78bcbf3f30e",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "María Elena (Chile)",
+            "revid": "173450891",
+            "location": "infobox",
+            "role": "current",
+            "name": "Viviana Cuello",
+            "name_raw": "Viviana Cuello",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Viviana Cuello is Viviana Cuello Rivera, elected mayor of María Elena in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 4,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_f4e42d2c0241604f"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f4e42d2c0241604f",
+              "finding_ids": [
+                "fnd_f4e42d2c0241604f"
+              ],
+              "comuna": "MARÍA ELENA",
+              "cut": "02302",
+              "figures": [
+                {
+                  "finding_id": "fnd_f4e42d2c0241604f",
+                  "value": "Jorge Godoy Bolvarán",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Jorge Godoy Bolvarán' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_f4e42d2c0241604f"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f4e42d2c0241604f",
+              "finding_ids": [
+                "fnd_f4e42d2c0241604f"
+              ],
+              "comuna": "MARÍA ELENA",
+              "cut": "02302",
+              "figures": [
+                {
+                  "finding_id": "fnd_f4e42d2c0241604f",
+                  "value": "Jorge Godoy Bolvarán",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Jorge Godoy Bolvarán' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": false,
+            "rejected": [
+              "fnd_f4e42d2c0241604f"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_f4e42d2c0241604f",
+              "finding_ids": [
+                "fnd_f4e42d2c0241604f"
+              ],
+              "comuna": "MARÍA ELENA",
+              "cut": "02302",
+              "figures": [
+                {
+                  "finding_id": "fnd_f4e42d2c0241604f",
+                  "value": "Jorge Godoy Bolvarán",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Jorge Godoy Bolvarán' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2016, 2021 and 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 4,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "María Elena, Chile",
+          "revid": "1376414998",
+          "findings": [
+            "fnd_f4e42d2c0241604f"
+          ],
+          "anchor": "obs_22ab4fc726f06c4b8da94a88",
+          "replaces": {
+            "name": "Jorge Godoy Bolvarán",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/María_Elena,_Chile",
+          "correction": {
+            "person": "VIVIANA CUELLO RIVERA",
+            "name_as_written": "Viviana Cuello Rivera",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_4598abb50e5432df85a66abc"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Viviana Cuello Rivera<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Viviana Cuello Rivera (was Jorge Godoy Bolvarán).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q16923",
+          "url": "https://www.wikidata.org/wiki/Q16923",
+          "findings": [
+            "fnd_fd05ced377f02518"
+          ],
+          "anchor": "obs_73936600ba046a808f23bae4",
+          "correction": {
+            "person": "VIVIANA CUELLO RIVERA",
+            "name_as_written": "Viviana Cuello Rivera",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_4598abb50e5432df85a66abc"
+          },
+          "statement": "Q16923: add P6 (head of government) = Viviana Cuello Rivera (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Viviana Cuello Rivera",
+          "status": "approved"
+        },
+        "explanation": "Jorge Godoy Bolvarán is Jorge Francisco Godoy Bolvaran, elected mayor in 2012 (SERVEL). Viviana Cuello Rivera was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Viviana Cuello Rivera, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_22ab4fc726f06c4b8da94a88",
+            "reference": null,
+            "status": "approved",
+            "value": "Jorge Godoy Bolvarán",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_ca133720ccf8c78bcbf3f30e",
+            "reference": null,
+            "status": "checked",
+            "value": "Viviana Cuello",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_73936600ba046a808f23bae4",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-02-antofagasta",
+        "checked_at": "2026-10-26T21:21:47Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Viviana Cuello",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_ca133720ccf8c78bcbf3f30e",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_ca133720ccf8c78bcbf3f30e",
+              "reference": null,
+              "status": "checked",
+              "value": "Viviana Cuello",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Jorge Godoy Bolvarán",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_22ab4fc726f06c4b8da94a88",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_22ab4fc726f06c4b8da94a88",
+              "reference": null,
+              "status": "approved",
+              "value": "Jorge Godoy Bolvarán",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_73936600ba046a808f23bae4",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_73936600ba046a808f23bae4",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 0,
+    "requests": 0,
+    "by_agent": {},
+    "requested_model": {},
+    "served_model": {},
+    "routed_model": {},
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 138
+  },
+  "trace_file": "logs/trace-national-mayors-20261026b-02-antofagasta.jsonl",
+  "world_model_audit_file": "logs/world-model-national-mayors-20261026b-02-antofagasta.jsonl",
+  "world_model_audit_entries": 93,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 15,
+        "resolve_by_name": 92,
+        "assess": 84,
+        "context": 32,
+        "view:observations": 52,
+        "reproject": 9,
+        "project_as_of": 9,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/national-mayors-20261026b-02-antofagasta/report.html",
+  "execution_time_seconds": 37.3
+}

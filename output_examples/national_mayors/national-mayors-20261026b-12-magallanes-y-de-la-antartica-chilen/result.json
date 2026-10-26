@@ -1,0 +1,5610 @@
+{
+  "run_id": "national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen",
+  "fact": "mayor",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 11,
+    "claims": 32,
+    "findings": 17,
+    "findings_by_class": {
+      "missing_value": 11,
+      "outdated_mayor": 5,
+      "unknown_name": 1
+    },
+    "drafts": 17,
+    "escalations": 0,
+    "critic_rejections": 9,
+    "discoveries": [
+      "servel_mayors_2021",
+      "servel_mayors_2016",
+      "servel_mayors_2012"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 11,
+      "unchanged": 32
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "fact": "mayor",
+    "cuts": [
+      "12101",
+      "12102",
+      "12103",
+      "12104",
+      "12201",
+      "12202",
+      "12301",
+      "12302",
+      "12303",
+      "12401",
+      "12402"
+    ],
+    "sources": [
+      "servel_mayors_2024",
+      "wikidata_mayor",
+      "wikipedia_es_mayor",
+      "wikipedia_en_mayor",
+      "servel_mayors_2021",
+      "servel_mayors_2016",
+      "servel_mayors_2012"
+    ],
+    "reason": "11 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "servel_mayors_2024": {
+      "rows": 34,
+      "observations": 34,
+      "appended": 0,
+      "unchanged": 34,
+      "reviews": 0
+    },
+    "wikidata_mayor": {
+      "rows": 83,
+      "observations": 11,
+      "appended": 0,
+      "unchanged": 11,
+      "reviews": 0
+    },
+    "wikipedia_es_mayor": {
+      "rows": 24,
+      "observations": 22,
+      "appended": 0,
+      "unchanged": 22,
+      "reviews": 0
+    },
+    "wikipedia_en_mayor": {
+      "rows": 17,
+      "observations": 20,
+      "appended": 0,
+      "unchanged": 20,
+      "reviews": 0
+    },
+    "servel_mayors_2021": {
+      "rows": 32,
+      "observations": 32,
+      "appended": 0,
+      "unchanged": 32,
+      "reviews": 0
+    },
+    "servel_mayors_2016": {
+      "rows": 35,
+      "observations": 35,
+      "appended": 0,
+      "unchanged": 35,
+      "reviews": 0
+    },
+    "servel_mayors_2012": {
+      "rows": 37,
+      "observations": 37,
+      "appended": 0,
+      "unchanged": 37,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "servel_mayors_2021",
+      "reason": "by coverage (election, 2021), the best fit for 6 figure(s), e.g. 'Jeannette Andrade Luis' ('named as mayor (Alcaldesa)')",
+      "requests": [
+        {
+          "comuna": "SAN GREGORIO",
+          "value": "Jeannette Andrade Luis",
+          "shown_in": "Wikipedia ES infobox",
+          "label": "named as mayor (Alcaldesa)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "SAN GREGORIO",
+          "value": "Edgar Cárcamo Alderete",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "PORVENIR",
+          "value": "Marisol Andrade Cárdenas",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "PRIMAVERA",
+          "value": "Blagomir Brztilo Avendaño",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "TIMAUKEL",
+          "value": "Marcos Martic Haros",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "NATALES",
+          "value": "Antonieta Oyarzo Alvarado",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcaldesa)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2021",
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 2,
+      "source": "servel_mayors_2016",
+      "reason": "by coverage (election, 2016), the best fit for 4 figure(s), e.g. 'Jeannette Andrade Luis' ('named as mayor (Alcaldesa)')",
+      "requests": [
+        {
+          "comuna": "SAN GREGORIO",
+          "value": "Jeannette Andrade Luis",
+          "shown_in": "Wikipedia ES infobox",
+          "label": "named as mayor (Alcaldesa)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "SAN GREGORIO",
+          "value": "Edgar Cárcamo Alderete",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "PORVENIR",
+          "value": "Marisol Andrade Cárdenas",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        },
+        {
+          "comuna": "TIMAUKEL",
+          "value": "Marcos Martic Haros",
+          "shown_in": "Wikipedia EN infobox",
+          "label": "named as mayor (Alcalde)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "not_elected",
+          "candidates": [
+            "servel_mayors_2016",
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    },
+    {
+      "round": 3,
+      "source": "servel_mayors_2012",
+      "reason": "by coverage (election, 2012), the best fit for 1 figure(s), e.g. 'Jeannette Andrade Luis' ('named as mayor (Alcaldesa)')",
+      "requests": [
+        {
+          "comuna": "SAN GREGORIO",
+          "value": "Jeannette Andrade Luis",
+          "shown_in": "Wikipedia ES infobox",
+          "label": "named as mayor (Alcaldesa)",
+          "year": null,
+          "basis": null,
+          "size": null,
+          "classified_as": "unknown_name",
+          "candidates": [
+            "servel_mayors_2012"
+          ]
+        }
+      ],
+      "method": "rules"
+    }
+  ],
+  "declined_discoveries": [],
+  "comunas": [
+    {
+      "cut": "12101",
+      "name": "PUNTA ARENAS",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "EMILIO OSCAR BOCCAZZI CAMPOS",
+          "party": "INDEPENDIENTES LISTA E",
+          "pact": "POR UN CHILE JUSTO",
+          "votes": 16144,
+          "candidates": [
+            {
+              "name": "EMILIO OSCAR BOCCAZZI CAMPOS",
+              "party": "INDEPENDIENTES LISTA E",
+              "votes": 16144,
+              "elected": true
+            },
+            {
+              "name": "SANDRA HAYDEE AMAR MANCILLA",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 8406,
+              "elected": false
+            },
+            {
+              "name": "ROBERTO SAHR DOMIAN",
+              "party": "INDEPENDIENTES",
+              "votes": 4139,
+              "elected": false
+            },
+            {
+              "name": "MANUEL ANGEL URIBE ALVAREZ",
+              "party": "INDEPENDIENTES LISTA B",
+              "votes": 1626,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "CLAUDIO RADONICH JIMENEZ",
+          "party": "RENOVACION NACIONAL",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 15209,
+          "candidates": [
+            {
+              "name": "CLAUDIO RADONICH JIMENEZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 15209,
+              "elected": true
+            },
+            {
+              "name": "RAMON LOBOS VASQUEZ",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 6576,
+              "elected": false
+            },
+            {
+              "name": "EMILIO BOCCAZZI CAMPOS",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 5588,
+              "elected": false
+            },
+            {
+              "name": "JESSICA BENGOA MAYORGA",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 2848,
+              "elected": false
+            },
+            {
+              "name": "DAVID ROMO GARRIDO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 751,
+              "elected": false
+            },
+            {
+              "name": "VICTOR AGUILAR OYOLA",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 531,
+              "elected": false
+            },
+            {
+              "name": "VERONICA OYARZUN OYARZO",
+              "party": "PARTIDO REGIONALISTA DE MAGALLANES",
+              "votes": 395,
+              "elected": false
+            },
+            {
+              "name": "EMILIO LUIS AGUILAR ALVARADO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 346,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "CLAUDIO ANDRES RADONICH JIMENEZ",
+          "party": "RENOVACION NACIONAL",
+          "pact": "CHILE VAMOS",
+          "votes": 21923,
+          "candidates": [
+            {
+              "name": "CLAUDIO ANDRES RADONICH JIMENEZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 21923,
+              "elected": true
+            },
+            {
+              "name": "ARTURO ARMANDO DIAZ VALDERRAMA",
+              "party": "INDEPENDIENTES-LISTA XS",
+              "votes": 13468,
+              "elected": false
+            },
+            {
+              "name": "LUIS RICARDO LEGAZA SOTO",
+              "party": "INDEPENDIENTES",
+              "votes": 11138,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "CLAUDIO RADONICH JIMENEZ",
+          "party": "RENOVACION NACIONAL",
+          "pact": "CHILE VAMOS",
+          "votes": 51734,
+          "candidates": [
+            {
+              "name": "CLAUDIO RADONICH JIMENEZ",
+              "party": "RENOVACION NACIONAL",
+              "votes": 51734,
+              "elected": true
+            },
+            {
+              "name": "VERONICA NOELIA AGUILAR MARTINEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 24895,
+              "elected": false
+            },
+            {
+              "name": "JAVIERA CALVO RIFO",
+              "party": "PARTIDO SOCIAL CRISTIANO",
+              "votes": 5316,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 2,
+      "findings": [
+        {
+          "id": "fnd_cb1b5f95a54a24e2",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Claudio Radonich Jimenez was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_ac319f2e21d70a8dd57fbaa2",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q20530729"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_57360f6dd97621e4e485c33f",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "CLAUDIO RADONICH JIMENEZ",
+              "elected": true,
+              "votes": 51734,
+              "party": "RENOVACION NACIONAL"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "CLAUDIO RADONICH JIMENEZ",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_57360f6dd97621e4e485c33f",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_12024cf9231d66ca0e5badb7",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Punta Arenas (comuna)",
+            "revid": "175176077",
+            "location": "infobox",
+            "role": "current",
+            "name": "Claudio Radonich Jiménez",
+            "name_raw": "[[Claudio Radonich|Claudio Radonich Jiménez]]",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Claudio Radonich Jiménez was elected mayor of Punta Arenas in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q20530729",
+          "url": "https://www.wikidata.org/wiki/Q20530729",
+          "findings": [
+            "fnd_cb1b5f95a54a24e2"
+          ],
+          "anchor": "obs_ac319f2e21d70a8dd57fbaa2",
+          "correction": {
+            "person": "CLAUDIO RADONICH JIMENEZ",
+            "name_as_written": "Claudio Radonich Jiménez",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "RENOVACION NACIONAL",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_57360f6dd97621e4e485c33f"
+          },
+          "statement": "Q20530729: add P6 (head of government) = Claudio Radonich Jiménez (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Claudio Radonich Jiménez",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Claudio Radonich Jimenez was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Claudio Radonich Jiménez, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_12024cf9231d66ca0e5badb7",
+            "reference": null,
+            "status": "checked",
+            "value": "Claudio Radonich Jiménez",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_ac319f2e21d70a8dd57fbaa2",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Claudio Radonich Jiménez",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_12024cf9231d66ca0e5badb7",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_12024cf9231d66ca0e5badb7",
+              "reference": null,
+              "status": "checked",
+              "value": "Claudio Radonich Jiménez",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_ac319f2e21d70a8dd57fbaa2",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_ac319f2e21d70a8dd57fbaa2",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12102",
+      "name": "LAGUNA BLANCA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "ELEAZAR AUGUSTO RICARDO RITTER RODRIGUEZ",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "COALICION",
+          "votes": 524,
+          "candidates": [
+            {
+              "name": "ELEAZAR AUGUSTO RICARDO RITTER RODRIGUEZ",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 524,
+              "elected": true
+            },
+            {
+              "name": "LUIS ALBERTO SILVA FIGUEROA",
+              "party": "INDEPENDIENTES",
+              "votes": 150,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "RICARDO RITTER RODRIGUEZ",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 261,
+          "candidates": [
+            {
+              "name": "RICARDO RITTER RODRIGUEZ",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 261,
+              "elected": true
+            },
+            {
+              "name": "JOSE LUIS QUELIN MARQUEZ",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 135,
+              "elected": false
+            },
+            {
+              "name": "NELSON ANTONIO CANIU COLIVORO",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 129,
+              "elected": false
+            },
+            {
+              "name": "CARLOS ALARCON VILLEGAS",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 13,
+              "elected": false
+            },
+            {
+              "name": "CARLOS ROWLAND OVANDO",
+              "party": "INDEPENDIENTE LISTA O",
+              "votes": 6,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "FERNANDO IVAN OJEDA GONZALEZ",
+          "party": "PARTIDO SOCIALISTA DE CHILE",
+          "pact": "UNIDAD POR EL APRUEBO",
+          "votes": 171,
+          "candidates": [
+            {
+              "name": "FERNANDO IVAN OJEDA GONZALEZ",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 171,
+              "elected": true
+            },
+            {
+              "name": "NELSON ANTONIO CANIU COLIVORO",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 140,
+              "elected": false
+            },
+            {
+              "name": "JAIME ANTONIO ARTEAGA VERA",
+              "party": "INDEPENDIENTES",
+              "votes": 138,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "FERNANDO OJEDA GONZALEZ",
+          "party": "PARTIDO SOCIALISTA DE CHILE",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 265,
+          "candidates": [
+            {
+              "name": "FERNANDO OJEDA GONZALEZ",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 265,
+              "elected": true
+            },
+            {
+              "name": "JAIME ARTEAGA VERA",
+              "party": "INDEPENDIENTES",
+              "votes": 232,
+              "elected": false
+            },
+            {
+              "name": "CARLOS FAJARDO CAUÑAN",
+              "party": "INDEPENDIENTES",
+              "votes": 124,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_49d61b420519d5fd",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Fernando Ojeda Gonzalez was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_61969b30ed1a5c9fcdac5b7e",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q14474"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_081fe2493a63806bf81b4f5c",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "FERNANDO OJEDA GONZALEZ",
+              "elected": true,
+              "votes": 265,
+              "party": "PARTIDO SOCIALISTA DE CHILE"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "FERNANDO OJEDA GONZALEZ",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_081fe2493a63806bf81b4f5c",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_4b4539e5f29318ac84e118af",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Laguna Blanca (comuna)",
+            "revid": "171022986",
+            "location": "infobox",
+            "role": "current",
+            "name": "Fernando Ojeda González",
+            "name_raw": "Fernando Ojeda González",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Fernando Ojeda González was elected mayor of Laguna Blanca in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_3f54f218aeb062efd7e19c91",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Laguna Blanca, Chile",
+            "revid": "1374526806",
+            "location": "infobox",
+            "role": "current",
+            "name": "Fernando Ojeda González",
+            "name_raw": "Fernando Ojeda González",
+            "office": "Alcalde",
+            "party": "PS",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Fernando Ojeda González was elected mayor of Laguna Blanca in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q14474",
+          "url": "https://www.wikidata.org/wiki/Q14474",
+          "findings": [
+            "fnd_49d61b420519d5fd"
+          ],
+          "anchor": "obs_61969b30ed1a5c9fcdac5b7e",
+          "correction": {
+            "person": "FERNANDO OJEDA GONZALEZ",
+            "name_as_written": "Fernando Ojeda González",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "PARTIDO SOCIALISTA DE CHILE",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_081fe2493a63806bf81b4f5c"
+          },
+          "statement": "Q14474: add P6 (head of government) = Fernando Ojeda González (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Fernando Ojeda González",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Fernando Ojeda Gonzalez was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Fernando Ojeda González, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_3f54f218aeb062efd7e19c91",
+            "reference": null,
+            "status": "checked",
+            "value": "Fernando Ojeda González",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_4b4539e5f29318ac84e118af",
+            "reference": null,
+            "status": "checked",
+            "value": "Fernando Ojeda González",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_61969b30ed1a5c9fcdac5b7e",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Fernando Ojeda González",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_4b4539e5f29318ac84e118af",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_4b4539e5f29318ac84e118af",
+              "reference": null,
+              "status": "checked",
+              "value": "Fernando Ojeda González",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Fernando Ojeda González",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_3f54f218aeb062efd7e19c91",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_3f54f218aeb062efd7e19c91",
+              "reference": null,
+              "status": "checked",
+              "value": "Fernando Ojeda González",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_61969b30ed1a5c9fcdac5b7e",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_61969b30ed1a5c9fcdac5b7e",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12103",
+      "name": "RÍO VERDE",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "SILVIA TATIANA VASQUEZ BARRIENTOS",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "COALICION",
+          "votes": 484,
+          "candidates": [
+            {
+              "name": "SILVIA TATIANA VASQUEZ BARRIENTOS",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 484,
+              "elected": true
+            },
+            {
+              "name": "JULIO CESAR SOTO MIRANDA",
+              "party": "INDEPENDIENTES",
+              "votes": 112,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "TATIANA VASQUEZ BARRIENTOS",
+          "party": "INDEPENDIENTE LISTA F",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 375,
+          "candidates": [
+            {
+              "name": "TATIANA VASQUEZ BARRIENTOS",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 375,
+              "elected": true
+            },
+            {
+              "name": "HELEN MACLEAN MUÑOZ",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 110,
+              "elected": false
+            },
+            {
+              "name": "JORGE EDUARDO JIMENEZ ROJAS",
+              "party": "INDEPENDIENTE LISTA E",
+              "votes": 18,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "SABINA ALEJANDRA BALLESTEROS VARGAS",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "CHILE VAMOS",
+          "votes": 296,
+          "candidates": [
+            {
+              "name": "SABINA ALEJANDRA BALLESTEROS VARGAS",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 296,
+              "elected": true
+            },
+            {
+              "name": "LJUBICA TERESA DRPIC IVELICH",
+              "party": "INDEPENDIENTES",
+              "votes": 191,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "TATIANA VASQUEZ BARRIENTOS",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 253,
+          "candidates": [
+            {
+              "name": "TATIANA VASQUEZ BARRIENTOS",
+              "party": "INDEPENDIENTES",
+              "votes": 253,
+              "elected": true
+            },
+            {
+              "name": "SABINA BALLESTEROS VARGAS",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 211,
+              "elected": false
+            },
+            {
+              "name": "JORGE ESPINOZA VASQUEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 69,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_6bf11f0aad5b0a42",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Tatiana Vasquez Barrientos was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_e341b62246d92547a426a5bf",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q56131"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_4549c576f6a6134e60b6b8e4",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "TATIANA VASQUEZ BARRIENTOS",
+              "elected": true,
+              "votes": 253,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "TATIANA VASQUEZ BARRIENTOS",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_4549c576f6a6134e60b6b8e4",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_56762234135c265a596b9ec1",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Río Verde (Chile)",
+            "revid": "170624679",
+            "location": "infobox",
+            "role": "current",
+            "name": "Tatiana Vásquez",
+            "name_raw": "Tatiana Vásquez (Ind.)",
+            "notes": [
+              "Ind."
+            ],
+            "office": "Alcaldesa",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Tatiana Vásquez is Tatiana Vasquez Barrientos, elected mayor of Río Verde in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_3fff361637bb06a0fd20f604",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Río Verde, Chile",
+            "revid": "1376612098",
+            "location": "infobox",
+            "role": "current",
+            "name": "Tatiana Vásquez Barrientos",
+            "name_raw": "Tatiana Vásquez Barrientos",
+            "office": "Alcalde",
+            "party": "UDI",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Tatiana Vásquez Barrientos was elected mayor of Río Verde in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q56131",
+          "url": "https://www.wikidata.org/wiki/Q56131",
+          "findings": [
+            "fnd_6bf11f0aad5b0a42"
+          ],
+          "anchor": "obs_e341b62246d92547a426a5bf",
+          "correction": {
+            "person": "TATIANA VASQUEZ BARRIENTOS",
+            "name_as_written": "Tatiana Vásquez Barrientos",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_4549c576f6a6134e60b6b8e4"
+          },
+          "statement": "Q56131: add P6 (head of government) = Tatiana Vásquez Barrientos (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Tatiana Vásquez Barrientos",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Tatiana Vasquez Barrientos was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Tatiana Vásquez Barrientos, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_3fff361637bb06a0fd20f604",
+            "reference": null,
+            "status": "checked",
+            "value": "Tatiana Vásquez Barrientos",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcaldesa",
+            "observation": "obs_56762234135c265a596b9ec1",
+            "reference": null,
+            "status": "checked",
+            "value": "Tatiana Vásquez",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_e341b62246d92547a426a5bf",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Tatiana Vásquez",
+              "label": "Alcaldesa",
+              "reference": null,
+              "observation": "obs_56762234135c265a596b9ec1",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcaldesa",
+              "observation": "obs_56762234135c265a596b9ec1",
+              "reference": null,
+              "status": "checked",
+              "value": "Tatiana Vásquez",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Tatiana Vásquez Barrientos",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_3fff361637bb06a0fd20f604",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_3fff361637bb06a0fd20f604",
+              "reference": null,
+              "status": "checked",
+              "value": "Tatiana Vásquez Barrientos",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_e341b62246d92547a426a5bf",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_e341b62246d92547a426a5bf",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12104",
+      "name": "SAN GREGORIO",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "EDGAR MILAN CARCAMO ALDERETE",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES (FUERA DE PACTO)",
+          "votes": 202,
+          "candidates": [
+            {
+              "name": "EDGAR MILAN CARCAMO ALDERETE",
+              "party": "INDEPENDIENTES",
+              "votes": 202,
+              "elected": true
+            },
+            {
+              "name": "CARLOS MARCELO HURTADO OYARZUN",
+              "party": "RENOVACION NACIONAL",
+              "votes": 164,
+              "elected": false
+            },
+            {
+              "name": "MOISES ORLANDO OJEDA CALISTO",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 123,
+              "elected": false
+            },
+            {
+              "name": "AQUILES ABDON BARRIA PEREZ",
+              "party": "INDEPENDIENTES",
+              "votes": 113,
+              "elected": false
+            },
+            {
+              "name": "FLOR VALERIA RAUQUE URIBE",
+              "party": "PARTIDO HUMANISTA",
+              "votes": 68,
+              "elected": false
+            },
+            {
+              "name": "HECTOR VARGAS RAMIREZ",
+              "party": "INDEPENDIENTES",
+              "votes": 45,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "EDGAR CARCAMO ALDERETE",
+          "party": "INDEPENDIENTE LISTA F",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 362,
+          "candidates": [
+            {
+              "name": "EDGAR CARCAMO ALDERETE",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 362,
+              "elected": true
+            },
+            {
+              "name": "JAIME GONZALO URIBE HERMOSILLA",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 76,
+              "elected": false
+            },
+            {
+              "name": "KATERINE ELIANA HARO AMPUERO",
+              "party": "PARTIDO REGIONALISTA DE MAGALLANES",
+              "votes": 53,
+              "elected": false
+            },
+            {
+              "name": "ISABEL OJEDA HARAMBOUR",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 48,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "JEANNETTE ISABEL ANDRADE RUIZ",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 217,
+          "candidates": [
+            {
+              "name": "JEANNETTE ISABEL ANDRADE RUIZ",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 217,
+              "elected": true
+            },
+            {
+              "name": "EDGAR MILAN CARCAMO ALDERETE",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 166,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "JEANNETTE ISABEL ANDRADE RUIZ",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 132,
+          "candidates": [
+            {
+              "name": "JEANNETTE ISABEL ANDRADE RUIZ",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 132,
+              "elected": true
+            },
+            {
+              "name": "ALEJANDRO CARCAMO GAJARDO",
+              "party": "INDEPENDIENTES",
+              "votes": 122,
+              "elected": false
+            },
+            {
+              "name": "CRISTIAN EDUARDO GODOY POBLETE",
+              "party": "INDEPENDIENTES",
+              "votes": 102,
+              "elected": false
+            },
+            {
+              "name": "MARCO AURELIO ARTEAGA VARGAS",
+              "party": "INDEPENDIENTES",
+              "votes": 55,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_284cdcb21b4dbd51",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_12e01e07d09a6471e740176c",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q187816"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_e156357a660eee1cbccbe3ca",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JEANNETTE ISABEL ANDRADE RUIZ",
+              "elected": true,
+              "votes": 132,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "JEANNETTE ISABEL ANDRADE RUIZ",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_e156357a660eee1cbccbe3ca",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_4c86b388b0c3380d",
+          "target": "es",
+          "aspect": "value",
+          "class": "unknown_name",
+          "explanation": "Jeannette Andrade Luis matches no candidate SERVEL lists for San Gregorio in 2012, 2016, 2021 and 2024. Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06). It may be a stand-in or a replacement chosen by the council, a misspelling, or vandalism.",
+          "confidence": 0.5,
+          "method": "matcher (model unavailable)",
+          "claim": {
+            "id": "obs_24d51d26a76470094c2a774f",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "San Gregorio (comuna de Magallanes)",
+            "revid": "173058528",
+            "location": "infobox",
+            "role": "current",
+            "name": "Jeannette Andrade Luis",
+            "name_raw": "Jeannette Andrade Luis ([[PDC (Chile)|PDC]])",
+            "notes": [
+              "PDC"
+            ],
+            "office": "Alcaldesa",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_e156357a660eee1cbccbe3ca",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JEANNETTE ISABEL ANDRADE RUIZ",
+              "elected": true,
+              "votes": 132,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_6566ab90498634159f052445",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "JEANNETTE ISABEL ANDRADE RUIZ",
+              "elected": true,
+              "votes": 217,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "JEANNETTE ISABEL ANDRADE RUIZ",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_e156357a660eee1cbccbe3ca",
+            "check_first": true
+          },
+          "match": {
+            "id": "p_jeannette_isabel_andrade_ruiz",
+            "name": "JEANNETTE ISABEL ANDRADE RUIZ",
+            "ran": [
+              2021,
+              2024
+            ],
+            "won": [
+              2021,
+              2024
+            ]
+          },
+          "matches": [
+            {
+              "level": "partial",
+              "why": "another second surname (LUIS, not RUIZ)",
+              "id": "p_jeannette_isabel_andrade_ruiz",
+              "name": "JEANNETTE ISABEL ANDRADE RUIZ",
+              "ran": [
+                2021,
+                2024
+              ],
+              "won": [
+                2021,
+                2024
+              ]
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_93129ec62700f117",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Edgar Cárcamo Alderete is Edgar Milan Carcamo Alderete, elected mayor in 2012 and 2016 (SERVEL). Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_15bef45b045e37e98a77caac",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "San Gregorio, Chile",
+            "revid": "1377560966",
+            "location": "infobox",
+            "role": "current",
+            "name": "Edgar Cárcamo Alderete",
+            "name_raw": "Edgar Cárcamo Alderete",
+            "office": "Alcalde",
+            "party": "Ind",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_e156357a660eee1cbccbe3ca",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JEANNETTE ISABEL ANDRADE RUIZ",
+              "elected": true,
+              "votes": 132,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_0b72c694641251535645564f",
+              "source": "SERVEL 2012",
+              "year": 2012,
+              "name": "EDGAR MILAN CARCAMO ALDERETE",
+              "elected": true,
+              "votes": 202,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_10dd0c9ef956eb21813d0ecb",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "EDGAR MILAN CARCAMO ALDERETE",
+              "elected": false,
+              "votes": 166,
+              "party": "INDEPENDIENTES-LISTA XX"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_b30a5a5381542a6865064741",
+              "source": "SERVEL 2016",
+              "year": 2016,
+              "name": "EDGAR CARCAMO ALDERETE",
+              "elected": true,
+              "votes": 362,
+              "party": "INDEPENDIENTE LISTA F"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "JEANNETTE ISABEL ANDRADE RUIZ",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_e156357a660eee1cbccbe3ca",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_edgar_milan_carcamo_alderete",
+            "name": "EDGAR MILAN CARCAMO ALDERETE",
+            "ran": [
+              2012,
+              2016,
+              2021
+            ],
+            "won": [
+              2012,
+              2016
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_edgar_milan_carcamo_alderete",
+              "name": "EDGAR MILAN CARCAMO ALDERETE",
+              "ran": [
+                2012,
+                2016,
+                2021
+              ],
+              "won": [
+                2012,
+                2016
+              ]
+            },
+            {
+              "level": "partial",
+              "why": "another second surname (ALDERETE, not GAJARDO)",
+              "id": "p_alejandro_carcamo_gajardo",
+              "name": "ALEJANDRO CARCAMO GAJARDO",
+              "ran": [
+                2024
+              ],
+              "won": []
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 4,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [],
+      "critic": {
+        "rounds": 4,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_4c86b388b0c3380d",
+              "fnd_93129ec62700f117"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_4c86b388b0c3380d",
+              "finding_ids": [
+                "fnd_4c86b388b0c3380d",
+                "fnd_93129ec62700f117"
+              ],
+              "comuna": "SAN GREGORIO",
+              "cut": "12104",
+              "figures": [
+                {
+                  "finding_id": "fnd_4c86b388b0c3380d",
+                  "value": "Jeannette Andrade Luis",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcaldesa)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                },
+                {
+                  "finding_id": "fnd_93129ec62700f117",
+                  "value": "Edgar Cárcamo Alderete",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "2 names match no one elected in the elections read so far (SERVEL 2024): 'Jeannette Andrade Luis' (Wikipedia ES infobox, called unknown_name); 'Edgar Cárcamo Alderete' (Wikipedia EN infobox, called unknown_name). Before they are judged, read the elections that could explain them (servel_mayors_2012, servel_mayors_2016, servel_mayors_2021)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_4c86b388b0c3380d",
+              "fnd_93129ec62700f117"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_4c86b388b0c3380d",
+              "finding_ids": [
+                "fnd_4c86b388b0c3380d",
+                "fnd_93129ec62700f117"
+              ],
+              "comuna": "SAN GREGORIO",
+              "cut": "12104",
+              "figures": [
+                {
+                  "finding_id": "fnd_4c86b388b0c3380d",
+                  "value": "Jeannette Andrade Luis",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcaldesa)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                },
+                {
+                  "finding_id": "fnd_93129ec62700f117",
+                  "value": "Edgar Cárcamo Alderete",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "2 names match no one elected in the elections read so far (SERVEL 2021 and 2024): 'Jeannette Andrade Luis' (Wikipedia ES infobox, called unknown_name); 'Edgar Cárcamo Alderete' (Wikipedia EN infobox, called not_elected). Before they are judged, read the elections that could explain them (servel_mayors_2012, servel_mayors_2016)."
+            }
+          },
+          {
+            "round": 3,
+            "approved": false,
+            "rejected": [
+              "fnd_4c86b388b0c3380d"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_4c86b388b0c3380d",
+              "finding_ids": [
+                "fnd_4c86b388b0c3380d"
+              ],
+              "comuna": "SAN GREGORIO",
+              "cut": "12104",
+              "figures": [
+                {
+                  "finding_id": "fnd_4c86b388b0c3380d",
+                  "value": "Jeannette Andrade Luis",
+                  "source": "Wikipedia ES",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcaldesa)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Jeannette Andrade Luis' (Wikipedia ES) matches no one elected in the elections read so far (SERVEL 2016, 2021 and 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 4,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "San Gregorio (comuna de Magallanes)",
+          "revid": "173058528",
+          "findings": [
+            "fnd_4c86b388b0c3380d"
+          ],
+          "anchor": "obs_24d51d26a76470094c2a774f",
+          "replaces": {
+            "name": "Jeannette Andrade Luis ([[PDC (Chile)|PDC]])",
+            "office": "Alcaldesa"
+          },
+          "url": "https://es.wikipedia.org/wiki/San_Gregorio_(comuna_de_Magallanes)",
+          "correction": {
+            "person": "JEANNETTE ISABEL ANDRADE RUIZ",
+            "name_as_written": "Jeannette Isabel Andrade Ruiz",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_e156357a660eee1cbccbe3ca"
+          },
+          "wikitext": "| dirigentes_títulos = [[Alcaldesa]]\n| dirigentes_nombres = Jeannette Isabel Andrade Ruiz (PDC)<ref name=\"servel2024\">{{cita web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |título=Resultados electorales históricos: Alcaldes 2024 |editorial=Servicio Electoral de Chile (SERVEL) |fechaacceso=26 de octubre de 2026}}</ref>",
+          "notes": [
+            "Check first: Jeannette Andrade Luis matches no candidate SERVEL lists for San Gregorio in 2012, 2016, 2021 and 2024. Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06). It may be a stand-in or a replacement chosen by the council, a misspelling, or vandalism.",
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name."
+          ],
+          "edit_summary": "Alcalde según SERVEL (elección de alcaldes 2024): Jeannette Isabel Andrade Ruiz (antes: Jeannette Andrade Luis).",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "San Gregorio, Chile",
+          "revid": "1377560966",
+          "findings": [
+            "fnd_93129ec62700f117"
+          ],
+          "anchor": "obs_15bef45b045e37e98a77caac",
+          "replaces": {
+            "name": "Edgar Cárcamo Alderete",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/San_Gregorio,_Chile",
+          "correction": {
+            "person": "JEANNETTE ISABEL ANDRADE RUIZ",
+            "name_as_written": "Jeannette Isabel Andrade Ruiz",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_e156357a660eee1cbccbe3ca"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Jeannette Isabel Andrade Ruiz<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = PDC",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Jeannette Isabel Andrade Ruiz (was Edgar Cárcamo Alderete).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q187816",
+          "url": "https://www.wikidata.org/wiki/Q187816",
+          "findings": [
+            "fnd_284cdcb21b4dbd51"
+          ],
+          "anchor": "obs_12e01e07d09a6471e740176c",
+          "correction": {
+            "person": "JEANNETTE ISABEL ANDRADE RUIZ",
+            "name_as_written": "Jeannette Isabel Andrade Ruiz",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_e156357a660eee1cbccbe3ca"
+          },
+          "statement": "Q187816: add P6 (head of government) = Jeannette Isabel Andrade Ruiz (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Jeannette Isabel Andrade Ruiz",
+          "status": "approved"
+        },
+        "explanation": "Jeannette Andrade Luis matches no candidate SERVEL lists for San Gregorio in 2012, 2016, 2021 and 2024. Jeannette Isabel Andrade Ruiz was elected in the 2024 election (SERVEL; term from 2024-12-06). It may be a stand-in or a replacement chosen by the council, a misspelling, or vandalism. Edgar Cárcamo Alderete is Edgar Milan Carcamo Alderete, elected mayor in 2012 and 2016 (SERVEL). Wikidata (no head of government statement) names no mayor. The drafts name Jeannette Isabel Andrade Ruiz, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_15bef45b045e37e98a77caac",
+            "reference": null,
+            "status": "approved",
+            "value": "Edgar Cárcamo Alderete",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcaldesa",
+            "observation": "obs_24d51d26a76470094c2a774f",
+            "reference": null,
+            "status": "approved",
+            "value": "Jeannette Andrade Luis",
+            "verdict": "unknown_name"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_12e01e07d09a6471e740176c",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Jeannette Andrade Luis",
+              "label": "Alcaldesa",
+              "reference": null,
+              "observation": "obs_24d51d26a76470094c2a774f",
+              "verdict": "unknown_name",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcaldesa",
+              "observation": "obs_24d51d26a76470094c2a774f",
+              "reference": null,
+              "status": "approved",
+              "value": "Jeannette Andrade Luis",
+              "verdict": "unknown_name"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Edgar Cárcamo Alderete",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_15bef45b045e37e98a77caac",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_15bef45b045e37e98a77caac",
+              "reference": null,
+              "status": "approved",
+              "value": "Edgar Cárcamo Alderete",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_12e01e07d09a6471e740176c",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_12e01e07d09a6471e740176c",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12201",
+      "name": "CABO DE HORNOS",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "PAMELA ROSANNA TAPIA VILLARROEL",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES (FUERA DE PACTO)",
+          "votes": 299,
+          "candidates": [
+            {
+              "name": "PAMELA ROSANNA TAPIA VILLARROEL",
+              "party": "INDEPENDIENTES",
+              "votes": 299,
+              "elected": true
+            },
+            {
+              "name": "JOSE LUIS RICARDO SOTO PASSEK",
+              "party": "INDEPENDIENTES LISTA B",
+              "votes": 295,
+              "elected": false
+            },
+            {
+              "name": "IVAN FERNANDO ALMONACID BARRIENTOS",
+              "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+              "votes": 96,
+              "elected": false
+            },
+            {
+              "name": "LUIS ALEJANDRO LLAIPEN CAÑUÑAN",
+              "party": "INDEPENDIENTES",
+              "votes": 55,
+              "elected": false
+            },
+            {
+              "name": "ALONSO ANTONIO CARMONA SANTANA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 42,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "PATRICIO FERNANDEZ ALARCON",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 435,
+          "candidates": [
+            {
+              "name": "PATRICIO FERNANDEZ ALARCON",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 435,
+              "elected": true
+            },
+            {
+              "name": "RODOLFO MONCADA SALAZAR",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 420,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "JAIME PATRICIO FERNANDEZ ALARCON",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 449,
+          "candidates": [
+            {
+              "name": "JAIME PATRICIO FERNANDEZ ALARCON",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 449,
+              "elected": true
+            },
+            {
+              "name": "ANGELA DANIELA BARRIA BARRIENTOS",
+              "party": "RENOVACION NACIONAL",
+              "votes": 357,
+              "elected": false
+            },
+            {
+              "name": "JULIO RAFAEL LORENZO FLANEGA PALMA",
+              "party": "INDEPENDIENTES",
+              "votes": 60,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "PATRICIO FERNANDEZ ALARCON",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 674,
+          "candidates": [
+            {
+              "name": "PATRICIO FERNANDEZ ALARCON",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 674,
+              "elected": true
+            },
+            {
+              "name": "CARLOS ALBERTO SOTO ANGUITA",
+              "party": "INDEPENDIENTES",
+              "votes": 297,
+              "elected": false
+            },
+            {
+              "name": "ARTURO STORAKER MOLINA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 207,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_b1d6deb96d239d3f",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Patricio Fernandez Alarcon was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_b00a3fc7f91b71604437590d",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q3673"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_c67619494c420c83dd4f39d2",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "PATRICIO FERNANDEZ ALARCON",
+              "elected": true,
+              "votes": 674,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "PATRICIO FERNANDEZ ALARCON",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_c67619494c420c83dd4f39d2",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_fdd6c35f891fec78021044eb",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Cabo de Hornos (comuna)",
+            "revid": "175008820",
+            "location": "infobox",
+            "role": "current",
+            "name": "Patricio Fernández",
+            "name_raw": "Patricio Fernández ([[Democracia Cristiana (Chile)|DC]])",
+            "notes": [
+              "DC"
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Patricio Fernández is Patricio Fernandez Alarcon, elected mayor of Cabo de Hornos in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_30d5391b98ccdbe9f0a5b389",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Cabo de Hornos, Chile",
+            "revid": "1374161115",
+            "location": "infobox",
+            "role": "current",
+            "name": "Patricio Fernández",
+            "name_raw": "Patricio Fernández",
+            "office": "Alcalde",
+            "party": "DC",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Patricio Fernández is Patricio Fernandez Alarcon, elected mayor of Cabo de Hornos in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3673",
+          "url": "https://www.wikidata.org/wiki/Q3673",
+          "findings": [
+            "fnd_b1d6deb96d239d3f"
+          ],
+          "anchor": "obs_b00a3fc7f91b71604437590d",
+          "correction": {
+            "person": "PATRICIO FERNANDEZ ALARCON",
+            "name_as_written": "Patricio Fernandez Alarcon",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_c67619494c420c83dd4f39d2"
+          },
+          "statement": "Q3673: add P6 (head of government) = Patricio Fernandez Alarcon (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Patricio Fernandez Alarcon",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Patricio Fernandez Alarcon was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Patricio Fernandez Alarcon, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_30d5391b98ccdbe9f0a5b389",
+            "reference": null,
+            "status": "checked",
+            "value": "Patricio Fernández",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_fdd6c35f891fec78021044eb",
+            "reference": null,
+            "status": "checked",
+            "value": "Patricio Fernández",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_b00a3fc7f91b71604437590d",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Patricio Fernández",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_fdd6c35f891fec78021044eb",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_fdd6c35f891fec78021044eb",
+              "reference": null,
+              "status": "checked",
+              "value": "Patricio Fernández",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Patricio Fernández",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_30d5391b98ccdbe9f0a5b389",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_30d5391b98ccdbe9f0a5b389",
+              "reference": null,
+              "status": "checked",
+              "value": "Patricio Fernández",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_b00a3fc7f91b71604437590d",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_b00a3fc7f91b71604437590d",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12202",
+      "name": "ANTÁRTICA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "PAMELA ROSANNA TAPIA VILLARROEL",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES (FUERA DE PACTO)",
+          "votes": 5,
+          "candidates": [
+            {
+              "name": "PAMELA ROSANNA TAPIA VILLARROEL",
+              "party": "INDEPENDIENTES",
+              "votes": 5,
+              "elected": true
+            },
+            {
+              "name": "ALONSO ANTONIO CARMONA SANTANA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 9,
+              "elected": false
+            },
+            {
+              "name": "JOSE LUIS RICARDO SOTO PASSEK",
+              "party": "INDEPENDIENTES LISTA B",
+              "votes": 5,
+              "elected": false
+            },
+            {
+              "name": "LUIS ALEJANDRO LLAIPEN CAÑUÑAN",
+              "party": "INDEPENDIENTES",
+              "votes": 2,
+              "elected": false
+            },
+            {
+              "name": "IVAN FERNANDO ALMONACID BARRIENTOS",
+              "party": "PARTIDO RADICAL SOCIALDEMOCRATA",
+              "votes": 1,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "PATRICIO FERNANDEZ ALARCON",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 4,
+          "candidates": [
+            {
+              "name": "PATRICIO FERNANDEZ ALARCON",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 4,
+              "elected": true
+            },
+            {
+              "name": "RODOLFO MONCADA SALAZAR",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 4,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "JAIME PATRICIO FERNANDEZ ALARCON",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 0,
+          "candidates": [
+            {
+              "name": "JAIME PATRICIO FERNANDEZ ALARCON",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 0,
+              "elected": true
+            },
+            {
+              "name": "ANGELA DANIELA BARRIA BARRIENTOS",
+              "party": "RENOVACION NACIONAL",
+              "votes": 2,
+              "elected": false
+            },
+            {
+              "name": "JULIO RAFAEL LORENZO FLANEGA PALMA",
+              "party": "INDEPENDIENTES",
+              "votes": 2,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "PATRICIO FERNANDEZ ALARCON",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 13,
+          "candidates": [
+            {
+              "name": "PATRICIO FERNANDEZ ALARCON",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 13,
+              "elected": true
+            },
+            {
+              "name": "ARTURO STORAKER MOLINA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 26,
+              "elected": false
+            },
+            {
+              "name": "CARLOS ALBERTO SOTO ANGUITA",
+              "party": "INDEPENDIENTES",
+              "votes": 15,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_b5329788d458865f",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Patricio Fernandez Alarcon was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_70b77bdaf0bffb64589e52f1",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q15050531"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_618de3346b57c6ddd4a08278",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "PATRICIO FERNANDEZ ALARCON",
+              "elected": true,
+              "votes": 13,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "PATRICIO FERNANDEZ ALARCON",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_618de3346b57c6ddd4a08278",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_2a65221edff400fc566cf76c",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Antártica (comuna)",
+            "revid": "173833767",
+            "location": "infobox",
+            "role": "current",
+            "name": "Patricio Fernández",
+            "name_raw": "Patricio Fernández",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Patricio Fernández is Patricio Fernandez Alarcon, elected mayor of Antártica in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_dab659d896850a403edbcc28",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Antártica",
+            "revid": "1370351834",
+            "location": "infobox",
+            "role": "current",
+            "name": "Patricio Fernández",
+            "name_raw": "Patricio Fernández",
+            "office": "Mayor of Cabo de Hornos",
+            "party": "DC",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Patricio Fernández is Patricio Fernandez Alarcon, elected mayor of Antártica in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q15050531",
+          "url": "https://www.wikidata.org/wiki/Q15050531",
+          "findings": [
+            "fnd_b5329788d458865f"
+          ],
+          "anchor": "obs_70b77bdaf0bffb64589e52f1",
+          "correction": {
+            "person": "PATRICIO FERNANDEZ ALARCON",
+            "name_as_written": "Patricio Fernandez Alarcon",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "PARTIDO DEMOCRATA CRISTIANO",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_618de3346b57c6ddd4a08278"
+          },
+          "statement": "Q15050531: add P6 (head of government) = Patricio Fernandez Alarcon (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Patricio Fernandez Alarcon",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Patricio Fernandez Alarcon was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Patricio Fernandez Alarcon, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Mayor of Cabo de Hornos",
+            "observation": "obs_dab659d896850a403edbcc28",
+            "reference": null,
+            "status": "checked",
+            "value": "Patricio Fernández",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_2a65221edff400fc566cf76c",
+            "reference": null,
+            "status": "checked",
+            "value": "Patricio Fernández",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_70b77bdaf0bffb64589e52f1",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Patricio Fernández",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_2a65221edff400fc566cf76c",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_2a65221edff400fc566cf76c",
+              "reference": null,
+              "status": "checked",
+              "value": "Patricio Fernández",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Patricio Fernández",
+              "label": "Mayor of Cabo de Hornos",
+              "reference": null,
+              "observation": "obs_dab659d896850a403edbcc28",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Mayor of Cabo de Hornos",
+              "observation": "obs_dab659d896850a403edbcc28",
+              "reference": null,
+              "status": "checked",
+              "value": "Patricio Fernández",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_70b77bdaf0bffb64589e52f1",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_70b77bdaf0bffb64589e52f1",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12301",
+      "name": "PORVENIR",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "MARISOL ANDRADE CARDENAS",
+          "party": "INDEPENDIENTES LISTA F",
+          "pact": "CONCERTACION DEMOCRATICA",
+          "votes": 1646,
+          "candidates": [
+            {
+              "name": "MARISOL ANDRADE CARDENAS",
+              "party": "INDEPENDIENTES LISTA F",
+              "votes": 1646,
+              "elected": true
+            },
+            {
+              "name": "MARGARITA EDITH NORAMBUENA CAVIEDES",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 503,
+              "elected": false
+            },
+            {
+              "name": "JOSE ANTONIO MANSILLA APABLAZA",
+              "party": "INDEPENDIENTES LISTA G",
+              "votes": 167,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "MARISOL ANDRADE CARDENAS",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 1321,
+          "candidates": [
+            {
+              "name": "MARISOL ANDRADE CARDENAS",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 1321,
+              "elected": true
+            },
+            {
+              "name": "MARGARITA NORAMBUENA CAVIEDES",
+              "party": "RENOVACION NACIONAL",
+              "votes": 741,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "JOSE GABRIEL PARADA AGUILAR",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 1211,
+          "candidates": [
+            {
+              "name": "JOSE GABRIEL PARADA AGUILAR",
+              "party": "INDEPENDIENTES",
+              "votes": 1211,
+              "elected": true
+            },
+            {
+              "name": "MARISOL ANDRADE CARDENAS",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 784,
+              "elected": false
+            },
+            {
+              "name": "MARIO LUIS CARCAMO NORAMBUENA",
+              "party": "INDEPENDIENTES",
+              "votes": 230,
+              "elected": false
+            },
+            {
+              "name": "ANDREA GREGORIA CUEVAS CARDENAS",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 199,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "JOSE GABRIEL PARADA AGUILAR",
+          "party": "INDEPENDIENTES",
+          "pact": "CONTIGO CHILE MEJOR",
+          "votes": 1607,
+          "candidates": [
+            {
+              "name": "JOSE GABRIEL PARADA AGUILAR",
+              "party": "INDEPENDIENTES",
+              "votes": 1607,
+              "elected": true
+            },
+            {
+              "name": "CRISTIAN JUVENAL ANDRADE GALLARDO",
+              "party": "INDEPENDIENTES",
+              "votes": 1464,
+              "elected": false
+            },
+            {
+              "name": "CARLOS GUSTAVO SOTO MIRANDA",
+              "party": "RENOVACION NACIONAL",
+              "votes": 575,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_a6b43878343f9444",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Jose Gabriel Parada Aguilar was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_98f3801caf3c264d7cd96445",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q51120"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_1b2522d63045143740148105",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JOSE GABRIEL PARADA AGUILAR",
+              "elected": true,
+              "votes": 1607,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "JOSE GABRIEL PARADA AGUILAR",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_1b2522d63045143740148105",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_c9e707e43bf6b233",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Marisol Andrade Cárdenas was elected mayor in 2016 (SERVEL). Jose Gabriel Parada Aguilar was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_0f61001f0dc02582c2cff636",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Porvenir, Chile",
+            "revid": "1374792918",
+            "location": "infobox",
+            "role": "current",
+            "name": "Marisol Andrade Cárdenas",
+            "name_raw": "Marisol Andrade Cárdenas",
+            "office": "Alcalde",
+            "party": "Christian Democratic Party",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_1b2522d63045143740148105",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "JOSE GABRIEL PARADA AGUILAR",
+              "elected": true,
+              "votes": 1607,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_9e489face3fc5ddde062fc2d",
+              "source": "SERVEL 2016",
+              "year": 2016,
+              "name": "MARISOL ANDRADE CARDENAS",
+              "elected": true,
+              "votes": 1321,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_0bcfb27ad5a62ec2767cf7a0",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "MARISOL ANDRADE CARDENAS",
+              "elected": false,
+              "votes": 784,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "JOSE GABRIEL PARADA AGUILAR",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_1b2522d63045143740148105",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_marisol_andrade_cardenas",
+            "name": "MARISOL ANDRADE CARDENAS",
+            "ran": [
+              2016,
+              2021
+            ],
+            "won": [
+              2016
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_marisol_andrade_cardenas",
+              "name": "MARISOL ANDRADE CARDENAS",
+              "ran": [
+                2016,
+                2021
+              ],
+              "won": [
+                2016
+              ]
+            },
+            {
+              "level": "partial",
+              "why": "another second surname (CARDENAS, not GALLARDO)",
+              "id": "p_cristian_juvenal_andrade_gallardo",
+              "name": "CRISTIAN JUVENAL ANDRADE GALLARDO",
+              "ran": [
+                2024
+              ],
+              "won": []
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_7f97b3d3a3116cfe19746e01",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Porvenir",
+            "revid": "172640096",
+            "location": "infobox",
+            "role": "current",
+            "name": "José Gabriel Parada Aguilar",
+            "name_raw": "José Gabriel Parada Aguilar ([[Candidato independiente|Ind.]])",
+            "notes": [
+              "Ind."
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "José Gabriel Parada Aguilar was elected mayor of Porvenir in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 3,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_c9e707e43bf6b233"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_c9e707e43bf6b233",
+              "finding_ids": [
+                "fnd_c9e707e43bf6b233"
+              ],
+              "comuna": "PORVENIR",
+              "cut": "12301",
+              "figures": [
+                {
+                  "finding_id": "fnd_c9e707e43bf6b233",
+                  "value": "Marisol Andrade Cárdenas",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Marisol Andrade Cárdenas' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_c9e707e43bf6b233"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_c9e707e43bf6b233",
+              "finding_ids": [
+                "fnd_c9e707e43bf6b233"
+              ],
+              "comuna": "PORVENIR",
+              "cut": "12301",
+              "figures": [
+                {
+                  "finding_id": "fnd_c9e707e43bf6b233",
+                  "value": "Marisol Andrade Cárdenas",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Marisol Andrade Cárdenas' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Porvenir, Chile",
+          "revid": "1374792918",
+          "findings": [
+            "fnd_c9e707e43bf6b233"
+          ],
+          "anchor": "obs_0f61001f0dc02582c2cff636",
+          "replaces": {
+            "name": "Marisol Andrade Cárdenas",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Porvenir,_Chile",
+          "correction": {
+            "person": "JOSE GABRIEL PARADA AGUILAR",
+            "name_as_written": "José Gabriel Parada Aguilar",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_1b2522d63045143740148105"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = José Gabriel Parada Aguilar<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: José Gabriel Parada Aguilar (was Marisol Andrade Cárdenas).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q51120",
+          "url": "https://www.wikidata.org/wiki/Q51120",
+          "findings": [
+            "fnd_a6b43878343f9444"
+          ],
+          "anchor": "obs_98f3801caf3c264d7cd96445",
+          "correction": {
+            "person": "JOSE GABRIEL PARADA AGUILAR",
+            "name_as_written": "José Gabriel Parada Aguilar",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_1b2522d63045143740148105"
+          },
+          "statement": "Q51120: add P6 (head of government) = José Gabriel Parada Aguilar (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: José Gabriel Parada Aguilar",
+          "status": "approved"
+        },
+        "explanation": "Marisol Andrade Cárdenas was elected mayor in 2016 (SERVEL). Jose Gabriel Parada Aguilar was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name José Gabriel Parada Aguilar, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_0f61001f0dc02582c2cff636",
+            "reference": null,
+            "status": "approved",
+            "value": "Marisol Andrade Cárdenas",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_7f97b3d3a3116cfe19746e01",
+            "reference": null,
+            "status": "checked",
+            "value": "José Gabriel Parada Aguilar",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_98f3801caf3c264d7cd96445",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "José Gabriel Parada Aguilar",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_7f97b3d3a3116cfe19746e01",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_7f97b3d3a3116cfe19746e01",
+              "reference": null,
+              "status": "checked",
+              "value": "José Gabriel Parada Aguilar",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Marisol Andrade Cárdenas",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_0f61001f0dc02582c2cff636",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_0f61001f0dc02582c2cff636",
+              "reference": null,
+              "status": "approved",
+              "value": "Marisol Andrade Cárdenas",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_98f3801caf3c264d7cd96445",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_98f3801caf3c264d7cd96445",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12302",
+      "name": "PRIMAVERA",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "BLAGOMIR FERNANDO BRZTILO AVENDAÑO",
+          "party": "INDEPENDIENTES LISTA F",
+          "pact": "CONCERTACION DEMOCRATICA",
+          "votes": 426,
+          "candidates": [
+            {
+              "name": "BLAGOMIR FERNANDO BRZTILO AVENDAÑO",
+              "party": "INDEPENDIENTES LISTA F",
+              "votes": 426,
+              "elected": true
+            },
+            {
+              "name": "LUIS RICARDO OLEA CELSI",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 324,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "BLAGOMIR FERNANDO BRZTILO AVENDAÑO",
+          "party": "INDEPENDIENTE LISTA E",
+          "pact": "PACTO NUEVA MAYORIA",
+          "votes": 385,
+          "candidates": [
+            {
+              "name": "BLAGOMIR FERNANDO BRZTILO AVENDAÑO",
+              "party": "INDEPENDIENTE LISTA E",
+              "votes": 385,
+              "elected": true
+            },
+            {
+              "name": "GLORIA MANSILLA MANSILLA",
+              "party": "RENOVACION NACIONAL",
+              "votes": 139,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "BLAGOMIR FERNANDO BRZTILO AVENDAÑO",
+          "party": "PARTIDO DEMOCRATA CRISTIANO",
+          "pact": "UNIDOS POR LA DIGNIDAD",
+          "votes": 300,
+          "candidates": [
+            {
+              "name": "BLAGOMIR FERNANDO BRZTILO AVENDAÑO",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 300,
+              "elected": true
+            },
+            {
+              "name": "JUAN CARLOS VERGARA GARAY",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 242,
+              "elected": false
+            },
+            {
+              "name": "PABLO ANDRES TASCON ESPAÑA",
+              "party": "INDEPENDIENTES",
+              "votes": 3,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "KARINA FERNANDEZ MARIN",
+          "party": "INDEPENDIENTES",
+          "pact": "CHILE VAMOS",
+          "votes": 342,
+          "candidates": [
+            {
+              "name": "KARINA FERNANDEZ MARIN",
+              "party": "INDEPENDIENTES",
+              "votes": 342,
+              "elected": true
+            },
+            {
+              "name": "EDUARDO HERNANDEZ ASTUDILLO",
+              "party": "INDEPENDIENTES",
+              "votes": 203,
+              "elected": false
+            },
+            {
+              "name": "CARLOS HURTADO OYARZUN",
+              "party": "INDEPENDIENTES",
+              "votes": 193,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_af42d51897369af0",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Karina Fernandez Marin was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_f4c0ab29e87e8a2c305479b5",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q51586"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_f3b1c8346a9a79b8c9cd16bd",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "KARINA FERNANDEZ MARIN",
+              "elected": true,
+              "votes": 342,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "KARINA FERNANDEZ MARIN",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_f3b1c8346a9a79b8c9cd16bd",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_62f4aa0d30c37f94",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Blagomir Brztilo Avendaño is Blagomir Fernando Brztilo Avendaño, elected mayor in 2021 (SERVEL). Karina Fernandez Marin was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_380a5623e52b24e3844dcc80",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Primavera, Chile",
+            "revid": "1377104210",
+            "location": "infobox",
+            "role": "current",
+            "name": "Blagomir Brztilo Avendaño",
+            "name_raw": "Blagomir Brztilo Avendaño",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_f3b1c8346a9a79b8c9cd16bd",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "KARINA FERNANDEZ MARIN",
+              "elected": true,
+              "votes": 342,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_c06f9168138ee42fce39561e",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "BLAGOMIR FERNANDO BRZTILO AVENDAÑO",
+              "elected": true,
+              "votes": 300,
+              "party": "PARTIDO DEMOCRATA CRISTIANO"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "KARINA FERNANDEZ MARIN",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_f3b1c8346a9a79b8c9cd16bd",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_blagomir_fernando_brztilo_avendano",
+            "name": "BLAGOMIR FERNANDO BRZTILO AVENDAÑO",
+            "ran": [
+              2021
+            ],
+            "won": [
+              2021
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_blagomir_fernando_brztilo_avendano",
+              "name": "BLAGOMIR FERNANDO BRZTILO AVENDAÑO",
+              "ran": [
+                2021
+              ],
+              "won": [
+                2021
+              ]
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_b78dc0b66ab8727102d9b69a",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Primavera (Chile)",
+            "revid": "174227371",
+            "location": "infobox",
+            "role": "current",
+            "name": "Karina Fernández Marín",
+            "name_raw": "Karina Fernández Marín ([[Candidato independiente|Ind.]])",
+            "notes": [
+              "Ind."
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Karina Fernández Marín was elected mayor of Primavera in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_62f4aa0d30c37f94"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_62f4aa0d30c37f94",
+              "finding_ids": [
+                "fnd_62f4aa0d30c37f94"
+              ],
+              "comuna": "PRIMAVERA",
+              "cut": "12302",
+              "figures": [
+                {
+                  "finding_id": "fnd_62f4aa0d30c37f94",
+                  "value": "Blagomir Brztilo Avendaño",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Blagomir Brztilo Avendaño' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Primavera, Chile",
+          "revid": "1377104210",
+          "findings": [
+            "fnd_62f4aa0d30c37f94"
+          ],
+          "anchor": "obs_380a5623e52b24e3844dcc80",
+          "replaces": {
+            "name": "Blagomir Brztilo Avendaño",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Primavera,_Chile",
+          "correction": {
+            "person": "KARINA FERNANDEZ MARIN",
+            "name_as_written": "Karina Fernández Marín",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_f3b1c8346a9a79b8c9cd16bd"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Karina Fernández Marín<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Karina Fernández Marín (was Blagomir Brztilo Avendaño).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q51586",
+          "url": "https://www.wikidata.org/wiki/Q51586",
+          "findings": [
+            "fnd_af42d51897369af0"
+          ],
+          "anchor": "obs_f4c0ab29e87e8a2c305479b5",
+          "correction": {
+            "person": "KARINA FERNANDEZ MARIN",
+            "name_as_written": "Karina Fernández Marín",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_f3b1c8346a9a79b8c9cd16bd"
+          },
+          "statement": "Q51586: add P6 (head of government) = Karina Fernández Marín (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Karina Fernández Marín",
+          "status": "approved"
+        },
+        "explanation": "Blagomir Brztilo Avendaño is Blagomir Fernando Brztilo Avendaño, elected mayor in 2021 (SERVEL). Karina Fernandez Marin was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Karina Fernández Marín, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_380a5623e52b24e3844dcc80",
+            "reference": null,
+            "status": "approved",
+            "value": "Blagomir Brztilo Avendaño",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_b78dc0b66ab8727102d9b69a",
+            "reference": null,
+            "status": "checked",
+            "value": "Karina Fernández Marín",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_f4c0ab29e87e8a2c305479b5",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Karina Fernández Marín",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_b78dc0b66ab8727102d9b69a",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_b78dc0b66ab8727102d9b69a",
+              "reference": null,
+              "status": "checked",
+              "value": "Karina Fernández Marín",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Blagomir Brztilo Avendaño",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_380a5623e52b24e3844dcc80",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_380a5623e52b24e3844dcc80",
+              "reference": null,
+              "status": "approved",
+              "value": "Blagomir Brztilo Avendaño",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_f4c0ab29e87e8a2c305479b5",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_f4c0ab29e87e8a2c305479b5",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12303",
+      "name": "TIMAUKEL",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "ALFONSO DE LOURDES SIMUNOVIC OJEDA",
+          "party": "INDEPENDIENTES LISTA H",
+          "pact": "COALICION",
+          "votes": 264,
+          "candidates": [
+            {
+              "name": "ALFONSO DE LOURDES SIMUNOVIC OJEDA",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 264,
+              "elected": true
+            },
+            {
+              "name": "FERNANDO RENE CALLAHAN GIDDINGS",
+              "party": "INDEPENDIENTES",
+              "votes": 231,
+              "elected": false
+            },
+            {
+              "name": "JULIA ELISA GALLARDO BUSTAMANTE",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 41,
+              "elected": false
+            },
+            {
+              "name": "EVA DEL CARMEN GUINAO CALISTO",
+              "party": "INDEPENDIENTES",
+              "votes": 31,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "MARCOS MARTIC HAROS",
+          "party": "INDEPENDIENTE LISTA T",
+          "pact": "CANDIDATURA INDEPENDIENTE",
+          "votes": 339,
+          "candidates": [
+            {
+              "name": "MARCOS MARTIC HAROS",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 339,
+              "elected": true
+            },
+            {
+              "name": "ALFONSO SIMUNOVIC OJEDA",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 241,
+              "elected": false
+            },
+            {
+              "name": "LUIS FERNANDO PEREZ ZUÑIGA",
+              "party": "PARTIDO POR LA DEMOCRACIA",
+              "votes": 6,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "LUIS SEGUNDO BARRIA ANDRADE",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 179,
+          "candidates": [
+            {
+              "name": "LUIS SEGUNDO BARRIA ANDRADE",
+              "party": "INDEPENDIENTES",
+              "votes": 179,
+              "elected": true
+            },
+            {
+              "name": "MARCOS PATRICIO MARTIC HAROS",
+              "party": "RENOVACION NACIONAL",
+              "votes": 169,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "LUIS BARRIA ANDRADE",
+          "party": "INDEPENDIENTES",
+          "pact": "CHILE VAMOS",
+          "votes": 329,
+          "candidates": [
+            {
+              "name": "LUIS BARRIA ANDRADE",
+              "party": "INDEPENDIENTES",
+              "votes": 329,
+              "elected": true
+            },
+            {
+              "name": "FERNANDO RENE CALLAHAN GIDDINGS",
+              "party": "INDEPENDIENTES",
+              "votes": 267,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_2ca1b1ac3453a83a",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Luis Barria Andrade was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_7c9c8ebbf546336171ab39ed",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q188177"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_6f42758a97b9134020eb8694",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "LUIS BARRIA ANDRADE",
+              "elected": true,
+              "votes": 329,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "LUIS BARRIA ANDRADE",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_6f42758a97b9134020eb8694",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_835238df9f25ab88",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Marcos Martic Haros is Marcos Patricio Martic Haros, elected mayor in 2016 (SERVEL). Luis Barria Andrade was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_103d77c57a247a95c23ed2cf",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Timaukel",
+            "revid": "1379269790",
+            "location": "infobox",
+            "role": "current",
+            "name": "Marcos Martic Haros",
+            "name_raw": "Marcos Martic Haros",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_6f42758a97b9134020eb8694",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "LUIS BARRIA ANDRADE",
+              "elected": true,
+              "votes": 329,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_10ba296c3410f65e5af7bb6d",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "MARCOS PATRICIO MARTIC HAROS",
+              "elected": false,
+              "votes": 169,
+              "party": "RENOVACION NACIONAL"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_882c091c42dbee4f244af8ef",
+              "source": "SERVEL 2016",
+              "year": 2016,
+              "name": "MARCOS MARTIC HAROS",
+              "elected": true,
+              "votes": 339,
+              "party": "INDEPENDIENTE LISTA T"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "LUIS BARRIA ANDRADE",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_6f42758a97b9134020eb8694",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_marcos_patricio_martic_haros",
+            "name": "MARCOS PATRICIO MARTIC HAROS",
+            "ran": [
+              2016,
+              2021
+            ],
+            "won": [
+              2016
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_marcos_patricio_martic_haros",
+              "name": "MARCOS PATRICIO MARTIC HAROS",
+              "ran": [
+                2016,
+                2021
+              ],
+              "won": [
+                2016
+              ]
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_dcf8afe81a5e5a9fd87a14ca",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Timaukel",
+            "revid": "173976790",
+            "location": "infobox",
+            "role": "current",
+            "name": "Luis Barría Andrade",
+            "name_raw": "Luis Barría Andrade ([[Candidato independiente|Ind.]]/[[Unión Demócrata Independiente|UDI]])",
+            "notes": [
+              "Ind./UDI"
+            ],
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Luis Barría Andrade was elected mayor of Timaukel in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 3,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_835238df9f25ab88"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_835238df9f25ab88",
+              "finding_ids": [
+                "fnd_835238df9f25ab88"
+              ],
+              "comuna": "TIMAUKEL",
+              "cut": "12303",
+              "figures": [
+                {
+                  "finding_id": "fnd_835238df9f25ab88",
+                  "value": "Marcos Martic Haros",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Marcos Martic Haros' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_835238df9f25ab88"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_835238df9f25ab88",
+              "finding_ids": [
+                "fnd_835238df9f25ab88"
+              ],
+              "comuna": "TIMAUKEL",
+              "cut": "12303",
+              "figures": [
+                {
+                  "finding_id": "fnd_835238df9f25ab88",
+                  "value": "Marcos Martic Haros",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcalde)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "not_elected",
+                  "candidates": [
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Marcos Martic Haros' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2021 and 2024). Before calling it not_elected, read an election that could explain it (servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 3,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Timaukel",
+          "revid": "1379269790",
+          "findings": [
+            "fnd_835238df9f25ab88"
+          ],
+          "anchor": "obs_103d77c57a247a95c23ed2cf",
+          "replaces": {
+            "name": "Marcos Martic Haros",
+            "office": "Alcalde"
+          },
+          "url": "https://en.wikipedia.org/wiki/Timaukel",
+          "correction": {
+            "person": "LUIS BARRIA ANDRADE",
+            "name_as_written": "Luis Barría Andrade",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_6f42758a97b9134020eb8694"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Luis Barría Andrade<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in)."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Luis Barría Andrade (was Marcos Martic Haros).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q188177",
+          "url": "https://www.wikidata.org/wiki/Q188177",
+          "findings": [
+            "fnd_2ca1b1ac3453a83a"
+          ],
+          "anchor": "obs_7c9c8ebbf546336171ab39ed",
+          "correction": {
+            "person": "LUIS BARRIA ANDRADE",
+            "name_as_written": "Luis Barría Andrade",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_6f42758a97b9134020eb8694"
+          },
+          "statement": "Q188177: add P6 (head of government) = Luis Barría Andrade (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Luis Barría Andrade",
+          "status": "approved"
+        },
+        "explanation": "Marcos Martic Haros is Marcos Patricio Martic Haros, elected mayor in 2016 (SERVEL). Luis Barria Andrade was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Luis Barría Andrade, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_103d77c57a247a95c23ed2cf",
+            "reference": null,
+            "status": "approved",
+            "value": "Marcos Martic Haros",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_dcf8afe81a5e5a9fd87a14ca",
+            "reference": null,
+            "status": "checked",
+            "value": "Luis Barría Andrade",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_7c9c8ebbf546336171ab39ed",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Luis Barría Andrade",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_dcf8afe81a5e5a9fd87a14ca",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_dcf8afe81a5e5a9fd87a14ca",
+              "reference": null,
+              "status": "checked",
+              "value": "Luis Barría Andrade",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Marcos Martic Haros",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_103d77c57a247a95c23ed2cf",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_103d77c57a247a95c23ed2cf",
+              "reference": null,
+              "status": "approved",
+              "value": "Marcos Martic Haros",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_7c9c8ebbf546336171ab39ed",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_7c9c8ebbf546336171ab39ed",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12401",
+      "name": "NATALES",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "JOSE FERNANDO PAREDES MANSILLA",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "COALICION",
+          "votes": 5537,
+          "candidates": [
+            {
+              "name": "JOSE FERNANDO PAREDES MANSILLA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 5537,
+              "elected": true
+            },
+            {
+              "name": "MARIA ISABEL SANCHEZ LOPEZ",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 2366,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "FERNANDO PAREDES MANSILLA",
+          "party": "UNION DEMOCRATA INDEPENDIENTE",
+          "pact": "PACTO CHILE VAMOS",
+          "votes": 4688,
+          "candidates": [
+            {
+              "name": "FERNANDO PAREDES MANSILLA",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 4688,
+              "elected": true
+            },
+            {
+              "name": "MARIO MARGONI GADLER",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 2284,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "ANTONIETA DANIELA DEL CARMEN OYARZO ALVARADO",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 5092,
+          "candidates": [
+            {
+              "name": "ANTONIETA DANIELA DEL CARMEN OYARZO ALVARADO",
+              "party": "INDEPENDIENTES",
+              "votes": 5092,
+              "elected": true
+            },
+            {
+              "name": "ANA ESTER MAYORGA BAHAMONDE",
+              "party": "UNION DEMOCRATA INDEPENDIENTE",
+              "votes": 3008,
+              "elected": false
+            },
+            {
+              "name": "JOSE ALEJANDRO CUYUL ROGEL",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 267,
+              "elected": false
+            },
+            {
+              "name": "FELIPE ARTURO MUÑOZ MUÑOZ",
+              "party": "INDEPENDIENTES",
+              "votes": 210,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "ANA ESTER MAYORGA BAHAMONDE",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 9437,
+          "candidates": [
+            {
+              "name": "ANA ESTER MAYORGA BAHAMONDE",
+              "party": "INDEPENDIENTES",
+              "votes": 9437,
+              "elected": true
+            },
+            {
+              "name": "MARCELO RODRIGO CONTRERAS SOTO",
+              "party": "PARTIDO DEMOCRATA CRISTIANO",
+              "votes": 2646,
+              "elected": false
+            },
+            {
+              "name": "VERONICA BEATRIZ PEREZ MAGDALENA",
+              "party": "INDEPENDIENTES",
+              "votes": 1993,
+              "elected": false
+            },
+            {
+              "name": "LIBER MAREL LAZO NAVARRO",
+              "party": "PARTIDO REPUBLICANO DE CHILE",
+              "votes": 887,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_cbc19adc3a4204d6",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Ana Ester Mayorga Bahamonde was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_14da5af13e6642d71f527002",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q51043"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_be43ef93290927fa0b42c777",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ANA ESTER MAYORGA BAHAMONDE",
+              "elected": true,
+              "votes": 9437,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "ANA ESTER MAYORGA BAHAMONDE",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_be43ef93290927fa0b42c777",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_6c00d9b3f356e697",
+          "target": "en",
+          "aspect": "value",
+          "class": "outdated_mayor",
+          "explanation": "Antonieta Oyarzo Alvarado is Antonieta Daniela del Carmen Oyarzo Alvarado, elected mayor in 2021 (SERVEL). Ana Ester Mayorga Bahamonde was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_4d215bfb4af84177841e22af",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Natales",
+            "revid": "1376921098",
+            "location": "infobox",
+            "role": "current",
+            "name": "Antonieta Oyarzo Alvarado",
+            "name_raw": "Antonieta Oyarzo Alvarado",
+            "office": "Alcaldesa",
+            "party": "IND",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_be43ef93290927fa0b42c777",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ANA ESTER MAYORGA BAHAMONDE",
+              "elected": true,
+              "votes": 9437,
+              "party": "INDEPENDIENTES"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_b7513b4f6c380f1964b1ff2f",
+              "source": "SERVEL 2021",
+              "year": 2021,
+              "name": "ANTONIETA DANIELA DEL CARMEN OYARZO ALVARADO",
+              "elected": true,
+              "votes": 5092,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "person": "ANA ESTER MAYORGA BAHAMONDE",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_be43ef93290927fa0b42c777",
+            "check_first": false
+          },
+          "match": {
+            "id": "p_antonieta_daniela_del_carmen_oyarzo_alvarado",
+            "name": "ANTONIETA DANIELA DEL CARMEN OYARZO ALVARADO",
+            "ran": [
+              2021
+            ],
+            "won": [
+              2021
+            ]
+          },
+          "matches": [
+            {
+              "level": "same",
+              "why": "first surname and given name and second surname",
+              "id": "p_antonieta_daniela_del_carmen_oyarzo_alvarado",
+              "name": "ANTONIETA DANIELA DEL CARMEN OYARZO ALVARADO",
+              "ran": [
+                2021
+              ],
+              "won": [
+                2021
+              ]
+            }
+          ],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_eafd3afccb485ba730127328",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Natales",
+            "revid": "174074248",
+            "location": "infobox",
+            "role": "current",
+            "name": "Ana Mayorga Bahamondes [IND]",
+            "name_raw": "Ana Mayorga Bahamondes [IND]",
+            "office": "Alcalde",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Ana Mayorga Bahamondes [IND] is Ana Ester Mayorga Bahamonde, elected mayor of Natales in 2024 (SERVEL).",
+          "method": "matcher (model unavailable)"
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [
+              "fnd_6c00d9b3f356e697"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_6c00d9b3f356e697",
+              "finding_ids": [
+                "fnd_6c00d9b3f356e697"
+              ],
+              "comuna": "NATALES",
+              "cut": "12401",
+              "figures": [
+                {
+                  "finding_id": "fnd_6c00d9b3f356e697",
+                  "value": "Antonieta Oyarzo Alvarado",
+                  "source": "Wikipedia EN",
+                  "location": "infobox",
+                  "label": "named as mayor (Alcaldesa)",
+                  "year": null,
+                  "basis": null,
+                  "size": null,
+                  "class": "unknown_name",
+                  "candidates": [
+                    "servel_mayors_2021",
+                    "servel_mayors_2016",
+                    "servel_mayors_2012"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "'Antonieta Oyarzo Alvarado' (Wikipedia EN) matches no one elected in the elections read so far (SERVEL 2024). Before calling it unknown_name, read an election that could explain it (servel_mayors_2021 (election, 2021), servel_mayors_2016 (election, 2016), servel_mayors_2012 (election, 2012)): only its results can show whether this person was elected then."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Natales",
+          "revid": "1376921098",
+          "findings": [
+            "fnd_6c00d9b3f356e697"
+          ],
+          "anchor": "obs_4d215bfb4af84177841e22af",
+          "replaces": {
+            "name": "Antonieta Oyarzo Alvarado",
+            "office": "Alcaldesa"
+          },
+          "url": "https://en.wikipedia.org/wiki/Natales",
+          "correction": {
+            "person": "ANA ESTER MAYORGA BAHAMONDE",
+            "name_as_written": "Ana Ester Mayorga Bahamonde",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_be43ef93290927fa0b42c777"
+          },
+          "wikitext": "| leader_title = [[Alcalde]]\n| leader_name = Ana Ester Mayorga Bahamonde<ref name=\"SERVEL2024\">{{cite web |url=https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/ |title=Resultados electorales históricos: Alcaldes 2024 |publisher=Servicio Electoral de Chile (SERVEL) |language=es |access-date=26 October 2026}}</ref>\n| leader_party = Independent",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name."
+          ],
+          "edit_summary": "Mayor per SERVEL's 2024 mayoral election results: Ana Ester Mayorga Bahamonde (was Antonieta Oyarzo Alvarado).",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q51043",
+          "url": "https://www.wikidata.org/wiki/Q51043",
+          "findings": [
+            "fnd_cbc19adc3a4204d6"
+          ],
+          "anchor": "obs_14da5af13e6642d71f527002",
+          "correction": {
+            "person": "ANA ESTER MAYORGA BAHAMONDE",
+            "name_as_written": "Ana Ester Mayorga Bahamonde",
+            "spelled_from": "servel",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_be43ef93290927fa0b42c777"
+          },
+          "statement": "Q51043: add P6 (head of government) = Ana Ester Mayorga Bahamonde (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "SERVEL writes names in capitals without accents: check the spelling of the name.",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Ana Ester Mayorga Bahamonde",
+          "status": "approved"
+        },
+        "explanation": "Antonieta Oyarzo Alvarado is Antonieta Daniela del Carmen Oyarzo Alvarado, elected mayor in 2021 (SERVEL). Ana Ester Mayorga Bahamonde was elected in the 2024 election (SERVEL; term from 2024-12-06). Wikidata (no head of government statement) names no mayor. The drafts name Ana Ester Mayorga Bahamonde, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcaldesa",
+            "observation": "obs_4d215bfb4af84177841e22af",
+            "reference": null,
+            "status": "approved",
+            "value": "Antonieta Oyarzo Alvarado",
+            "verdict": "outdated_mayor"
+          },
+          "eswiki": {
+            "label": "Alcalde",
+            "observation": "obs_eafd3afccb485ba730127328",
+            "reference": null,
+            "status": "checked",
+            "value": "Ana Mayorga Bahamondes [IND]",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_14da5af13e6642d71f527002",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Ana Mayorga Bahamondes [IND]",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_eafd3afccb485ba730127328",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_eafd3afccb485ba730127328",
+              "reference": null,
+              "status": "checked",
+              "value": "Ana Mayorga Bahamondes [IND]",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Antonieta Oyarzo Alvarado",
+              "label": "Alcaldesa",
+              "reference": null,
+              "observation": "obs_4d215bfb4af84177841e22af",
+              "verdict": "outdated_mayor",
+              "status": "approved"
+            },
+            "now": {
+              "label": "Alcaldesa",
+              "observation": "obs_4d215bfb4af84177841e22af",
+              "reference": null,
+              "status": "approved",
+              "value": "Antonieta Oyarzo Alvarado",
+              "verdict": "outdated_mayor"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_14da5af13e6642d71f527002",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_14da5af13e6642d71f527002",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "12402",
+      "name": "TORRES DEL PAINE",
+      "status": "approved",
+      "elections": {
+        "2012": {
+          "elected": "ANAHI MARCELA CARDENAS RODRIGUEZ",
+          "party": "INDEPENDIENTES LISTA H",
+          "pact": "COALICION",
+          "votes": 685,
+          "candidates": [
+            {
+              "name": "ANAHI MARCELA CARDENAS RODRIGUEZ",
+              "party": "INDEPENDIENTES LISTA H",
+              "votes": 685,
+              "elected": true
+            },
+            {
+              "name": "MARCELA ALEJANDRA CARDENAS BAEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 497,
+              "elected": false
+            }
+          ]
+        },
+        "2016": {
+          "elected": "ROBERTO DANILO CARDENAS SILVA",
+          "party": "INDEPENDIENTE LISTA T",
+          "pact": "CANDIDATURA INDEPENDIENTE",
+          "votes": 641,
+          "candidates": [
+            {
+              "name": "ROBERTO DANILO CARDENAS SILVA",
+              "party": "INDEPENDIENTE LISTA T",
+              "votes": 641,
+              "elected": true
+            },
+            {
+              "name": "ANAHI CARDENAS RODRIGUEZ",
+              "party": "INDEPENDIENTE LISTA F",
+              "votes": 621,
+              "elected": false
+            }
+          ]
+        },
+        "2021": {
+          "elected": "ANAHI MARCELA CARDENAS RODRIGUEZ",
+          "party": "INDEPENDIENTES",
+          "pact": "INDEPENDIENTES",
+          "votes": 524,
+          "candidates": [
+            {
+              "name": "ANAHI MARCELA CARDENAS RODRIGUEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 524,
+              "elected": true
+            },
+            {
+              "name": "ROBERTO DANILO CARDENAS SILVA",
+              "party": "INDEPENDIENTES-LISTA XX",
+              "votes": 387,
+              "elected": false
+            },
+            {
+              "name": "JUAN CESAR BARRIA BAHAMONDE",
+              "party": "PARTIDO SOCIALISTA DE CHILE",
+              "votes": 221,
+              "elected": false
+            }
+          ]
+        },
+        "2024": {
+          "elected": "ANAHI CARDENAS RODRIGUEZ",
+          "party": "INDEPENDIENTES",
+          "pact": "CHILE VAMOS",
+          "votes": 665,
+          "candidates": [
+            {
+              "name": "ANAHI CARDENAS RODRIGUEZ",
+              "party": "INDEPENDIENTES",
+              "votes": 665,
+              "elected": true
+            },
+            {
+              "name": "VICTOR HUGO MANSILLA VIDAL",
+              "party": "INDEPENDIENTES",
+              "votes": 359,
+              "elected": false
+            },
+            {
+              "name": "AMARU ERNESTO ROGEL BORQUEZ",
+              "party": "PARTIDO COMUNISTA DE CHILE",
+              "votes": 11,
+              "elected": false
+            }
+          ]
+        }
+      },
+      "claims_checked": 3,
+      "findings": [
+        {
+          "id": "fnd_dea288814ddc181b",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata (no head of government statement) names no mayor. Anahi Cardenas Rodriguez was elected in the 2024 election (SERVEL; term from 2024-12-06).",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_0a9dfda57a995c3dca6de913",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "missing": true,
+            "item": "http://www.wikidata.org/entity/Q200948"
+          },
+          "evidence": [
+            {
+              "kind": "official",
+              "obs_id": "obs_b1afb5cb8059536350289266",
+              "source": "SERVEL 2024",
+              "year": 2024,
+              "name": "ANAHI CARDENAS RODRIGUEZ",
+              "elected": true,
+              "votes": 665,
+              "party": "INDEPENDIENTES"
+            }
+          ],
+          "proposal": {
+            "action": "add_statement",
+            "person": "ANAHI CARDENAS RODRIGUEZ",
+            "year": 2024,
+            "source_key": "servel_2024",
+            "obs_id": "obs_b1afb5cb8059536350289266",
+            "check_first": false
+          },
+          "match": null,
+          "matches": [],
+          "reading": null,
+          "signals": [],
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 1,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_fd05814a9fa505dfd9f3f140",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Torres del Paine (comuna)",
+            "revid": "174590273",
+            "location": "infobox",
+            "role": "current",
+            "name": "Anahí Cárdenas Rodríguez",
+            "name_raw": "Anahí Cárdenas Rodríguez ([[Candidatura independiente|independiente]])<br>(2025-2028)",
+            "notes": [
+              "independiente"
+            ],
+            "office": "Alcaldesa",
+            "cues": [
+              2025
+            ],
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "dirigentes_nombres"
+          },
+          "result": "consistent",
+          "note": "Anahí Cárdenas Rodríguez was elected mayor of Torres del Paine in 2024 (SERVEL)."
+        },
+        {
+          "claim": {
+            "id": "obs_0b7cdb79427663fc386d772c",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Torres del Paine (commune)",
+            "revid": "1376976114",
+            "location": "infobox",
+            "role": "current",
+            "name": "Anahi Cardenas Rodríguez",
+            "name_raw": "Anahi Cardenas Rodríguez",
+            "office": "Alcalde",
+            "party": "Ind.",
+            "method": "rules",
+            "verified": true,
+            "missing": false,
+            "field": "leader_name"
+          },
+          "result": "consistent",
+          "note": "Anahi Cardenas Rodríguez was elected mayor of Torres del Paine in 2024 (SERVEL)."
+        }
+      ],
+      "critic": {
+        "rounds": 1,
+        "history": [
+          {
+            "round": 1,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "person": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "names_faithful": true,
+                "caveat": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q200948",
+          "url": "https://www.wikidata.org/wiki/Q200948",
+          "findings": [
+            "fnd_dea288814ddc181b"
+          ],
+          "anchor": "obs_0a9dfda57a995c3dca6de913",
+          "correction": {
+            "person": "ANAHI CARDENAS RODRIGUEZ",
+            "name_as_written": "Anahí Cárdenas Rodríguez",
+            "spelled_from": "page",
+            "year": 2024,
+            "party": "INDEPENDIENTES",
+            "source_key": "servel_2024",
+            "url": "https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/",
+            "obs_id": "obs_b1afb5cb8059536350289266"
+          },
+          "statement": "Q200948: add P6 (head of government) = Anahí Cárdenas Rodríguez (the person's item), with P580 (start time) = 2024-12-06, and a reference: S854 (reference URL) = https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/, S813 (retrieved) = 2026-10-26.",
+          "notes": [
+            "SERVEL's results say who was elected on 26-27 October 2024, for the term from 2024-12-06; they don't say who holds the office today. Before applying this, check that it hasn't changed hands since (a resignation, a removal, a death, a stand-in).",
+            "QuickStatements needs the person's own Wikidata item, so no command is drafted: find the item (or create one), then add the statement by hand."
+          ],
+          "edit_summary": "Head of government per SERVEL's 2024 election results: Anahí Cárdenas Rodríguez",
+          "status": "approved"
+        },
+        "explanation": "Wikidata (no head of government statement) names no mayor. Anahi Cardenas Rodriguez was elected in the 2024 election (SERVEL; term from 2024-12-06). The drafts name Anahí Cárdenas Rodríguez, elected in 2024 (SERVEL).",
+        "explanation_by": {
+          "method": "rules"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "Alcalde",
+            "observation": "obs_0b7cdb79427663fc386d772c",
+            "reference": null,
+            "status": "checked",
+            "value": "Anahi Cardenas Rodríguez",
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "Alcaldesa",
+            "observation": "obs_fd05814a9fa505dfd9f3f140",
+            "reference": null,
+            "status": "checked",
+            "value": "Anahí Cárdenas Rodríguez",
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": null,
+            "observation": "obs_0a9dfda57a995c3dca6de913",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection mayor_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-mayors-20261026-12-magallanes-y-de-la-antartica-chilena",
+        "checked_at": "2026-10-26T21:29:30Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Anahí Cárdenas Rodríguez",
+              "label": "Alcaldesa",
+              "reference": null,
+              "observation": "obs_fd05814a9fa505dfd9f3f140",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcaldesa",
+              "observation": "obs_fd05814a9fa505dfd9f3f140",
+              "reference": null,
+              "status": "checked",
+              "value": "Anahí Cárdenas Rodríguez",
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": "Anahi Cardenas Rodríguez",
+              "label": "Alcalde",
+              "reference": null,
+              "observation": "obs_0b7cdb79427663fc386d772c",
+              "verdict": "consistent",
+              "status": "checked"
+            },
+            "now": {
+              "label": "Alcalde",
+              "observation": "obs_0b7cdb79427663fc386d772c",
+              "reference": null,
+              "status": "checked",
+              "value": "Anahi Cardenas Rodríguez",
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": null,
+              "reference": null,
+              "observation": "obs_0a9dfda57a995c3dca6de913",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": null,
+              "observation": "obs_0a9dfda57a995c3dca6de913",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 0,
+    "requests": 0,
+    "by_agent": {},
+    "requested_model": {},
+    "served_model": {},
+    "routed_model": {},
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 166
+  },
+  "trace_file": "logs/trace-national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen.jsonl",
+  "world_model_audit_file": "logs/world-model-national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen.jsonl",
+  "world_model_audit_entries": 133,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 28,
+        "resolve_by_name": 92,
+        "assess": 122,
+        "context": 40,
+        "view:observations": 64,
+        "reproject": 11,
+        "project_as_of": 11,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/national-mayors-20261026b-12-magallanes-y-de-la-antartica-chilen/report.html",
+  "execution_time_seconds": 37.8
+}

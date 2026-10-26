@@ -167,15 +167,16 @@ def mayor_outcome(comuna, target):
     """What a source says about the mayor: 'elected in 2024', the class of the finding about it (a former mayor gets
     the year of the last election they won), or None when the source has no page."""
     about = [f for f in comuna["findings"] if f["target"] == target and f["aspect"] == "value"]
-    if not about and any(f["target"] == target and f["class"] == "wikidata_qualifier" for f in comuna["findings"]):
-        return "elected in 2024"  # Wikidata names the winner, with a qualifier to fix (counted apart)
-        finding = about[0]
+    named = [f for f in about if f["class"] != "missing_value"]  # a comuna with two Wikidata items: the one naming someone
+    if named:
+        finding = named[0]
         if finding["class"] == "outdated_mayor" and finding.get("match"):
             return f"outdated_mayor_{max(finding['match']['won'])}"
         return finding["class"]
-    if any(c["claim"].get("target") == target and c["result"] == "consistent" for c in comuna["checks"]):
-        return "elected in 2024"
-    return None
+    if any(c["claim"].get("target") == target and c["result"] == "consistent" for c in comuna["checks"]) or \
+            any(f["target"] == target and f["class"] == "wikidata_qualifier" for f in comuna["findings"]):
+        return "elected in 2024"  # a Wikidata statement with a qualifier to fix still names the winner (counted apart)
+    return "missing_value" if about else None
 
 
 def summarize_mayors(results, tag, use_llm):
