@@ -135,6 +135,8 @@ An input names the comunas to check, by comuna code (CUT), by region, or by name
  "options": {"max_critic_rounds": 2, "use_llm": true}}
 ```
 
+- `"fact": "mayor"` checks each comuna's mayor against SERVEL's election results instead of its population (the
+  default is `"population"`): `{"fact": "mayor", "scope": {"cuts": ["06115", "05703"]}}`.
 - `{"scope": {"region": "Aysén"}}` checks a whole region.
 - `{"scope": {"comunas": ["Saavedra (Chile)", "Cholchol"]}}` checks comunas by name.
 - `"use_llm": false` runs every agent on its deterministic path. Useful for fast checks: a live run takes 35–50 s that way, against about 12 minutes for example 2 with the model (20 model calls).
@@ -146,6 +148,11 @@ The examples:
 2. Hualqui, Guaitecas and Quirihue: the demo moment.
 3. The Aysén region: 10 comunas.
 4. Four comunas given by name (Saavedra, Cholchol, La Pintana, Paredones).
+
+Example 5 is a rerun of three comunas after real edits ([`output_examples/example_5`](output_examples/example_5/)).
+Example 6 (`input_examples/example_6.json`) checks **mayors** in eight comunas, one case each: former mayors last
+elected in 2021, 2016 and 2012 (Rengo, Coltauco, Llay-Llay), one up to date (Hualqui), a nickname (Huechuraba),
+vandalism (Pinto), a stand-in (Chimbarongo), and a mayor who may have left office (Yerbas Buenas).
 
 The CLI prints progress and a summary. It exits with 0 on success, 1 if the run fails, and 2 if the input is invalid. A failed run prints a structured error, `{"status": "error", "error": {"code", "message", "stage", "recoverable"}}`, and still leaves its trace and an error `result.json`.
 
@@ -192,7 +199,8 @@ To keep a container's runs, mount `output`, `logs` and `state` (`-v ${PWD}/outpu
 
 ### Other scripts
 
-- `scripts/batch_national.py --tag <tag>` runs all 346 comunas, one region per run, and writes a summary (`output/national-<tag>/summary.md`). By default the agents take their deterministic paths, since the whole country through Nightshift would take days; the summary says which way it ran.
+- `scripts/batch_national.py --tag <tag> [--fact mayor]` runs all 346 comunas, one region per run, and writes a summary (`output/national-<tag>/summary.md`). By default the agents take their deterministic paths, since the whole country through Nightshift would take days; the summary says which way it ran.
+- `scripts/spot_check_mayors.py --tag <tag>` draws a seeded random sample of a mayor batch's verdicts, with their evidence, for checking by hand.
 - `scripts/record_examples.py` records the live output examples into `output_examples/`.
 - `scripts/evaluate.py` runs the evaluation in `eval/`.
 - `scripts/zetaris_explore.py <file>_select.sql --out <file>.md` runs a file of queries against Zetaris and records each one with its live result (`docs/zetaris/`).
@@ -226,6 +234,19 @@ input.json ─► Planner ◄── source catalog (Zetaris) ──plan──►
 | Analyst | A deterministic matcher compares each claim with every official figure read: census counts, projections, urban and rural populations, and census-validity facts such as the withdrawn 2012 census and censuses Chile never held. The model is asked only about the claims the matcher can't settle. | Ambiguous cases only |
 | Critic | Scores every finding on a 9-point rubric (evidence fidelity, definition discipline, correction sourcing) and approves at 7 or more. Otherwise it sends **one specific fix** to the agent responsible: the Planner, the Extractor or the Analyst. It holds back a comuna whose claims nothing read can check while a catalog source could. After 2 rounds, what still fails goes to a human. It also reviews every draft. | Judges class fit and faithfulness; the facts are recomputed by code |
 | Editor | Builds the wikitext, citations and QuickStatements from templates, so every figure and source in a draft is the approved one. The model writes the edit summaries and the explanation for the reviewer, and the Critic checks them. | Wording |
+
+**Two facts, one loop.** A run checks one fact, population or mayor. The loop, the caps, the World Model and the
+Zetaris catalog are the same for both; a fact brings its official source as Zetaris views, its taxonomy, and each
+agent's reading of it (`app/agents/mayors.py` on top of `app/knowledge/mayors.py` and `names.py`). For mayors:
+
+| Agent | What it does for mayors |
+|---|---|
+| Planner | Plans SERVEL's 2024 election, Wikidata's head of government statements and both infoboxes; on discovery, chooses which earlier election to read for a name nothing read explains |
+| Retriever | Reads each election as one query on `factsync.servel_mayors` (every candidate, with votes and whether elected) |
+| Extractor | Reads each infobox's mayor field: the name, the text in brackets (a party, "alcalde suplente"), a linked article |
+| Analyst | Compares each name with every candidate read, accents, particles, nicknames and SERVEL's single given name in 2024 allowed for; Nemotron decides who an uncertain name refers to, and code derives the class from that person's record |
+| Critic | The same 9-point rubric. A name no election read explains is held back while an earlier election is unread, so the Planner walks back one election per round: 2024, then 2021, 2016 and 2012 |
+| Editor | Drafts the infobox lines with a SERVEL citation, spelling the winner as a page already does; every draft asks the editor to check the office hasn't changed hands since the election |
 
 Every loop is capped: Critic rounds, discovery steps, draft revisions, and model calls per run. Any model failure (an error, an empty or invalid reply, a spent budget) sends that step down its deterministic path, and the trace says so. A run always completes.
 
@@ -290,7 +311,7 @@ The adjudication was done by Claude (the coding assistant), and every judgment l
 .venv\Scripts\python -m pytest
 ```
 
-149 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
+172 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`, and `tests/fakes_mayors.py` with SERVEL's real rows), and need no services. They cover:
 
 - the World Model's 8 conformance checks, its projections, point-in-time rebuilds and capability counts;
 - the matcher, the wikitext parser, the Extractor's verbatim checks and the Critic's rubric;
@@ -299,23 +320,27 @@ The adjudication was done by Claude (the coding assistant), and every judgment l
 - a draft applied to an article, seen as fixed on the next run;
 - request sizing for Nightshift, and structured errors;
 - sample mode with the network blocked, including the fallback from live Zetaris to the snapshot;
-- the review queue page, the API, `metadata.json`, and the Zetaris setup runner (a multi-table `COMPILE USL` goes as one statement).
+- the review queue page, the API, `metadata.json`, and the Zetaris setup runner (a multi-table `COMPILE USL` goes as one statement);
+- mayors: the name matcher on real cases (compound surnames, nicknames, typos, SERVEL's one given name in 2024), the Critic walking the Planner back one election per round, a mayor who may have left office, drafts that cite SERVEL and spell the winner as a page does, the model deciding who a name is (and an answer naming no listed candidate ignored), wording that calls a page wrong sent back, and the two facts kept apart in the World Model.
 
 ## Project layout
 
 ```
 app/adapters/          zetaris.py (REST client) · meterless.py (Nightshift client) · sample_data.py (snapshot + fallback)
 app/agents/            planner · retriever · extractor · analyst · critic · editor · llm (budget, pacing, tracing)
+                       mayors (each agent's reading of the second fact)
 app/engines/world_model/   the World Model engine
 app/knowledge/         taxonomy · matcher · catalog · picture · wikitext   (+ data/reference/chile_censuses.json)
+                       mayors · names   (+ data/reference/chile_municipal_elections.json)
 app/orchestration/     loop.py (the state machine) · state.py (run state and caps)
 app/report/            the review queue (Jinja2 template)
 app/main.py            the HTTP API          run.py   the CLI
-zetaris/               Lightning SQL that registers the sources, views and catalog, the read-only grants, the USL, and a log of what was run
+zetaris/               Lightning SQL that registers the sources, views and catalog, the read-only grants, the two USLs, and a log of what was run
 scripts/               zetaris_sql · upload_filestore · build_wikipedia_sql · prepare_ine_projections · prepare_ine_census2002 ·
-                       snapshot_sample_data · verify_readonly · batch_national · record_examples · evaluate · smoke_test
-data/                  official/ (INE files) · reference/ (census facts) · sample/ (recorded view rows)
-input_examples/        four example inputs     output_examples/   live runs, the national batch     eval/   the evaluation
+                       prepare_servel_mayors · snapshot_sample_data · verify_readonly · batch_national · spot_check_mayors ·
+                       record_examples · evaluate · smoke_test
+data/                  official/ (INE and SERVEL files) · reference/ (census and election facts) · sample/ (recorded view rows)
+input_examples/        five example inputs     output_examples/   live runs, the national batches     eval/   the evaluation
 docs/                  sponsor-technology.md · zetaris/ (the USL write-up and live query results)   metadata.json   the project in machine-readable form
 ```
 
@@ -328,6 +353,9 @@ docs/                  sponsor-technology.md · zetaris/ (the USL write-up and l
 - **Census 2002 on today's boundaries.** INE's REDATAM gives the 2002 count for today's comunas. Iquique, Santa Bárbara, Nueva Imperial and Talcahuano lost territory to comunas created in 2004, so an article quoting their 2002 count on the old boundaries reads as unexplained.
 - **Sample data** covers the 17 comunas of the four examples, recorded on Oct 24, 2026. Any other scope is refused in sample mode.
 - **Drafts only.** FactSync never edits Wikipedia or Wikidata, and its drafts are meant to be reviewed. QuickStatements can't set ranks, so the Wikidata notes say what to do by hand.
+- **Mayors: elected, not current.** SERVEL's results say who was elected, not who holds the office today. Resignations, removals, deaths, stand-ins and replacements chosen by the council are invisible to them, so FactSync never calls a page's mayor wrong: a name SERVEL can't explain is "unknown", and every draft asks the editor to check that the office hasn't changed hands. Where Wikidata records the end of the elected mayor's term, the drafts say so first.
+- **Mayors: names.** SERVEL writes names in capitals without accents, and in 2024 gives only the first given name. A draft spells the winner as one of the comuna's pages already does when one names them; otherwise the model restores the accents, checked letter by letter against SERVEL, or the draft asks the editor to check the spelling. Wikidata drafts for mayors are instructions, not QuickStatements: P6 needs the person's own Wikidata item, which most mayors don't have.
+- **Mayors: what was measured.** `eval/` measures the model on population figures only. For mayors, a random sample of the national run's verdicts was checked by hand ([`eval/mayors_spot_check.md`](eval/mayors_spot_check.md)); the model's own part on mayors is shown in example 6, not measured.
 
 ## AI and model usage
 
@@ -350,6 +378,7 @@ None. The idea, the code and the data preparation all date from the hackathon's 
 - **Code:** [Apache License 2.0](LICENSE). See [`NOTICE`](NOTICE).
 - **The World Model engine** implements the Meterless World Model specification, and `tests/test_world_model_conformance.py` ports its official conformance cases (github.com/Meterless/Meterless, Apache-2.0).
 - **INE data** (census counts for 2002, 2017 and 2024, the 2017 urban/rural split, projections 2002–2035): [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), under INE's [open data terms](https://www.ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos). The files in `data/official/` are described in its README.
+- **SERVEL data** (mayoral election results 2012–2024, `data/official/servel_alcaldes_2012_2024.csv`): public electoral results published by SERVEL; its results page states no licence, and FactSync cites SERVEL as the source (see [`data/official/README.md`](data/official/README.md)).
 - **Wikidata:** [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 - **Wikipedia article text** (in `data/sample/`, `eval/snapshot/`, and in the outputs' quotes): [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Each row names its article and revision, so the authors can be found in that revision's history.
 - **Python dependencies:** `requirements.txt`.

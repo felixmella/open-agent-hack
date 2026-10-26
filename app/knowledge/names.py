@@ -83,9 +83,9 @@ def person(nombres, primer_apellido, segundo_apellido):
             "full": " ".join(str(p) for p in (nombres, primer_apellido, segundo_apellido) if p)}
 
 
-def one_off(a, b):
+def one_off(a, b, shortest=5):
     """Whether two words differ by one edit (a letter added, dropped or changed), for words of 5 letters or more."""
-    if a == b or min(len(a), len(b)) < 5 or abs(len(a) - len(b)) > 1:
+    if a == b or min(len(a), len(b)) < shortest or abs(len(a) - len(b)) > 1:
         return False
     if len(a) == len(b):
         return sum(x != y for x, y in zip(a, b)) == 1
@@ -134,14 +134,18 @@ def compare(name, who):
         return {"level": "none", "why": "the first surname isn't there"}
     before, after = words[:at], words[at + len(first):]
     fits = [given_fit(w, given) for w in before]
-    if after and second and after[:len(second)] != second and not all(one_off(a, s) for a, s in zip(after, second)):
-        return {"level": "partial", "why": f"another second surname ({' '.join(after)}, not {' '.join(second)})"}
+    near_second = False
+    if after and second and after[:len(second)] != second:
+        if not all(one_off(a, s, shortest=4) for a, s in zip(after, second)):
+            return {"level": "partial", "why": f"another second surname ({' '.join(after)}, not {' '.join(second)})"}
+        near_second = True  # 'Mesa' for MEZA
     if not before:
         return {"level": "partial", "why": "the surname alone"}
-    if "exact" in fits and not near_surname:
+    if "exact" in fits and not (near_surname or near_second):
         return {"level": "same", "why": "first surname and given name" + (" and second surname" if after else "")}
     if "exact" in fits or "near" in fits:
-        how = "a surname one letter off" if near_surname else "a nickname, short form or misspelling of a given name"
+        how = "a surname one letter off" if near_surname or near_second else \
+            "a nickname, short form or misspelling of a given name"
         return {"level": "likely", "why": how}
     return {"level": "partial", "why": f"the surname fits but not the given name ({' '.join(before)})"}
 

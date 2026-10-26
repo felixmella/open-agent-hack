@@ -11,6 +11,7 @@ from app.knowledge.names import compare, parse_field, person, same_letters, titl
     ("Johnnson Guiñez Núñez", ("JOHNNSON", "GUIÑEZ", "NUÑEZ"), "same"),
     ("Max Luksic", ("MAXIMILIANO", "LUKSIC", "LEDERER"), "likely"),                         # a short form
     ("Alejando Arenas Arenas", ("ALEJANDRO", "ARENAS", "ARENAS"), "likely"),                # a typo
+    ("Viviana Díaz Mesa", ("VIVIANA ESCARLETTE", "DIAZ", "MEZA"), "likely"),                # a short surname, one off
     ("Carlos Soto Sotomayor", ("CARLOS", "SOTO", "PEREZ"), "partial"),                      # another second surname
     ("Pedro Soto", ("CARLOS", "SOTO", "PEREZ"), "partial"),                                 # a relative?
     ("Wyatt Mathis", ("JAIRO", "DEL PINO", "LEMA"), "none"),

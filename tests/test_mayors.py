@@ -141,3 +141,35 @@ def test_a_draft_that_calls_the_page_wrong_is_sent_back(settings):
     pinto = comuna(result, "PINTO")
     assert pinto["drafts"]["enwiki"]["status"] == "escalated" and pinto["critic"]["draft_reviews"][0]["enwiki"][
         "instruction"].endswith("say how it differs from SERVEL's results.")
+
+
+def servel(*rows):
+    """A SERVEL table from (year, given names, first surname, second surname, elected) rows."""
+    from app.knowledge.names import person
+    table = {}
+    for i, (year, given, first, second, elected) in enumerate(rows):
+        table.setdefault(year, []).append({"obs_id": f"o{i}", "year": year, "name": f"{given} {first} {second}",
+                                           "party": None, "pact": None, "votes": 100, "elected": elected,
+                                           "source": f"SERVEL {year}", "person": person(given, first, second)})
+    return table
+
+
+def test_one_person_across_elections_even_when_servel_writes_another_given_name():
+    # Cabildo: 'ALBERTO PATRICIO' won 2012 and 2016, lost 2021; 'PATRICIO' won 2024. Chaitén: 'CLARA' and 'MARIA CLARA'.
+    table = servel((2012, "ALBERTO PATRICIO", "ALIAGA", "DIAZ", True), (2016, "ALBERTO PATRICIO", "ALIAGA", "DIAZ", True),
+                   (2021, "ALBERTO PATRICIO", "ALIAGA", "DIAZ", False), (2024, "PATRICIO", "ALIAGA", "DIAZ", True),
+                   (2021, "JUAN CARLOS", "PEREZ", "SOTO", False), (2024, "JUAN PABLO", "PEREZ", "SOTO", False))
+    verdict = mayors.assess({"target": "es", "name": "Alberto Patricio Aliaga Diaz"}, table, "CABILDO")
+    assert verdict["class"] == "consistent" and verdict["person"]["won"] == [2012, 2016, 2024]
+    assert len(mayors.people(table)) == 3  # the two Pérez Soto stay two people
+
+
+def test_a_wikidata_start_time_from_an_earlier_term_or_given_to_the_year_is_not_a_finding():
+    table = servel((2021, "TOMAS", "VODANOVIC", "ESCUDERO", True), (2024, "TOMAS", "VODANOVIC", "ESCUDERO", True))
+    statement = {"target": "wikidata", "name": "Tomás Vodanovic", "start_time": "2021-06-28", "references": ["x"]}
+    assert mayors.assess_wikidata([statement], table, "MAIPU")[0] == []
+    by_year = {**statement, "start_time": "2024-01-01"}
+    assert mayors.assess_wikidata([by_year], table, "MAIPU")[0] == []
+    unsourced = {**statement, "references": []}
+    (_, verdict), = mayors.assess_wikidata([unsourced], table, "MAIPU")[0]
+    assert verdict["class"] == "wikidata_qualifier" and "no reference" in verdict["explanation"]

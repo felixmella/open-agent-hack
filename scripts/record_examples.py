@@ -2,8 +2,9 @@
 result, the review queue, the agents' trace and the World Model's audit log, as the run wrote them, plus about.json
 (the input, the commit the code was at, and when). FactSync never reads output_examples/: it is for readers.
 
-Usage:  .venv\\Scripts\\python scripts\\record_examples.py [input_examples\\example_1.json ...]   (default: all four)
+Usage:  .venv\\Scripts\\python scripts\\record_examples.py [input_examples\\example_1.json ...]   (default: all of them)
         .venv\\Scripts\\python scripts\\record_examples.py --national 20261024c   (keep a national batch's runs instead)
+        .venv\\Scripts\\python scripts\\record_examples.py --national mayors-20261026 --name national_mayors
 """
 import argparse
 import json
@@ -63,10 +64,10 @@ def record(path, settings, compare_with=None, name=None, code=None):
     return result
 
 
-def national(tag, settings):
+def national(tag, settings, folder="national"):
     """Keep a national batch (scripts/batch_national.py) as it ran: its summary, and each region's result, review queue,
-    trace and World Model audit log, in output_examples/national/."""
-    target = OUT / "national"
+    trace and World Model audit log, in output_examples/<folder>/ (national/, or national_mayors/ for mayors)."""
+    target = OUT / folder
     shutil.rmtree(target, ignore_errors=True)
     target.mkdir(parents=True)
     batch = settings.output_dir / f"national-{tag}"
@@ -87,7 +88,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("inputs", nargs="*", type=Path)
     parser.add_argument("--national", metavar="TAG", help="keep the national batch with this tag instead")
-    parser.add_argument("--name", help="the folder to keep a single input's run in (default: the input's name)")
+    parser.add_argument("--name", help="the folder to keep a single input's run, or a --national batch, in "
+                                       "(default: the input's name, or national)")
     parser.add_argument("--compare-with", metavar="RUN", help="the runs to compare with for 'since the last check' "
                                                              "(a run-id prefix, e.g. national-20261024c)")
     args = parser.parse_args()
@@ -95,7 +97,7 @@ def main():
     settings = load_settings(sample_mode=False)
     code = commit()  # the code this process loaded: later commits don't change what it runs
     if args.national:
-        national(args.national, settings)
+        national(args.national, settings, args.name or "national")
         return
     for path in args.inputs or sorted((ROOT / "input_examples").glob("example_*.json")):
         record(path, settings, args.compare_with, args.name, code)

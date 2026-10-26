@@ -56,12 +56,6 @@ def stand_in(notes):
     return any(n.strip().lower() in ("s", "(s)") or any(w in n.lower() for w in words) for n in notes or [])
 
 
-def key_of(row):
-    """One person across elections: 2024 gives only the first given name, earlier years all of them."""
-    return (row["person"]["given"][:1] and row["person"]["given"][0], tuple(row["person"]["first"]),
-            tuple(row["person"]["second"]))
-
-
 # ----- SERVEL's rows -------------------------------------------------------------------------------------------
 
 def election_table(observations):
@@ -91,15 +85,27 @@ def winner(table, year=None):
 
 
 def people(table):
-    """Every person in the elections read, with the years they ran and won: {key: {'rows', 'ran', 'won'}}."""
+    """Every person in the elections read, with the years they ran and won: {key: {'rows', 'ran', 'won'}}. One
+    person's rows share both surnames, and one row's given names include the other's: SERVEL writes the same mayor
+    'ALBERTO PATRICIO' in 2016 and 'PATRICIO' in 2024 (2024 keeps one given name, not always the first), while
+    'JUAN CARLOS' and 'JUAN PABLO' stay two people."""
     found = {}
-    for year, rows in table.items():
-        for row in rows:
-            entry = found.setdefault(key_of(row), {"rows": [], "ran": [], "won": []})
-            entry["rows"].append(row)
-            entry["ran"].append(year)
-            if row["elected"]:
-                entry["won"].append(year)
+    rows = sorted(((year, row) for year, rows_ in table.items() for row in rows_),
+                  key=lambda yr: -len(yr[1]["person"]["given"]))
+    for year, row in rows:
+        surnames = (tuple(row["person"]["first"]), tuple(row["person"]["second"]))
+        given = set(row["person"]["given"])
+        key = next((k for k, e in found.items() if k[:2] == surnames and given <= e["given"]), None)
+        if key is None:
+            key = (*surnames, len(found))
+            found[key] = {"rows": [], "ran": [], "won": [], "given": given}
+        entry = found[key]
+        entry["rows"].append(row)
+        entry["ran"].append(year)
+        if row["elected"]:
+            entry["won"].append(year)
+    for entry in found.values():
+        entry["ran"], entry["won"] = sorted(set(entry["ran"])), sorted(set(entry["won"]))
     return found
 
 
@@ -258,9 +264,11 @@ def assess_wikidata(statements, table, comuna, today=None):
         problems = []
         if is_winner:
             term_from = election(year)["term_from"]
-            if statement.get("start_time") != term_from:
-                problems.append(f"its start time is {statement.get('start_time') or 'missing'}, but the term began "
-                                f"on {term_from}")
+            starts = {election(won)["term_from"] for won in (verdict["person"] or {}).get("won") or [year]}
+            start = statement.get("start_time") or ""
+            year_only = start.endswith("-01-01") and start[:4] in {s[:4] for s in starts}  # a date to the year: "2024"
+            if start not in starts and not year_only:
+                problems.append(f"its start time is {start or 'missing'}, but the term began on {term_from}")
             if not statement.get("references"):
                 problems.append("it has no reference")
         elif statement in current and verdict["class"] != "consistent":

@@ -1,11 +1,12 @@
 """Write output_examples/index.html: a page linking every recorded run in output_examples/ (the live examples and the
-national batch), with each run's headline numbers, read from its own files. With GitHub Pages serving the repository,
+national batches, population and mayors), with each run's headline numbers, read from its own files. With GitHub Pages serving the repository,
 readers can open the review queues without running anything. FactSync never reads output_examples/.
 
 Usage:  .venv\\Scripts\\python scripts\\publish_index.py
 """
 import html
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -60,25 +61,39 @@ def row(name, about, folder):
             f"<td class=num>{round(about['seconds'] / 60, 1)} min</td><td>{files}</td></tr>")
 
 
+def national_section(folder, title):
+    """A national batch's headline and one row per region, or '' when the batch isn't kept."""
+    path = OUT / folder / "summary.json"
+    if not path.exists():
+        return ""
+    summary = json.loads(path.read_text(encoding="utf-8"))
+    regions = []
+    for run in summary["runs"]:
+        slug = re.search(r"-\d{2}-(.+)$", run["run_id"]).group(1)
+        name = REGIONS.get(slug, slug.replace("-", " ").title())
+        regions.append(f'<tr><td><a href="{folder}/{esc(run["run_id"])}/report.html">{esc(name)}</a></td>'
+                       f"<td class=num>{run['comunas']}</td><td class=num>{run['findings']}</td>"
+                       f"<td class=num>{run['drafts']}</td></tr>")
+    if summary.get("fact") == "mayor":
+        headline = (f"<p>Of <b>{summary['pages_naming_a_mayor']}</b> pages that name a mayor across Spanish and English "
+                    f"Wikipedia and Wikidata, <b>{summary['naming_someone_else']} ({summary['share_someone_else']:.0%})"
+                    f"</b> don't name the mayor SERVEL says was elected in October 2024.")
+    else:
+        headline = (f"<p>Of <b>{summary['current_figures']}</b> current population figures shown across Spanish and "
+                    f"English Wikipedia and Wikidata, <b>{summary['differing_from_census_2024']} "
+                    f"({summary['share_differing']:.0%})</b> are not INE's Census 2024 count.")
+    headline += (f" Run with the {esc(summary['method'])}. "
+                 f'<a href="{REPO}/output_examples/{folder}/summary.md">Summary</a>.</p>')
+    return (f'<h2>{title}</h2>{headline}<div class="table"><table><thead><tr><th>Region</th><th>Comunas</th>'
+            f'<th>Findings</th><th>Drafts</th></tr></thead><tbody>{"".join(regions)}</tbody></table></div>')
+
+
 def main():
     examples = sorted(p for p in OUT.iterdir() if (p / "about.json").exists())
     rows = [row(p.name.replace("_", " ").capitalize(), json.loads((p / "about.json").read_text(encoding="utf-8")),
                 p.name) for p in examples]
-    national = OUT / "national"
-    regions = []
-    if (national / "summary.json").exists():
-        summary = json.loads((national / "summary.json").read_text(encoding="utf-8"))
-        for run in summary["runs"]:
-            slug = run["run_id"].split("-", 3)[-1]
-            name = REGIONS.get(slug, slug.replace("-", " ").title())
-            regions.append(f'<tr><td><a href="national/{esc(run["run_id"])}/report.html">{esc(name)}</a></td>'
-                           f"<td class=num>{run['comunas']}</td><td class=num>{run['findings']}</td>"
-                           f"<td class=num>{run['drafts']}</td></tr>")
-        headline = (f"<p>Of <b>{summary['current_figures']}</b> current population figures shown across Spanish and "
-                    f"English Wikipedia and Wikidata, <b>{summary['differing_from_census_2024']} "
-                    f"({summary['share_differing']:.0%})</b> are not INE's Census 2024 count. Run with the "
-                    f"{esc(summary['method'])}. "
-                    f'<a href="{REPO}/output_examples/national/summary.md">Summary</a>.</p>')
+    sections = [national_section("national", "All 346 comunas, region by region: population"),
+                national_section("national_mayors", "All 346 comunas, region by region: mayors")]
     page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FactSync Chile runs</title><style>{STYLE}</style></head>
@@ -91,16 +106,14 @@ Nightshift to NVIDIA Nemotron. FactSync never reads these files. <a href="{REPO}
 <h2>Live runs with the model</h2>
 <div class="table"><table><thead><tr><th>Run</th><th>Comunas</th><th>Findings</th><th>Drafts</th><th>Critic rejections</th>
 <th>Sources discovered</th><th>Model calls</th><th>Time</th><th>Files</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
-{f'''<h2>All 346 comunas, region by region</h2>{headline}
-<div class="table"><table><thead><tr><th>Region</th><th>Comunas</th><th>Findings</th><th>Drafts</th></tr></thead>
-<tbody>{''.join(regions)}</tbody></table></div>''' if regions else ''}
+{''.join(sections)}
 <h2>What the model adds</h2>
 <p>The same comunas from the same recorded rows, with and without the model, every difference adjudicated:
 <a href="{REPO}/eval/results.md">eval/results.md</a>.</p>
 </div></body></html>
 """
     (OUT / "index.html").write_text(page, encoding="utf-8")
-    print(f"wrote {OUT / 'index.html'}: {len(rows)} runs, {len(regions)} regions")
+    print(f"wrote {OUT / 'index.html'}: {len(rows)} runs, {sum(1 for s in sections if s)} national batches")
 
 
 if __name__ == "__main__":
