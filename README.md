@@ -11,6 +11,7 @@ Built for the Open Agent Hackathon 2026, **Track 1: Solving Fragmented Intellige
 - [`output_examples/national/`](output_examples/national/): all 346 comunas, region by region.
 - [`eval/results.md`](eval/results.md): what the model changes, measured.
 - [`docs/sponsor-technology.md`](docs/sponsor-technology.md): how Zetaris, the World Model engine, Nightshift and Nemotron are used.
+- [`docs/zetaris/`](docs/zetaris/README.md): the Unified Semantic Layer in Zetaris, its data-quality rules, live query results for every source, and our reflections on the USL.
 
 ## Why
 
@@ -192,6 +193,7 @@ To keep a container's runs, mount `output`, `logs` and `state` (`-v ${PWD}/outpu
 - `scripts/batch_national.py --tag <tag>` runs all 346 comunas, one region per run, and writes a summary (`output/national-<tag>/summary.md`). By default the agents take their deterministic paths, since the whole country through Nightshift would take days; the summary says which way it ran.
 - `scripts/record_examples.py` records the live output examples into `output_examples/`.
 - `scripts/evaluate.py` runs the evaluation in `eval/`.
+- `scripts/zetaris_explore.py <file>_select.sql --out <file>.md` runs a file of queries against Zetaris and records each one with its live result (`docs/zetaris/`).
 
 ## How it works
 
@@ -246,6 +248,7 @@ It passes the engine's 8 official conformance checks, ported one-to-one in `test
 **Zetaris.**
 - Every source the agents compare is a Zetaris view in the `factsync` container. The official INE figures, Wikidata and both Wikipedias are virtualised from public APIs and from INE files in the file store.
 - The agents read the per-source views, one query per source. `factsync.official_population` holds every official series in one shape, and `factsync.population_picture` puts every claim from every source in one table keyed by comuna code, for exploration.
+- A Unified Semantic Layer, `comuna_population`, declares the model behind those views: INE's comuna list, every official figure and every published figure, with foreign keys to the comuna list and data-quality rules that Zetaris runs. Its DDL, checks, the exploratory queries per source and our reflections on it are in [`docs/zetaris/`](docs/zetaris/README.md).
 - The app reads with a read-only user. Agent state stays local, in the World Model's SQLite store in `state/`.
 
 **Nightshift.**
@@ -260,13 +263,21 @@ Three adaptations keep the model in the loop despite Nightshift's 45-second limi
 
 More detail: [`docs/sponsor-technology.md`](docs/sponsor-technology.md).
 
-## What the model adds
+## What Nemotron does
 
-[`eval/`](eval/) runs the same 11 comunas from the same recorded rows twice: every agent on its deterministic path, then with Nemotron. Every difference is adjudicated against its evidence ([results](eval/results.md)).
+Nemotron's main job is reading. Articles are full of figures that aren't the comuna's population, and sentence patterns can't tell them apart:
 
-- On reading article text, the model was right 16 times to the rules' once. It drops the town, men-only, density and health-system figures that sentence patterns keep, which removed five false or misleading findings.
-- It missed one real typo (Los Ángeles), and its verdict on Santo Domingo was vaguer than the matcher's.
-- It cost 114 calls and 78 minutes, against one second.
+| Sentence (Spanish Wikipedia) | Sentence patterns | Nemotron |
+|---|---|---|
+| "… 105.436 habitantes son hombres y 114.005 mujeres …" (Los Ángeles) | unexplained mismatch: a false finding | men only: not kept |
+| "Al 2017 la ciudad tenía una población de 1637 personas" (Chaitén) | unexplained mismatch: a false finding | the town, not the comuna: not kept |
+| "… población inscrita validada en servicios de salud municipal FONASA de 9.084 personas (98 %)" (Canela) | likely a typo: a false finding | people enrolled in health care: not kept |
+
+[`eval/`](eval/) measures this: the same 11 comunas from the same recorded Zetaris rows, with and without Nemotron, every difference adjudicated against its evidence ([results](eval/results.md)).
+- On disputed figures read from article text, Nemotron was right 16 times to the patterns' once, and five false or misleading findings never reached the reviewer.
+- It also chooses which catalog source to read for each unexplained figure, with a reason, and declines sources that can't explain it. It judges the Analyst's verdicts, and words the drafts. Code checks every answer it gives.
+- Where it was weaker: it missed one real typo (Los Ángeles) that the patterns caught, and its verdict on Santo Domingo was vaguer than the matcher's.
+- It is slow (114 calls and 78 minutes for those 11 comunas), so the national numbers come from the deterministic path, and the model works on the comunas a reviewer is looking at.
 - Separately, a random sample of 25 of the national run's verdicts was checked against the pages and INE's figures: all 25 are right.
 
 The adjudication was done by Claude (the coding assistant), and every judgment lists its evidence for checking.
@@ -277,7 +288,7 @@ The adjudication was done by Claude (the coding assistant), and every judgment l
 .venv\Scripts\python -m pytest
 ```
 
-147 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
+149 tests. They use a fake model and a fake Zetaris serving rows recorded from the real views (`tests/fakes.py`), and need no services. They cover:
 
 - the World Model's 8 conformance checks, its projections, point-in-time rebuilds and capability counts;
 - the matcher, the wikitext parser, the Extractor's verbatim checks and the Critic's rubric;
@@ -286,7 +297,7 @@ The adjudication was done by Claude (the coding assistant), and every judgment l
 - a draft applied to an article, seen as fixed on the next run;
 - request sizing for Nightshift, and structured errors;
 - sample mode with the network blocked, including the fallback from live Zetaris to the snapshot;
-- the review queue page, the API, and `metadata.json`.
+- the review queue page, the API, `metadata.json`, and the Zetaris setup runner (a multi-table `COMPILE USL` goes as one statement).
 
 ## Project layout
 
@@ -298,12 +309,12 @@ app/knowledge/         taxonomy · matcher · catalog · picture · wikitext   (
 app/orchestration/     loop.py (the state machine) · state.py (run state and caps)
 app/report/            the review queue (Jinja2 template)
 app/main.py            the HTTP API          run.py   the CLI
-zetaris/               Lightning SQL that registers the sources, views and catalog, the read-only grants, and a log of what was run
+zetaris/               Lightning SQL that registers the sources, views and catalog, the read-only grants, the USL, and a log of what was run
 scripts/               zetaris_sql · upload_filestore · build_wikipedia_sql · prepare_ine_projections · prepare_ine_census2002 ·
                        snapshot_sample_data · verify_readonly · batch_national · record_examples · evaluate · smoke_test
 data/                  official/ (INE files) · reference/ (census facts) · sample/ (recorded view rows)
 input_examples/        four example inputs     output_examples/   live runs, the national batch     eval/   the evaluation
-docs/                  sponsor-technology.md   metadata.json   the project in machine-readable form
+docs/                  sponsor-technology.md · zetaris/ (the USL write-up and live query results)   metadata.json   the project in machine-readable form
 ```
 
 ## Limitations

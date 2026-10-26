@@ -28,6 +28,14 @@ FactSync Chile checks the population figure of each of Chile's 346 comunas in Sp
 
 When the Critic finds figures that nothing read so far explains, it names the unread catalog sources whose coverage could explain each one. The Planner then chooses among them, Nemotron with a reason or code by the figure's cues, and the Retriever reads them with one generic query. Adding a source means adding one view and one catalog row, with no new code. The catalog covers four official series. Two of them, INE's Census 2002 and the 2017 urban/rural split, were added during the hackathon because the articles cite them.
 
+**A Unified Semantic Layer with data-quality rules.** The USL `comuna_population` (namespace
+`lightning.metastore.factsync`, DDL in `zetaris/07_usl_create.sql`) declares the model behind the views: `comuna`
+(INE's list, the system of record), `official_figure` and `population_claim`, both with a foreign key to `comuna`.
+Each table is activated from the view the agents read. Zetaris generates the key and foreign-key rules; three more are
+registered (`cut_is_code`, `population_positive`, `figure_is_a_number`) and run with `RUN DQ`. The use case, the
+exploratory queries per source, the USL checks and rule results, and our reflections on the USL (time saved against a
+hand-coded version, and a requirement for Zetaris) are in [`docs/zetaris/`](zetaris/README.md).
+
 **The app reads with a read-only user.** Following the advice of Zetaris's CTO, the app's key belongs to a General-role user that holds SELECT on the `factsync` view namespace and nothing else. The admin key is used only by the setup scripts. `scripts/verify_readonly.py` shows that the app's key sees as many rows as the admin key in every view, and is refused on the source tables underneath.
 
 **Everything Zetaris does is checked and traced.**
@@ -58,6 +66,9 @@ When the Critic finds figures that nothing read so far explains, it names the un
 - The engine can rebuild any projection over the log as it stood at an earlier audit sequence (`project_as_of`).
 - At the end of each run, FactSync rebuilds each comuna's picture as of the previous run that checked it and compares the two, page by page: fixed, changed, unchanged, new or gone.
 - The review queue shows the result. After an editor applies a draft, the next run shows that page as fixed.
+- This happened for real: on Oct 26 three of the national batch's drafts were applied by hand (Coltauco on Wikidata,
+  Rengo's Spanish infobox, Llay-Llay's English infobox). The next run ([`output_examples/example_5`](../output_examples/example_5/))
+  reported 4 pages fixed: those three, plus Coltauco's Spanish infobox, which shows Wikidata's figure.
 
 **The test:**
 - `tests/test_world_model_conformance.py` ports the engine's official conformance suite one-to-one: sid-001, sid-002, band-001, prov-001, idem-001, idem-002, bitemp-001, audit-001. All 8 pass.
@@ -99,11 +110,15 @@ The model is `nvidia/nemotron-3.5-lightning-30b-a3b`, reached only through Night
 | Planner | Chooses, per figure, which catalog source to read on discovery, and says why | Only candidates the Critic named are accepted |
 | Editor | Writes edit summaries and the reviewer's explanation | The draft's figures, citation and wording are checked; the figures and sources in the drafts come from templates |
 
-`eval/` measures what Nemotron changes. The same comunas, from the same recorded rows, are run with and without the model, and every difference is adjudicated with its evidence.
+Its main job is reading. Articles are full of figures that aren't the comuna's population (men only, a town, people
+enrolled in the health system), which sentence patterns keep and turn into false findings. `eval/` measures this: the
+same 11 comunas from the same recorded rows, with and without Nemotron, every difference adjudicated with its
+evidence. On disputed figures from article text, Nemotron was right 16 times to the patterns' once, and five false or
+misleading findings never reached the reviewer ([results](../eval/results.md), which also list where it was weaker).
 
 ## What was unique
 
 - **Discovery from a catalog in Zetaris.** The Planner chooses sources from a table Zetaris holds, by coverage, and new official sources need only a view and a catalog row. A real case: it added Census 2002 when articles cited it, and found that Spanish Wikipedia gives Coltauco 17,121 people in 2002 where INE counted 16,228.
-- **The World Model as memory between runs.** Point-in-time reconstruction turns a one-off audit into something editors rerun, and shows what was fixed since the last check.
-- **The read-only Zetaris user,** checked by a script.
+- **The World Model as memory between runs.** Point-in-time reconstruction turns a one-off audit into something editors rerun, and shows what was fixed since the last check: after three real edits, the next run reported 4 pages fixed.
+- **A USL whose rules run where the data lives:** foreign keys to INE's comuna list and registered data-quality rules, activated from the same views the agents read. The app reads with a read-only Zetaris user, checked by a script.
 - **Nightshift internals worked out and documented:** the 45-second time-to-headers deadline, the tier split, and the quality-race floor. This let a slow-reasoning model take part in a six-agent loop without its calls timing out.
