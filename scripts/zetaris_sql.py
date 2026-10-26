@@ -42,11 +42,30 @@ def fill(sql, dry_run):
     return sql
 
 
-def statements(path):
-    lines = [line for line in open(path, encoding="utf-8") if not line.lstrip().startswith("--")]
+BLOCK_START, BLOCK_END = "-- BEGIN STATEMENT", "-- END STATEMENT"
+
+
+def split(lines):
     for chunk in "".join(lines).split(";\n"):
         if chunk.strip():
             yield chunk.strip().rstrip(";")
+
+
+def statements(path):
+    """The file's statements, split at a semicolon ending a line. Lines between -- BEGIN STATEMENT and
+    -- END STATEMENT are sent as one statement, semicolons and all (a multi-table COMPILE USL must be)."""
+    pending, block = [], None
+    for line in open(path, encoding="utf-8"):
+        marker = line.strip()
+        if marker == BLOCK_START:
+            yield from split(pending)
+            pending, block = [], []
+        elif marker == BLOCK_END:
+            yield "".join(block).strip().rstrip(";")
+            block = None
+        elif not line.lstrip().startswith("--"):
+            (pending if block is None else block).append(line)
+    yield from split(pending)
 
 
 def run(sql):

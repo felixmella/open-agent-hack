@@ -23,6 +23,8 @@
     "views_read_by_agents": ["factsync.source_catalog", "factsync.ine_census2024", "factsync.official_population", "factsync.wikidata_population", "factsync.eswiki_infobox", "factsync.enwiki_infobox"],
     "other_views": ["factsync.ine_census2017", "factsync.ine_census2017_area", "factsync.ine_census2002", "factsync.ine_projections", "factsync.wikidata_comunas", "factsync.eswiki_articles", "factsync.enwiki_articles", "factsync.population_picture"],
     "source_catalog": "factsync.source_catalog lists every source, its definition, scope and years; the Planner reads it at plan time and chooses from it on discovery",
+    "usl": {"name": "lightning.metastore.factsync.comuna_population", "ddl": "zetaris/07_usl_create.sql", "tables": ["comuna", "official_figure", "population_claim"], "data_quality": "key and foreign-key constraints, plus registered rules cut_is_code, population_positive and figure_is_a_number", "checks": "zetaris/07_usl_select.sql (results in docs/zetaris/usl.md)", "document": "docs/zetaris/README.md"},
+    "exploration": "zetaris/06_explore_select.sql (results in docs/zetaris/exploration.md)",
     "app_user": "a General-role (read-only) user with SELECT on the factsync views only (zetaris/05_readonly_grants.sql, checked by scripts/verify_readonly.py)",
     "setup": "zetaris/README.md"
   },
