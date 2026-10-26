@@ -2,7 +2,8 @@
 served through the Zetaris client's query interface. FactSync reads them in sample mode (no Zetaris, no network),
 and when a live Zetaris query fails in a way a retry could fix (a fallback the run escalates).
 
-It answers the agents' own queries only: SELECT <columns> FROM factsync.<view> [WHERE series = '...' AND]
+It answers the agents' own queries only: SELECT <columns> FROM factsync.<view> [WHERE series = '...' AND |
+WHERE year = <year> AND]
 [cut IN (...)] [OR cut IS NULL], for comunas the snapshot covers, and the source catalog. Anything else is an error,
 never a guess.
 """
@@ -15,7 +16,7 @@ from app.adapters.zetaris import QueryResult, ZetarisError
 
 QUERY = re.compile(r"^SELECT\s+(?P<columns>.+?)\s+FROM\s+(?P<view>factsync\.\w+)(?:\s+WHERE\s+(?P<where>.+))?$",
                    re.I | re.S)
-CONDITIONS = re.compile(r"series\s*=\s*'\w+'|cut\s+IN\s*\([^)]*\)|cut\s+IS\s+NULL|\b(?:AND|OR)\b|\s+", re.I)
+CONDITIONS = re.compile(r"series\s*=\s*'\w+'|year\s*=\s*\d{4}|cut\s+IN\s*\([^)]*\)|cut\s+IS\s+NULL|\b(?:AND|OR)\b|\s+", re.I)
 
 
 class SampleData:
@@ -54,6 +55,7 @@ class SampleData:
             raise ZetarisError(f"the sample data has no column {', '.join(missing)} in {match.group('view')}",
                                recoverable=False, code="not_in_sample")
         series = re.search(r"series\s*=\s*'(\w+)'", where, re.I)
+        year = re.search(r"year\s*=\s*(\d{4})", where, re.I)
         listed = re.search(r"cut\s+IN\s*\(([^)]*)\)", where, re.I)
         cuts = set(re.findall(r"'([^']*)'", listed.group(1))) if listed else None
         if cuts is not None and cuts - set(self.comunas):
@@ -67,12 +69,16 @@ class SampleData:
             row = dict(zip(recorded["columns"], values))
             if series and row.get("series") != series.group(1):
                 continue
+            if year and str(row.get("year")) != year.group(1):
+                continue
             if cuts is not None and not (row.get("cut") in cuts or (with_null and row.get("cut") is None)):
                 continue
             rows.append({c: row[c] for c in columns})
         rows = rows[:limit]
+        origin = f"sample snapshot recorded {recorded['recorded_at'][:10]}" if recorded.get("recorded_at") \
+            else self.origin  # each view keeps the date it was recorded
         return QueryResult(statement, columns, rows, len(rows), int((time.monotonic() - started) * 1000), 1,
-                           origin=self.origin)
+                           origin=origin)
 
 
 class FallbackZetaris:

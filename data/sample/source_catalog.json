@@ -1,10 +1,11 @@
 {
  "view": "factsync.source_catalog",
  "queries": [
-  "SELECT source_id, view, kind, definition, scope, years_from, years_to, in_default_plan, description FROM factsync.source_catalog"
+  "SELECT source_id, fact, view, kind, definition, scope, years_from, years_to, in_default_plan, description FROM factsync.source_catalog"
  ],
  "columns": [
   "source_id",
+  "fact",
   "view",
   "kind",
   "definition",
@@ -17,6 +18,7 @@
  "rows": [
   [
    "official_census",
+   "population",
    "factsync.official_population",
    "official",
    "census",
@@ -28,6 +30,7 @@
   ],
   [
    "official_projections",
+   "population",
    "factsync.official_population",
    "official",
    "projection",
@@ -39,6 +42,7 @@
   ],
   [
    "official_census2002",
+   "population",
    "factsync.official_population",
    "official",
    "census",
@@ -50,6 +54,7 @@
   ],
   [
    "official_census2017_area",
+   "population",
    "factsync.official_population",
    "official",
    "census",
@@ -61,6 +66,7 @@
   ],
   [
    "wikidata",
+   "population",
    "factsync.wikidata_population",
    "commons",
    null,
@@ -72,6 +78,7 @@
   ],
   [
    "wikipedia_es",
+   "population",
    "factsync.eswiki_infobox",
    "commons",
    null,
@@ -83,6 +90,7 @@
   ],
   [
    "wikipedia_en",
+   "population",
    "factsync.enwiki_infobox",
    "commons",
    null,
@@ -91,7 +99,91 @@
    null,
    "true",
    "English Wikipedia comuna articles: infobox figure, reference and article text."
+  ],
+  [
+   "servel_mayors_2024",
+   "mayor",
+   "factsync.servel_mayors",
+   "official",
+   "election",
+   "comuna",
+   "2024",
+   "2024",
+   "true",
+   "SERVEL results of the mayoral election of Oct 26-27, 2024 in each comuna: every candidate, party and votes, and who was elected (term from Dec 6, 2024)."
+  ],
+  [
+   "servel_mayors_2021",
+   "mayor",
+   "factsync.servel_mayors",
+   "official",
+   "election",
+   "comuna",
+   "2021",
+   "2021",
+   "false",
+   "SERVEL results of the mayoral election of May 15-16, 2021 in each comuna: every candidate, party and votes, and who was elected (term Jun 28, 2021 to Dec 6, 2024)."
+  ],
+  [
+   "servel_mayors_2016",
+   "mayor",
+   "factsync.servel_mayors",
+   "official",
+   "election",
+   "comuna",
+   "2016",
+   "2016",
+   "false",
+   "SERVEL results of the mayoral election of Oct 23, 2016 in each comuna: every candidate, party and votes, and who was elected (term Dec 6, 2016 to Jun 28, 2021)."
+  ],
+  [
+   "servel_mayors_2012",
+   "mayor",
+   "factsync.servel_mayors",
+   "official",
+   "election",
+   "comuna",
+   "2012",
+   "2012",
+   "false",
+   "SERVEL results of the mayoral election of Oct 28, 2012 in each comuna: every candidate, party and votes, and who was elected (term Dec 6, 2012 to Dec 6, 2016)."
+  ],
+  [
+   "wikidata_mayor",
+   "mayor",
+   "factsync.wikidata_mayor",
+   "commons",
+   null,
+   "comuna",
+   null,
+   null,
+   "true",
+   "Wikidata head of government statements (P6) of each comuna, with the person, start and end time, rank and references."
+  ],
+  [
+   "wikipedia_es_mayor",
+   "mayor",
+   "factsync.eswiki_mayor",
+   "commons",
+   null,
+   "comuna",
+   null,
+   null,
+   "true",
+   "Spanish Wikipedia comuna articles: the mayor named in the infobox (dirigentes_nombres), and the article text."
+  ],
+  [
+   "wikipedia_en_mayor",
+   "mayor",
+   "factsync.enwiki_mayor",
+   "commons",
+   null,
+   "comuna",
+   null,
+   null,
+   "true",
+   "English Wikipedia comuna articles: the mayor named in the infobox (leader_name, leader_party), and the article text."
   ]
  ],
- "recorded_at": "2026-10-24T17:03:02Z"
+ "recorded_at": "2026-10-26T21:11:48Z"
 }

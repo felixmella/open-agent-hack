@@ -41,7 +41,7 @@ def example(n):
     return RunInput.model_validate_json((ROOT / "input_examples" / f"example_{n}.json").read_text(encoding="utf-8"))
 
 
-@pytest.mark.parametrize("n", [1, 2, 3, 4])
+@pytest.mark.parametrize("n", [1, 2, 3, 4, 6])
 def test_every_example_runs_on_the_snapshot_without_network(sample_settings, no_network, n):
     result = run(example(n), sample_settings, echo=False)
     assert result["mode"] == "sample" and result["data"]["source"] == "sample" and not no_network

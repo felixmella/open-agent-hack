@@ -88,7 +88,7 @@ def test_a_background_run_answers_202_and_a_second_run_waits_its_turn(settings):
 def test_health_in_sample_mode_checks_the_sample_data(settings):
     client = TestClient(create_app(dataclasses.replace(settings, sample_mode=True), fake_runner(settings)))
     health = client.get("/health").json()
-    assert health["mode"] == "sample" and health["status"] == "ok" and health["checks"]["sample_data"]["comunas"] == 17
+    assert health["mode"] == "sample" and health["status"] == "ok" and health["checks"]["sample_data"]["comunas"] == 24
 
 
 def test_health_reports_what_is_unreachable(settings):

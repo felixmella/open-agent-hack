@@ -27,10 +27,25 @@
    "09121",
    "13112",
    "06206"
+  ],
+  "example_6.json": [
+   "06115",
+   "05703",
+   "06104",
+   "08105",
+   "13107",
+   "16106",
+   "07408",
+   "06303"
   ]
  },
  "comunas": {
+  "05703": "LLAILLAY",
+  "06104": "COLTAUCO",
+  "06115": "RENGO",
   "06206": "PAREDONES",
+  "06303": "CHIMBARONGO",
+  "07408": "YERBAS BUENAS",
   "08105": "HUALQUI",
   "09116": "SAAVEDRA",
   "09121": "CHOLCHOL",
@@ -45,15 +60,37 @@
   "11303": "TORTEL",
   "11401": "CHILE CHICO",
   "11402": "RÍO IBÁÑEZ",
+  "13107": "HUECHURABA",
   "13112": "LA PINTANA",
+  "16106": "PINTO",
   "16201": "QUIRIHUE"
  },
  "views": {
   "factsync.enwiki_infobox": "enwiki_infobox.json",
+  "factsync.enwiki_mayor": "enwiki_mayor.json",
   "factsync.eswiki_infobox": "eswiki_infobox.json",
+  "factsync.eswiki_mayor": "eswiki_mayor.json",
   "factsync.ine_census2024": "ine_census2024.json",
   "factsync.official_population": "official_population.json",
+  "factsync.servel_mayors": "servel_mayors.json",
   "factsync.source_catalog": "source_catalog.json",
+  "factsync.wikidata_mayor": "wikidata_mayor.json",
   "factsync.wikidata_population": "wikidata_population.json"
- }
+ },
+ "updates": [
+  {
+   "recorded_at": "2026-10-26T21:11:48Z",
+   "examples": [
+    "example_6.json"
+   ],
+   "views": [
+    "factsync.servel_mayors",
+    "factsync.wikidata_mayor",
+    "factsync.eswiki_mayor",
+    "factsync.enwiki_mayor",
+    "factsync.source_catalog"
+   ],
+   "note": "the mayor views for example 6, and the source catalog with both facts; the population views keep their first recording"
+  }
+ ]
 }

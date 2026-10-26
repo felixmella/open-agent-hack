@@ -30,3 +30,9 @@ def test_the_engine_and_its_tests_exist():
     assert all((ROOT / path).exists() for path in meterless["tests"])
     for path in (METADATA["nightshift"]["adapter"], METADATA["orchestration"]["path"]):
         assert (ROOT / path).exists()
+
+
+def test_each_fact_names_real_code_and_examples():
+    for fact in METADATA["facts"].values():
+        assert all((ROOT / path).exists() for path in fact["knowledge"] + fact.get("tests", []) + [fact["example"]])
+    assert (ROOT / METADATA["facts"]["mayor"]["agents"]).exists()

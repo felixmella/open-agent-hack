@@ -1,13 +1,17 @@
 {
   "project": "FactSync Chile",
-  "description": "For Wikipedia and Wikidata editors: checks every Chilean comuna's population figure in Spanish and English Wikipedia and in Wikidata against INE's official figures, explains why each one differs, and drafts sourced corrections for a person to review and apply.",
+  "description": "For Wikipedia and Wikidata editors: checks two facts about every Chilean comuna in Spanish and English Wikipedia and in Wikidata against their systems of record, its population against INE's official figures and its mayor against SERVEL's election results, explains why each one differs, and drafts sourced corrections for a person to review and apply.",
   "track": "Track 1: Solving Fragmented Intelligence",
   "repository": "https://github.com/felixmella/open-agent-hack",
   "license": "Apache-2.0 (code); data files keep their own licences (see README)",
   "entry_points": {
     "cli": "python run.py input_examples/example_2.json [--sample]",
     "api": "uvicorn app.main:app (POST /run, GET /runs/{run_id}/report)",
-    "national_batch": "python scripts/batch_national.py --tag <tag>"
+    "national_batch": "python scripts/batch_national.py --tag <tag> [--fact mayor]"
+  },
+  "facts": {
+    "population": {"system_of_record": "INE (census counts 2002, 2017, 2024; projections 2002-2035)", "knowledge": ["app/knowledge/matcher.py", "app/knowledge/taxonomy.py", "app/knowledge/wikitext.py"], "agents": "app/agents/extractor.py, analyst.py, critic.py, editor.py", "example": "input_examples/example_2.json"},
+    "mayor": {"system_of_record": "SERVEL (mayoral elections 2012, 2016, 2021, 2024)", "knowledge": ["app/knowledge/mayors.py", "app/knowledge/names.py", "data/reference/chile_municipal_elections.json"], "agents": "app/agents/mayors.py", "example": "input_examples/example_6.json", "tests": ["tests/test_mayors.py", "tests/test_names.py"]}
   },
   "agents": [
     {"name": "Planner", "path": "app/agents/planner.py", "role": "Reads the source catalog in Zetaris, resolves the scope, plans the default sources; on discovery chooses which catalog sources to add for the figures the Critic sends back", "model": "chooses a source per figure, with a reason"},
@@ -17,13 +21,14 @@
     {"name": "Critic", "path": "app/agents/critic.py", "role": "Scores each finding on a 9-point rubric, recomputing the facts; rejects and sends one fix to the Planner, Extractor or Analyst; holds up comunas with claims nothing read can check; reviews every draft", "model": "judges class fit and faithfulness"},
     {"name": "Editor", "path": "app/agents/editor.py", "role": "Builds wikitext, citations and QuickStatements from templates; drafts only, never edits", "model": "writes edit summaries and the reviewer's explanation"}
   ],
-  "orchestration": {"path": "app/orchestration/loop.py", "loops": ["Critic rounds (max 2 fixes per comuna)", "discovery (max 3 sources per run)", "draft revision (max 1)", "model calls per run (budget)"]},
+  "orchestration": {"path": "app/orchestration/loop.py", "loops": ["Critic rounds (max 2 fixes per comuna; 3 for mayors, one election further back each)", "discovery (max 3 sources per run)", "draft revision (max 1)", "model calls per run (budget)"]},
   "zetaris": {
     "role": "The data layer: every source the agents compare is a view in the factsync container, virtualised from public APIs (INE ArcGIS, Wikidata SPARQL, MediaWiki) and INE files in the Zetaris file store",
-    "views_read_by_agents": ["factsync.source_catalog", "factsync.ine_census2024", "factsync.official_population", "factsync.wikidata_population", "factsync.eswiki_infobox", "factsync.enwiki_infobox"],
+    "views_read_by_agents": ["factsync.source_catalog", "factsync.ine_census2024", "factsync.official_population", "factsync.wikidata_population", "factsync.eswiki_infobox", "factsync.enwiki_infobox", "factsync.servel_mayors", "factsync.wikidata_mayor", "factsync.eswiki_mayor", "factsync.enwiki_mayor"],
     "other_views": ["factsync.ine_census2017", "factsync.ine_census2017_area", "factsync.ine_census2002", "factsync.ine_projections", "factsync.wikidata_comunas", "factsync.eswiki_articles", "factsync.enwiki_articles", "factsync.population_picture"],
-    "source_catalog": "factsync.source_catalog lists every source, its definition, scope and years; the Planner reads it at plan time and chooses from it on discovery",
+    "source_catalog": "factsync.source_catalog lists every source, the fact it is about, its definition, scope and years; the Planner reads it at plan time and chooses from it on discovery",
     "usl": {"name": "lightning.metastore.factsync.comuna_population", "ddl": "zetaris/07_usl_create.sql", "tables": ["comuna", "official_figure", "population_claim"], "data_quality": "key and foreign-key constraints, plus registered rules cut_is_code, population_positive and figure_is_a_number", "checks": "zetaris/07_usl_select.sql (results in docs/zetaris/usl.md)", "document": "docs/zetaris/README.md"},
+    "usl_mayors": {"name": "lightning.metastore.factsync.comuna_mayor", "ddl": "zetaris/09_mayors_usl_create.sql", "tables": ["comuna", "election_result", "mayor_claim"], "data_quality": "key and foreign-key constraints, plus registered rules comuna_code_5_digits, votes_not_negative, elected_is_flag and mayor_named", "checks": "zetaris/09_mayors_usl_select.sql (results in docs/zetaris/usl_mayors.md)"},
     "exploration": "zetaris/06_explore_select.sql (results in docs/zetaris/exploration.md)",
     "app_user": "a General-role (read-only) user with SELECT on the factsync views only (zetaris/05_readonly_grants.sql, checked by scripts/verify_readonly.py)",
     "setup": "zetaris/README.md"
@@ -54,7 +59,9 @@
     {"name": "INE Censo 2002, population by comuna", "access": "INE REDATAM, counted by scripts/prepare_ine_census2002.py into the Zetaris file store", "licence": "CC BY-SA 4.0"},
     {"name": "INE estimates and projections 2002-2035 by comuna (base Census 2017)", "access": "INE workbook, aggregated by scripts/prepare_ine_projections.py into the Zetaris file store", "licence": "CC BY-SA 4.0"},
     {"name": "Wikidata population statements", "access": "Wikidata SPARQL, read live by Zetaris", "licence": "CC0"},
-    {"name": "Spanish and English Wikipedia comuna articles", "access": "MediaWiki API, read live by Zetaris", "licence": "CC BY-SA 4.0"}
+    {"name": "Spanish and English Wikipedia comuna articles", "access": "MediaWiki API, read live by Zetaris", "licence": "CC BY-SA 4.0"},
+    {"name": "SERVEL mayoral election results 2012, 2016, 2021 and 2024, every candidate by comuna", "access": "SERVEL workbooks, prepared by scripts/prepare_servel_mayors.py into the Zetaris file store", "licence": "public electoral data (see data/official/README.md)"},
+    {"name": "Wikidata head of government statements (P6)", "access": "Wikidata SPARQL, read live by Zetaris", "licence": "CC0"}
   ],
   "development": {"coding_tool": "Claude Code (Anthropic), Claude Opus 5.5", "cursor": "not used"}
 }

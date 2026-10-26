@@ -1,7 +1,9 @@
-"""The national batch: every comuna, region by region, to measure how far the population figures in Spanish and
-English Wikipedia and in Wikidata are from INE's Census 2024 count.
+"""The national batch: every comuna, region by region, to measure how far the population figures (or, with
+--fact mayor, the mayors) in Spanish and English Wikipedia and in Wikidata are from INE's Census 2024 count (or from
+who SERVEL says was elected in 2024).
 
-Usage:  .venv\\Scripts\\python scripts\\batch_national.py [--tag 20261025] [--pause 15] [--use-llm] [--region Aysén ...]
+Usage:  .venv\\Scripts\\python scripts\\batch_national.py [--tag 20261025] [--fact mayor] [--pause 15] [--use-llm]
+                                                    [--region Aysén ...]
 
 Each region is one ordinary run (run_id national-<tag>-<nn>-<region>) with its own result.json, review queue and
 trace; a region already finished under the same tag is skipped, so a rerun resumes. By default the agents take
@@ -13,6 +15,9 @@ At the end it writes output/national-<tag>/summary.json and summary.md, computed
 source, how many comunas show a current population figure, how many of those are INE's Census 2024 count, and why
 the others differ; which official sources the Planner added and for how many figures; what became of the figures
 that could only be checked against an older census; and, per page, what changed since each comuna's last check.
+For mayors: for each source, how many pages name the mayor elected in 2024, and why the others differ (a former
+mayor, and which election they last won; a losing candidate; a name SERVEL doesn't have), with every unknown name
+listed for a human to look at.
 """
 import argparse
 import json
@@ -158,6 +163,111 @@ def summarize(results, tag, use_llm):
                       "report": r.get("report_file")} for r in results]}
 
 
+def mayor_outcome(comuna, target):
+    """What a source says about the mayor: 'elected in 2024', the class of the finding about it (a former mayor gets
+    the year of the last election they won), or None when the source has no page."""
+    about = [f for f in comuna["findings"] if f["target"] == target and f["aspect"] == "value"]
+    if about:
+        finding = about[0]
+        if finding["class"] == "outdated_mayor" and finding.get("match"):
+            return f"outdated_mayor_{max(finding['match']['won'])}"
+        return finding["class"]
+    if any(c["claim"].get("target") == target and c["result"] == "consistent" for c in comuna["checks"]):
+        return "elected in 2024"
+    return None
+
+
+def summarize_mayors(results, tag, use_llm):
+    by_target = {t: Counter() for t in TARGETS}
+    classes, discoveries, served, unknown, signals, qualifiers = Counter(), Counter(), Counter(), [], [], 0
+    comunas = 0
+    for result in results:
+        for discovery in result.get("discoveries") or []:
+            discoveries[discovery["source"]] += 1
+            served[discovery["source"]] += len(discovery.get("requests") or [])
+        for comuna in result["comunas"]:
+            comunas += 1
+            for target in TARGETS:
+                by_target[target][mayor_outcome(comuna, target) or "not read"] += 1
+            for finding in comuna["findings"]:
+                classes[finding["class"]] += 1
+                qualifiers += finding["class"] == "wikidata_qualifier"
+                if finding["class"] == "unknown_name":
+                    unknown.append({"comuna": title_case(comuna["name"]), "cut": comuna["cut"],
+                                    "source": TARGETS[finding["target"]], "name": finding["claim"].get("name"),
+                                    "notes": finding["claim"].get("notes") or [], "reading": finding.get("reading")})
+                if finding.get("signals") and finding["target"] != "wikidata":
+                    signals.append(f"{title_case(comuna['name'])} ({TARGETS[finding['target']]})")
+    sources = {}
+    for target, counts in by_target.items():
+        naming = sum(n for k, n in counts.items() if k not in ("not read", "missing_value"))
+        current = counts["elected in 2024"]
+        sources[target] = {"pages_naming_a_mayor": naming, "name_the_2024_winner": current,
+                           "name_someone_else": naming - current, "name_no_one": counts["missing_value"],
+                           "not_read": counts["not read"],
+                           "share_someone_else": round((naming - current) / naming, 3) if naming else None,
+                           "why": dict(sorted(((k, n) for k, n in counts.items()
+                                               if k not in ("elected in 2024", "not read", "missing_value")),
+                                              key=lambda kv: -kv[1]))}
+    naming = sum(s["pages_naming_a_mayor"] for s in sources.values())
+    other = sum(s["name_someone_else"] for s in sources.values())
+    return {"tag": tag, "fact": "mayor", "made_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "method": "agents with the model (Nightshift)" if use_llm else
+                      "agents on their deterministic paths (name matcher, rule-based Critic, templates): no model calls",
+            "comunas": comunas, "regions": len(results), "pages_naming_a_mayor": naming,
+            "naming_someone_else": other, "share_someone_else": round(other / naming, 3) if naming else None,
+            "by_source": sources, "findings_by_class": dict(classes.most_common()),
+            "wikidata_qualifier_findings": qualifiers, "unknown_names": unknown,
+            "office_may_have_changed": signals,
+            "discoveries": {s: {"runs": n, "names": served[s]} for s, n in discoveries.most_common()},
+            "runs": [{"run_id": r["run_id"], "status": r["status"], "comunas": r["summary"]["comunas"],
+                      "findings": r["summary"]["findings"], "drafts": r["summary"]["drafts"],
+                      "report": r.get("report_file")} for r in results]}
+
+
+WHY = {"outdated_mayor_2021": "former mayor, last elected 2021", "outdated_mayor_2016": "former mayor, last elected 2016",
+       "outdated_mayor_2012": "former mayor, last elected 2012", "not_elected": "a candidate never elected 2012-2024",
+       "unknown_name": "no one SERVEL lists (stand-in, misspelling or vandalism?)",
+       "outdated_mayor": "former mayor", "wikidata_qualifier": "qualifiers"}
+
+
+def markdown_mayors(summary):
+    lines = [f"# National batch {summary['tag']}: mayors", "",
+             f"{summary['comunas']} comunas in {summary['regions']} regions; {summary['method']}.", "",
+             f"Of {summary['pages_naming_a_mayor']} pages that name a mayor across the three sources, "
+             f"**{summary['naming_someone_else']} ({summary['share_someone_else']:.0%})** don't name the mayor SERVEL "
+             f"says was elected in October 2024. SERVEL records who was elected, not who holds the office today, so "
+             f"some of these may be right (a stand-in, a replacement): every draft asks the editor to check.", "",
+             "| Source | Pages naming a mayor | The 2024 winner | Someone else | Names no one | Not read | Who else |",
+             "|---|---|---|---|---|---|---|"]
+    for target, s in summary["by_source"].items():
+        why = ", ".join(f"{WHY.get(k, k)} {n}" for k, n in s["why"].items())
+        share = f" ({s['share_someone_else']:.0%})" if s["share_someone_else"] is not None else ""
+        lines.append(f"| {TARGETS[target]} | {s['pages_naming_a_mayor']} | {s['name_the_2024_winner']} | "
+                     f"{s['name_someone_else']}{share} | {s['name_no_one']} | {s['not_read']} | {why} |")
+    discovered = "; ".join(f"{s} in {d['runs']} of {summary['regions']} regions, for {d['names']} names"
+                           for s, d in summary.get("discoveries", {}).items())
+    if discovered:
+        lines += ["", f"**Discovery.** Elections the Planner added from the Zetaris catalog when the Critic sent names "
+                      f"back: {discovered}."]
+    if summary["office_may_have_changed"]:
+        lines += ["", "**The office may have changed hands** (Wikidata records the end of the 2024 winner's term): "
+                      + ", ".join(summary["office_may_have_changed"]) + "."]
+    if summary["unknown_names"]:
+        lines += ["", f"**Names SERVEL doesn't have** ({len(summary['unknown_names'])}), for a human to look at:", ""]
+        lines += [f"- {u['comuna']} ({u['cut']}), {u['source']}: '{u['name']}'"
+                  + (f" ({'; '.join(u['notes'])})" if u["notes"] else "")
+                  + (f", read by the model as {u['reading'].replace('_', ' ')}" if u.get("reading") else "")
+                  for u in summary["unknown_names"]]
+    lines += ["", "*Names no one:* an infobox whose mayor field is empty, or a Wikidata item without a head of "
+              "government (P6) statement.", "",
+              "*Not read:* FactSync reads the Wikipedia article linked from each comuna's Wikidata item; a comuna "
+              "whose item links no article isn't counted.", "", "Runs:", ""] + [
+        f"- `{r['run_id']}`: {r['status']}, {r['comunas']} comunas, {r['findings']} findings, {r['drafts']} drafts "
+        f"({r['report']})" for r in summary["runs"]]
+    return "\n".join(lines) + "\n"
+
+
 def markdown(summary):
     lines = [f"# National batch {summary['tag']}", "",
              f"{summary['comunas']} comunas in {summary['regions']} regions; {summary['method']}.", "",
@@ -214,6 +324,7 @@ def main():
     parser.add_argument("--tag", default=datetime.now(timezone.utc).strftime("%Y%m%d"))
     parser.add_argument("--pause", type=float, default=15.0, help="seconds between regions")
     parser.add_argument("--use-llm", action="store_true", help="let the agents call the model (slow)")
+    parser.add_argument("--fact", choices=("population", "mayor"), default="population")
     parser.add_argument("--region", action="append", default=[], help="only these regions (name, any part)")
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -236,7 +347,7 @@ def main():
         if results and args.pause:
             time.sleep(args.pause)
         started = time.monotonic()
-        run_input = RunInput.model_validate({"run_id": run_id, "scope": {"cuts": cuts},
+        run_input = RunInput.model_validate({"run_id": run_id, "fact": args.fact, "scope": {"cuts": cuts},
                                              "options": {"use_llm": args.use_llm}})
         try:
             result = run(run_input, settings, echo=False)
@@ -249,10 +360,12 @@ def main():
 
     out = settings.output_dir / f"national-{args.tag}"
     out.mkdir(parents=True, exist_ok=True)
-    summary = summarize(results, args.tag, args.use_llm)
+    mayor = args.fact == "mayor"
+    summary = (summarize_mayors if mayor else summarize)(results, args.tag, args.use_llm)
+    text = (markdown_mayors if mayor else markdown)(summary)
     (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    (out / "summary.md").write_text(markdown(summary), encoding="utf-8")
-    print(markdown(summary))
+    (out / "summary.md").write_text(text, encoding="utf-8")
+    print(text)
 
 
 if __name__ == "__main__":

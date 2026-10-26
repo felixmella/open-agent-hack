@@ -48,8 +48,9 @@ def create_app(settings=None, runner=None):
     settings = settings or load_settings()
     runner = runner or (lambda run_input: run(run_input, settings))
     app = FastAPI(title="FactSync Chile", version=VERSION,
-                  description="Checks the population figures of Chilean comunas in Spanish and English Wikipedia and "
-                              "in Wikidata against INE's official figures, explains why they differ, and drafts sourced "
+                  description="Checks two facts about Chilean comunas in Spanish and English Wikipedia and in Wikidata "
+                              "against their systems of record (the population against INE's official figures, the "
+                              "mayor against SERVEL's election results), explains why they differ, and drafts sourced "
                               "corrections for a human to review. Drafts only: it never edits Wikipedia or Wikidata.")
     gate = threading.Lock()
     running = {}  # run_id -> when it started
