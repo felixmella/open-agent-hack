@@ -38,7 +38,7 @@ For each comuna in scope:
   - a proposed correction;
   - the Critic's score out of 9.
 - **Draft edits.** Spanish Wikipedia gets infobox lines with a `{{cita web}}` reference to INE and an edit summary in Spanish. English Wikipedia gets the infobox lines with `{{cite web}}`. Wikidata gets QuickStatements, plus notes on rank and qualifiers.
-- **Since the last check:** what changed on each page since the previous run that checked the comuna (fixed, changed, unchanged), rebuilt by the World Model from its log.
+- **Since the last check:** what changed on each page since the previous run that checked the comuna (fixed, changed, unchanged), rebuilt by the World Model from its log. In [example 5](output_examples/example_5/), recorded after three of FactSync's drafts were applied by hand on Wikipedia and Wikidata, it reports 4 pages fixed.
 
 Written to disk:
 

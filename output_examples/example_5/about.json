@@ -1,0 +1,69 @@
+{
+ "input": {
+  "scope": {
+   "cuts": [
+    "06104",
+    "06115",
+    "05703"
+   ]
+  },
+  "languages": [
+   "es",
+   "en"
+  ]
+ },
+ "input_file": "since_last_check.json",
+ "compare_with": "national-20261024c",
+ "run_id": "since_last_check-live-20261026T1632Z",
+ "started_at": "2026-10-26T16:32:56+00:00",
+ "commit": "e31976dfb2d962003b0daeb6e1c059975c760630",
+ "status": "success",
+ "summary": {
+  "comunas": 3,
+  "claims": 16,
+  "findings": 7,
+  "findings_by_class": {
+   "cross_source_mismatch": 1,
+   "discredited_source": 2,
+   "missing_value": 2,
+   "outdated_vintage": 1,
+   "wikidata_rank_qualifier": 1
+  },
+  "drafts": 7,
+  "escalations": 0,
+  "critic_rejections": 4,
+  "discoveries": [
+   "official_census2002",
+   "official_projections"
+  ],
+  "since_last_check": {
+   "comunas_checked_before": 3,
+   "fixed": 4,
+   "unchanged": 5
+  }
+ },
+ "model_usage": {
+  "calls": 17,
+  "requests": 17,
+  "by_agent": {
+   "Extractor": 6,
+   "Critic": 4,
+   "Planner": 2,
+   "Analyst": 2,
+   "Editor": 3
+  },
+  "requested_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 17
+  },
+  "served_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 17
+  },
+  "routed_model": {
+   "nvidia/nemotron-3.5-lightning-30b-a3b": 17
+  },
+  "nightshift_cache": {},
+  "fallbacks": {},
+  "budget": 54
+ },
+ "seconds": 656.3
+}

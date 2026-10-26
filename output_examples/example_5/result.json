@@ -1,0 +1,1869 @@
+{
+  "run_id": "since_last_check-live-20261026T1632Z",
+  "status": "success",
+  "mode": "live",
+  "summary": {
+    "comunas": 3,
+    "claims": 16,
+    "findings": 7,
+    "findings_by_class": {
+      "cross_source_mismatch": 1,
+      "discredited_source": 2,
+      "missing_value": 2,
+      "outdated_vintage": 1,
+      "wikidata_rank_qualifier": 1
+    },
+    "drafts": 7,
+    "escalations": 0,
+    "critic_rejections": 4,
+    "discoveries": [
+      "official_census2002",
+      "official_projections"
+    ],
+    "since_last_check": {
+      "comunas_checked_before": 3,
+      "fixed": 4,
+      "unchanged": 5
+    }
+  },
+  "data": {
+    "source": "zetaris",
+    "fallbacks": []
+  },
+  "plan": {
+    "cuts": [
+      "06104",
+      "06115",
+      "05703"
+    ],
+    "sources": [
+      "official_census",
+      "wikidata",
+      "wikipedia_es",
+      "wikipedia_en",
+      "official_census2002",
+      "official_projections"
+    ],
+    "reason": "3 comuna code(s) given",
+    "unresolved": [],
+    "reviews": []
+  },
+  "retrieval": {
+    "official_census": {
+      "rows": 6,
+      "observations": 6,
+      "appended": 0,
+      "unchanged": 6,
+      "reviews": 0
+    },
+    "wikidata": {
+      "rows": 77,
+      "observations": 4,
+      "appended": 1,
+      "unchanged": 3,
+      "reviews": 0
+    },
+    "wikipedia_es": {
+      "rows": 15,
+      "observations": 6,
+      "appended": 2,
+      "unchanged": 4,
+      "reviews": 0
+    },
+    "wikipedia_en": {
+      "rows": 9,
+      "observations": 6,
+      "appended": 2,
+      "unchanged": 4,
+      "reviews": 0
+    },
+    "official_census2002": {
+      "rows": 3,
+      "observations": 3,
+      "appended": 0,
+      "unchanged": 3,
+      "reviews": 0
+    },
+    "official_projections": {
+      "rows": 102,
+      "observations": 102,
+      "appended": 0,
+      "unchanged": 102,
+      "reviews": 0
+    }
+  },
+  "discoveries": [
+    {
+      "round": 1,
+      "source": "official_census2002",
+      "reason": "The figure's label '2002 census' and year 2002 directly match the official 2002 census source coverage. (chosen for 5 figures)",
+      "requests": [
+        {
+          "comuna": "COLTAUCO",
+          "value": 17121,
+          "shown_in": "Wikipedia ES body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "80% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "COLTAUCO",
+          "value": 16228,
+          "shown_in": "Wikipedia EN lead",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "76% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "COLTAUCO",
+          "value": 16228,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "76% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "RENGO",
+          "value": 50830,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "80% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        },
+        {
+          "comuna": "LLAILLAY",
+          "value": 21644,
+          "shown_in": "Wikipedia EN body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "85% of the Census 2024 count",
+          "classified_as": null,
+          "candidates": [
+            "official_projections",
+            "official_census2002"
+          ]
+        }
+      ],
+      "method": "llm",
+      "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "receipt_id": "rcpt_req_4o0q28md"
+    },
+    {
+      "round": 2,
+      "source": "official_projections",
+      "reason": "Year 2002 falls within official_projections coverage 2002-2035.",
+      "requests": [
+        {
+          "comuna": "COLTAUCO",
+          "value": 17121,
+          "shown_in": "Wikipedia ES body",
+          "label": "2002 census",
+          "year": 2002,
+          "basis": "census",
+          "size": "80% of the Census 2024 count",
+          "classified_as": "cross_source_mismatch",
+          "candidates": [
+            "official_projections"
+          ]
+        }
+      ],
+      "method": "llm",
+      "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "receipt_id": "rcpt_req_xoevarld"
+    }
+  ],
+  "declined_discoveries": [],
+  "comunas": [
+    {
+      "cut": "06104",
+      "name": "COLTAUCO",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 16228,
+          "2017": 19597,
+          "2024": 21373
+        },
+        "projection": {
+          "2017": 20387,
+          "2020": 21263,
+          "2024": 22143
+        }
+      },
+      "claims_checked": 8,
+      "findings": [
+        {
+          "id": "fnd_bb7ec988c08f42a3",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "17,918 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 21,373.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_c688d854c1772b1e092272a8",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Coltauco",
+            "revid": "1375650116",
+            "location": "infobox",
+            "role": "current",
+            "value": 17918,
+            "value_raw": "17918",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q3847"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_c688d854c1772b1e092272a8",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 17918,
+              "value_raw": "17918",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4244e1289ba55f3cac61a61e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 21373
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 21373,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_4244e1289ba55f3cac61a61e",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_24fjyweo"
+            }
+          }
+        },
+        {
+          "id": "fnd_7008cdeda26ccb40",
+          "target": "es",
+          "aspect": "value",
+          "class": "cross_source_mismatch",
+          "explanation": "The figure 17,121 does not match any official INE census or projection figure for COLTAUCO, and no source provided explains it.",
+          "confidence": 0.5,
+          "method": "llm",
+          "claim": {
+            "id": "obs_99f51881d0d724b271b6401e",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Coltauco",
+            "revid": "175430871",
+            "location": "body",
+            "role": "historical",
+            "value": 17121,
+            "value_raw": "17.121",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "Habita en ella una población de 17.121 habitantes (censo año 2002), correspondientes a 8.465 mujeres y 8.656 hombres",
+            "method": "llm",
+            "verified": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_99f51881d0d724b271b6401e",
+              "source": "Wikipedia ES",
+              "location": "body",
+              "value": 17121,
+              "value_raw": "17.121",
+              "label": "2002 census",
+              "quote": "Habita en ella una población de 17.121 habitantes (censo año 2002), correspondientes a 8.465 mujeres y 8.656 hombres"
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_834acb37e241dbe01a3a1f82",
+              "source": "INE Censo 2002",
+              "definition": "census",
+              "year": 2002,
+              "value": 16228
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_561e60bf31180c3372564fbb",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 19597
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_4244e1289ba55f3cac61a61e",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 21373
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_9e904e0fe8e735f942e9078c",
+              "source": "INE Proyecciones base 2017",
+              "definition": "projection",
+              "year": 2002,
+              "value": 16892
+            }
+          ],
+          "proposal": {
+            "action": "human_review"
+          },
+          "model": {
+            "method": "llm",
+            "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+            "receipt_id": "rcpt_req_6jxf8fcn"
+          },
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_sckgdfja"
+            }
+          }
+        },
+        {
+          "id": "fnd_6d57e6b2bb04fa6e",
+          "target": "wikidata",
+          "aspect": "rank",
+          "class": "wikidata_rank_qualifier",
+          "explanation": "Wikidata's population statements have no determination method on 19,597.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_9dc5529db39f1184ce3310c8",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 21373,
+            "value_raw": "21373",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "point in time 2024-01-01",
+            "rank": "PreferredRank",
+            "item": "http://www.wikidata.org/entity/Q3847",
+            "statement": "http://www.wikidata.org/entity/statement/Q3847-b7cded28-4612-d095-8ff8-375dc6301279",
+            "references": [
+              "https://censo2024.ine.gob.cl/resultados/"
+            ]
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_011e1c52c46e61885d91b066",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 19597,
+              "value_raw": "19597",
+              "label": "point in time 2017-01-01",
+              "quote": null
+            },
+            {
+              "kind": "claim",
+              "obs_id": "obs_9dc5529db39f1184ce3310c8",
+              "source": "Wikidata",
+              "location": "statement",
+              "value": 21373,
+              "value_raw": "21373",
+              "label": "point in time 2024-01-01",
+              "quote": null
+            }
+          ],
+          "proposal": {
+            "action": "set_rank_qualifiers",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 3,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_011e1c52c46e61885d91b066",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 19597,
+            "value_raw": "19597",
+            "stated_year": 2017,
+            "label": "point in time 2017-01-01",
+            "rank": "NormalRank",
+            "item": "http://www.wikidata.org/entity/Q3847",
+            "statement": "http://www.wikidata.org/entity/statement/Q3847-E4CBA082-8D13-4730-8C3E-4EBD040731CF",
+            "references": [
+              "http://www.wikidata.org/entity/Q106369845",
+              "https://www.ine.gob.cl/"
+            ]
+          },
+          "result": "consistent",
+          "note": "19,597 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_9dc5529db39f1184ce3310c8",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "statement",
+            "role": "historical",
+            "value": 21373,
+            "value_raw": "21373",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "point in time 2024-01-01",
+            "rank": "PreferredRank",
+            "item": "http://www.wikidata.org/entity/Q3847",
+            "statement": "http://www.wikidata.org/entity/statement/Q3847-b7cded28-4612-d095-8ff8-375dc6301279",
+            "references": [
+              "https://censo2024.ine.gob.cl/resultados/"
+            ]
+          },
+          "result": "consistent",
+          "note": "21,373 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_7890af73184f594a3e37b937",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Coltauco",
+            "revid": "175430871",
+            "location": "infobox",
+            "role": "current",
+            "value": 21373,
+            "stated_year": 2024,
+            "label": "2024",
+            "method": "rules",
+            "verified": true,
+            "field": "población",
+            "value_from": "wikidata",
+            "wikidata_item": "Q3847",
+            "wikidata_statement": "http://www.wikidata.org/entity/statement/Q3847-b7cded28-4612-d095-8ff8-375dc6301279"
+          },
+          "result": "consistent",
+          "note": "The infobox has no figure of its own and shows Wikidata's: 21,373 matches INE's Census 2024 count. Fixing Wikidata's statement updates this infobox too."
+        },
+        {
+          "claim": {
+            "id": "obs_2b536225304b1ea87b59f7d1",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Coltauco",
+            "revid": "175430871",
+            "location": "body",
+            "role": "historical",
+            "value": 19597,
+            "value_raw": "19.597",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017 census",
+            "quote": "Para el censo de 2017, la comuna contaba con 19.597 habitantes, de los cuales 9.791 son mujeres y 9.806 hombres",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "19,597 matches INE's Census 2017 count."
+        },
+        {
+          "claim": {
+            "id": "obs_f7a79d83f88b32a2d03cb424",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Coltauco",
+            "revid": "1375650116",
+            "location": "lead",
+            "role": "historical",
+            "value": 16228,
+            "value_raw": "16,228",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census, the commune population was 16,228 and has an area of .",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "16,228 matches INE's Census 2002 count."
+        },
+        {
+          "claim": {
+            "id": "obs_1b7508a1be5054884793aea0",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Coltauco",
+            "revid": "1375650116",
+            "location": "body",
+            "role": "historical",
+            "value": 16228,
+            "value_raw": "16,228",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Coltauco spans an area of 224.7 and has 16,228 inhabitants (8,239 men and 7,989 women)",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "16,228 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 3,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "COLTAUCO",
+              "cut": "06104",
+              "figures": [
+                {
+                  "claim_id": "obs_99f51881d0d724b271b6401e",
+                  "value": 17121,
+                  "source": "Wikipedia ES",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "80% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_f7a79d83f88b32a2d03cb424",
+                  "value": 16228,
+                  "source": "Wikipedia EN",
+                  "location": "lead",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "76% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                },
+                {
+                  "claim_id": "obs_1b7508a1be5054884793aea0",
+                  "value": 16228,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "76% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "3 claim(s) can't be checked with the official figures read: 17,121 (Wikipedia ES body, '2002 census'); 16,228 (Wikipedia EN lead, '2002 census'); 16,228 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": false,
+            "rejected": [
+              "fnd_7008cdeda26ccb40"
+            ],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unread_official_source",
+              "finding_id": "fnd_7008cdeda26ccb40",
+              "finding_ids": [
+                "fnd_7008cdeda26ccb40"
+              ],
+              "comuna": "COLTAUCO",
+              "cut": "06104",
+              "figures": [
+                {
+                  "finding_id": "fnd_7008cdeda26ccb40",
+                  "value": 17121,
+                  "source": "Wikipedia ES",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "80% of the Census 2024 count",
+                  "class": "cross_source_mismatch",
+                  "candidates": [
+                    "official_projections"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "17,121 (Wikipedia ES, '2002 census') matches no official figure read so far (Census 2002 16,228, Census 2017 19,597, Census 2024 21,373). Before calling it cross_source_mismatch, read an official source whose coverage could explain it (official_projections (projection, 2002-2035)): only its figures can confirm or rule out an official figure of another definition or year."
+            }
+          },
+          {
+            "round": 3,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Coltauco",
+          "revid": "175430871",
+          "correction": {
+            "value": 21373,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_4244e1289ba55f3cac61a61e"
+          },
+          "findings": [
+            "fnd_7008cdeda26ccb40"
+          ],
+          "anchor": "obs_99f51881d0d724b271b6401e",
+          "url": "https://es.wikipedia.org/wiki/Coltauco",
+          "text_changes": [
+            {
+              "quote": "Habita en ella una población de 17.121 habitantes (censo año 2002), correspondientes a 8.465 mujeres y 8.656 hombres",
+              "finding": "fnd_7008cdeda26ccb40",
+              "why": "The figure 17,121 does not match any official INE census or projection figure for COLTAUCO, and no source provided explains it.",
+              "note": "remove the figure or give its source"
+            }
+          ],
+          "wikitext": "Según el [[Censo chileno de 2024|censo de 2024]], la comuna tiene una población de 21373 habitantes.<ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=26 de octubre de 2026}}</ref>",
+          "edit_summary": "Actualización: COLTAUCO contabiliza 21.373 habitantes según el Censo 2024 del INE.",
+          "status": "approved"
+        },
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Coltauco",
+          "revid": "1375650116",
+          "correction": {
+            "value": 21373,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_4244e1289ba55f3cac61a61e"
+          },
+          "findings": [
+            "fnd_bb7ec988c08f42a3"
+          ],
+          "anchor": "obs_c688d854c1772b1e092272a8",
+          "url": "https://en.wikipedia.org/wiki/Coltauco",
+          "wikitext": "| population_total = 21373\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=26 October 2026}}</ref>",
+          "replaces": {
+            "value": "17918",
+            "year": "2012 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Updated to 21,373 from INE 2024 Census for COLTAUCO.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q3847",
+          "url": "https://www.wikidata.org/wiki/Q3847",
+          "correction": {
+            "value": 21373,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_4244e1289ba55f3cac61a61e"
+          },
+          "findings": [
+            "fnd_6d57e6b2bb04fa6e"
+          ],
+          "anchor": "obs_9dc5529db39f1184ce3310c8",
+          "quickstatements": "Q3847|P1082|21373|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-26T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (21,373) from INE",
+          "status": "approved"
+        },
+        "explanation": "The previous population figures for COLTAUCO were based on outdated or discredited sources, including a 2012 census whose results INE withdrew. Both the Spanish and English Wikipedia drafts update the count to the official 2024 Census result of 21,373 inhabitants, sourced from INE. This corrects the record to reflect the current official population.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_6oxnf1em"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012 Census",
+            "observation": "obs_c688d854c1772b1e092272a8",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 17918,
+            "verdict": "discredited_source"
+          },
+          "eswiki": {
+            "label": "2024",
+            "observation": "obs_7890af73184f594a3e37b937",
+            "reference": null,
+            "status": "checked",
+            "value": 21373,
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": "point in time 2024-01-01",
+            "observation": "obs_9dc5529db39f1184ce3310c8",
+            "reference": null,
+            "status": "checked",
+            "value": 21373,
+            "verdict": "consistent"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024c-06-libertador-general-bernardo-o-higgins",
+        "checked_at": "2026-10-24T17:57:28Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "fixed",
+            "before": {
+              "value": 19597,
+              "label": "2017",
+              "reference": null,
+              "observation": "obs_aa203e3f7ccb1f506e61de8d",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2024",
+              "observation": "obs_7890af73184f594a3e37b937",
+              "reference": null,
+              "status": "checked",
+              "value": 21373,
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 17918,
+              "label": "2012 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_c688d854c1772b1e092272a8",
+              "verdict": "discredited_source",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012 Census",
+              "observation": "obs_c688d854c1772b1e092272a8",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 17918,
+              "verdict": "discredited_source"
+            }
+          },
+          "wikidata": {
+            "outcome": "fixed",
+            "before": {
+              "value": 19597,
+              "label": "point in time 2017-01-01",
+              "reference": null,
+              "observation": "obs_011e1c52c46e61885d91b066",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "point in time 2024-01-01",
+              "observation": "obs_9dc5529db39f1184ce3310c8",
+              "reference": null,
+              "status": "checked",
+              "value": 21373,
+              "verdict": "consistent"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "06115",
+      "name": "RENGO",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 50830,
+          "2017": 58825,
+          "2024": 63620
+        },
+        "projection": {
+          "2017": 61438,
+          "2020": 63710,
+          "2024": 65786
+        }
+      },
+      "claims_checked": 4,
+      "findings": [
+        {
+          "id": "fnd_0710dd7954379bd7",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 63,620.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_bed106c74ca56fbb4cc98a62",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q56120",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_bed106c74ca56fbb4cc98a62",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_276144dc7b65cdce16fdaf4d",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 63620
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 63620,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_276144dc7b65cdce16fdaf4d",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_d880d0a1e9b750e0",
+          "target": "en",
+          "aspect": "value",
+          "class": "discredited_source",
+          "explanation": "55,757 is attributed to the 2012 census, whose results INE withdrew; it is not an official figure. The current official figure is the Census 2024 count, 63,620.",
+          "confidence": 0.9,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_1c98df8f8511b16a7904eaee",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Rengo",
+            "revid": "1380227873",
+            "location": "infobox",
+            "role": "current",
+            "value": 55757,
+            "value_raw": "55757",
+            "stated_year": 2012,
+            "basis": "census",
+            "label": "2012 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"INE\"/>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q56120"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_1c98df8f8511b16a7904eaee",
+              "source": "Wikipedia EN",
+              "location": "infobox",
+              "value": 55757,
+              "value_raw": "55757",
+              "label": "2012 Census",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_276144dc7b65cdce16fdaf4d",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 63620
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 63620,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_276144dc7b65cdce16fdaf4d",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": {
+              "method": "llm",
+              "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+              "receipt_id": "rcpt_req_atpwtw2n"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_5ad504fba3d50c66edab7053",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Rengo",
+            "revid": "176011339",
+            "location": "infobox",
+            "role": "current",
+            "value": 63620,
+            "value_raw": "63&nbsp;620",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=26 de octubre de 2026}}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q56120"
+          },
+          "result": "consistent",
+          "note": "63,620 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_e69ad5ac136a892ba1737dd2",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Rengo",
+            "revid": "1380227873",
+            "location": "body",
+            "role": "historical",
+            "value": 50830,
+            "value_raw": "50,830",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to the 2002 census of the National Statistics Institute, Rengo spans an area of 591.5 and has 50,830 inhabitants (25,311 men and 25,519 women)",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "50,830 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "RENGO",
+              "cut": "06115",
+              "figures": [
+                {
+                  "claim_id": "obs_e69ad5ac136a892ba1737dd2",
+                  "value": 50830,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "80% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 claim(s) can't be checked with the official figures read: 50,830 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "enwiki": {
+              "draft": "enwiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "enwiki": {
+          "target": "enwiki",
+          "page": "Rengo",
+          "revid": "1380227873",
+          "correction": {
+            "value": 63620,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_276144dc7b65cdce16fdaf4d"
+          },
+          "findings": [
+            "fnd_d880d0a1e9b750e0"
+          ],
+          "anchor": "obs_1c98df8f8511b16a7904eaee",
+          "url": "https://en.wikipedia.org/wiki/Rengo",
+          "wikitext": "| population_total = 63620\n| population_as_of = [[2024 Chilean census|2024 Census]]\n| population_footnotes = <ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=26 October 2026}}</ref>",
+          "replaces": {
+            "value": "55757",
+            "year": "2012 Census",
+            "reference": "<ref name=\"INE\"/>"
+          },
+          "edit_summary": "Updated population to 63,620 from INE 2024 Census, replacing discredited 2012 count.",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q56120",
+          "url": "https://www.wikidata.org/wiki/Q56120",
+          "correction": {
+            "value": 63620,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_276144dc7b65cdce16fdaf4d"
+          },
+          "findings": [
+            "fnd_0710dd7954379bd7"
+          ],
+          "anchor": "obs_bed106c74ca56fbb4cc98a62",
+          "quickstatements": "Q56120|P1082|63620|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-26T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (63,620) from INE",
+          "status": "approved"
+        },
+        "explanation": "The previous figure of 55,757 originated from the 2012 Census, whose results INE withdrew and is no longer considered official. The drafts update the population entry to the current official count of 63,620 from the 2024 Census.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_c9yei5cz"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2012 Census",
+            "observation": "obs_1c98df8f8511b16a7904eaee",
+            "reference": "<ref name=\"INE\"/>",
+            "status": "approved",
+            "value": 55757,
+            "verdict": "discredited_source"
+          },
+          "eswiki": {
+            "label": "2024",
+            "observation": "obs_5ad504fba3d50c66edab7053",
+            "reference": "<ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=26 de octubre de 2026}}</ref>",
+            "status": "checked",
+            "value": 63620,
+            "verdict": "consistent"
+          },
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_bed106c74ca56fbb4cc98a62",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024c-06-libertador-general-bernardo-o-higgins",
+        "checked_at": "2026-10-24T17:57:28Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "fixed",
+            "before": {
+              "value": 58825,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+              "observation": "obs_dba4cd229893e6c09ea13736",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2024",
+              "observation": "obs_5ad504fba3d50c66edab7053",
+              "reference": "<ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=26 de octubre de 2026}}</ref>",
+              "status": "checked",
+              "value": 63620,
+              "verdict": "consistent"
+            }
+          },
+          "enwiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 55757,
+              "label": "2012 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_1c98df8f8511b16a7904eaee",
+              "verdict": "discredited_source",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2012 Census",
+              "observation": "obs_1c98df8f8511b16a7904eaee",
+              "reference": "<ref name=\"INE\"/>",
+              "status": "approved",
+              "value": 55757,
+              "verdict": "discredited_source"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_bed106c74ca56fbb4cc98a62",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_bed106c74ca56fbb4cc98a62",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "cut": "05703",
+      "name": "LLAILLAY",
+      "status": "approved",
+      "official": {
+        "census": {
+          "2002": 21644,
+          "2017": 24608,
+          "2024": 25484
+        },
+        "projection": {
+          "2017": 25626,
+          "2020": 26533,
+          "2024": 27286
+        }
+      },
+      "claims_checked": 4,
+      "findings": [
+        {
+          "id": "fnd_3bb2b59ccea69d15",
+          "target": "wikidata",
+          "aspect": "value",
+          "class": "missing_value",
+          "explanation": "Wikidata has no population figure for this comuna; Census 2024 counted 25,484.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_eab7fe4d0fb0b5323a987857",
+            "target": "wikidata",
+            "source_name": "Wikidata",
+            "location": "item",
+            "role": "current",
+            "label": "no population statement",
+            "item": "http://www.wikidata.org/entity/Q14498",
+            "missing": true
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_eab7fe4d0fb0b5323a987857",
+              "source": "Wikidata",
+              "location": "item",
+              "value": null,
+              "value_raw": null,
+              "label": "no population statement",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_6b55fa94d6782fb447a2d2e4",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 25484
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 25484,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_6b55fa94d6782fb447a2d2e4",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        },
+        {
+          "id": "fnd_0f18a429f0a6b80b",
+          "target": "es",
+          "aspect": "value",
+          "class": "outdated_vintage",
+          "explanation": "24,608 is INE's Census 2017 count, shown as the current figure. The current official figure is the Census 2024 count, 25,484.",
+          "confidence": 0.95,
+          "method": "matcher",
+          "claim": {
+            "id": "obs_7feb87af681491f78d5fa4ae",
+            "target": "es",
+            "source_name": "Wikipedia ES",
+            "title": "Llay-Llay",
+            "revid": "175514873",
+            "location": "infobox",
+            "role": "current",
+            "value": 24608,
+            "value_raw": "24&nbsp;608",
+            "stated_year": 2017,
+            "basis": "census",
+            "label": "2017",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q14498"
+          },
+          "evidence": [
+            {
+              "kind": "claim",
+              "obs_id": "obs_7feb87af681491f78d5fa4ae",
+              "source": "Wikipedia ES",
+              "location": "infobox",
+              "value": 24608,
+              "value_raw": "24&nbsp;608",
+              "label": "2017",
+              "quote": null
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_559415658a77355befed9d65",
+              "source": "INE Censo 2017",
+              "definition": "census",
+              "year": 2017,
+              "value": 24608
+            },
+            {
+              "kind": "official",
+              "obs_id": "obs_6b55fa94d6782fb447a2d2e4",
+              "source": "INE Censo 2024",
+              "definition": "census",
+              "year": 2024,
+              "value": 25484
+            }
+          ],
+          "proposal": {
+            "action": "update",
+            "value": 25484,
+            "year": 2024,
+            "definition": "census",
+            "obs_id": "obs_6b55fa94d6782fb447a2d2e4",
+            "source_key": "census_2024"
+          },
+          "model": null,
+          "status": "approved",
+          "critic": {
+            "score": 9,
+            "criteria": {
+              "evidence_fidelity": 3,
+              "definition_discipline": 3,
+              "correction_sourcing": 3
+            },
+            "rounds": 2,
+            "failures": [],
+            "notes": [],
+            "judged_by_model": null
+          }
+        }
+      ],
+      "checks": [
+        {
+          "claim": {
+            "id": "obs_63db291b96598b2ea1572dff",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Llay-Llay",
+            "revid": "1382101060",
+            "location": "infobox",
+            "role": "current",
+            "value": 25484,
+            "value_raw": "25484",
+            "stated_year": 2024,
+            "basis": "census",
+            "label": "2024 Census",
+            "method": "zetaris",
+            "verified": true,
+            "reference_raw": "<ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=26 October 2026}}</ref>",
+            "wikidata_item": "http://www.wikidata.org/entity/Q14498"
+          },
+          "result": "consistent",
+          "note": "25,484 matches INE's Census 2024 count."
+        },
+        {
+          "claim": {
+            "id": "obs_7dfb24fc0a0a1fc413280af4",
+            "target": "en",
+            "source_name": "Wikipedia EN",
+            "title": "Llay-Llay",
+            "revid": "1382101060",
+            "location": "body",
+            "role": "historical",
+            "value": 21644,
+            "value_raw": "21,644",
+            "stated_year": 2002,
+            "basis": "census",
+            "label": "2002 census",
+            "quote": "According to data from the 2002 Census of Population and Housing, the Llay-Llay commune had 21,644 inhabitants",
+            "method": "llm",
+            "verified": true
+          },
+          "result": "consistent",
+          "note": "21,644 matches INE's Census 2002 count."
+        }
+      ],
+      "critic": {
+        "rounds": 2,
+        "history": [
+          {
+            "round": 1,
+            "approved": false,
+            "rejected": [],
+            "fix": {
+              "target_agent": "Planner",
+              "check": "unchecked_claims",
+              "finding_id": null,
+              "finding_ids": [],
+              "comuna": "LLAILLAY",
+              "cut": "05703",
+              "figures": [
+                {
+                  "claim_id": "obs_7dfb24fc0a0a1fc413280af4",
+                  "value": 21644,
+                  "source": "Wikipedia EN",
+                  "location": "body",
+                  "label": "2002 census",
+                  "year": 2002,
+                  "basis": "census",
+                  "size": "85% of the Census 2024 count",
+                  "class": null,
+                  "candidates": [
+                    "official_projections",
+                    "official_census2002"
+                  ]
+                }
+              ],
+              "suggested_class": null,
+              "instruction": "1 claim(s) can't be checked with the official figures read: 21,644 (Wikipedia EN body, '2002 census'). Before they are judged, read the official sources whose coverage could explain or check them (official_census2002, official_projections)."
+            }
+          },
+          {
+            "round": 2,
+            "approved": true,
+            "rejected": [],
+            "fix": null
+          }
+        ],
+        "draft_reviews": [
+          {
+            "eswiki": {
+              "draft": "eswiki",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            },
+            "wikidata": {
+              "draft": "wikidata",
+              "round": 1,
+              "score": 9,
+              "approved": true,
+              "checks": {
+                "figure": true,
+                "year": true,
+                "citation": true,
+                "official_url": true,
+                "access_date": true,
+                "well_formed": true,
+                "summary": true,
+                "figures_faithful": true,
+                "explanation": true
+              },
+              "instruction": null
+            }
+          }
+        ]
+      },
+      "drafts": {
+        "eswiki": {
+          "target": "eswiki",
+          "page": "Llay-Llay",
+          "revid": "175514873",
+          "correction": {
+            "value": 25484,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_6b55fa94d6782fb447a2d2e4"
+          },
+          "findings": [
+            "fnd_0f18a429f0a6b80b"
+          ],
+          "anchor": "obs_7feb87af681491f78d5fa4ae",
+          "url": "https://es.wikipedia.org/wiki/Llay-Llay",
+          "wikitext": "| población = 25&nbsp;484\n| población_año = [[Censo chileno de 2024|2024]]\n| población_post = <ref name=\"censo2024\">{{cita web |url=https://censo2024.ine.gob.cl/resultados/ |título=Resultados Censo 2024 |editorial=Instituto Nacional de Estadísticas |fechaacceso=26 de octubre de 2026}}</ref>",
+          "replaces": {
+            "value": "24&nbsp;608",
+            "year": "2017",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>"
+          },
+          "edit_summary": "Población actualizada a 25.484 según Censo INE 2024",
+          "status": "approved"
+        },
+        "wikidata": {
+          "target": "wikidata",
+          "page": "Q14498",
+          "url": "https://www.wikidata.org/wiki/Q14498",
+          "correction": {
+            "value": 25484,
+            "year": 2024,
+            "definition": "census",
+            "source_key": "census_2024",
+            "url": "https://censo2024.ine.gob.cl/resultados/",
+            "obs_id": "obs_6b55fa94d6782fb447a2d2e4"
+          },
+          "findings": [
+            "fnd_3bb2b59ccea69d15"
+          ],
+          "anchor": "obs_eab7fe4d0fb0b5323a987857",
+          "quickstatements": "Q14498|P1082|25484|P585|+2024-00-00T00:00:00Z/9|P459|Q39825|S854|\"https://censo2024.ine.gob.cl/resultados/\"|S813|+2026-10-26T00:00:00Z/11",
+          "notes": [
+            "QuickStatements can't set ranks: after adding the Census 2024 statement, set it to preferred rank so it is used as the current population; leave older statements at normal rank."
+          ],
+          "edit_summary": "Add Census 2024 population (25,484) from INE",
+          "status": "approved"
+        },
+        "explanation": "The previous figure of 24,608 was from the INE Census 2017, which is now superseded by the official 2024 Census count of 25,484. The drafts replace the old count with the new official figure and update wikidata accordingly.",
+        "explanation_by": {
+          "method": "llm",
+          "model_requested": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model_served": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "routed_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "receipt_id": "rcpt_req_qrhc7kpl"
+        }
+      },
+      "escalations": [],
+      "picture": {
+        "pages": {
+          "enwiki": {
+            "label": "2024 Census",
+            "observation": "obs_63db291b96598b2ea1572dff",
+            "reference": "<ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=26 October 2026}}</ref>",
+            "status": "checked",
+            "value": 25484,
+            "verdict": "consistent"
+          },
+          "eswiki": {
+            "label": "2017",
+            "observation": "obs_7feb87af681491f78d5fa4ae",
+            "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+            "status": "approved",
+            "value": 24608,
+            "verdict": "outdated_vintage"
+          },
+          "wikidata": {
+            "label": "no population statement",
+            "observation": "obs_eab7fe4d0fb0b5323a987857",
+            "reference": null,
+            "status": "approved",
+            "value": null,
+            "verdict": "missing_value"
+          }
+        },
+        "built_by": "World Model projection comuna_picture"
+      },
+      "since_last_check": {
+        "previous_run": "national-20261024c-05-valparaiso",
+        "checked_at": "2026-10-24T17:56:20Z",
+        "pages": {
+          "eswiki": {
+            "outcome": "unchanged",
+            "before": {
+              "value": 24608,
+              "label": "2017",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+              "observation": "obs_7feb87af681491f78d5fa4ae",
+              "verdict": "outdated_vintage",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2017",
+              "observation": "obs_7feb87af681491f78d5fa4ae",
+              "reference": "<ref name=censo17>{{cita web |url=http://www.censo2017.cl/descargue-aqui-resultados-de-comunas/|título=Plantilla Censo 2017 |fechaacceso=23 de diciembre de 2017|fecha=|obra=CENSO |idioma=inglés |cita= }}</ref>",
+              "status": "approved",
+              "value": 24608,
+              "verdict": "outdated_vintage"
+            }
+          },
+          "enwiki": {
+            "outcome": "fixed",
+            "before": {
+              "value": 22659,
+              "label": "2012 Census",
+              "reference": "<ref name=\"INE\"/>",
+              "observation": "obs_5f60e9fd013e03b08301e615",
+              "verdict": "discredited_source",
+              "status": "approved"
+            },
+            "now": {
+              "label": "2024 Census",
+              "observation": "obs_63db291b96598b2ea1572dff",
+              "reference": "<ref name=\"Censo2024\">{{cite web |url=https://censo2024.ine.gob.cl/resultados/ |title=Resultados Censo 2024 |publisher=Instituto Nacional de Estadísticas |language=es |access-date=26 October 2026}}</ref>",
+              "status": "checked",
+              "value": 25484,
+              "verdict": "consistent"
+            }
+          },
+          "wikidata": {
+            "outcome": "unchanged",
+            "before": {
+              "value": null,
+              "label": "no population statement",
+              "reference": null,
+              "observation": "obs_eab7fe4d0fb0b5323a987857",
+              "verdict": "missing_value",
+              "status": "approved"
+            },
+            "now": {
+              "label": "no population statement",
+              "observation": "obs_eab7fe4d0fb0b5323a987857",
+              "reference": null,
+              "status": "approved",
+              "value": null,
+              "verdict": "missing_value"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "escalations": [],
+  "errors": [],
+  "model_usage": {
+    "calls": 17,
+    "requests": 17,
+    "by_agent": {
+      "Extractor": 6,
+      "Critic": 4,
+      "Planner": 2,
+      "Analyst": 2,
+      "Editor": 3
+    },
+    "requested_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 17
+    },
+    "served_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 17
+    },
+    "routed_model": {
+      "nvidia/nemotron-3.5-lightning-30b-a3b": 17
+    },
+    "nightshift_cache": {},
+    "fallbacks": {},
+    "budget": 54
+  },
+  "trace_file": "logs/trace-since_last_check-live-20261026T1632Z.jsonl",
+  "world_model_audit_file": "logs/world-model-since_last_check-live-20261026T1632Z.jsonl",
+  "world_model_audit_entries": 82,
+  "world_model": {
+    "capabilities": {
+      "live": {
+        "upsert_entity": 346,
+        "ingest": 12,
+        "resolve_by_name": 93,
+        "assess": 65,
+        "context": 14,
+        "view:observations": 19,
+        "reproject": 3,
+        "project_as_of": 3,
+        "export_audit": 1
+      },
+      "dormant": {
+        "relate": "time-bounded relationships between entities (bitemp-001)",
+        "view:graph": "point-in-time graph queries over those relationships (bitemp-001)"
+      }
+    }
+  },
+  "report_file": "output/since_last_check-live-20261026T1632Z/report.html",
+  "execution_time_seconds": 656.3
+}

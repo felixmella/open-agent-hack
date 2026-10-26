@@ -14,7 +14,7 @@ Every source was read live through Zetaris, and every model call went through Me
 
 ## The runs
 
-All were recorded on Oct 24, 2026, live: every source through Zetaris, every model call through Nightshift, answered by `nvidia/nemotron-3.5-lightning-30b-a3b`. Each compares the comunas with national batch `20261024c` ("since the last check"); no page had changed since it.
+All were recorded live: every source through Zetaris, every model call through Nightshift, answered by `nvidia/nemotron-3.5-lightning-30b-a3b`. Each compares the comunas with national batch `20261024c` ("since the last check"). Examples 1 to 4 were recorded on Oct 24, 2026, when no page had changed since that batch. Example 5 was recorded on Oct 26, after four of FactSync's drafts had been applied by hand.
 
 | Folder | Scope | Findings | Drafts | Critic rejections | Sources discovered | Model calls | Time |
 |---|---|---|---|---|---|---|---|
@@ -23,6 +23,7 @@ All were recorded on Oct 24, 2026, live: every source through Zetaris, every mod
 | [`example_2`](example_2/) | Hualqui, Guaitecas, Quirihue | 19 | 9 | 3 | Census 2002, projections | 20 | 12 min |
 | [`example_3`](example_3/) | the Aysén region (10 comunas) | 39 | 24 | 7 | Census 2002, projections | 38 | 29 min |
 | [`example_4`](example_4/) | Saavedra, Cholchol, La Pintana, Paredones (by name) | 17 | 11 | 4 | Census 2002, projections, urban/rural | 23 | 14 min |
+| [`example_5`](example_5/) | Coltauco, Rengo, Llay-Llay, after real edits | 7 | 7 | 4 | Census 2002, projections | 17 | 11 min |
 
 What to look at in each:
 
@@ -40,6 +41,12 @@ What to look at in each:
   3. In round 2, 26,746 is INE's 2024 projection, a different definition, and Wikidata's 20,968 (2007) stays unexplained. Everything is approved, and 9 drafts are written.
 - **Example 3: a whole region.** Ten comunas, the Planner pooling discovery across them, 24 drafts.
 - **Example 4: names.** Comunas given by name ("Saavedra (Chile)") are resolved by the World Model's entity resolver. All three on-demand sources are read.
+- **Example 5: fixed since the last check.** On Oct 26, a human editor applied three of the national batch's drafts, checking each figure against INE first:
+  - Coltauco's Census 2024 count on Wikidata, at preferred rank ([diff](https://www.wikidata.org/w/index.php?title=Q3847&diff=2561107700&oldid=2550671928));
+  - Rengo's Spanish infobox ([diff](https://es.wikipedia.org/w/index.php?title=Rengo&diff=176011339&oldid=175858789));
+  - Llay-Llay's English infobox ([diff](https://en.wikipedia.org/w/index.php?title=Llay-Llay&diff=1382101060&oldid=1376738169)).
+
+  The next run rebuilt each comuna's picture as of the national batch and compared it with today's. It reports **4 pages fixed**: the three edited, plus Coltauco's Spanish infobox, which shows Wikidata's figure (19,597 → 21,373). The other 5 pages are unchanged (`since_last_check` in `result.json`, `compare_runs` in the trace). The pages' remaining findings, such as Rengo's English infobox and its withdrawn 2012 figure, are still in the queue. The input is `input.json` in the folder.
 
 ## The national batch
 
