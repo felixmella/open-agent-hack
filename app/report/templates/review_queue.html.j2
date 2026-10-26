@@ -149,7 +149,7 @@ footer p { margin: 4px 0; }
 {% else %}
 <header class="top"><div class="wrap">
   <div class="brand">FactSync Chile · review queue</div>
-  <h1>{{ summary.comunas }} comuna{{ "s" if summary.comunas != 1 }}: population figures checked against INE</h1>
+  <h1>{{ summary.comunas }} comuna{{ "s" if summary.comunas != 1 }}: {{ words.headline }}</h1>
   <p class="meta">
     <span>Run <code>{{ result.run_id }}</code></span>
     <span class="badge status-{{ result.status }}">{{ result.status }}</span>
@@ -161,12 +161,12 @@ footer p { margin: 4px 0; }
     <span>{{ result.execution_time_seconds }} s</span>
     <span>generated {{ generated_at }}</span>
   </p>
-  <p class="lede">Each population figure in Spanish and English Wikipedia and in Wikidata, compared with INE's official figures, with the reason it differs and a sourced correction to review. <b>Drafts only:</b> FactSync never edits Wikipedia or Wikidata; a person reviews and applies each edit.</p>
+  <p class="lede">{{ words.lede }} <b>Drafts only:</b> FactSync never edits Wikipedia or Wikidata; a person reviews and applies each edit.</p>
 </div></header>
 <main class="wrap">
   <section class="stats" aria-label="Summary">
     <div class="stat"><b>{{ summary.comunas }}</b><span>comunas</span></div>
-    <div class="stat"><b>{{ summary.claims }}</b><span>figures checked</span></div>
+    <div class="stat"><b>{{ summary.claims }}</b><span>{{ words.claims }}</span></div>
     <div class="stat"><b>{{ summary.findings }}</b><span>findings</span></div>
     <div class="stat"><b>{{ summary.drafts }}</b><span>draft edits</span></div>
     <div class="stat{{ ' attention' if summary.escalations }}"><b>{{ summary.escalations }}</b><span>need a human</span></div>
@@ -212,7 +212,7 @@ footer p { margin: 4px 0; }
 
   {% if by_class %}
   <section class="panel">
-    <h2>Why figures differ, across this run</h2>
+    <h2>{{ words.why }}, across this run</h2>
     <p class="chips">
       {% for label, tone, count in by_class %}<span class="badge tone-{{ tone }}">{{ label }} · {{ count }}</span>{% endfor %}
     </p>
@@ -238,17 +238,11 @@ footer p { margin: 4px 0; }
       <h2>{{ c.name }}</h2>
       <span class="cut">CUT {{ c.cut }}</span>
       <span class="badge status-{{ c.status }}">{{ c.status_label }}</span>
-      <span class="by">{{ c.claims_checked }} figures checked · {{ c.findings|length }} finding{{ "s" if c.findings|length != 1 }} · {{ c.rounds }} Critic round{{ "s" if c.rounds != 1 }}</span>
+      <span class="by">{{ c.claims_checked }} {{ words.claims }} · {{ c.findings|length }} finding{{ "s" if c.findings|length != 1 }} · {{ c.rounds }} Critic round{{ "s" if c.rounds != 1 }}</span>
     </div>
-    <div class="official" aria-label="Official figures">
-      {% for year, value in c.census %}
-      <div class="fig{{ ' current' if loop.last }}"><small>INE Census {{ year }}{{ " · current" if loop.last }}</small><b>{{ value|figure }}</b></div>
-      {% endfor %}
-      {% for year, value in c.projection %}
-      <div class="fig"><small>INE projection {{ year }}</small><b>{{ value|figure }}</b></div>
-      {% endfor %}
-      {% for year, area, value in c.areas %}
-      <div class="fig"><small>INE Census {{ year }}, {{ area }} only</small><b>{{ value|figure }}</b></div>
+    <div class="official" aria-label="{{ words.official }}">
+      {% for label, value, current in c.official %}
+      <div class="fig{{ ' current' if current }}"><small>{{ label }}</small><b>{{ value }}</b></div>
       {% endfor %}
     </div>
     {% if c.since %}
@@ -282,7 +276,7 @@ footer p { margin: 4px 0; }
         <p>{{ f.explanation }}</p>
         {% if f.quote %}<blockquote>{{ f.quote }}</blockquote>{% endif %}
         <dl class="facts">
-          {% if f.evidence %}<dt>INE figures</dt><dd>{% for e in f.evidence %}{{ e.source }}{% if e.definition == "projection" %} for {{ e.year }}{% endif %}: <b>{{ e.value|figure }}</b>{{ " · " if not loop.last }}{% endfor %}</dd>{% endif %}
+          {% if f.evidence %}<dt>{{ words.evidence }}</dt><dd>{% for label, value in f.evidence %}{{ label }}: <b>{{ value }}</b>{{ " · " if not loop.last }}{% endfor %}</dd>{% endif %}
           {% if f.proposal %}<dt>Correction</dt><dd>{{ f.proposal }}</dd>{% endif %}
           <dt>Critic</dt><dd>{% if f.score is not none %}<b>{{ f.score }}/9</b>{% if f.criteria %} ({% for name, points in f.criteria %}{{ name }} {{ points }}{{ " · " if not loop.last }}{% endfor %}){% endif %} · {% endif %}{{ f.rounds }} round{{ "s" if f.rounds != 1 }} · reviewed by {{ f.reviewed_by }}</dd>
           {% if f.critic_issues %}<dt>Critic noted</dt><dd>{{ f.critic_issues|join(" ") }}</dd>{% endif %}
@@ -316,14 +310,14 @@ footer p { margin: 4px 0; }
       {% endif %}
     </section>
     {% else %}
-    <p class="empty">Every figure checked matches the official one it claims to be.</p>
+    <p class="empty">{{ words.empty }}</p>
     {% endfor %}
 
     {% if c.checks %}
     <details>
-      <summary>{{ c.checks|length }} figure{{ "s" if c.checks|length != 1 }} with no finding (consistent, not checkable, or not the comuna's)</summary>
+      <summary>{{ c.checks|length }} {{ words.checks }}</summary>
       <div class="table-scroll"><table>
-        <thead><tr><th>Where</th><th>Figure</th><th>Result</th><th>Why</th></tr></thead>
+        <thead><tr><th>Where</th><th>{{ words.column }}</th><th>Result</th><th>Why</th></tr></thead>
         <tbody>
         {% for check in c.checks %}<tr><td>{{ check.where }}</td><td>{{ check.value }}{% if check.label %} <span class="by">({{ check.label }})</span>{% endif %}</td><td>{{ check.result }}</td><td>{{ check.note }}</td></tr>{% endfor %}
         </tbody>
@@ -339,7 +333,7 @@ footer p { margin: 4px 0; }
 {% endif %}
 <footer><div class="wrap">
   {% if result.trace_file %}<p>Agent trace: <code>{{ result.trace_file }}</code>{% if result.world_model_audit_file %} · World Model audit log: <code>{{ result.world_model_audit_file }}</code> ({{ result.world_model_audit_entries }} entries){% endif %} · result: <code>output/{{ result.run_id }}/result.json</code></p>{% endif %}
-  <p>Official figures: INE (Instituto Nacional de Estadísticas), CC BY-SA 4.0. Wikipedia text: CC BY-SA 4.0. Wikidata: CC0. Generated by FactSync Chile, {{ generated_at }}.</p>
+  <p>{{ words.footer }} Wikipedia text: CC BY-SA 4.0. Wikidata: CC0. Generated by FactSync Chile, {{ generated_at }}.</p>
 </div></footer>
 <script>
 (function () {
