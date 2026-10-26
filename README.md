@@ -7,9 +7,11 @@ It is for the Wikipedia and Wikidata editors who keep Chile's 346 comuna pages u
 Built for the Open Agent Hackathon 2026, **Track 1: Solving Fragmented Intelligence**.
 
 **See it work without running anything:**
-- [`output_examples/`](output_examples/): live runs with the model, each with its review queue (`report.html`; download and open it in a browser), its `result.json`, the agents' trace and the World Model's audit log.
+- **[Demo video](https://drive.google.com/file/d/1g2-rFbYHHKEmtUeC5HOJ_52xPl6URa8E/view?usp=sharing)** (3:39; built from real outputs of live runs, with a synthetic voice).
+- **[The review queues, online](https://felixmella.github.io/open-agent-hack/output_examples/)**: every live run's review queue opens in the browser, for example [example 2](https://felixmella.github.io/open-agent-hack/output_examples/example_2/report.html) (the Critic rejects, a source is discovered, the verdict changes) and [example 5](https://felixmella.github.io/open-agent-hack/output_examples/example_5/report.html) (fixed since the last check, after real edits).
+- [`output_examples/`](output_examples/): live runs with the model, each with its review queue (`report.html`), its `result.json`, the agents' trace and the World Model's audit log.
 - [`output_examples/national/`](output_examples/national/): all 346 comunas, region by region.
-- [`eval/results.md`](eval/results.md): what the model changes, measured.
+- [`eval/results.md`](eval/results.md): what Nemotron does, measured.
 - [`docs/sponsor-technology.md`](docs/sponsor-technology.md): how Zetaris, the World Model engine, Nightshift and Nemotron are used.
 - [`docs/zetaris/`](docs/zetaris/README.md): the Unified Semantic Layer in Zetaris, its data-quality rules, live query results for every source, and our reflections on the USL.
 

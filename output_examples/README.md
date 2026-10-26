@@ -4,7 +4,7 @@ Real runs of FactSync Chile, kept as evidence. Each folder holds what the run wr
 
 | File | What it is |
 |---|---|
-| `report.html` | The review queue. Download and open it in a browser, or follow the rendered link in [`index.html`](index.html) once GitHub Pages serves this repository |
+| `report.html` | The review queue. Open it online from the [runs index on GitHub Pages](https://felixmella.github.io/open-agent-hack/output_examples/), or download it and open it in a browser |
 | `result.json` | The whole result: verdicts, evidence, Critic scores and history, discoveries, drafts, escalations, what changed since the last check, model usage, the World Model capabilities used |
 | `trace.jsonl` | The agents' trace: one JSON object per action. Zetaris SQL, row counts and latency; for each model call the model requested, the model Nightshift says served it, the receipt's routed model and receipt id; Critic rejections, fixes and discovery choices |
 | `world-model-audit.jsonl` | The World Model's audit log for the run: every entity, observation, assessment and rebuild written |
