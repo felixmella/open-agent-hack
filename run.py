@@ -46,11 +46,14 @@ def main():
         if error.code == "internal_error":
             traceback.print_exc()
         fail(error, run_id=(error.result or {}).get("run_id"))
-    summary = {k: result[k] for k in ("run_id", "status", "mode", "summary", "model_usage", "execution_time_seconds",
-                                      "trace_file", "world_model_audit_file")}
+    def shown(claim):  # a population figure, or the name a page gives as mayor
+        return repr(claim["name"]) if "name" in claim else claim.get("value")
+
+    summary = {k: result[k] for k in ("run_id", "fact", "status", "mode", "summary", "model_usage",
+                                      "execution_time_seconds", "trace_file", "world_model_audit_file")}
     summary["comunas"] = [{
         "cut": c["cut"], "name": c["name"], "status": c["status"], "critic_rounds": c["critic"]["rounds"],
-        "findings": [f"{f['target']} {f['claim'].get('location')} {f['claim'].get('value')}: {f['class']} "
+        "findings": [f"{f['target']} {f['claim'].get('location')} {shown(f['claim'])}: {f['class']} "
                      f"({f['status']}, {f['critic']['score']}/9)" for f in c["findings"]],
         "drafts": {k: v.get("status") for k, v in c["drafts"].items() if isinstance(v, dict) and "target" in v},
     } for c in result["comunas"]]

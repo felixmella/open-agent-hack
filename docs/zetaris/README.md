@@ -12,7 +12,7 @@ count. FactSync Chile's agents work out why each figure differs and draft a sour
 editors who maintain the 346 comuna pages. Answering "why does this figure differ?" needs every official series INE
 has published and every figure the public sources show, side by side, keyed by comuna.
 
-**Sources (8, of 3 kinds), all read live by Zetaris:**
+**Sources (10, of 3 kinds), all read live by Zetaris** (the last two for the second fact, mayors: part 1d):
 
 | Source | Publisher | Kind | Zetaris object |
 |---|---|---|---|
@@ -24,6 +24,8 @@ has published and every figure the public sources show, side by side, keyed by c
 | Population statements | Wikidata | SPARQL endpoint, REST | `factsync.wikidata_population` |
 | Comuna articles, Spanish | Wikipedia | MediaWiki API, REST, 6 tables of 50 titles | `factsync.eswiki_articles` → `factsync.eswiki_infobox` |
 | Comuna articles, English | Wikipedia | MediaWiki API, REST, 6 tables of 50 titles | `factsync.enwiki_articles` → `factsync.enwiki_infobox` |
+| Mayoral elections 2012, 2016, 2021, 2024: every candidate | SERVEL | CSV in the file store (from SERVEL's four workbooks) | `factsync_files.servel_alcaldes_raw` → `factsync.servel_mayors` |
+| Head of government statements (P6) | Wikidata | SPARQL endpoint, REST | `factsync.wikidata_mayor` |
 
 The DDL is in [`zetaris/`](../../zetaris/) (`01`–`04`), with a log of what was run and how each object was checked
 against its source in [`zetaris/README.md`](../../zetaris/README.md).
@@ -115,6 +117,43 @@ part, and now passes all 13,492. The 14 unreadable figures are why FactSync's Ex
 wikitext when SQL can't parse it; the 27 orphans are claims the agents never see, because a claim without a comuna
 code can't be tied to an INE comuna.
 
+## 1d. A second fact, a second USL: `comuna_mayor`
+
+FactSync's claim is that the pattern fits any public fact that drifts from its system of record. The second fact is
+each comuna's mayor, checked against SERVEL's election results. In Zetaris it took one file-store table, three views
+and a second USL (`zetaris/08_mayors_create.sql`, `09_mayors_usl_create.sql`):
+
+- `factsync.servel_mayors`: SERVEL's four mayoral elections, 5,403 candidates keyed by comuna code.
+- `factsync.wikidata_mayor`: Wikidata's head of government statements, over SPARQL.
+- `factsync.eswiki_mayor` and `enwiki_mayor`: the infobox mayor fields, extracted in SQL from the article views the
+  population fact already reads (no new REST tables).
+- `factsync.source_catalog` gained a `fact` column and seven rows. The Planner reads only the sources of the fact a
+  run checks; the three earlier elections are read on demand, when a name needs explaining.
+
+**DDL:** [`zetaris/09_mayors_usl_create.sql`](../../zetaris/09_mayors_usl_create.sql): tables `comuna`,
+`election_result` (every candidate, with `first_surname`, votes and whether elected) and `mayor_claim` (who each public
+source names), both with a foreign key to `comuna`. Foreign keys across two USLs are untested, so this USL has its own
+copy of the comuna list. Four registered rules: `comuna_code_5_digits`, `votes_not_negative`, `elected_is_flag`, and
+`mayor_named` (does the source name anyone?).
+
+**Verified** ([`usl_mayors.md`](usl_mayors.md), queries 1–9): `election_result` holds the view's 1,164 / 1,213 /
+1,450 / 1,576 candidates for 2012 / 2016 / 2021 / 2024, with 346 elected each year, and no comuna has other than
+exactly one winner in any election (a check no row rule can express, so it is a query). `mayor_claim` holds 287
+English, 294 Spanish and 355 Wikidata rows: 271, 285 and **5** of them name someone. Wikidata records a mayor for 5 of
+355 comuna items.
+
+**What SQL alone can and can't say** (query 11). Joining each infobox with the 2024 winner's first surname finds
+107 of 264 English infoboxes and 235 of 274 Spanish ones that contain it. That is a first pass, and the agents need
+more: the join can't tell a former mayor from a vandal, a nickname ("Max Luksic" for Maximiliano Luksic Lederer) from
+another person, or a stand-in from a mistake, and it loses the 20 articles whose Wikidata item has no comuna code
+(Rengo among them), which the agents match by name. Those judgments are the agents' work, on the same views.
+
+**The second fact's data layer took about an hour**, from SERVEL's workbooks to a verified USL with its rules,
+reusing everything the first fact had built: the file store and its upload script, the Wikipedia article views, the
+catalog, the read-only user (its grant covers the new views; `scripts/verify_readonly.py` checks all ten). The one
+surprise: Zetaris infers a REST table's JSON fields from the live answer, so a field no Wikidata statement uses yet
+(`statedIn`) doesn't exist, and the view must not name it (`FIELD_NOT_FOUND`).
+
 ## 2a. Time saved against a hand-coded approach
 
 **What it took with Zetaris.** The data layer behind the agents (four SQL files: two INE ArcGIS layers, the Wikidata
@@ -163,10 +202,10 @@ differences:
 - free text: extracting the figure a sentence states is reading, not SQL, and stays with the Extractor agent and
   Nemotron.
 
-**A project that would benefit:** the same pattern for Chile's mayors (SERVEL's 2024 election results against the
-infobox and Wikidata), or any company wiki checked against its ERP. With the USL, a new fact is a new table with keys
-to `comuna` and a rule or two. We'd forecast a new fact's data layer at half a day instead of the two to three days a
-hand-coded one takes.
+**A project that benefited:** we forecast that a second fact's data layer would take half a day with the USL instead of
+two to three days by hand. We then built it: Chile's mayors, against SERVEL's election results (part 1d). It took
+about an hour, because everything the first fact built was reused. The next fact anyone would add, here or in a
+company wiki checked against its ERP, is the same shape: a table keyed to the system of record, and a rule or two.
 
 ## 2c. Making the USL stronger: a requirement
 

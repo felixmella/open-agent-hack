@@ -1,6 +1,6 @@
 # Sponsor technology in FactSync Chile
 
-FactSync Chile checks the population figure of each of Chile's 346 comunas in Spanish and English Wikipedia and in Wikidata against INE's official figures, explains why each one differs, and drafts sourced corrections for a human editor. Six agents (Planner, Retriever, Extractor, Analyst, Critic, Editor) work over three sponsor technologies, and each one carries weight:
+FactSync Chile checks two facts about each of Chile's 346 comunas in Spanish and English Wikipedia and in Wikidata against their systems of record: the population against INE's official figures, and the mayor against SERVEL's election results. It explains why each one differs and drafts sourced corrections for a human editor. Six agents (Planner, Retriever, Extractor, Analyst, Critic, Editor) work over three sponsor technologies, and each one carries weight:
 
 - **Zetaris** is the only way the agents read data. It holds every source as a view and tells the Planner which sources exist.
 - **The Meterless World Model engine** is the agents' shared state, the picture of each comuna, and its memory between runs.
@@ -8,7 +8,7 @@ FactSync Chile checks the population figure of each of Chile's 346 comunas in Sp
 
 ## Zetaris: the data layer
 
-**Every source is a Zetaris view.** The agents compare six public sources. None is copied into the app: Zetaris reads them live, and the two INE files sit in its file store.
+**Every source is a Zetaris view.** The agents compare eight public sources. None is copied into the app: Zetaris reads them live, and the INE and SERVEL files sit in its file store.
 
 | Source | How Zetaris reads it | View |
 |---|---|---|
@@ -17,16 +17,18 @@ FactSync Chile checks the population figure of each of Chile's 346 comunas in Sp
 | INE Census 2002, by comuna | file store (counted on INE's REDATAM server by `scripts/prepare_ine_census2002.py`) | `factsync.ine_census2002` |
 | INE estimates and projections 2002–2035, by comuna | file store (INE's workbook, aggregated) | `factsync.ine_projections` |
 | Wikidata population statements | REST table over the SPARQL endpoint, flattened with `LATERAL VIEW explode` | `factsync.wikidata_population` |
-| Spanish and English Wikipedia articles | 12 REST tables over the MediaWiki API, 50 titles each | `factsync.eswiki_infobox`, `factsync.enwiki_infobox` |
+| Spanish and English Wikipedia articles | 12 REST tables over the MediaWiki API, 50 titles each | `factsync.eswiki_infobox`, `factsync.enwiki_infobox`; for mayors `factsync.eswiki_mayor`, `factsync.enwiki_mayor` |
+| SERVEL mayoral elections 2012, 2016, 2021, 2024: every candidate | file store (SERVEL's four workbooks, keyed by comuna code by `scripts/prepare_servel_mayors.py`) | `factsync.servel_mayors` |
+| Wikidata head of government statements (P6) | REST table over the SPARQL endpoint | `factsync.wikidata_mayor` |
 
 **Unified views are the data products the agents use.**
 - `factsync.official_population` puts every official figure in one shape: series, definition, scope, year and value.
 - The infobox views extract the population fields in SQL, next to each article's wikitext and revision.
 - `factsync.population_picture` puts every claim from every source in one table keyed by comuna code, for exploring the whole picture in one query.
 
-**A source catalog in Zetaris drives discovery.** `factsync.source_catalog` lists every source with its definition, scope and the years it covers. The Planner reads it at the start of each run (one traced SQL statement) and plans the default sources from it.
+**A source catalog in Zetaris drives discovery.** `factsync.source_catalog` lists every source with the fact it is about, its definition, scope and the years it covers. The Planner reads it at the start of each run (one traced SQL statement) and plans the default sources of the run's fact from it.
 
-When the Critic finds figures that nothing read so far explains, it names the unread catalog sources whose coverage could explain each one. The Planner then chooses among them, Nemotron with a reason or code by the figure's cues, and the Retriever reads them with one generic query. Adding a source means adding one view and one catalog row, with no new code. The catalog covers four official series. Two of them, INE's Census 2002 and the 2017 urban/rural split, were added during the hackathon because the articles cite them.
+When the Critic finds figures that nothing read so far explains, it names the unread catalog sources whose coverage could explain each one. The Planner then chooses among them, Nemotron with a reason or code by the figure's cues, and the Retriever reads them with one generic query. Adding a source means adding one view and one catalog row, with no new code. The catalog covers four official population series and four elections. Two of the series, INE's Census 2002 and the 2017 urban/rural split, were added during the hackathon because the articles cite them. For mayors, a run reads the 2024 election by default; when a page names someone no election read explains, the Critic sends the Planner back for the 2021, 2016 and 2012 elections, one per round.
 
 **A Unified Semantic Layer with data-quality rules.** The USL `comuna_population` (namespace
 `lightning.metastore.factsync`, DDL in `zetaris/07_usl_create.sql`) declares the model behind the views: `comuna`
@@ -34,7 +36,9 @@ When the Critic finds figures that nothing read so far explains, it names the un
 Each table is activated from the view the agents read. Zetaris generates the key and foreign-key rules; three more are
 registered (`cut_is_code`, `population_positive`, `figure_is_a_number`) and run with `RUN DQ`. The use case, the
 exploratory queries per source, the USL checks and rule results, and our reflections on the USL (time saved against a
-hand-coded version, and a requirement for Zetaris) are in [`docs/zetaris/`](zetaris/README.md).
+hand-coded version, and a requirement for Zetaris) are in [`docs/zetaris/`](zetaris/README.md). A second USL,
+`comuna_mayor` (`zetaris/09_mayors_usl_create.sql`), does the same for mayors: `comuna`, `election_result` and
+`mayor_claim`, with four registered rules; it took about an hour, reusing everything the first fact built.
 
 **The app reads with a read-only user.** Following the advice of Zetaris's CTO, the app's key belongs to a General-role user that holds SELECT on the `factsync` view namespace and nothing else. The admin key is used only by the setup scripts. `scripts/verify_readonly.py` shows that the app's key sees as many rows as the admin key in every view, and is refused on the source tables underneath.
 
@@ -60,6 +64,7 @@ hand-coded version, and a requirement for Zetaris) are in [`docs/zetaris/`](zeta
 
 **The comuna picture is a projection the engine holds.**
 - FactSync registers `comuna_picture` with the engine. For each page, it holds the figure shown as the current population and the verdict on it, plus findings, drafts and escalations.
+- Mayor runs register a second projection, `mayor_picture`: per page, the name shown as the mayor and the verdict on it. One store holds both facts about each comuna; each projection reads only its own fact's assessments.
 - The engine rebuilds it from the log; it is never edited in place.
 
 **Point-in-time reconstruction powers "since your last check".**
@@ -110,6 +115,15 @@ The model is `nvidia/nemotron-3.5-lightning-30b-a3b`, reached only through Night
 | Planner | Chooses, per figure, which catalog source to read on discovery, and says why | Only candidates the Critic named are accepted |
 | Editor | Writes edit summaries and the reviewer's explanation | The draft's figures, citation and wording are checked; the figures and sources in the drafts come from templates |
 
+For mayors, the same agents ask Nemotron different questions:
+
+| Agent | What Nemotron does | What code checks |
+|---|---|---|
+| Analyst | Decides which SERVEL candidate an uncertain name refers to ("Max Luksic" is Maximiliano Luksic Lederer), or, when none, what the name probably is: a stand-in, a misspelling, vandalism | The person must be one of the candidates listed; the class then follows from that person's record in SERVEL's results, never from the model |
+| Planner | Chooses which earlier election to read for a name the elections read can't explain, with a reason | Only elections the Critic named are accepted |
+| Critic | Judges whether "not elected" and "unknown name" verdicts fit, and whether their explanations are faithful | The rubric recomputes the match from SERVEL's rows |
+| Editor | Writes the summaries and explanation, and restores the accents SERVEL's capitals drop | The name must have exactly SERVEL's letters; the wording must not call a page wrong (SERVEL shows who was elected, not who holds the office) |
+
 Its main job is reading. Articles are full of figures that aren't the comuna's population (men only, a town, people
 enrolled in the health system), which sentence patterns keep and turn into false findings. `eval/` measures this: the
 same 11 comunas from the same recorded rows, with and without Nemotron, every difference adjudicated with its
@@ -117,6 +131,8 @@ evidence. On disputed figures from article text, Nemotron was right 16 times to 
 misleading findings never reached the reviewer ([results](../eval/results.md), which also list where it was weaker).
 
 ## What was unique
+
+- **One pattern, two facts.** The loop, the caps, the World Model and the Zetaris catalog are shared; a fact is a module (its official source as views, a taxonomy, each agent's reading of it). The second fact, mayors against SERVEL, went from SERVEL's workbooks to live national results in an afternoon.
 
 - **Discovery from a catalog in Zetaris.** The Planner chooses sources from a table Zetaris holds, by coverage, and new official sources need only a view and a catalog row. A real case: it added Census 2002 when articles cited it, and found that Spanish Wikipedia gives Coltauco 17,121 people in 2002 where INE counted 16,228.
 - **The World Model as memory between runs.** Point-in-time reconstruction turns a one-off audit into something editors rerun, and shows what was fixed since the last check: after three real edits, the next run reported 4 pages fixed.
